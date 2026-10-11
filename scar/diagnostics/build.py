@@ -11,7 +11,7 @@ import random
 
 from scar.io import atomic_json, digest
 from scar.environment import AGENT_ID, restore, snapshot, save_snapshot, state_digest
-from scar.diagnostics.scoring import outcome
+from scar.diagnostics.scoring import outcome, score_candidate
 from scar.agents.scar.state import action_key
 
 
@@ -24,10 +24,11 @@ def all_actions(env):
 
 def transition(env, action):
     before = copy.deepcopy(env.obs[AGENT_ID])
+    action_truth = score_candidate(env, action)
     after, rewards, done, info = env.step({AGENT_ID: action})
     env.update_scores(rewards)
     return {"before": before, "action": action, "after": copy.deepcopy(after[AGENT_ID]),
-            **outcome(after, info), "done": done}
+            **outcome(after, info), "semantic_rejection": action_truth["semantic_rejection"], "done": done}
 
 
 def physical_goal(env, action):
@@ -114,7 +115,9 @@ def natural_statistics(runtime):
     failures = []
     from scar.agents.scar.state import VisibleState
     from scar.agents.scar.detection import diagnose
-    for task_file in sorted((Path(runtime) / "runs").glob("pilot-ShortTermMemoryAgent-*/task.json")):
+    source_files = list((Path(runtime) / "runs").glob("pilot-ShortTermMemoryAgent-*/task.json"))
+    source_files += list((Path(runtime) / "runs").glob("collect-ShortTermMemoryAgent-*/task.json"))
+    for task_file in sorted(source_files):
         run = task_file.parent
         task = json.loads(task_file.read_text())["task"]
         rows = [json.loads(p.read_text()) for p in sorted((run / "steps").glob("*/transition.json"))]
@@ -140,7 +143,7 @@ def natural_statistics(runtime):
     return counts, failures
 
 
-def build(runtime, output, limit=24):
+def build(runtime, output, limit=120):
     runtime, output = Path(runtime), Path(output)
     output.mkdir(parents=True, exist_ok=True)
     counts, failures = natural_statistics(runtime)
@@ -151,6 +154,9 @@ def build(runtime, output, limit=24):
         row = item["row"]
         data = Path(item["run"]) / "steps" / f"{item['index'] + 1:04}" / "environment.pkl"
         env = restore(data)
+        # Tutorial instances already seen during development are never held-out tests.
+        if item["task"].get("stage") == "collect" and not env.curr_agents_state.get("tutorial_passed", {}).get(AGENT_ID, True):
+            continue
         goal = physical_goal(env, row["executed_action"])
         if goal:
             candidates.append((env, row["executed_action"], item["history"], "natural", item["task"], goal))
@@ -173,7 +179,7 @@ def build(runtime, output, limit=24):
                     goal = physical_goal(trial, action)
                     if goal:
                         candidates.append((trial, action, history, "synthetic_action_prefix",
-                                           {"game": game, "seed": int(seed)}, goal))
+                                           {"game": game, "seed": int(seed), "stage": "pilot"}, goal))
                     break
     records, seen, unverified = [], set(), []
     rng = random.Random(8675309)
@@ -193,7 +199,7 @@ def build(runtime, output, limit=24):
         state_file = directory / "initial.pkl"
         save_snapshot(state_file, env)
         case = {"id": case_id, "game": task["game"], "seed": task["seed"], "source": source,
-                "family": family, "split": "dev" if int(family[:8], 16) % 5 == 0 else "test",
+                "family": family, "split": "test" if task.get("stage") == "collect" else "dev",
                 "types": ["A", "D"] if len(witness) > 1 else ["B"],
                 "initial_snapshot": str(state_file.resolve()), "target_action": target,
                 "history": history, "recoverable": True, "goal": goal,
@@ -229,6 +235,7 @@ def build(runtime, output, limit=24):
                 "type_counts": {t: sum(t in r["types"] for r in records) for t in "ABCD"},
                 "split_counts": {s: sum(r["split"] == s for r in records) for s in ("dev", "test")},
                 "independence": "one case per deduplicated observed action/state family; types overlap",
+                "split_method": "pilot seed 7 is development; frozen STM collection seeds 404/505 are test; tutorial states excluded from test",
                 "frozen_sha256": digest(records),
                 "limitations": "D labels witness-based prerequisite chains, not verified distinct map routes. C may be absent. Search failures excluded, not declared irrecoverable."})
     print(json.dumps({"cases": len(records), "natural": counts, "unverified": len(unverified)}))
@@ -238,6 +245,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--runtime", required=True)
     parser.add_argument("--output", required=True)
-    parser.add_argument("--limit", type=int, default=24)
+    parser.add_argument("--limit", type=int, default=120)
     args = parser.parse_args()
     build(args.runtime, args.output, args.limit)

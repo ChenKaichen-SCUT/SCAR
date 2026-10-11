@@ -106,9 +106,13 @@ def episode(task, config, runtime, key_path, workers):
                     for prediction in decision.get("rule_predictions", [])[:10]:
                         truth = score_candidate(env, prediction["action"])
                         rule_tests.append(dict(prediction, semantic_rejection=truth["semantic_rejection"]))
+                executed_truth = score_candidate(env, action)
                 after, reward, done, info = env.step({AGENT_ID: action})
                 env.update_scores(reward)
                 evaluation = outcome(after, info)
+                evaluation["semantic_rejection"] = executed_truth["semantic_rejection"]
+                evaluation["action_rule_feedback"] = executed_truth["feedback"]
+                evaluation["action_rule_events"] = executed_truth["events"]
                 if hasattr(agent, "observe_transition"):
                     agent.observe_transition(obs[AGENT_ID], action, after[AGENT_ID])
                 visible = VisibleState.observe(after[AGENT_ID], before)
@@ -214,7 +218,7 @@ def main():
     parser.add_argument("--config", default="configs/protocol.json")
     parser.add_argument("--runtime", required=True)
     parser.add_argument("--key-file", required=True)
-    parser.add_argument("--stage", choices=["smoke", "pilot", "long", "diagnostic", "cost"], required=True)
+    parser.add_argument("--stage", choices=["smoke", "pilot", "collect", "long", "diagnostic", "cost"], required=True)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--cases")
     parser.add_argument("--algorithms", nargs="+")
@@ -223,7 +227,7 @@ def main():
     config["implementation_sha256"] = digest({str(p.relative_to(Path(__file__).parents[1])): p.read_text()
         for p in sorted(Path(__file__).parents[1].rglob("*.py"))})
     algorithms = args.algorithms or config["algorithms"]
-    max_steps = {"smoke": 20, "pilot": 120, "long": 200, "diagnostic": 20, "cost": 200}[args.stage]
+    max_steps = {"smoke": 20, "pilot": 120, "collect": 120, "long": 200, "diagnostic": 20, "cost": 200}[args.stage]
     if args.stage == "cost":
         config["episode_budget_usd"] = config["equal_cost_per_episode_usd"]
     if args.stage in {"smoke", "pilot"}:
@@ -242,6 +246,9 @@ def main():
                 tasks.append(task)
     else:
         seeds = config["test_seeds"] if args.stage in {"long", "cost"} else config["dev_seeds"]
+        if args.stage == "collect":
+            seeds = config["diagnostic_seeds"]
+            algorithms = ["ShortTermMemoryAgent"]
         prepare_initials(config, runtime, seeds)
         for seed in seeds:
             for game in config["games"]:

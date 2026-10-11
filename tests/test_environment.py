@@ -83,3 +83,40 @@ def test_actual_agent_act_and_checkpoint(algorithm, tmp_path):
     memory_dir.mkdir()
     agent.save_memory(memory_dir)
     agent.load_memory(memory_dir)
+
+
+def test_scar_four_modules_execute_together(tmp_path):
+    import json
+    from scar.integration import make_agent
+    from test_core import obs
+    class PlannedProvider:
+        tokens_in = tokens_out = 0
+        answers = [
+            {"action": 'enter "Gate"', "reasoning": "attempt"},
+            {"action": 'enter "Gate"', "reasoning": "candidate"},
+            {"action": 'pick up "key"', "reasoning": "recover", "plan": ['pick up "key"']},
+            {"action": "wait", "reasoning": "base candidate"},
+        ]
+        def generate(self, user_prompt, system_prompt=None):
+            self.tokens_in += 10
+            self.tokens_out += 5
+            value = self.answers.pop(0)
+            return {"response": json.dumps(value), "parsed": value,
+                    "num_input_tokens": 10, "num_output_tokens": 5}
+    config = json.loads((Path(__file__).parents[1] / "configs/protocol.json").read_text())
+    agent = make_agent("SCARAgent", "remnant", PlannedProvider(), config, tmp_path)
+    first = obs(0)
+    action, *_ = agent.act(first)
+    failed = obs(1, feedback="Cannot enter Gate, the door is locked.")
+    agent.observe_transition(first, action, failed)
+    repaired, *_ = agent.act(failed)
+    assert repaired == 'pick up "key"'
+    released = obs(2, hands="key", feedback="I picked up key.")
+    agent.observe_transition(failed, repaired, released)
+    retry, *_ = agent.act(released)
+    assert retry == 'enter "Gate"'
+    succeeded = obs(3, location="Gate", hands="key", feedback="I entered Gate.")
+    agent.observe_transition(released, retry, succeeded)
+    types = {e["event"] for e in agent.events}
+    assert {"failure_learned", "memory_hit", "plan_repair", "safe_retry_success"} <= types
+    assert agent.plan.status == "complete"

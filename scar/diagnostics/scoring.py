@@ -21,11 +21,24 @@ def outcome(observation, info):
 
 
 def score_candidate(env, action):
+    import importlib
     with isolated_copy(env) as clone:
-        obs, reward, done, info = clone.step({AGENT_ID: action})
-        result = outcome(obs, info)
-        result["quest_reward"] = reward[AGENT_ID].__dict__.get("quest", 0)
-        return result
+        # Capture only the selected action rule's response, before NPC/tutorial
+        # step rules add unrelated text. This is evaluator-only instrumentation.
+        module = importlib.import_module(type(clone).__module__.rsplit(".", 1)[0] + ".rule")
+        agent = clone.agents[0]
+        verb, params = clone.parse_action(agent, action)
+        res = module.RuleResult(feedback={AGENT_ID: ""}, info_flags={"step_invalid_action": {AGENT_ID: False}})
+        if verb is None:
+            return {"engine_invalid": True, "semantic_rejection": True,
+                    "feedback": "Invalid action: parse failed", "events": []}
+        ctx = module.RuleContext(env=clone, world=clone.world, agent=agent, action=verb,
+                                 params=params, step_index=clone.steps)
+        clone.action_rule_engine.dispatch(ctx, res)
+        invalid = bool(res.info_flags.get("step_invalid_action", {}).get(AGENT_ID, False))
+        feedback = res.feedback.get(AGENT_ID, "")
+        return {"engine_invalid": invalid, "semantic_rejection": invalid or bool(REJECTION.search(feedback)),
+                "feedback": feedback, "events": [e.type for e in res.events]}
 
 
 def aggregate_trajectory(rows):
