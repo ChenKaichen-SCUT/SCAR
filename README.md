@@ -23,7 +23,7 @@ cd "$SCAR_WORKSPACE/project"
 bash scripts/bootstrap.sh
 export AGENTODYSSEY_ROOT="$SCAR_WORKSPACE/dependencies/agentodyssey"
 export PYTHONPATH="$SCAR_WORKSPACE/project:$AGENTODYSSEY_ROOT"
-export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONHASHSEED=0
 PY="$SCAR_WORKSPACE/venv/bin/python"
 "$PY" -m pytest tests "$AGENTODYSSEY_ROOT/tests" -q --junitxml=results/tests.xml
 "$PY" scripts/api_probe.py --key-file /secure/path/miyao.txt --runtime "$SCAR_WORKSPACE/runtime"

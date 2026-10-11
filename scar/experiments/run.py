@@ -10,6 +10,7 @@ from pathlib import Path
 import random
 import time
 import traceback
+import sys
 
 for _key in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS", "TOKENIZERS_PARALLELISM"):
     os.environ[_key] = "false" if _key == "TOKENIZERS_PARALLELISM" else "1"
@@ -225,6 +226,8 @@ def main():
     parser.add_argument("--cases")
     parser.add_argument("--algorithms", nargs="+")
     args = parser.parse_args()
+    if sys.flags.hash_randomization or os.environ.get("PYTHONHASHSEED") != "0":
+        parser.error("Launch with PYTHONHASHSEED=0 so engine set iteration and snapshots replay across processes")
     config = json.loads(Path(args.config).read_text())
     config["implementation_sha256"] = digest({str(p.relative_to(Path(__file__).parents[1])): p.read_text()
         for p in sorted(Path(__file__).parents[1].rglob("*.py"))})
@@ -244,6 +247,7 @@ def main():
                 continue
             for algorithm in algorithms:
                 task = dict(case, diagnostic=True, algorithm=algorithm, max_steps=20,
+                            protocol_cohort=config["protocol_cohort"],
                             task_id=f"diagnostic-{case['id']}-{algorithm}-{frozen_hash}")
                 tasks.append(task)
     else:
@@ -256,6 +260,7 @@ def main():
             for game in config["games"]:
                 for algorithm in algorithms:
                     tasks.append({"stage": args.stage, "algorithm": algorithm, "game": game, "seed": seed,
+                                  "protocol_cohort": config["protocol_cohort"],
                                   "max_steps": max_steps,
                                   "task_id": f"{args.stage}-{algorithm}-{game}-{seed}-{frozen_hash}"})
     random.Random(20261011).shuffle(tasks)

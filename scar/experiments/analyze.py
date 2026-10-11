@@ -18,6 +18,12 @@ METRICS = ["main_quest_reward", "completion", "iar", "semantic_failure_rate", "r
            "decision_wall_seconds", "steps"]
 
 
+def stage_of(row):
+    if row.get("diagnostic"):
+        return "diagnostic" if row.get("protocol_cohort") == "formal_hash0" else "diagnostic_provisional"
+    return row.get("stage", "unknown")
+
+
 def write_csv(path, rows):
     if not rows:
         Path(path).write_text("")
@@ -58,7 +64,7 @@ def analyze(runtime, output):
                  if k not in {"history", "witness", "initial_snapshot", "goal"}} for row in summaries])
     groups = defaultdict(list)
     for row in summaries:
-        stage = "diagnostic" if row.get("diagnostic") else row.get("stage", "unknown")
+        stage = stage_of(row)
         for game in [row["game"], "ALL"]:
             groups[(stage, game, row["algorithm"])].append(row)
     aggregate = []
@@ -77,7 +83,7 @@ def analyze(runtime, output):
     pairs = []
     for stage in ["long", "cost", "diagnostic"]:
         valid = [r for r in summaries if r["status"] in SUCCESS and
-                 ("diagnostic" if r.get("diagnostic") else r.get("stage")) == stage]
+                 stage_of(r) == stage]
         by_key = defaultdict(dict)
         for row in valid:
             key = row.get("id") if stage == "diagnostic" else (row["game"], row["seed"])

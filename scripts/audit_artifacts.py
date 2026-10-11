@@ -7,7 +7,7 @@ import statistics
 
 from scar.io import atomic_json, read_jsonl
 from scar.environment import AGENT_ID, restore, state_digest
-from scar.experiments.analyze import write_csv
+from scar.experiments.analyze import write_csv, stage_of
 
 
 def main():
@@ -28,7 +28,7 @@ def main():
         if not summary_path.exists():
             continue
         summary = json.loads(summary_path.read_text())
-        stage = "diagnostic" if summary.get("diagnostic") else summary.get("stage")
+        stage = stage_of(summary)
         for request in read_jsonl(run / "requests.jsonl"):
             requests["calls"] += 1
             requests["failures"] += request["status"] != "ok"
