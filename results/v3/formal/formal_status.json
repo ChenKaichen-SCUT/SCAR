@@ -1,261 +1,1886 @@
 {
   "dataset_sha256": "7ec48a44e2a9430de709a0a51ccab6fa47f35aef86559afcf1786ed558a278c2",
   "hard_expected": 445,
-  "hard_completed": 0,
-  "hard_complete": false,
+  "hard_completed": 443,
+  "hard_evaluated": 445,
+  "hard_method_terminations": 2,
+  "hard_complete": true,
   "long_expected": 15,
-  "long_completed": 0,
-  "long_complete": false,
-  "status": "INCOMPLETE",
+  "long_completed": 14,
+  "long_evaluated": 15,
+  "long_method_terminations": 1,
+  "long_complete": true,
+  "status": "complete_needs_scientific_review",
   "hard_by_method": {
     "ShortTermMemoryAgent": {
-      "completed": 0
+      "evaluated": 89,
+      "completed": 89,
+      "method_terminations": 0,
+      "recovery_at_10": 0.4044943820224719,
+      "recovery_at_20": 0.5280898876404494,
+      "recovery_at_40": 0.6292134831460674,
+      "api_calls": 1985,
+      "input_tokens": 3239895,
+      "output_tokens": 172345,
+      "conservative_cost_usd": 0.9779781479999999,
+      "decision_wall_seconds": 2001.3710224809583,
+      "steps": 1974,
+      "interceptions": 0,
+      "false_blocks": 0,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 0,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "release_opportunities": 62,
+      "successful_released_retries": 53,
+      "repeated_semantic_count": 6
     },
     "SimpleFailureRecovery": {
-      "completed": 0
+      "evaluated": 89,
+      "completed": 89,
+      "method_terminations": 0,
+      "recovery_at_10": 0.3707865168539326,
+      "recovery_at_20": 0.43820224719101125,
+      "recovery_at_40": 0.5393258426966292,
+      "api_calls": 2748,
+      "input_tokens": 3766838,
+      "output_tokens": 253035,
+      "conservative_cost_usd": 1.1638772519999998,
+      "decision_wall_seconds": 2934.033212102062,
+      "steps": 2200,
+      "interceptions": 45,
+      "false_blocks": 20,
+      "legal_to_rejected": 1,
+      "rejected_to_legal": 21,
+      "interventions_with_physical_goal": 2,
+      "interventions_with_condition_release": 0,
+      "release_opportunities": 44,
+      "successful_released_retries": 38,
+      "repeated_semantic_count": 18
     },
     "SCARAgent": {
-      "completed": 0
+      "evaluated": 89,
+      "completed": 89,
+      "method_terminations": 0,
+      "recovery_at_10": 0.2808988764044944,
+      "recovery_at_20": 0.4157303370786517,
+      "recovery_at_40": 0.4606741573033708,
+      "api_calls": 3051,
+      "input_tokens": 4426251,
+      "output_tokens": 303163,
+      "conservative_cost_usd": 1.4179774799999998,
+      "decision_wall_seconds": 3377.9228614019084,
+      "steps": 2410,
+      "interceptions": 548,
+      "false_blocks": 415,
+      "legal_to_rejected": 301,
+      "rejected_to_legal": 50,
+      "interventions_with_physical_goal": 1,
+      "interventions_with_condition_release": 1,
+      "release_opportunities": 41,
+      "successful_released_retries": 38,
+      "repeated_semantic_count": 73
     },
     "SCARV2Agent": {
-      "completed": 0
+      "evaluated": 89,
+      "completed": 89,
+      "method_terminations": 0,
+      "recovery_at_10": 0.34831460674157305,
+      "recovery_at_20": 0.48314606741573035,
+      "recovery_at_40": 0.5617977528089888,
+      "api_calls": 2163,
+      "input_tokens": 2932791,
+      "output_tokens": 210253,
+      "conservative_cost_usd": 0.876966834,
+      "decision_wall_seconds": 2407.129577907963,
+      "steps": 2114,
+      "interceptions": 27,
+      "false_blocks": 0,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 23,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "release_opportunities": 45,
+      "successful_released_retries": 44,
+      "repeated_semantic_count": 20
     },
     "SCARV3Agent": {
-      "completed": 0
+      "evaluated": 89,
+      "completed": 87,
+      "method_terminations": 2,
+      "recovery_at_10": 0.34831460674157305,
+      "recovery_at_20": 0.42696629213483145,
+      "recovery_at_40": 0.5393258426966292,
+      "api_calls": 2437,
+      "input_tokens": 3400308,
+      "output_tokens": 249374,
+      "conservative_cost_usd": 1.066493556,
+      "decision_wall_seconds": 2758.627412991933,
+      "steps": 2150,
+      "interceptions": 141,
+      "false_blocks": 25,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 110,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "release_opportunities": 48,
+      "successful_released_retries": 40,
+      "repeated_semantic_count": 20
     }
   },
-  "paired": [],
+  "paired": [
+    {
+      "comparator": "ShortTermMemoryAgent",
+      "horizon": 10,
+      "uncertainty": [
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.12359550561797752,
+            0.0
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.12963564213564213,
+            0.00980392156862745
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.14130434782608695,
+            0.022727272727272728
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "ShortTermMemoryAgent",
+      "horizon": 20,
+      "uncertainty": [
+        {
+          "difference": -0.10112359550561797,
+          "ci95": [
+            -0.16853932584269662,
+            -0.033707865168539325
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.10112359550561797,
+          "ci95": [
+            -0.1794871794871795,
+            -0.04
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.10112359550561797,
+          "ci95": [
+            -0.1797752808988764,
+            -0.033707865168539325
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "ShortTermMemoryAgent",
+      "horizon": 40,
+      "uncertainty": [
+        {
+          "difference": -0.0898876404494382,
+          "ci95": [
+            -0.1797752808988764,
+            0.0
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.0898876404494382,
+          "ci95": [
+            -0.16666666666666666,
+            -0.022222222222222223
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.0898876404494382,
+          "ci95": [
+            -0.17721518987341772,
+            -0.011111111111111112
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SimpleFailureRecovery",
+      "horizon": 10,
+      "uncertainty": [
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.07865168539325842,
+            0.033707865168539325
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.10256410256410256,
+            0.03614457831325301
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.10309278350515463,
+            0.04445692883895113
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SimpleFailureRecovery",
+      "horizon": 20,
+      "uncertainty": [
+        {
+          "difference": -0.011235955056179775,
+          "ci95": [
+            -0.056179775280898875,
+            0.02247191011235955
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.011235955056179775,
+          "ci95": [
+            -0.06060606060606061,
+            0.021739130434782608
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.011235955056179775,
+          "ci95": [
+            -0.05063291139240506,
+            0.024691358024691357
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SimpleFailureRecovery",
+      "horizon": 40,
+      "uncertainty": [
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.056179775280898875,
+            0.056179775280898875
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.05194805194805195,
+            0.04
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.056818181818181816,
+            0.054945054945054944
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARAgent",
+      "horizon": 10,
+      "uncertainty": [
+        {
+          "difference": 0.06741573033707865,
+          "ci95": [
+            0.011235955056179775,
+            0.1348314606741573
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.06741573033707865,
+          "ci95": [
+            0.02857142857142857,
+            0.10752688172043011
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.06741573033707865,
+          "ci95": [
+            0.0,
+            0.13402376162936883
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARAgent",
+      "horizon": 20,
+      "uncertainty": [
+        {
+          "difference": 0.011235955056179775,
+          "ci95": [
+            -0.033707865168539325,
+            0.056179775280898875
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.011235955056179775,
+          "ci95": [
+            -0.05128205128205128,
+            0.06363636363636363
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.011235955056179775,
+          "ci95": [
+            -0.03571428571428571,
+            0.06382978723404255
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARAgent",
+      "horizon": 40,
+      "uncertainty": [
+        {
+          "difference": 0.07865168539325842,
+          "ci95": [
+            0.02247191011235955,
+            0.14606741573033707
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.07865168539325842,
+          "ci95": [
+            0.011904761904761904,
+            0.13333333333333333
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.07865168539325842,
+          "ci95": [
+            0.02040816326530612,
+            0.15069687798661976
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARV2Agent",
+      "horizon": 10,
+      "uncertainty": [
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.056179775280898875,
+            0.06741573033707865
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.043478260869565216,
+            0.05
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.07142857142857142,
+            0.06796668137687546
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARV2Agent",
+      "horizon": 20,
+      "uncertainty": [
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.11235955056179775,
+            -0.011235955056179775
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.10811624877889937,
+            -0.017857142857142856
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.1111111111111111,
+            -0.011363636363636364
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARV2Agent",
+      "horizon": 40,
+      "uncertainty": [
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.10112359550561797,
+            0.056179775280898875
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.12048192771084337,
+            0.06060606060606061
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.1,
+            0.053763440860215055
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    }
+  ],
   "by_type": [
     {
       "type": "alternative_path",
       "algorithm": "ShortTermMemoryAgent",
       "eligible_families": 19,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.7894736842105263
     },
     {
       "type": "alternative_path",
       "algorithm": "SimpleFailureRecovery",
       "eligible_families": 19,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.9473684210526315
     },
     {
       "type": "alternative_path",
       "algorithm": "SCARAgent",
       "eligible_families": 19,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5789473684210527
     },
     {
       "type": "alternative_path",
       "algorithm": "SCARV2Agent",
       "eligible_families": 19,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.7894736842105263
     },
     {
       "type": "alternative_path",
       "algorithm": "SCARV3Agent",
       "eligible_families": 19,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.8947368421052632
     },
     {
       "type": "ambiguous_feedback",
       "algorithm": "ShortTermMemoryAgent",
       "eligible_families": 86,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 86,
+      "completed": 86,
+      "method_terminations": 0,
+      "recovery_at_40": 0.6162790697674418
     },
     {
       "type": "ambiguous_feedback",
       "algorithm": "SimpleFailureRecovery",
       "eligible_families": 86,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 86,
+      "completed": 86,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5232558139534884
     },
     {
       "type": "ambiguous_feedback",
       "algorithm": "SCARAgent",
       "eligible_families": 86,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 86,
+      "completed": 86,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4418604651162791
     },
     {
       "type": "ambiguous_feedback",
       "algorithm": "SCARV2Agent",
       "eligible_families": 86,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 86,
+      "completed": 86,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5465116279069767
     },
     {
       "type": "ambiguous_feedback",
       "algorithm": "SCARV3Agent",
       "eligible_families": 86,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 86,
+      "completed": 84,
+      "method_terminations": 2,
+      "recovery_at_40": 0.5232558139534884
     },
     {
       "type": "irrelevant_change",
       "algorithm": "ShortTermMemoryAgent",
       "eligible_families": 22,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 22,
+      "completed": 22,
+      "method_terminations": 0,
+      "recovery_at_40": 0.6363636363636364
     },
     {
       "type": "irrelevant_change",
       "algorithm": "SimpleFailureRecovery",
       "eligible_families": 22,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 22,
+      "completed": 22,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5
     },
     {
       "type": "irrelevant_change",
       "algorithm": "SCARAgent",
       "eligible_families": 22,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 22,
+      "completed": 22,
+      "method_terminations": 0,
+      "recovery_at_40": 0.45454545454545453
     },
     {
       "type": "irrelevant_change",
       "algorithm": "SCARV2Agent",
       "eligible_families": 22,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 22,
+      "completed": 22,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5454545454545454
     },
     {
       "type": "irrelevant_change",
       "algorithm": "SCARV3Agent",
       "eligible_families": 22,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 22,
+      "completed": 21,
+      "method_terminations": 1,
+      "recovery_at_40": 0.5
     },
     {
       "type": "long_recovery_chain",
       "algorithm": "ShortTermMemoryAgent",
       "eligible_families": 56,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 56,
+      "completed": 56,
+      "method_terminations": 0,
+      "recovery_at_40": 0.48214285714285715
     },
     {
       "type": "long_recovery_chain",
       "algorithm": "SimpleFailureRecovery",
       "eligible_families": 56,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 56,
+      "completed": 56,
+      "method_terminations": 0,
+      "recovery_at_40": 0.2857142857142857
     },
     {
       "type": "long_recovery_chain",
       "algorithm": "SCARAgent",
       "eligible_families": 56,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 56,
+      "completed": 56,
+      "method_terminations": 0,
+      "recovery_at_40": 0.2857142857142857
     },
     {
       "type": "long_recovery_chain",
       "algorithm": "SCARV2Agent",
       "eligible_families": 56,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 56,
+      "completed": 56,
+      "method_terminations": 0,
+      "recovery_at_40": 0.375
     },
     {
       "type": "long_recovery_chain",
       "algorithm": "SCARV3Agent",
       "eligible_families": 56,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 56,
+      "completed": 54,
+      "method_terminations": 2,
+      "recovery_at_40": 0.30357142857142855
     },
     {
       "type": "multiple_preconditions",
       "algorithm": "ShortTermMemoryAgent",
       "eligible_families": 83,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 83,
+      "completed": 83,
+      "method_terminations": 0,
+      "recovery_at_40": 0.6265060240963856
     },
     {
       "type": "multiple_preconditions",
       "algorithm": "SimpleFailureRecovery",
       "eligible_families": 83,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 83,
+      "completed": 83,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5301204819277109
     },
     {
       "type": "multiple_preconditions",
       "algorithm": "SCARAgent",
       "eligible_families": 83,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 83,
+      "completed": 83,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4457831325301205
     },
     {
       "type": "multiple_preconditions",
       "algorithm": "SCARV2Agent",
       "eligible_families": 83,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 83,
+      "completed": 83,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5542168674698795
     },
     {
       "type": "multiple_preconditions",
       "algorithm": "SCARV3Agent",
       "eligible_families": 83,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 83,
+      "completed": 81,
+      "method_terminations": 2,
+      "recovery_at_40": 0.5421686746987951
     },
     {
       "type": "state_release",
       "algorithm": "ShortTermMemoryAgent",
       "eligible_families": 68,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 68,
+      "completed": 68,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5735294117647058
     },
     {
       "type": "state_release",
       "algorithm": "SimpleFailureRecovery",
       "eligible_families": 68,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 68,
+      "completed": 68,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4117647058823529
     },
     {
       "type": "state_release",
       "algorithm": "SCARAgent",
       "eligible_families": 68,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 68,
+      "completed": 68,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4117647058823529
     },
     {
       "type": "state_release",
       "algorithm": "SCARV2Agent",
       "eligible_families": 68,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 68,
+      "completed": 68,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4852941176470588
     },
     {
       "type": "state_release",
       "algorithm": "SCARV3Agent",
       "eligible_families": 68,
-      "completed": 0,
-      "recovery_at_40": null
+      "evaluated": 68,
+      "completed": 66,
+      "method_terminations": 2,
+      "recovery_at_40": 0.4411764705882353
     }
   ],
-  "long": [],
+  "long": [
+    {
+      "stage": "long",
+      "game": "mark",
+      "algorithm": "SCARAgent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARAgent-mark-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.005,
+      "semantic_failure_rate": 0.215,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 3,
+      "false_blocks": 2,
+      "fbr": 0.6666666666666666,
+      "cra": 0.06206896551724138,
+      "cra_n": 145,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 3,
+      "completion": false,
+      "steps_to_first_milestone": 37,
+      "input_tokens": 290865,
+      "output_tokens": 17639,
+      "api_calls": 203,
+      "failed_requests": 1,
+      "cost_usd": 0.0908157,
+      "conservative_cost_usd": 0.0908157,
+      "api_latency_seconds": 206.0017592906952,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 217.58604264259338,
+      "decision_wall_seconds": 213.1534296190075,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 1,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.005,
+        "semantic_failure_rate": 0.215,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 3,
+        "false_blocks": 2,
+        "fbr": 0.6666666666666666,
+        "cra": 0.06206896551724138,
+        "cra_n": 145,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 3,
+        "completion": false,
+        "steps_to_first_milestone": 37
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "metropolis",
+      "algorithm": "SCARAgent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARAgent-metropolis-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.005,
+      "semantic_failure_rate": 0.265,
+      "riar": 0.0,
+      "semantic_riar": 0.005,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 1,
+      "interceptions": 41,
+      "false_blocks": 28,
+      "fbr": 0.6829268292682927,
+      "cra": 0.19393939393939394,
+      "cra_n": 165,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 7,
+      "completion": false,
+      "steps_to_first_milestone": 2,
+      "input_tokens": 356681,
+      "output_tokens": 19842,
+      "api_calls": 228,
+      "failed_requests": 1,
+      "cost_usd": 0.119788524,
+      "conservative_cost_usd": 0.119788524,
+      "api_latency_seconds": 232.328551530838,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 245.989417552948,
+      "decision_wall_seconds": 241.30271187999097,
+      "legal_to_rejected": 14,
+      "rejected_to_legal": 9,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.005,
+        "semantic_failure_rate": 0.265,
+        "riar": 0.0,
+        "semantic_riar": 0.005,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 1,
+        "interceptions": 41,
+        "false_blocks": 28,
+        "fbr": 0.6829268292682927,
+        "cra": 0.19393939393939394,
+        "cra_n": 165,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 7,
+        "completion": false,
+        "steps_to_first_milestone": 2
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "remnant",
+      "algorithm": "SCARAgent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARAgent-remnant-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.025,
+      "semantic_failure_rate": 0.14,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 2,
+      "false_blocks": 2,
+      "fbr": 1.0,
+      "cra": 0.2624113475177305,
+      "cra_n": 141,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 1,
+      "completion": false,
+      "steps_to_first_milestone": 28,
+      "input_tokens": 296276,
+      "output_tokens": 16429,
+      "api_calls": 203,
+      "failed_requests": 1,
+      "cost_usd": 0.090386652,
+      "conservative_cost_usd": 0.090386652,
+      "api_latency_seconds": 200.30005145072937,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 212.1106379032135,
+      "decision_wall_seconds": 207.54987528296624,
+      "legal_to_rejected": 1,
+      "rejected_to_legal": 0,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.025,
+        "semantic_failure_rate": 0.14,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 2,
+        "false_blocks": 2,
+        "fbr": 1.0,
+        "cra": 0.2624113475177305,
+        "cra_n": 141,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 1,
+        "completion": false,
+        "steps_to_first_milestone": 28
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "mark",
+      "algorithm": "SCARV2Agent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARV2Agent-mark-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.16,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 0,
+      "false_blocks": 0,
+      "fbr": null,
+      "cra": 0.05755395683453238,
+      "cra_n": 139,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 7,
+      "completion": false,
+      "steps_to_first_milestone": 38,
+      "input_tokens": 289004,
+      "output_tokens": 14277,
+      "api_calls": 200,
+      "failed_requests": 0,
+      "cost_usd": 0.08693712599999999,
+      "conservative_cost_usd": 0.08693712599999999,
+      "api_latency_seconds": 178.51149487495422,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 188.52639937400818,
+      "decision_wall_seconds": 184.05667010800244,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 0,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.16,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 0,
+        "false_blocks": 0,
+        "fbr": null,
+        "cra": 0.05755395683453238,
+        "cra_n": 139,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 7,
+        "completion": false,
+        "steps_to_first_milestone": 38
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "metropolis",
+      "algorithm": "SCARV2Agent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARV2Agent-metropolis-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.23,
+      "riar": 0.0,
+      "semantic_riar": 0.02,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 4,
+      "interceptions": 7,
+      "false_blocks": 4,
+      "fbr": 0.5714285714285714,
+      "cra": 0.20253164556962025,
+      "cra_n": 158,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 7,
+      "completion": false,
+      "steps_to_first_milestone": 2,
+      "input_tokens": 316022,
+      "output_tokens": 18190,
+      "api_calls": 206,
+      "failed_requests": 1,
+      "cost_usd": 0.10673738399999999,
+      "conservative_cost_usd": 0.10673738399999999,
+      "api_latency_seconds": 214.96440243721008,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 227.31838965415955,
+      "decision_wall_seconds": 222.61060484800328,
+      "legal_to_rejected": 1,
+      "rejected_to_legal": 1,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.23,
+        "riar": 0.0,
+        "semantic_riar": 0.02,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 4,
+        "interceptions": 7,
+        "false_blocks": 4,
+        "fbr": 0.5714285714285714,
+        "cra": 0.20253164556962025,
+        "cra_n": 158,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 7,
+        "completion": false,
+        "steps_to_first_milestone": 2
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "remnant",
+      "algorithm": "SCARV2Agent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARV2Agent-remnant-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.195,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 9,
+      "false_blocks": 3,
+      "fbr": 0.3333333333333333,
+      "cra": 0.24489795918367346,
+      "cra_n": 147,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 1,
+      "completion": false,
+      "steps_to_first_milestone": 28,
+      "input_tokens": 309876,
+      "output_tokens": 18593,
+      "api_calls": 211,
+      "failed_requests": 1,
+      "cost_usd": 0.10097453399999999,
+      "conservative_cost_usd": 0.10097453399999999,
+      "api_latency_seconds": 218.84089970588684,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 231.01624941825867,
+      "decision_wall_seconds": 226.41277019597692,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 4,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.195,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 9,
+        "false_blocks": 3,
+        "fbr": 0.3333333333333333,
+        "cra": 0.24489795918367346,
+        "cra_n": 147,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 1,
+        "completion": false,
+        "steps_to_first_milestone": 28
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "mark",
+      "algorithm": "SCARV3Agent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARV3Agent-mark-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.215,
+      "riar": 0.0,
+      "semantic_riar": 0.005,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 1,
+      "interceptions": 10,
+      "false_blocks": 7,
+      "fbr": 0.7,
+      "cra": 0.815,
+      "cra_n": 200,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 1,
+      "completion": false,
+      "steps_to_first_milestone": 43,
+      "input_tokens": 336425,
+      "output_tokens": 17784,
+      "api_calls": 226,
+      "failed_requests": 0,
+      "cost_usd": 0.10364075399999999,
+      "conservative_cost_usd": 0.10364075399999999,
+      "api_latency_seconds": 215.56864976882935,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 226.2713339328766,
+      "decision_wall_seconds": 221.2475465390089,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 3,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.215,
+        "riar": 0.0,
+        "semantic_riar": 0.005,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 1,
+        "interceptions": 10,
+        "false_blocks": 7,
+        "fbr": 0.7,
+        "cra": 0.815,
+        "cra_n": 200,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 1,
+        "completion": false,
+        "steps_to_first_milestone": 43
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "metropolis",
+      "algorithm": "SCARV3Agent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARV3Agent-metropolis-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.215,
+      "riar": 0.0,
+      "semantic_riar": 0.035,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 7,
+      "interceptions": 20,
+      "false_blocks": 1,
+      "fbr": 0.05,
+      "cra": 0.83,
+      "cra_n": 200,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 7,
+      "completion": false,
+      "steps_to_first_milestone": 3,
+      "input_tokens": 364277,
+      "output_tokens": 22936,
+      "api_calls": 228,
+      "failed_requests": 3,
+      "cost_usd": 0.12562959599999998,
+      "conservative_cost_usd": 0.12562959599999998,
+      "api_latency_seconds": 253.03574442863464,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 270.19321155548096,
+      "decision_wall_seconds": 265.03181666801174,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 19,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.215,
+        "riar": 0.0,
+        "semantic_riar": 0.035,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 7,
+        "interceptions": 20,
+        "false_blocks": 1,
+        "fbr": 0.05,
+        "cra": 0.83,
+        "cra_n": 200,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 7,
+        "completion": false,
+        "steps_to_first_milestone": 3
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "remnant",
+      "algorithm": "SCARV3Agent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SCARV3Agent-remnant-909-d926f725b95f",
+      "steps": 133,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.12781954887218044,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 3,
+      "false_blocks": 1,
+      "fbr": 0.3333333333333333,
+      "cra": 0.8872180451127819,
+      "cra_n": 133,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 1,
+      "completion": false,
+      "steps_to_first_milestone": 28,
+      "input_tokens": 219660,
+      "output_tokens": 12822,
+      "api_calls": 147,
+      "failed_requests": 1,
+      "cost_usd": 0.06702481199999999,
+      "conservative_cost_usd": 0.06702481199999999,
+      "api_latency_seconds": 151.1106836795807,
+      "http_429": 0,
+      "status": "failed",
+      "error": "ModelResponseError: No public-signature-valid action after bounded V3 format repair",
+      "wall_seconds_this_attempt": 159.78644490242004,
+      "decision_wall_seconds": 154.08024825496977,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 2,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 133,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.12781954887218044,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 3,
+        "false_blocks": 1,
+        "fbr": 0.3333333333333333,
+        "cra": 0.8872180451127819,
+        "cra_n": 133,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 1,
+        "completion": false,
+        "steps_to_first_milestone": 28
+      },
+      "outcome_disposition": "method_terminated_format_failure"
+    },
+    {
+      "stage": "long",
+      "game": "mark",
+      "algorithm": "ShortTermMemoryAgent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-ShortTermMemoryAgent-mark-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.01,
+      "semantic_failure_rate": 0.155,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 0,
+      "false_blocks": 0,
+      "fbr": null,
+      "cra": null,
+      "cra_n": 0,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 10,
+      "completion": false,
+      "steps_to_first_milestone": 39,
+      "input_tokens": 337956,
+      "output_tokens": 14569,
+      "api_calls": 200,
+      "failed_requests": 0,
+      "cost_usd": 0.10502102399999999,
+      "conservative_cost_usd": 0.10502102399999999,
+      "api_latency_seconds": 180.1280586719513,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 188.69765853881836,
+      "decision_wall_seconds": 184.95493225796235,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 0,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.01,
+        "semantic_failure_rate": 0.155,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 0,
+        "false_blocks": 0,
+        "fbr": null,
+        "cra": null,
+        "cra_n": 0,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 10,
+        "completion": false,
+        "steps_to_first_milestone": 39
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "metropolis",
+      "algorithm": "ShortTermMemoryAgent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-ShortTermMemoryAgent-metropolis-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.24,
+      "riar": 0.0,
+      "semantic_riar": 0.015,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 3,
+      "interceptions": 0,
+      "false_blocks": 0,
+      "fbr": null,
+      "cra": null,
+      "cra_n": 0,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 8,
+      "completion": false,
+      "steps_to_first_milestone": 2,
+      "input_tokens": 358850,
+      "output_tokens": 17299,
+      "api_calls": 200,
+      "failed_requests": 0,
+      "cost_usd": 0.1190058,
+      "conservative_cost_usd": 0.1190058,
+      "api_latency_seconds": 193.13094997406006,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 202.20149326324463,
+      "decision_wall_seconds": 198.02460776696898,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 0,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.24,
+        "riar": 0.0,
+        "semantic_riar": 0.015,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 3,
+        "interceptions": 0,
+        "false_blocks": 0,
+        "fbr": null,
+        "cra": null,
+        "cra_n": 0,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 8,
+        "completion": false,
+        "steps_to_first_milestone": 2
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "remnant",
+      "algorithm": "ShortTermMemoryAgent",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-ShortTermMemoryAgent-remnant-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.01,
+      "semantic_failure_rate": 0.13,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 0,
+      "false_blocks": 0,
+      "fbr": null,
+      "cra": null,
+      "cra_n": 0,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 1,
+      "completion": false,
+      "steps_to_first_milestone": 28,
+      "input_tokens": 356441,
+      "output_tokens": 18932,
+      "api_calls": 200,
+      "failed_requests": 0,
+      "cost_usd": 0.11986638,
+      "conservative_cost_usd": 0.11986638,
+      "api_latency_seconds": 214.1920669078827,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 223.16551327705383,
+      "decision_wall_seconds": 219.10047665905222,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 0,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.01,
+        "semantic_failure_rate": 0.13,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 0,
+        "false_blocks": 0,
+        "fbr": null,
+        "cra": null,
+        "cra_n": 0,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 1,
+        "completion": false,
+        "steps_to_first_milestone": 28
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "mark",
+      "algorithm": "SimpleFailureRecovery",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SimpleFailureRecovery-mark-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.165,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 3,
+      "false_blocks": 2,
+      "fbr": 0.6666666666666666,
+      "cra": null,
+      "cra_n": 0,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 7,
+      "completion": false,
+      "steps_to_first_milestone": 40,
+      "input_tokens": 340846,
+      "output_tokens": 18655,
+      "api_calls": 235,
+      "failed_requests": 3,
+      "cost_usd": 0.10541014199999998,
+      "conservative_cost_usd": 0.10541014199999998,
+      "api_latency_seconds": 227.7486927509308,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 242.6909737586975,
+      "decision_wall_seconds": 238.2596114579901,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 1,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.165,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 3,
+        "false_blocks": 2,
+        "fbr": 0.6666666666666666,
+        "cra": null,
+        "cra_n": 0,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 7,
+        "completion": false,
+        "steps_to_first_milestone": 40
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "metropolis",
+      "algorithm": "SimpleFailureRecovery",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SimpleFailureRecovery-metropolis-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.0,
+      "semantic_failure_rate": 0.205,
+      "riar": 0.0,
+      "semantic_riar": 0.005,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 1,
+      "interceptions": 2,
+      "false_blocks": 1,
+      "fbr": 0.5,
+      "cra": null,
+      "cra_n": 0,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 7,
+      "completion": false,
+      "steps_to_first_milestone": 2,
+      "input_tokens": 370232,
+      "output_tokens": 20452,
+      "api_calls": 241,
+      "failed_requests": 0,
+      "cost_usd": 0.12390844799999999,
+      "conservative_cost_usd": 0.12390844799999999,
+      "api_latency_seconds": 234.1608748435974,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 244.56623649597168,
+      "decision_wall_seconds": 239.85467867599436,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 1,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.0,
+        "semantic_failure_rate": 0.205,
+        "riar": 0.0,
+        "semantic_riar": 0.005,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 1,
+        "interceptions": 2,
+        "false_blocks": 1,
+        "fbr": 0.5,
+        "cra": null,
+        "cra_n": 0,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 7,
+        "completion": false,
+        "steps_to_first_milestone": 2
+      },
+      "outcome_disposition": "completed"
+    },
+    {
+      "stage": "long",
+      "game": "remnant",
+      "algorithm": "SimpleFailureRecovery",
+      "seed": 909,
+      "max_steps": 200,
+      "protocol_cohort": "v3_hard_hash0",
+      "task_id": "long-SimpleFailureRecovery-remnant-909-d926f725b95f",
+      "steps": 200,
+      "iar": 0.005,
+      "semantic_failure_rate": 0.165,
+      "riar": 0.0,
+      "semantic_riar": 0.0,
+      "repeated_invalid_count": 0,
+      "repeated_semantic_count": 0,
+      "interceptions": 4,
+      "false_blocks": 4,
+      "fbr": 1.0,
+      "cra": null,
+      "cra_n": 0,
+      "cra_scope": "online held-out copies; not an independent frozen state set",
+      "main_quest_reward": 1,
+      "completion": false,
+      "steps_to_first_milestone": 28,
+      "input_tokens": 354564,
+      "output_tokens": 19280,
+      "api_calls": 233,
+      "failed_requests": 0,
+      "cost_usd": 0.11084266799999999,
+      "conservative_cost_usd": 0.11084266799999999,
+      "api_latency_seconds": 231.14871382713318,
+      "http_429": 0,
+      "status": "completed",
+      "error": null,
+      "wall_seconds_this_attempt": 241.31092381477356,
+      "decision_wall_seconds": 236.62633950202144,
+      "legal_to_rejected": 1,
+      "rejected_to_legal": 0,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "interventions_with_quest_reward": 0,
+      "fixed_cost_prefix": {
+        "budget_usd": 0.15,
+        "steps": 200,
+        "iar": 0.005,
+        "semantic_failure_rate": 0.165,
+        "riar": 0.0,
+        "semantic_riar": 0.0,
+        "repeated_invalid_count": 0,
+        "repeated_semantic_count": 0,
+        "interceptions": 4,
+        "false_blocks": 4,
+        "fbr": 1.0,
+        "cra": null,
+        "cra_n": 0,
+        "cra_scope": "online held-out copies; not an independent frozen state set",
+        "main_quest_reward": 1,
+        "completion": false,
+        "steps_to_first_milestone": 28
+      },
+      "outcome_disposition": "completed"
+    }
+  ],
   "online_prequential_metrics": {
-    "n": 0,
-    "covered": 0,
-    "coverage": null,
-    "reject_precision": null,
-    "reject_recall_all_rejections": null,
-    "false_block_rate_among_reject_predictions": null,
-    "false_positive_rate_among_legal": null,
-    "true_positive": 0,
-    "false_positive": 0,
-    "actual_rejections": 0,
-    "unknown": 0,
-    "brier_all_predictions": null,
-    "ece_10_equal_width_bins": null,
-    "calibration_bins": []
+    "n": 2683,
+    "covered": 758,
+    "coverage": 0.28251956764815506,
+    "reject_precision": 0.8942598187311178,
+    "reject_recall_all_rejections": 0.47435897435897434,
+    "false_block_rate_among_reject_predictions": 0.10574018126888217,
+    "false_positive_rate_among_legal": 0.016998542982030112,
+    "true_positive": 296,
+    "false_positive": 35,
+    "actual_rejections": 624,
+    "unknown": 1925,
+    "brier_all_predictions": 0.1463394746588662,
+    "ece_10_equal_width_bins": 0.21077261094301625,
+    "calibration_bins": [
+      {
+        "bin": 0,
+        "n": 68,
+        "risk": 0.060749741705500904,
+        "observed_rejection": 0.04411764705882353
+      },
+      {
+        "bin": 1,
+        "n": 274,
+        "risk": 0.14478170855908082,
+        "observed_rejection": 0.06204379562043796
+      },
+      {
+        "bin": 2,
+        "n": 534,
+        "risk": 0.2312715126908782,
+        "observed_rejection": 0.1254681647940075
+      },
+      {
+        "bin": 3,
+        "n": 643,
+        "risk": 0.33349084818758223,
+        "observed_rejection": 0.05287713841368585
+      },
+      {
+        "bin": 4,
+        "n": 8,
+        "risk": 0.4180284992784993,
+        "observed_rejection": 0.375
+      },
+      {
+        "bin": 5,
+        "n": 603,
+        "risk": 0.5002859679476594,
+        "observed_rejection": 0.09950248756218906
+      },
+      {
+        "bin": 6,
+        "n": 145,
+        "risk": 0.6659979101358411,
+        "observed_rejection": 0.5310344827586206
+      },
+      {
+        "bin": 7,
+        "n": 42,
+        "risk": 0.75,
+        "observed_rejection": 0.5952380952380952
+      },
+      {
+        "bin": 8,
+        "n": 69,
+        "risk": 0.815976535541753,
+        "observed_rejection": 0.6521739130434783
+      },
+      {
+        "bin": 9,
+        "n": 297,
+        "risk": 0.9010794719573686,
+        "observed_rejection": 0.9865319865319865
+      }
+    ]
   },
   "limitations": [
-    "Missing formal results are not replaced by archived scores or assumed failures.",
+    "Missing/infrastructure failures are not replaced by archived scores or assumed failures. Observed bounded-format policy aborts remain in the denominator as unsuccessful method outcomes, with original status/error/cost/steps preserved. This handling was clarified after two such aborts, before long experiments; no policy or frozen data was modified and no selective reruns were performed.",
     "Long results are one seed per game; descriptive only.",
     "Target action release is a progress proxy, separate from actual physical goal achievement.",
     "Prediction coverage includes explicit rejection/support, with UNKNOWN abstention. Precision/recall alone are not causal evidence."

@@ -1,0 +1,40 @@
+{
+  "request_status": {
+    "ok": 15471,
+    "invalid_response": 122
+  },
+  "request_errors": {
+    "(None, 'JSONDecodeError')": 63,
+    "(None, 'ModelResponseError')": 59
+  },
+  "stage_api_windows": {
+    "hard": {
+      "start_utc": "2026-10-11T14:52:33.158872+00:00",
+      "end_utc": "2026-10-11T15:08:04.619648+00:00",
+      "elapsed_seconds": 931.4607758522034
+    },
+    "dev": {
+      "start_utc": "2026-10-11T14:52:05.652973+00:00",
+      "end_utc": "2026-10-11T14:52:31.197539+00:00",
+      "elapsed_seconds": 25.544565439224243
+    },
+    "long": {
+      "start_utc": "2026-10-11T15:20:11.872421+00:00",
+      "end_utc": "2026-10-11T15:24:40.751914+00:00",
+      "elapsed_seconds": 268.879492521286
+    }
+  },
+  "final_pipeline_status": {
+    "state": "experiments_and_audits_finished",
+    "completed": [
+      "dev",
+      "hard",
+      "long",
+      "analysis",
+      "replay_audit"
+    ],
+    "updated": 1791732300.027312,
+    "next": "Review paired results, write final scientific report and publish actual experiment outputs to GitHub."
+  },
+  "scope": "Stage windows span first through last API request, include concurrency and CPU work between requests, exclude final postprocessing. Manual interruption between hard and long is reported separately, not hidden as compute time."
+}
