@@ -19,7 +19,11 @@ class SharedProviderMixin:
 
 
 class DeepSeekMemoryConfig(SharedProviderMixin, FixedSizeMemoryAgentConfig):
-    pass
+    def construct_user_prompt_long_context(self, memory, observation):
+        # Upstream STM calls this missing config method. Match upstream LongContext
+        # formatting for STM, SCAR and SimpleRecovery without weakening a baseline.
+        memory_prompt = "My Memories: " + memory if memory else ""
+        return memory_prompt + f"My Current Observation: {observation}\n{self.action_prompt}"
 
 
 class DeepSeekRAGConfig(SharedProviderMixin, RAGAgentConfig):

@@ -56,3 +56,30 @@ def test_official_registration_and_agent_memory_roundtrip(tmp_path):
         assert obj.failure_memory is not None
     finally:
         official.instantiate_agent, official.build_agent_config = original
+
+
+@pytest.mark.parametrize("algorithm", ["ShortTermMemoryAgent", "LongContextAgent", "SCARAgent", "SimpleFailureRecovery"])
+def test_actual_agent_act_and_checkpoint(algorithm, tmp_path):
+    from scar.integration import make_agent
+    import json
+    class TestProvider:
+        tokens_in = tokens_out = 0
+        def generate(self, user_prompt, system_prompt=None):
+            self.tokens_in += 10
+            self.tokens_out += 5
+            return {"response": '{"reasoning":"test","action":"wait"}', "num_input_tokens": 10,
+                    "num_output_tokens": 5, "parsed": {"reasoning": "test", "action": "wait"}}
+    settings = json.loads((Path(__file__).parents[1] / "configs/protocol.json").read_text())
+    agent = make_agent(algorithm, "remnant", TestProvider(), settings, tmp_path)
+    env, observations = create_environment("remnant", 7, tmp_path / "env", agent)
+    for _ in range(2):
+        action, *_ = agent.act(observations[AGENT_ID])
+        assert action == "wait"
+        following, *_ = env.step({AGENT_ID: action})
+        if hasattr(agent, "observe_transition"):
+            agent.observe_transition(observations[AGENT_ID], action, following[AGENT_ID])
+        observations = following
+    memory_dir = tmp_path / "memory"
+    memory_dir.mkdir()
+    agent.save_memory(memory_dir)
+    agent.load_memory(memory_dir)

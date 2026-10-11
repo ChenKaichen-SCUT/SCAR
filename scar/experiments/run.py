@@ -17,7 +17,7 @@ for _key in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "NUME
 import psutil
 
 from scar.io import atomic_json, append_jsonl, read_jsonl, digest
-from scar.providers.deepseek import DeepSeekProvider, BudgetLedger, BudgetExceeded
+from scar.providers.deepseek import DeepSeekProvider, BudgetLedger, BudgetExceeded, EpisodeBudgetExceeded
 from scar.environment import AGENT_ID, create_environment, save_snapshot, restore, state_digest
 from scar.agents.scar.state import VisibleState
 from scar.diagnostics.scoring import outcome, score_candidate, aggregate_trajectory, recovery_score
@@ -52,7 +52,7 @@ def episode(task, config, runtime, key_path, workers):
     run_dir = Path(runtime) / "runs" / task_id
     run_dir.mkdir(parents=True, exist_ok=True)
     status_path = run_dir / "status.json"
-    if status_path.exists() and json.loads(status_path.read_text()).get("status") == "completed":
+    if status_path.exists() and json.loads(status_path.read_text()).get("status") in {"completed", "completed_budget"}:
         return json.loads((run_dir / "summary.json").read_text())
     started = time.time()
     config = dict(config, seed=task["seed"])
@@ -127,10 +127,12 @@ def episode(task, config, runtime, key_path, workers):
                     row["diagnostic_goal_reached"] = goal_reached(env, task["goal"])
                 if hasattr(agent, "events"):
                     agent.events.clear()
+                append_jsonl(run_dir / "attempt_transitions.jsonl", row)
                 checkpoint = run_dir / "steps" / f"{index + 1:04}"
                 if (checkpoint / "checkpoint.json").exists():
                     raise RuntimeError("Refusing to overwrite committed transition")
                 checkpoint.mkdir(parents=True, exist_ok=True)
+                (checkpoint / "memory").mkdir(parents=True, exist_ok=True)
                 agent.save_memory(checkpoint / "memory")
                 save_snapshot(checkpoint / "environment.pkl", env)
                 atomic_json(checkpoint / "transition.json", row)
@@ -139,6 +141,8 @@ def episode(task, config, runtime, key_path, workers):
                 rows.append(row)
                 atomic_json(status_path, {"status": "running", "steps": len(rows), "updated": time.time(), **totals_after})
             status, error = "completed", None
+        except EpisodeBudgetExceeded as exc:
+            status, error = "completed_budget", str(exc)
         except BudgetExceeded as exc:
             status, error = "budget_stopped", str(exc)
         except Exception as exc:
@@ -210,7 +214,7 @@ def main():
     parser.add_argument("--config", default="configs/protocol.json")
     parser.add_argument("--runtime", required=True)
     parser.add_argument("--key-file", required=True)
-    parser.add_argument("--stage", choices=["smoke", "pilot", "long", "diagnostic"], required=True)
+    parser.add_argument("--stage", choices=["smoke", "pilot", "long", "diagnostic", "cost"], required=True)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--cases")
     parser.add_argument("--algorithms", nargs="+")
@@ -219,7 +223,9 @@ def main():
     config["implementation_sha256"] = digest({str(p.relative_to(Path(__file__).parents[1])): p.read_text()
         for p in sorted(Path(__file__).parents[1].rglob("*.py"))})
     algorithms = args.algorithms or config["algorithms"]
-    max_steps = {"smoke": 20, "pilot": 120, "long": 200, "diagnostic": 20}[args.stage]
+    max_steps = {"smoke": 20, "pilot": 120, "long": 200, "diagnostic": 20, "cost": 200}[args.stage]
+    if args.stage == "cost":
+        config["episode_budget_usd"] = config["equal_cost_per_episode_usd"]
     if args.stage in {"smoke", "pilot"}:
         config["total_budget_usd"] = config["pilot_budget_usd"]
     runtime = Path(args.runtime)
@@ -235,7 +241,7 @@ def main():
                             task_id=f"diagnostic-{case['id']}-{algorithm}-{frozen_hash}")
                 tasks.append(task)
     else:
-        seeds = config["test_seeds"] if args.stage == "long" else config["dev_seeds"]
+        seeds = config["test_seeds"] if args.stage in {"long", "cost"} else config["dev_seeds"]
         prepare_initials(config, runtime, seeds)
         for seed in seeds:
             for game in config["games"]:

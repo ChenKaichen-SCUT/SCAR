@@ -17,6 +17,10 @@ class BudgetExceeded(RuntimeError):
     pass
 
 
+class EpisodeBudgetExceeded(BudgetExceeded):
+    pass
+
+
 class ModelResponseError(RuntimeError):
     pass
 
@@ -111,6 +115,8 @@ class DeepSeekProvider:
         self.ledger = BudgetLedger(ledger_path, config["total_budget_usd"])
         self.slots = Path(ledger_path).parent / "api_slots"
         self.maximum = max_concurrency
+        self.episode_ledger = (BudgetLedger(self.audit_path.parent / "episode_budget.sqlite", config["episode_budget_usd"])
+                               if config.get("episode_budget_usd") is not None else None)
         self.client = OpenAI(api_key=read_key(key_path), base_url=config["base_url"], timeout=90, max_retries=0)
         self.tokens_in = self.tokens_out = self.calls = self.failures = 0
         self.cost = self.latency = 0.0
@@ -126,6 +132,12 @@ class DeepSeekProvider:
         for attempt in range(3):
             request_id = uuid.uuid4().hex
             self.ledger.reserve(request_id, upper)
+            if self.episode_ledger:
+                try:
+                    self.episode_ledger.reserve(request_id, upper)
+                except BudgetExceeded as exc:
+                    self.ledger.settle(request_id, 0, "episode_budget_stop_before_request")
+                    raise EpisodeBudgetExceeded(str(exc)) from None
             start = time.time()
             record = {"request_id": request_id, "attempt": attempt, "start": start,
                       "model": self.config["model"], "thinking": self.config["thinking"],
@@ -174,6 +186,8 @@ class DeepSeekProvider:
                 self.calls += 1
                 self.latency += elapsed
                 self.ledger.settle(request_id, charged, status)
+                if self.episode_ledger:
+                    self.episode_ledger.settle(request_id, charged, status)
                 record.update(end=time.time(), latency_seconds=elapsed, status=status, charged_or_reserved_usd=charged)
                 append_jsonl(self.audit_path, record)
             if attempt < 2:
