@@ -25,6 +25,7 @@ from scar.io import atomic_json, append_jsonl, read_jsonl, digest
 from scar.providers.deepseek import DeepSeekProvider, BudgetLedger, BudgetExceeded, EpisodeBudgetExceeded
 from scar.environment import AGENT_ID, create_environment, save_snapshot, restore, state_digest, isolated_copy
 from scar_v3.hard import goal_reached
+from scar_v3.provider import CohortProvider, ledger_for
 from scar.agents.scar.state import VisibleState
 from scar.diagnostics.scoring import outcome, score_candidate, aggregate_trajectory, recovery_score
 
@@ -69,7 +70,7 @@ def episode(task, config, runtime, key_path, workers, provider_factory=None):
     with (run_dir / "engine.log").open("a") as engine_log, contextlib.redirect_stdout(engine_log), contextlib.redirect_stderr(engine_log):
         try:
             from scar_v3.agent import make_agent
-            provider = (provider_factory or DeepSeekProvider)(config, run_dir / "requests.jsonl", Path(runtime) / "budget.sqlite", key_path, workers)
+            provider = (provider_factory or CohortProvider)(config, run_dir / "requests.jsonl", Path(runtime) / "budget.sqlite", key_path, workers)
             agent = make_agent(task["algorithm"], task["game"], provider, config, run_dir / "memory")
             if task.get("diagnostic"):
                 agent.cfg.system_prompt += "\nExperiment recovery objective (priority for this episode): " + task["public_goal"]
@@ -215,6 +216,7 @@ def run_batch(config, runtime, key_path, tasks, workers):
     ctx = mp.get_context("spawn")
     pending = list(tasks)
     completed = []
+    consecutive_failures = 0
     # Ramp after successful completions: 4 -> 8 -> 12 -> configured maximum.
     previous_monitor = read_jsonl(runtime / "monitor.jsonl")
     validated_target = previous_monitor[-1].get("target", 4) if previous_monitor else 4
@@ -240,17 +242,22 @@ def run_batch(config, runtime, key_path, tasks, workers):
                 except Exception as exc:
                     result = {**task, "status": "worker_failed", "error": type(exc).__name__}
                 completed.append(result)
+                consecutive_failures = consecutive_failures + 1 if result["status"] in {"failed", "worker_failed"} else 0
                 append_jsonl(runtime / "task_results.jsonl", result)
                 print(json.dumps({k: result.get(k) for k in ("task_id", "status", "steps", "main_quest_reward", "cost_usd", "error")}), flush=True)
                 if result["status"] == "budget_stopped":
                     for remaining in pending:
                         append_jsonl(runtime / "not_started.jsonl", {**remaining, "reason": "global_budget"})
                     pending.clear()
+                if consecutive_failures >= 3:
+                    for remaining in pending:
+                        append_jsonl(runtime / "not_started.jsonl", {**remaining, "reason": "three_consecutive_execution_failures"})
+                    pending.clear()
                 if result.get("http_429", 0) > 2 or result["status"] in {"failed", "worker_failed"}:
                     target = max(1, target // 2)
                 elif len(completed) % 4 == 0:
                     target = min(workers, target + 4)
-            ledger = BudgetLedger(runtime / "budget.sqlite", config["total_budget_usd"])
+            ledger = ledger_for(runtime / "budget.sqlite", config)
             append_jsonl(runtime / "monitor.jsonl", {"time": time.time(), "cpu_percent": psutil.cpu_percent(),
                 "memory_available": memory.available, "disk_free": disk.free, "active": len(active), "target": target,
                 "completed": len(completed), "pending": len(pending), "committed_cost_usd": ledger.total()})
@@ -317,7 +324,7 @@ def main():
     ledger_path = Path(args.cumulative_ledger).resolve()
     if not ledger_path.exists():
         parser.error("Existing cumulative ledger required; never create a fresh project budget")
-    ledger = BudgetLedger(ledger_path, config["total_budget_usd"])
+    ledger = ledger_for(ledger_path, config)
     from scar_v3.budget import estimate
     budget = estimate(root, sum(c["split"] == "test" for c in cases), ledger.total(), config["total_budget_usd"])
     runtime = Path(args.runtime); runtime.mkdir(parents=True, exist_ok=True)
@@ -329,7 +336,8 @@ def main():
             credit += planned["max_steps"] * budget["by_method"][planned["algorithm"]]["per_step_usd"] * 1.2
     budget["completed_work_estimate_credit_usd"] = credit
     budget["remaining_work_estimate_usd"] = max(0, budget["incremental_planning_estimate_usd"]-credit)
-    budget["can_complete_under_current_authorization"] = budget["remaining_work_estimate_usd"] <= budget["remaining_authorized_usd"]
+    budget["can_complete_under_current_authorization"] = (budget["remaining_authorized_usd"] is None
+        or budget["remaining_work_estimate_usd"] <= budget["remaining_authorized_usd"])
     tasks = make_tasks(config, runtime, cases, args.stage)
     atomic_json(runtime/f"plan_{args.stage}.json", {"config": config, "tasks": tasks, "budget": budget, "execute": args.execute})
     print(json.dumps({"stage": args.stage, "episodes": len(tasks), "budget": budget}), flush=True)

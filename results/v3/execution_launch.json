@@ -1,0 +1,76 @@
+{
+  "time": 1791730446.4186811,
+  "pipeline": {
+    "state": "running",
+    "stage": "hard",
+    "completed": [
+      "dev"
+    ],
+    "pid": 78601,
+    "updated": 1791730351.6851811
+  },
+  "execution_freeze": {
+    "sha256": "5a6d7c3bd4cee8bca4cd9f120cda9730518740dde1d3457750c56a722817ace3",
+    "created": 1791730324.3006396,
+    "scope": "Required V3 cohort; no optional RAG, extra seeds or 500-step runs"
+  },
+  "config": {
+    "upstream_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+    "python_hash_seed": 0,
+    "protocol_cohort": "v3_hard_hash0",
+    "model": "deepseek-flash",
+    "base_url": "https://api.deepseek.com",
+    "thinking": "disabled",
+    "temperature": 0.7,
+    "max_tokens": 768,
+    "algorithms": [
+      "ShortTermMemoryAgent",
+      "SimpleFailureRecovery",
+      "SCARAgent",
+      "SCARV2Agent",
+      "SCARV3Agent"
+    ],
+    "games": [
+      "remnant",
+      "mark",
+      "metropolis"
+    ],
+    "test_seeds": [
+      909
+    ],
+    "max_steps": 200,
+    "short_term_memory_size": 5,
+    "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+    "embedding_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+    "initial_workers": 4,
+    "max_workers": 16,
+    "total_budget_usd": null,
+    "equal_cost_per_episode_usd": 0.15,
+    "scar": {
+      "cooldown": 8,
+      "max_rules": 256,
+      "threshold": 0.75,
+      "max_plan_steps": 3
+    },
+    "diagnostic_split_seed": 8675309,
+    "bootstrap_seed": 314159,
+    "bootstrap_samples": 10000,
+    "pricing_usd_per_million": {
+      "cache_hit": 0.006,
+      "cache_miss": 0.3,
+      "output": 1.2
+    },
+    "pricing_basis": "fixed peak price for cross-method comparison and conservative budget; not an account invoice",
+    "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "diagnostic_max_steps": 40,
+    "dataset_sha256": "7ec48a44e2a9430de709a0a51ccab6fa47f35aef86559afcf1786ed558a278c2",
+    "budget_authorization": "user_waived_20_usd_cap_for_required_v3_cohort",
+    "implementation_sha256": "4c74ff6541219315c2da4f2cafd7ad2d468a3126958517d1efba2c679a8a8b0e"
+  },
+  "expected": {
+    "dev": 3,
+    "hard": 445,
+    "long": 15
+  },
+  "status_note": "Launch snapshot only. Current progress is runtime_v3/pipeline_status.json; this is not final experiment output."
+}

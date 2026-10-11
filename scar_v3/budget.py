@@ -21,11 +21,11 @@ def estimate(root, cases=89, spent=16.025308818, cap=20):
     dev = .2
     total = (diagnostic+long+dev)*1.2
     return {"spent_conservative_usd": spent, "authorized_project_cap_usd": cap,
-            "remaining_authorized_usd": cap-spent, "hard_test_families": cases,
+            "remaining_authorized_usd": cap-spent if cap is not None else None, "hard_test_families": cases,
             "hard_episodes": cases*5, "hard_step_cap": 40, "long_episodes": 15, "long_step_cap": 200,
             "by_method": by_method, "diagnostic_full_length_estimate_usd": diagnostic,
             "long_estimate_usd": long, "development_allowance_usd": dev,
             "contingency_multiplier": 1.2, "incremental_planning_estimate_usd": total,
-            "estimated_project_total_usd": spent+total, "authorization_shortfall_usd": max(0, total-(cap-spent)),
-            "can_complete_under_current_authorization": total <= cap-spent,
+            "estimated_project_total_usd": spent+total, "authorization_shortfall_usd": max(0, total-(cap-spent)) if cap is not None else 0,
+            "can_complete_under_current_authorization": cap is None or total <= cap-spent,
             "basis": "Completed hash0 long episodes at frozen accounting prices; V3 rate uses highest prior rate times 1.2. All hard cases budgeted at full 40 steps, then 20% contingency plus development allowance. Early recovery can reduce cost. Prompt length/provider variation can increase it. Not a guaranteed upper bound or account invoice."}
