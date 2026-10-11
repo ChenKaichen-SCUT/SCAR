@@ -174,7 +174,9 @@ def run_batch(config, runtime, key_path, tasks, workers):
     pending = list(tasks)
     completed = []
     # Ramp after successful completions: 4 -> 8 -> 12 -> configured maximum.
-    target = min(4, workers)
+    previous_monitor = read_jsonl(runtime / "monitor.jsonl")
+    validated_target = previous_monitor[-1].get("target", 4) if previous_monitor else 4
+    target = min(workers, max(4, validated_target))
     with ProcessPoolExecutor(max_workers=workers, mp_context=ctx) as pool:
         active = {}
         while pending or active:
