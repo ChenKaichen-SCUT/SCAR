@@ -160,3 +160,22 @@ def test_read_key_permissions_and_reject_format(tmp_path, monkeypatch):
 
 def test_action_equivalence():
     assert action_key('enter "Gate"') == action_key("enter Gate")
+
+
+def _memory_worker(changed, queue):
+    memory, before, after, event = learn_failure()
+    if changed:
+        after = VisibleState.observe(obs(2, hands="key"), after)
+    queue.put(memory.assess(event.action, after)[0])
+
+
+def test_multiprocess_state_and_memory_are_isolated():
+    ctx = mp.get_context("spawn")
+    outputs = [ctx.Queue(), ctx.Queue()]
+    children = [ctx.Process(target=_memory_worker, args=(changed, q)) for changed, q in zip([False, True], outputs)]
+    for child in children:
+        child.start()
+    assert [q.get(timeout=30) for q in outputs] == ["block", "allow"]
+    for child in children:
+        child.join(30)
+        assert child.exitcode == 0

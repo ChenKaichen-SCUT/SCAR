@@ -34,7 +34,11 @@ def make_agent(algorithm, game, provider, settings, memory_dir):
     from utils import dynamic_load_game_class
     from eval import instantiate_agent
     cls = DeepSeekRAGConfig if algorithm == "VanillaRAGAgent" else DeepSeekMemoryConfig
-    cfg = cls(llm_name=settings["model"], llm_provider="deepseek", embed_name=settings["embedding_model"],
+    embed_name = settings["embedding_model"]
+    if algorithm == "VanillaRAGAgent":
+        from huggingface_hub import snapshot_download
+        embed_name = snapshot_download(embed_name, revision=settings["embedding_revision"])
+    cfg = cls(llm_name=settings["model"], llm_provider="deepseek", embed_name=embed_name,
               max_new_tokens=settings["max_tokens"], temperature=settings["temperature"],
               short_term_memory_size=5, torch_seed=settings.get("seed", 42), full_mem_path=str(memory_dir))
     cfg.scar_provider, cfg.scar_settings = provider, settings["scar"]
