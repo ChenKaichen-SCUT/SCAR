@@ -31,11 +31,13 @@ PY="$SCAR_WORKSPACE/venv/bin/python"
 "$PY" -m scar.experiments.run --stage pilot --workers 8 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
 "$PY" -m scar.experiments.run --stage collect --workers 8 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
 "$PY" -m scar.diagnostics.build --runtime "$SCAR_WORKSPACE/runtime" --output "$SCAR_WORKSPACE/runtime/ao_fr"
-"$PY" -m scar.experiments.run --stage diagnostic --workers 12 --cases "$SCAR_WORKSPACE/runtime/ao_fr/cases.json" --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
+"$PY" scripts/audit_holdout.py --runtime "$SCAR_WORKSPACE/runtime" --cases-dir "$SCAR_WORKSPACE/runtime/ao_fr"
+"$PY" -m scar.experiments.run --stage diagnostic --workers 12 --cases "$SCAR_WORKSPACE/runtime/ao_fr/cases.json" --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt --algorithms SCARAgent ShortTermMemoryAgent VanillaRAGAgent SimpleFailureRecovery
 "$PY" -m scar.experiments.run --stage long --workers 16 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
 "$PY" -m scar.experiments.run --stage cost --workers 16 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
 "$PY" -m scar.experiments.analyze --runtime "$SCAR_WORKSPACE/runtime" --output results
 "$PY" -m scar.diagnostics.rule_accuracy --runtime "$SCAR_WORKSPACE/runtime" --cases "$SCAR_WORKSPACE/runtime/ao_fr/cases.json" --output results/rule_accuracy_frozen.json
+"$PY" scripts/audit_artifacts.py --runtime "$SCAR_WORKSPACE/runtime" --output results
 ```
 
 首次安装应记录 `uv pip freeze`，后续复现实验使用 `results/environment-lock.txt` 固定版本。CPU PyTorch 需从官方 CPU wheel 源安装；上游基础安装采用 `pip install -e . --no-deps`，避免其默认引入 vLLM/CUDA。网络受限时可传输已验证的依赖与官方仓库，但需要在目标服务器重新测试。

@@ -21,6 +21,7 @@ def main():
     event_counts = defaultdict(Counter)
     diagnostic_groups = defaultdict(list)
     replays = []
+    initial_checks = []
     runs = sorted((runtime / "runs").iterdir())
     for run in runs:
         summary_path = run / "summary.json"
@@ -47,6 +48,10 @@ def main():
             for label in ["ALL"] + summary["types"]:
                 diagnostic_groups[(label, summary["algorithm"])].append(summary)
         if stage in {"long", "diagnostic", "cost", "collect"} and rows:
+            source = (Path(summary["initial_snapshot"]) if stage == "diagnostic" else
+                      runtime / "initials" / f"{summary['game']}-{summary['seed']}.pkl")
+            initial_checks.append({"task": run.name,
+                "equal_to_frozen_source": state_digest(restore(run / "initial.pkl")) == state_digest(restore(source))})
             for index in sorted({0, len(rows) // 2, len(rows) - 1}):
                 before_path = run / "initial.pkl" if index == 0 else paths[index - 1].with_name("environment.pkl")
                 try:
@@ -66,7 +71,10 @@ def main():
     atomic_json(output / "request_accounting.json", {**requests,
                 "probe_calls": len(probe), "probe_cost_usd": sum(p.get("cost_usd", 0) for p in probe)})
     atomic_json(output / "replay_audit.json", {"checked": len(replays), "exact": sum(x["exact"] for x in replays),
-                "failed": sum(not x["exact"] for x in replays), "checks": replays})
+                "failed": sum(not x["exact"] for x in replays), "checks": replays,
+                "initial_states_checked": len(initial_checks),
+                "initial_state_mismatches": sum(not c["equal_to_frozen_source"] for c in initial_checks),
+                "initial_checks": initial_checks})
     write_csv(output / "scar_module_events.csv", [dict(stage=stage, game=game, algorithm=algorithm, **count)
                for (stage, game, algorithm), count in event_counts.items()])
     strata = []
