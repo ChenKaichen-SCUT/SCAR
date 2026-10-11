@@ -74,7 +74,8 @@ class FailureMemory:
             if failed:
                 continue
             # Absence of an error alone is insufficient evidence of success.
-            changed = before.fields != after.fields
+            key = action_key(action)
+            changed = (key.startswith("enter ") and before.fields.get("location") != after.fields.get("location"))
             explicit = any(word in after.feedback.lower() for word in
                            ("entered ", "picked up ", "crafted ", "equipped ", "took out ", "stored ", "unlocked "))
             if not (changed or explicit):

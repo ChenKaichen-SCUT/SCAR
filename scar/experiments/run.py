@@ -32,7 +32,7 @@ def prepare_initials(config, root, seeds):
                 continue
             env, obs = create_environment(game, seed, root / "initials" / f"{game}-{seed}")
             sha = save_snapshot(path, env)
-            atomic_json(path.with_suffix("json"), {"game": game, "seed": seed, "sha256": sha,
+            atomic_json(path.with_suffix(".json"), {"game": game, "seed": seed, "sha256": sha,
                                                   "state_digest": state_digest(env)})
 
 
@@ -81,6 +81,9 @@ def episode(task, config, runtime, key_path, workers):
                     agent.memorize(f"{transition['before']['text']}\nAction: {transition['action']}\n{transition['after']['text']}")
                     if hasattr(agent, "observe_transition"):
                         agent.observe_transition(transition["before"], transition["action"], transition["after"])
+                if task.get("diagnostic"):
+                    agent.memorize(f"Recovery objective: resume the subgoal previously attempted by {task['target_action']}. "
+                                   "Use observed evidence to remove blockers or achieve the same goal by another route.")
                 visible = VisibleState.observe(env.obs[AGENT_ID])
                 save_snapshot(run_dir / "initial.pkl", env)
             done = bool(rows and rows[-1]["done"])
@@ -119,6 +122,9 @@ def episode(task, config, runtime, key_path, workers):
                        "cost_cumulative": totals_after["cost_usd"],
                        "api_delta": {k: totals_after[k] - totals_before[k] for k in totals_after},
                        "events": list(getattr(agent, "events", []))}
+                if task.get("diagnostic"):
+                    from scar.diagnostics.build import goal_reached
+                    row["diagnostic_goal_reached"] = goal_reached(env, task["goal"])
                 if hasattr(agent, "events"):
                     agent.events.clear()
                 checkpoint = run_dir / "steps" / f"{index + 1:04}"
@@ -210,6 +216,8 @@ def main():
     parser.add_argument("--algorithms", nargs="+")
     args = parser.parse_args()
     config = json.loads(Path(args.config).read_text())
+    config["implementation_sha256"] = digest({str(p.relative_to(Path(__file__).parents[1])): p.read_text()
+        for p in sorted(Path(__file__).parents[1].rglob("*.py"))})
     algorithms = args.algorithms or config["algorithms"]
     max_steps = {"smoke": 20, "pilot": 120, "long": 200, "diagnostic": 20}[args.stage]
     if args.stage in {"smoke", "pilot"}:

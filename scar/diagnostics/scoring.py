@@ -66,7 +66,11 @@ def recovery_score(rows, target_action, recoverable):
     if not recoverable:
         return {"eligible": False, "recovery_at_10": None, "recovery_at_20": None, "recovery_steps": None}
     step = next((i + 1 for i, r in enumerate(rows)
-                 if action_key(r["executed_action"]) == action_key(target_action)
-                 and not r["semantic_rejection"]), None)
+                 if r.get("diagnostic_goal_reached", action_key(r["executed_action"]) == action_key(target_action)
+                          and not r["semantic_rejection"])), None)
+    retry_step = next((i + 1 for i, r in enumerate(rows) if action_key(r["executed_action"]) == action_key(target_action)
+                       and not r["semantic_rejection"]), None)
     return {"eligible": True, "recovery_at_10": step is not None and step <= 10,
-            "recovery_at_20": step is not None and step <= 20, "recovery_steps": step}
+            "recovery_at_20": step is not None and step <= 20, "recovery_steps": step,
+            "successful_retry_steps": retry_step,
+            "alternative_recovery": step is not None and (retry_step is None or step < retry_step)}
