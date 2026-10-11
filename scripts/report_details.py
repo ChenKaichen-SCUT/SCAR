@@ -112,6 +112,34 @@ def main():
                        "origin": "engine_condition_release_variant" if c.get("parent_case_id") else "natural_failure_snapshot"}
                       for c in cases]
         atomic_json(output / "dataset_provenance.json", provenance)
+        paired = defaultdict(dict)
+        for row in stages.get("diagnostic", []):
+            if row["status"] == "completed":
+                paired[row["id"]][row["algorithm"]] = row
+        selected = {}
+        for case in sorted(cases, key=lambda c: c["id"]):
+            pair = paired.get(case["id"], {})
+            if "SCARAgent" not in pair or "SimpleFailureRecovery" not in pair:
+                continue
+            scar_ok = pair["SCARAgent"]["recovery_at_20"]
+            simple_ok = pair["SimpleFailureRecovery"]["recovery_at_20"]
+            label = ("scar_only" if scar_ok else "simple_only") if scar_ok != simple_ok else ("both_recover" if scar_ok else "neither_recovers")
+            if label in selected:
+                continue
+            example = {"case": case["id"], "game": case["game"], "types": case["types"],
+                       "target_action": case["target_action"], "goal": case["goal"],
+                       "verified_witness": case["witness"], "selection": "lexicographically first case in this outcome category",
+                       "methods": {}}
+            for method in ["SCARAgent", "SimpleFailureRecovery"]:
+                summary = pair[method]
+                trace = []
+                for p in sorted((runtime / "runs" / summary["task_id"]).glob("steps/*/transition.json")):
+                    step = json.loads(p.read_text())
+                    trace.append({k: step.get(k) for k in ["index", "proposed_action", "executed_action", "reason",
+                                  "semantic_rejection", "action_rule_feedback", "diagnostic_goal_reached"]})
+                example["methods"][method] = {"task_id": summary["task_id"], "recovery_steps": summary["recovery_steps"], "trace": trace}
+            selected[label] = example
+        atomic_json(output / "paired_case_examples.json", selected)
     print(json.dumps({"groups": len(aggregates), "stages": len(accounting), "illustrations": len(examples)}))
 
 
