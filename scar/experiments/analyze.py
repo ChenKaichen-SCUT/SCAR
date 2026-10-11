@@ -54,7 +54,8 @@ def analyze(runtime, output):
     summaries = [json.loads(p.read_text()) for p in sorted((runtime / "runs").glob("*/summary.json"))]
     simple = [{k: v for k, v in row.items() if not isinstance(v, (dict, list))} for row in summaries]
     write_csv(output / "all_runs.csv", simple)
-    atomic_json(output / "all_summaries.json", summaries)
+    atomic_json(output / "all_summaries.json", [{k: v for k, v in row.items()
+                 if k not in {"history", "witness", "initial_snapshot", "goal"}} for row in summaries])
     groups = defaultdict(list)
     for row in summaries:
         stage = "diagnostic" if row.get("diagnostic") else row.get("stage", "unknown")
