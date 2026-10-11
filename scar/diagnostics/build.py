@@ -8,6 +8,8 @@ import copy
 import json
 from pathlib import Path
 import random
+import multiprocessing as mp
+from concurrent.futures import ProcessPoolExecutor
 
 from scar.io import atomic_json, digest
 from scar.environment import AGENT_ID, restore, snapshot, save_snapshot, state_digest
@@ -108,6 +110,11 @@ def verify(case, start, witness, goal):
     return endings[0] == endings[1]
 
 
+def _witness_job(job):
+    data, target, goal = job
+    return find_witness(restore(data), target, goal)
+
+
 def natural_statistics(runtime):
     counts = {"total_actions": 0, "semantic_failures": 0, "A_repeated_same_state": 0,
               "B_later_success_changed_state": 0, "C_unknown_diagnosis": 0,
@@ -155,7 +162,8 @@ def build(runtime, output, limit=120):
         data = Path(item["run"]) / "steps" / f"{item['index'] + 1:04}" / "environment.pkl"
         env = restore(data)
         # Tutorial instances already seen during development are never held-out tests.
-        if item["task"].get("stage") == "collect" and not env.curr_agents_state.get("tutorial_passed", {}).get(AGENT_ID, True):
+        tutorial_area = env.world.auxiliary.get("tutorial_room", {}).get("area_id")
+        if item["task"].get("stage") == "collect" and tutorial_area == env.curr_agents_state["area"][AGENT_ID]:
             continue
         goal = physical_goal(env, row["executed_action"])
         if goal:
@@ -184,12 +192,17 @@ def build(runtime, output, limit=120):
     records, seen, unverified = [], set(), []
     rng = random.Random(8675309)
     rng.shuffle(candidates)
+    unique = []
     for env, target, history, source, task, goal in candidates:
         family = digest([task["game"], action_key(target), history[-1]["after"]["text"].split("I am holding")[-1], goal])
         if family in seen:
             continue
         seen.add(family)
-        witness, explored = find_witness(env, target, goal)
+        unique.append((env, target, history, source, task, goal, family))
+    jobs = [(snapshot(env), target, goal) for env, target, history, source, task, goal, family in unique]
+    with ProcessPoolExecutor(max_workers=8, mp_context=mp.get_context("spawn")) as pool:
+        outcomes = list(pool.map(_witness_job, jobs))
+    for (env, target, history, source, task, goal, family), (witness, explored) in zip(unique, outcomes):
         if witness is None:
             unverified.append({"game": task["game"], "action": target, "reason": "bounded_search_no_witness", "nodes": explored})
             continue
