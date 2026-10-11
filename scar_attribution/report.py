@@ -1,0 +1,203 @@
+"""Render the complete Chinese attribution report from checked offline outputs."""
+import argparse
+import json
+from pathlib import Path
+
+
+def table(headers,rows):
+    return '\n'.join(['| '+' | '.join(headers)+' |','|'+'|'.join(['---']*len(headers))+'|']+['| '+' | '.join(str(v).replace('\n',' ') for v in row)+' |' for row in rows])
+
+
+def pct(x):return f'{100*x:.2f}%'
+
+
+NOTES={
+'hard-1e0d251403ac06ba':'V3 第 9 步试制 iron_bar 后，未完成连续的两份铁锭收集；之后多次直接重试 iron_sheet。STM 用容器保存第一份铁锭再制作第二份。V3 全局无干预，不能归咎于 Selector 接管。',
+'hard-20e73a0e04c6b119':'第 5 步开始用 drop 替换受阻拾取，后续形成 copper_bar/leather_strip 反复取放；共 15 次干预。STM 转入容器收集。局部释放手位真实有效，却没有维持多材料积累。',
+'hard-37c3f03b5dbce44f':'第 12 步在工作区仍无法制作 cloth；第 14、32 步干预丢下目标材料 meadow_herb。STM 先储存材料、完成 cloth，再取回草药。丢弃的长期影响仍需与可回收性区分。',
+'hard-41fb80df35bcd15c':'第 1 步直接尝试最终 padded_lining，而 STM 先生成 stitched_panel 子目标；V3 后续转向交谈和多地点游走。唯一干预在第 37 步，不能解释此前大部分偏离。',
+'hard-50554d736f3df250':'第 2 步起跳过 wooden_rod 中间制作，反复尝试 pen、游走和取放。V3 无动作干预；STM 最后补齐 wood_strip 并先制作 wooden_rod。',
+'hard-5a7420e88396a4d5':'V3 已在第 12 步制作 iron_bar，随后资源取放、容器操作与战斗交织；STM 第 6 步从替代位置直接取得 lockpick。差异包含路径选择与模型采样，不能纯归因为规则学习。',
+'hard-625d9572ed7c0f8f':'第 7 步起受手位限制，多次丢弃 cloth_strap/rope，后来制作 small_satchel 而没有取得目标 travel_satchel；STM 使用已有容器集中材料。体现子目标转换风险，但不证明所有临时丢弃都错误。',
+'hard-75a438dcf9423b1f':'V3 第 6–15 步已把材料装入地面容器，随后只取出少量物品便离开；第 20–21 步制作仍失败。STM 把容器带到工作区，解决材料可访问性。',
+'hard-7db5acb94744a45c':'第 4–11 步重复存入/取出 star_metal_ingot，未完成 cloth_strap 依赖；随后离开关键收集区。唯一干预在第 31 步。STM 先完成 cloth_strap，再用容器收集余料。',
+'hard-d2ab0429f8f01ca4':'第 7 步释放手位后，第 11 步已取得容器，但第 15 步又丢下容器；后续虽存入材料，却未保持对容器的访问。第 24 步干预确实增加了 cloth_strap 条件，不能把它单独定性为有害。',
+'hard-fec55d3712b8cb01':'前段只积累部分 marble_chunk 便离开，后续穿插交谈和游走；STM 持续汇集所需 10 份材料并把容器带到工作区。V3 第 25 步 drop 为拿容器腾位，仅是局部修复。',
+'natural-hard-50014075a5591a73':'第 1 步因错误的 combat 条件拦截可执行移动；第 22 步起门已解锁却仍要求手持钥匙，反复改选 inspect。Oracle C1 可改回 enter armory。这是条件作用范围/解除状态错误的直接证据。',
+'hard-240d21633da85c49':'STM 在 parchment_scrap/binding_thread 存取中循环；V3 最后转到 clerks_office 取得目标。不能把替代路线成功全部归功于条件归纳。',
+'hard-8f2865495edcf56c':'STM 长时间交替丢取材料；V3 较早取得容器，后续转入其他地点并取得 bandage。存在容量管理和路径差异，但双方模型响应未配对。',
+'hard-a1ace8c57814acb2':'STM 围绕 gavel_splint 和 iron_bar 存取；V3 后段到 clerks_office 取得 gavel_head。成功路径包含替代取得，不能当成完成原制作链的证据。',
+'hard-ff08a4547a1d0b11':'STM 后半段持续存取 cloth/thread；V3 第 11 步拿起容器，第 37 步最终制作 travel_satchel。虽有绕路，最终维持了可访问材料集合。'
+}
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--results',default='results/v3/attribution');p.add_argument('--output',default='reports/v3/机制级归因分析.md');a=p.parse_args()
+    root=Path(a.results);read=lambda n:json.loads((root/n).read_text())
+    one=read('single_step_summary.json');comp=read('condition_comparisons.json');cov=read('candidate_coverage_summary.json');inter=read('intervention_summary.json');res=read('resource_accounting.json');detail=read('mechanism_evidence.json');classes=read('case_classifications.json');causes=read('cause_counts.json');long=read('long_chain_summary.json');protocol=read('protocol.json')
+    blocks=['# SCAR-V3 机制级归因分析（指引4）\n\n本轮日期：2026-10-12（北京时间）。冻结正式版本 `61a23ff`；所有新工具均在独立 `scar_attribution/` 下，未修改 V3、历史基线、正式结果或测试集。新增 API 调用 **0**，费用 **$0**。']
+    blocks.append('''## 1. 结论先行与假设 H
+
+**结论是有条件的 MODIFY，不是“多步价值模型已经被证明是主要瓶颈”。** 完全正确的前置条件在固定候选集合上能修正一部分局部选择，但没有提高本次 K=10 的路径证书覆盖；多步价值也只带来小幅覆盖变化。更明显的短程上界来自补充恢复首动作，同时真实轨迹暴露了材料可访问性、条件的适用范围、容量管理及子目标持续性问题。
+
+H 的弱形式——“知道动作为什么失败，并不自动保证现有候选和 Selector 能给出有效恢复序列”——得到支持。H 的强形式——“前置条件已不是重要问题，主要失败由缺少多步价值函数造成”——**没有得到证明**。本轮不启动 SCAR-V4，不追加完整长程或付费分支。
+
+这是已见测试上的探索性机制诊断。下面的“@K 路径证书”指固定首动作后，由独立隐藏状态搜索找到并在引擎中执行验证的路径；**不是 C0–C3 Agent 的闭环 Recovery@K**。后续路径由搜索器产生，没有重用分歧后的旧 LLM 回复，也没有执行新 LLM Agent 续跑。''')
+    blocks.append('## 2. 89 个 family 的成败配对\n\n'+table(['V3 / STM','family 数'],[['V3 成功、STM 失败',4],['STM 成功、V3 失败',12],['共同成功',44],['共同失败',29]])+'\n\n计数与正式记录一致。真实 ID、来源簇、机制簇及 STM/Simple/V2/V3 的成功位见 [paired_families.csv](../../results/v3/attribution/tables/paired_families.csv) 和 [pairs.json](../../results/v3/attribution/pairs.json)。两次困难格式中止位于共同失败组；12 个 STM 独有成功案例均不属于格式中止。\n\n这些配对不是“除 SCAR 模块以外模型回复完全一致”的实验。原模型有随机性，V3 的记忆格式和恢复调用也不同；两个 V3 独有失败案例全程没有动作接管。因此不能从 12 个差异结局直接推断 12 次 Selector 因果损害。')
+    blocks.append(f'''## 3. 预先冻结的分析范围和实现核验
+
+全量层覆盖 89 个 family 的 2,150 次 V3 决策、{one['candidate_instances']:,} 个去重后的状态—候选组合，以及 STM/Simple/V2 对应轨迹。详细层包括全部 16 个不一致 family，以及事先按固定哈希各选 4 个共同成功/失败 family。
+
+搜索层取全部 89 个初始 V3 决策、全部 141 次干预，以及详细层的轨迹四分位位置，去重后 **321 个状态**；覆盖 89 个 family、16 个来源簇、64 个机制簇。K=20 只对长链的 241 个状态、56 个 family 运行，不能把不同 K 的样本差异当作时间收益。
+
+协议和状态名单在 Oracle 分析前冻结：[protocol.json](../../results/v3/attribution/protocol.json)、[state_manifest.json](../../results/v3/attribution/state_manifest.json)。协议哈希 `{res['protocol_digest']}`。开发集两例仅用于引擎/搜索接口预检，没有据测试结果调搜索界限。
+
+保存的 memory 是动作执行并学习之后的状态。本轮严格用**上一 checkpoint**，首步则仅重放共同初始公开历史，恢复更新前知识，避免把当前动作结果泄漏给预测。2,150 个 C0 评分与最终选择全部精确复现，2,150 个原动作也与原 checkpoint 精确一致。Oracle 已实现的完整条件与官方动作规则分派无不一致。
+
+搜索使用确定性有界加权 best-first，优先级 g+2h；每个不同首动作固定最多 256 个扩展节点、4,096 次生成转移、1,024 个前沿节点。词表由目标的递归配方、物品/容器操作、相邻移动、钥匙和火把组成，不输入正式见证或未来轨迹。它不是可采纳 A*，不证明全局最短。超界、未覆盖动作词表及未找到路径全部标 UNKNOWN。正路径独立重放两次。''')
+    blocks.append('''## 4. 四个诊断条件与 Oracle 信息边界
+
+| 条件 | 前置条件 | 选择依据 |
+|---|---|---|
+| C0 | 原在线学习器 | 冻结 V3 Selector |
+| C1 | 官方动作规则的真实拒绝位与阻塞条件 | 原 Selector，其公开状态、目标、候选、成本和门槛不变 |
+| C2 | 原在线风险和置信度 | 用已验证有限步路径价值替换单步任务价值项 |
+| C3 | Oracle 条件风险与置信度 | 与 C2 相同的多步价值替换 |
+
+Oracle 条件对全部原目标动作（86 个 craft、3 个 enter）列出同时存在的真实阻塞：工作台/材料、相邻路径、当前战斗以及锁门时手持钥匙等。制作按官方“至少够一份、请求量不足时截断”的规则处理；不能自行把“请求两份但仅够一份”标成动作拒绝。其他候选的拒绝位由官方规则执行获得，未完整枚举条件的动作用 `complete_conditions=false` 标记并保留首个反馈。Oracle 不返回路线、见证或下一步动作；只进入诊断副本。
+
+C1 是较强的条件上界：失败风险取 0/1、置信度为 1。因此它同时去掉了原风险校准和置信门槛的误差，但仍不能替原候选生成器增加动作。结果估计的是**固定候选时的直接效果**，不包含“更好条件知识改变 LLM 提示、候选生成及未来访问分布”的总效果。
+
+令某个候选已有一条长度为 d 的双重重放见证，若 d≤K，则 Q̂_K=0.9^(d−1)，否则已证下界为 0。C2/C3 用
+
+`U_K(a) = (1−p(a)) · 1.7 Q̂_K(a) − 0.8p(a) − 0.35(1−confidence(a)) − 0.08 extra_call_cost − 0.15 switching`
+
+替换原单步价值；1.7 是原相关性、条件效果、信息项权重之和。仍保留 0.2 净增益、0.65 置信门槛和合法签名要求，仅有正证书的候选可触发替换。所有参数在看分支结果前固定。另报不受这些门槛约束的“候选内最佳证书”上界，因此不会把保留门槛造成的差距误认为搜索没有好候选。
+
+未找到路径时 Q̂=0 **不等于真实价值为零**。所有覆盖数都是已证下界；找到更长路径不排除更短路径存在。条件 B 在这里特指任务价值项的保守替换，不是重新设计整个规划器。''')
+    bpred=one['base_prediction_metrics'];tpred=one['target_prediction_metrics']
+    blocks.append('## 5. 机制 A：学习正确性、覆盖和 Oracle 条件实验\n\n'+table(['预测对象/分布','覆盖率','拒绝 Precision','拒绝 Recall','Brier / ECE'],[['实际基础候选，2150 状态',pct(bpred['coverage']),pct(bpred['reject_precision']),pct(bpred['reject_recall_all_rejections']),f"{bpred['brier_all_predictions']:.4f} / {bpred['ece_10_equal_width_bins']:.4f}"],['原始失败目标动作，2150 状态',pct(tpred['coverage']),pct(tpred['reject_precision']),pct(tpred['reject_recall_all_rejections']),f"{tpred['brier_all_predictions']:.4f} / {tpred['ece_10_equal_width_bins']:.4f}"],['既有独立组件见证前缀，647 状态','10.05%','94.59%','6.08%','0.1196 / 0.0704']])+'''
+
+“原始失败目标”包括后来已经进入取成品阶段的状态，不能等同于当步活动子目标或代表性动作分布。其高 Precision 也受到原动作在 2,102/2,150 个访问状态仍受阻的影响。独立组件模型没有装入正式 Agent；它的 647 个前缀也不是 647 个独立机制。
+
+基础候选的 497 次真实拒绝中，V3 识别 243 次，漏掉 254 次：237 次 UNKNOWN、17 次 SUPPORTED。148 次漏检没有有效对比假设或反馈规则；漏检预测中没有列出 unknown 谓词，不代表原始观察没有缺失，而是很多时候根本没有可用的条件结构。
+
+23 次误拒中，违反项为 `resource:key>=1` 16 次、`target.ground` 4 次、`combat.clear` 3 次；18 次集中在 natural-hard-50014075a5591a73。这个案例中，门已用钥匙解锁并消耗了钥匙，模型却把“始终有钥匙”归纳成 enter 的必要条件。第 22、24–37 步附近，合法的 enter armory 被反复改成 inspect。这不是多步价值不足的唯一解释，而是**条件缺少适用上下文、解除后的失效更新和主动反证机会**的直接错误。
+
+原目标的真实受阻条件出现中，可公开表示为 FALSE 的资源/工作台条件分别有 3,066/1,452 次；另有 222 次资源条件未被特征表示、218 次资源条件 UNKNOWN。观察到条件为 FALSE 只表示能测到该事实，不表示学习器已经知道它是必要条件。计数包含同 family 的重复访问，不能当成独立准确率。
+
+既有独立组件对照中，完整预测 35 个真阳性，去掉对比模型而只用公开反馈规则为 32 个；这不是任务级消融，也不足以证明复杂学习器已值得其成本。后续 A 的验收必须超过这个简单对照。
+''')
+    blocks.append(table(['2150 个相同状态上的选择','C0','C1'],[[label,one['by_condition']['C0'][k],one['by_condition']['C1'][k]] for k,label in [('legal','选中合法动作'),('direct_progress','原阻塞条件数净减少'),('goal','当步物理目标达成'),('physical_noop','合法/非法均含的物理状态无变化')]])+f"\n\nC1 改变 {one['C1_changed_actions']} 次选择。615 个状态的原候选内存在直接修复阻塞条件的动作；C0/C1 选中这种动作的比例为 {pct(detail['repair_choice_accuracy']['C0'])}/{pct(detail['repair_choice_accuracy']['C1'])}。这只是局部条件进展，不是多步正确动作率。family 等权的条件进展净差为 +0.25 个百分点，95% family bootstrap 区间约 [−0.01, +0.55]；合法性净差 +0.89 个百分点，区间约 [−0.04, +1.60]。没有可靠的大幅改善证据，也不能把 Oracle 自定义的 100% 拒绝识别当成算法成绩。")
+    blocks.append('## 6. C0/C1/C2/C3 的多步配对结果\n\n'+table(['范围','K','状态数','C0','C1','C2','C3'],[[scope,k,next(r['states'] for r in comp if r['scope']==scopekey and r['k']==k),*[next(r['verified_chosen_paths'] for r in comp if r['scope']==scopekey and r['k']==k and r['condition']==c) for c in ['C0','C1','C2','C3']]] for scope,scopekey in [('全部采样状态','all_sampled'),('每 family 初始状态','initial_only'),('干预状态','interventions_only')] for k in [5,10,20]])+'''
+
+表格是所选首动作的已验证路径数，不是新 Agent 成功局数。全部 89 个初始状态都只有 **一个** 原候选，故 C0–C3 在初始状态完全相同；这是没有选择空间，不是四种机制能力相同。
+
+在 321 个状态的 K=10 比较中，C2/C3 比 C0 多 4 个证书，涉及 4 个 family，均属于原 STM/V3 共同失败组。family 等权净差 +1.31 个百分点，95% 区间 [0.19, 2.81]。这是固定搜索过程的证书发现差，不是总体恢复成功率显著提高；与 C0 不同的动作被按 Oracle 已知证书挑选，也不存在独立测试。来源/机制簇敏感性完整保存在 condition_comparisons.json，多重比较未作整体校正。
+
+K=5 上 C3 比 C2 多 5 个证书，但 C3−C2−C1+C0 为 −9 个，不支持“两者只有结合才产生明显协同”。K=10/20 的该交互计数均为 0。没有理由据此直接认定机制耦合产生了大的任务收益。
+''')
+    dd=detail['K10_choice_shortest_found_distance_comparison']
+    blocks.append(table(['K=10 选择与 C0 不同','改变数','发现路径更短','相同','更长','至少一边 UNKNOWN','两边均有路径时平均步数差'],[[c,d['changed'],d.get('shorter',0),d.get('equal',0),d.get('longer',0),d.get('unknown',0),f"{d['mean_distance_delta_among_changed_both_found']:.3f}"] for c,d in dd.items()])+'''
+
+“更短”只比较当前预算内**最短已找到**的两条真实执行路径，不是最优距离差。该表条件于发生选择变化且两边找到路径，不能用其均值估计全体恢复效率。它也显示：C1 的局部帮助可能被 K=10 的覆盖饱和掩盖，不能因为证书数量相同就说条件学习完全不重要。''')
+    blocks.append('四个 K=10 新证书的可重放例子：\n\n'+table(['状态（0 起始决策索引）','C0 已找到距离','C2 已找到距离','首动作变化'],[[x['state_id'],x['C0_distance'] if x['C0_distance'] is not None else 'UNKNOWN',x['C2_distance'],f"{x['C0'][0] if x['C0'] else '见原记录'} → {x['C2'][0]}"] for x in detail['K10_certificate_gain_examples']])+'''
+
+例如 goblin_sword 状态中，C0 丢下后续需要的 goblin_token，对应找到 12 步路径；保留该物品并先执行候选 inspect fiber_bundle，对应 9 步路径。这里 inspect 的价值主要是没有丢失资源，不应说成检查动作本身完成了恢复。完整首动作、后续路径和每步最终状态 hash 均在 branches.jsonl.gz。''')
+    blocks.append('## 7. 候选生成与见证首动作上界\n\n'+table(['范围','K','状态','原候选内有证书','额外首动作后有证书','新增证书'],[[r['scope'],r['k'],r['states'],r['current_candidates_verified'],r['augmented_verified'],r['upper_adds_certificate']] for r in cov])+'''
+
+2,150 次决策中 1,483 次（68.98%）只有一个候选；候选数 2/3/4/5/6 的次数分别是 266/287/86/25/3。任何仅重排候选的方法在这些单候选状态都没有直接作用空间。
+
+额外上界由独立有界搜索生成；只有初始状态允许在**单独上界**中重放原冻结见证。原见证从未进入 C0–C3。K=10 的 19 个新增证书都对应原集合之外的首动作；初始状态为 75→86，增加 11 个。这支持“候选与短程规划有可研究空间”，但原候选 UNKNOWN 并不等于不可能恢复。该上界额外使用了一次搜索及可能的既有见证，因此不是计算量相同的生成器消融；不能把所有新增证书归因于一个可部署的候选生成改动。
+
+关键反证是：长链初始 56 个状态，在 K=20 下原候选就全部能接上一条已验证恢复路径；扩大首动作没有再增加覆盖。因而“正确首动作永远不在集合里”不是统一解释。更合理的待检验方向是后续子目标/材料组织的持续性和短预算效率。后续搜索词表在所有条件下都比原 LLM 候选生成强，不能将此上界当作当前生成器能持续产生这些动作。
+
+mechanism_evidence.json 还记录了上界首动作是否在原轨迹的更晚时刻被生成/执行。这些后续状态已经不同，只能说明动作并非永远不能生成，不能替代同一状态下的新一轮规划实验。''')
+    blocks.append('## 8. 141 次干预的多步反事实收益与“浪费”\n\n'+table(['K','状态 / family','基础首动作有证书','干预首动作有证书','两边都有','两边均 UNKNOWN','family 等权 MSIB 证书差'],[[k,f"{r['states']} / {r['families']}",r['base_verified'],r['intervention_verified'],r['both_verified'],r['neither_verified'],pct(r['MSIB_verified_lower_bound_difference']['mean'])] for k,r in inter.items()])+'''
+
+K=10 时 126→123；family 等权差 −4.47 个百分点，95% family 区间 [−14.21, +4.74]。把每个 UNKNOWN 的真实可达性保留为 [0,1] 后，family 等权识别区间为 [−21.37, +16.90] 个百分点，不能确定总体干预收益方向。
+
+K=5 的状态等权差为 −6/141（−4.26 个百分点），family 等权差却为 +6.39 个百分点，说明多个干预集中在少数 family 会明显改变结论；本轮事先固定 family 等权，仍同时披露原始计数。K=20 只含 121 次长链干预，不能与 141 次全体直接比较。
+
+141 次干预中，仅 3 次减少原目标的真实阻塞条件数；10 次未改变记录的物理/任务状态，16 次与基础动作具有相同的物理状态结果。这些指标不包含 Agent 的信息收益，也不等于已经证明未来闭环行为完全相同。
+
+按“没有直接条件进展、且 K=10 未发现恢复证书”定义，操作性未证进展比例为 **18/141＝12.77%**；这 18 次受搜索不确定性影响，不能改名为确证的 Wasted Intervention Rate。若要求证明真实任务没有收益，严格浪费率在本轮不能点识别。K=5/K=20 的相应未证计数为 113/141 和 2/121，范围变化本身也说明不能把未搜索到当成无价值。
+
+因此既不能从“110 次拒绝→合法”断言任务恢复有效，也不能从“即时目标收益为零”断言所有干预浪费。本轮给出了路径、局部状态效果和未知量分开的证据。''')
+    blocks.append('## 9. 16 个成败不一致案例的逐例归因\n\n索引均从 0 开始。A=未识别真实受阻条件；B=已知受阻但没有直接修复候选/上界首动作缺失；C=存在直接进展或更短已知路径候选却未选；D=原计划失效事件；E=物理无变化/重访；F=真实格式中止。B 的一步代理、C 的非最优见证、D 的计划失效都不自动构成完整任务的充分原因。\n\n'+table(['组别','A','B','C','D','E','F'],[[g,*[causes[g].get(k,0) for k in 'ABCDEF']] for g in ['stm_only','v3_only','both_success','both_failure']])+'''
+
+成功组同样大量出现 A–E，说明这些警告不是失败专属标签。`case_classifications.json` 保留每个事件的索引、具体动作、Oracle 标签和证据强度；下表说明轨迹最早可观测偏离与后续发展，不把最早警告冒充唯一关键原因。''')
+    for group,title in [('stm_only','STM 成功、V3 失败的 12 例'),('v3_only','V3 成功、STM 失败的 4 例')]:
+        selected=[c for c in classes if c['group']==group]
+        blocks.append('### '+title+'\n\n'+table(['真实案例 ID','STM / V3 实际步数','最早警告','轨迹证据与边界'],[[c['case_id'],f"{len(c['sequences']['ShortTermMemoryAgent'])} / {len(c['sequences']['SCARV3Agent'])}",f"{c['earliest_observed_warning']['cause']} @ {c['earliest_observed_warning']['index']}" if c['earliest_observed_warning'] else '无',NOTES[c['case_id']]] for c in selected]))
+    blocks.append('## 10. 长恢复链：不能只归因于动作干预\n\n'+table(['方法','恢复 family / 56','实际动作','重复公开状态访问','干预','目标动作条件解除次数'],[[m,r['recovered'],r['steps'],r['repeated_observation_states'],r['interventions'],r['target_releases']] for m,r in long.items() if m!='V3_events'])+'''
+
+重复公开状态是此前 observation-derived hash 的重复，受可见字段粒度影响；不同方法访问分布和总步数也不同，不是严格物理循环率。V3 在长链中有 66 次 `plan_invalidated`、104 个“存在更大直接条件进展候选但未选”的状态，以及 1,156 次单候选决策。
+
+具体不足来自代码可检查的结构：`_local_candidates` 主要在手位受阻时给 drop/equip，在 UNKNOWN 时给少量 inspect；临时 plan 最多来自一次修复响应，候选化时把多个步骤平铺，缺少依赖约束；地点改变或 12 步过期会清空计划。原 Selector 对取到材料、释放手位给局部奖励，却不显式保护已积累材料或评估“持有/装备容器后才能在另一个地点使用内容物”的序列。
+
+这些结构与存取循环、地面容器不可访问的案例吻合；但 D 事件未证明被清空的每个计划本来正确，STM 的成功也不是保持意图能力的单独受控测试。因此结论是形成了可检验的序列组织假设，而非已完成因果归因。''')
+    blocks.append(r'''## 11. 两个机制的判断与下一轮可实现定义
+
+**机制 A：MODIFY，保留研究但改变目标。** 不把增加失败记忆条数或提高平均 Precision 当作主要路线。应学习带作用域和解除条件的规则，例如本轮真实门规则是
+
+`can_enter = neighbor ∧ combat_clear ∧ (¬locked ∨ key_in_hand)`。
+
+当前必要条件合取容易把钥匙一直视为必需，缺少“仅锁门时适用”的守卫。未来只能用公开反馈建立 locked/unlocked 三值信念，不能把本轮 Oracle 的隐藏锁状态搬进 Agent。拟研究 `r=(action_schema, object/context_guard, required_predicate, evidence, expiry)`，正反例更新作用域，明确区分样本不足、谓词缺失、状态失效和校准误差。验收要求是在新对象/新任务上超过公开反馈规则，且降低解除条件后的错误拦截。
+
+**机制 B：MODIFY，但不继续只调当前 Selector 权重。** 固定候选内的价值重排上界很小，K=10 不受门槛约束的候选上界也只有 276，而 C0 已有 271 个证书。优先检验有限子目标图、材料可访问性、容器/手位管理与条件化动作效果模型。先证明候选/序列结构带来收益，再考虑更大价值模型。
+
+候选研究定义如下，属于下一轮方案，当前没有实现为新 Agent：
+
+1. 公开状态为三值谓词向量 φ_t，持久恢复目标 g 与可撤销子目标图 D_t 分开维护。容量、对象所在位置、容器是否被携带、门是否已解锁均带证据来源。
+2. 从 `(φ_t,a_t,φ_(t+1),feedback_t)` 学习带上下文的效果分布 `T̂(φ′|φ,a,c)`；只对前后均已知的谓词监督变化，UNKNOWN 不作 FALSE。特别区分 acquire、store-on-ground、carry-container、unlock-and-consume-key 的不同后效。
+3. 用守卫动作生成器 `A(φ,g,D)` 产生解除子目标阻塞的动作；先决节点未完成的后续步骤不能直接与当前步骤平铺竞争。计划移动后按谓词验证剩余节点，避免一改地点就无条件清空整个恢复意图。
+4. 有限步任务值定义为 `Q_K(φ,a,g)=E_T̂[1{τ_g≤K}γ^(τ_g−1)−λ Σ cost−η Σ regress_g]`，其中 regress_g 惩罚丢失仍必需且不可低成本恢复的材料，不把所有临时丢弃一概视作负面。
+5. 只有估计净收益的保守下界超过额外推理成本和不确定性门槛，才替换基础动作。对低置信条件优先生成有区分力的公开探测，而不是连续 inspect 同一无关对象。
+
+未来代码改动点应在新的独立研究目录实现：对应 `state.py` 的动态谓词及失效更新、`learning.py` 的带守卫规则和条件效果、`agent.py::_local_candidates` 的依赖感知候选/子目标维护、`selection.py` 的有限步评估。冻结 `scar_v3/` 继续保留。
+
+下一轮验证建议：先在开发集做零 API 的条件解除、携带容器、不可丢材料和多地点依赖单元实验；若失败，停止扩展。通过后另建来源/对象/机制隔离的新冻结测试状态。把条件知识、候选生成和选择器拆成三因素对照，保留 STM 和简单公开反馈规则，单独测试 A→候选生成的总效果。核心指标是解除后的误拒、原候选修复覆盖、计划依赖违反率、每步可访问目标材料变化、受限闭环恢复及每成功恢复成本。是否扩展到长程应由新诊断的收益决定；不默认增加种子或 500 步。
+
+**当前判断不对应纯情况 A/B/C。** 更接近“条件作用范围错误 + 短程候选/后续计划结构限制”，其中候选上界符合部分 D；但 K=20 的候选可达性又否定了“所有失败都因第一步没好动作”的解释。如果新状态上连简单守卫/容量计划都不能稳定优于 STM，应转为 NO-GO，停止机械迭代。''')
+    blocks.append(f'''## 12. 成本、完整性、交付与复现
+
+新增模型调用 **0**、新增费用 **$0**；项目累计保守账本仍为 **$23.130083244**。用户已授权本轮不受额度上限限制，但本任务无需消费这一授权。未跑新的 200 步任务，未重跑正式基线，未改变三次原方法中止的统计处理。
+
+离线搜索扩展 {res['expanded_search_nodes']:,} 个节点、生成 {res['generated_search_transitions']:,} 次真实引擎转移，8 个进程的批次墙钟时间 {res['search_wall_seconds']:.2f} 秒；分支 worker 耗时总和 {res['search_worker_seconds_sum']:.2f} 秒，单步审计 worker 总和 {res['audit_worker_seconds_sum']:.2f} 秒。worker 总和不是墙钟时间，也不是精确 CPU 利用时间；不含报告撰写和软件核验。开发接口预检另保留两例记录。
+
+692 个不同首动作分支中有 658 个找到路径；合并独立上界共报告 967 条正路径记录，每条至少独立重放两次。未找到路径的分支保留完整界限和 UNKNOWN。新增 4 项语义测试通过，真实 C0/条件/状态复核比模拟单测提供了更直接的接口验证。`integrity_checks.json` 检查原正式文件、冻结诊断代码、状态名单、原请求日志和累计账本。
+
+交付包括 [全量审计](../../results/v3/attribution/audits.jsonl.gz)、[原始分支与逐步路径](../../results/v3/attribution/branches.jsonl.gz)、[逐状态四条件表](../../results/v3/attribution/tables/four_conditions.csv)、[干预表](../../results/v3/attribution/tables/interventions.csv)、[逐例分类](../../results/v3/attribution/case_classifications.json)和 [成本与开销](../../results/v3/attribution/resource_accounting.json)。完整可信快照继续保存在服务器，未上传第三方引擎、模型、凭据或 pickle。
+
+只从 GitHub 的公开结果重算表格和本报告，无需模型：
+
+```bash
+cd /root/scar_workspace/project
+export AGENTODYSSEY_ROOT=/root/scar_workspace/dependencies/agentodyssey
+export PYTHONHASHSEED=0 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+SCAR_PY=/root/scar_workspace/venv/bin/python
+"$SCAR_PY" -m scar_attribution.analyze --output results/v3/attribution
+"$SCAR_PY" -m scar_attribution.report
+```
+
+服务器重新执行诊断用下列命令，输出必须放在独立目录；已存在完整结果会复用。`prepare` 用于最初冻结协议，已完成批次不能覆盖重选状态。
+
+```bash
+"$SCAR_PY" -m scar_attribution.audit --runtime /root/scar_workspace/runtime_v3 \\
+  --output /root/scar_workspace/runtime_v3_attribution --workers 8
+"$SCAR_PY" -m scar_attribution.branches --runtime /root/scar_workspace/runtime_v3 \\
+  --output /root/scar_workspace/runtime_v3_attribution --workers 8
+"$SCAR_PY" -m scar_attribution.analyze --runtime /root/scar_workspace/runtime_v3_attribution \\
+  --output results/v3/attribution
+"$SCAR_PY" -m scar_attribution.report
+```
+
+数据中包含服务器绝对快照路径。异机只有压缩轨迹时可以完整重算统计和报告，但不能仅凭公开 JSONL 做物理状态恢复；精确重放需要原可信快照及固定官方引擎。搜索的正路径可复现不等于后续随机模型行为可复现。
+
+本轮回答的是可检查的机制问题，结论保留否定与不确定性。不存在新增可部署方法的性能主张。''')
+    Path(a.output).write_text('\n\n'.join(blocks)+'\n',encoding='utf-8')
+    print(a.output)
+
+
+if __name__=='__main__':main()

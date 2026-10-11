@@ -1,0 +1,79 @@
+{
+  "frozen_at_utc": "2026-10-11T16:25:10.663819+00:00",
+  "source_commit": "61a23ff4bfb6e9b0c81a7fc78eb3d6bc9c54c957",
+  "scope": "Exploratory mechanism diagnosis on already-seen tests; no new deployable agent or generalization claim.",
+  "new_api_calls": 0,
+  "paid_authorization": "User authorized this new round without a monetary cap; no paid calls planned or necessary for offline protocol.",
+  "families": 89,
+  "paired_groups": {
+    "both_failure": 29,
+    "both_success": 44,
+    "stm_only": 12,
+    "v3_only": 4
+  },
+  "detailed_families": [
+    "001d5a6c6cfd214f6747b7ea4942de135ee5228a544f4b1ee818f283da524626",
+    "0124a0ead220ba8f17725028593206505b01e54fe63a4bbc6cc53de45b8c0abb",
+    "1e0d251403ac06ba4048d5959c9106eb718ee0f66e76715c58d1adf2a58f6362",
+    "20e73a0e04c6b1199e7126c3dc62130408b9fc1581f7717772b753aa2041090c",
+    "240d21633da85c49f6dac14739fb9378f5c5c1e9b2a23c28d3bb6a3cd9045013",
+    "2ee9609de50af58c065c86a7aa64901051430775b371a159872c6b3cef3eb5a1",
+    "37c3f03b5dbce44f948ff2a614728dc8a643215a3dc02c8085743106fcf9ca1e",
+    "41fb80df35bcd15c734cb2eb296bf53d059a60749d2734978db6d1ee2bd0a97a",
+    "50014075a5591a73eeec9641d74bab7f2aed8cc50781ee00cc31b654f479cfe4",
+    "50554d736f3df250e64c7bf18cb6316136f517d2690289a4619d384be9e36c4b",
+    "5a7420e88396a4d5b51a1c6dd1e5d829d946ed93ddb4e812d71355405d868a59",
+    "625d9572ed7c0f8f381fcb715be4c759a667b4d7f160292dffc3018e63641dea",
+    "75a438dcf9423b1f6529ca54f1707a5395a118928b619b2cfc1086c69bc9a338",
+    "7db5acb94744a45c1e05175a9f418998e5ab9ad089b8eed8583792e71f1ab0d1",
+    "8f2865495edcf56c16711604e43922358edfae1f8245c3c5459d98ba35e8e9e0",
+    "9a873158be14279a2cf97f01180b71407441de27f2611bd497cc4522b41fb74a",
+    "a1ace8c57814acb2d5b2d052b2ebe0f57a4df70ed2ae0d5e3379157c4f4d5e93",
+    "b106016dcbc75664161098db18f160927cb50d8fc3d46f45a342050793fa1c37",
+    "b792d223602e2cc89bb3a72eef452b60f76e6257441d8a4a26c1cd63bb87e8af",
+    "d08731da86f54c3f1f7338240bba00f111d56c08f24ba439acb58dba57f6b4f1",
+    "d2ab0429f8f01ca48c6ab6ee2abd273aa8d02515493ab9f3a02b225cf2afab2c",
+    "f072eb5bc9a78d8fe8abdfb575d79a78446c5d6c194385d5713c053dca05e0c2",
+    "fec55d3712b8cb0146a28b420135b54af93ee5f823b87b9fefda19142a5a2e49",
+    "ff08a4547a1d0b117c0614c377cfa52208771e45fd0dc4def6e104b5f40c2f49"
+  ],
+  "state_sampling": "All 89 initial V3 decisions, all 141 interventions, and decision quartiles of 16 discordant + hash-selected 4 both-success + 4 both-failure families; deduplicate by family/index.",
+  "states": 321,
+  "state_list_digest": "56a9091b06945635fabe2d2cc4cce20011d2d9879b3ee3e9ad34a03fb20e7fb9",
+  "single_step_scope": "Every committed V3 hard action and every logged candidate; reconstruct saved pre-action learner and selector; check original C0 scoring exactly.",
+  "search": {
+    "algorithm": "Deterministic bounded weighted best-first search on full official-engine transitions; priority g+2*h; admissibility/minimality NOT claimed.",
+    "max_expanded": 256,
+    "max_generated": 4096,
+    "max_frontier": 1024,
+    "depths": [
+      5,
+      10
+    ],
+    "long_chain_max_depth": 20,
+    "workers": 8,
+    "gamma": 0.9,
+    "vocabulary": "Recursive goal recipe ingredients/products, relevant item/container transfers, all neighboring movement, key and torch. No reference witness or future logged actions are supplied to C0-C3 searches.",
+    "state_abstraction": "Physical inventory/map + task/quest/combat state and clock; full paths replayed twice. Search failure, frontier pruning and node/depth limits are UNKNOWN, never proof of impossibility.",
+    "budget_policy": "Same fixed bounds for each distinct first action; exact-state cache only, no result-driven reruns or tuning."
+  },
+  "conditions": {
+    "C0": "Frozen learner, saved public state/outcome history, original Selector.score/choose; reproduce recorded action.",
+    "C1": "Replace predict with true action-rule rejection (p=0/1, confidence=1) and actual violated conditions. Original public state, goal, candidate multiset, costs, score/choose unchanged. No route/next-action data.",
+    "C2": "Retain learned p/confidence and extra-call/switch costs. Replace single-step task term with 1.7*Q_K, Q_K=0.9**(d-1) for a replay-verified path of length d<=K, else zero verified lower bound. Retain margin .2 and confidence>=.65; switch only to candidate with verified positive Q_K. This is a conservative diagnostic of the value term; separately report ungated candidate upper bound.",
+    "C3": "Same as C2, with Oracle precondition p/confidence. Candidate list/state/goal/search outputs identical to C2.",
+    "bounds": "Q_K=0 means no verified witness found, NOT true zero value. All improvements are witness-discovery/lower-bound changes; report unknown and paired identification bounds. Distances are shortest FOUND verified paths, never global shortest.",
+    "upper": "Independent search from the frozen state with broader diagnostic vocabulary; its first action may be added ONLY in a separately-labelled candidate-generation upper bound. Frozen dataset witness may be replayed ONLY at initial states in this separate upper bound. Never feed it to C0-C3."
+  },
+  "intervention_metrics": {
+    "MSIB": "Paired verified-path discovery difference at K for recorded intervention vs base first action, plus interval accounting for UNKNOWN on either branch; not closed-loop agent Recovery@K.",
+    "waste": "Report proven physical no-op/cycles separately; no condition progress and no found path is only unverified progress, not definitive waste. Strict zero-task-progress only when a branch immediately ends without goal; all censored cases remain unknown."
+  },
+  "statistics": "One family is a cluster. Family-mean paired differences, fixed 10000 bootstrap seed 20261012; source/mechanism sensitivity; descriptive exploratory comparisons without multiplicity claims.",
+  "protected_inputs": {
+    "cases": "results/v3/dataset/cases.json",
+    "formal": "results/v3/formal/",
+    "implementation": "scar_v3/"
+  },
+  "data_digest": "7ec48a44e2a9430de709a0a51ccab6fa47f35aef86559afcf1786ed558a278c2"
+}
