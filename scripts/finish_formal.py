@@ -50,6 +50,7 @@ def main():
         ("frozen_cra", [py, "-m", "scar.diagnostics.rule_accuracy", "--runtime", str(runtime), "--cases", cases,
                          "--output", "results/rule_accuracy_frozen.json"]),
         ("supplementary", [py, "scripts/report_details.py", "--runtime", str(runtime), "--output", "results"]),
+        ("posthoc_checks", [py, "scripts/posthoc_checks.py", "--runtime", str(runtime), "--output", "results"]),
         ("initial_goal_audit", [py, "scripts/audit_initial_goals.py", "--cases", cases,
                                "--output", "results/initial_goal_audit.json"]),
     ])

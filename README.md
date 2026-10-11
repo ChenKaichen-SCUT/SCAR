@@ -2,7 +2,9 @@
 
 按《指引.md》实现的状态条件化失败记忆与动作修复实验。官方基线、游戏、模型权重均在仓库外下载；本仓库只提交我们的实现、实验配置、测试记录及结果分析。原始轨迹与引擎状态快照保存在实验服务器。
 
-研究状态及结论见 `reports/实验报告.md`（实验结束后生成）。运行尚未完成时，不应把代码单元测试当作算法有效性的证据。
+**实验已完成，研究判断为 PARTIAL（局部有效）。** 正式诊断 288 组、200 步长程 45 组、统一预算上限 45 组均已结束。SCAR 的 Recovery@20 为 94.44%，简单恢复为 83.33%，官方 STM 为 91.67%；主线收益不稳定且误拦截较高，不能宣称整体优于现有方法。全阶段保守 API 费用估算 $14.834561，低于 $20 上限。
+
+完整结果见 [中文实验报告](reports/实验报告.md)，逐局数值见 [all_runs.csv](results/all_runs.csv)，冻结协议见 [实验协议](reports/实验协议.md)。报告包含负面结果、样本限制、完整成本及重放审计。
 
 ## 固定环境
 
@@ -18,6 +20,7 @@
 
 ```bash
 export SCAR_WORKSPACE=/root/scar_workspace
+export PATH="$HOME/.local/bin:$PATH" # 确保已安装的 uv 在 PATH 中
 git clone https://github.com/ChenKaichen-SCUT/SCAR.git "$SCAR_WORKSPACE/project"
 cd "$SCAR_WORKSPACE/project"
 bash scripts/bootstrap.sh
@@ -30,17 +33,26 @@ PY="$SCAR_WORKSPACE/venv/bin/python"
 "$PY" -m scar.experiments.run --stage smoke --workers 4 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
 "$PY" -m scar.experiments.run --stage pilot --workers 8 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
 "$PY" -m scar.experiments.run --stage collect --workers 8 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
-"$PY" -m scar.diagnostics.build --runtime "$SCAR_WORKSPACE/runtime" --output "$SCAR_WORKSPACE/runtime/ao_fr"
-"$PY" scripts/audit_holdout.py --runtime "$SCAR_WORKSPACE/runtime" --cases-dir "$SCAR_WORKSPACE/runtime/ao_fr"
-"$PY" -m scar.experiments.run --stage diagnostic --workers 12 --cases "$SCAR_WORKSPACE/runtime/ao_fr/cases.json" --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt --algorithms SCARAgent ShortTermMemoryAgent VanillaRAGAgent SimpleFailureRecovery
+"$PY" -m scar.diagnostics.build --runtime "$SCAR_WORKSPACE/runtime" --output "$SCAR_WORKSPACE/runtime/ao_fr_frozen"
+"$PY" scripts/audit_holdout.py --runtime "$SCAR_WORKSPACE/runtime" --cases-dir "$SCAR_WORKSPACE/runtime/ao_fr_frozen"
+"$PY" scripts/audit_initial_goals.py --cases "$SCAR_WORKSPACE/runtime/ao_fr_frozen/cases.json"
+"$PY" -m scar.experiments.run --stage diagnostic --workers 16 --cases "$SCAR_WORKSPACE/runtime/ao_fr_frozen/cases.json" --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt --algorithms SCARAgent ShortTermMemoryAgent VanillaRAGAgent SimpleFailureRecovery
 "$PY" -m scar.experiments.run --stage long --workers 16 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
 "$PY" -m scar.experiments.run --stage cost --workers 16 --runtime "$SCAR_WORKSPACE/runtime" --key-file /secure/path/miyao.txt
 "$PY" -m scar.experiments.analyze --runtime "$SCAR_WORKSPACE/runtime" --output results
-"$PY" -m scar.diagnostics.rule_accuracy --runtime "$SCAR_WORKSPACE/runtime" --cases "$SCAR_WORKSPACE/runtime/ao_fr/cases.json" --output results/rule_accuracy_frozen.json
+"$PY" -m scar.diagnostics.rule_accuracy --runtime "$SCAR_WORKSPACE/runtime" --cases "$SCAR_WORKSPACE/runtime/ao_fr_frozen/cases.json" --output results/rule_accuracy_frozen.json
 "$PY" scripts/audit_artifacts.py --runtime "$SCAR_WORKSPACE/runtime" --output results
+"$PY" scripts/recovery_costs.py --runtime "$SCAR_WORKSPACE/runtime" --output results
+"$PY" scripts/diagnostic_uncertainty.py --runtime "$SCAR_WORKSPACE/runtime" --output results
+"$PY" scripts/report_details.py --runtime "$SCAR_WORKSPACE/runtime" --output results
+"$PY" scripts/posthoc_checks.py --runtime "$SCAR_WORKSPACE/runtime" --output results
 ```
 
-首次安装应记录 `uv pip freeze`，后续复现实验使用 `results/environment-lock.txt` 固定版本。CPU PyTorch 需从官方 CPU wheel 源安装；上游基础安装采用 `pip install -e . --no-deps`，避免其默认引入 vLLM/CUDA。网络受限时可传输已验证的依赖与官方仓库，但需要在目标服务器重新测试。
+上述采集/构造命令用于新的运行目录；不要覆盖本轮冻结数据。精确重放与重算应使用服务器现存 `runtime/ao_fr_frozen` 和 `runtime/runs`，从分析命令开始。重新调用随机 LLM 建立数据会形成新的实验，不能保证同一数据集。`scripts/finish_formal.py` 可在诊断完成后顺序执行长程、预算与审计，并用文件锁防止重复调度；脚本校验核心实现和配置与冻结记录一致。
+
+安装需要 `uv`。`scripts/bootstrap.sh` 使用本轮服务器导出的 `requirements-cpu.lock`，先从官方 CPU wheel 源安装 PyTorch，再安装其余锁定依赖；上游和本项目采用 editable、`--no-deps --no-build-isolation` 安装，避免默认引入 vLLM/CUDA。服务器实际版本另存于 `results/environment-lock-server.txt`。网络受限时可传输已验证的依赖与官方仓库，但需要在目标服务器重新测试。
+
+图表生成使用独立的本地 matplotlib 环境，版本记录在 `reports/figures/plot_environment.json`；读取分析结果后执行 `python3 scripts/plot_results.py --results results --output reports/figures`。实验和 CPU 检索本身均在服务器执行。
 
 API Key 可通过仅所有者可读的密钥文件或 `DEEPSEEK_API_KEY` 传入。不要把密钥写入命令参数值、Git 或报告。代码不读取服务器密码。
 
@@ -62,4 +74,6 @@ AO-FR 优先挖掘官方 STM 自然轨迹；可补充明确标记的真实引擎
 
 工作目录：`/root/scar_workspace/project`；第三方依赖：`/root/scar_workspace/dependencies`；完整实验：`/root/scar_workspace/runtime`。
 
-每个 `runtime/runs/<task_id>/` 包括请求 JSONL、执行尝试、引擎日志、不可覆盖的完整步骤 checkpoint、记忆、状态与结果摘要。`runtime/ao_fr` 存放数据集及验证信息。GitHub 不上传第三方代码、模型权重、凭据和大型原始快照。任务标识包含算法、游戏、种子及配置/实现 hash；已完成任务不会重跑。
+每个 `runtime/runs/<task_id>/` 包括请求 JSONL、执行尝试、引擎日志、不可覆盖的完整步骤 checkpoint、记忆、状态与结果摘要。`runtime/ao_fr_frozen` 存放冻结数据集及验证信息。GitHub 不上传第三方代码、模型权重、凭据和大型原始快照；发布的是我们的代码、元数据、结果表与分析报告。任务标识包含算法、游戏、种子及配置/实现 hash；已完成任务不会重跑。
+
+最终审计抽查 1,152 个步骤，全部精确重放；384 个初始状态与冻结源一致。初期 12 个 smoke 故障及 hash 随机化修正前的 73 个诊断运行均保留，后者标记为 `diagnostic_provisional` 并从正式比较中整体排除。
