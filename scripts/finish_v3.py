@@ -9,6 +9,7 @@ import sys
 import time
 
 from scar.io import atomic_json, digest
+from scripts.v3_outcomes import stage_evaluation
 
 
 def main():
@@ -37,16 +38,26 @@ def main():
     common = ["--runtime",str(runtime),"--cumulative-ledger",args.cumulative_ledger,"--cases",args.cases,"--key-file",args.key_file,"--workers",str(args.workers),"--execute"]
     commands = [(s,[sys.executable,"-m","scar_v3.run","--stage",s,*common]) for s in ["dev","hard","long"]]
     output = "results/v3/formal"
-    commands += [("analysis",[sys.executable,"-m","scar_v3.analyze","--runtime",str(runtime),"--cases",args.cases,"--output",output]),
+    commands += [("analysis",[sys.executable,"-m","scripts.analyze_v3_results","--runtime",str(runtime),"--cases",args.cases,"--output",output]),
                  ("replay_audit",[sys.executable,"-m","scripts.audit_v3_formal","--runtime",str(runtime),"--output",output])]
     completed = []
     for stage, command in commands:
         if fingerprint() != frozen:
             raise SystemExit("Frozen execution files changed while cohort running")
         atomic_json(runtime/"pipeline_status.json",{"state":"running","stage":stage,"completed":completed,"pid":os.getpid(),"updated":time.time()})
+        if stage in {"dev","hard","long"} and stage_evaluation(runtime,stage)["fully_evaluated"]:
+            # Preserve observed policy failures; rerunning them until valid would
+            # selectively give that method additional attempts.
+            atomic_json(runtime/f"{stage}_outcome_disposition.json",stage_evaluation(runtime,stage))
+            completed.append(stage)
+            continue
         with (runtime/f"{stage}.log").open("a") as log:
             result = subprocess.run(command,cwd=project,env=env,stdout=log,stderr=subprocess.STDOUT)
         if result.returncode:
+            if stage in {"dev","hard","long"} and stage_evaluation(runtime,stage)["fully_evaluated"]:
+                atomic_json(runtime/f"{stage}_outcome_disposition.json",stage_evaluation(runtime,stage))
+                completed.append(stage)
+                continue
             atomic_json(runtime/"pipeline_status.json",{"state":"failed","stage":stage,"completed":completed,"returncode":result.returncode,"updated":time.time()})
             raise SystemExit(result.returncode)
         completed.append(stage)

@@ -1,0 +1,957 @@
+{
+  "dataset_sha256": "7ec48a44e2a9430de709a0a51ccab6fa47f35aef86559afcf1786ed558a278c2",
+  "hard_expected": 445,
+  "hard_completed": 443,
+  "hard_evaluated": 445,
+  "hard_method_terminations": 2,
+  "hard_complete": true,
+  "long_expected": 15,
+  "long_completed": 0,
+  "long_evaluated": 0,
+  "long_method_terminations": 0,
+  "long_complete": false,
+  "status": "INCOMPLETE",
+  "hard_by_method": {
+    "ShortTermMemoryAgent": {
+      "evaluated": 89,
+      "completed": 89,
+      "method_terminations": 0,
+      "recovery_at_10": 0.4044943820224719,
+      "recovery_at_20": 0.5280898876404494,
+      "recovery_at_40": 0.6292134831460674,
+      "api_calls": 1985,
+      "input_tokens": 3239895,
+      "output_tokens": 172345,
+      "conservative_cost_usd": 0.9779781479999999,
+      "decision_wall_seconds": 2001.3710224809583,
+      "steps": 1974,
+      "interceptions": 0,
+      "false_blocks": 0,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 0,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "release_opportunities": 62,
+      "successful_released_retries": 53,
+      "repeated_semantic_count": 6
+    },
+    "SimpleFailureRecovery": {
+      "evaluated": 89,
+      "completed": 89,
+      "method_terminations": 0,
+      "recovery_at_10": 0.3707865168539326,
+      "recovery_at_20": 0.43820224719101125,
+      "recovery_at_40": 0.5393258426966292,
+      "api_calls": 2748,
+      "input_tokens": 3766838,
+      "output_tokens": 253035,
+      "conservative_cost_usd": 1.1638772519999998,
+      "decision_wall_seconds": 2934.033212102062,
+      "steps": 2200,
+      "interceptions": 45,
+      "false_blocks": 20,
+      "legal_to_rejected": 1,
+      "rejected_to_legal": 21,
+      "interventions_with_physical_goal": 2,
+      "interventions_with_condition_release": 0,
+      "release_opportunities": 44,
+      "successful_released_retries": 38,
+      "repeated_semantic_count": 18
+    },
+    "SCARAgent": {
+      "evaluated": 89,
+      "completed": 89,
+      "method_terminations": 0,
+      "recovery_at_10": 0.2808988764044944,
+      "recovery_at_20": 0.4157303370786517,
+      "recovery_at_40": 0.4606741573033708,
+      "api_calls": 3051,
+      "input_tokens": 4426251,
+      "output_tokens": 303163,
+      "conservative_cost_usd": 1.4179774799999998,
+      "decision_wall_seconds": 3377.9228614019084,
+      "steps": 2410,
+      "interceptions": 548,
+      "false_blocks": 415,
+      "legal_to_rejected": 301,
+      "rejected_to_legal": 50,
+      "interventions_with_physical_goal": 1,
+      "interventions_with_condition_release": 1,
+      "release_opportunities": 41,
+      "successful_released_retries": 38,
+      "repeated_semantic_count": 73
+    },
+    "SCARV2Agent": {
+      "evaluated": 89,
+      "completed": 89,
+      "method_terminations": 0,
+      "recovery_at_10": 0.34831460674157305,
+      "recovery_at_20": 0.48314606741573035,
+      "recovery_at_40": 0.5617977528089888,
+      "api_calls": 2163,
+      "input_tokens": 2932791,
+      "output_tokens": 210253,
+      "conservative_cost_usd": 0.876966834,
+      "decision_wall_seconds": 2407.129577907963,
+      "steps": 2114,
+      "interceptions": 27,
+      "false_blocks": 0,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 23,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "release_opportunities": 45,
+      "successful_released_retries": 44,
+      "repeated_semantic_count": 20
+    },
+    "SCARV3Agent": {
+      "evaluated": 89,
+      "completed": 87,
+      "method_terminations": 2,
+      "recovery_at_10": 0.34831460674157305,
+      "recovery_at_20": 0.42696629213483145,
+      "recovery_at_40": 0.5393258426966292,
+      "api_calls": 2437,
+      "input_tokens": 3400308,
+      "output_tokens": 249374,
+      "conservative_cost_usd": 1.066493556,
+      "decision_wall_seconds": 2758.627412991933,
+      "steps": 2150,
+      "interceptions": 141,
+      "false_blocks": 25,
+      "legal_to_rejected": 0,
+      "rejected_to_legal": 110,
+      "interventions_with_physical_goal": 0,
+      "interventions_with_condition_release": 0,
+      "release_opportunities": 48,
+      "successful_released_retries": 40,
+      "repeated_semantic_count": 20
+    }
+  },
+  "paired": [
+    {
+      "comparator": "ShortTermMemoryAgent",
+      "horizon": 10,
+      "uncertainty": [
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.12359550561797752,
+            0.0
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.12963564213564213,
+            0.00980392156862745
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.14130434782608695,
+            0.022727272727272728
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "ShortTermMemoryAgent",
+      "horizon": 20,
+      "uncertainty": [
+        {
+          "difference": -0.10112359550561797,
+          "ci95": [
+            -0.16853932584269662,
+            -0.033707865168539325
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.10112359550561797,
+          "ci95": [
+            -0.1794871794871795,
+            -0.04
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.10112359550561797,
+          "ci95": [
+            -0.1797752808988764,
+            -0.033707865168539325
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "ShortTermMemoryAgent",
+      "horizon": 40,
+      "uncertainty": [
+        {
+          "difference": -0.0898876404494382,
+          "ci95": [
+            -0.1797752808988764,
+            0.0
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.0898876404494382,
+          "ci95": [
+            -0.16666666666666666,
+            -0.022222222222222223
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.0898876404494382,
+          "ci95": [
+            -0.17721518987341772,
+            -0.011111111111111112
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SimpleFailureRecovery",
+      "horizon": 10,
+      "uncertainty": [
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.07865168539325842,
+            0.033707865168539325
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.10256410256410256,
+            0.03614457831325301
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.10309278350515463,
+            0.04445692883895113
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SimpleFailureRecovery",
+      "horizon": 20,
+      "uncertainty": [
+        {
+          "difference": -0.011235955056179775,
+          "ci95": [
+            -0.056179775280898875,
+            0.02247191011235955
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.011235955056179775,
+          "ci95": [
+            -0.06060606060606061,
+            0.021739130434782608
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.011235955056179775,
+          "ci95": [
+            -0.05063291139240506,
+            0.024691358024691357
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SimpleFailureRecovery",
+      "horizon": 40,
+      "uncertainty": [
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.056179775280898875,
+            0.056179775280898875
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.05194805194805195,
+            0.04
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.056818181818181816,
+            0.054945054945054944
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARAgent",
+      "horizon": 10,
+      "uncertainty": [
+        {
+          "difference": 0.06741573033707865,
+          "ci95": [
+            0.011235955056179775,
+            0.1348314606741573
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.06741573033707865,
+          "ci95": [
+            0.02857142857142857,
+            0.10752688172043011
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.06741573033707865,
+          "ci95": [
+            0.0,
+            0.13402376162936883
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARAgent",
+      "horizon": 20,
+      "uncertainty": [
+        {
+          "difference": 0.011235955056179775,
+          "ci95": [
+            -0.033707865168539325,
+            0.056179775280898875
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.011235955056179775,
+          "ci95": [
+            -0.05128205128205128,
+            0.06363636363636363
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.011235955056179775,
+          "ci95": [
+            -0.03571428571428571,
+            0.06382978723404255
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARAgent",
+      "horizon": 40,
+      "uncertainty": [
+        {
+          "difference": 0.07865168539325842,
+          "ci95": [
+            0.02247191011235955,
+            0.14606741573033707
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.07865168539325842,
+          "ci95": [
+            0.011904761904761904,
+            0.13333333333333333
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.07865168539325842,
+          "ci95": [
+            0.02040816326530612,
+            0.15069687798661976
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARV2Agent",
+      "horizon": 10,
+      "uncertainty": [
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.056179775280898875,
+            0.06741573033707865
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.043478260869565216,
+            0.05
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": 0.0,
+          "ci95": [
+            -0.07142857142857142,
+            0.06796668137687546
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARV2Agent",
+      "horizon": 20,
+      "uncertainty": [
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.11235955056179775,
+            -0.011235955056179775
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.10811624877889937,
+            -0.017857142857142856
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.056179775280898875,
+          "ci95": [
+            -0.1111111111111111,
+            -0.011363636363636364
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    },
+    {
+      "comparator": "SCARV2Agent",
+      "horizon": 40,
+      "uncertainty": [
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.10112359550561797,
+            0.056179775280898875
+          ],
+          "cluster": "family",
+          "clusters": 89,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.12048192771084337,
+            0.06060606060606061
+          ],
+          "cluster": "source_cluster",
+          "clusters": 16,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        },
+        {
+          "difference": -0.02247191011235955,
+          "ci95": [
+            -0.1,
+            0.053763440860215055
+          ],
+          "cluster": "mechanism_cluster",
+          "clusters": 64,
+          "families": 89,
+          "scope": "Percentile paired cluster bootstrap, descriptive and not multiple-comparison adjusted; small source-cluster counts limit inference."
+        }
+      ]
+    }
+  ],
+  "by_type": [
+    {
+      "type": "alternative_path",
+      "algorithm": "ShortTermMemoryAgent",
+      "eligible_families": 19,
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.7894736842105263
+    },
+    {
+      "type": "alternative_path",
+      "algorithm": "SimpleFailureRecovery",
+      "eligible_families": 19,
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.9473684210526315
+    },
+    {
+      "type": "alternative_path",
+      "algorithm": "SCARAgent",
+      "eligible_families": 19,
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5789473684210527
+    },
+    {
+      "type": "alternative_path",
+      "algorithm": "SCARV2Agent",
+      "eligible_families": 19,
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.7894736842105263
+    },
+    {
+      "type": "alternative_path",
+      "algorithm": "SCARV3Agent",
+      "eligible_families": 19,
+      "evaluated": 19,
+      "completed": 19,
+      "method_terminations": 0,
+      "recovery_at_40": 0.8947368421052632
+    },
+    {
+      "type": "ambiguous_feedback",
+      "algorithm": "ShortTermMemoryAgent",
+      "eligible_families": 86,
+      "evaluated": 86,
+      "completed": 86,
+      "method_terminations": 0,
+      "recovery_at_40": 0.6162790697674418
+    },
+    {
+      "type": "ambiguous_feedback",
+      "algorithm": "SimpleFailureRecovery",
+      "eligible_families": 86,
+      "evaluated": 86,
+      "completed": 86,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5232558139534884
+    },
+    {
+      "type": "ambiguous_feedback",
+      "algorithm": "SCARAgent",
+      "eligible_families": 86,
+      "evaluated": 86,
+      "completed": 86,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4418604651162791
+    },
+    {
+      "type": "ambiguous_feedback",
+      "algorithm": "SCARV2Agent",
+      "eligible_families": 86,
+      "evaluated": 86,
+      "completed": 86,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5465116279069767
+    },
+    {
+      "type": "ambiguous_feedback",
+      "algorithm": "SCARV3Agent",
+      "eligible_families": 86,
+      "evaluated": 86,
+      "completed": 84,
+      "method_terminations": 2,
+      "recovery_at_40": 0.5232558139534884
+    },
+    {
+      "type": "irrelevant_change",
+      "algorithm": "ShortTermMemoryAgent",
+      "eligible_families": 22,
+      "evaluated": 22,
+      "completed": 22,
+      "method_terminations": 0,
+      "recovery_at_40": 0.6363636363636364
+    },
+    {
+      "type": "irrelevant_change",
+      "algorithm": "SimpleFailureRecovery",
+      "eligible_families": 22,
+      "evaluated": 22,
+      "completed": 22,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5
+    },
+    {
+      "type": "irrelevant_change",
+      "algorithm": "SCARAgent",
+      "eligible_families": 22,
+      "evaluated": 22,
+      "completed": 22,
+      "method_terminations": 0,
+      "recovery_at_40": 0.45454545454545453
+    },
+    {
+      "type": "irrelevant_change",
+      "algorithm": "SCARV2Agent",
+      "eligible_families": 22,
+      "evaluated": 22,
+      "completed": 22,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5454545454545454
+    },
+    {
+      "type": "irrelevant_change",
+      "algorithm": "SCARV3Agent",
+      "eligible_families": 22,
+      "evaluated": 22,
+      "completed": 21,
+      "method_terminations": 1,
+      "recovery_at_40": 0.5
+    },
+    {
+      "type": "long_recovery_chain",
+      "algorithm": "ShortTermMemoryAgent",
+      "eligible_families": 56,
+      "evaluated": 56,
+      "completed": 56,
+      "method_terminations": 0,
+      "recovery_at_40": 0.48214285714285715
+    },
+    {
+      "type": "long_recovery_chain",
+      "algorithm": "SimpleFailureRecovery",
+      "eligible_families": 56,
+      "evaluated": 56,
+      "completed": 56,
+      "method_terminations": 0,
+      "recovery_at_40": 0.2857142857142857
+    },
+    {
+      "type": "long_recovery_chain",
+      "algorithm": "SCARAgent",
+      "eligible_families": 56,
+      "evaluated": 56,
+      "completed": 56,
+      "method_terminations": 0,
+      "recovery_at_40": 0.2857142857142857
+    },
+    {
+      "type": "long_recovery_chain",
+      "algorithm": "SCARV2Agent",
+      "eligible_families": 56,
+      "evaluated": 56,
+      "completed": 56,
+      "method_terminations": 0,
+      "recovery_at_40": 0.375
+    },
+    {
+      "type": "long_recovery_chain",
+      "algorithm": "SCARV3Agent",
+      "eligible_families": 56,
+      "evaluated": 56,
+      "completed": 54,
+      "method_terminations": 2,
+      "recovery_at_40": 0.30357142857142855
+    },
+    {
+      "type": "multiple_preconditions",
+      "algorithm": "ShortTermMemoryAgent",
+      "eligible_families": 83,
+      "evaluated": 83,
+      "completed": 83,
+      "method_terminations": 0,
+      "recovery_at_40": 0.6265060240963856
+    },
+    {
+      "type": "multiple_preconditions",
+      "algorithm": "SimpleFailureRecovery",
+      "eligible_families": 83,
+      "evaluated": 83,
+      "completed": 83,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5301204819277109
+    },
+    {
+      "type": "multiple_preconditions",
+      "algorithm": "SCARAgent",
+      "eligible_families": 83,
+      "evaluated": 83,
+      "completed": 83,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4457831325301205
+    },
+    {
+      "type": "multiple_preconditions",
+      "algorithm": "SCARV2Agent",
+      "eligible_families": 83,
+      "evaluated": 83,
+      "completed": 83,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5542168674698795
+    },
+    {
+      "type": "multiple_preconditions",
+      "algorithm": "SCARV3Agent",
+      "eligible_families": 83,
+      "evaluated": 83,
+      "completed": 81,
+      "method_terminations": 2,
+      "recovery_at_40": 0.5421686746987951
+    },
+    {
+      "type": "state_release",
+      "algorithm": "ShortTermMemoryAgent",
+      "eligible_families": 68,
+      "evaluated": 68,
+      "completed": 68,
+      "method_terminations": 0,
+      "recovery_at_40": 0.5735294117647058
+    },
+    {
+      "type": "state_release",
+      "algorithm": "SimpleFailureRecovery",
+      "eligible_families": 68,
+      "evaluated": 68,
+      "completed": 68,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4117647058823529
+    },
+    {
+      "type": "state_release",
+      "algorithm": "SCARAgent",
+      "eligible_families": 68,
+      "evaluated": 68,
+      "completed": 68,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4117647058823529
+    },
+    {
+      "type": "state_release",
+      "algorithm": "SCARV2Agent",
+      "eligible_families": 68,
+      "evaluated": 68,
+      "completed": 68,
+      "method_terminations": 0,
+      "recovery_at_40": 0.4852941176470588
+    },
+    {
+      "type": "state_release",
+      "algorithm": "SCARV3Agent",
+      "eligible_families": 68,
+      "evaluated": 68,
+      "completed": 66,
+      "method_terminations": 2,
+      "recovery_at_40": 0.4411764705882353
+    }
+  ],
+  "long": [],
+  "online_prequential_metrics": {
+    "n": 2150,
+    "covered": 624,
+    "coverage": 0.29023255813953486,
+    "reject_precision": 0.9135338345864662,
+    "reject_recall_all_rejections": 0.48893360160965793,
+    "false_block_rate_among_reject_predictions": 0.08646616541353383,
+    "false_positive_rate_among_legal": 0.013914095583787053,
+    "true_positive": 243,
+    "false_positive": 23,
+    "actual_rejections": 497,
+    "unknown": 1526,
+    "brier_all_predictions": 0.14960027074310375,
+    "ece_10_equal_width_bins": 0.22688394065275053,
+    "calibration_bins": [
+      {
+        "bin": 0,
+        "n": 10,
+        "risk": 0.0823038073038073,
+        "observed_rejection": 0.1
+      },
+      {
+        "bin": 1,
+        "n": 184,
+        "risk": 0.14796195652173913,
+        "observed_rejection": 0.04891304347826087
+      },
+      {
+        "bin": 2,
+        "n": 439,
+        "risk": 0.23207251009743307,
+        "observed_rejection": 0.13211845102505695
+      },
+      {
+        "bin": 3,
+        "n": 563,
+        "risk": 0.33337887689575074,
+        "observed_rejection": 0.04085257548845471
+      },
+      {
+        "bin": 4,
+        "n": 3,
+        "risk": 0.42373737373737375,
+        "observed_rejection": 0.3333333333333333
+      },
+      {
+        "bin": 5,
+        "n": 492,
+        "risk": 0.5,
+        "observed_rejection": 0.08943089430894309
+      },
+      {
+        "bin": 6,
+        "n": 120,
+        "risk": 0.6666666666666666,
+        "observed_rejection": 0.525
+      },
+      {
+        "bin": 7,
+        "n": 39,
+        "risk": 0.75,
+        "observed_rejection": 0.5641025641025641
+      },
+      {
+        "bin": 8,
+        "n": 62,
+        "risk": 0.814599334357399,
+        "observed_rejection": 0.6290322580645161
+      },
+      {
+        "bin": 9,
+        "n": 238,
+        "risk": 0.9,
+        "observed_rejection": 0.9957983193277311
+      }
+    ]
+  },
+  "limitations": [
+    "Missing/infrastructure failures are not replaced by archived scores or assumed failures. Observed bounded-format policy aborts remain in the denominator as unsuccessful method outcomes, with original status/error/cost/steps preserved. This handling was clarified after two such aborts, before long experiments; no policy or frozen data was modified and no selective reruns were performed.",
+    "Long results are one seed per game; descriptive only.",
+    "Target action release is a progress proxy, separate from actual physical goal achievement.",
+    "Prediction coverage includes explicit rejection/support, with UNKNOWN abstention. Precision/recall alone are not causal evidence."
+  ]
+}

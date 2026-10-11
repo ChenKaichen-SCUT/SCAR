@@ -7,6 +7,7 @@ from pathlib import Path
 
 from scar.environment import restore, state_digest, AGENT_ID
 from scar.io import atomic_json, read_jsonl
+from scripts.v3_outcomes import disposition
 
 
 def main():
@@ -17,7 +18,7 @@ def main():
     runtime, output = Path(args.runtime), Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
     costs, events, examples = Counter(), defaultdict(Counter), defaultdict(list)
-    replay_checks, initial_checks = [], []
+    replay_checks, initial_checks, method_terminations = [], [], []
     pairing = defaultdict(dict)
     streams = {}
     try:
@@ -35,8 +36,11 @@ def main():
                 usage = request.get("usage") or {}
                 for name in ["prompt_tokens", "completion_tokens", "prompt_cache_hit_tokens"]:
                     costs[name] += usage.get(name, 0)
-            if summary["status"] != "completed":
+            outcome = disposition(summary,directory)
+            if outcome == "incomplete":
                 continue
+            if outcome != "completed":
+                method_terminations.append({"task":directory.name,"steps":summary["steps"],"error":summary["error"],"disposition":outcome})
             initial = directory/"initial.pkl"
             source = summary.get("initial_snapshot") or runtime/"initials"/f"{summary['game']}-{summary['seed']}.pkl"
             initial_hash = state_digest(restore(initial))
@@ -72,6 +76,7 @@ def main():
             stream.close()
     pair_checks = [{"stage":stage, "family_or_game":cluster, "algorithms":len(hashes), "equal_initial_states":len(set(hashes.values())) == 1} for (stage, cluster),hashes in pairing.items()]
     result = {"checked":len(replay_checks), "exact":sum(r["exact"] for r in replay_checks), "checks":replay_checks,
+              "method_terminations":method_terminations,
               "initial_checks":initial_checks, "pair_checks":pair_checks,
               "failures":sum(not r["exact"] for r in replay_checks)+sum(not r["matches_frozen_source"] for r in initial_checks)+sum(not r["equal_initial_states"] for r in pair_checks)}
     atomic_json(output/"replay_audit.json",result)
