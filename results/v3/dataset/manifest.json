@@ -1,0 +1,72 @@
+{
+  "name": "AO-FR-Hard",
+  "frozen_at_utc": "2026-10-11T14:13:49.513192+00:00",
+  "sha256": "7ec48a44e2a9430de709a0a51ccab6fa47f35aef86559afcf1786ed558a278c2",
+  "families": 120,
+  "cases": 120,
+  "sources": {
+    "natural_STM_failure_replayed_continuation": 10,
+    "synthetic_initial_configuration_real_engine": 110
+  },
+  "source_clusters": 27,
+  "mechanism_clusters": 87,
+  "split_counts": {
+    "dev": 31,
+    "test": 89
+  },
+  "types": {
+    "long_recovery_chain": 77,
+    "ambiguous_feedback": 113,
+    "alternative_path": 26,
+    "multiple_preconditions": 107,
+    "state_release": 86,
+    "irrelevant_change": 30
+  },
+  "by_game": {
+    "mark": 31,
+    "remnant": 54,
+    "metropolis": 35
+  },
+  "missing_types": [
+    "task_goal_switch"
+  ],
+  "family_target_80_to_120_met": true,
+  "all_witnesses_replayed_twice": true,
+  "old_state_overlap": 0,
+  "split_source_overlap": 0,
+  "split_seed_source_overlap": 0,
+  "selection": "Natural validated mothers first; remaining candidates in fixed hash order. No V3 evaluation or baseline scores used. One mother per family, release checkpoints auxiliary only.",
+  "difficulty": {
+    "witness_lengths": {
+      "7": 8,
+      "6": 13,
+      "5": 16,
+      "4": 42,
+      "14": 1,
+      "9": 12,
+      "11": 3,
+      "8": 15,
+      "10": 8,
+      "12": 2
+    },
+    "prerequisite_steps": {
+      "6": 16,
+      "4": 13,
+      "3": 16,
+      "None": 26,
+      "5": 7,
+      "7": 12,
+      "2": 17,
+      "9": 3,
+      "8": 8,
+      "10": 2
+    },
+    "bounded_search": "Depth up to 10 and 1500 nodes synthetic; depth up to 8 and 400 nodes natural. Dependency planner may give nonminimal witnessed paths. Restricted action vocabulary/time abstraction; no global shortest claim."
+  },
+  "limitations": [
+    "Most cases are synthetic controlled crafting/possession tasks; not a representative sample of whole games.",
+    "Recipe mothers share action mechanisms. Family count is not IID sample size; report source and mechanism cluster uncertainty.",
+    "State release variants are offline auxiliary checks and never counted as new independent hard families.",
+    "Missing types and split-specific coverage must be reported; they are not silently treated as covered."
+  ]
+}
