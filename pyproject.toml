@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scar-agentodyssey"
+version = "0.1.0"
+description = "State-conditioned failure memory and action repair for AgentOdyssey"
+requires-python = ">=3.12"
+dependencies = ["openai", "numpy", "psutil", "gymnasium", "termcolor"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+rag = ["sentence-transformers"]
+
+[tool.setuptools.packages.find]
+include = ["scar*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
