@@ -1,0 +1,60 @@
+{
+  "upstream_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "python_hash_seed": 0,
+  "protocol_cohort": "sequence_v1",
+  "model": "deepseek-flash",
+  "base_url": "https://api.deepseek.com",
+  "thinking": "disabled",
+  "temperature": 0.7,
+  "max_tokens": 768,
+  "algorithms": [
+    "ShortTermMemoryAgent",
+    "SimpleFailureRecovery",
+    "SCARV3Agent",
+    "ResourceFIFO",
+    "SRP"
+  ],
+  "games": [
+    "saltglass",
+    "quarantine",
+    "robot_kingdom"
+  ],
+  "test_seeds": [],
+  "max_steps": 40,
+  "short_term_memory_size": 5,
+  "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+  "embedding_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "initial_workers": 4,
+  "max_workers": 12,
+  "total_budget_usd": 12.0,
+  "equal_cost_per_episode_usd": 0.15,
+  "scar": {
+    "cooldown": 8,
+    "max_rules": 256,
+    "threshold": 0.75,
+    "max_plan_steps": 3
+  },
+  "diagnostic_split_seed": 8675309,
+  "bootstrap_seed": 314159,
+  "bootstrap_samples": 10000,
+  "pricing_usd_per_million": {
+    "cache_hit": 0.006,
+    "cache_miss": 0.3,
+    "output": 1.2
+  },
+  "pricing_basis": "fixed peak price for cross-method comparison and conservative budget; not an account invoice",
+  "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "diagnostic_max_steps": 40,
+  "dataset_sha256": "8a7a45c7c07ea222b066f465103dbc99d6d27700679189c9a000b21d4064eff1",
+  "budget_authorization": "prior_user_authorized_required_experiments_no_20_usd_cap; incremental_guard_12_usd",
+  "episode_budget_usd": 0.5,
+  "predeclared_outcomes": {
+    "method_format_abort": "failure_in_full_denominator; no rerun",
+    "transport_error": "incomplete; resumable only under same frozen policy and checkpoint",
+    "global_budget_stop": "incomplete; never treated as algorithm failure",
+    "paired_seed": "one frozen physical state and common public history per family; no provider seed available",
+    "primary": "35 family paired Recovery@40, craft-only and knowledge/game breakdowns also mandatory",
+    "statistics": "family paired bootstrap 10000 seed20261012; mechanism/source cluster sensitivity; no causal knowledge-stratum claim",
+    "long_games": 0
+  }
+}

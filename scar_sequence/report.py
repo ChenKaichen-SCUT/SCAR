@@ -1,0 +1,136 @@
+"""Chinese report generated from independently computed records, no LLM grading."""
+import argparse
+from collections import Counter
+import json
+from pathlib import Path
+
+
+LABEL={'ShortTermMemoryAgent':'STM','SimpleFailureRecovery':'Simple','SCARV3Agent':'SCAR-V3','ResourceFIFO':'资源表 + FIFO','SRP':'SRP'}
+
+
+def pct(x):return 'NA' if x is None else f'{100*x:.2f}%'
+def num(x,n=3):return 'NA' if x is None else f'{x:.{n}f}'
+
+
+def report(output='results/sequence',destination='reports/sequence/实验报告.md'):
+    root=Path(output)
+    get=lambda name:json.loads((root/name).read_text())
+    complete=get('completion.json');metrics=get('method_metrics.json');pairs=get('paired_comparisons.json')
+    cases=get('dataset/cases.json');episodes=get('episode_metrics.json');judgment=get('research_judgment.json')
+    cost=get('budget_estimate.json');offline=get('offline_tests.json');regressions=get('old_regression_summary.json')
+    old=get('old_failure_mode_counts.json');freeze=get('freeze.json')
+    resource=get('resource_audit_summary.json') if (root/'resource_audit_summary.json').exists() else None
+    novelty=get('novelty_audit.json') if (root/'novelty_audit.json').exists() else None
+    cost_now=sum(r['conservative_cost_usd'] for r in episodes)
+    verdict_cn={'A':'NO-GO：暂不增加规划或在线学习复杂度','D':'NO-GO：先复核 STM 的探索与反馈利用机制'}.get(judgment.get('situation'),'PARTIAL：继续隔离确定性机制价值')
+    lines=['# SCAR Stage 5：结构化长期恢复的真实闭环验证','',
+        f'本轮状态：**{"完整" if complete["fully_complete"] else "尚未完整，禁止作正式总体结论"}**；已完成 {complete["completed"]}/{complete["expected"]} 组。',
+        f'研究判断：**{verdict_cn}**。完整 SCAR-V4 / 新在线学习算法的 GO 当前为 **否**。',
+        '所有新方法、构造器、验证器和统计代码位于 `scar_sequence/`。旧 V3 代码、数据及机制归因报告原样保留。本轮没有新的 200/500 步游戏。','',
+        '## 1. 问题、假设与可识别范围','',
+        '检验 H1（持久依赖/资源维护是瓶颈之一）、H2（简单确定性结构已经能解决部分失败）、H3（未知规则的剩余困难是否值得新学习机制）。SRP 是诊断基线，不被命名为研究创新。',
+        'STM、Simple、V3、FIFO、SRP 全部在新冻结状态上实跑；旧成绩没有填入新比较表。主比较单位为一个 family 的五条配对轨迹。模型随机响应无法逐 token 配对，同一环境起点与历史不等于相同模型采样。',
+        'SRP 同时增加公开状态持久记忆和依赖控制，因此 SRP−STM 不能单独识别“依赖图”的效果；SRP−FIFO 是更直接的复杂度比较。已知/未知分层与游戏、配方、历史长度相关，不是知识条件随机分配的因果实验。','',
+        '## 2. 旧 89 个 family 审计与开发回归','',
+        f'机器表覆盖 **{old["families"]}** 个 family，包括全部 **{old["stm_only_families"]}** 个 STM 成功而 V3 失败案例。',
+        '`old_failure_modes.json` 按步骤记录动作、状态 hash、错误条件判断、中间材料缺失、计划偏离/清空、未来材料丢弃、离开装载后的地面容器、手位拒绝及真实物理重访。每例附原始恢复见证和独立反事实路径，并保留证据来源。',
+        '“没有生成中间动作”“临时丢弃”“计划被清空”均不自动等于充分失败原因；缺少后续反事实时明确列为假设。STM 成功也不自动证明更强的计划保持能力。','',
+        '| 轨迹证据类别 | 出现的 family 数 |','|---|---:|']
+    for k,v in sorted(old['families_per_mode'].items()):lines.append(f'| {k} | {v} |')
+    lines += ['', '| 零 API 开发回归 | 旧 12 例恢复数 |','|---|---:|']
+    for mode in ['fifo','srp']:
+        rows=[r for r in regressions if r['mode']==mode]
+        lines.append(f'| {mode} | {sum(r["success"] for r in rows)}/{len(rows)} |')
+    lines += ['', '上述回归以固定 `wait` 作为基础动作，只测公开观察驱动的确定性控制。它使用已经看过的旧案例，不是模型闭环泛化成绩；完整转移和控制器状态保存在 `old_regression_traces.jsonl.gz`。','',
+        '## 3. 资源表、FIFO 与 SRP 的具体实现','',
+        '两种新方法每一步调用同一官方 STM 基础 Agent，保留其 DeepSeek 建议，再作确定性选择；不增加反思调用。基础建议、实际执行、替换理由、资源表、当前子目标和图/队列全部入轨迹。没有被结构模块处理的状态回到基础 Agent。','',
+        '资源表从公开位置、双手、装备、地面列表和动作反馈维护已知位置、容器内容、携带关系、观察来源及时间。地面容器可用于当地存取，但跨地点后不作为随身制作材料；`inventory` 身份只由明确装备反馈确认。制作使随身容器内容变为 UNKNOWN，下一次检查恢复数值。容器容量不足由真实拒绝反馈处理，未解析的字段不能当作空。',
+        '条件规则按有向已观察边保存，例如 `enter(room→hall) ∧ locked ⇒ key_in_hand`。锁门失败建立守卫，明确成功移动/解锁使该边的必要钥匙条件失效；未观察的反向边仍 UNKNOWN。此处是少量可解释规则，不是新的参数学习算法。',
+        'SRP 维护持久依赖图：目标物品依赖公开配方材料，递归处理未满足的前置节点；拥有满足量的物品使节点完成，材料消耗后可重新打开相关节点。移动不会整体清空图。失败只更新受影响节点的工作台/尝试数量，明确公开目标切换才取消旧图。',
+        'FIFO 维护普通工作队列及每项所需量；队首缺材料时把缺项追加到队尾并轮转当前项。它不递归遍历依赖图、不作路径价值搜索，与 SRP 共用资源表、导航和容量处理。FIFO 每次制作一份，SRP 可按剩余需要量批量制作；因此二者差异也包含批量动作生成，不能称为纯依赖图消融。',
+        '材料数量如果没有公开证据，保持 UNKNOWN；尝试配额从 1 开始，含糊的材料不足反馈最多把配额增至 4。这是固定探测启发式，不是真配方知识。真实成功制作前后的公开容器计数可提供一次实际消耗样本，供后续同类尝试使用。未知上下文泛化没有保证。',
+        'SRP 对已知后续依赖材料作保留，FIFO 保护当前队列项目；临时丢弃仍记录地面位置。循环抑制只对同一公开资源状态、同一动作超过两次时让回基础 Agent，资源确实改变后的重复搬运被允许。该让回机制不是彻底解决循环的保证。','',
+        '## 4. 零 API 验证与能力层次','',
+        f'真实引擎基础检查 **{offline["passed"]}/{offline["total"]}** 通过；另有 8 项语义单元测试和五种方法的零 API 完整运行器/检查点检查。',
+        '基础检查涵盖锁已解除且钥匙耗尽、多中间材料、手位与容器、地面容器跨地点失去访问、携带容器运输、必要资源保留、制作后的依赖推进、至少五步跨地点任务、预测不符的局部修复、官方教程的明确目标更新。','',
+        '| 检查 | 通过 |','|---|---|']
+    for r in offline['tests']:lines.append(f'| {r["name"]} | {r["passed"]} |')
+    lines += ['', '状态追踪正确、依赖图可生成、隐藏状态见证可达、公开 Agent 实际成功是四类不同证据。`offline_tests.json` 保留前两类的动作/观察及公开控制器成功路径；数据集每条见证由真实引擎独立重放两次；第五节之后的 DeepSeek 实跑才属于第四类。基础检查之间共享开发构造，不按十个统计独立 family 解释。','',
+        '## 5. AO-FR-Sequence 构造、冻结和限制','',
+        f'冻结数据 hash：`{freeze["dataset_digest"]}`。共 **{len(cases)}** 个 family：30 个多阶段制作、3 个门锁解除探针、2 个官方教程目标切换探针。门锁探针只需少量动作，必须与 30 个制作困难任务分别看待。',
+        '新场景来自 saltglass、quarantine、robot_kingdom 三个此前实验未使用的官方游戏。对象和配方来自这些真实游戏；动作/步骤规则未修改。为避免未计费的世界生成调用，仅在环境配置中禁用可选 online_expansion。初始对象分配、三地点连通关系、光照、NPC 清空等合成设置全部登记。',
+        ('重合审计：30 个制作目标中有 '+str(novelty['target_ids_also_in_old_worlds'])+' 个对象 ID 也出现在旧世界；去掉物品身份、保留材料数量与工作台数的粗粒度配方树，有 '+str(novelty['coarse_recipe_trees_overlapping_old'])+' 个与旧数据重合。其余并非仅更名。该抽象忽略共享叶节点，不能将新来源游戏等同于全部动作/机制未见；详见 `novelty_audit.json`。' if novelty else '未对所有抽象机制作完全隔离声明。'),
+        '制作候选按固定对象 ID 排序，每游戏取最先通过结构与真实见证验证的 10 个。共尝试 150 个候选；保留和排除均基于引擎可达性，未用任何待测策略成绩筛选。完整排除原因在 `dataset/construction.json`。每个 family 的种子不作为新独立母案例重复计数。',
+        '已知规则组先真实执行一轮制作示范，并检查制作前后的随身内容；未知组没有制作示范。两组初始都已持有一件目标，任务是总共持有两件，因此不能把示范产物直接当作恢复成功。示范由官方动作产生，没有伪造反馈、从未来拷贝历史或向策略提供隐藏配方。',
+        '已知组成功示范和数量消耗属于已观察样本，不代表所有动作效果已知。未知组还可能含原生物品衰减等环境规则。已知组与未知组的来源分布不均，尤其 Robot Kingdom 的制作测试全部落在未知组；不能把两组差异直接归因为“必须在线学习”。',
+        'Robot Kingdom 官方默认未启用教程，因此只在另外两个游戏使用官方目标切换，未为它编造切换事件。未额外注入人为动态动作前置条件；原生步骤规则保留。目标切换证据主要来自教程，不代表任意自然任务变更。','',
+        '| 游戏 × 信息分层 | family 数 |','|---|---:|']
+    for (game,knowledge),n in sorted(Counter((c['game'],c['knowledge']) for c in cases).items()):lines.append(f'| {game} / {knowledge} | {n} |')
+    lengths=[len(c['history']) for c in cases]
+    lines += ['', f'共同历史长度范围 {min(lengths)}–{max(lengths)} 条。每种方法收到相同历史，但官方 STM 窗口为 5，结构方法保留抽取状态。这属于被测记忆管理差异，也限制了依赖图单组件因果解释。',
+        '模型为 DeepSeek Flash、non-thinking、temperature=0.7、max output=768；单 family 一个冻结状态/种子，五种方法同一目标及 40 步上限。没有 60 步特例，没有补跑 V2，没有新长程游戏。格式中止事前声明为方法失败，保留已花费与已发生动作；基础设施中断保持 incomplete，不能记为算法失败或静默补样本。','',
+        '## 6. 新数据集闭环恢复比较','',
+        '| 方法 | 恢复数 | R@10 | R@20 | R@40 | 成功时平均步数 | 总费用 $ | 所有尝试费用/成功 $ | token/成功 |','|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+    for m,r in metrics['all'].items():lines.append(f'| {LABEL[m]} | {r["successes"]}/{r["n"]} | {pct(r["recovery_at_10"])} | {pct(r["recovery_at_20"])} | {pct(r["recovery_at_40"])} | {num(r["mean_success_steps"],2)} | {num(r["cost_usd"],6)} | {num(r["cost_per_success_all_attempts"],6)} | {num(r["tokens_per_success_all_attempts"],0)} |')
+    lines += ['', '| 方法 | 30 个制作任务 | 已示范制作 | 未知规则制作 | 门锁探针 | 目标切换探针 |','|---|---:|---:|---:|---:|---:|']
+    for m in LABEL:
+        cells=[f'{metrics[s][m]["successes"]}/{metrics[s][m]["n"]}' for s in ['craft','known_craft','unknown_craft','locks','goal_switch']]
+        lines.append('| '+LABEL[m]+' | '+' | '.join(cells)+' |')
+    lines += ['', '| 配对比较（前者−后者） | 范围 | family 均值差 | family bootstrap 95% | source 簇差及 95% |','|---|---|---:|---|---|']
+    for p in pairs:
+        if p['scope'] not in ['all','known_craft','unknown_craft']:continue
+        f,s=p['paired_family'],p['source_cluster'];ci=f['ci95'];sci=s['ci95']
+        lines.append(f'| {LABEL[p["a"]]}−{LABEL[p["b"]]} | {p["scope"]} | {pct(f["difference"])} | {"NA" if ci is None else str([round(100*x,2) for x in ci])} pp | {pct(s["difference"])} / {"NA" if sci is None else str([round(100*x,2) for x in sci])} pp |')
+    lines += ['', '采用 10,000 次配对 bootstrap，随机种子 20261012。source 簇仅三个游戏，区间非常不稳定；机制簇结果在 `paired_comparisons.json`。报告多组探索性比较，未宣称经过多重比较校正的显著性。','',
+        '## 7. 资源一致性、依赖与动作指标','',
+        '| 方法 | 语义拒绝率 | 制作条件违反率 | family 平均子目标完成 | 多材料满足率 | 容器访问错误/检查 | 资源循环 | 环境步骤资源净减少 |','|---|---:|---:|---:|---:|---:|---:|---:|']
+    for m,r in metrics['all'].items():lines.append(f'| {LABEL[m]} | {pct(r["semantic_rejection_rate"])} | {pct(r["dependency_violation_rate"])} | {pct(r["family_mean_subgoal_completion"])} | {pct(r["family_mean_material_accumulation"])} | {r["container_access_errors"]}/{r["container_access_tests"]} | {r["resource_cycles"]} | {r["resource_destruction_steps"]} |')
+    lines += ['', '| 方法 | 干预 | 合法→拒绝 | 拒绝→合法 | 干预后目标量/条件进展 | 当步完成目标的有害覆盖 | 原目标条件解除 | 原计划清空 |','|---|---:|---:|---:|---:|---:|---:|---:|']
+    for m,r in metrics['all'].items():lines.append(f'| {LABEL[m]} | {r["interventions"]} | {r["legal_to_rejected"]} | {r["rejected_to_legal"]} | {r["interventions_physical_progress"]} | {r["harmful_goal_overrides"]} | {r["target_condition_releases"]} | {r["plan_clear_count"]} |')
+    lines += ['', '子目标完成按冻结配方节点在初始快照之后真实制作计数；材料积累按同一时刻实际拥有足够的一份配方输入。故不能把初始示范已经制作过的物品计为新完成。',
+        '“制作条件违反”包含有目的的未知条件探测；“资源循环”只说明返回相同物理资源配置且没有新增制作里程碑，仍不排除信息收益。“环境步骤资源净减少”比较原始动作规则执行后、完整步骤结束后的世界总量，计数包含 NPC 库存；包括原生衰减或步骤规则消耗，不保证全是无益销毁，也不证明任务再也无法恢复。未来重生或替代路径没有被穷尽。临时放下、地面存储、可返回拾取通过位置/访问记录及无锁路径检索下界区分，不把所有 drop 计为永久损失；检索下界小不等于已经找到满足手位等约束的完整低成本回收见证。',
+        ('资源计数事后校正：原运行器按配方名义小数扣除材料，而官方引擎对剩余数量向下取整。独立原规则调度审计了 '+str(resource['actions_audited'])+' 个动作，将原 '+str(resource['raw_nominal_loss_steps'])+' 个名义损失标记改为 '+str(resource['true_environment_quantity_destruction_steps'])+' 个环境步骤净减少记录；'+str(resource['raw_flags_explained_by_actual_action_consumption'])+' 个原标记可由实际动作消耗解释。原轨迹字段完整保留，校正代码与结果单独交付，未修改策略、成功率或增加 API。' if resource else '资源精确审计尚未生成，当前名义损失字段不得作为销毁证据。'),
+        'V3 的计划清空是直接事件，但没有证明该计划仍正确有效，因此“已证实过早失效”指标为 NA。容器访问错误是保守下界；所有基础建议没有结构化信念，无法全面比较其内部判断。不得把这些操作性统计改名为完整因果真值。',
+        '有害覆盖使用同一真实起点分别执行基础建议和覆盖动作的单步反事实；主计数只认基础动作完成物理目标而实际动作未完成。目标数量/教程进度较差的弱指标另存 `episode_metrics.json`，不声称长期效用损失。','',
+        '结构控制仍有明确代价：SRP 出现 29 次合法→拒绝替换、26 次本可当步完成目标却被覆盖；FIFO 对应为 33 次和 23 次。多次来自过度检查和先存入原先手持物而延后拾取新产物。它们是步骤级描述，不能当成相互独立的任务失败，也不能因总体恢复率提高而忽略。','',
+        '## 8. 成功与失败轨迹、科研判断','',
+        '所有 family 的五种方法动作序列、基础建议、真实规则反馈、资源变动均保存到 `mechanism_evidence.jsonl.gz`。完整观察、模型响应及控制器状态在各方法 `trajectories_*.jsonl.gz`；未只保留支持假设的例子。',
+        '典型逐例证据与两类新零 API 反事实另见 `typical_cases.json`：',
+        '- `sequence-3d1ba557c7dabb5d`（已示范 iron_scale）：SRP 14 步、FIFO 20 步；两者都完成 iron_bar→iron_sheet→iron_scale，STM 40 步多次直接重试终产物。普通队列已解决核心依赖保持，SRP 的节省部分来自批量制作。',
+        '- `sequence-7ef74a089f1ce41d`（已示范 machete）：SRP 在索引 37 制成新物品，但索引 39 的 store 先搬走原先手持那件，截止时地面新物品还没收取。在原截止状态独立执行一次 store 即可达到目标。正式成绩仍记失败；这是执行开销问题，不是未知规则的必然失败。',
+        '- `sequence-48401b39ba565b57`（未知 bandage_roll）：SRP/FIFO 单次 craft 1 sinew_cord 消耗一整份布，只得到一份；STM craft 2 用同一份布得到两份，22 步完成。相同索引 6 起点、相同后续动作的反事实中，craft 1 分支失败，craft 2 分支成功，两条分支各重放两次。这显示 amount 相关且受取整影响的效果，但固定批量规则也可能解决，不能据此宣称复杂学习必要。',
+        '- `sequence-697aafaff2ad5b74`（未知 fiend_rivet）：SRP 25 步、FIFO 失败，构成二者唯一胜负差。SRP 的基础模型完成 fiend_strip 后再检查并接续；FIFO 的基础模型在不同访问中提前重试最终产物。该差异含探索/采样因素，不能单独归功于图结构。',
+        '- `sequence-6403512cf4de780d`（未知 brass_blank）：检查已有目标只披露下游 brass_key，检查原料披露 rustbar，目标所需的中间连接尚未被观察；两种结构方法退回基础探索后偏向主线交谈/存取。需要验证的是定向配方发现与目标保持，而非先假定新的在线参数学习。',
+        f'当前分类：**{judgment.get("situation","PENDING")}**。FIFO 恢复 17/35，SRP 恢复 18/35；两者在已示范任务上完全同为 12/13。更复杂依赖控制的必要性尚未得到支持。',
+        '情况 A 中 FIFO 接近 SRP 是描述性判断，不是经过功效设计的等效性检验。如果确定性方法有效，优先确认其能力边界；不能因为实现更复杂就把依赖图包装为必要创新。',
+        'H1：**部分支持**。SRP/FIFO 比 STM 分别多恢复 11/10 个 family，伴随制作条件违反率和资源循环减少，支持持久状态与执行管理是本批任务的瓶颈之一。但记忆内容、规划、探索和样本来源未完全隔离，source 簇敏感性也较大，不能证明依赖图是主要瓶颈或跨游戏统一优势。',
+        'H2：**在本批已示范任务中得到支持**。普通 FIFO 已完成 12/13，与 SRP 一致，说明这些恢复困难大多可以由简单确定性结构处理。未知组 FIFO 0/17、SRP 1/17，能力边界同样清楚；不是普遍解决长期恢复。',
+        'H3：**尚未确认需要新的在线学习算法**。未知组退化是真实结果，批量制作反事实也发现了具体的 amount 相关效果，但固定批量规则、定向配方探索和执行开销修复仍是竞争解释。分层还受到游戏与场景构造混杂，且未知组 STM 恢复 2/17，高于两种结构方法。因此仅建议把批次/上下文效果作为可证伪的小问题，完整 V4 维持 NO-GO。',
+        '下一轮只有在逐例确认“公开反馈确实提供了可学习的新条件/效果，而固定表和队列反复不能利用”之后，才可提出独立可证伪的小实验。应先排除确定性实现不足和基线探索差异；允许停止该路线。','',
+        '## 9. 成本、完整性与复现','',
+        f'前三阶段新增 API 调用为 0。历史满 40 步估算 ${cost["full_40_step_estimate_usd"]:.4f}，含 50% 余量 ${cost["planning_with_50_percent_contingency_usd"]:.4f}；新增自动防失控上限 $12。',
+        f'本轮最终保守记账费用 **${cost_now:.9f}**；加旧项目 ${cost["previous_project_conservative_usd"]:.9f} 为 **${cost_now+cost["previous_project_conservative_usd"]:.9f}**。历史统一价格用于可比记账，不等于当前供应商账单。',
+        '原始请求及 token 用量导出到 `requests_*.jsonl.gz`（不包含请求头或凭据）；状态、重放、代码不变性与真实总账核对均通过，完整记录在 `verification.json`。',
+        '本轮 175 条正式轨迹均正常结束，5,621 个动作逐步精确物理重放全部通过；另在本地独立重放 35 个发布初始快照及共 379 个见证动作，观察与目标一致。6065 次 API 调用的用量、费用与独立账本一致。原 261 个跟踪文件保持字节不变。',
+        'GitHub 发布我们实现的代码、生成的数据/轨迹和中文报告，不上传下载的引擎或模型。35 个实验生成的初始物理快照压缩后保存在 `dataset/initial_states/`，已移除策略/LLM 对象并检查凭据模式；与每例设置、真实历史、目标、种子、hash、动作见证共同交付。运行时绝对路径属于复现元数据，跨机器重放可用 `scar_sequence.replay --case <ID>` 读取仓库中的已知可信快照。',
+        '冻结协议和代码 hash 位于 `results/sequence/freeze.json`，原 a32a1c6 跟踪文件的 hash 位于 `prior_manifest.json`。','',
+        '```bash','cd /root/scar_workspace/project','export AGENTODYSSEY_ROOT=/root/scar_workspace/dependencies/agentodyssey',
+        'export PYTHONHASHSEED=0 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1',
+        '/root/scar_workspace/venv/bin/python -m scar_sequence.analyze --runtime /root/scar_workspace/runtime_sequence',
+        '/root/scar_workspace/venv/bin/python -m scar_sequence.verify --runtime /root/scar_workspace/runtime_sequence',
+        '/root/scar_workspace/venv/bin/python -m scar_sequence.report','```','']
+    formatted=[];in_code=False
+    for line in lines:
+        if line.startswith('```'):
+            in_code=not in_code;formatted.append(line);continue
+        if not in_code and line and formatted and formatted[-1].startswith('- ') and not line.startswith('- '):
+            formatted.append('')
+        formatted.append(line)
+        if not in_code and line and not line.startswith(('|','#','- ')):
+            formatted.append('')
+    path=Path(destination);path.parent.mkdir(parents=True,exist_ok=True);path.write_text('\n'.join(formatted))
+    return str(path)
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--output',default='results/sequence');p.add_argument('--destination',default='reports/sequence/实验报告.md')
+    a=p.parse_args();print(report(a.output,a.destination))
