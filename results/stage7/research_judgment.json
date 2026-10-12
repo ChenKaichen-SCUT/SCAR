@@ -1,0 +1,124 @@
+{
+  "retry_context_fix": {
+    "config": "C1",
+    "successes": 6,
+    "C0_successes": 4,
+    "paired_gains": 2,
+    "paired_losses": 0,
+    "net": 2,
+    "family_ci95": [
+      0.0,
+      0.29411764705882354
+    ],
+    "implementation_gate": "passed",
+    "local_effects": {
+      "comparisons": 3553,
+      "changed": 116,
+      "enabled_goal_better": 0,
+      "enabled_goal_worse": 0,
+      "enabled_legal_better": 30,
+      "enabled_legal_worse": 12,
+      "enabled_exposes_more_key_names": 0,
+      "enabled_exposes_fewer_key_names": 0
+    },
+    "judgment": "本批有净改善，但需结合负例与局部审计，不构成未见任务泛化证明。",
+    "verdict": "支持保留 A 的上下文资格修复；不等于所有新增成功均被严格因果确认。",
+    "reason": "C1 为 6/17，对照 4/17；新增 key_blank、master_keycard，未丢失 C0 成功。必要配方 54→61/68；旧试制资格耗尽后的候选机会 359→35。记录 24 次条件解除后成功，其中 14 次属于前向试制重试。成本仍从 $0.339 增至 $0.379，且存在有害候选覆盖；应把状态正确性和整局效益分开。"
+  },
+  "knowledge_gap_exploration": {
+    "config": "C2",
+    "successes": 5,
+    "C0_successes": 4,
+    "paired_gains": 1,
+    "paired_losses": 0,
+    "net": 1,
+    "family_ci95": [
+      0.0,
+      0.17647058823529413
+    ],
+    "implementation_gate": "passed",
+    "local_effects": {
+      "comparisons": 3553,
+      "changed": 147,
+      "enabled_goal_better": 0,
+      "enabled_goal_worse": 0,
+      "enabled_legal_better": 13,
+      "enabled_legal_worse": 18,
+      "enabled_exposes_more_key_names": 0,
+      "enabled_exposes_fewer_key_names": 0
+    },
+    "judgment": "本批有净改善，但需结合负例与局部审计，不构成未见任务泛化证明。",
+    "verdict": "B 的额外知识效率收益证据弱，当前实现还存在不可忽视的递归缺陷。",
+    "reason": "C2 只比 C0 多 1 例 brass_blank；关键规则 54→55/68，定向动作均为 236，每条定向新规则动作 4.37→4.29，信息动作费用/新必要规则反而 $0.002391→$0.002629。旧 7 例缺知识任务没有新增恢复。已提交状态的同提案局部审计没有发现 B 当步披露更多必要配方名；这不排除后续运输/生产价值，但不能认定搜索显著更高效。C5 中止检查点仅关闭 B 可消除递归，此版本不宜直接推广。"
+  },
+  "explore_execute_switch": {
+    "config": "C3",
+    "successes": 5,
+    "C0_successes": 4,
+    "paired_gains": 2,
+    "paired_losses": 1,
+    "net": 1,
+    "family_ci95": [
+      -0.11764705882352941,
+      0.23529411764705882
+    ],
+    "implementation_gate": "passed",
+    "local_effects": {
+      "comparisons": 3553,
+      "changed": 136,
+      "enabled_goal_better": 0,
+      "enabled_goal_worse": 0,
+      "enabled_legal_better": 24,
+      "enabled_legal_worse": 0,
+      "enabled_exposes_more_key_names": 0,
+      "enabled_exposes_fewer_key_names": 5
+    },
+    "judgment": "本批有净改善，但需结合负例与局部审计，不构成未见任务泛化证明。",
+    "verdict": "不支持当前 C 已可靠改善知识到执行；有明确的生产优先级错误。",
+    "reason": "C3 为 5/17，新增 bar_mail、brass_blank，同时丢失 bandage_roll。真正 ready-execution 触发仅 13 次；brass_blank 的该触发为 0，其 37 个同状态单 C 开关比较也均不改变动作，不能将其成功当作该机制有效证据。中间未转化 18/43→18/42，包含截尾的描述延迟 22.40→22.00，不足以宣称显著改善。bandage_roll 第 8 索引已有 2 根落地绳，C 却再次制作并耗尽最后一份布。关闭 C 的同状态动作改为收取，配相同两步目标续动作可完成；这是局部反例，不是模型补跑。"
+  },
+  "resource_goal_guard": {
+    "config": "C4",
+    "successes": 5,
+    "C0_successes": 4,
+    "paired_gains": 1,
+    "paired_losses": 0,
+    "net": 1,
+    "family_ci95": [
+      0.0,
+      0.17647058823529413
+    ],
+    "implementation_gate": "passed",
+    "local_effects": {
+      "comparisons": 3553,
+      "changed": 636,
+      "enabled_goal_better": 50,
+      "enabled_goal_worse": 1,
+      "enabled_legal_better": 13,
+      "enabled_legal_worse": 83,
+      "enabled_exposes_more_key_names": 0,
+      "enabled_exposes_fewer_key_names": 0
+    },
+    "judgment": "本批有净改善，但需结合负例与局部审计，不构成未见任务泛化证明。",
+    "verdict": "D 的需求批量与最终收取有局部价值，但可见物合法性和即时完成候选保护仍不可靠。",
+    "reason": "C4 为 5/17，新增 bar_mail；其公开数量提示支持直接请求 3 根 rustbar，19 步完成。可避免保留材料损耗动作 2→0，基础候选当步可完成却被覆盖 7→0。但合法候选替成拒绝动作 24→40，资源循环 24→36。全量局部开关中 D 使单步目标更好 50 次、更差 1 次；key_blank 需要两份时，它用拾取一份覆盖了能取得两份的转存。另会在幻影物品上重复拾取，不能将可见直接当作已证实可取得。"
+  },
+  "combination": {
+    "successes": 7,
+    "C0_successes": 4,
+    "paired_gains": [
+      "sequence-0b1c0d36cbf3727b",
+      "sequence-6403512cf4de780d",
+      "sequence-7f16db9519b84e2d",
+      "sequence-d6341439ebbc42c8"
+    ],
+    "paired_losses": [
+      "sequence-48401b39ba565b57"
+    ],
+    "strictly_above_best_single": true,
+    "scope": "六配置不完整识别交互；不同远端采样路径不能作为严格确定性因果证据。",
+    "verdict": "组合总分有额外收益迹象，但当前 C5 尚不可靠；优先修复已确认的简单机制缺陷，不支持升级复杂在线学习器。",
+    "reason": "C5 7/17，高于最高单项 6/17；相对 C0 新增 4 例、丢失 1 例。成对差 17.6 个百分点，家族 bootstrap 95% 区间为 [-5.9, 41.2]，不能排除零差异。旧共同失败 11 例只新增 key_blank、bar_mail 两例恢复。组合仍有 bandage_roll 退化、2 次可避免保留材料损耗、spire_pike 递归中止及幻影拾取循环。轨迹显示 A 重试、B 连接探索、C 执行与 D 收取可在成功链中相接，但局部单步证据不足以把总分差认定为确定协同。"
+  },
+  "interpretation_scope": "post-hoc analysis of original 70f01fa99cc2 cohort only; no policy changes, no paid reruns"
+}

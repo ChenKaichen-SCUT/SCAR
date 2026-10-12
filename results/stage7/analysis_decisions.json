@@ -1,0 +1,42 @@
+{
+  "formal_policy_unchanged_after_freeze": true,
+  "new_paid_runs_after_batch": 0,
+  "formal_attempts": 102,
+  "analysis_scope": "exploratory, repeatedly analyzed families; post-policy analysis can be refined without changing policy or rerunning model",
+  "posthoc_decisions": [
+    {
+      "decision": "classify reproducible policy recursion as method abort",
+      "raw_status": "failed retained unchanged",
+      "proof": "method_terminations.json, twice zero-API reproduction",
+      "scoring": "failure in full17 denominator; all paid requests included"
+    },
+    {
+      "decision": "include redundant crafting when sufficient ground copies can be legally collected",
+      "reason": "quantity1 can still consume reserved inputs unnecessarily; narrower batch-comparison criterion misses this failure",
+      "proof": "opportunity_audit.jsonl.gz, critical_counterfactuals.json",
+      "counting": "number of affected actions; also retain evidence records and categories"
+    },
+    {
+      "decision": "inspect every C0-success to C3/C5-failure case, every D one-step goal regression, every C5 rejected final priority",
+      "purpose": "negative mechanism attribution, no policy tuning",
+      "fixed_suffix": "evaluator-supplied identical two goal actions, within40, explicitly not autonomous performance"
+    }
+  ],
+  "full_agent_prompt_audit": {
+    "actions": 609,
+    "api_calls": 0,
+    "performed_after_freeze": true,
+    "policy_unchanged": true
+  },
+  "portable_replay": {
+    "episodes": 102,
+    "actions": 3553,
+    "api_calls": 0
+  },
+  "publication_excludes": [
+    "downloaded engine",
+    "downloaded model",
+    "credentials",
+    "runtime SQLite ledgers"
+  ]
+}
