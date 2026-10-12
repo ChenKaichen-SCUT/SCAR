@@ -1,0 +1,526 @@
+{
+  "source_checkpoint": "P3-chain_net-36",
+  "get_recipe": {
+    "product": "chain_net",
+    "status": "KNOWN",
+    "materials": {
+      "status": "KNOWN",
+      "value": [
+        "iron_bar",
+        "sinew_cord"
+      ]
+    },
+    "quantities": {
+      "status": "KNOWN",
+      "value": {
+        "iron_bar": 3.0,
+        "sinew_cord": 2.0
+      }
+    },
+    "stations": {
+      "status": "KNOWN",
+      "value": [
+        "crucible",
+        "war_bench"
+      ]
+    },
+    "first_relation_step": 29,
+    "first_quantity_step": 30,
+    "first_observed_step": 10,
+    "source_action": "craft 1 chain_net",
+    "raw_evidence": "Cannot craft chain_net. Missing necessary war_bench, crucible in the current area.",
+    "evidence_ids": [
+      "k14_abfe13738b262788",
+      "k14_65cfc03030fa9c52",
+      "k14_515d4166f741cd84",
+      "k14_76ac14a3b4fc7757"
+    ],
+    "station_completeness": {
+      "status": "UNKNOWN",
+      "value": null
+    },
+    "batch_consumption": {
+      "status": "UNKNOWN",
+      "value": null
+    },
+    "complete": false,
+    "missing_conditions": [
+      "station_completeness",
+      "batch_consumption"
+    ],
+    "source_mode": "P1_native_evidence",
+    "as_of_step": 46
+  },
+  "get_known_dependencies": {
+    "product": "chain_net",
+    "status": "KNOWN",
+    "dependencies": [
+      "iron_bar",
+      "sinew_cord"
+    ],
+    "evidence_ids": [
+      "k14_abfe13738b262788",
+      "k14_65cfc03030fa9c52",
+      "k14_515d4166f741cd84",
+      "k14_76ac14a3b4fc7757"
+    ]
+  },
+  "get_missing_knowledge": {
+    "goal": "chain_net",
+    "gaps": [
+      {
+        "product": "chain_net",
+        "status": "KNOWN",
+        "missing_conditions": [
+          "station_completeness",
+          "batch_consumption"
+        ]
+      },
+      {
+        "product": "iron_bar",
+        "status": "KNOWN",
+        "missing_conditions": [
+          "stations",
+          "station_completeness",
+          "batch_consumption"
+        ]
+      },
+      {
+        "product": "sinew_cord",
+        "status": "KNOWN",
+        "missing_conditions": [
+          "station_completeness",
+          "batch_consumption"
+        ]
+      },
+      {
+        "product": "iron_nugget",
+        "status": "KNOWN",
+        "missing_conditions": [
+          "station_completeness",
+          "batch_consumption"
+        ]
+      },
+      {
+        "product": "salvage_cloth",
+        "status": "UNKNOWN",
+        "missing_conditions": [
+          "materials",
+          "quantities",
+          "stations",
+          "station_completeness",
+          "batch_consumption"
+        ]
+      },
+      {
+        "product": "scrap_iron",
+        "status": "UNKNOWN",
+        "missing_conditions": [
+          "materials",
+          "quantities",
+          "stations",
+          "station_completeness",
+          "batch_consumption"
+        ]
+      }
+    ],
+    "scope": "currently disclosed dependency graph only; leaf recipes can be UNKNOWN"
+  },
+  "get_available_materials": {
+    "as_of_step": 46,
+    "current": {
+      "hands": {
+        "status": "KNOWN",
+        "value": {
+          "chain_net": 1.0,
+          "iron_bar": 1.0
+        }
+      },
+      "equipment": {
+        "status": "KNOWN",
+        "value": {
+          "scout_satchel_0": 1.0
+        }
+      },
+      "ground": {
+        "status": "KNOWN",
+        "value": {
+          "crown_shard": 6.0,
+          "crucible": 1.0,
+          "iron_bar": 1.0,
+          "war_bench": 1.0
+        }
+      }
+    },
+    "owned_public_accounting": {
+      "chain_net": {
+        "lower_bound": 1.0,
+        "complete_public_accounting": true,
+        "status": "KNOWN",
+        "scope": "public accounting, not hidden current-world verification"
+      },
+      "iron_bar": {
+        "lower_bound": 2.0,
+        "complete_public_accounting": true,
+        "status": "KNOWN",
+        "scope": "public accounting, not hidden current-world verification"
+      },
+      "scout_satchel_0": {
+        "lower_bound": 1.0,
+        "complete_public_accounting": true,
+        "status": "KNOWN",
+        "scope": "public accounting, not hidden current-world verification"
+      },
+      "sinew_cord": {
+        "lower_bound": 2.0,
+        "complete_public_accounting": true,
+        "status": "KNOWN",
+        "scope": "public accounting, not hidden current-world verification"
+      }
+    },
+    "accessible_containers": [
+      {
+        "container": "scout_satchel_0",
+        "carried": true,
+        "last_observed_counts": {
+          "status": "KNOWN",
+          "value": {
+            "iron_bar": 1.0,
+            "sinew_cord": 2.0
+          }
+        },
+        "observed_step": 46,
+        "current_contents_certainty": "UNKNOWN",
+        "scope": "historical public counts; unobserved external changes not excluded"
+      }
+    ]
+  },
+  "get_rule_evidence": {
+    "product": "chain_net",
+    "status": "KNOWN",
+    "first_relation_step": 29,
+    "first_quantity_step": 30,
+    "events": [
+      {
+        "certainty": "PARTIAL_STATION_REQUIREMENT",
+        "changes": [
+          "required_station_added"
+        ],
+        "conflict": false,
+        "event_id": "k14_abfe13738b262788",
+        "format": "craft_missing_stations",
+        "ingredients": null,
+        "observed_step": 10,
+        "product": "chain_net",
+        "quantities": null,
+        "raw_evidence": "Cannot craft chain_net. Missing necessary war_bench, crucible in the current area.",
+        "source": {
+          "action": "craft 1 chain_net",
+          "step": 10
+        },
+        "source_action": "craft 1 chain_net",
+        "station_completeness": "known_required_subset",
+        "stations": [
+          "war_bench",
+          "crucible"
+        ]
+      },
+      {
+        "certainty": "EXPLICIT_RELATION",
+        "changes": [
+          "new_relation"
+        ],
+        "conflict": false,
+        "event_id": "k14_65cfc03030fa9c52",
+        "format": "inspection_names",
+        "ingredients": [
+          "iron_bar",
+          "sinew_cord"
+        ],
+        "observed_step": 29,
+        "product": "chain_net",
+        "quantities": null,
+        "raw_evidence": "It can be used to craft: forged_blade_blank (made of iron_bar, wooden_rod), hellfire_bomb (made of hellcoal_concentrate, oil_flask, iron_bar), cog_crossbow (made of gearwork_frame, iron_bar, sinew_cord), fiend_halberd (made of fiend_alloy, iron_bar, wooden_rod, war_strap), hunter_gauntlets (made of iron_bar, war_strap, sinew_cord), siege_crate (made of scorched_plank, iron_bar, sinew_cord), gearwork_frame (made of cog_assembly, iron_bar), iron_mace (made of iron_bar, wooden_rod, war_strap), war_pack (made of stitched_panel, war_strap, iron_bar), gate_blank (made of iron_bar), chain_net (made of iron_bar, sinew_cord), iron_sheet (made of iron_bar), hunter_helm (made of iron_bar, padded_lining), machine_trap (made of chain_net, cog_assembly, iron_bar).",
+        "source": {
+          "action": "inspect iron_bar",
+          "step": 29
+        },
+        "source_action": "inspect iron_bar",
+        "station_completeness": "UNKNOWN",
+        "stations": null
+      },
+      {
+        "certainty": "EXPLICIT_RELATION",
+        "changes": [
+          "explicit_quantities_added"
+        ],
+        "conflict": false,
+        "event_id": "k14_515d4166f741cd84",
+        "format": "acquisition_quantities",
+        "ingredients": [
+          "iron_bar",
+          "sinew_cord"
+        ],
+        "observed_step": 30,
+        "product": "chain_net",
+        "quantities": {
+          "iron_bar": 3.0,
+          "sinew_cord": 2.0
+        },
+        "raw_evidence": "I have acquired a new item: iron_bar. It can be used to craft: forged_blade_blank (2 iron_bar, 1 wooden_rod), hellfire_bomb (1 hellcoal_concentrate, 1 oil_flask, 0.5 iron_bar), cog_crossbow (1 gearwork_frame, 2 iron_bar, 3 sinew_cord), fiend_halberd (1 fiend_alloy, 2 iron_bar, 2 wooden_rod, 2 war_strap), hunter_gauntlets (1 iron_bar, 1 war_strap, 1 sinew_cord), siege_crate (4 scorched_plank, 2 iron_bar, 2 sinew_cord), gearwork_frame (1 cog_assembly, 2 iron_bar), iron_mace (2 iron_bar, 1 wooden_rod, 1 war_strap), war_pack (2 stitched_panel, 2 war_strap, 1 iron_bar), gate_blank (0.5 iron_bar), chain_net (3 iron_bar, 2 sinew_cord), iron_sheet (2 iron_bar), hunter_helm (2 iron_bar, 1 padded_lining), machine_trap (1 chain_net, 1 cog_assembly, 1 iron_bar)",
+        "source": {
+          "action": "store 1 iron_bar inventory",
+          "step": 30
+        },
+        "source_action": "store 1 iron_bar inventory",
+        "station_completeness": "UNKNOWN",
+        "stations": null
+      },
+      {
+        "certainty": "EXPLICIT_RELATION",
+        "changes": [
+          "repeated_disclosure"
+        ],
+        "conflict": false,
+        "event_id": "k14_76ac14a3b4fc7757",
+        "format": "acquisition_quantities",
+        "ingredients": [
+          "iron_bar",
+          "sinew_cord"
+        ],
+        "observed_step": 33,
+        "product": "chain_net",
+        "quantities": {
+          "iron_bar": 3.0,
+          "sinew_cord": 2.0
+        },
+        "raw_evidence": "I have acquired a new item: sinew_cord. It can be used to craft: stitched_panel (1 bandage_roll, 1 sinew_cord), timber_sword (1 scorched_plank, 1 wood_strip, 1 sinew_cord), spiked_club (2 charred_timber, 2 rubble_chunk, 1 sinew_cord), war_strap (1 sinew_cord, 0.25 bandage_roll), war_codex (2 field_journal, 2 sinew_cord, 1 fiend_strip), cog_crossbow (1 gearwork_frame, 2 iron_bar, 3 sinew_cord), ruin_spear (1 knapped_edge, 1 wooden_rod, 1 sinew_cord), hunter_gauntlets (1 iron_bar, 1 war_strap, 1 sinew_cord), fiend_scale_bundle (6 fiend_alloy_scale, 3 sinew_cord), scale_bundle (6 iron_scale, 2 sinew_cord), siege_crate (4 scorched_plank, 2 iron_bar, 2 sinew_cord), fiend_gauntlets (1 fiend_alloy, 1 war_strap, 2 sinew_cord), bandage_roll (1 salvage_cloth, 2 sinew_cord), padded_tunic (1 padded_lining, 1 sinew_cord), scrap_buckler (2 scrap_iron, 1 sinew_cord), repair_kit (2 scrap_iron, 2 sinew_cord, 1 oil_flask), scout_satchel (3 salvage_cloth, 1 sinew_cord), warding_charm (1 demon_core_shard, 3 sinew_cord, 1 hellcoal_concentrate), field_journal (5 war_parchment, 1 sinew_cord), chain_net (3 iron_bar, 2 sinew_cord)",
+        "source": {
+          "action": "store 2 sinew_cord inventory",
+          "step": 33
+        },
+        "source_action": "store 2 sinew_cord inventory",
+        "station_completeness": "UNKNOWN",
+        "stations": null
+      }
+    ],
+    "provenance_available": true
+  },
+  "get_execution_status": {
+    "product": "chain_net",
+    "s1_assessment": {
+      "action": "craft 1 chain_net",
+      "status": "UNKNOWN",
+      "conditions": [
+        {
+          "kind": "station",
+          "status": "SUPPORTED",
+          "evidence": {
+            "required": [
+              "crucible",
+              "war_bench"
+            ],
+            "current_ground": {
+              "crown_shard": 6.0,
+              "crucible": 1.0,
+              "iron_bar": 1.0,
+              "war_bench": 1.0
+            }
+          },
+          "observed_step": 46,
+          "valid_until": "relevant public condition changes"
+        },
+        {
+          "kind": "materials",
+          "status": "UNKNOWN",
+          "evidence": {
+            "owned": {
+              "lower_bound": 2.0,
+              "exact": true
+            },
+            "quantity_rule": "UNKNOWN"
+          },
+          "observed_step": 46,
+          "valid_until": "relevant public condition changes",
+          "item": "iron_bar",
+          "amount": 1
+        },
+        {
+          "kind": "materials",
+          "status": "UNKNOWN",
+          "evidence": {
+            "owned": {
+              "lower_bound": 2.0,
+              "exact": true
+            },
+            "quantity_rule": "UNKNOWN"
+          },
+          "observed_step": 46,
+          "valid_until": "relevant public condition changes",
+          "item": "sinew_cord",
+          "amount": 1
+        }
+      ]
+    },
+    "nominal_material_conditions": [
+      {
+        "material": "iron_bar",
+        "nominal_required": 3.0,
+        "owned": {
+          "lower_bound": 2.0,
+          "exact": true
+        },
+        "status": "REJECT"
+      },
+      {
+        "material": "sinew_cord",
+        "nominal_required": 2.0,
+        "owned": {
+          "lower_bound": 2.0,
+          "exact": true
+        },
+        "status": "SUPPORTED"
+      }
+    ],
+    "blockers": [
+      {
+        "material": "iron_bar",
+        "nominal_required": 3.0,
+        "owned": {
+          "lower_bound": 2.0,
+          "exact": true
+        },
+        "status": "REJECT"
+      }
+    ],
+    "knowledge_status": "KNOWN",
+    "unknown_conditions": [
+      "station_completeness",
+      "batch_consumption"
+    ],
+    "retry_allowed": true,
+    "as_of_step": 46,
+    "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+  },
+  "get_goal_status": {
+    "goal": "chain_net",
+    "required": 2,
+    "owned": {
+      "lower_bound": 1.0,
+      "exact": true
+    },
+    "complete": false,
+    "completion_status": "KNOWN",
+    "completion_basis": "owned public accounting; production or ground presence alone never sufficient",
+    "direct_acquisition_actions": [],
+    "execution": {
+      "product": "chain_net",
+      "s1_assessment": {
+        "action": "craft 1 chain_net",
+        "status": "UNKNOWN",
+        "conditions": [
+          {
+            "kind": "station",
+            "status": "SUPPORTED",
+            "evidence": {
+              "required": [
+                "crucible",
+                "war_bench"
+              ],
+              "current_ground": {
+                "crown_shard": 6.0,
+                "crucible": 1.0,
+                "iron_bar": 1.0,
+                "war_bench": 1.0
+              }
+            },
+            "observed_step": 46,
+            "valid_until": "relevant public condition changes"
+          },
+          {
+            "kind": "materials",
+            "status": "UNKNOWN",
+            "evidence": {
+              "owned": {
+                "lower_bound": 2.0,
+                "exact": true
+              },
+              "quantity_rule": "UNKNOWN"
+            },
+            "observed_step": 46,
+            "valid_until": "relevant public condition changes",
+            "item": "iron_bar",
+            "amount": 1
+          },
+          {
+            "kind": "materials",
+            "status": "UNKNOWN",
+            "evidence": {
+              "owned": {
+                "lower_bound": 2.0,
+                "exact": true
+              },
+              "quantity_rule": "UNKNOWN"
+            },
+            "observed_step": 46,
+            "valid_until": "relevant public condition changes",
+            "item": "sinew_cord",
+            "amount": 1
+          }
+        ]
+      },
+      "nominal_material_conditions": [
+        {
+          "material": "iron_bar",
+          "nominal_required": 3.0,
+          "owned": {
+            "lower_bound": 2.0,
+            "exact": true
+          },
+          "status": "REJECT"
+        },
+        {
+          "material": "sinew_cord",
+          "nominal_required": 2.0,
+          "owned": {
+            "lower_bound": 2.0,
+            "exact": true
+          },
+          "status": "SUPPORTED"
+        }
+      ],
+      "blockers": [
+        {
+          "material": "iron_bar",
+          "nominal_required": 3.0,
+          "owned": {
+            "lower_bound": 2.0,
+            "exact": true
+          },
+          "status": "REJECT"
+        }
+      ],
+      "knowledge_status": "KNOWN",
+      "unknown_conditions": [
+        "station_completeness",
+        "batch_consumption"
+      ],
+      "retry_allowed": true,
+      "as_of_step": 46,
+      "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+    }
+  },
+  "get_uninspected_objects": [
+    {
+      "object": "sinew_cord",
+      "observations": [
+        {
+          "location": "courtyard",
+          "container": "scout_satchel_0",
+          "observed_step": 46,
+          "scope": "historical last-observed container contents"
+        }
+      ]
+    }
+  ]
+}

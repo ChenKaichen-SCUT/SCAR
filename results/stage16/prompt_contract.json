@@ -1,0 +1,10 @@
+{
+  "game": "robot_kingdom",
+  "objective": "Obtain at least 2 chain_net in your possession in total. You already hold one. The previous craft failed. Any valid route is allowed.",
+  "system_prompt_without_facts": "\nYou are the player in a text adventure games. The world is described in text form.\nAt each turn, you may choose ONE action from the action space below.\n\nAction space:\n- attack <npc_name>\n- buy <amount> <obj_name> <npc_name>\n- craft <amount> <obj_name>\n- defend \n- discard <amount> <obj_name> <container_name>\n- drop <object_name>\n- enter <area_name>\n- equip <obj_name>\n- inspect <object_name>\n- jam <object_name> <npc_name>\n- overload <component_name>\n- pick up <object_name>\n- rally <npc_name>\n- salvage <material_name>\n- scavenge \n- sell <amount> <obj_name> <npc_name>\n- siphon <object_name> <npc_name>\n- store <amount> <obj_name> <container_name>\n- take out <obj_name> <container_name>\n- talk to <npc_name>\n- unequip <obj_name>\n- wait \n- write <text> <writable_name>\n\nOutput format (STRICT):\nReturn a single JSON object with exactly these keys:\n{\n  \"reasoning\": \"A few sentences explaining why you choose the action.\",\n  \"action\": \"<action>\"\n}\n\nRules:\n- The JSON must be the ONLY content in your reply (no extra text before/after).\n- The action must exactly match one option from the action space.\n\nExperiment recovery objective (priority for this episode): Obtain at least 2 chain_net in your possession in total. You already hold one. The previous craft failed. Any valid route is allowed.",
+  "action_prompt": "What should I do next? Return only the JSON object.",
+  "objective_prefix": "\nExperiment recovery objective (priority for this episode): ",
+  "facts_MAX_RECORDS": 48,
+  "facts_MAX_CHARACTERS": 6000,
+  "memory_format": "{obs[text]}\nProposed: {proposal}\nExecuted action: {actual}"
+}

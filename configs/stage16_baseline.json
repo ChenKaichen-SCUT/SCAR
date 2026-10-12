@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "base_commit": "d747793d1a76a14004e43c8ad698b768afcf1f24",
+  "default_variant": "S1_P1_P3",
+  "variants": [
+    "S1",
+    "S1_P1",
+    "S1_P1_P3"
+  ],
+  "provider_contract": {
+    "model": "deepseek-flash",
+    "base_url": "https://api.deepseek.com",
+    "thinking": "disabled",
+    "temperature": 0.7,
+    "max_tokens": 768
+  },
+  "stm_size": 5,
+  "seed_default": 42,
+  "episode_actions": 40,
+  "finish_window": 6,
+  "facts": {
+    "max_records": 48,
+    "max_characters": 6000
+  },
+  "embedding_metadata": {
+    "model": "Qwen/Qwen3-Embedding-0.6B",
+    "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+    "loaded_by_stm": false
+  },
+  "exploration_limit": 18,
+  "trial_limit": 4,
+  "max_craft_request": 4,
+  "max_condition_candidates": 32,
+  "fixed_flags": {
+    "retry_context_fix": true,
+    "knowledge_gap_exploration": false,
+    "explore_execute_switch": false,
+    "resource_goal_guard": false
+  },
+  "opportunistic": false,
+  "storage": false,
+  "upstream_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "acceptance": {
+    "new_api_calls": 0,
+    "new_native_actions": 0,
+    "full_episode_replays": 0,
+    "new_performance_scores": false
+  }
+}
