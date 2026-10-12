@@ -1,0 +1,1978 @@
+{
+  "jobs": [
+    {
+      "state_id": "d12_b2926ff775c6769c",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_b2926ff775c6769c",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "forged_blade_blank",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The previous craft of forged_blade_blank failed because the required stations war_bench and crucible are not in the barracks. Historical evidence places both stations in the courtyard. Moving there is the necessary prerequisite step before attempting the craft again.",
+            "reasoning_digest": "e7ef485a05f99cdc49eaa4be226fff04cb120811ea4ed3fd053c9d4e5fdff78f",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          },
+          {
+            "saved_J2_reasoning": "The forged_blade_blank recipe requires war_bench and crucible, which were last seen in the courtyard. The courtyard is adjacent to the barracks, so I should move there to attempt crafting again with the correct stations.",
+            "reasoning_digest": "df1fa25977b3ade139e5ed1378809c7c864362fbba5e5ea304c3b057236c7d93",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench",
+            "crucible"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_f6484501d92cb000"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_0e9af1845a24d13b",
+      "intent": {
+        "first_action": "craft 1 iron_bar",
+        "target": "iron_bar",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "iron_bar",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "craft 1 iron_bar",
+              "id": "c_5be983495f6b"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_1d260f74ebc047ae"
+      },
+      "cache_gap": {
+        "matched_prefix": 3,
+        "missing_public_action": "inspect iron_bar",
+        "prefix": [
+          "craft 1 iron_bar",
+          "store 2 iron_nugget inventory",
+          "craft 2 iron_bar",
+          "inspect iron_bar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_2bd7c9c561fcf61b",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_2bd7c9c561fcf61b",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "fiend_helm",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The previous craft failed because the barracks lacks the required war_bench and crucible. The courtyard historically contained both stations, so I should go there to attempt crafting fiend_helm. Before crafting, I may need to discover the recipe ingredients, but first I must be at the correct station location.",
+            "reasoning_digest": "6f71c751e1925dedc81db6e7ed6001954c28d25f10b10b6f4044249cbc5fd181",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          },
+          {
+            "saved_J2_reasoning": "The recipe for fiend_helm requires the war_bench and crucible stations, which were last seen in the courtyard. I should go there to attempt crafting the second fiend_helm.",
+            "reasoning_digest": "e66abaf08c2c7ea872ab9f5dcefc06e7d3d64d528d84e1d99f96f4e2d24fd1c9",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench",
+            "crucible"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_ad5208aedf616492"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_8d93a9fe38ae0edb",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "fiend_helm",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The fiend_helm recipe is unknown, and crafting it requires a war_bench and crucible, which were last seen in the courtyard. I should go to the courtyard to attempt crafting there, since those stations are the known prerequisite. I'll first visit the courtyard to confirm the stations are present before crafting.",
+            "reasoning_digest": "e44b773ac141562e769bdd93211ddec0c12027d356f15ea8694943b0f35bfab1",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench",
+            "crucible"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_ad5208aedf616492"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "craft 1 fiend_helm",
+        "prefix": [
+          "enter courtyard",
+          "craft 1 fiend_helm"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_cbcc6b27dabe6ad3",
+      "intent": {
+        "first_action": "enter cellar",
+        "target": "sinew_cord",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "sinew_cord",
+              "category": "known_craft",
+              "ingredients": [
+                "salvage_cloth"
+              ],
+              "stations": "UNKNOWN",
+              "evidence": "observed recipe and potentially accessible inputs; downstream connection may be unknown",
+              "id": "c_51d20e64a67f",
+              "confirmed_connection": false,
+              "next_action": "enter cellar",
+              "public_condition": "UNKNOWN"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "id": "i_ce255167971da918"
+      },
+      "cache_gap": {
+        "matched_prefix": 3,
+        "missing_public_action": "craft 2 sinew_cord",
+        "prefix": [
+          "enter cellar",
+          "enter barracks",
+          "store 1 salvage_cloth inventory",
+          "craft 2 sinew_cord"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_cbcc6b27dabe6ad3",
+      "intent": {
+        "first_action": "enter cellar",
+        "target": "bandage_roll",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "bandage_roll",
+              "category": "known_craft",
+              "ingredients": [
+                "salvage_cloth",
+                "sinew_cord"
+              ],
+              "stations": "UNKNOWN",
+              "evidence": "observed recipe and potentially accessible inputs; downstream connection may be unknown",
+              "id": "c_a31e0c0dfecd",
+              "confirmed_connection": false,
+              "next_action": "enter cellar",
+              "public_condition": "UNKNOWN"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "id": "i_e83d21d894e6141a"
+      },
+      "cache_gap": {
+        "matched_prefix": 5,
+        "missing_public_action": "craft 2 bandage_roll",
+        "prefix": [
+          "enter cellar",
+          "enter barracks",
+          "store 1 salvage_cloth inventory",
+          "enter cellar",
+          "store 1 sinew_cord inventory",
+          "craft 2 bandage_roll"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_2b84d3d36487c9b2",
+      "intent": {
+        "first_action": "pick up salvage_cloth",
+        "target": "sinew_cord",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "salvage_cloth",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "pick up salvage_cloth",
+              "id": "c_7e8908cb5e03"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The bandage_roll recipe requires salvage_cloth and sinew_cord, and sinew_cord can be crafted from salvage_cloth alone. I have 2 salvage_cloth on the ground here. Before crafting, I should pick up the salvage_cloth so I have the materials in my possession, then attempt to craft sinew_cord. The previous bandage_roll craft failed only due to missing war_bench, but sinew_cord's station is unknown, so I'll try crafting it here first.",
+            "reasoning_digest": "8ad4c5c0f9de544b3caa69e4e943cc29e24e86c6a36a6b643ce5eb72a3ee8c6d",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "quantities": null,
+          "ingredients": [
+            "salvage_cloth"
+          ],
+          "step": 12,
+          "source": "public_inspection"
+        },
+        "recipe_relation_unknown": false,
+        "id": "i_be556302824e87b7"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "craft 2 sinew_cord",
+        "prefix": [
+          "pick up salvage_cloth",
+          "craft 2 sinew_cord"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_84a8b7d14c832282",
+      "intent": {
+        "first_action": "take out salvage_cloth scout_satchel_0",
+        "target": "bandage_roll",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "salvage_cloth",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "take out salvage_cloth scout_satchel_0",
+              "id": "c_ccfefb99be8c"
+            }
+          },
+          {
+            "saved_J2_reasoning": "I need a second bandage_roll. The confirmed recipe is 1 salvage_cloth + 1 sinew_cord at a war_bench. I have 1 sinew_cord in hand, 1 salvage_cloth in my satchel, and a war_bench is present in the courtyard. I should retrieve the salvage_cloth from my satchel so I can craft the bandage_roll now.",
+            "reasoning_digest": "16c977f5b36e36dc2d579ac4ae9d837e22c5435858accaf93e9a8ab0b6fb45b8",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [
+            "salvage_cloth",
+            "sinew_cord"
+          ],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ],
+          "step": 12,
+          "source": "public_inspection"
+        },
+        "recipe_relation_unknown": false,
+        "id": "i_332ac79cc9355f75"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "craft 1 bandage_roll",
+        "prefix": [
+          "take out salvage_cloth scout_satchel_0",
+          "craft 1 bandage_roll"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_508fa7a07ea3f787",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_508fa7a07ea3f787",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "bandage_roll",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The bandage_roll recipe requires a war_bench, which was last seen in the courtyard. The barracks lacks a war_bench, so crafting here fails. I need to return to the courtyard to craft another bandage_roll, using the salvage_cloth I have available or can gather.",
+            "reasoning_digest": "beb50c361fffde87164313ef52cd12a8b227e88d742493f663f0db6613fb2a19",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_f8dd82eee963bc4a"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_0ee9424f300fd429",
+      "intent": {
+        "first_action": "craft 2 bandage_roll",
+        "target": "bandage_roll",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "bandage_roll",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "craft 2 bandage_roll",
+              "id": "c_68bbce6c890e",
+              "confirmed_connection": true,
+              "next_action": "craft 2 bandage_roll",
+              "public_condition": "UNKNOWN"
+            }
+          },
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "bandage_roll",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "craft 2 bandage_roll",
+              "id": "c_68bbce6c890e"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_cb2bb9c7d506741c"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect bandage_roll",
+        "prefix": [
+          "craft 2 bandage_roll",
+          "inspect bandage_roll"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_0ee9424f300fd429",
+      "intent": {
+        "first_action": "craft 1 bandage_roll",
+        "target": "bandage_roll",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "bandage_roll",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "craft 1 bandage_roll",
+              "id": "c_b81cebf153eb"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_c6a92822041bb9ab"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect bandage_roll",
+        "prefix": [
+          "craft 1 bandage_roll",
+          "inspect bandage_roll"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_1112504715d6d930",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_1112504715d6d930",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "fiend_alloy_scale",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The craft of fiend_alloy_scale requires a war_bench, which is historically located in the courtyard. I currently hold one scale and need a second, so I should move to the courtyard where I can attempt the craft with the required station. The courtyard was last seen with a war_bench, and it is a neighboring area to explore.",
+            "reasoning_digest": "6c8ac6b45ed4a8d1f866354f5e012df26bb2917140dc1551a5b9615e1cf471a4",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_c276f59bdd4d7fe2"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_1112504715d6d930",
+      "intent": {
+        "first_action": "enter cellar",
+        "target": "fiend_alloy_scale",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "cellar",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter cellar",
+              "id": "c_07db86249dd6"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The failed craft revealed fiend_alloy_scale requires a war_bench, which was last seen in the courtyard. I need to reach the courtyard to attempt crafting there, but the barracks only connects to the cellar. I'll move to the cellar as the first step toward the courtyard.",
+            "reasoning_digest": "ffb1595f1aeaed43297f68cb411a1f6703f07bacd419775d45383c74185dd65f",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_7150f326d2306feb"
+      },
+      "cache_gap": {
+        "matched_prefix": 2,
+        "missing_public_action": "craft 1 fiend_alloy_scale",
+        "prefix": [
+          "enter cellar",
+          "enter courtyard",
+          "craft 1 fiend_alloy_scale"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_17c5deb0c6ac6acf",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_17c5deb0c6ac6acf",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "brimite_blade_blank",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The craft failed because the barracks lacks the required war_bench and crucible. The courtyard was previously observed to contain both stations, so moving there is the necessary next step to craft a second brimite_blade_blank.",
+            "reasoning_digest": "860183f32bce3e1210bc9006688b7d528031082f36f3ec49fa820fbf08de1f5a",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          },
+          {
+            "saved_J2_reasoning": "The craft failed because the current area (barracks) lacks the required war_bench and crucible stations. The courtyard historically had both stations, so I should move there to attempt crafting brimite_blade_blank. I already hold one blank and have 4 brimite_ore on the ground, which may be needed as an ingredient.",
+            "reasoning_digest": "2874c81b4505e1e0b4ac189e9a33a5eb0b6ae27be5d009ac1eed644184ff78a1",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench",
+            "crucible"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_b7e5cce2dd1afe60"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_7aba559853f3978b",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_7aba559853f3978b",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "fiend_rivet",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The fiend_rivet recipe requires a war_bench, which is known to be in the courtyard. I should travel there to craft the second fiend_rivet and complete the objective.",
+            "reasoning_digest": "97fdfeb99ad6017057a72c0ea0bd4ac71980c57bc80dbe3cd0086a3498d607dc",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_fd14c8ac2a3120f6"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_7aba559853f3978b",
+      "intent": {
+        "first_action": "pick up fiend_plate",
+        "target": "fiend_rivet",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "fiend_plate",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "pick up fiend_plate",
+              "id": "c_39f197278d0f"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The recipe for fiend_rivet requires a war_bench, which is known to be in the courtyard. I need to reach the courtyard to attempt crafting. The courtyard is not directly adjacent to the barracks (only cellar is), so I should head toward it. I'll also pick up the fiend_plate on the ground since it's a useful crafting material for related recipes.",
+            "reasoning_digest": "40733a1449898251a76cb821b6f40f64aecf73cdaedc72a16891202d18e012a8",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_bbec455b48d03443"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "pick up fiend_plate",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_4892e4fbb1fad417",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_4892e4fbb1fad417",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "fiend_rivet",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The previous craft of fiend_rivet failed because the barracks lacks a war_bench. The courtyard was last observed to contain both a war_bench and crucible, so I should return there to attempt crafting at the correct station. I'll bring the fiend_plate on the ground too, as it may be a prerequisite material.",
+            "reasoning_digest": "5432e2abfd747fb1172e96a9e33378886a6462a794c56c7da499eb978e6ecc13",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_fd14c8ac2a3120f6"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_8694b7913dc729f7",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_8694b7913dc729f7",
+      "intent": {
+        "first_action": "enter cellar",
+        "target": "chain_net",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "cellar",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter cellar",
+              "id": "c_07db86249dd6"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The chain_net recipe requires war_bench and crucible stations, which were last seen in the courtyard. I need to travel there to craft the second chain_net. The barracks only connects to the cellar, so I must first enter the cellar to reach other areas.",
+            "reasoning_digest": "a0799e082659f0ad797e7ea42a2e6be39156ed1fe56ba5b87f25a61360fab3a0",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench",
+            "crucible"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_750eaa67a8f6c1a1"
+      },
+      "cache_gap": {
+        "matched_prefix": 2,
+        "missing_public_action": "craft 1 chain_net",
+        "prefix": [
+          "enter cellar",
+          "enter courtyard",
+          "craft 1 chain_net"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_8694b7913dc729f7",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "chain_net",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The craft failed because the barracks lacks the war_bench and crucible. The courtyard was historically observed to contain both stations. Moving there is the necessary next step to attempt crafting chain_net.",
+            "reasoning_digest": "176be542bfb0df4dd47a1009d874403d55fd0203e0888f519881bdc78387ac90",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench",
+            "crucible"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_465d1e7a0e469949"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_b5e67d08463a4c9c",
+      "intent": {
+        "first_action": "craft 2 iron_nugget",
+        "target": "iron_nugget",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "iron_nugget",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "craft 2 iron_nugget",
+              "id": "c_7ed747511233",
+              "confirmed_connection": true,
+              "next_action": "craft 2 iron_nugget",
+              "public_condition": "UNKNOWN"
+            }
+          },
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "iron_nugget",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "craft 2 iron_nugget",
+              "id": "c_7ed747511233"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_358d46d7e04b2bb2"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect iron_nugget",
+        "prefix": [
+          "craft 2 iron_nugget",
+          "inspect iron_nugget"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_b5e67d08463a4c9c",
+      "intent": {
+        "first_action": "take out scrap_iron scout_satchel_0",
+        "target": "iron_nugget",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "scrap_iron",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "take out scrap_iron scout_satchel_0",
+              "id": "c_27ddf9070de1"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The craft failed due to insufficient ingredients. The recipe needs iron_bar and sinew_cord, and I have 1 iron_bar and 2 sinew_cord in my satchel, but the failure suggests the quantities required may be higher than what I have (possibly 3 iron_bar and 2 sinew_cord based on earlier observed recipe quantities). I need more iron_bar. I have 4 scrap_iron in my satchel, which can be smelted into iron_nugget at the crucible, then into iron_bar. Let me first take out the scrap_iron from my satchel so I can craft with it.",
+            "reasoning_digest": "a69ca415b34e9a46cc07a17d6100e3127b6ff82f7f6a084fd5f93223ca3c8e6a",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "quantities": {
+            "scrap_iron": 1.0
+          },
+          "ingredients": [
+            "scrap_iron"
+          ],
+          "step": 17,
+          "source": "public_inspection",
+          "stations": [
+            "crucible"
+          ],
+          "quantity_source": {
+            "kind": "observed_successful_consumption",
+            "step": 23
+          }
+        },
+        "recipe_relation_unknown": false,
+        "id": "i_2348171905ce112c"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "craft 2 iron_nugget",
+        "prefix": [
+          "take out scrap_iron scout_satchel_0",
+          "craft 2 iron_nugget"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_3a50cbb76467507a",
+      "intent": {
+        "first_action": "craft 2 iron_nugget",
+        "target": "iron_nugget",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "iron_nugget",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "craft 2 iron_nugget",
+              "id": "c_7ed747511233"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_358d46d7e04b2bb2"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect iron_nugget",
+        "prefix": [
+          "craft 2 iron_nugget",
+          "inspect iron_nugget"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_a92f408263c9541e",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_a92f408263c9541e",
+      "intent": {
+        "first_action": "enter cellar",
+        "target": "hellfire_bomb",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "cellar",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter cellar",
+              "id": "c_07db86249dd6"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The hellfire_bomb recipe requires a war_bench station, which is not in the barracks. The courtyard was historically seen with a war_bench and crucible. I need to reach the courtyard to craft the bomb. The barracks only neighbors the cellar, so I should move toward the courtyard via the cellar.",
+            "reasoning_digest": "b0b8ffb75e34fd0b04205ffe3215047123cd8bd0155014ba5735a028399d9cbb",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_cee10d6951301d1f"
+      },
+      "cache_gap": {
+        "matched_prefix": 2,
+        "missing_public_action": "craft 1 hellfire_bomb",
+        "prefix": [
+          "enter cellar",
+          "enter courtyard",
+          "craft 1 hellfire_bomb"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_a92f408263c9541e",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "hellfire_bomb",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The craft failed because the war_bench is not in the barracks. The courtyard historically contained both a crucible and a war_bench, and crafting hellfire_bomb requires a war_bench. I should travel to the courtyard to enable crafting there.",
+            "reasoning_digest": "b1ffbd291adc67fe3caaa11d570f2e5d4afaad5cf84b3c43c34a999ec6f867e8",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_3fcb2790ac5cbaad"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_01c83c35e4b3f13b",
+      "intent": {
+        "first_action": "craft 2 crucible",
+        "target": "crucible",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "crucible",
+              "category": "known_craft",
+              "ingredients": [
+                "rubble"
+              ],
+              "stations": "UNKNOWN",
+              "evidence": "observed recipe and potentially accessible inputs; downstream connection may be unknown",
+              "id": "c_1d0dee15f50b",
+              "confirmed_connection": false,
+              "next_action": "craft 2 crucible",
+              "public_condition": "UNKNOWN"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_f20474fedec01746"
+      },
+      "cache_gap": {
+        "matched_prefix": 2,
+        "missing_public_action": "craft 2 crucible",
+        "prefix": [
+          "craft 2 crucible",
+          "enter courtyard",
+          "craft 2 crucible"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_01c83c35e4b3f13b",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "hellfire_bomb",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The hellfire_bomb requires a war_bench, which was last seen in the courtyard. I need to reach the courtyard to craft the second bomb. From the cellar, the courtyard is a neighboring area, so I should enter it now.",
+            "reasoning_digest": "04f57691d444559a112846fea9a63393cc5fc04eded9f21b6c3d4e889e978abe",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_3fcb2790ac5cbaad"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "craft 1 hellfire_bomb",
+        "prefix": [
+          "enter courtyard",
+          "craft 1 hellfire_bomb"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_c22b3ec6c829109c",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "courtyard",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          }
+        ],
+        "clarity": "incomplete",
+        "location": "courtyard",
+        "operation": "move",
+        "type": "Move",
+        "incompleteness": "destination alone does not establish an exploration goal",
+        "id": "i_fb3144d89a8e1bc4"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_c22b3ec6c829109c",
+      "intent": {
+        "first_action": "enter courtyard",
+        "target": "hunter_gauntlets",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "courtyard",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter courtyard",
+              "id": "c_c53ac1f74f40"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The previous craft failed because the barracks lacks a war_bench. Historical observation shows a war_bench in the courtyard, which is the required station for crafting hunter_gauntlets. Moving there is the necessary subgoal before attempting the craft again.",
+            "reasoning_digest": "0645a026e2cd3326112b707b522f438db17e77c2af9b1646a163347f3ca40a45",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_6fe7efa4768b4f82"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "enter cellar",
+        "prefix": [
+          "enter courtyard",
+          "enter cellar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_c22b3ec6c829109c",
+      "intent": {
+        "first_action": "enter cellar",
+        "target": "hunter_gauntlets",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "cellar",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter cellar",
+              "id": "c_07db86249dd6"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The craft failed because no war_bench is in the barracks. Historical observation places a war_bench in the courtyard, which is reachable from the cellar (neighbor of barracks). I should move toward the courtyard to attempt crafting hunter_gauntlets there.",
+            "reasoning_digest": "bdcbe7600189be23c5ee08b46607ce4f388fbaf4029b0362eaed7e5cd8ee1b02",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_595414a3c5c73e4b"
+      },
+      "cache_gap": {
+        "matched_prefix": 2,
+        "missing_public_action": "craft 1 hunter_gauntlets",
+        "prefix": [
+          "enter cellar",
+          "enter courtyard",
+          "craft 1 hunter_gauntlets"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_5053683c26d2e1de",
+      "intent": {
+        "first_action": "craft 2 sinew_cord",
+        "target": "sinew_cord",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "sinew_cord",
+              "category": "known_craft",
+              "ingredients": [
+                "salvage_cloth"
+              ],
+              "stations": "UNKNOWN",
+              "evidence": "observed recipe and potentially accessible inputs; downstream connection may be unknown",
+              "id": "c_51d20e64a67f",
+              "confirmed_connection": true,
+              "next_action": "craft 2 sinew_cord",
+              "public_condition": "UNKNOWN"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_56042a533fa018e0"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect sinew_cord",
+        "prefix": [
+          "craft 2 sinew_cord",
+          "inspect sinew_cord"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_edea7c24b75cf3bb",
+      "intent": {
+        "first_action": "craft 2 sinew_cord",
+        "target": "sinew_cord",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "sinew_cord",
+              "category": "known_craft",
+              "ingredients": [
+                "salvage_cloth"
+              ],
+              "stations": "UNKNOWN",
+              "evidence": "observed recipe and potentially accessible inputs; downstream connection may be unknown",
+              "id": "c_51d20e64a67f",
+              "confirmed_connection": true,
+              "next_action": "craft 2 sinew_cord",
+              "public_condition": "UNKNOWN"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_56042a533fa018e0"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect sinew_cord",
+        "prefix": [
+          "craft 2 sinew_cord",
+          "inspect sinew_cord"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_edea7c24b75cf3bb",
+      "intent": {
+        "first_action": "pick up iron_nugget",
+        "target": "iron_bar",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "iron_nugget",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "pick up iron_nugget",
+              "id": "c_9d350462bb2d"
+            }
+          },
+          {
+            "saved_J2_reasoning": "I need iron_bar to craft hunter_gauntlets. I have 2 iron_nugget on the ground, and iron_nugget crafts into iron_bar. I must pick them up first before crafting iron_bar.",
+            "reasoning_digest": "b1cdc1155c87c94288ea5c451151b92638fcd937be41be11d2b40e63d441ece4",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "quantities": null,
+          "ingredients": [
+            "iron_nugget"
+          ],
+          "step": 28,
+          "source": "public_inspection"
+        },
+        "recipe_relation_unknown": false,
+        "id": "i_50f643f03a2e2c7c"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "craft 2 iron_bar",
+        "prefix": [
+          "pick up iron_nugget",
+          "craft 2 iron_bar"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_db9cf8a8d4ddadac",
+      "intent": {
+        "first_action": "enter cellar",
+        "target": "padded_tunic",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "cellar",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "enter cellar",
+              "id": "c_07db86249dd6"
+            }
+          },
+          {
+            "saved_J2_reasoning": "The padded_tunic recipe requires a war_bench, which was last seen in the courtyard. I need to reach the courtyard to craft another padded_tunic. The barracks only connects to the cellar, so I must go through the cellar to reach the courtyard.",
+            "reasoning_digest": "1ee065109a0b0e87cef0dd965a7eb4016c9cc0882b920a0657a8e20a16f1113d",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          },
+          {
+            "saved_J2_reasoning": "The padded_tunic recipe requires a war_bench, which was last observed in the courtyard. The barracks only connects to the cellar, but the courtyard is a known location I need to reach. I should explore toward the courtyard to find the war_bench and craft the second padded_tunic. First, I'll enter the cellar as the only available neighbor to progress toward the courtyard.",
+            "reasoning_digest": "3d15f782a348fcad3e36648132bee2625d0da5a081a140d2db8bd05450b148ea",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ]
+        },
+        "recipe_relation_unknown": true,
+        "id": "i_0419dd638773b5c8"
+      },
+      "cache_gap": {
+        "matched_prefix": 2,
+        "missing_public_action": "craft 1 padded_tunic",
+        "prefix": [
+          "enter cellar",
+          "enter courtyard",
+          "craft 1 padded_tunic"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_61af4f652315aaae",
+      "intent": {
+        "first_action": "craft 2 sinew_cord",
+        "target": "sinew_cord",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "sinew_cord",
+              "category": "known_craft",
+              "ingredients": [
+                "salvage_cloth"
+              ],
+              "stations": "UNKNOWN",
+              "evidence": "observed recipe and potentially accessible inputs; downstream connection may be unknown",
+              "id": "c_51d20e64a67f",
+              "confirmed_connection": true,
+              "next_action": "craft 2 sinew_cord",
+              "public_condition": "UNKNOWN"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Craft-and-Inspect",
+        "id": "i_56042a533fa018e0"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect sinew_cord",
+        "prefix": [
+          "craft 2 sinew_cord",
+          "inspect sinew_cord"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_61af4f652315aaae",
+      "intent": {
+        "first_action": "pick up stitched_panel",
+        "target": "padded_lining",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "stitched_panel",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "pick up stitched_panel",
+              "id": "c_b9f42afb1ff6"
+            }
+          },
+          {
+            "saved_J2_reasoning": "I successfully crafted a stitched_panel which is now on the ground. To progress toward padded_tunic, I need padded_lining (stitched_panel + salvage_cloth) and sinew_cord (salvage_cloth). I should pick up the stitched_panel first so I can craft padded_lining, then gather more salvage_cloth for sinew_cord.",
+            "reasoning_digest": "817d5dd60efc92572177985a38c94bd429fae43a6c1635d57886e32410836b47",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "quantities": null,
+          "ingredients": [
+            "stitched_panel",
+            "salvage_cloth"
+          ],
+          "step": 15,
+          "source": "public_inspection"
+        },
+        "recipe_relation_unknown": false,
+        "id": "i_21a027f90864840e"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect inventory",
+        "prefix": [
+          "pick up stitched_panel",
+          "inspect inventory"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_dc6e7aaa56e84ae2",
+      "intent": {
+        "first_action": "store 2 salvage_cloth inventory",
+        "target": "sinew_cord",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "sinew_cord",
+              "category": "known_craft",
+              "ingredients": [
+                "salvage_cloth"
+              ],
+              "stations": "UNKNOWN",
+              "evidence": "observed recipe and potentially accessible inputs; downstream connection may be unknown",
+              "id": "c_51d20e64a67f",
+              "confirmed_connection": true,
+              "next_action": "store 2 salvage_cloth inventory",
+              "public_condition": "UNKNOWN"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "id": "i_d378294c4379bcf3"
+      },
+      "cache_gap": {
+        "matched_prefix": 4,
+        "missing_public_action": "inspect sinew_cord",
+        "prefix": [
+          "store 2 salvage_cloth inventory",
+          "craft 2 sinew_cord",
+          "enter courtyard",
+          "craft 2 sinew_cord",
+          "inspect sinew_cord"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_dc6e7aaa56e84ae2",
+      "intent": {
+        "first_action": "store 2 salvage_cloth inventory",
+        "target": "bandage_roll",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "craft",
+              "target": "bandage_roll",
+              "category": "known_craft",
+              "ingredients": [
+                "salvage_cloth",
+                "sinew_cord"
+              ],
+              "stations": "UNKNOWN",
+              "evidence": "observed recipe and potentially accessible inputs; downstream connection may be unknown",
+              "id": "c_a31e0c0dfecd",
+              "confirmed_connection": true,
+              "next_action": "store 2 salvage_cloth inventory",
+              "public_condition": "UNKNOWN"
+            }
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "id": "i_3f4316de39af4d5f"
+      },
+      "cache_gap": {
+        "matched_prefix": 3,
+        "missing_public_action": "craft 2 bandage_roll",
+        "prefix": [
+          "store 2 salvage_cloth inventory",
+          "enter barracks",
+          "store 1 sinew_cord inventory",
+          "craft 2 bandage_roll"
+        ]
+      }
+    },
+    {
+      "state_id": "d12_44fff422fc987cfb",
+      "intent": {
+        "first_action": "pick up sinew_cord",
+        "target": "padded_tunic",
+        "evidence": [
+          {
+            "candidate": {
+              "kind": "primitive",
+              "target": "sinew_cord",
+              "category": "primitive",
+              "evidence": "public method proposal; exact first action retained",
+              "first_action": "pick up sinew_cord",
+              "id": "c_4e31c0c0329b"
+            }
+          },
+          {
+            "saved_J2_reasoning": "I have 2 sinew_cord on the ground and 1 padded_lining in hand, exactly the ingredients for padded_tunic at the war_bench. I must pick up the sinew_cord first so I can craft the tunic, progressing directly toward the objective of 2 padded_tunic.",
+            "reasoning_digest": "cbb20b56177d432ff591376fad8b5a8a03f6e8c2fe624fb3f34a98eed18b21b9",
+            "annotation": "explicit next production target; inspect is common evaluation closure"
+          }
+        ],
+        "clarity": "explicit",
+        "location": null,
+        "operation": "craft_inspect",
+        "type": "Prepare-and-Explore",
+        "public_recipe_at_start": {
+          "ingredients": [
+            "padded_lining",
+            "sinew_cord"
+          ],
+          "quantities": null,
+          "stations": [
+            "war_bench"
+          ],
+          "step": 13,
+          "source": "public_inspection"
+        },
+        "recipe_relation_unknown": false,
+        "id": "i_2eda3aa0782a68b7"
+      },
+      "cache_gap": {
+        "matched_prefix": 1,
+        "missing_public_action": "inspect inventory",
+        "prefix": [
+          "pick up sinew_cord",
+          "inspect inventory"
+        ]
+      }
+    }
+  ],
+  "reused_intents": 330,
+  "selection": "all missing deterministic prefixes, no native utility filtering",
+  "api_calls": 0
+}

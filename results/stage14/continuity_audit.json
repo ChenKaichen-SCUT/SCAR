@@ -1,0 +1,4243 @@
+[
+  {
+    "state_id": "d12_b2926ff775c6769c",
+    "task_id": "sequence-2150b8a0fc93c64c-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "store 4 scrap_iron inventory",
+      "target": "iron_nugget",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "scrap_iron",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 4 scrap_iron inventory",
+            "id": "c_3dfb73b2022e"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "iron_nugget",
+              "ingredient": "scrap_iron"
+            },
+            "spent": 3,
+            "limit": 18
+          }
+        },
+        {
+          "path": "stage11.selected",
+          "value": {
+            "action": "store 4 scrap_iron inventory",
+            "priority": 2,
+            "kind": "known_forward_bridge",
+            "target": "iron_nugget",
+            "basis": {
+              "public_recipe": {
+                "quantities": null,
+                "ingredients": [
+                  "scrap_iron"
+                ],
+                "step": 12,
+                "source": "public_inspection"
+              },
+              "unresolved_nodes": [
+                "forged_blade_blank"
+              ],
+              "confirmed_goal_connection": false,
+              "unknown_downstream_connection": true,
+              "claim": "possible source of further rules, not a known hidden dependency"
+            },
+            "assessment": {
+              "action": "store 4 scrap_iron inventory",
+              "status": "UNKNOWN",
+              "conditions": [
+                {
+                  "kind": "container_access",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "container": "scout_satchel_0",
+                    "current_access": true
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                },
+                {
+                  "kind": "transfer_source",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "current_held_and_ground": 4.0
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes"
+                },
+                {
+                  "kind": "container_capacity",
+                  "status": "UNKNOWN",
+                  "evidence": {
+                    "load": 0.0,
+                    "capacity": 20.0,
+                    "item_volume": "UNKNOWN"
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                }
+              ]
+            },
+            "eligible": true,
+            "preparation_steps": 1
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "scrap_iron"
+        ],
+        "step": 12,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_d136e7f891641cd5"
+    },
+    "recorded_goal": {
+      "target": "iron_nugget",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "iron_nugget",
+            "ingredient": "scrap_iron"
+          },
+          "spent": 3,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": true,
+      "index": 12,
+      "actions_inclusive": 11,
+      "production_index": 10,
+      "closure": "inspect",
+      "evidence_action": "inspect iron_nugget",
+      "evidence_feedback": "I inspected iron_nugget: A small smelted lump of iron recovered from scrap, a step toward war-grade metal.\nIt can be used to craft: iron_bar (made of iron_nugget).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": 3,
+    "actual_at_divergence": "inspect crown_shard",
+    "fixed_at_divergence": "craft 2 iron_nugget",
+    "new_public_information_before_switch": [
+      {
+        "index": 2,
+        "delta": {
+          "new_relations": [],
+          "quantity_updates": [
+            "gate_cipher",
+            "iron_nugget",
+            "repair_kit",
+            "scrap_buckler",
+            "scrap_helm",
+            "scrap_lantern"
+          ],
+          "station_updates": []
+        }
+      }
+    ],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": false,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": false
+    },
+    "status": "completed_in_actual_trajectory",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_d136e7f891641cd5"
+  },
+  {
+    "state_id": "d12_1c4969f7d6f4b0fc",
+    "task_id": "sequence-2150b8a0fc93c64c-E0-d560807b7e4b",
+    "source_index": 8,
+    "intent": {
+      "first_action": "inspect crucible",
+      "target": "crucible",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_f41736a9db23",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_16c8d8eb97943094"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 8,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect crucible",
+      "evidence_feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (86 HP remaining)"
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_16c8d8eb97943094"
+  },
+  {
+    "state_id": "d12_437b4653a9a80655",
+    "task_id": "sequence-2150b8a0fc93c64c-S1-c3876e4fe87c",
+    "source_index": 17,
+    "intent": {
+      "first_action": "store 1 iron_bar inventory",
+      "target": "iron_bar",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_bar",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 1 iron_bar inventory",
+            "id": "c_a7f77d8deb82",
+            "confirmed_connection": true,
+            "next_action": "store 1 iron_bar inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_bar",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 1 iron_bar inventory",
+            "id": "c_a7f77d8deb82"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": null,
+      "operation": "atomic",
+      "type": "Acquire",
+      "incompleteness": "acquisition does not establish a downstream exploration goal",
+      "id": "i_e62e1398d1ac794b"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": 33
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_e62e1398d1ac794b"
+  },
+  {
+    "state_id": "d12_0e9af1845a24d13b",
+    "task_id": "sequence-2150b8a0fc93c64c-E1-d560807b7e4b",
+    "source_index": 24,
+    "intent": {
+      "first_action": "inspect gate_blank",
+      "target": "gate_blank",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "gate_blank",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect gate_blank",
+            "id": "c_90d90fbfcadc",
+            "confirmed_connection": false,
+            "next_action": "inspect gate_blank",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "gate_blank",
+            "category": "fresh_product",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_0d54e4b4852b",
+            "confirmed_connection": false,
+            "next_action": "inspect gate_blank",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "gate_blank",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect gate_blank",
+            "id": "c_90d90fbfcadc"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_57138bf89ee613b6"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 24,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect gate_blank",
+      "evidence_feedback": "I inspected gate_blank: A rough iron blank cut to the shape of a siege-gate key, awaiting precise filing.\nIt can be used to craft: siege_key (made of gate_blank).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_57138bf89ee613b6"
+  },
+  {
+    "state_id": "d12_1cd1a634b22e2a0a",
+    "task_id": "sequence-2150b8a0fc93c64c-E0-d560807b7e4b",
+    "source_index": 32,
+    "intent": {
+      "first_action": "enter courtyard",
+      "target": "courtyard",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "courtyard",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "enter courtyard",
+            "id": "c_c53ac1f74f40"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "courtyard",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "enter courtyard",
+            "id": "c_c53ac1f74f40",
+            "confirmed_connection": false,
+            "next_action": "enter courtyard",
+            "public_condition": "UNKNOWN"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": "courtyard",
+      "operation": "move",
+      "type": "Move",
+      "incompleteness": "destination alone does not establish an exploration goal",
+      "id": "i_fb3144d89a8e1bc4"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_fb3144d89a8e1bc4"
+  },
+  {
+    "state_id": "d12_2bd7c9c561fcf61b",
+    "task_id": "sequence-303b2d8fdefd2859-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "inspect devil_oil",
+      "target": "devil_oil",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "devil_oil",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_3814b3818ba1",
+            "confirmed_connection": false,
+            "next_action": "inspect devil_oil",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "devil_oil",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect devil_oil",
+            "id": "c_e4373d739f84",
+            "confirmed_connection": false,
+            "next_action": "inspect devil_oil",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "devil_oil",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect devil_oil",
+            "id": "c_e4373d739f84"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_08fe497361ca3089"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 2,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect devil_oil",
+      "evidence_feedback": "I inspected devil_oil: A dark, viscous lubricant drained from a fallen war machine's joints. Burns with infernal heat.\nIt can be used to craft: hellcoal_concentrate (made of hellcoal, devil_oil), oil_flask (made of devil_oil, rubble_chunk), cog_assembly (made of cog, devil_oil), honed_blade (made of forged_blade_blank, devil_oil), scrap_lantern (made of scrap_iron, devil_oil, salvage_cloth).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_08fe497361ca3089"
+  },
+  {
+    "state_id": "d12_8d93a9fe38ae0edb",
+    "task_id": "sequence-303b2d8fdefd2859-E1-d560807b7e4b",
+    "source_index": 8,
+    "intent": {
+      "first_action": "inspect hellcoal",
+      "target": "hellcoal",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "hellcoal",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect hellcoal",
+            "id": "c_7b57c2d1e762",
+            "confirmed_connection": false,
+            "next_action": "inspect hellcoal",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "hellcoal",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_64d1c15df952",
+            "confirmed_connection": false,
+            "next_action": "inspect hellcoal",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "hellcoal",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect hellcoal",
+            "id": "c_7b57c2d1e762"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_f4ecda6ba3c69b39"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 8,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect hellcoal",
+      "evidence_feedback": "I inspected hellcoal: A smoldering lump of infernal fuel that never fully cools, salvaged from machine furnaces.\nIt can be used to craft: hellcoal_concentrate (made of hellcoal, devil_oil).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_f4ecda6ba3c69b39"
+  },
+  {
+    "state_id": "d12_b5a72f68b5457ab1",
+    "task_id": "sequence-303b2d8fdefd2859-S1-c3876e4fe87c",
+    "source_index": 16,
+    "intent": {
+      "first_action": "enter cellar",
+      "target": "war_parchment",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "cellar",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "enter cellar",
+            "id": "c_07db86249dd6"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "war_parchment",
+              "ingredient": "salvage_cloth"
+            },
+            "spent": 16,
+            "limit": 18
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "salvage_cloth"
+        ],
+        "step": 14,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_3ebbca580d84624f"
+    },
+    "recorded_goal": {
+      "target": "war_parchment",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "war_parchment",
+            "ingredient": "salvage_cloth"
+          },
+          "spent": 16,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 2,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "possible_or_insufficient",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_3ebbca580d84624f"
+  },
+  {
+    "state_id": "d12_cbcc6b27dabe6ad3",
+    "task_id": "sequence-303b2d8fdefd2859-E0-d560807b7e4b",
+    "source_index": 15,
+    "intent": {
+      "first_action": "inspect brimite_ingot",
+      "target": "brimite_ingot",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "brimite_ingot",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect brimite_ingot",
+            "id": "c_c4b21bc50fb6"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "brimite_ingot",
+            "category": "fresh_product",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_d6fbc47d772b",
+            "confirmed_connection": false,
+            "next_action": "inspect brimite_ingot",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "brimite_ingot",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect brimite_ingot",
+            "id": "c_c4b21bc50fb6",
+            "confirmed_connection": false,
+            "next_action": "inspect brimite_ingot",
+            "public_condition": "UNKNOWN"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_4aa7ad0b3a5698ab"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 15,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect brimite_ingot",
+      "evidence_feedback": "I inspected brimite_ingot: A refined brimite ingot that pulses with trapped hellfire, forged for the strongest gear.\nIt can be used to craft: fiend_alloy (made of brimite_ingot, hellcoal_concentrate), brimite_blade_blank (made of brimite_ingot, wooden_rod).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_4aa7ad0b3a5698ab"
+  },
+  {
+    "state_id": "d12_1a6be59b8adf2971",
+    "task_id": "sequence-303b2d8fdefd2859-E0-d560807b7e4b",
+    "source_index": 32,
+    "intent": {
+      "first_action": "craft 1 fiend_helm",
+      "target": "fiend_helm",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "fiend_helm",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 1 fiend_helm",
+            "id": "c_648d4abb3d30",
+            "confirmed_connection": true,
+            "next_action": "craft 1 fiend_helm",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "fiend_helm",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 1 fiend_helm",
+            "id": "c_648d4abb3d30"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Craft-and-Inspect",
+      "id": "i_f5f1c3181e7d883d"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_f5f1c3181e7d883d"
+  },
+  {
+    "state_id": "d12_2b84d3d36487c9b2",
+    "task_id": "sequence-48401b39ba565b57-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "store 2 salvage_cloth inventory",
+      "target": "salvage_cloth",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "salvage_cloth",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 2 salvage_cloth inventory",
+            "id": "c_66c7ddaed2ef",
+            "confirmed_connection": true,
+            "next_action": "store 2 salvage_cloth inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "salvage_cloth",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 2 salvage_cloth inventory",
+            "id": "c_66c7ddaed2ef"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": null,
+      "operation": "atomic",
+      "type": "Acquire",
+      "incompleteness": "acquisition does not establish a downstream exploration goal",
+      "id": "i_82dcd7b9b592b095"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_82dcd7b9b592b095"
+  },
+  {
+    "state_id": "d12_84a8b7d14c832282",
+    "task_id": "sequence-48401b39ba565b57-E1-d560807b7e4b",
+    "source_index": 9,
+    "intent": {
+      "first_action": "craft 1 bandage_roll",
+      "target": "bandage_roll",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "bandage_roll",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 1 bandage_roll",
+            "id": "c_b81cebf153eb",
+            "confirmed_connection": true,
+            "next_action": "craft 1 bandage_roll",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "bandage_roll",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 1 bandage_roll",
+            "id": "c_b81cebf153eb"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Craft-and-Inspect",
+      "id": "i_c6a92822041bb9ab"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": 22
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_c6a92822041bb9ab"
+  },
+  {
+    "state_id": "d12_508fa7a07ea3f787",
+    "task_id": "sequence-48401b39ba565b57-S1-c3876e4fe87c",
+    "source_index": 1,
+    "intent": {
+      "first_action": "inspect salvage_cloth",
+      "target": "salvage_cloth",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "salvage_cloth",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_8ecb614a6055",
+            "confirmed_connection": false,
+            "next_action": "inspect salvage_cloth",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "salvage_cloth",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect salvage_cloth",
+            "id": "c_3064442c71c8",
+            "confirmed_connection": false,
+            "next_action": "inspect salvage_cloth",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "salvage_cloth",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect salvage_cloth",
+            "id": "c_3064442c71c8"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_e4327b4c0f5110e3"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 1,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect salvage_cloth",
+      "evidence_feedback": "I inspected salvage_cloth: Tattered fabric pulled from ruined banners and bedrolls, still serviceable.\nIt can be used to craft: bandage_roll (made of salvage_cloth, sinew_cord), oil_bomb (made of oil_flask, charcoal_brick, salvage_cloth), scout_satchel (made of salvage_cloth, sinew_cord), war_parchment (made of salvage_cloth), sinew_cord (made of salvage_cloth), war_banner (made of salvage_cloth, wooden_rod), padded_lining (made of stitched_panel, salvage_cloth), scrap_helm (made of scrap_iron, salvage_cloth), ruin_gauntlets (made of rubble_chunk, war_strap, salvage_cloth), scrap_lantern (made of scrap_iron, devil_oil, salvage_cloth).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_e4327b4c0f5110e3"
+  },
+  {
+    "state_id": "d12_053962d91bc03253",
+    "task_id": "sequence-48401b39ba565b57-E1-d560807b7e4b",
+    "source_index": 8,
+    "intent": {
+      "first_action": "inspect inventory",
+      "target": "inventory",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041",
+            "confirmed_connection": false,
+            "next_action": "inspect inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_dec9c911edfd60c7"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_dec9c911edfd60c7"
+  },
+  {
+    "state_id": "d12_0ee9424f300fd429",
+    "task_id": "sequence-48401b39ba565b57-E1-d560807b7e4b",
+    "source_index": 22,
+    "intent": {
+      "first_action": "craft 2 bandage_roll",
+      "target": "bandage_roll",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "bandage_roll",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 2 bandage_roll",
+            "id": "c_68bbce6c890e",
+            "confirmed_connection": true,
+            "next_action": "craft 2 bandage_roll",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "bandage_roll",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 2 bandage_roll",
+            "id": "c_68bbce6c890e"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Craft-and-Inspect",
+      "id": "i_cb2bb9c7d506741c"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": 22
+    },
+    "common_action_prefix": 1,
+    "divergence_index": 23,
+    "actual_at_divergence": "pick up bandage_roll",
+    "fixed_at_divergence": "inspect bandage_roll",
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": true
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_cb2bb9c7d506741c"
+  },
+  {
+    "state_id": "d12_1112504715d6d930",
+    "task_id": "sequence-583fbd031e489fe8-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "store 2 brimite_ingot inventory",
+      "target": "fiend_alloy",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "brimite_ingot",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 2 brimite_ingot inventory",
+            "id": "c_e13462ef0291"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "fiend_alloy",
+              "ingredient": "brimite_ingot"
+            },
+            "spent": 3,
+            "limit": 18
+          }
+        },
+        {
+          "path": "stage11.selected",
+          "value": {
+            "action": "store 2 brimite_ingot inventory",
+            "priority": 2,
+            "kind": "known_forward_bridge",
+            "target": "fiend_alloy",
+            "basis": {
+              "public_recipe": {
+                "quantities": null,
+                "ingredients": [
+                  "brimite_ingot",
+                  "hellcoal_concentrate"
+                ],
+                "step": 12,
+                "source": "public_inspection"
+              },
+              "unresolved_nodes": [
+                "fiend_alloy_scale"
+              ],
+              "confirmed_goal_connection": false,
+              "unknown_downstream_connection": true,
+              "claim": "possible source of further rules, not a known hidden dependency"
+            },
+            "assessment": {
+              "action": "store 2 brimite_ingot inventory",
+              "status": "UNKNOWN",
+              "conditions": [
+                {
+                  "kind": "container_access",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "container": "scout_satchel_0",
+                    "current_access": true
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                },
+                {
+                  "kind": "transfer_source",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "current_held_and_ground": 2.0
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes"
+                },
+                {
+                  "kind": "container_capacity",
+                  "status": "UNKNOWN",
+                  "evidence": {
+                    "load": 0.0,
+                    "capacity": 20.0,
+                    "item_volume": "UNKNOWN"
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                }
+              ]
+            },
+            "eligible": true,
+            "preparation_steps": 1
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "brimite_ingot",
+          "hellcoal_concentrate"
+        ],
+        "step": 12,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_d57abf2f6a43b32f"
+    },
+    "recorded_goal": {
+      "target": "fiend_alloy",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "fiend_alloy",
+            "ingredient": "brimite_ingot"
+          },
+          "spent": 3,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": true,
+      "index": 12,
+      "actions_inclusive": 11,
+      "production_index": 10,
+      "closure": "inspect",
+      "evidence_action": "inspect fiend_alloy",
+      "evidence_feedback": "I inspected fiend_alloy: A brimite alloy quenched in hellcoal, shimmering with dark fire.\nIt can be used to craft: fiend_halberd (made of fiend_alloy, iron_bar, wooden_rod, war_strap), demonslayer (made of fiend_alloy, brimite_blade, war_engine_heart, war_strap), fiend_alloy_sheet (made of fiend_alloy), fiend_gauntlets (made of fiend_alloy, war_strap, sinew_cord), fiend_helm (made of fiend_alloy, padded_lining).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 2,
+    "divergence_index": 4,
+    "actual_at_divergence": "inspect hellcoal_concentrate",
+    "fixed_at_divergence": "store 2 hellcoal_concentrate inventory",
+    "new_public_information_before_switch": [
+      {
+        "index": 2,
+        "delta": {
+          "new_relations": [],
+          "quantity_updates": [
+            "brimite_blade_blank",
+            "fiend_alloy"
+          ],
+          "station_updates": []
+        }
+      }
+    ],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": false,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": true
+    },
+    "status": "completed_in_actual_trajectory",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_d57abf2f6a43b32f"
+  },
+  {
+    "state_id": "d12_0332450ff72f2d8b",
+    "task_id": "sequence-583fbd031e489fe8-E0-d560807b7e4b",
+    "source_index": 8,
+    "intent": {
+      "first_action": "inspect crucible",
+      "target": "crucible",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_f41736a9db23",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_16c8d8eb97943094"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 8,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect crucible",
+      "evidence_feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (84 HP remaining)"
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_16c8d8eb97943094"
+  },
+  {
+    "state_id": "d12_e2783165405ff34b",
+    "task_id": "sequence-583fbd031e489fe8-S1-c3876e4fe87c",
+    "source_index": 13,
+    "intent": {
+      "first_action": "store 2 fiend_alloy inventory",
+      "target": "fiend_alloy_sheet",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "fiend_alloy",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 2 fiend_alloy inventory",
+            "id": "c_07231c259b68"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "fiend_alloy_sheet",
+              "ingredient": "fiend_alloy"
+            },
+            "spent": 13,
+            "limit": 18
+          }
+        },
+        {
+          "path": "stage11.selected",
+          "value": {
+            "action": "store 2 fiend_alloy inventory",
+            "priority": 2,
+            "kind": "known_forward_bridge",
+            "target": "fiend_alloy_sheet",
+            "basis": {
+              "public_recipe": {
+                "quantities": null,
+                "ingredients": [
+                  "fiend_alloy"
+                ],
+                "step": 23,
+                "source": "public_inspection"
+              },
+              "unresolved_nodes": [
+                "fiend_alloy_scale"
+              ],
+              "confirmed_goal_connection": false,
+              "unknown_downstream_connection": true,
+              "claim": "possible source of further rules, not a known hidden dependency"
+            },
+            "assessment": {
+              "action": "store 2 fiend_alloy inventory",
+              "status": "UNKNOWN",
+              "conditions": [
+                {
+                  "kind": "container_access",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "container": "scout_satchel_0",
+                    "current_access": true
+                  },
+                  "observed_step": 23,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                },
+                {
+                  "kind": "transfer_source",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "current_held_and_ground": 2.0
+                  },
+                  "observed_step": 23,
+                  "valid_until": "relevant public condition changes"
+                },
+                {
+                  "kind": "container_capacity",
+                  "status": "UNKNOWN",
+                  "evidence": {
+                    "load": 0.0,
+                    "capacity": 20.0,
+                    "item_volume": "UNKNOWN"
+                  },
+                  "observed_step": 23,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                }
+              ]
+            },
+            "eligible": true,
+            "preparation_steps": 1
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "fiend_alloy"
+        ],
+        "step": 23,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_993ec3633394d943"
+    },
+    "recorded_goal": {
+      "target": "fiend_alloy_sheet",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "fiend_alloy_sheet",
+            "ingredient": "fiend_alloy"
+          },
+          "spent": 13,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": true,
+      "index": 16,
+      "actions_inclusive": 4,
+      "production_index": 14,
+      "closure": "inspect",
+      "evidence_action": "inspect fiend_alloy_sheet",
+      "evidence_feedback": "I inspected fiend_alloy_sheet: A hammered sheet of fiend alloy, nearly impervious and radiating dark heat.\nIt can be used to craft: fiend_shield (made of fiend_alloy_sheet, timber_plate, war_strap, fiend_rivet), fiend_alloy_scale (made of fiend_alloy_sheet).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 2,
+    "divergence_index": 15,
+    "actual_at_divergence": "inspect inventory",
+    "fixed_at_divergence": "inspect fiend_alloy_sheet",
+    "new_public_information_before_switch": [
+      {
+        "index": 13,
+        "delta": {
+          "new_relations": [],
+          "quantity_updates": [
+            "demonslayer",
+            "fiend_alloy_sheet",
+            "fiend_gauntlets",
+            "fiend_halberd",
+            "fiend_helm"
+          ],
+          "station_updates": []
+        }
+      }
+    ],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": false,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": true
+    },
+    "status": "completed_in_actual_trajectory",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_993ec3633394d943"
+  },
+  {
+    "state_id": "d12_b396f69cf0969c6b",
+    "task_id": "sequence-583fbd031e489fe8-E0-d560807b7e4b",
+    "source_index": 16,
+    "intent": {
+      "first_action": "inspect fiend_alloy_sheet",
+      "target": "fiend_alloy_sheet",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_alloy_sheet",
+            "category": "fresh_product",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_4957886b01fc",
+            "confirmed_connection": false,
+            "next_action": "inspect fiend_alloy_sheet",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_alloy_sheet",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect fiend_alloy_sheet",
+            "id": "c_9c271d295c69",
+            "confirmed_connection": false,
+            "next_action": "inspect fiend_alloy_sheet",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_alloy_sheet",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect fiend_alloy_sheet",
+            "id": "c_9c271d295c69"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_c388f2560fde254d"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 16,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect fiend_alloy_sheet",
+      "evidence_feedback": "I inspected fiend_alloy_sheet: A hammered sheet of fiend alloy, nearly impervious and radiating dark heat.\nIt can be used to craft: fiend_shield (made of fiend_alloy_sheet, timber_plate, war_strap, fiend_rivet), fiend_alloy_scale (made of fiend_alloy_sheet).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_c388f2560fde254d"
+  },
+  {
+    "state_id": "d12_3a1444e457139495",
+    "task_id": "sequence-583fbd031e489fe8-E1-d560807b7e4b",
+    "source_index": 15,
+    "intent": {
+      "first_action": "inspect inventory",
+      "target": "inventory",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041",
+            "confirmed_connection": false,
+            "next_action": "inspect inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_dec9c911edfd60c7"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_dec9c911edfd60c7"
+  },
+  {
+    "state_id": "d12_17c5deb0c6ac6acf",
+    "task_id": "sequence-6849519fb68b5f91-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "store 4 brimite_ore inventory",
+      "target": "brimite_nugget",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "brimite_ore",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 4 brimite_ore inventory",
+            "id": "c_afadb45a7165"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "brimite_nugget",
+              "ingredient": "brimite_ore"
+            },
+            "spent": 3,
+            "limit": 18
+          }
+        },
+        {
+          "path": "stage11.selected",
+          "value": {
+            "action": "store 4 brimite_ore inventory",
+            "priority": 2,
+            "kind": "known_forward_bridge",
+            "target": "brimite_nugget",
+            "basis": {
+              "public_recipe": {
+                "quantities": null,
+                "ingredients": [
+                  "brimite_ore"
+                ],
+                "step": 12,
+                "source": "public_inspection"
+              },
+              "unresolved_nodes": [
+                "brimite_blade_blank"
+              ],
+              "confirmed_goal_connection": false,
+              "unknown_downstream_connection": true,
+              "claim": "possible source of further rules, not a known hidden dependency"
+            },
+            "assessment": {
+              "action": "store 4 brimite_ore inventory",
+              "status": "UNKNOWN",
+              "conditions": [
+                {
+                  "kind": "container_access",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "container": "scout_satchel_0",
+                    "current_access": true
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                },
+                {
+                  "kind": "transfer_source",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "current_held_and_ground": 4.0
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes"
+                },
+                {
+                  "kind": "container_capacity",
+                  "status": "UNKNOWN",
+                  "evidence": {
+                    "load": 0.0,
+                    "capacity": 20.0,
+                    "item_volume": "UNKNOWN"
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                }
+              ]
+            },
+            "eligible": true,
+            "preparation_steps": 1
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "brimite_ore"
+        ],
+        "step": 12,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_57757e43336cf13e"
+    },
+    "recorded_goal": {
+      "target": "brimite_nugget",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "brimite_nugget",
+            "ingredient": "brimite_ore"
+          },
+          "spent": 3,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": true,
+      "index": 12,
+      "actions_inclusive": 11,
+      "production_index": 10,
+      "closure": "inspect",
+      "evidence_action": "inspect brimite_nugget",
+      "evidence_feedback": "I inspected brimite_nugget: A dense nugget smelted from brimite ore, hot to the touch and faintly glowing.\nIt can be used to craft: brimite_ingot (made of brimite_nugget).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": 3,
+    "actual_at_divergence": "inspect crown_shard",
+    "fixed_at_divergence": "craft 2 brimite_nugget",
+    "new_public_information_before_switch": [
+      {
+        "index": 2,
+        "delta": {
+          "new_relations": [],
+          "quantity_updates": [
+            "brimite_nugget"
+          ],
+          "station_updates": []
+        }
+      }
+    ],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": false,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": false
+    },
+    "status": "completed_in_actual_trajectory",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_57757e43336cf13e"
+  },
+  {
+    "state_id": "d12_03a8396e3b50ad83",
+    "task_id": "sequence-6849519fb68b5f91-E0-d560807b7e4b",
+    "source_index": 8,
+    "intent": {
+      "first_action": "inspect crucible",
+      "target": "crucible",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_f41736a9db23",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_16c8d8eb97943094"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 8,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect crucible",
+      "evidence_feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (72 HP remaining)"
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_16c8d8eb97943094"
+  },
+  {
+    "state_id": "d12_2310e2d3684d6e00",
+    "task_id": "sequence-6849519fb68b5f91-S1-c3876e4fe87c",
+    "source_index": 17,
+    "intent": {
+      "first_action": "store 1 brimite_ingot inventory",
+      "target": "brimite_ingot",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "brimite_ingot",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 1 brimite_ingot inventory",
+            "id": "c_e7405530c0b6",
+            "confirmed_connection": true,
+            "next_action": "store 1 brimite_ingot inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "brimite_ingot",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 1 brimite_ingot inventory",
+            "id": "c_e7405530c0b6"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": null,
+      "operation": "atomic",
+      "type": "Acquire",
+      "incompleteness": "acquisition does not establish a downstream exploration goal",
+      "id": "i_e25d03fc389e490f"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": 33
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_e25d03fc389e490f"
+  },
+  {
+    "state_id": "d12_044e21425b224134",
+    "task_id": "sequence-6849519fb68b5f91-E0-d560807b7e4b",
+    "source_index": 16,
+    "intent": {
+      "first_action": "inspect brimite_ingot",
+      "target": "brimite_ingot",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "brimite_ingot",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect brimite_ingot",
+            "id": "c_c4b21bc50fb6",
+            "confirmed_connection": false,
+            "next_action": "inspect brimite_ingot",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "brimite_ingot",
+            "category": "fresh_product",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_d6fbc47d772b",
+            "confirmed_connection": false,
+            "next_action": "inspect brimite_ingot",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "brimite_ingot",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect brimite_ingot",
+            "id": "c_c4b21bc50fb6"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_4aa7ad0b3a5698ab"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 16,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect brimite_ingot",
+      "evidence_feedback": "I inspected brimite_ingot: A refined brimite ingot that pulses with trapped hellfire, forged for the strongest gear.\nIt can be used to craft: fiend_alloy (made of brimite_ingot, hellcoal_concentrate), brimite_blade_blank (made of brimite_ingot, wooden_rod).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_4aa7ad0b3a5698ab"
+  },
+  {
+    "state_id": "d12_9b491521dcc01365",
+    "task_id": "sequence-6849519fb68b5f91-E0-d560807b7e4b",
+    "source_index": 32,
+    "intent": {
+      "first_action": "wait",
+      "target": "",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "wait",
+            "id": "c_3e6957eb85be",
+            "confirmed_connection": false,
+            "next_action": "wait",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "wait",
+            "id": "c_3e6957eb85be"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": null,
+      "operation": "atomic",
+      "type": "Atomic",
+      "incompleteness": "no supported continuation",
+      "id": "i_f6f044542dcbcbf9"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_f6f044542dcbcbf9"
+  },
+  {
+    "state_id": "d12_7aba559853f3978b",
+    "task_id": "sequence-697aafaff2ad5b74-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "store 1 fiend_plate inventory",
+      "target": "fiend_strip",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "fiend_plate",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 1 fiend_plate inventory",
+            "id": "c_802c8d6d9d36"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "fiend_strip",
+              "ingredient": "fiend_plate"
+            },
+            "spent": 3,
+            "limit": 18
+          }
+        },
+        {
+          "path": "stage11.selected",
+          "value": {
+            "action": "store 1 fiend_plate inventory",
+            "priority": 2,
+            "kind": "known_forward_bridge",
+            "target": "fiend_strip",
+            "basis": {
+              "public_recipe": {
+                "quantities": null,
+                "ingredients": [
+                  "fiend_plate"
+                ],
+                "step": 12,
+                "source": "public_inspection"
+              },
+              "unresolved_nodes": [
+                "fiend_rivet"
+              ],
+              "confirmed_goal_connection": false,
+              "unknown_downstream_connection": true,
+              "claim": "possible source of further rules, not a known hidden dependency"
+            },
+            "assessment": {
+              "action": "store 1 fiend_plate inventory",
+              "status": "UNKNOWN",
+              "conditions": [
+                {
+                  "kind": "container_access",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "container": "scout_satchel_0",
+                    "current_access": true
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                },
+                {
+                  "kind": "transfer_source",
+                  "status": "SUPPORTED",
+                  "evidence": {
+                    "current_held_and_ground": 1.0
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes"
+                },
+                {
+                  "kind": "container_capacity",
+                  "status": "UNKNOWN",
+                  "evidence": {
+                    "load": 0.0,
+                    "capacity": 20.0,
+                    "item_volume": "UNKNOWN"
+                  },
+                  "observed_step": 12,
+                  "valid_until": "relevant public condition changes",
+                  "container": "scout_satchel_0"
+                }
+              ]
+            },
+            "eligible": true,
+            "preparation_steps": 1
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "fiend_plate"
+        ],
+        "step": 12,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_efba0f18bd5d4e92"
+    },
+    "recorded_goal": {
+      "target": "fiend_strip",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "fiend_strip",
+            "ingredient": "fiend_plate"
+          },
+          "spent": 3,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": true,
+      "index": 11,
+      "actions_inclusive": 10,
+      "production_index": 9,
+      "closure": "inspect",
+      "evidence_action": "inspect fiend_strip",
+      "evidence_feedback": "I inspected fiend_strip: A narrow strip cut from fiend plate, resilient and unnaturally light.\nIt can be used to craft: fiend_rivet (made of fiend_strip), war_codex (made of field_journal, sinew_cord, fiend_strip).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": 3,
+    "actual_at_divergence": "inspect crown_shard",
+    "fixed_at_divergence": "craft 2 fiend_strip",
+    "new_public_information_before_switch": [
+      {
+        "index": 2,
+        "delta": {
+          "new_relations": [],
+          "quantity_updates": [
+            "fiend_strip"
+          ],
+          "station_updates": []
+        }
+      }
+    ],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": false,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": false
+    },
+    "status": "completed_in_actual_trajectory",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_efba0f18bd5d4e92"
+  },
+  {
+    "state_id": "d12_1e291e83c3ae6288",
+    "task_id": "sequence-697aafaff2ad5b74-E0-d560807b7e4b",
+    "source_index": 7,
+    "intent": {
+      "first_action": "inspect crucible",
+      "target": "crucible",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_f41736a9db23",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_16c8d8eb97943094"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 7,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect crucible",
+      "evidence_feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_16c8d8eb97943094"
+  },
+  {
+    "state_id": "d12_4892e4fbb1fad417",
+    "task_id": "sequence-697aafaff2ad5b74-S1-c3876e4fe87c",
+    "source_index": 1,
+    "intent": {
+      "first_action": "inspect fiend_plate",
+      "target": "fiend_plate",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_plate",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect fiend_plate",
+            "id": "c_b720ec7a8e81",
+            "confirmed_connection": false,
+            "next_action": "inspect fiend_plate",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_plate",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_d63a71475678",
+            "confirmed_connection": false,
+            "next_action": "inspect fiend_plate",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_plate",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect fiend_plate",
+            "id": "c_b720ec7a8e81"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_a7e49a0fb360755b"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 1,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect fiend_plate",
+      "evidence_feedback": "I inspected fiend_plate: A thick armor plate ripped from a devil machine's chassis, etched with hellish runes.\nIt can be used to craft: fiend_cuirass (made of fiend_plate, fiend_rivet, padded_lining, war_strap), fiend_strip (made of fiend_plate).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_a7e49a0fb360755b"
+  },
+  {
+    "state_id": "d12_27d4508a1abb9ee2",
+    "task_id": "sequence-697aafaff2ad5b74-E0-d560807b7e4b",
+    "source_index": 11,
+    "intent": {
+      "first_action": "inspect fiend_strip",
+      "target": "fiend_strip",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_strip",
+            "category": "fresh_product",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_ea865ff4c7d5",
+            "confirmed_connection": false,
+            "next_action": "inspect fiend_strip",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_strip",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect fiend_strip",
+            "id": "c_29938b64cd0b",
+            "confirmed_connection": false,
+            "next_action": "inspect fiend_strip",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "fiend_strip",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect fiend_strip",
+            "id": "c_29938b64cd0b"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_584ea3354379fc19"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 11,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect fiend_strip",
+      "evidence_feedback": "I inspected fiend_strip: A narrow strip cut from fiend plate, resilient and unnaturally light.\nIt can be used to craft: fiend_rivet (made of fiend_strip), war_codex (made of field_journal, sinew_cord, fiend_strip).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_584ea3354379fc19"
+  },
+  {
+    "state_id": "d12_2b682b0f9a8b12f4",
+    "task_id": "sequence-697aafaff2ad5b74-E0-d560807b7e4b",
+    "source_index": 10,
+    "intent": {
+      "first_action": "inspect inventory",
+      "target": "inventory",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041",
+            "confirmed_connection": false,
+            "next_action": "inspect inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_dec9c911edfd60c7"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_dec9c911edfd60c7"
+  },
+  {
+    "state_id": "d12_8694b7913dc729f7",
+    "task_id": "sequence-6c1d62349d18c4d3-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "store 1 salvage_cloth inventory",
+      "target": "sinew_cord",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "salvage_cloth",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 1 salvage_cloth inventory",
+            "id": "c_5f1cf8706cc7"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "sinew_cord",
+              "ingredient": "salvage_cloth"
+            },
+            "spent": 3,
+            "limit": 18
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "salvage_cloth"
+        ],
+        "step": 12,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_e2a5ab574cdcd4ff"
+    },
+    "recorded_goal": {
+      "target": "sinew_cord",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "sinew_cord",
+            "ingredient": "salvage_cloth"
+          },
+          "spent": 3,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": true,
+      "index": 22,
+      "actions_inclusive": 21,
+      "production_index": 20,
+      "closure": "acquisition_disclosure",
+      "evidence_action": "store 2 sinew_cord inventory",
+      "evidence_feedback": "I stored 2 sinew_cord in my inventory.\nI have acquired a new item: sinew_cord. It can be used to craft: stitched_panel (1 bandage_roll, 1 sinew_cord), timber_sword (1 scorched_plank, 1 wood_strip, 1 sinew_cord), spiked_club (2 charred_timber, 2 rubble_chunk, 1 sinew_cord), war_strap (1 sinew_cord, 0.25 bandage_roll), war_codex (2 field_journal, 2 sinew_cord, 1 fiend_strip), cog_crossbow (1 gearwork_frame, 2 iron_bar, 3 sinew_cord), ruin_spear (1 knapped_edge, 1 wooden_rod, 1 sinew_cord), hunter_gauntlets (1 iron_bar, 1 war_strap, 1 sinew_cord), fiend_scale_bundle (6 fiend_alloy_scale, 3 sinew_cord), scale_bundle (6 iron_scale, 2 sinew_cord), siege_crate (4 scorched_plank, 2 iron_bar, 2 sinew_cord), fiend_gauntlets (1 fiend_alloy, 1 war_strap, 2 sinew_cord), bandage_roll (1 salvage_cloth, 2 sinew_cord), padded_tunic (1 padded_lining, 1 sinew_cord), scrap_buckler (2 scrap_iron, 1 sinew_cord), repair_kit (2 scrap_iron, 2 sinew_cord, 1 oil_flask), scout_satchel (3 salvage_cloth, 1 sinew_cord), warding_charm (1 demon_core_shard, 3 sinew_cord, 1 hellcoal_concentrate), field_journal (5 war_parchment, 1 sinew_cord), chain_net (3 iron_bar, 2 sinew_cord)\nOminous mechanical grinding echoes from the nearby cellar. Dormant war machines are reclaiming the abandoned territory — a infernal_colossus_14 has emerged from the wreckage.\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (36 HP remaining)"
+    },
+    "common_action_prefix": 1,
+    "divergence_index": 3,
+    "actual_at_divergence": "inspect crown_shard",
+    "fixed_at_divergence": "craft 2 sinew_cord",
+    "new_public_information_before_switch": [
+      {
+        "index": 2,
+        "delta": {
+          "new_relations": [],
+          "quantity_updates": [
+            "bandage_roll",
+            "oil_bomb",
+            "padded_lining",
+            "ruin_gauntlets",
+            "scout_satchel",
+            "scrap_helm",
+            "scrap_lantern",
+            "sinew_cord",
+            "war_banner",
+            "war_parchment"
+          ],
+          "station_updates": []
+        }
+      }
+    ],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": false,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": false
+    },
+    "status": "completed_in_actual_trajectory",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_e2a5ab574cdcd4ff"
+  },
+  {
+    "state_id": "d12_996d46f5a59bfdc4",
+    "task_id": "sequence-6c1d62349d18c4d3-E1-d560807b7e4b",
+    "source_index": 10,
+    "intent": {
+      "first_action": "inspect crucible",
+      "target": "crucible",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_f41736a9db23",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_16c8d8eb97943094"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 10,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect crucible",
+      "evidence_feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 6 devil-forged objects seeps into my flesh, draining 6 HP. Carrying more than 3 accursed items invites corruption! (76 HP remaining)"
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_16c8d8eb97943094"
+  },
+  {
+    "state_id": "d12_eaae67b21b57e5d9",
+    "task_id": "sequence-6c1d62349d18c4d3-S1-c3876e4fe87c",
+    "source_index": 15,
+    "intent": {
+      "first_action": "store 2 iron_nugget inventory",
+      "target": "iron_bar",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_nugget",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 2 iron_nugget inventory",
+            "id": "c_eeb01e27dce6"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "iron_bar",
+              "ingredient": "iron_nugget"
+            },
+            "spent": 15,
+            "limit": 18
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "iron_nugget"
+        ],
+        "step": 25,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_6da334f721b57590"
+    },
+    "recorded_goal": {
+      "target": "iron_bar",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "iron_bar",
+            "ingredient": "iron_nugget"
+          },
+          "spent": 15,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": true,
+      "index": 18,
+      "actions_inclusive": 4,
+      "production_index": 16,
+      "closure": "inspect",
+      "evidence_action": "inspect iron_bar",
+      "evidence_feedback": "I inspected iron_bar: A smelted bar of iron pulled from the ruins, ready for forging into weapons against devil machines.\nIt can be used to craft: forged_blade_blank (made of iron_bar, wooden_rod), hellfire_bomb (made of hellcoal_concentrate, oil_flask, iron_bar), cog_crossbow (made of gearwork_frame, iron_bar, sinew_cord), fiend_halberd (made of fiend_alloy, iron_bar, wooden_rod, war_strap), hunter_gauntlets (made of iron_bar, war_strap, sinew_cord), siege_crate (made of scorched_plank, iron_bar, sinew_cord), gearwork_frame (made of cog_assembly, iron_bar), iron_mace (made of iron_bar, wooden_rod, war_strap), war_pack (made of stitched_panel, war_strap, iron_bar), gate_blank (made of iron_bar), chain_net (made of iron_bar, sinew_cord), iron_sheet (made of iron_bar), hunter_helm (made of iron_bar, padded_lining), machine_trap (made of chain_net, cog_assembly, iron_bar).\nIt has nothing written on it.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (52 HP remaining)"
+    },
+    "common_action_prefix": 2,
+    "divergence_index": 17,
+    "actual_at_divergence": "inspect inventory",
+    "fixed_at_divergence": "inspect iron_bar",
+    "new_public_information_before_switch": [
+      {
+        "index": 15,
+        "delta": {
+          "new_relations": [],
+          "quantity_updates": [
+            "iron_bar"
+          ],
+          "station_updates": []
+        }
+      }
+    ],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": false,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": true
+    },
+    "status": "completed_in_actual_trajectory",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_6da334f721b57590"
+  },
+  {
+    "state_id": "d12_b5e67d08463a4c9c",
+    "task_id": "sequence-6c1d62349d18c4d3-E1-d560807b7e4b",
+    "source_index": 24,
+    "intent": {
+      "first_action": "craft 2 iron_nugget",
+      "target": "iron_nugget",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "iron_nugget",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 2 iron_nugget",
+            "id": "c_7ed747511233",
+            "confirmed_connection": true,
+            "next_action": "craft 2 iron_nugget",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "iron_nugget",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 2 iron_nugget",
+            "id": "c_7ed747511233"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Craft-and-Inspect",
+      "id": "i_358d46d7e04b2bb2"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": 34
+    },
+    "common_action_prefix": 1,
+    "divergence_index": 25,
+    "actual_at_divergence": "pick up iron_nugget",
+    "fixed_at_divergence": "inspect iron_nugget",
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": true
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_358d46d7e04b2bb2"
+  },
+  {
+    "state_id": "d12_3a50cbb76467507a",
+    "task_id": "sequence-6c1d62349d18c4d3-E1-d560807b7e4b",
+    "source_index": 32,
+    "intent": {
+      "first_action": "craft 1 chain_net",
+      "target": "chain_net",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "chain_net",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 1 chain_net",
+            "id": "c_ec96751b81e8",
+            "confirmed_connection": true,
+            "next_action": "craft 1 chain_net",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "craft",
+            "target": "chain_net",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "craft 1 chain_net",
+            "id": "c_ec96751b81e8"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Craft-and-Inspect",
+      "id": "i_20d2a6dd95d8a110"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_20d2a6dd95d8a110"
+  },
+  {
+    "state_id": "d12_a92f408263c9541e",
+    "task_id": "sequence-a636cc2f94cddc21-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "inspect rubble",
+      "target": "rubble",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "rubble",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_c87e918f8e11",
+            "confirmed_connection": false,
+            "next_action": "inspect rubble",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "rubble",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect rubble",
+            "id": "c_f35a81b41ed5",
+            "confirmed_connection": false,
+            "next_action": "inspect rubble",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "rubble",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect rubble",
+            "id": "c_f35a81b41ed5"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_403bfa7cb5d34a0c"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 2,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect rubble",
+      "evidence_feedback": "I inspected rubble: Chunks of broken stone from a kingdom's collapsed walls, useful for construction.\nIt can be used to craft: rubble_chunk (made of rubble), war_bench (made of charred_timber, rubble), crucible (made of rubble).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_403bfa7cb5d34a0c"
+  },
+  {
+    "state_id": "d12_01c83c35e4b3f13b",
+    "task_id": "sequence-a636cc2f94cddc21-E1-d560807b7e4b",
+    "source_index": 6,
+    "intent": {
+      "first_action": "inspect hellcoal",
+      "target": "hellcoal",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "hellcoal",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect hellcoal",
+            "id": "c_7b57c2d1e762",
+            "confirmed_connection": false,
+            "next_action": "inspect hellcoal",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "hellcoal",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_64d1c15df952",
+            "confirmed_connection": false,
+            "next_action": "inspect hellcoal",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "hellcoal",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect hellcoal",
+            "id": "c_7b57c2d1e762"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_f4ecda6ba3c69b39"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 6,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect hellcoal",
+      "evidence_feedback": "I inspected hellcoal: A smoldering lump of infernal fuel that never fully cools, salvaged from machine furnaces.\nIt can be used to craft: hellcoal_concentrate (made of hellcoal, devil_oil).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_f4ecda6ba3c69b39"
+  },
+  {
+    "state_id": "d12_7a79977e9ab99d44",
+    "task_id": "sequence-a636cc2f94cddc21-S1-c3876e4fe87c",
+    "source_index": 17,
+    "intent": {
+      "first_action": "store 2 iron_nugget inventory",
+      "target": "iron_bar",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_nugget",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 2 iron_nugget inventory",
+            "id": "c_eeb01e27dce6"
+          }
+        },
+        {
+          "path": "mechanisms.exploration",
+          "value": {
+            "reason": "acquire publicly named trial ingredient",
+            "source": {
+              "product": "iron_bar",
+              "ingredient": "iron_nugget"
+            },
+            "spent": 17,
+            "limit": 18
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "craft_inspect",
+      "type": "Prepare-and-Explore",
+      "public_recipe_at_start": {
+        "quantities": null,
+        "ingredients": [
+          "iron_nugget"
+        ],
+        "step": 27,
+        "source": "public_inspection"
+      },
+      "recipe_relation_unknown": false,
+      "id": "i_6da334f721b57590"
+    },
+    "recorded_goal": {
+      "target": "iron_bar",
+      "operation": "craft_inspect",
+      "evidence": {
+        "path": "mechanisms.exploration",
+        "value": {
+          "reason": "acquire publicly named trial ingredient",
+          "source": {
+            "product": "iron_bar",
+            "ingredient": "iron_nugget"
+          },
+          "spent": 17,
+          "limit": 18
+        }
+      }
+    },
+    "actual_closure": {
+      "complete": true,
+      "index": 28,
+      "actions_inclusive": 12,
+      "production_index": 18,
+      "closure": "inspect",
+      "evidence_action": "inspect iron_bar",
+      "evidence_feedback": "I inspected iron_bar: A smelted bar of iron pulled from the ruins, ready for forging into weapons against devil machines.\nIt can be used to craft: forged_blade_blank (made of iron_bar, wooden_rod), hellfire_bomb (made of hellcoal_concentrate, oil_flask, iron_bar), cog_crossbow (made of gearwork_frame, iron_bar, sinew_cord), fiend_halberd (made of fiend_alloy, iron_bar, wooden_rod, war_strap), hunter_gauntlets (made of iron_bar, war_strap, sinew_cord), siege_crate (made of scorched_plank, iron_bar, sinew_cord), gearwork_frame (made of cog_assembly, iron_bar), iron_mace (made of iron_bar, wooden_rod, war_strap), war_pack (made of stitched_panel, war_strap, iron_bar), gate_blank (made of iron_bar), chain_net (made of iron_bar, sinew_cord), iron_sheet (made of iron_bar), hunter_helm (made of iron_bar, padded_lining), machine_trap (made of chain_net, cog_assembly, iron_bar).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 2,
+    "divergence_index": 19,
+    "actual_at_divergence": "inspect inventory",
+    "fixed_at_divergence": "inspect iron_bar",
+    "new_public_information_before_switch": [
+      {
+        "index": 17,
+        "delta": {
+          "new_relations": [],
+          "quantity_updates": [
+            "iron_bar"
+          ],
+          "station_updates": []
+        }
+      }
+    ],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": true,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": true,
+      "no_intervening_information_resource_or_risk": false,
+      "no_direct_goal_switch": true,
+      "next_action_native_supported": true
+    },
+    "status": "completed_in_actual_trajectory",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_6da334f721b57590"
+  },
+  {
+    "state_id": "d12_2964f51279aa9f71",
+    "task_id": "sequence-a636cc2f94cddc21-E0-d560807b7e4b",
+    "source_index": 24,
+    "intent": {
+      "first_action": "pick up iron_bar",
+      "target": "iron_bar",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_bar",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "pick up iron_bar",
+            "id": "c_15171b7a2102",
+            "confirmed_connection": false,
+            "next_action": "pick up iron_bar",
+            "public_condition": "SUPPORTED"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_bar",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "pick up iron_bar",
+            "id": "c_15171b7a2102"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": null,
+      "operation": "atomic",
+      "type": "Acquire",
+      "incompleteness": "acquisition does not establish a downstream exploration goal",
+      "id": "i_9ea447443c7fc1ca"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_9ea447443c7fc1ca"
+  },
+  {
+    "state_id": "d12_50b2047c44eb9489",
+    "task_id": "sequence-a636cc2f94cddc21-E1-d560807b7e4b",
+    "source_index": 32,
+    "intent": {
+      "first_action": "inspect crucible",
+      "target": "crucible",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_16c8d8eb97943094"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 32,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect crucible",
+      "evidence_feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (82 HP remaining)"
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_16c8d8eb97943094"
+  },
+  {
+    "state_id": "d12_c22b3ec6c829109c",
+    "task_id": "sequence-d0606cf4af2df919-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "inspect sinew_cord",
+      "target": "sinew_cord",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "sinew_cord",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect sinew_cord",
+            "id": "c_9336e1422f2b",
+            "confirmed_connection": false,
+            "next_action": "inspect sinew_cord",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "sinew_cord",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_ff3dc4ae7a9a",
+            "confirmed_connection": false,
+            "next_action": "inspect sinew_cord",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "sinew_cord",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect sinew_cord",
+            "id": "c_9336e1422f2b"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_a210616162bbba4c"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 2,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect sinew_cord",
+      "evidence_feedback": "I inspected sinew_cord: Twisted cord braided from salvaged fibers and dried sinew, surprisingly tough.\nIt can be used to craft: stitched_panel (made of bandage_roll, sinew_cord), timber_sword (made of scorched_plank, wood_strip, sinew_cord), spiked_club (made of charred_timber, rubble_chunk, sinew_cord), war_strap (made of sinew_cord, bandage_roll), war_codex (made of field_journal, sinew_cord, fiend_strip), cog_crossbow (made of gearwork_frame, iron_bar, sinew_cord), ruin_spear (made of knapped_edge, wooden_rod, sinew_cord), hunter_gauntlets (made of iron_bar, war_strap, sinew_cord), fiend_scale_bundle (made of fiend_alloy_scale, sinew_cord), scale_bundle (made of iron_scale, sinew_cord), siege_crate (made of scorched_plank, iron_bar, sinew_cord), fiend_gauntlets (made of fiend_alloy, war_strap, sinew_cord), bandage_roll (made of salvage_cloth, sinew_cord), padded_tunic (made of padded_lining, sinew_cord), scrap_buckler (made of scrap_iron, sinew_cord), repair_kit (made of scrap_iron, sinew_cord, oil_flask), scout_satchel (made of salvage_cloth, sinew_cord), warding_charm (made of demon_core_shard, sinew_cord, hellcoal_concentrate), field_journal (made of war_parchment, sinew_cord), chain_net (made of iron_bar, sinew_cord).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_a210616162bbba4c"
+  },
+  {
+    "state_id": "d12_5053683c26d2e1de",
+    "task_id": "sequence-d0606cf4af2df919-E0-d560807b7e4b",
+    "source_index": 13,
+    "intent": {
+      "first_action": "inspect crucible",
+      "target": "crucible",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_f41736a9db23",
+            "confirmed_connection": false,
+            "next_action": "inspect crucible",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "crucible",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect crucible",
+            "id": "c_0a276e08b709"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_16c8d8eb97943094"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 13,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect crucible",
+      "evidence_feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_16c8d8eb97943094"
+  },
+  {
+    "state_id": "d12_edea7c24b75cf3bb",
+    "task_id": "sequence-d0606cf4af2df919-S1-c3876e4fe87c",
+    "source_index": 18,
+    "intent": {
+      "first_action": "pick up iron_nugget",
+      "target": "iron_nugget",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_nugget",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "pick up iron_nugget",
+            "id": "c_9d350462bb2d"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_nugget",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "pick up iron_nugget",
+            "id": "c_9d350462bb2d",
+            "confirmed_connection": true,
+            "next_action": "pick up iron_nugget",
+            "public_condition": "SUPPORTED"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": null,
+      "operation": "atomic",
+      "type": "Acquire",
+      "incompleteness": "acquisition does not establish a downstream exploration goal",
+      "id": "i_dff31c7d123a30e1"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_dff31c7d123a30e1"
+  },
+  {
+    "state_id": "d12_b722bac888259e22",
+    "task_id": "sequence-d0606cf4af2df919-E1-d560807b7e4b",
+    "source_index": 27,
+    "intent": {
+      "first_action": "inspect inventory",
+      "target": "inventory",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041",
+            "confirmed_connection": false,
+            "next_action": "inspect inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_dec9c911edfd60c7"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_dec9c911edfd60c7"
+  },
+  {
+    "state_id": "d12_2f6a0c1e72839f91",
+    "task_id": "sequence-d0606cf4af2df919-E0-d560807b7e4b",
+    "source_index": 32,
+    "intent": {
+      "first_action": "store 1 iron_nugget inventory",
+      "target": "iron_nugget",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_nugget",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 1 iron_nugget inventory",
+            "id": "c_a91be22a7b82",
+            "confirmed_connection": true,
+            "next_action": "store 1 iron_nugget inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "iron_nugget",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "store 1 iron_nugget inventory",
+            "id": "c_a91be22a7b82"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": null,
+      "operation": "atomic",
+      "type": "Acquire",
+      "incompleteness": "acquisition does not establish a downstream exploration goal",
+      "id": "i_d101bc18ce082f7c"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_d101bc18ce082f7c"
+  },
+  {
+    "state_id": "d12_db9cf8a8d4ddadac",
+    "task_id": "sequence-f5bbe8ac06891a7d-S1-c3876e4fe87c",
+    "source_index": 2,
+    "intent": {
+      "first_action": "inspect sinew_cord",
+      "target": "sinew_cord",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "sinew_cord",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect sinew_cord",
+            "id": "c_9336e1422f2b",
+            "confirmed_connection": false,
+            "next_action": "inspect sinew_cord",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "sinew_cord",
+            "category": "unconnected_visible",
+            "evidence": "currently observed, not previously inspected",
+            "id": "c_ff3dc4ae7a9a",
+            "confirmed_connection": false,
+            "next_action": "inspect sinew_cord",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "sinew_cord",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect sinew_cord",
+            "id": "c_9336e1422f2b"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_a210616162bbba4c"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": true,
+      "index": 2,
+      "actions_inclusive": 1,
+      "production_index": null,
+      "closure": "inspect",
+      "evidence_action": "inspect sinew_cord",
+      "evidence_feedback": "I inspected sinew_cord: Twisted cord braided from salvaged fibers and dried sinew, surprisingly tough.\nIt can be used to craft: stitched_panel (made of bandage_roll, sinew_cord), timber_sword (made of scorched_plank, wood_strip, sinew_cord), spiked_club (made of charred_timber, rubble_chunk, sinew_cord), war_strap (made of sinew_cord, bandage_roll), war_codex (made of field_journal, sinew_cord, fiend_strip), cog_crossbow (made of gearwork_frame, iron_bar, sinew_cord), ruin_spear (made of knapped_edge, wooden_rod, sinew_cord), hunter_gauntlets (made of iron_bar, war_strap, sinew_cord), fiend_scale_bundle (made of fiend_alloy_scale, sinew_cord), scale_bundle (made of iron_scale, sinew_cord), siege_crate (made of scorched_plank, iron_bar, sinew_cord), fiend_gauntlets (made of fiend_alloy, war_strap, sinew_cord), bandage_roll (made of salvage_cloth, sinew_cord), padded_tunic (made of padded_lining, sinew_cord), scrap_buckler (made of scrap_iron, sinew_cord), repair_kit (made of scrap_iron, sinew_cord, oil_flask), scout_satchel (made of salvage_cloth, sinew_cord), warding_charm (made of demon_core_shard, sinew_cord, hellcoal_concentrate), field_journal (made of war_parchment, sinew_cord), chain_net (made of iron_bar, sinew_cord).\nIt has nothing written on it."
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": false,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_a210616162bbba4c"
+  },
+  {
+    "state_id": "d12_61af4f652315aaae",
+    "task_id": "sequence-f5bbe8ac06891a7d-E1-d560807b7e4b",
+    "source_index": 14,
+    "intent": {
+      "first_action": "inspect inventory",
+      "target": "inventory",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041",
+            "confirmed_connection": false,
+            "next_action": "inspect inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_dec9c911edfd60c7"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_dec9c911edfd60c7"
+  },
+  {
+    "state_id": "d12_dc6e7aaa56e84ae2",
+    "task_id": "sequence-f5bbe8ac06891a7d-S1-c3876e4fe87c",
+    "source_index": 5,
+    "intent": {
+      "first_action": "enter barracks",
+      "target": "barracks",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "barracks",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "enter barracks",
+            "id": "c_f4bbfd0ebbe8",
+            "confirmed_connection": false,
+            "next_action": "enter barracks",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "barracks",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "enter barracks",
+            "id": "c_f4bbfd0ebbe8"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": "barracks",
+      "operation": "move",
+      "type": "Move",
+      "incompleteness": "destination alone does not establish an exploration goal",
+      "id": "i_3b677599536f7842"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_3b677599536f7842"
+  },
+  {
+    "state_id": "d12_44fff422fc987cfb",
+    "task_id": "sequence-f5bbe8ac06891a7d-E1-d560807b7e4b",
+    "source_index": 24,
+    "intent": {
+      "first_action": "inspect inventory",
+      "target": "inventory",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041",
+            "confirmed_connection": false,
+            "next_action": "inspect inventory",
+            "public_condition": "UNKNOWN"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "inspect",
+            "target": "inventory",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "inspect inventory",
+            "id": "c_8ee2bfa97041"
+          }
+        }
+      ],
+      "clarity": "explicit",
+      "location": null,
+      "operation": "inspect",
+      "type": "Inspect",
+      "id": "i_dec9c911edfd60c7"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": false,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_dec9c911edfd60c7"
+  },
+  {
+    "state_id": "d12_ab8371feb0410772",
+    "task_id": "sequence-f5bbe8ac06891a7d-E1-d560807b7e4b",
+    "source_index": 27,
+    "intent": {
+      "first_action": "pick up padded_tunic",
+      "target": "padded_tunic",
+      "evidence": [
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "padded_tunic",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "pick up padded_tunic",
+            "id": "c_bca310bd1b39"
+          }
+        },
+        {
+          "candidate": {
+            "kind": "primitive",
+            "target": "padded_tunic",
+            "category": "primitive",
+            "evidence": "public method proposal; exact first action retained",
+            "first_action": "pick up padded_tunic",
+            "id": "c_bca310bd1b39",
+            "confirmed_connection": true,
+            "next_action": "pick up padded_tunic",
+            "public_condition": "SUPPORTED"
+          }
+        }
+      ],
+      "clarity": "incomplete",
+      "location": null,
+      "operation": "atomic",
+      "type": "Acquire",
+      "incompleteness": "acquisition does not establish a downstream exploration goal",
+      "id": "i_75594db58f4e9a44"
+    },
+    "recorded_goal": null,
+    "actual_closure": {
+      "complete": false,
+      "index": null,
+      "production_index": null
+    },
+    "common_action_prefix": 1,
+    "divergence_index": null,
+    "actual_at_divergence": null,
+    "fixed_at_divergence": null,
+    "new_public_information_before_switch": [],
+    "resource_changes_before_switch": [],
+    "public_risk_or_precondition_feedback": [],
+    "gates": {
+      "explicit_recorded_exploration": false,
+      "accepted_first_action": true,
+      "native_fixed_continuation_completes": true,
+      "actual_full_trajectory_unfinished": true,
+      "different_actual_next_action": false,
+      "no_intervening_information_resource_or_risk": true,
+      "no_direct_goal_switch": false,
+      "next_action_native_supported": false
+    },
+    "status": "no_explicit_multistep_commitment",
+    "confirmed_F4": false,
+    "native_branch_intent_id": "i_75594db58f4e9a44"
+  }
+]

@@ -1,0 +1,73 @@
+# d12_17c5deb0c6ac6acf：brimite_blade_blank
+
+原 Stage10 S1，源任务 `sequence-6849519fb68b5f91-S1-c3876e4fe87c`，index=2，剩余动作38。原始J0动作 `store 4 brimite_ore inventory`；旧17遗漏：是。
+
+| 口径 | J0新必要配方 | J1 | J2 | J3 |
+| --- | --- | --- | --- | --- |
+| 原始 Stage12 | 无 | 无 | 无 | 无 |
+| 仅校正解析计分 | 无 | 无 | 无 | 无 |
+| 仅统一意图执行 | 无 | 无 | 无 | 无 |
+| 两者统一 | 无 | 无 | 无 | 无 |
+
+
+标签：F5、F6。4／6／8步有效：否／是／是。决策前必要K1−K2：无。
+
+原轨迹目标闭合：{"complete": true, "index": 12, "actions_inclusive": 11, "production_index": 10, "closure": "inspect", "evidence_action": "inspect brimite_nugget", "evidence_feedback": "I inspected brimite_nugget: A dense nugget smelted from brimite ore, hot to the touch and faintly glowing.\nIt can be used to craft: brimite_ingot (made of brimite_nugget).\nIt has nothing written on it."}。
+
+归因证据：
+
+```json
+{
+  "F5": {
+    "stop": "intent_complete",
+    "feedback": [
+      "Cannot craft brimite_nugget. Missing necessary crucible in the current area.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (92 HP remaining)"
+    ],
+    "scope": "selected bounded intent limitation, not global task impossibility"
+  },
+  "F6": "a longer productive intention is not established as a wrong direction by the four-action score alone"
+}
+```
+
+连续性逐条件：
+
+```json
+{
+  "explicit_recorded_exploration": true,
+  "accepted_first_action": true,
+  "native_fixed_continuation_completes": true,
+  "actual_full_trajectory_unfinished": false,
+  "different_actual_next_action": true,
+  "no_intervening_information_resource_or_risk": false,
+  "no_direct_goal_switch": true,
+  "next_action_native_supported": false
+}
+```
+
+原始公开观察：
+
+```text
+
+Current Time: 0001-01-01 10:00:00
+Current Location: Ashen Bastion, barracks
+
+I inspected brimite_ore: A sulfurous ore found near devil forges, glowing faintly with trapped hellfire.
+It can be used to craft: brimite_nugget (made of brimite_ore).
+It has nothing written on it.
+
+I am holding 1 brimite_blade_blank.
+I have equipped 1 scout_satchel_0.
+I see 4 brimite_ore near me.
+I see no one nearby.
+
+My level is 1.
+My attack is at 10.
+My defense is at 0.
+My health is at 100.
+My experience is at 10.
+
+Neighboring areas: cellar.
+
+```
+
+全部分支前后观察见 [原生意图结果](../../../results/stage14/native_intent_branches.jsonl.gz) 或 [复用结果](../../../results/stage14/reused_intent_branches.jsonl.gz)，以 state_id／intent_id 连接。首次信息和升级见 [知识时间线](../../../results/stage14/intent_knowledge_timeline.jsonl.gz)。
