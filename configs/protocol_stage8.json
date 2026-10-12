@@ -1,0 +1,167 @@
+{
+  "upstream_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "python_hash_seed": 0,
+  "protocol_cohort": "stage8_v1",
+  "model": "deepseek-flash",
+  "base_url": "https://api.deepseek.com",
+  "thinking": "disabled",
+  "temperature": 0.7,
+  "max_tokens": 768,
+  "algorithms": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "games": [
+    "robot_kingdom",
+    "remnant",
+    "metropolis"
+  ],
+  "test_seeds": [],
+  "max_steps": 40,
+  "short_term_memory_size": 5,
+  "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+  "embedding_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "initial_workers": 4,
+  "max_workers": 12,
+  "total_budget_usd": 5,
+  "equal_cost_per_episode_usd": 0.15,
+  "scar": {
+    "cooldown": 8,
+    "max_rules": 256,
+    "threshold": 0.75,
+    "max_plan_steps": 3
+  },
+  "diagnostic_split_seed": 8675309,
+  "bootstrap_seed": 314159,
+  "bootstrap_samples": 10000,
+  "pricing_usd_per_million": {
+    "cache_hit": 0.006,
+    "cache_miss": 0.3,
+    "output": 1.2
+  },
+  "pricing_basis": "fixed peak price for cross-method comparison and conservative budget; not an account invoice",
+  "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "diagnostic_max_steps": 40,
+  "budget_authorization": "User waives historical20USD cap; finite batch, incremental5USD hard guard; latest steering expands ONLY new families to2-3games",
+  "episode_budget_usd": 0.25,
+  "predeclared_outcomes": {
+    "primary": "historical Robot10 and novel cohorts separately; new per-game strata; paired family R10/20/40",
+    "seed": "one frozen physical seed per family; APItemperature0.7 not paired model randomness",
+    "abort": "policy exceptions failure, no paid rerun; infra/budget incomplete",
+    "formal_internal_methods": [
+      "P0",
+      "P1",
+      "P2",
+      "P3",
+      "P4"
+    ],
+    "maximum_new_families": 18,
+    "target_new_families_per_game": 6,
+    "selection": "ascending official target ID, no historical target, unique nameless weighted dependency graph within new set; then true engine witness<=35; no policy filtering",
+    "scope": "all source games previously used somewhere in project; unseen tasks, NOT unseen-game generalization",
+    "safety": "shared P3/P4 constraints; P0/P1/P2 exact frozen implementations",
+    "local_audit": "all decisions with safety toggled for P3/P4; B/C/D toggles inP4; same recorded proposal and pre-state",
+    "stop_after_formal_results": "no policy edits, steps extension, seed replacement or rerun"
+  },
+  "mechanisms": {
+    "directed_actions_max": 18,
+    "forward_trials_max": 4,
+    "batch_candidates": [
+      1,
+      2,
+      4
+    ],
+    "summary_max_records": 48,
+    "summary_max_characters": 6000,
+    "summary_extra_calls": 0,
+    "stage7_flags": {
+      "C0": {
+        "retry_context_fix": false,
+        "knowledge_gap_exploration": false,
+        "explore_execute_switch": false,
+        "resource_goal_guard": false
+      },
+      "C1": {
+        "retry_context_fix": true,
+        "knowledge_gap_exploration": false,
+        "explore_execute_switch": false,
+        "resource_goal_guard": false
+      },
+      "C2": {
+        "retry_context_fix": false,
+        "knowledge_gap_exploration": true,
+        "explore_execute_switch": false,
+        "resource_goal_guard": false
+      },
+      "C3": {
+        "retry_context_fix": false,
+        "knowledge_gap_exploration": false,
+        "explore_execute_switch": true,
+        "resource_goal_guard": false
+      },
+      "C4": {
+        "retry_context_fix": false,
+        "knowledge_gap_exploration": false,
+        "explore_execute_switch": false,
+        "resource_goal_guard": true
+      },
+      "C5": {
+        "retry_context_fix": true,
+        "knowledge_gap_exploration": true,
+        "explore_execute_switch": true,
+        "resource_goal_guard": true
+      }
+    },
+    "quantity_candidates": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "quantity_numbers": "D alone reads explicit public acquisition numeric recipes only for names already in shared FIFO table",
+    "same_prompt_and_summary_for_all": true,
+    "no_extra_model_calls": true,
+    "safety_versions": [
+      "P3",
+      "P4"
+    ],
+    "max_search_depth": 12,
+    "max_search_nodes": 64,
+    "max_candidates": 48
+  },
+  "switches": {
+    "P0": {
+      "retry_context_fix": false,
+      "knowledge_gap_exploration": false,
+      "explore_execute_switch": false,
+      "resource_goal_guard": false
+    },
+    "P1": {
+      "retry_context_fix": true,
+      "knowledge_gap_exploration": false,
+      "explore_execute_switch": false,
+      "resource_goal_guard": false
+    },
+    "P2": {
+      "retry_context_fix": true,
+      "knowledge_gap_exploration": true,
+      "explore_execute_switch": true,
+      "resource_goal_guard": true
+    },
+    "P3": {
+      "retry_context_fix": true,
+      "knowledge_gap_exploration": false,
+      "explore_execute_switch": false,
+      "resource_goal_guard": false
+    },
+    "P4": {
+      "retry_context_fix": true,
+      "knowledge_gap_exploration": true,
+      "explore_execute_switch": true,
+      "resource_goal_guard": true
+    }
+  }
+}

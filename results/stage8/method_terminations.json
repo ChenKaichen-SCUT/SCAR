@@ -1,0 +1,1918 @@
+{
+  "records": [
+    {
+      "task_id": "sequence-6849519fb68b5f91-P3-e2bcea1dbe95",
+      "case_id": "sequence-6849519fb68b5f91",
+      "method": "P3",
+      "raw_status": {
+        "status": "method_abort",
+        "error": "ModelResponseError: Three request/parse attempts failed (JSONDecodeError); no game action executed",
+        "steps": 27,
+        "updated": 1791793270.0393193
+      },
+      "classification": "model_response_format",
+      "committed_actions": 27,
+      "trace_path": "results/stage8/method_errors/sequence-6849519fb68b5f91-P3-e2bcea1dbe95.txt.gz",
+      "last_requests": [
+        {
+          "request_id": "41c206053db8424fb46aa64a1a87c709",
+          "status": "invalid_response",
+          "cost_usd": 0.0013283039999999998,
+          "usage": {
+            "completion_tokens": 409,
+            "completion_tokens_details": null,
+            "prompt_cache_hit_tokens": 384,
+            "prompt_cache_miss_tokens": 2784,
+            "prompt_tokens": 3168,
+            "prompt_tokens_details": {
+              "audio_tokens": null,
+              "cache_write_tokens": null,
+              "cached_tokens": 384,
+              "image_tokens": null,
+              "text_tokens": null
+            },
+            "total_tokens": 3577
+          },
+          "error": null
+        },
+        {
+          "request_id": "fd08c84c72cf4e1299f99b0cbbf01c1b",
+          "status": "invalid_response",
+          "cost_usd": 0.0010064639999999999,
+          "usage": {
+            "completion_tokens": 768,
+            "completion_tokens_details": null,
+            "prompt_cache_hit_tokens": 2944,
+            "prompt_cache_miss_tokens": 224,
+            "prompt_tokens": 3168,
+            "prompt_tokens_details": {
+              "audio_tokens": null,
+              "cache_write_tokens": null,
+              "cached_tokens": 2944,
+              "image_tokens": null,
+              "text_tokens": null
+            },
+            "total_tokens": 3936
+          },
+          "error": null
+        },
+        {
+          "request_id": "1e90f9c8f4614e8fbaeb55e2b13ed39e",
+          "status": "invalid_response",
+          "cost_usd": 0.0010064639999999999,
+          "usage": {
+            "completion_tokens": 768,
+            "completion_tokens_details": null,
+            "prompt_cache_hit_tokens": 2944,
+            "prompt_cache_miss_tokens": 224,
+            "prompt_tokens": 3168,
+            "prompt_tokens_details": {
+              "audio_tokens": null,
+              "cache_write_tokens": null,
+              "cached_tokens": 2944,
+              "image_tokens": null,
+              "text_tokens": null
+            },
+            "total_tokens": 3936
+          },
+          "error": null
+        }
+      ],
+      "last_controller_checkpoint": {
+        "controller": {
+          "mode": "fifo",
+          "table": {
+            "state": {
+              "location": "courtyard",
+              "location_full": "Ashen Bastion, courtyard",
+              "hands": {
+                "brimite_blade_blank": 1.0
+              },
+              "equipment": {
+                "scout_satchel_0": 1.0
+              },
+              "ground": {
+                "crucible": 1.0,
+                "war_bench": 1.0,
+                "crown_shard": 5.0
+              },
+              "neighbors": [
+                "cellar"
+              ],
+              "step": 37,
+              "feedback": "I inspected scout_satchel_0: A worn leather satchel issued to every hunter of devil-forged machines.\nIt contains: 3 brimite_ore, 1 brimite_nugget (capacity: 4/20).\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (6 HP remaining)",
+              "public_goal": null
+            },
+            "places": {
+              "barracks": {
+                "objects": {
+                  "crown_shard": 3.0
+                },
+                "step": 15,
+                "source": "public_ground_observation"
+              },
+              "cellar": {
+                "objects": {
+                  "scorched_plank": 1.0
+                },
+                "step": 17,
+                "source": "public_ground_observation"
+              },
+              "courtyard": {
+                "objects": {
+                  "crucible": 1.0,
+                  "war_bench": 1.0,
+                  "crown_shard": 5.0
+                },
+                "step": 37,
+                "source": "public_ground_observation"
+              }
+            },
+            "links": {
+              "barracks": [
+                "cellar"
+              ],
+              "cellar": [
+                "barracks",
+                "courtyard"
+              ],
+              "courtyard": [
+                "cellar"
+              ]
+            },
+            "containers": {
+              "scout_satchel_0": {
+                "counts": {
+                  "brimite_ore": 3.0,
+                  "brimite_nugget": 1.0
+                },
+                "load": 4.0,
+                "capacity": 20.0,
+                "location": "courtyard",
+                "step": 37,
+                "source": "public_container_inspection"
+              }
+            },
+            "inventory": "scout_satchel_0",
+            "recipes": {
+              "brimite_blade_blank": {
+                "ingredients": [],
+                "quantities": null,
+                "stations": [
+                  "war_bench",
+                  "crucible"
+                ]
+              },
+              "brimite_blade": {
+                "quantities": null,
+                "ingredients": [
+                  "brimite_blade_blank",
+                  "demon_core_shard"
+                ],
+                "step": 29,
+                "source": "public_inspection"
+              },
+              "brimite_nugget": {
+                "quantities": {
+                  "brimite_ore": 1.0
+                },
+                "ingredients": [
+                  "brimite_ore"
+                ],
+                "step": 12,
+                "source": "public_inspection",
+                "stations": [
+                  "crucible"
+                ],
+                "quantity_source": {
+                  "kind": "observed_successful_consumption",
+                  "step": 21
+                }
+              },
+              "timber_plate": {
+                "quantities": null,
+                "ingredients": [
+                  "scorched_plank"
+                ],
+                "step": 17,
+                "source": "public_inspection"
+              },
+              "timber_sword": {
+                "quantities": null,
+                "ingredients": [
+                  "scorched_plank",
+                  "wood_strip",
+                  "sinew_cord"
+                ],
+                "step": 17,
+                "source": "public_inspection"
+              },
+              "wood_strip": {
+                "quantities": null,
+                "ingredients": [
+                  "scorched_plank"
+                ],
+                "step": 17,
+                "source": "public_inspection"
+              },
+              "siege_crate": {
+                "quantities": null,
+                "ingredients": [
+                  "scorched_plank",
+                  "iron_bar",
+                  "sinew_cord"
+                ],
+                "step": 17,
+                "source": "public_inspection"
+              },
+              "brimite_ingot": {
+                "quantities": null,
+                "ingredients": [
+                  "brimite_nugget"
+                ],
+                "step": 23,
+                "source": "public_inspection"
+              }
+            },
+            "inspected": [
+              "scout_satchel_0",
+              "brimite_blade_blank",
+              "brimite_ore",
+              "crown_shard",
+              "scorched_plank",
+              "crucible",
+              "war_bench",
+              "inventory",
+              "brimite_nugget"
+            ],
+            "guards": {
+              "barracks->cellar": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I entered cellar.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (84 HP remaining)",
+                "step": 16
+              },
+              "cellar->courtyard": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I entered courtyard.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (76 HP remaining)",
+                "step": 18
+              },
+              "courtyard->cellar": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I entered cellar.",
+                "step": 8
+              },
+              "cellar->barracks": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I entered barracks.",
+                "step": 9
+              }
+            },
+            "observations": 162,
+            "events": [],
+            "pending_craft": null
+          },
+          "target": "craft 1 brimite_blade_blank",
+          "objective": "Obtain at least 2 brimite_blade_blank in your possession in total. You already hold one. The previous craft failed. Any valid route is allowed.",
+          "follow_public": false,
+          "graph": {},
+          "queue": [
+            "brimite_blade_blank"
+          ],
+          "events": [],
+          "quotas": {
+            "brimite_ingot": 2,
+            "brimite_blade_blank": 2
+          },
+          "attempts": {},
+          "visits": {
+            "7c1e649301e9648a7b7c5470bde610518eaf5da38a277a8a9a17fc58197433e9": 1,
+            "fcd8b9554c0dab3cd0f9b87a8f008dfe5a4d5a1a3d0b2a9535ad2a79e363cd4c": 1,
+            "e2e0b7fae73a21165d249cde3746c9fa7619bf6549049782d639a62fe213cfcb": 1,
+            "432a8a6ba51d6922b52a5bcaea12a58ac4efc9992f8825b023395cdf7eefd888": 1,
+            "57023274feacc6a607e64b532d3f882e2c47eb6db1ad99331f9e0d1125f6b9ae": 1,
+            "bf1bd722ba869c5ea01d039054e2db85288ee22c9a229ff44bbb6ce81340acc4": 1,
+            "695d3908a0671609c09c6c18f7111e5e981b97e822f99e8d889c1d0ee22644bb": 1,
+            "d3fb1a29d0f7634b0d22e99911c5ab78e8d717ac63515559cfb45ed282b0a4f8": 1,
+            "991ed4a6173b03dfe036fb823bf2d75d93c9e6f91a3c407acfc322730d3e469a": 1,
+            "3de2a68fd97d293f78916cb4fb6fcd986ef580b0f0625a5479ec965796b89d1a": 1,
+            "b653bded357581e5fbf8c8f39e105aa01fe79626d12436367bcda045e15f1772": 1,
+            "82b3fb2593a534dc9d5f89ce25939ced77bf720810e7943a33ebbce76f35862b": 1,
+            "ae1f6415e0edf5249e22538b2d3f6d0279c3433b2e3b4af4fdc11aa17e7b5669": 1,
+            "b92c3c94b6af530dfaf965cd48c58d556b49477e79e018de89817256caee5b15": 1,
+            "b4d15adab399a0e16a9873f1d623fc3a7e4ee4ad9e07aae996828399fd5edb9e": 1
+          },
+          "last_choice": {
+            "node": "brimite_blade_blank",
+            "action": "inspect scout_satchel_0",
+            "structured_action": null,
+            "graph": {},
+            "queue": [
+              "brimite_blade_blank"
+            ],
+            "resource_table": {
+              "state": {
+                "location": "courtyard",
+                "location_full": "Ashen Bastion, courtyard",
+                "hands": {
+                  "brimite_blade_blank": 1.0
+                },
+                "equipment": {
+                  "scout_satchel_0": 1.0
+                },
+                "ground": {
+                  "crucible": 1.0,
+                  "war_bench": 1.0,
+                  "crown_shard": 5.0
+                },
+                "neighbors": [
+                  "cellar"
+                ],
+                "step": 36,
+                "feedback": "I waited for a while.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (10 HP remaining)",
+                "public_goal": null
+              },
+              "places": {
+                "barracks": {
+                  "objects": {
+                    "crown_shard": 3.0
+                  },
+                  "step": 15,
+                  "source": "public_ground_observation"
+                },
+                "cellar": {
+                  "objects": {
+                    "scorched_plank": 1.0
+                  },
+                  "step": 17,
+                  "source": "public_ground_observation"
+                },
+                "courtyard": {
+                  "objects": {
+                    "crucible": 1.0,
+                    "war_bench": 1.0,
+                    "crown_shard": 5.0
+                  },
+                  "step": 36,
+                  "source": "public_ground_observation"
+                }
+              },
+              "links": {
+                "barracks": [
+                  "cellar"
+                ],
+                "cellar": [
+                  "barracks",
+                  "courtyard"
+                ],
+                "courtyard": [
+                  "cellar"
+                ]
+              },
+              "containers": {
+                "scout_satchel_0": {
+                  "counts": {
+                    "brimite_ore": 3.0,
+                    "brimite_nugget": 1.0
+                  },
+                  "load": 4.0,
+                  "capacity": 20.0,
+                  "location": "courtyard",
+                  "step": 30,
+                  "source": "public_container_inspection"
+                }
+              },
+              "inventory": "scout_satchel_0",
+              "recipes": {
+                "brimite_blade_blank": {
+                  "ingredients": [],
+                  "quantities": null,
+                  "stations": [
+                    "war_bench",
+                    "crucible"
+                  ]
+                },
+                "brimite_blade": {
+                  "quantities": null,
+                  "ingredients": [
+                    "brimite_blade_blank",
+                    "demon_core_shard"
+                  ],
+                  "step": 29,
+                  "source": "public_inspection"
+                },
+                "brimite_nugget": {
+                  "quantities": {
+                    "brimite_ore": 1.0
+                  },
+                  "ingredients": [
+                    "brimite_ore"
+                  ],
+                  "step": 12,
+                  "source": "public_inspection",
+                  "stations": [
+                    "crucible"
+                  ],
+                  "quantity_source": {
+                    "kind": "observed_successful_consumption",
+                    "step": 21
+                  }
+                },
+                "timber_plate": {
+                  "quantities": null,
+                  "ingredients": [
+                    "scorched_plank"
+                  ],
+                  "step": 17,
+                  "source": "public_inspection"
+                },
+                "timber_sword": {
+                  "quantities": null,
+                  "ingredients": [
+                    "scorched_plank",
+                    "wood_strip",
+                    "sinew_cord"
+                  ],
+                  "step": 17,
+                  "source": "public_inspection"
+                },
+                "wood_strip": {
+                  "quantities": null,
+                  "ingredients": [
+                    "scorched_plank"
+                  ],
+                  "step": 17,
+                  "source": "public_inspection"
+                },
+                "siege_crate": {
+                  "quantities": null,
+                  "ingredients": [
+                    "scorched_plank",
+                    "iron_bar",
+                    "sinew_cord"
+                  ],
+                  "step": 17,
+                  "source": "public_inspection"
+                },
+                "brimite_ingot": {
+                  "quantities": null,
+                  "ingredients": [
+                    "brimite_nugget"
+                  ],
+                  "step": 23,
+                  "source": "public_inspection"
+                }
+              },
+              "inspected": [
+                "scout_satchel_0",
+                "brimite_blade_blank",
+                "brimite_ore",
+                "crown_shard",
+                "scorched_plank",
+                "crucible",
+                "war_bench",
+                "inventory",
+                "brimite_nugget"
+              ],
+              "guards": {
+                "barracks->cellar": {
+                  "locked": false,
+                  "required": null,
+                  "expires_on": "explicit_locked_failure",
+                  "source": "I entered cellar.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (84 HP remaining)",
+                  "step": 16
+                },
+                "cellar->courtyard": {
+                  "locked": false,
+                  "required": null,
+                  "expires_on": "explicit_locked_failure",
+                  "source": "I entered courtyard.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (76 HP remaining)",
+                  "step": 18
+                },
+                "courtyard->cellar": {
+                  "locked": false,
+                  "required": null,
+                  "expires_on": "explicit_locked_failure",
+                  "source": "I entered cellar.",
+                  "step": 8
+                },
+                "cellar->barracks": {
+                  "locked": false,
+                  "required": null,
+                  "expires_on": "explicit_locked_failure",
+                  "source": "I entered barracks.",
+                  "step": 9
+                }
+              },
+              "observations": 159,
+              "events": [],
+              "pending_craft": null
+            },
+            "target": "craft 1 brimite_blade_blank",
+            "reason": "base_fallback",
+            "mechanisms": {},
+            "stage7": {
+              "A_suppressed": [
+                {
+                  "action": "craft 1 brimite_ingot",
+                  "reason": "failed precondition unchanged"
+                }
+              ]
+            },
+            "safety": {
+              "search_nodes": 3,
+              "depth_peak": 2,
+              "candidates": 1,
+              "candidate_limit": 48,
+              "base_preserved": true,
+              "transfer_capacity_scope": "positive observed capacity checked; unknown item volume not treated as 1; first trial can be rejected"
+            }
+          },
+          "generation": 1,
+          "amount": 2,
+          "queue_needs": {},
+          "directed": true,
+          "batch": "learned",
+          "exploration_spent": 14,
+          "probes": {
+            "brimite_blade_blank": {
+              "step": 10,
+              "location": "barracks"
+            },
+            "brimite_ore": {
+              "step": 11,
+              "location": "barracks"
+            },
+            "crown_shard": {
+              "step": 13,
+              "location": "barracks"
+            },
+            "scorched_plank": {
+              "step": 16,
+              "location": "cellar"
+            },
+            "crucible": {
+              "step": 18,
+              "location": "courtyard"
+            },
+            "war_bench": {
+              "step": 19,
+              "location": "courtyard"
+            },
+            "brimite_nugget": {
+              "step": 22,
+              "location": "courtyard"
+            }
+          },
+          "trials": {
+            "brimite_nugget": 1,
+            "brimite_ingot": 1
+          },
+          "explore_pending": null,
+          "last_produced": "brimite_nugget",
+          "quantity_facts": {
+            "table": {
+              "state": {
+                "location": "courtyard",
+                "location_full": "Ashen Bastion, courtyard",
+                "hands": {
+                  "brimite_blade_blank": 1.0
+                },
+                "equipment": {
+                  "scout_satchel_0": 1.0
+                },
+                "ground": {
+                  "crucible": 1.0,
+                  "war_bench": 1.0,
+                  "crown_shard": 5.0
+                },
+                "neighbors": [
+                  "cellar"
+                ],
+                "step": 37,
+                "feedback": "I inspected scout_satchel_0: A worn leather satchel issued to every hunter of devil-forged machines.\nIt contains: 3 brimite_ore, 1 brimite_nugget (capacity: 4/20).\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (6 HP remaining)",
+                "public_goal": null
+              },
+              "places": {
+                "barracks": {
+                  "objects": {
+                    "crown_shard": 3.0
+                  },
+                  "step": 15,
+                  "source": "public_ground_observation"
+                },
+                "cellar": {
+                  "objects": {
+                    "scorched_plank": 1.0
+                  },
+                  "step": 17,
+                  "source": "public_ground_observation"
+                },
+                "courtyard": {
+                  "objects": {
+                    "crucible": 1.0,
+                    "war_bench": 1.0,
+                    "crown_shard": 5.0
+                  },
+                  "step": 37,
+                  "source": "public_ground_observation"
+                }
+              },
+              "links": {
+                "barracks": [
+                  "cellar"
+                ],
+                "cellar": [
+                  "barracks",
+                  "courtyard"
+                ],
+                "courtyard": [
+                  "cellar"
+                ]
+              },
+              "containers": {
+                "scout_satchel_0": {
+                  "counts": {
+                    "brimite_ore": 3.0,
+                    "brimite_nugget": 1.0
+                  },
+                  "load": 4.0,
+                  "capacity": 20.0,
+                  "location": "courtyard",
+                  "step": 37,
+                  "source": "public_container_inspection"
+                }
+              },
+              "inventory": "scout_satchel_0",
+              "recipes": {
+                "brimite_blade_blank": {
+                  "ingredients": [],
+                  "quantities": null,
+                  "stations": [
+                    "war_bench",
+                    "crucible"
+                  ]
+                },
+                "brimite_blade": {
+                  "quantities": null,
+                  "ingredients": [
+                    "brimite_blade_blank",
+                    "demon_core_shard"
+                  ],
+                  "step": 29,
+                  "source": "public_inspection"
+                },
+                "brimite_nugget": {
+                  "quantities": {
+                    "brimite_ore": 1.0
+                  },
+                  "ingredients": [
+                    "brimite_ore"
+                  ],
+                  "step": 12,
+                  "source": "public_inspection",
+                  "stations": [
+                    "crucible"
+                  ],
+                  "quantity_source": {
+                    "kind": "observed_successful_consumption",
+                    "step": 21
+                  }
+                },
+                "timber_plate": {
+                  "quantities": null,
+                  "ingredients": [
+                    "scorched_plank"
+                  ],
+                  "step": 17,
+                  "source": "public_inspection"
+                },
+                "timber_sword": {
+                  "quantities": null,
+                  "ingredients": [
+                    "scorched_plank",
+                    "wood_strip",
+                    "sinew_cord"
+                  ],
+                  "step": 17,
+                  "source": "public_inspection"
+                },
+                "wood_strip": {
+                  "quantities": null,
+                  "ingredients": [
+                    "scorched_plank"
+                  ],
+                  "step": 17,
+                  "source": "public_inspection"
+                },
+                "siege_crate": {
+                  "quantities": null,
+                  "ingredients": [
+                    "scorched_plank",
+                    "iron_bar",
+                    "sinew_cord"
+                  ],
+                  "step": 17,
+                  "source": "public_inspection"
+                },
+                "brimite_ingot": {
+                  "quantities": null,
+                  "ingredients": [
+                    "brimite_nugget"
+                  ],
+                  "step": 23,
+                  "source": "public_inspection"
+                }
+              },
+              "inspected": [
+                "scout_satchel_0",
+                "brimite_blade_blank",
+                "brimite_ore",
+                "crown_shard",
+                "scorched_plank",
+                "crucible",
+                "war_bench",
+                "inventory",
+                "brimite_nugget"
+              ],
+              "guards": {
+                "barracks->cellar": {
+                  "locked": false,
+                  "required": null,
+                  "expires_on": "explicit_locked_failure",
+                  "source": "I entered cellar.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (84 HP remaining)",
+                  "step": 16
+                },
+                "cellar->courtyard": {
+                  "locked": false,
+                  "required": null,
+                  "expires_on": "explicit_locked_failure",
+                  "source": "I entered courtyard.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (76 HP remaining)",
+                  "step": 18
+                },
+                "courtyard->cellar": {
+                  "locked": false,
+                  "required": null,
+                  "expires_on": "explicit_locked_failure",
+                  "source": "I entered cellar.",
+                  "step": 8
+                },
+                "cellar->barracks": {
+                  "locked": false,
+                  "required": null,
+                  "expires_on": "explicit_locked_failure",
+                  "source": "I entered barracks.",
+                  "step": 9
+                }
+              },
+              "observations": 72,
+              "events": [],
+              "pending_craft": null
+            },
+            "effects": [
+              {
+                "target": "brimite_nugget",
+                "requested": 1,
+                "actual": 1,
+                "before_counts": {
+                  "brimite_blade_blank": 1.0,
+                  "scout_satchel_0": 1.0,
+                  "brimite_ore": 4.0
+                },
+                "source_step": 21,
+                "feedback": "I successfully crafted 1 brimite_nugget. It is now on the ground.\nemily_frost enters the area.\n\nSide quest completed: craft a brimite_nugget\nYou earned 5 coins!\nTalk to emily_frost to see your updated tasks.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (66 HP remaining)",
+                "location": "courtyard",
+                "after_counts": {
+                  "brimite_blade_blank": 1.0,
+                  "scout_satchel_0": 1.0,
+                  "brimite_ore": 3.0
+                },
+                "consumed": {
+                  "brimite_ore": 1.0
+                },
+                "scope": "observed craft-to-inspection delta; environment effects not excluded; not a universal ratio"
+              }
+            ],
+            "failures": [
+              {
+                "target": "brimite_blade_blank",
+                "action": "craft 1 brimite_blade_blank",
+                "feedback": "Cannot craft brimite_blade_blank. Missing necessary war_bench, crucible in the current area.",
+                "location": "barracks",
+                "step": 10,
+                "scope": "observed failure in this state, not universal impossibility"
+              },
+              {
+                "target": "brimite_nugget",
+                "action": "craft 1 brimite_nugget",
+                "feedback": "Cannot craft brimite_nugget. Missing necessary crucible in the current area.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (88 HP remaining)",
+                "location": "barracks",
+                "step": 15,
+                "scope": "observed failure in this state, not universal impossibility"
+              },
+              {
+                "target": "brimite_ingot",
+                "action": "craft 1 brimite_ingot",
+                "feedback": "Cannot craft a single brimite_ingot. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (54 HP remaining)",
+                "location": "courtyard",
+                "step": 25,
+                "scope": "observed failure in this state, not universal impossibility"
+              },
+              {
+                "target": "brimite_blade_blank",
+                "action": "craft 1 brimite_blade_blank",
+                "feedback": "Cannot craft a single brimite_blade_blank. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (46 HP remaining)",
+                "location": "courtyard",
+                "step": 27,
+                "scope": "observed failure in this state, not universal impossibility"
+              }
+            ],
+            "pending": null,
+            "produced": {
+              "brimite_nugget": 1
+            },
+            "target": "brimite_blade_blank",
+            "goal": "Obtain at least 2 brimite_blade_blank in your possession in total. You already hold one. The previous craft failed. Any valid route is allowed.",
+            "amount": 2
+          },
+          "batch_decisions": [],
+          "mechanism_decision": {},
+          "in_episode": true,
+          "flags": {
+            "retry_context_fix": true,
+            "knowledge_gap_exploration": false,
+            "explore_execute_switch": false,
+            "resource_goal_guard": false
+          },
+          "retry_records": {
+            "inspect:brimite_blade_blank": {
+              "action": "inspect brimite_blade_blank",
+              "target": "brimite_blade_blank",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "war_bench": true,
+                  "crucible": true
+                },
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected brimite_blade_blank: A forged blank of brimite alloy that glows along hairline fractures.\nIt can be used to craft: brimite_blade (made of brimite_blade_blank, demon_core_shard).\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (38 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 29,
+              "retry_after_block": false
+            },
+            "inspect:brimite_ore": {
+              "action": "inspect brimite_ore",
+              "target": "brimite_ore",
+              "context": {
+                "location": "barracks",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected brimite_ore: A sulfurous ore found near devil forges, glowing faintly with trapped hellfire.\nIt can be used to craft: brimite_nugget (made of brimite_ore).\nIt has nothing written on it.",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 12,
+              "retry_after_block": false
+            },
+            "inspect:crown_shard": {
+              "action": "inspect crown_shard",
+              "target": "crown_shard",
+              "context": {
+                "location": "barracks",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected crown_shard: A broken fragment of an old kingdom's crown coin, still accepted as currency among the allied ruins.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (92 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 14,
+              "retry_after_block": false
+            },
+            "craft:brimite_nugget": {
+              "action": "craft 1 brimite_nugget",
+              "target": "brimite_nugget",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "crucible": true
+                },
+                "materials": {
+                  "brimite_ore": 4.0
+                },
+                "visible": false
+              },
+              "feedback": "I successfully crafted 1 brimite_nugget. It is now on the ground.\nemily_frost enters the area.\n\nSide quest completed: craft a brimite_nugget\nYou earned 5 coins!\nTalk to emily_frost to see your updated tasks.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (66 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": true,
+              "step": 21,
+              "retry_after_block": true
+            },
+            "inspect:scorched_plank": {
+              "action": "inspect scorched_plank",
+              "target": "scorched_plank",
+              "context": {
+                "location": "cellar",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected scorched_plank: A plank cut from charred timber, still solid beneath the blackened surface.\nIt can be used to craft: timber_plate (made of scorched_plank), timber_sword (made of scorched_plank, wood_strip, sinew_cord), wood_strip (made of scorched_plank), siege_crate (made of scorched_plank, iron_bar, sinew_cord).\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (80 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 17,
+              "retry_after_block": false
+            },
+            "inspect:crucible": {
+              "action": "inspect crucible",
+              "target": "crucible",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (72 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 19,
+              "retry_after_block": false
+            },
+            "inspect:war_bench": {
+              "action": "inspect war_bench",
+              "target": "war_bench",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected war_bench: A reinforced workbench built by allied smiths for field assembly of anti-machine weapons.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (68 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 20,
+              "retry_after_block": false
+            },
+            "inspect:inventory": {
+              "action": "inspect inventory",
+              "target": "inventory",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": false
+              },
+              "feedback": "I inspected my inventory.\nIt contains: 3 brimite_ore (capacity: 3/20).\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (64 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 22,
+              "retry_after_block": false
+            },
+            "inspect:brimite_nugget": {
+              "action": "inspect brimite_nugget",
+              "target": "brimite_nugget",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "crucible": true
+                },
+                "materials": {
+                  "brimite_ore": 3.0
+                },
+                "visible": true
+              },
+              "feedback": "I inspected brimite_nugget: A dense nugget smelted from brimite ore, hot to the touch and faintly glowing.\nIt can be used to craft: brimite_ingot (made of brimite_nugget).\nIt has nothing written on it.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (62 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 23,
+              "retry_after_block": false
+            },
+            "craft:brimite_ingot": {
+              "action": "craft 1 brimite_ingot",
+              "target": "brimite_ingot",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {
+                  "brimite_nugget": 1.0
+                },
+                "visible": false
+              },
+              "feedback": "Cannot craft a single brimite_ingot. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (54 HP remaining)",
+              "state": "BLOCKED_BY_PRECONDITION",
+              "meaningful_trial": false,
+              "failure_type": "materials",
+              "retry_condition": "observed relevant material increase",
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": true,
+              "step": 25,
+              "retry_after_block": false
+            },
+            "craft:brimite_blade_blank": {
+              "action": "craft 1 brimite_blade_blank",
+              "target": "brimite_blade_blank",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "war_bench": true,
+                  "crucible": true
+                },
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "Cannot craft a single brimite_blade_blank. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (46 HP remaining)",
+              "state": "BLOCKED_BY_PRECONDITION",
+              "meaningful_trial": false,
+              "failure_type": "materials",
+              "retry_condition": "observed relevant material increase",
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 27,
+              "retry_after_block": false
+            },
+            "inspect:scout_satchel_0": {
+              "action": "inspect scout_satchel_0",
+              "target": "scout_satchel_0",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected scout_satchel_0: A worn leather satchel issued to every hunter of devil-forged machines.\nIt contains: 3 brimite_ore, 1 brimite_nugget (capacity: 4/20).\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (6 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 37,
+              "retry_after_block": false
+            }
+          },
+          "attempt_log": [
+            {
+              "action": "inspect brimite_blade_blank",
+              "target": "brimite_blade_blank",
+              "context": {
+                "location": "barracks",
+                "stations": {
+                  "war_bench": false,
+                  "crucible": false
+                },
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected brimite_blade_blank: A forged blank of brimite alloy that glows along hairline fractures.\nIt can be used to craft: brimite_blade (made of brimite_blade_blank, demon_core_shard).\nIt has nothing written on it.",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 11,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect brimite_ore",
+              "target": "brimite_ore",
+              "context": {
+                "location": "barracks",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected brimite_ore: A sulfurous ore found near devil forges, glowing faintly with trapped hellfire.\nIt can be used to craft: brimite_nugget (made of brimite_ore).\nIt has nothing written on it.",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 12,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect crown_shard",
+              "target": "crown_shard",
+              "context": {
+                "location": "barracks",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected crown_shard: A broken fragment of an old kingdom's crown coin, still accepted as currency among the allied ruins.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (92 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 14,
+              "retry_after_block": false
+            },
+            {
+              "action": "craft 1 brimite_nugget",
+              "target": "brimite_nugget",
+              "context": {
+                "location": "barracks",
+                "stations": {
+                  "crucible": false
+                },
+                "materials": {
+                  "brimite_ore": 4.0
+                },
+                "visible": false
+              },
+              "feedback": "Cannot craft brimite_nugget. Missing necessary crucible in the current area.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (88 HP remaining)",
+              "state": "BLOCKED_BY_PRECONDITION",
+              "meaningful_trial": false,
+              "failure_type": "station",
+              "retry_condition": "observed missing station present",
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": true,
+              "step": 15,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect scorched_plank",
+              "target": "scorched_plank",
+              "context": {
+                "location": "cellar",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected scorched_plank: A plank cut from charred timber, still solid beneath the blackened surface.\nIt can be used to craft: timber_plate (made of scorched_plank), timber_sword (made of scorched_plank, wood_strip, sinew_cord), wood_strip (made of scorched_plank), siege_crate (made of scorched_plank, iron_bar, sinew_cord).\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (80 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 17,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect crucible",
+              "target": "crucible",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected crucible: A stone crucible heated by hellcoal embers, hot enough to smelt war-grade metals.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (72 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 19,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect war_bench",
+              "target": "war_bench",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected war_bench: A reinforced workbench built by allied smiths for field assembly of anti-machine weapons.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (68 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 20,
+              "retry_after_block": false
+            },
+            {
+              "action": "craft 1 brimite_nugget",
+              "target": "brimite_nugget",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "crucible": true
+                },
+                "materials": {
+                  "brimite_ore": 4.0
+                },
+                "visible": false
+              },
+              "feedback": "I successfully crafted 1 brimite_nugget. It is now on the ground.\nemily_frost enters the area.\n\nSide quest completed: craft a brimite_nugget\nYou earned 5 coins!\nTalk to emily_frost to see your updated tasks.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (66 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": true,
+              "step": 21,
+              "retry_after_block": true
+            },
+            {
+              "action": "inspect inventory",
+              "target": "inventory",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": false
+              },
+              "feedback": "I inspected my inventory.\nIt contains: 3 brimite_ore (capacity: 3/20).\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (64 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 22,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect brimite_nugget",
+              "target": "brimite_nugget",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "crucible": true
+                },
+                "materials": {
+                  "brimite_ore": 3.0
+                },
+                "visible": true
+              },
+              "feedback": "I inspected brimite_nugget: A dense nugget smelted from brimite ore, hot to the touch and faintly glowing.\nIt can be used to craft: brimite_ingot (made of brimite_nugget).\nIt has nothing written on it.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (62 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 23,
+              "retry_after_block": false
+            },
+            {
+              "action": "craft 1 brimite_ingot",
+              "target": "brimite_ingot",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {
+                  "brimite_nugget": 1.0
+                },
+                "visible": false
+              },
+              "feedback": "Cannot craft a single brimite_ingot. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (54 HP remaining)",
+              "state": "BLOCKED_BY_PRECONDITION",
+              "meaningful_trial": false,
+              "failure_type": "materials",
+              "retry_condition": "observed relevant material increase",
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": true,
+              "step": 25,
+              "retry_after_block": false
+            },
+            {
+              "action": "craft 1 brimite_blade_blank",
+              "target": "brimite_blade_blank",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "war_bench": true,
+                  "crucible": true
+                },
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "Cannot craft a single brimite_blade_blank. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (46 HP remaining)",
+              "state": "BLOCKED_BY_PRECONDITION",
+              "meaningful_trial": false,
+              "failure_type": "materials",
+              "retry_condition": "observed relevant material increase",
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 27,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect brimite_blade_blank",
+              "target": "brimite_blade_blank",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "war_bench": true,
+                  "crucible": true
+                },
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected brimite_blade_blank: A forged blank of brimite alloy that glows along hairline fractures.\nIt can be used to craft: brimite_blade (made of brimite_blade_blank, demon_core_shard).\nIt has nothing written on it.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (38 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 29,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect scout_satchel_0",
+              "target": "scout_satchel_0",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected scout_satchel_0: A worn leather satchel issued to every hunter of devil-forged machines.\nIt contains: 3 brimite_ore, 1 brimite_nugget (capacity: 4/20).\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (34 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 30,
+              "retry_after_block": false
+            },
+            {
+              "action": "inspect scout_satchel_0",
+              "target": "scout_satchel_0",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "I inspected scout_satchel_0: A worn leather satchel issued to every hunter of devil-forged machines.\nIt contains: 3 brimite_ore, 1 brimite_nugget (capacity: 4/20).\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (6 HP remaining)",
+              "state": "SUCCESS",
+              "meaningful_trial": true,
+              "failure_type": null,
+              "retry_condition": null,
+              "actual_action_cost": 1,
+              "observed_resource_consumption": null,
+              "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+              "was_forward_trial": false,
+              "step": 37,
+              "retry_after_block": false
+            }
+          ],
+          "pending_probe": null,
+          "gap": {},
+          "gap_log": [],
+          "execution_mode": "EXPLORE",
+          "mode_signature": null,
+          "subgoals": {},
+          "mode_log": [],
+          "blocked_execution": null,
+          "stage7_decision": {
+            "A_suppressed": [
+              {
+                "action": "craft 1 brimite_ingot",
+                "reason": "failed precondition unchanged"
+              }
+            ]
+          },
+          "last_ready": [],
+          "public_quantity_rules": {
+            "brimite_nugget": {
+              "quantities": {
+                "brimite_ore": 1.0
+              },
+              "step": 13,
+              "source": "explicit numerical recipe in public acquisition observation",
+              "evidence": "brimite_nugget (1 brimite_ore)",
+              "scope": "nominal recipe quantities, engine rounding not inferred"
+            },
+            "brimite_ingot": {
+              "quantities": {
+                "brimite_nugget": 2.0
+              },
+              "step": 24,
+              "source": "explicit numerical recipe in public acquisition observation",
+              "evidence": "brimite_ingot (2 brimite_nugget)",
+              "scope": "nominal recipe quantities, engine rounding not inferred"
+            }
+          },
+          "method": "P3",
+          "safety": true,
+          "failed_actions": {
+            "craft:brimite_blade_blank": {
+              "action": "craft 1 brimite_blade_blank",
+              "target": "brimite_blade_blank",
+              "context": {
+                "location": "courtyard",
+                "stations": {
+                  "war_bench": true,
+                  "crucible": true
+                },
+                "materials": {},
+                "visible": true
+              },
+              "feedback": "Cannot craft a single brimite_blade_blank. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (46 HP remaining)"
+            },
+            "craft:brimite_ingot": {
+              "action": "craft 1 brimite_ingot",
+              "target": "brimite_ingot",
+              "context": {
+                "location": "courtyard",
+                "stations": {},
+                "materials": {
+                  "brimite_nugget": 1.0
+                },
+                "visible": false
+              },
+              "feedback": "Cannot craft a single brimite_ingot. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (54 HP remaining)"
+            }
+          },
+          "no_progress": {
+            "65f8eb930f7d64a917dd51e173c80c9887537fa76fb594b08d2474137b087d5d": 1,
+            "db1e076da3dee3e5c431e5e9870b7e5e3df75583df55d26d119bf71a0660eb59": 1,
+            "3b76897d5afbbc6c3f0c549476f95540664025868fdae1c644b1c733e030aa2b": 1,
+            "46f0567fa3fcc53b810579d797c3da8182bf6ec109c3f6b79201b5397028c8a1": 1,
+            "409efc01dca7b7ae7439d6de91204e5bd48f2bda510fc90c7b2777a2fc059a7e": 1,
+            "20d3060966e711df845548a8ea60f949b09229f656d279400628a5efdae362b9": 1,
+            "632265c17eb9efbcdbacd170d2bc5abcaf67688f75a39efcc8f061db246d9b96": 7,
+            "1f58965ee40d558b7cae5e1e0912be440833f9b92ebd0d4d37b3870988c3cc35": 1,
+            "1db3205dc742ead544ba637fefd7f60dd6cf97aeafa40c088acfb77933c7baf2": 2
+          },
+          "negative_ground": {},
+          "safety_decision": {
+            "search_nodes": 3,
+            "depth_peak": 2,
+            "candidates": 1,
+            "candidate_limit": 48,
+            "base_preserved": true,
+            "transfer_capacity_scope": "positive observed capacity checked; unknown item volume not treated as 1; first trial can be rejected"
+          },
+          "solving": [],
+          "search_nodes": 3,
+          "candidates": 1,
+          "depth_peak": 2,
+          "last_public_action_context": {
+            "location": "courtyard",
+            "hands": {
+              "brimite_blade_blank": 1.0
+            },
+            "equipment": {
+              "scout_satchel_0": 1.0
+            },
+            "ground": {
+              "crucible": 1.0,
+              "war_bench": 1.0,
+              "crown_shard": 5.0
+            },
+            "containers": {
+              "scout_satchel_0": {
+                "brimite_ore": 3.0,
+                "brimite_nugget": 1.0
+              }
+            },
+            "recipes": {
+              "brimite_blade_blank": {
+                "ingredients": [],
+                "stations": [
+                  "war_bench",
+                  "crucible"
+                ],
+                "quantities": null
+              },
+              "brimite_blade": {
+                "ingredients": [
+                  "brimite_blade_blank",
+                  "demon_core_shard"
+                ],
+                "stations": null,
+                "quantities": null
+              },
+              "brimite_nugget": {
+                "ingredients": [
+                  "brimite_ore"
+                ],
+                "stations": [
+                  "crucible"
+                ],
+                "quantities": {
+                  "brimite_ore": 1.0
+                }
+              },
+              "timber_plate": {
+                "ingredients": [
+                  "scorched_plank"
+                ],
+                "stations": null,
+                "quantities": null
+              },
+              "timber_sword": {
+                "ingredients": [
+                  "scorched_plank",
+                  "wood_strip",
+                  "sinew_cord"
+                ],
+                "stations": null,
+                "quantities": null
+              },
+              "wood_strip": {
+                "ingredients": [
+                  "scorched_plank"
+                ],
+                "stations": null,
+                "quantities": null
+              },
+              "siege_crate": {
+                "ingredients": [
+                  "scorched_plank",
+                  "iron_bar",
+                  "sinew_cord"
+                ],
+                "stations": null,
+                "quantities": null
+              },
+              "brimite_ingot": {
+                "ingredients": [
+                  "brimite_nugget"
+                ],
+                "stations": null,
+                "quantities": null
+              }
+            }
+          }
+        },
+        "facts": {
+          "table": {
+            "state": {
+              "location": "courtyard",
+              "location_full": "Ashen Bastion, courtyard",
+              "hands": {
+                "brimite_blade_blank": 1.0
+              },
+              "equipment": {
+                "scout_satchel_0": 1.0
+              },
+              "ground": {
+                "crucible": 1.0,
+                "war_bench": 1.0,
+                "crown_shard": 5.0
+              },
+              "neighbors": [
+                "cellar"
+              ],
+              "step": 37,
+              "feedback": "I inspected scout_satchel_0: A worn leather satchel issued to every hunter of devil-forged machines.\nIt contains: 3 brimite_ore, 1 brimite_nugget (capacity: 4/20).\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (6 HP remaining)",
+              "public_goal": null
+            },
+            "places": {
+              "barracks": {
+                "objects": {
+                  "crown_shard": 3.0
+                },
+                "step": 15,
+                "source": "public_ground_observation"
+              },
+              "cellar": {
+                "objects": {
+                  "scorched_plank": 1.0
+                },
+                "step": 17,
+                "source": "public_ground_observation"
+              },
+              "courtyard": {
+                "objects": {
+                  "crucible": 1.0,
+                  "war_bench": 1.0,
+                  "crown_shard": 5.0
+                },
+                "step": 37,
+                "source": "public_ground_observation"
+              }
+            },
+            "links": {
+              "barracks": [
+                "cellar"
+              ],
+              "cellar": [
+                "barracks",
+                "courtyard"
+              ],
+              "courtyard": [
+                "cellar"
+              ]
+            },
+            "containers": {
+              "scout_satchel_0": {
+                "counts": {
+                  "brimite_ore": 3.0,
+                  "brimite_nugget": 1.0
+                },
+                "load": 4.0,
+                "capacity": 20.0,
+                "location": "courtyard",
+                "step": 37,
+                "source": "public_container_inspection"
+              }
+            },
+            "inventory": "scout_satchel_0",
+            "recipes": {
+              "brimite_blade_blank": {
+                "ingredients": [],
+                "quantities": null,
+                "stations": [
+                  "war_bench",
+                  "crucible"
+                ]
+              },
+              "brimite_blade": {
+                "quantities": null,
+                "ingredients": [
+                  "brimite_blade_blank",
+                  "demon_core_shard"
+                ],
+                "step": 29,
+                "source": "public_inspection"
+              },
+              "brimite_nugget": {
+                "quantities": {
+                  "brimite_ore": 1.0
+                },
+                "ingredients": [
+                  "brimite_ore"
+                ],
+                "step": 12,
+                "source": "public_inspection",
+                "stations": [
+                  "crucible"
+                ],
+                "quantity_source": {
+                  "kind": "observed_successful_consumption",
+                  "step": 21
+                }
+              },
+              "timber_plate": {
+                "quantities": null,
+                "ingredients": [
+                  "scorched_plank"
+                ],
+                "step": 17,
+                "source": "public_inspection"
+              },
+              "timber_sword": {
+                "quantities": null,
+                "ingredients": [
+                  "scorched_plank",
+                  "wood_strip",
+                  "sinew_cord"
+                ],
+                "step": 17,
+                "source": "public_inspection"
+              },
+              "wood_strip": {
+                "quantities": null,
+                "ingredients": [
+                  "scorched_plank"
+                ],
+                "step": 17,
+                "source": "public_inspection"
+              },
+              "siege_crate": {
+                "quantities": null,
+                "ingredients": [
+                  "scorched_plank",
+                  "iron_bar",
+                  "sinew_cord"
+                ],
+                "step": 17,
+                "source": "public_inspection"
+              },
+              "brimite_ingot": {
+                "quantities": null,
+                "ingredients": [
+                  "brimite_nugget"
+                ],
+                "step": 23,
+                "source": "public_inspection"
+              }
+            },
+            "inspected": [
+              "scout_satchel_0",
+              "brimite_blade_blank",
+              "brimite_ore",
+              "crown_shard",
+              "scorched_plank",
+              "crucible",
+              "war_bench",
+              "inventory",
+              "brimite_nugget"
+            ],
+            "guards": {
+              "barracks->cellar": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I entered cellar.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (84 HP remaining)",
+                "step": 16
+              },
+              "cellar->courtyard": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I entered courtyard.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (76 HP remaining)",
+                "step": 18
+              },
+              "courtyard->cellar": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I entered cellar.",
+                "step": 8
+              },
+              "cellar->barracks": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I entered barracks.",
+                "step": 9
+              }
+            },
+            "observations": 99,
+            "events": [],
+            "pending_craft": null
+          },
+          "effects": [
+            {
+              "target": "brimite_nugget",
+              "requested": 1,
+              "actual": 1,
+              "before_counts": {
+                "brimite_blade_blank": 1.0,
+                "scout_satchel_0": 1.0,
+                "brimite_ore": 4.0
+              },
+              "source_step": 21,
+              "feedback": "I successfully crafted 1 brimite_nugget. It is now on the ground.\nemily_frost enters the area.\n\nSide quest completed: craft a brimite_nugget\nYou earned 5 coins!\nTalk to emily_frost to see your updated tasks.\n\nThe malevolent energy of 4 devil-forged objects seeps into my flesh, draining 2 HP. Carrying more than 3 accursed items invites corruption! (66 HP remaining)",
+              "location": "courtyard",
+              "after_counts": {
+                "brimite_blade_blank": 1.0,
+                "scout_satchel_0": 1.0,
+                "brimite_ore": 3.0
+              },
+              "consumed": {
+                "brimite_ore": 1.0
+              },
+              "scope": "observed craft-to-inspection delta; environment effects not excluded; not a universal ratio"
+            }
+          ],
+          "failures": [
+            {
+              "target": "brimite_blade_blank",
+              "action": "craft 1 brimite_blade_blank",
+              "feedback": "Cannot craft brimite_blade_blank. Missing necessary war_bench, crucible in the current area.",
+              "location": "barracks",
+              "step": 10,
+              "scope": "observed failure in this state, not universal impossibility"
+            },
+            {
+              "target": "brimite_nugget",
+              "action": "craft 1 brimite_nugget",
+              "feedback": "Cannot craft brimite_nugget. Missing necessary crucible in the current area.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (88 HP remaining)",
+              "location": "barracks",
+              "step": 15,
+              "scope": "observed failure in this state, not universal impossibility"
+            },
+            {
+              "target": "brimite_ingot",
+              "action": "craft 1 brimite_ingot",
+              "feedback": "Cannot craft a single brimite_ingot. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (54 HP remaining)",
+              "location": "courtyard",
+              "step": 25,
+              "scope": "observed failure in this state, not universal impossibility"
+            },
+            {
+              "target": "brimite_blade_blank",
+              "action": "craft 1 brimite_blade_blank",
+              "feedback": "Cannot craft a single brimite_blade_blank. Do not have sufficient amount of necessary ingredients.\n\nThe malevolent energy of 5 devil-forged objects seeps into my flesh, draining 4 HP. Carrying more than 3 accursed items invites corruption! (46 HP remaining)",
+              "location": "courtyard",
+              "step": 27,
+              "scope": "observed failure in this state, not universal impossibility"
+            }
+          ],
+          "pending": null,
+          "produced": {
+            "brimite_nugget": 1
+          },
+          "target": "brimite_blade_blank",
+          "goal": "Obtain at least 2 brimite_blade_blank in your possession in total. You already hold one. The previous craft failed. Any valid route is allowed.",
+          "amount": 2
+        }
+      },
+      "policy_changed": false,
+      "paid_retry_episode": false,
+      "scoring": "method abort included as failure; requests beyond committed actions charged; no invented environment transition"
+    }
+  ],
+  "API_calls": 0,
+  "raw_runtime_changed": false
+}
