@@ -1,0 +1,89 @@
+{
+  "upstream_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "python_hash_seed": 0,
+  "protocol_cohort": "stage11_v1",
+  "model": "deepseek-flash",
+  "base_url": "https://api.deepseek.com",
+  "thinking": "disabled",
+  "temperature": 0.7,
+  "max_tokens": 768,
+  "algorithms": [
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4"
+  ],
+  "games": [
+    "robot_kingdom"
+  ],
+  "test_seeds": [],
+  "max_steps": 40,
+  "short_term_memory_size": 5,
+  "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+  "embedding_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "initial_workers": 4,
+  "max_workers": 12,
+  "total_budget_usd": 4,
+  "equal_cost_per_episode_usd": 0.15,
+  "scar": {
+    "cooldown": 8,
+    "max_rules": 256,
+    "threshold": 0.75,
+    "max_plan_steps": 3
+  },
+  "diagnostic_split_seed": 8675309,
+  "bootstrap_seed": 314159,
+  "bootstrap_samples": 10000,
+  "pricing_usd_per_million": {
+    "cache_hit": 0.006,
+    "cache_miss": 0.3,
+    "output": 1.2
+  },
+  "pricing_basis": "fixed peak price for cross-method comparison and conservative budget; not an account invoice",
+  "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "diagnostic_max_steps": 40,
+  "budget_authorization": "Guide11 finite50episode batch; prior20USD cap waived; new4USD guard",
+  "episode_budget_usd": 0.2,
+  "predeclared_outcomes": {
+    "primary": "R10/20/40 on original10 development families",
+    "comparisons": [
+      "E1-E0",
+      "E2-E0",
+      "E3-E0",
+      "E4-E0",
+      "E4-E2",
+      "E4-E3",
+      "E2-E1",
+      "E4-E1"
+    ],
+    "uncertainty": "10000 paired family bootstrap seed314159, descriptive only; LLM sampling not paired",
+    "scope": "only original10 Robot families; no new dataset, games, seeds or steps",
+    "abort": "retain failed, method/format abort and budget termination; no paid episode reruns",
+    "prompt": "E0/E2/E3/E4 same prompt; E1 differs by exactly the frozen reminder",
+    "same_state_audit": "E2/E3 disable new controls to S1; E4 independently disable each and both; same proposal and public state",
+    "policy_changes_after_results": false
+  },
+  "mechanisms": {
+    "backbone": "Stage10 S1; original FIFO and batch functions inherited",
+    "extra_model_calls": 0,
+    "GPAR": false,
+    "S2_collection": false,
+    "S3_storage": false,
+    "candidate_limit_per_list": 32,
+    "public_node_limit": 64,
+    "speculative_production_trials": 4,
+    "exploration_actions": 18,
+    "prompt": "STM5/PublicFacts48/6000; same base except E1 fixed reminder",
+    "final_base_priority": "all explicit-priority conditions preserve a publicly supported final-goal base move",
+    "unknown_links": "possible bridge annotations never become dependency edges"
+  },
+  "switches": {
+    "E0": "frozen Stage10 S1",
+    "E1": "S1 + fixed prompt reminder only",
+    "E2": "S1 + public goal-related exploration priority",
+    "E3": "S1 + timely necessary execution",
+    "E4": "S1 + both priorities"
+  },
+  "prompt_reminder_E1": "Prioritize the current task. Explore objects and unknown prerequisites related to it; inspect newly crafted intermediate products for further recipe information. When a known necessary subgoal is feasible, execute it promptly instead of unrelated exploration. Preserve useful materials and leave enough actions to finish and collect the final product. Base decisions on observed evidence; do not assume an unknown recipe is known."
+}
