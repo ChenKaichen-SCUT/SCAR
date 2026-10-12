@@ -1,0 +1,99 @@
+{
+  "upstream_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "python_hash_seed": 0,
+  "model": "deepseek-flash",
+  "base_url": "https://api.deepseek.com",
+  "thinking": "disabled",
+  "temperature": 0.7,
+  "max_tokens": 768,
+  "short_term_memory_size": 5,
+  "pricing_usd_per_million": {
+    "cache_hit": 0.006,
+    "cache_miss": 0.3,
+    "output": 1.2
+  },
+  "pricing_basis": "fixed peak price for cross-method comparison and conservative budget; not an account invoice",
+  "protocol_cohort": "stage12_diagnostic_v1",
+  "total_budget_usd": 0.75,
+  "episode_budget_usd": 0.04,
+  "states": 50,
+  "families": 10,
+  "candidates": 16,
+  "max_branch_actions": 4,
+  "primary_judgments": 100,
+  "stability_judgments": 20,
+  "judgment_methods": [
+    "J0",
+    "J1",
+    "J2",
+    "J3"
+  ],
+  "api_workers": 8,
+  "comparisons": [
+    "J2-J0",
+    "J2-J1",
+    "J3-J0",
+    "J3-J1",
+    "J3-J2"
+  ],
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 314159,
+  "sampling": {
+    "sources": [
+      "Stage10 S1",
+      "Stage11 E0",
+      "Stage11 E1"
+    ],
+    "per_family": 5,
+    "slots": [
+      "early_unknown",
+      "multiple_uninspected",
+      "new_relation",
+      "fresh_product",
+      "late_execution"
+    ],
+    "preferred_stage": [
+      10,
+      11,
+      10,
+      11,
+      11
+    ],
+    "target_index": [
+      2,
+      9,
+      16,
+      24,
+      32
+    ],
+    "eligibility": "index<=36, at least2 public candidates; public signature deduplication",
+    "ordering": "predicate match then source match then distance from target index then stable digest; no outcome labels",
+    "fallback": "if desired predicate absent use other publicly eligible states; retain full sampling audit"
+  },
+  "common_executor": "4 actions or remaining40; reuse S1 acquire/station/batch; inspect actual produced object; no oracle suffix",
+  "cropping": "two exact rule-action anchors then round-robin8 public types, hash within type; cap16; hash presentation order",
+  "J2": "same public view, STM5, summary, reminder; free primitive action, no menu or forced ranking",
+  "J3": "same common inputs plus full retained menu and structured hypothesis/ranking fields",
+  "rule_mapping": "exact original first action; craft may continue to inspect; no inferred intent for transport; common executor for every descriptor",
+  "stability": "first selected state per family, one extra J2 and J3 response each; primary response never replaced",
+  "malformed": "provider<=3 format/transport attempts; semantic/schema invalid answer recorded, no resampling or best-of selection",
+  "gate": {
+    "net_useful_top1_vs_each_rule_at_least": 5,
+    "positive_net_families_vs_each_rule_at_least": 3,
+    "retained_effective_state_coverage_at_least": 0.85,
+    "raw_entry_useful_count_at_least_best_rule_minus": 1,
+    "rejection_state_count_at_most_worst_rule_plus": 5,
+    "unrelated_craft_state_count_at_most_worst_rule_plus": 2,
+    "environment_key_loss_state_count_at_most_worst_rule_plus": 2,
+    "unrelated_key_input_consumption_state_count_at_most_worst_rule_plus": 2,
+    "valid_primary_answers_at_least": 48,
+    "minimum_informative_families": 5,
+    "raw_entry_success_fraction_at_least": 0.25,
+    "one_step_net_gain_vs_each_rule_at_least": 0,
+    "interpretation": "exploratory screen, not significance; at least one LLM method must satisfy every condition"
+  },
+  "if_gate_fails": "NO-GO; no paid StageB; no B3 failure score",
+  "policy_changes_after_freeze": false,
+  "budget_authorization": "Guide12 StageA; existing waived historical cap; separate0.75USD hard guard",
+  "no_independent_generalization": true
+}
