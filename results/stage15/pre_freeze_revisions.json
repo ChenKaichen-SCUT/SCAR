@@ -1,0 +1,10 @@
+{
+  "paid_api_calls_before_freeze": 0,
+  "revisions": [
+    {"revision": 0, "issue": "Historical fixture captured mutable queue fields by reference; replay at chain_net step38 appeared to regress. Diagnostic input alias, not native policy failure.", "fix": "Deep-copy state before calling choose. Keep first branch evidence under pre_freeze_revision0."},
+    {"revision": 1, "issue": "An accepted trial could remain recorded after intervening unrelated actions; this would allow continuation of a stale intent.", "fix": "Require at least one real action and cancel acceptance on an intervening unrelated actual action. Static P5 differences reduced from27 to3; no native outcome tuning."},
+    {"revision": 2, "issue": "Server repeated branch asserted unequal P1 trace at brimite initial state: restored container/sample records aliased serialized inputs.", "fix": "Deep-copy controller, table and public-facts restoration inputs. Add input-immutability regression. Repeat every native branch twice on server and twice locally."}
+  ],
+  "preserved_historical_files": "prior_manifest.json",
+  "no_policy_changes_after_paid_results": true
+}

@@ -1,0 +1,97 @@
+{
+  "upstream_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "python_hash_seed": 0,
+  "protocol_cohort": "stage15_v1",
+  "model": "deepseek-flash",
+  "base_url": "https://api.deepseek.com",
+  "thinking": "disabled",
+  "temperature": 0.7,
+  "max_tokens": 768,
+  "algorithms": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "games": [
+    "robot_kingdom"
+  ],
+  "test_seeds": [],
+  "max_steps": 40,
+  "short_term_memory_size": 5,
+  "embedding_model": "Qwen/Qwen3-Embedding-0.6B",
+  "embedding_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "initial_workers": 4,
+  "max_workers": 12,
+  "total_budget_usd": 5,
+  "equal_cost_per_episode_usd": 0.15,
+  "scar": {
+    "cooldown": 8,
+    "max_rules": 256,
+    "threshold": 0.75,
+    "max_plan_steps": 3
+  },
+  "diagnostic_split_seed": 8675309,
+  "bootstrap_seed": 314159,
+  "bootstrap_samples": 10000,
+  "pricing_usd_per_million": {
+    "cache_hit": 0.006,
+    "cache_miss": 0.3,
+    "output": 1.2
+  },
+  "pricing_basis": "fixed peak price for cross-method comparison and conservative budget; not an account invoice",
+  "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "diagnostic_max_steps": 40,
+  "budget_authorization": "Guide15 authorizes70freshclosedloops; priorcapwaived; voluntary5USDguard",
+  "episode_budget_usd": 0.2,
+  "predeclared_outcomes": {
+    "primary": "R10/20/40 on original10 development families",
+    "comparisons": [
+      "P1-P0",
+      "P2-P1",
+      "P3-P1",
+      "P4-P1",
+      "P5-P1",
+      "P6-P1",
+      "P6-P0"
+    ],
+    "uncertainty": "10000 paired family bootstrap seed314159, descriptive only; LLM sampling not paired",
+    "scope": "only original10 Robot families; no new dataset, games, seeds or steps",
+    "abort": "retain failed, method/format abort and budget termination; no paid episode reruns",
+    "prompt": "same frozen base STM5; P1-P6 render exact known nominal quantities",
+    "same_state_audit": "same-public-history S1 shadow; no causal full-trajectory attribution",
+    "policy_changes_after_results": false
+  },
+  "mechanisms": {
+    "backbone": "frozen S1",
+    "extra_model_calls": 0,
+    "order": [
+      "direct_finish",
+      "near_finish",
+      "continuation",
+      "protection",
+      "quantity"
+    ],
+    "quantity": "nominal single-operation shortfall; shared-parent demand; never assume linear batch consumption; never globally shrink",
+    "continuation_max_actual_actions": 7,
+    "continuation_stops": "first rejection,new risk,new final recipe,complete,40 total,7 extra",
+    "protection": "public dependency before departing or past locally observed loss; no hiddenfutureloss",
+    "no_new_planner": true,
+    "GPAR": false,
+    "S2_collection": false,
+    "S3_storage": false,
+    "EXPLORATION_LIMIT": 18
+  },
+  "switches": {
+    "P0": "exact frozen S1",
+    "P1": "knowledge",
+    "P2": "P1+quantity",
+    "P3": "P1+finish",
+    "P4": "P1+protect",
+    "P5": "P1+continue",
+    "P6": "P1+all4"
+  }
+}
