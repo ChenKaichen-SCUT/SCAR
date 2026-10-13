@@ -1,0 +1,15 @@
+"""One protocol, fixed before any formal model request."""
+from scar_stage17.provider import CONFIG
+
+PROVIDER = dict(CONFIG, total_budget_usd=3.0, episode_budget_usd=0.25)
+METHOD = 'SCAR19'
+MAX_ACTIONS = 100
+WORKERS = 12
+UNKNOWN_ACQUISITION = 1
+INTENT_ACTION_LIMIT = 12
+EXPLORATORY_ACTION_LIMIT = 6
+PRECONDITION_DEPTH_LIMIT = 8
+MAX_PLANNING_CALLS = 24
+SUMMARY_RECORDS = 48
+SUMMARY_CHARACTERS = 6000
+BASE_COMMIT = 'c5fa743e7fc71460c1bcd73ed7b82c9ef3e5e975'
