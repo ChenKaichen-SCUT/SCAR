@@ -1,0 +1,587 @@
+[
+  {
+    "acceptance": {
+      "accepted": false,
+      "context": "46c7325bef28af9fd8ed1539460b5db83d55aa098ea09b10064df76bcc5eed70",
+      "evidence_refs": [
+        {
+          "first_seen_step": 3,
+          "id": "E5b3fc4dfcabb",
+          "key": "rubble_chunk",
+          "kind": "goal",
+          "names": [
+            "rubble_chunk"
+          ],
+          "observed_step": 9,
+          "snapshot_step": 9,
+          "source": "user_public_task",
+          "value": "Craft at least 1 rubble_chunk during this task and obtain at least 1 rubble_chunk in your own possession. A product left on the ground does not count. Achieve this within 100 environment actions. This is the current evaluation objective."
+        },
+        {
+          "first_seen_step": 9,
+          "id": "E030fce678437",
+          "key": "rubble_chunk",
+          "kind": "blocker",
+          "names": [
+            "rubble_chunk"
+          ],
+          "observed_step": 9,
+          "snapshot_step": 9,
+          "source": "derived_from_public_conditions",
+          "value": {
+            "chain": [],
+            "current_required_action": "craft 1 rubble_chunk",
+            "item": "rubble_chunk",
+            "kind": "missing_target_recipe",
+            "parent": null,
+            "public_entries": {
+              "inspected": [
+                "scout_satchel_0",
+                "war_bench",
+                "charcoal_stylus",
+                "crown_shard",
+                "siege_key",
+                "war_parchment_3"
+              ],
+              "observed_locations": {
+                "cellar": [
+                  "charite",
+                  "crown_shard",
+                  "devil_oil",
+                  "rubble",
+                  "salvage_cloth"
+                ],
+                "courtyard": [
+                  "charcoal_stylus",
+                  "crown_shard",
+                  "siege_key",
+                  "war_bench",
+                  "war_parchment_3"
+                ]
+              },
+              "reachable": [
+                "barracks",
+                "courtyard",
+                "trailhead",
+                "watchtower"
+              ],
+              "visible": [
+                "charite",
+                "crown_shard",
+                "devil_oil",
+                "rubble",
+                "salvage_cloth",
+                "scout_satchel_0"
+              ]
+            },
+            "requires_ground": false
+          }
+        },
+        {
+          "first_seen_step": 9,
+          "id": "E92892c394ca6",
+          "key": "rubble",
+          "kind": "current_object",
+          "names": [
+            "rubble"
+          ],
+          "observed_step": 9,
+          "snapshot_step": 9,
+          "source": "native_current_observation",
+          "value": {
+            "amount": 8.0,
+            "group": "ground",
+            "location": "cellar"
+          }
+        },
+        {
+          "first_seen_step": 9,
+          "id": "E44c157aa6152",
+          "key": "cellar",
+          "kind": "public_location",
+          "names": [
+            "cellar",
+            "charite",
+            "crown_shard",
+            "devil_oil",
+            "rubble",
+            "salvage_cloth"
+          ],
+          "observed_step": 9,
+          "snapshot_step": 9,
+          "source": "native_observed_map",
+          "value": {
+            "objects": {
+              "charite": 8.0,
+              "crown_shard": 1.0,
+              "devil_oil": 10.0,
+              "rubble": 8.0,
+              "salvage_cloth": 6.0
+            },
+            "route": []
+          }
+        }
+      ],
+      "evidence_scope": "public entry only; hypotheses never promoted",
+      "key": "3cb912c78976617ca2dae1476695ee050fcb8f1d239f448c8caa6f550ffd2d49",
+      "proposal": {
+        "direction": "rubble_chunk is the required craftable, and the cellar exposes public rubble as the plausibly matching raw material at the current location; inspect rubble to discover whether it exposes a public rubble_chunk recipe or conversion path before gathering.",
+        "entry": "rubble",
+        "evidence_ids": [
+          "E5b3fc4dfcabb",
+          "E030fce678437",
+          "E92892c394ca6",
+          "E44c157aa6152"
+        ],
+        "target": "rubble_chunk",
+        "type": "CRAFT_PRECONDITION",
+        "uncertainty": [
+          "No public rubble_chunk recipe has been observed yet.",
+          "rubble may not be the correct ingredient or may not expose a recipe.",
+          "Required quantities and any additional ingredients for rubble_chunk remain unknown."
+        ]
+      },
+      "reason": "recipe_unpublished_not_an_executable_craft_intent",
+      "step": 9,
+      "validation_layer": "evidence_or_decision"
+    },
+    "id": "s17-13-robot_kingdom-rubble_chunk:d010:p1",
+    "proposal": {
+      "direction": "rubble_chunk is the required craftable, and the cellar exposes public rubble as the plausibly matching raw material at the current location; inspect rubble to discover whether it exposes a public rubble_chunk recipe or conversion path before gathering.",
+      "entry": "rubble",
+      "evidence_ids": [
+        "E5b3fc4dfcabb",
+        "E030fce678437",
+        "E92892c394ca6",
+        "E44c157aa6152"
+      ],
+      "target": "rubble_chunk",
+      "type": "CRAFT_PRECONDITION",
+      "uncertainty": [
+        "No public rubble_chunk recipe has been observed yet.",
+        "rubble may not be the correct ingredient or may not expose a recipe.",
+        "Required quantities and any additional ingredients for rubble_chunk remain unknown."
+      ]
+    },
+    "shadow": {
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true,
+      "category": "III",
+      "causal_target_entry_relation_proven": false,
+      "entry_access": {
+        "accessible": true,
+        "first_action": "inspect rubble",
+        "mode": "current_public_object",
+        "route": []
+      },
+      "field_relations": [
+        {
+          "entry_fields": [],
+          "id": "E5b3fc4dfcabb",
+          "target_fields": []
+        },
+        {
+          "entry_fields": [
+            "public_entries.visible"
+          ],
+          "id": "E030fce678437",
+          "target_fields": []
+        },
+        {
+          "entry_fields": [
+            "names"
+          ],
+          "id": "E92892c394ca6",
+          "target_fields": []
+        },
+        {
+          "entry_fields": [
+            "names",
+            "observed_objects"
+          ],
+          "id": "E44c157aa6152",
+          "target_fields": []
+        }
+      ],
+      "first_action": "inspect rubble",
+      "hypothesis_accept": false,
+      "inherited_exploration_exhausted": false,
+      "reason": "craft_recipe_unpublished",
+      "structural_accept": false,
+      "target_access": {
+        "accessible": false,
+        "first_action": null,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null
+      },
+      "target_dependency_unproven": false
+    },
+    "state_index": "s17-13-robot_kingdom-rubble_chunk:d010:p1",
+    "task_id": "s17-13-robot_kingdom-rubble_chunk",
+    "trigger": {
+      "chain": [],
+      "current_required_action": "craft 1 rubble_chunk",
+      "item": "rubble_chunk",
+      "kind": "missing_target_recipe",
+      "parent": null,
+      "public_entries": {
+        "inspected": [
+          "scout_satchel_0",
+          "war_bench",
+          "charcoal_stylus",
+          "crown_shard",
+          "siege_key",
+          "war_parchment_3"
+        ],
+        "observed_locations": {
+          "cellar": [
+            "charite",
+            "crown_shard",
+            "devil_oil",
+            "rubble",
+            "salvage_cloth"
+          ],
+          "courtyard": [
+            "charcoal_stylus",
+            "crown_shard",
+            "siege_key",
+            "war_bench",
+            "war_parchment_3"
+          ]
+        },
+        "reachable": [
+          "barracks",
+          "courtyard",
+          "trailhead",
+          "watchtower"
+        ],
+        "visible": [
+          "charite",
+          "crown_shard",
+          "devil_oil",
+          "rubble",
+          "salvage_cloth",
+          "scout_satchel_0"
+        ]
+      },
+      "requires_ground": false
+    }
+  },
+  {
+    "acceptance": {
+      "accepted": false,
+      "context": "d08a3a9b5923c552dedc7c8397a6294be4e97fd9d0c50fc7eb2a86abd0966a75",
+      "evidence_refs": [
+        {
+          "first_seen_step": 32,
+          "id": "E2618d092110d",
+          "key": "wood_plank",
+          "kind": "recipe",
+          "names": [
+            "wood_log",
+            "wood_plank"
+          ],
+          "observed_step": 18,
+          "snapshot_step": 40,
+          "source": "P1_native_public_disclosure",
+          "value": {
+            "evidence_ids": [
+              "k14_5e9ed5fd9ae53040"
+            ],
+            "first_quantity_step": null,
+            "first_relation_step": 18,
+            "ingredients": [
+              "wood_log"
+            ],
+            "quantities": null,
+            "source": "native_public_disclosure",
+            "station_completeness": "UNKNOWN",
+            "step": 18
+          }
+        },
+        {
+          "first_seen_step": 40,
+          "id": "Ea3c5393671a7",
+          "key": "wood_log",
+          "kind": "current_object",
+          "names": [
+            "wood_log"
+          ],
+          "observed_step": 40,
+          "snapshot_step": 40,
+          "source": "native_current_observation",
+          "value": {
+            "amount": 6.0,
+            "group": "ground",
+            "location": "rooftop"
+          }
+        },
+        {
+          "first_seen_step": 40,
+          "id": "E594ab7f3b556",
+          "key": "wood_plank",
+          "kind": "current_object",
+          "names": [
+            "wood_plank"
+          ],
+          "observed_step": 40,
+          "snapshot_step": 40,
+          "source": "native_current_observation",
+          "value": {
+            "amount": 1.0,
+            "group": "ground",
+            "location": "rooftop"
+          }
+        },
+        {
+          "first_seen_step": 40,
+          "id": "Ef3293c7426ef",
+          "key": "wood_stake",
+          "kind": "blocker",
+          "names": [
+            "wood_stake"
+          ],
+          "observed_step": 40,
+          "snapshot_step": 40,
+          "source": "derived_from_public_conditions",
+          "value": {
+            "chain": [],
+            "current_required_action": "craft 1 wood_stake",
+            "item": "wood_stake",
+            "kind": "missing_target_recipe",
+            "parent": null,
+            "public_entries": {
+              "inspected": [
+                "inventory",
+                "small_bag_1",
+                "wood_log",
+                "small_bag_0",
+                "key",
+                "coin",
+                "workbench",
+                "lantern",
+                "paper_0",
+                "pen",
+                "desk",
+                "glass_shard"
+              ],
+              "observed_locations": {
+                "lobby": [
+                  "coin",
+                  "key",
+                  "lantern",
+                  "paper_0",
+                  "pen",
+                  "workbench"
+                ],
+                "rooftop": [
+                  "coin",
+                  "desk",
+                  "glass_shard",
+                  "green_herb",
+                  "rag",
+                  "red_herb",
+                  "scrap_metal",
+                  "wood_log",
+                  "wood_plank"
+                ],
+                "room": [
+                  "coin",
+                  "furnace",
+                  "iron_bar",
+                  "workbench"
+                ]
+              },
+              "reachable": [
+                "lobby",
+                "morgue",
+                "ward"
+              ],
+              "visible": [
+                "coin",
+                "desk",
+                "glass_shard",
+                "green_herb",
+                "rag",
+                "red_herb",
+                "scrap_metal",
+                "small_bag_0",
+                "wood_log",
+                "wood_plank"
+              ]
+            },
+            "requires_ground": false
+          }
+        }
+      ],
+      "evidence_scope": "public entry only; hypotheses never promoted",
+      "key": "cd63fe758807ab8ed2c608cabebc89e17013adfb2b9eee63a44d50b2036a0cd6",
+      "proposal": {
+        "direction": "Convert a public wood_log into a wood_plank using the disclosed wood_plank recipe, since wood_plank is a plausible intermediate material for crafting a wood_stake and is already present as a public object on the rooftop.",
+        "entry": "wood_log",
+        "evidence_ids": [
+          "E2618d092110d",
+          "Ea3c5393671a7",
+          "E594ab7f3b556",
+          "Ef3293c7426ef"
+        ],
+        "target": "wood_plank",
+        "type": "CRAFT_PRECONDITION",
+        "uncertainty": [
+          "The wood_stake recipe itself is not publicly disclosed, so wood_plank may not be a required ingredient.",
+          "Required quantities for the wood_plank recipe are unknown.",
+          "No crafting station completeness is confirmed for wood_plank."
+        ]
+      },
+      "reason": "not_a_current_dependency_or_blocker",
+      "step": 12,
+      "validation_layer": "evidence_or_decision"
+    },
+    "id": "s17-16-quarantine-wood_stake:d013:p1",
+    "proposal": {
+      "direction": "Convert a public wood_log into a wood_plank using the disclosed wood_plank recipe, since wood_plank is a plausible intermediate material for crafting a wood_stake and is already present as a public object on the rooftop.",
+      "entry": "wood_log",
+      "evidence_ids": [
+        "E2618d092110d",
+        "Ea3c5393671a7",
+        "E594ab7f3b556",
+        "Ef3293c7426ef"
+      ],
+      "target": "wood_plank",
+      "type": "CRAFT_PRECONDITION",
+      "uncertainty": [
+        "The wood_stake recipe itself is not publicly disclosed, so wood_plank may not be a required ingredient.",
+        "Required quantities for the wood_plank recipe are unknown.",
+        "No crafting station completeness is confirmed for wood_plank."
+      ]
+    },
+    "shadow": {
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true,
+      "category": "II",
+      "causal_target_entry_relation_proven": false,
+      "entry_access": {
+        "accessible": true,
+        "first_action": "inspect wood_log",
+        "mode": "current_public_object",
+        "route": []
+      },
+      "field_relations": [
+        {
+          "entry_fields": [
+            "names"
+          ],
+          "id": "E2618d092110d",
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "entry_fields": [
+            "names"
+          ],
+          "id": "Ea3c5393671a7",
+          "target_fields": []
+        },
+        {
+          "entry_fields": [],
+          "id": "E594ab7f3b556",
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "entry_fields": [
+            "public_entries.visible"
+          ],
+          "id": "Ef3293c7426ef",
+          "target_fields": [
+            "public_entries.visible"
+          ]
+        }
+      ],
+      "first_action": "inspect wood_log",
+      "hypothesis_accept": true,
+      "inherited_exploration_exhausted": false,
+      "reason": "bounded_public_material_hypothesis_not_yet_in_proven_dependency_closure",
+      "structural_accept": false,
+      "target_access": {
+        "accessible": true,
+        "first_action": "inspect wood_plank",
+        "mode": "current_public_object",
+        "route": []
+      },
+      "target_dependency_unproven": true
+    },
+    "state_index": "s17-16-quarantine-wood_stake:d013:p1",
+    "task_id": "s17-16-quarantine-wood_stake",
+    "trigger": {
+      "chain": [],
+      "current_required_action": "craft 1 wood_stake",
+      "item": "wood_stake",
+      "kind": "missing_target_recipe",
+      "parent": null,
+      "public_entries": {
+        "inspected": [
+          "inventory",
+          "small_bag_1",
+          "wood_log",
+          "small_bag_0",
+          "key",
+          "coin",
+          "workbench",
+          "lantern",
+          "paper_0",
+          "pen",
+          "desk",
+          "glass_shard"
+        ],
+        "observed_locations": {
+          "lobby": [
+            "coin",
+            "key",
+            "lantern",
+            "paper_0",
+            "pen",
+            "workbench"
+          ],
+          "rooftop": [
+            "coin",
+            "desk",
+            "glass_shard",
+            "green_herb",
+            "rag",
+            "red_herb",
+            "scrap_metal",
+            "wood_log",
+            "wood_plank"
+          ],
+          "room": [
+            "coin",
+            "furnace",
+            "iron_bar",
+            "workbench"
+          ]
+        },
+        "reachable": [
+          "lobby",
+          "morgue",
+          "ward"
+        ],
+        "visible": [
+          "coin",
+          "desk",
+          "glass_shard",
+          "green_herb",
+          "rag",
+          "red_herb",
+          "scrap_metal",
+          "small_bag_0",
+          "wood_log",
+          "wood_plank"
+        ]
+      },
+      "requires_ground": false
+    }
+  }
+]
