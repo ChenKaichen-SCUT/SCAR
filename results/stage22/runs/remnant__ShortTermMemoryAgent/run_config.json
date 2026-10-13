@@ -1,0 +1,33 @@
+{
+  "game": "remnant",
+  "method": "ShortTermMemoryAgent",
+  "seed": 42,
+  "max_steps": 300,
+  "model": {
+    "model": "deepseek-flash",
+    "base_url": "https://api.deepseek.com",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "presence_penalty": 1.5,
+    "thinking": "disabled",
+    "max_tokens": 768,
+    "context_window": 1000000,
+    "response_format": {
+      "type": "json_object"
+    },
+    "retries": 3,
+    "peak_prices": {
+      "cache_hit": 0.006,
+      "cache_miss": 0.3,
+      "output": 1.2
+    },
+    "off_peak_multiplier": 0.5,
+    "total_budget_usd": 100,
+    "episode_budget_usd": 25
+  },
+  "started": 1791908066.8919299,
+  "initial_history": [],
+  "memory_reset": true,
+  "enable_obs_valid_actions": false,
+  "protocol": "300-step non-ranking research experiment"
+}

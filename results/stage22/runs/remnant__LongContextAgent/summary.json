@@ -1,0 +1,57 @@
+{
+  "game": "remnant",
+  "method": "LongContextAgent",
+  "seed": 42,
+  "max_steps": 300,
+  "model": {
+    "model": "deepseek-flash",
+    "base_url": "https://api.deepseek.com",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "presence_penalty": 1.5,
+    "thinking": "disabled",
+    "max_tokens": 768,
+    "context_window": 1000000,
+    "response_format": {
+      "type": "json_object"
+    },
+    "retries": 3,
+    "peak_prices": {
+      "cache_hit": 0.006,
+      "cache_miss": 0.3,
+      "output": 1.2
+    },
+    "off_peak_multiplier": 0.5,
+    "total_budget_usd": 100,
+    "episode_budget_usd": 25
+  },
+  "started": 1791908055.09466,
+  "initial_history": [],
+  "memory_reset": true,
+  "enable_obs_valid_actions": false,
+  "protocol": "300-step non-ranking research experiment",
+  "status": "step_limit",
+  "error": null,
+  "initial_state_hash": "6e9ec153581229e6965238f3eeb3d0af7fcebdd18cc980f8edb5256cf1f3744c",
+  "finished": 1791908524.7653277,
+  "elapsed_seconds": 469.67066764831543,
+  "steps": 300,
+  "requests": 300,
+  "input_tokens": 11686283,
+  "output_tokens": 31337,
+  "cost_usd": 0.08150337,
+  "charged_or_reserved_usd": 0.08150337,
+  "invalid_actions": 0,
+  "scores": {
+    "unique_kill": 1,
+    "kill": 1,
+    "craft": 0,
+    "exploration": 2,
+    "death": 1,
+    "trade": 0,
+    "quest": 1,
+    "side_quest": 0
+  },
+  "final_state_hash": "45acdcee1d13bb230889b4c7e551dd6d984b466ae430a098ea5e7a2668472efb",
+  "done": false
+}

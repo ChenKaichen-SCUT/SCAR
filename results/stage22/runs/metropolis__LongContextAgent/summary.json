@@ -1,0 +1,57 @@
+{
+  "game": "metropolis",
+  "method": "LongContextAgent",
+  "seed": 42,
+  "max_steps": 300,
+  "model": {
+    "model": "deepseek-flash",
+    "base_url": "https://api.deepseek.com",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "presence_penalty": 1.5,
+    "thinking": "disabled",
+    "max_tokens": 768,
+    "context_window": 1000000,
+    "response_format": {
+      "type": "json_object"
+    },
+    "retries": 3,
+    "peak_prices": {
+      "cache_hit": 0.006,
+      "cache_miss": 0.3,
+      "output": 1.2
+    },
+    "off_peak_multiplier": 0.5,
+    "total_budget_usd": 100,
+    "episode_budget_usd": 25
+  },
+  "started": 1791908542.9086702,
+  "initial_history": [],
+  "memory_reset": true,
+  "enable_obs_valid_actions": false,
+  "protocol": "300-step non-ranking research experiment",
+  "status": "step_limit",
+  "error": null,
+  "initial_state_hash": "135277d64646443a227eb74538ca170ccd11529899287c522cf45034a4420e00",
+  "finished": 1791909487.2271793,
+  "elapsed_seconds": 944.3185093402863,
+  "steps": 300,
+  "requests": 300,
+  "input_tokens": 12480528,
+  "output_tokens": 34494,
+  "cost_usd": 0.08700408,
+  "charged_or_reserved_usd": 0.08700408,
+  "invalid_actions": 2,
+  "scores": {
+    "unique_kill": 1,
+    "kill": 1,
+    "craft": 0,
+    "exploration": 8,
+    "death": 2,
+    "trade": 0,
+    "quest": 8,
+    "side_quest": 2
+  },
+  "final_state_hash": "2f94ef1a90e37290664d87235b1cc0fd4deea3d568d4837ea5ace877a639bcd2",
+  "done": false
+}
