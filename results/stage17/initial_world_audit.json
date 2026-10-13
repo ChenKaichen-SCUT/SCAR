@@ -1,0 +1,3253 @@
+[
+  {
+    "game": "robot_kingdom",
+    "state_hash": "6b0fdaafe0231366ab23969a199eb5bb9d13d11da60d87e6100732f52051c607",
+    "observation": {
+      "step": 0,
+      "text": "\nI awake in a world unknown. There's a paper written in an ancient script: 'The past is gone, the future unwritten. Every step, every decision, shapes what lies ahead. Adventure, danger, and discovery await. Step forward and let the journey begin.' Suddenly, the paper bursts into flames, leaving no trace behind.\n\nCurrent Time: 0001-01-01 08:00:00\nCurrent Location: Ashen Bastion, courtyard\n\nI waited for a while.\nThe world lies in ash and iron. Demon robots \u2014 infernal machines fused with hellfire and rusted malice \u2014 stalk the ruins of civilization. You are a scavenger turned soldier, recruited by alex_smith to push back the mechanical tide. Begin at the Ashen Bastion, humanity's last outpost, and forge a path through the scorched wastes to the Devils Foundry, where the war engines are born. Destroy their source, or perish in the attempt.You arrive at the Ashen Bastion, the last fortified outpost standing against the demon robot horde. alex_smith told you to report to old_marshal for your first assignment. The bastion is battered but still holds. Explore, gather your bearings, and prepare for what lies beyond the walls.\n\nChapter goal: Complete your orientation at the Ashen Bastion.\nalex_smith enters the area.\n\nI am holding no objects.\nI have equipped no objects.\nI see 10 crown_shard, 2 siege_key, 1 scout_satchel_0, 1 war_parchment_7, 1 charcoal_stylus, 1 war_bench near me.\nI see alex_smith nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: barracks, cellar, trailhead.\n"
+    },
+    "agent": {
+      "id": "agent_adam_davis",
+      "name": "adam_davis",
+      "inventory": {
+        "id": "inventory_agent_adam_davis",
+        "name": "adam_davis's Inventory",
+        "container": null
+      },
+      "equipped_items_in_limb": {},
+      "items_in_hands": {},
+      "max_hp": 100,
+      "hp": 100,
+      "xp": 0,
+      "level": 1,
+      "min_attack": 10,
+      "attack": 10,
+      "defense": 0,
+      "xp_per_level": 100,
+      "available_actions": [
+        {
+          "name": "action_attack",
+          "verb": "attack",
+          "params": [
+            "npc_name"
+          ],
+          "description": "The agent attacks a designated NPC in the current area; deals single-round damage based on agent's attack power. If NPC is in 'defend' state, damage is reduced to 25%."
+        },
+        {
+          "name": "action_buy",
+          "verb": "buy",
+          "params": [
+            "amount",
+            "obj_name",
+            "npc_name"
+          ],
+          "description": "Buy a specified amount of an object from a merchant NPC using coins."
+        },
+        {
+          "name": "action_craft",
+          "verb": "craft",
+          "params": [
+            "amount",
+            "obj_name"
+          ],
+          "description": "The agent crafts a specified amount of an object if all necessary ingredients and dependencies are met."
+        },
+        {
+          "name": "action_defend",
+          "verb": "defend",
+          "params": [],
+          "description": "The agent takes a defensive stance. If attacked by an NPC while defending, damage received is reduced to 10%. Defending also partially recovers stamina."
+        },
+        {
+          "name": "action_discard",
+          "verb": "discard",
+          "params": [
+            "amount",
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent discards a specified amount of an object from a designated container or inventory."
+        },
+        {
+          "name": "action_drop",
+          "verb": "drop",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent drops an object from hand to the current area."
+        },
+        {
+          "name": "action_enter",
+          "verb": "enter",
+          "params": [
+            "area_name"
+          ],
+          "description": "The agent enters a designated neighboring area; if the path is locked, a key is required to unlock it. Cannot leave during active combat."
+        },
+        {
+          "name": "action_equip",
+          "verb": "equip",
+          "params": [
+            "obj_name"
+          ],
+          "description": "The agent equips an object from hand, either as armor or as the inventory container."
+        },
+        {
+          "name": "action_inspect",
+          "verb": "inspect",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent inspects an object to obtain its text content, or inspects inventory to see its contents."
+        },
+        {
+          "name": "action_jam",
+          "verb": "jam",
+          "params": [
+            "object_name",
+            "npc_name"
+          ],
+          "description": "Jam a held object into an enemy war machine's exposed mechanisms during active combat. The object is destroyed, but it permanently disables one action from the NPC's combat pattern cycle. The NPC must have more than one action remaining in its pattern. Heavier and more valuable objects have a higher chance of disabling an 'attack' action."
+        },
+        {
+          "name": "action_overload",
+          "verb": "overload",
+          "params": [
+            "component_name"
+          ],
+          "description": "Overload a held devil-forged component onto your equipped armor, permanently sacrificing the component to grant a reactive damage aura. Each combat round when an enemy NPC attacks you, the aura automatically deals counter-damage equal to a percentage of your defense stat. Eligible components: hellcoal, devil_oil, demon_core_shard, brimite_ore, hellcoal_concentrate, fiend_plate. Stronger components grant a higher aura percentage. The aura stacks across multiple overloads."
+        },
+        {
+          "name": "action_pick_up",
+          "verb": "pick up",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent picks up an object from the current area."
+        },
+        {
+          "name": "action_rally",
+          "verb": "rally",
+          "params": [
+            "npc_name"
+          ],
+          "description": "Rally a friendly NPC in the current area by spending coins, temporarily converting them into a combat ally. The rallied ally automatically deals bonus damage to any enemy the agent attacks for the next 3 combat rounds. Cost scales with the NPC's level."
+        },
+        {
+          "name": "action_salvage",
+          "verb": "salvage",
+          "params": [
+            "material_name"
+          ],
+          "description": "Salvage defeated war machine remains from the current area using a repair_kit held in hand. Consumes scrap materials to extract devil-forged components that permanently upgrade your stats. Salvageable materials: scrap_iron (x2) or cog (x2) \u2192 +3 attack; fiend_plate (x1) or demon_core_shard (x1) \u2192 +2 defense."
+        },
+        {
+          "name": "action_scavenge",
+          "verb": "scavenge",
+          "params": [],
+          "description": "Scavenge the current area to discover hidden objects buried in the ruins. Your knowledge of war machine hiding spots \u2014 gained from defeating unique enemy types \u2014 increases both the chance and quality of findings. Each area can only be scavenged once every few steps."
+        },
+        {
+          "name": "action_sell",
+          "verb": "sell",
+          "params": [
+            "amount",
+            "obj_name",
+            "npc_name"
+          ],
+          "description": "Sell a specified amount of an object to a merchant NPC. Payout is 0.5 times the real value of the objects."
+        },
+        {
+          "name": "action_siphon",
+          "verb": "siphon",
+          "params": [
+            "object_name",
+            "npc_name"
+          ],
+          "description": "Siphon residual dark energy from an enemy NPC mid-combat by sacrificing a held object as a conduit. The object is consumed. HP is restored equal to the object's coin value, and the NPC's attack power is reduced by a third of that value for the rest of the encounter. Requires active combat with the target NPC and a valued object held in hand."
+        },
+        {
+          "name": "action_store",
+          "verb": "store",
+          "params": [
+            "amount",
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent stores a specified amount of an object into a designated container or inventory."
+        },
+        {
+          "name": "action_take_out",
+          "verb": "take out",
+          "params": [
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent takes out an object from a designated container or inventory into hand."
+        },
+        {
+          "name": "action_talk_to",
+          "verb": "talk to",
+          "params": [
+            "npc_name"
+          ],
+          "description": "The agent talks to a designated NPC in the current area to receive dialogue."
+        },
+        {
+          "name": "action_unequip",
+          "verb": "unequip",
+          "params": [
+            "obj_name"
+          ],
+          "description": "The agent unequips an equipped object back into hand."
+        },
+        {
+          "name": "action_wait",
+          "verb": "wait",
+          "params": [],
+          "description": "The agent waits for a while without taking any action. During combat, waiting fully recovers stamina."
+        },
+        {
+          "name": "action_write",
+          "verb": "write",
+          "params": [
+            "text",
+            "writable_name"
+          ],
+          "description": "The agent writes text on a writable object, if holding writing tools."
+        }
+      ]
+    },
+    "new_targets": [
+      {
+        "id": "obj_key_blank",
+        "name": "gate_blank",
+        "ingredients": {
+          "obj_iron_bar": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_key",
+        "name": "siege_key",
+        "ingredients": {
+          "obj_key_blank": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_pen",
+        "name": "charcoal_stylus",
+        "ingredients": {
+          "obj_wooden_rod": 1,
+          "obj_charite": 0.5
+        },
+        "stations": [],
+        "size": 1
+      },
+      {
+        "id": "obj_paper",
+        "name": "war_parchment",
+        "ingredients": {
+          "obj_salvage_cloth": 0.25
+        },
+        "stations": [],
+        "size": 1
+      },
+      {
+        "id": "obj_small_bag",
+        "name": "scout_satchel",
+        "ingredients": {
+          "obj_salvage_cloth": 3,
+          "obj_sinew_cord": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_iron_bar",
+        "name": "iron_bar",
+        "ingredients": {
+          "obj_iron_nugget": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_workbench",
+        "name": "war_bench",
+        "ingredients": {
+          "obj_wood_log": 5,
+          "obj_rubble": 5
+        },
+        "stations": [],
+        "size": null
+      },
+      {
+        "id": "obj_furnace",
+        "name": "crucible",
+        "ingredients": {
+          "obj_rubble": 10
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": null
+      },
+      {
+        "id": "obj_sinew_cord",
+        "name": "sinew_cord",
+        "ingredients": {
+          "obj_salvage_cloth": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_wood_plank",
+        "name": "scorched_plank",
+        "ingredients": {
+          "obj_wood_log": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_wood_strip",
+        "name": "wood_strip",
+        "ingredients": {
+          "obj_wood_plank": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_wooden_rod",
+        "name": "wooden_rod",
+        "ingredients": {
+          "obj_wood_strip": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_wood_plate",
+        "name": "timber_plate",
+        "ingredients": {
+          "obj_wood_plank": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_wood_rivet",
+        "name": "wood_rivet",
+        "ingredients": {
+          "obj_wood_strip": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_stitched_panel",
+        "name": "stitched_panel",
+        "ingredients": {
+          "obj_cloth_roll": 1,
+          "obj_sinew_cord": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_padded_lining",
+        "name": "padded_lining",
+        "ingredients": {
+          "obj_stitched_panel": 1,
+          "obj_salvage_cloth": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_rubble_chunk",
+        "name": "rubble_chunk",
+        "ingredients": {
+          "obj_rubble": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_stone_slab",
+        "name": "ruin_slab",
+        "ingredients": {
+          "obj_rubble_chunk": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_knapped_edge",
+        "name": "knapped_edge",
+        "ingredients": {
+          "obj_stone_slab": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_stone_blade",
+        "name": "ruin_blade",
+        "ingredients": {
+          "obj_knapped_edge": 2,
+          "obj_stone_slab": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_stone_plate",
+        "name": "ruin_plate",
+        "ingredients": {
+          "obj_stone_slab": 2,
+          "obj_cloth_strap": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 4
+      },
+      {
+        "id": "obj_iron_nugget",
+        "name": "iron_nugget",
+        "ingredients": {
+          "obj_scrap_iron": 1
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_iron_sheet",
+        "name": "iron_sheet",
+        "ingredients": {
+          "obj_iron_bar": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_iron_scale",
+        "name": "iron_scale",
+        "ingredients": {
+          "obj_iron_sheet": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_scale_bundle",
+        "name": "scale_bundle",
+        "ingredients": {
+          "obj_iron_scale": 6,
+          "obj_sinew_cord": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 6
+      },
+      {
+        "id": "obj_sharpened_iron_blade",
+        "name": "honed_blade",
+        "ingredients": {
+          "obj_forged_blade_blank": 1,
+          "obj_devil_oil": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 4
+      },
+      {
+        "id": "obj_fiend_strip",
+        "name": "fiend_strip",
+        "ingredients": {
+          "obj_fiend_plate": 1
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_brimite_nugget",
+        "name": "brimite_nugget",
+        "ingredients": {
+          "obj_brimite_ore": 1
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_brimite_ingot",
+        "name": "brimite_ingot",
+        "ingredients": {
+          "obj_brimite_nugget": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_hellcoal_concentrate",
+        "name": "hellcoal_concentrate",
+        "ingredients": {
+          "obj_hellcoal": 3,
+          "obj_devil_oil": 1
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_fiend_alloy_sheet",
+        "name": "fiend_alloy_sheet",
+        "ingredients": {
+          "obj_fiend_alloy_ingot": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_oil_flask",
+        "name": "oil_flask",
+        "ingredients": {
+          "obj_devil_oil": 2,
+          "obj_rubble_chunk": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_cog_assembly",
+        "name": "cog_assembly",
+        "ingredients": {
+          "obj_cog": 3,
+          "obj_devil_oil": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_charcoal_brick",
+        "name": "charcoal_brick",
+        "ingredients": {
+          "obj_charite": 3
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_wooden_club",
+        "name": "ruin_club",
+        "ingredients": {
+          "obj_wood_log": 2
+        },
+        "stations": [],
+        "size": 4
+      },
+      {
+        "id": "obj_spiked_club",
+        "name": "spiked_club",
+        "ingredients": {
+          "obj_wood_log": 2,
+          "obj_rubble_chunk": 2,
+          "obj_sinew_cord": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_wooden_sword",
+        "name": "timber_sword",
+        "ingredients": {
+          "obj_wood_plank": 1,
+          "obj_wood_strip": 1,
+          "obj_sinew_cord": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_stone_maul",
+        "name": "ruin_maul",
+        "ingredients": {
+          "obj_stone_blade": 1,
+          "obj_wooden_rod": 1,
+          "obj_cloth_roll": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 6
+      },
+      {
+        "id": "obj_stone_spear",
+        "name": "ruin_spear",
+        "ingredients": {
+          "obj_knapped_edge": 1,
+          "obj_wooden_rod": 1,
+          "obj_sinew_cord": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_iron_mace",
+        "name": "iron_mace",
+        "ingredients": {
+          "obj_iron_bar": 2,
+          "obj_wooden_rod": 1,
+          "obj_cloth_strap": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_iron_sword",
+        "name": "hunter_sword",
+        "ingredients": {
+          "obj_sharpened_iron_blade": 1,
+          "obj_wooden_rod": 1,
+          "obj_cloth_strap": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_gearwork_lance",
+        "name": "gearwork_lance",
+        "ingredients": {
+          "obj_gearwork_frame": 1,
+          "obj_sharpened_iron_blade": 1,
+          "obj_fiend_rivet": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 7
+      },
+      {
+        "id": "obj_brimite_sword",
+        "name": "brimite_sword",
+        "ingredients": {
+          "obj_brimite_blade": 1,
+          "obj_wooden_rod": 1,
+          "obj_cloth_strap": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_demonslayer",
+        "name": "demonslayer",
+        "ingredients": {
+          "obj_fiend_alloy_ingot": 2,
+          "obj_brimite_blade": 1,
+          "obj_war_engine_heart": 1,
+          "obj_cloth_strap": 1
+        },
+        "stations": [
+          "obj_workbench",
+          "obj_furnace"
+        ],
+        "size": 6
+      },
+      {
+        "id": "obj_oil_bomb",
+        "name": "oil_bomb",
+        "ingredients": {
+          "obj_oil_flask": 1,
+          "obj_charcoal_brick": 1,
+          "obj_salvage_cloth": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_cog_crossbow",
+        "name": "cog_crossbow",
+        "ingredients": {
+          "obj_gearwork_frame": 1,
+          "obj_iron_bar": 2,
+          "obj_sinew_cord": 3
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 6
+      },
+      {
+        "id": "obj_fiend_halberd",
+        "name": "fiend_halberd",
+        "ingredients": {
+          "obj_fiend_alloy_ingot": 1,
+          "obj_iron_bar": 2,
+          "obj_wooden_rod": 2,
+          "obj_cloth_strap": 2
+        },
+        "stations": [
+          "obj_workbench",
+          "obj_furnace"
+        ],
+        "size": 8
+      },
+      {
+        "id": "obj_scrap_buckler",
+        "name": "scrap_buckler",
+        "ingredients": {
+          "obj_scrap_iron": 2,
+          "obj_sinew_cord": 1
+        },
+        "stations": [],
+        "size": 4
+      },
+      {
+        "id": "obj_wooden_chestplate",
+        "name": "timber_vest",
+        "ingredients": {
+          "obj_wood_plate": 2,
+          "obj_wood_rivet": 1,
+          "obj_padded_lining": 1,
+          "obj_cloth_strap": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 8
+      },
+      {
+        "id": "obj_stone_plate_armor",
+        "name": "ruin_cuirass",
+        "ingredients": {
+          "obj_stone_plate": 4,
+          "obj_cloth_strap": 2,
+          "obj_padded_lining": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 10
+      },
+      {
+        "id": "obj_iron_scale_armor",
+        "name": "hunter_scale",
+        "ingredients": {
+          "obj_scale_bundle": 1,
+          "obj_padded_lining": 2,
+          "obj_cloth_strap": 3
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 10
+      },
+      {
+        "id": "obj_fiend_plate_armor",
+        "name": "fiend_cuirass",
+        "ingredients": {
+          "obj_fiend_plate": 3,
+          "obj_fiend_rivet": 4,
+          "obj_padded_lining": 2,
+          "obj_cloth_strap": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 10
+      },
+      {
+        "id": "obj_fiend_alloy_armor",
+        "name": "demonhide_armor",
+        "ingredients": {
+          "obj_fiend_scale_bundle": 1,
+          "obj_padded_lining": 2,
+          "obj_cloth_strap": 3,
+          "obj_war_engine_heart": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 12
+      },
+      {
+        "id": "obj_scrap_helm",
+        "name": "scrap_helm",
+        "ingredients": {
+          "obj_scrap_iron": 2,
+          "obj_salvage_cloth": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_wooden_shield",
+        "name": "timber_shield",
+        "ingredients": {
+          "obj_wood_plate": 2,
+          "obj_wood_rivet": 2,
+          "obj_cloth_strap": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_iron_shield",
+        "name": "hunter_shield",
+        "ingredients": {
+          "obj_iron_sheet": 1,
+          "obj_wood_plate": 1,
+          "obj_cloth_strap": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 6
+      },
+      {
+        "id": "obj_fiend_shield",
+        "name": "fiend_shield",
+        "ingredients": {
+          "obj_fiend_alloy_sheet": 1,
+          "obj_wood_plate": 1,
+          "obj_cloth_strap": 2,
+          "obj_fiend_rivet": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 7
+      },
+      {
+        "id": "obj_stone_gauntlets",
+        "name": "ruin_gauntlets",
+        "ingredients": {
+          "obj_rubble_chunk": 2,
+          "obj_cloth_strap": 2,
+          "obj_salvage_cloth": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_fiend_gauntlets",
+        "name": "fiend_gauntlets",
+        "ingredients": {
+          "obj_fiend_alloy_ingot": 1,
+          "obj_cloth_strap": 1,
+          "obj_sinew_cord": 2
+        },
+        "stations": [
+          "obj_workbench",
+          "obj_furnace"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_war_pack",
+        "name": "war_pack",
+        "ingredients": {
+          "obj_stitched_panel": 2,
+          "obj_cloth_strap": 2,
+          "obj_iron_bar": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_siege_crate",
+        "name": "siege_crate",
+        "ingredients": {
+          "obj_wood_plank": 4,
+          "obj_iron_bar": 2,
+          "obj_sinew_cord": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_field_journal",
+        "name": "field_journal",
+        "ingredients": {
+          "obj_paper": 5,
+          "obj_sinew_cord": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_scrap_lantern",
+        "name": "scrap_lantern",
+        "ingredients": {
+          "obj_scrap_iron": 1,
+          "obj_devil_oil": 1,
+          "obj_salvage_cloth": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_repair_kit",
+        "name": "repair_kit",
+        "ingredients": {
+          "obj_scrap_iron": 2,
+          "obj_sinew_cord": 2,
+          "obj_oil_flask": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_machine_trap",
+        "name": "machine_trap",
+        "ingredients": {
+          "obj_chain_net": 1,
+          "obj_cog_assembly": 1,
+          "obj_iron_bar": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_warding_charm",
+        "name": "warding_charm",
+        "ingredients": {
+          "obj_demon_core_shard": 1,
+          "obj_sinew_cord": 3,
+          "obj_hellcoal_concentrate": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_book",
+        "name": "war_codex",
+        "ingredients": {
+          "obj_field_journal": 2,
+          "obj_sinew_cord": 2,
+          "obj_fiend_strip": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_quest_gate_cipher",
+        "name": "gate_cipher",
+        "ingredients": {
+          "obj_cog": 2,
+          "obj_scrap_iron": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_quest_war_banner",
+        "name": "war_banner",
+        "ingredients": {
+          "obj_salvage_cloth": 2,
+          "obj_wooden_rod": 1
+        },
+        "stations": [],
+        "size": 3
+      },
+      {
+        "id": "obj_quest_suppression_charge",
+        "name": "suppression_charge",
+        "ingredients": {
+          "obj_hellcoal_concentrate": 2,
+          "obj_cog_assembly": 1,
+          "obj_oil_flask": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 4
+      }
+    ],
+    "old_targets": [
+      "bandage_roll",
+      "brimite_blade",
+      "brimite_blade_blank",
+      "chain_net",
+      "courtyard",
+      "fiend_alloy",
+      "fiend_alloy_scale",
+      "fiend_helm",
+      "fiend_rivet",
+      "fiend_scale_bundle",
+      "forged_blade_blank",
+      "gearwork_frame",
+      "hellfire_bomb",
+      "hunter_gauntlets",
+      "hunter_helm",
+      "padded_tunic",
+      "war_strap"
+    ],
+    "areas": [
+      {
+        "id": "area_bastion_courtyard",
+        "name": "courtyard",
+        "objects": {
+          "obj_coin": 10,
+          "obj_key": 2,
+          "obj_small_bag_0": 1,
+          "obj_paper_7": 1,
+          "obj_pen": 1,
+          "obj_workbench": 1
+        },
+        "npcs": [
+          "npc_quest_wayfarer_guide"
+        ],
+        "neighbors": {
+          "area_bastion_barracks": {
+            "to_id": "area_bastion_barracks",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_bastion_cellar": {
+            "to_id": "area_bastion_cellar",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_vale_trailhead": {
+            "to_id": "area_vale_trailhead",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_bastion_barracks",
+        "name": "barracks",
+        "objects": {
+          "obj_wood_log": 7,
+          "obj_salvage_cloth": 12,
+          "obj_scrap_iron": 12,
+          "obj_sinew_cord": 1
+        },
+        "npcs": [
+          "npc_scrap_automaton_0",
+          "npc_iron_ravager_0",
+          "npc_old_marshal"
+        ],
+        "neighbors": {
+          "area_bastion_courtyard": {
+            "to_id": "area_bastion_courtyard",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_bastion_watchtower": {
+            "to_id": "area_bastion_watchtower",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_bastion_cellar",
+        "name": "cellar",
+        "objects": {
+          "obj_rubble": 8,
+          "obj_salvage_cloth": 7,
+          "obj_charite": 9,
+          "obj_devil_oil": 9,
+          "obj_paper_0": 1
+        },
+        "npcs": [
+          "npc_vessa_ironhand",
+          "npc_infernal_colossus_0",
+          "npc_ember_scavenger_0"
+        ],
+        "neighbors": {
+          "area_bastion_courtyard": {
+            "to_id": "area_bastion_courtyard",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_bastion_watchtower": {
+            "to_id": "area_bastion_watchtower",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_bastion_watchtower",
+        "name": "watchtower",
+        "objects": {
+          "obj_scrap_iron": 9,
+          "obj_iron_bar": 7,
+          "obj_paper_1": 1
+        },
+        "npcs": [
+          "npc_kael_ashworth",
+          "npc_scrap_automaton_1",
+          "npc_ember_scavenger_1"
+        ],
+        "neighbors": {
+          "area_bastion_barracks": {
+            "to_id": "area_bastion_barracks",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_bastion_cellar": {
+            "to_id": "area_bastion_cellar",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_gulch_entrance": {
+            "to_id": "area_gulch_entrance",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_vale_trailhead",
+        "name": "trailhead",
+        "objects": {
+          "obj_wood_log": 3,
+          "obj_rubble": 6,
+          "obj_charite": 8,
+          "obj_paper_2": 1,
+          "obj_coin": 2
+        },
+        "npcs": [
+          "npc_scrap_automaton_2"
+        ],
+        "neighbors": {
+          "area_bastion_courtyard": {
+            "to_id": "area_bastion_courtyard",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_vale_ruins": {
+            "to_id": "area_vale_ruins",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_vale_crater": {
+            "to_id": "area_vale_crater",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_vale_ruins",
+        "name": "ruins",
+        "objects": {
+          "obj_wood_log": 8,
+          "obj_rubble": 8,
+          "obj_salvage_cloth": 5,
+          "obj_scrap_iron": 13,
+          "obj_paper_3": 1,
+          "obj_paper_4": 1,
+          "obj_coin": 1
+        },
+        "npcs": [
+          "npc_scrap_automaton_3",
+          "npc_quest_forgemaster_dren",
+          "npc_quest_iron_ravager_2_8",
+          "npc_quest_colossus_guard_4",
+          "npc_vessa_ironhand",
+          "npc_boss_infernal_architect"
+        ],
+        "neighbors": {
+          "area_vale_trailhead": {
+            "to_id": "area_vale_trailhead",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_vale_crater": {
+            "to_id": "area_vale_crater",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_vale_crater",
+        "name": "crater",
+        "objects": {
+          "obj_charite": 4,
+          "obj_scrap_iron": 8,
+          "obj_devil_oil": 4,
+          "obj_hellcoal": 12,
+          "obj_cog": 9
+        },
+        "npcs": [
+          "npc_iron_ravager_1",
+          "npc_infernal_colossus_1",
+          "npc_ember_scavenger_2",
+          "npc_quest_scout_lyra"
+        ],
+        "neighbors": {
+          "area_vale_trailhead": {
+            "to_id": "area_vale_trailhead",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_vale_ruins": {
+            "to_id": "area_vale_ruins",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_gulch_entrance": {
+            "to_id": "area_gulch_entrance",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_gulch_entrance",
+        "name": "entrance",
+        "objects": {
+          "obj_cog": 11,
+          "obj_paper_5": 1,
+          "obj_coin": 6
+        },
+        "npcs": [
+          "npc_iron_ravager_2",
+          "npc_ember_scavenger_3",
+          "npc_quest_scrap_auto_1_9"
+        ],
+        "neighbors": {
+          "area_bastion_watchtower": {
+            "to_id": "area_bastion_watchtower",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          },
+          "area_vale_crater": {
+            "to_id": "area_vale_crater",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          },
+          "area_gulch_scrapyard": {
+            "to_id": "area_gulch_scrapyard",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_gulch_forge": {
+            "to_id": "area_gulch_forge",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_gulch_scrapyard",
+        "name": "scrapyard",
+        "objects": {
+          "obj_devil_oil": 5,
+          "obj_cog": 10,
+          "obj_fiend_plate": 13,
+          "obj_iron_bar": 2,
+          "obj_coin": 9
+        },
+        "npcs": [
+          "npc_old_marshal",
+          "npc_scrap_automaton_4",
+          "npc_iron_ravager_3",
+          "npc_infernal_colossus_2",
+          "npc_kael_ashworth"
+        ],
+        "neighbors": {
+          "area_gulch_entrance": {
+            "to_id": "area_gulch_entrance",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_gulch_forge": {
+            "to_id": "area_gulch_forge",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_gulch_forge",
+        "name": "forge",
+        "objects": {
+          "obj_hellcoal": 10,
+          "obj_fiend_plate": 10,
+          "obj_brimite_ore": 13,
+          "obj_paper_6": 1,
+          "obj_coin": 7
+        },
+        "npcs": [
+          "npc_scrap_automaton_5",
+          "npc_ember_scavenger_4"
+        ],
+        "neighbors": {
+          "area_gulch_entrance": {
+            "to_id": "area_gulch_entrance",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_gulch_scrapyard": {
+            "to_id": "area_gulch_scrapyard",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_foundry_gate": {
+            "to_id": "area_foundry_gate",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_foundry_gate",
+        "name": "gate",
+        "objects": {
+          "obj_hellcoal": 9,
+          "obj_fiend_plate": 14,
+          "obj_brimite_ore": 10,
+          "obj_coin": 1
+        },
+        "npcs": [
+          "npc_scrap_automaton_6",
+          "npc_iron_ravager_4",
+          "npc_boss_scrap_warden"
+        ],
+        "neighbors": {
+          "area_gulch_forge": {
+            "to_id": "area_gulch_forge",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          },
+          "area_foundry_furnaceroom": {
+            "to_id": "area_foundry_furnaceroom",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_foundry_core": {
+            "to_id": "area_foundry_core",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_foundry_furnaceroom",
+        "name": "furnace_room",
+        "objects": {
+          "obj_demon_core_shard": 16,
+          "obj_brimite_ore": 14,
+          "obj_coin": 6
+        },
+        "npcs": [
+          "npc_scrap_automaton_7",
+          "npc_iron_ravager_5",
+          "npc_quest_iron_ravager_1_7",
+          "npc_quest_ember_pack_1_5"
+        ],
+        "neighbors": {
+          "area_foundry_gate": {
+            "to_id": "area_foundry_gate",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_foundry_core": {
+            "to_id": "area_foundry_core",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_foundry_core",
+        "name": "core",
+        "objects": {
+          "obj_demon_core_shard": 16,
+          "obj_coin": 2
+        },
+        "npcs": [
+          "npc_scrap_automaton_8",
+          "npc_iron_ravager_6",
+          "npc_infernal_colossus_3"
+        ],
+        "neighbors": {
+          "area_foundry_gate": {
+            "to_id": "area_foundry_gate",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_foundry_furnaceroom": {
+            "to_id": "area_foundry_furnaceroom",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "game": "saltglass",
+    "state_hash": "9787c6158479d0cdf974f3b1e0c12016e717450eb17a68d07e715feb474ec5d7",
+    "observation": {
+      "step": 0,
+      "text": "\nI awake in a world unknown. There's a paper written in an ancient script: 'The past is gone, the future unwritten. Every step, every decision, shapes what lies ahead. Adventure, danger, and discovery await. Step forward and let the journey begin.' Suddenly, the paper bursts into flames, leaving no trace behind.\n\nCurrent Time: 0001-01-01 08:00:00\nCurrent Location: Tutorial, room\n\nI waited for a while.\nWelcome to the tutorial of this game!\nYou'll be instructed to learn different actions that you are available to take.\nTutorial Step 1 \u2014 Pick up the bag.\nRequired action: `pick up satchel_1`\n\nI am holding no objects.\nI have equipped no objects.\nI see 1 satchel_1 near me.\nI see no one nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: hall.\n"
+    },
+    "agent": {
+      "id": "agent_adam_davis",
+      "name": "adam_davis",
+      "inventory": {
+        "id": "inventory_agent_adam_davis",
+        "name": "adam_davis's Inventory",
+        "container": null
+      },
+      "equipped_items_in_limb": {},
+      "items_in_hands": {},
+      "max_hp": 100,
+      "hp": 100,
+      "xp": 0,
+      "level": 1,
+      "min_attack": 10,
+      "attack": 10,
+      "defense": 0,
+      "xp_per_level": 100,
+      "available_actions": [
+        {
+          "name": "action_attack",
+          "verb": "attack",
+          "params": [
+            "npc_name"
+          ],
+          "description": "The agent attacks a designated NPC in the current area; deals single-round damage based on agent's attack power. If NPC is in 'defend' state, damage is reduced to 25%."
+        },
+        {
+          "name": "action_buy",
+          "verb": "buy",
+          "params": [
+            "amount",
+            "obj_name",
+            "npc_name"
+          ],
+          "description": "Buy a specified amount of an object from a merchant NPC using currency."
+        },
+        {
+          "name": "action_craft",
+          "verb": "craft",
+          "params": [
+            "amount",
+            "obj_name"
+          ],
+          "description": "The agent crafts a specified amount of an object if all necessary ingredients and dependencies are met."
+        },
+        {
+          "name": "action_defend",
+          "verb": "defend",
+          "params": [],
+          "description": "The agent takes a defensive stance. If attacked by an NPC while defending, damage received is reduced to 10%. Defending also partially recovers stamina."
+        },
+        {
+          "name": "action_discard",
+          "verb": "discard",
+          "params": [
+            "amount",
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent discards a specified amount of an object from a designated container or inventory."
+        },
+        {
+          "name": "action_drop",
+          "verb": "drop",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent drops an object from hand to the current area."
+        },
+        {
+          "name": "action_enter",
+          "verb": "enter",
+          "params": [
+            "area_name"
+          ],
+          "description": "The agent enters a designated neighboring area; if the path is locked, a key is required to unlock it. Cannot leave during active combat."
+        },
+        {
+          "name": "action_equip",
+          "verb": "equip",
+          "params": [
+            "obj_name"
+          ],
+          "description": "The agent equips an object from hand, either as armor or as the inventory container."
+        },
+        {
+          "name": "action_inspect",
+          "verb": "inspect",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent inspects an object to obtain its text content, or inspects inventory to see its contents."
+        },
+        {
+          "name": "action_listen",
+          "verb": "listen",
+          "params": [
+            "target"
+          ],
+          "description": "Listen to the saltglass in a toppled observatory, or while holding a glass object, to receive a cryptic hint about one nearby hidden object, locked path, or hostile NPC rhythm."
+        },
+        {
+          "name": "action_pick_up",
+          "verb": "pick up",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent picks up an object from the current area."
+        },
+        {
+          "name": "action_refract",
+          "verb": "refract",
+          "params": [
+            "glass_object_name"
+          ],
+          "description": "Hold up a non-degraded glass object to refract light and reveal hidden details in the current area: locked-path key requirements, concealed objects, or NPC inventory."
+        },
+        {
+          "name": "action_sell",
+          "verb": "sell",
+          "params": [
+            "amount",
+            "obj_name",
+            "npc_name"
+          ],
+          "description": "Sell a specified amount of an object to a merchant NPC. Payout is 0.5 times the real value of the objects."
+        },
+        {
+          "name": "action_store",
+          "verb": "store",
+          "params": [
+            "amount",
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent stores a specified amount of an object into a designated container or inventory."
+        },
+        {
+          "name": "action_take_out",
+          "verb": "take out",
+          "params": [
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent takes out an object from a designated container or inventory into hand."
+        },
+        {
+          "name": "action_talk_to",
+          "verb": "talk to",
+          "params": [
+            "npc_name"
+          ],
+          "description": "The agent talks to a designated NPC in the current area to receive dialogue."
+        },
+        {
+          "name": "action_unequip",
+          "verb": "unequip",
+          "params": [
+            "obj_name"
+          ],
+          "description": "The agent unequips an equipped object back into hand."
+        },
+        {
+          "name": "action_wait",
+          "verb": "wait",
+          "params": [],
+          "description": "The agent waits for a while without taking any action. During combat, waiting fully recovers stamina."
+        },
+        {
+          "name": "action_write",
+          "verb": "write",
+          "params": [
+            "text",
+            "writable_name"
+          ],
+          "description": "The agent writes text on a writable object, if holding writing tools."
+        }
+      ]
+    },
+    "new_targets": [
+      {
+        "id": "obj_pen",
+        "name": "reed_pen",
+        "ingredients": {
+          "obj_wood_log": 0.25,
+          "obj_saltcloth": 0.25
+        },
+        "stations": [],
+        "size": 1
+      },
+      {
+        "id": "obj_paper",
+        "name": "chart_paper",
+        "ingredients": {
+          "obj_saltcloth": 0.25
+        },
+        "stations": [],
+        "size": 1
+      },
+      {
+        "id": "obj_small_bag",
+        "name": "satchel",
+        "ingredients": {
+          "obj_saltcloth": 2,
+          "obj_thread": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_thread",
+        "name": "thread",
+        "ingredients": {
+          "obj_saltcloth": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_brine_glass",
+        "name": "brine_glass",
+        "ingredients": {
+          "obj_salt_shard": 2,
+          "obj_lens_shard": 1
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_iron_bar",
+        "name": "rustbar",
+        "ingredients": {
+          "obj_star_scrap": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_workbench",
+        "name": "bench",
+        "ingredients": {
+          "obj_wood_log": 4,
+          "obj_salt_shard": 4
+        },
+        "stations": [],
+        "size": null
+      },
+      {
+        "id": "obj_furnace",
+        "name": "kiln",
+        "ingredients": {
+          "obj_salt_shard": 6,
+          "obj_iron_bar": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": null
+      },
+      {
+        "id": "obj_wrap_vest",
+        "name": "wrap_vest",
+        "ingredients": {
+          "obj_saltcloth": 2,
+          "obj_thread": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 4
+      },
+      {
+        "id": "obj_orrery_plate",
+        "name": "orrery_plate",
+        "ingredients": {
+          "obj_astrolabe_core": 1,
+          "obj_iron_bar": 3,
+          "obj_brine_glass": 2,
+          "obj_saltcloth": 1
+        },
+        "stations": [
+          "obj_workbench",
+          "obj_furnace"
+        ],
+        "size": 9
+      },
+      {
+        "id": "obj_void_plate",
+        "name": "void_plate",
+        "ingredients": {
+          "obj_orrery_plate": 1,
+          "obj_void_salt": 1,
+          "obj_astrolabe_core": 1
+        },
+        "stations": [
+          "obj_workbench",
+          "obj_furnace"
+        ],
+        "size": 10
+      }
+    ],
+    "old_targets": [
+      "astrolabe_core",
+      "bar_mail",
+      "bar_spear",
+      "brass_blank",
+      "brass_key",
+      "complete first ten official tutorial stages",
+      "flats",
+      "glass_guard",
+      "lens_dagger",
+      "orrery_blade",
+      "salt_knife",
+      "spire_pike"
+    ],
+    "areas": [
+      {
+        "id": "area_hall",
+        "name": "hall",
+        "objects": {
+          "obj_coin": 10,
+          "obj_key": 2,
+          "obj_small_bag_0": 1,
+          "obj_paper_5": 1,
+          "obj_pen": 1,
+          "obj_workbench": 1
+        },
+        "npcs": [],
+        "neighbors": {
+          "area_yard": {
+            "to_id": "area_yard",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_library": {
+            "to_id": "area_library",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_flats": {
+            "to_id": "area_flats",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_tutorial_room": {
+            "to_id": "area_tutorial_room",
+            "locked": false,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_yard",
+        "name": "yard",
+        "objects": {
+          "obj_wood_log": 12,
+          "obj_saltcloth": 6,
+          "_mirage_area_yard_-1": 1
+        },
+        "npcs": [
+          "npc_naia",
+          "npc_lens_wraith_0",
+          "npc_quest_guide"
+        ],
+        "neighbors": {
+          "area_hall": {
+            "to_id": "area_hall",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_library": {
+            "to_id": "area_library",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_armory": {
+            "to_id": "area_armory",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_library",
+        "name": "library",
+        "objects": {
+          "obj_lens_shard": 14,
+          "obj_saltcloth": 8,
+          "obj_paper_0": 1,
+          "obj_coin": 3
+        },
+        "npcs": [
+          "npc_vesin",
+          "npc_tidebound_0",
+          "npc_lens_wraith_1"
+        ],
+        "neighbors": {
+          "area_hall": {
+            "to_id": "area_hall",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_yard": {
+            "to_id": "area_yard",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_basin": {
+            "to_id": "area_basin",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_armory",
+        "name": "armory",
+        "objects": {
+          "obj_star_scrap": 11,
+          "obj_iron_bar": 6,
+          "obj_coin": 4
+        },
+        "npcs": [
+          "npc_tidebound_1",
+          "npc_lens_wraith_2"
+        ],
+        "neighbors": {
+          "area_yard": {
+            "to_id": "area_yard",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_basin": {
+            "to_id": "area_basin",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_orrery": {
+            "to_id": "area_orrery",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_flats",
+        "name": "flats",
+        "objects": {
+          "obj_wood_log": 8,
+          "obj_salt_shard": 8,
+          "obj_paper_1": 1,
+          "obj_coin": 1
+        },
+        "npcs": [
+          "npc_tidebound_2"
+        ],
+        "neighbors": {
+          "area_hall": {
+            "to_id": "area_hall",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_basin": {
+            "to_id": "area_basin",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_basin",
+        "name": "basin",
+        "objects": {
+          "obj_lens_shard": 7,
+          "obj_iron_bar": 8,
+          "obj_coin": 4,
+          "obj_paper_2": 1
+        },
+        "npcs": [
+          "npc_tidebound_3"
+        ],
+        "neighbors": {
+          "area_flats": {
+            "to_id": "area_flats",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_library": {
+            "to_id": "area_library",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_armory": {
+            "to_id": "area_armory",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_orrery": {
+            "to_id": "area_orrery",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_orrery",
+        "name": "orrery",
+        "objects": {
+          "obj_star_scrap": 10,
+          "obj_void_salt": 12,
+          "obj_paper_3": 1,
+          "obj_paper_4": 1,
+          "obj_coin": 1
+        },
+        "npcs": [
+          "npc_tidebound_4",
+          "npc_lens_wraith_3"
+        ],
+        "neighbors": {
+          "area_armory": {
+            "to_id": "area_armory",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          },
+          "area_basin": {
+            "to_id": "area_basin",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          },
+          "area_spire": {
+            "to_id": "area_spire",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_spire",
+        "name": "spire",
+        "objects": {
+          "obj_void_salt": 17,
+          "obj_coin": 9
+        },
+        "npcs": [
+          "npc_tidebound_5"
+        ],
+        "neighbors": {
+          "area_orrery": {
+            "to_id": "area_orrery",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_tutorial_room",
+        "name": "room",
+        "objects": {
+          "obj_small_bag_1": 1
+        },
+        "npcs": [],
+        "neighbors": {
+          "area_hall": {
+            "to_id": "area_hall",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "game": "quarantine",
+    "state_hash": "ec0effccb0f01ae604b29ea0ef8703e726585889360e10650dc0007d06193095",
+    "observation": {
+      "step": 0,
+      "text": "\nI awake in a world unknown. There's a paper written in an ancient script: 'The past is gone, the future unwritten. Every step, every decision, shapes what lies ahead. Adventure, danger, and discovery await. Step forward and let the journey begin.' Suddenly, the paper bursts into flames, leaving no trace behind.\n\nCurrent Time: 0001-01-01 08:00:00\nCurrent Location: Tutorial, room\n\nI waited for a while.\nWelcome to the tutorial of this game!\nYou'll be instructed to learn different actions that you are available to take.\nTutorial Step 1 \u2014 Pick up the bag.\nRequired action: `pick up small_bag_1`\n\nI am holding no objects.\nI have equipped no objects.\nI see 1 small_bag_1 near me.\nI see no one nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: lobby.\n"
+    },
+    "agent": {
+      "id": "agent_adam_davis",
+      "name": "adam_davis",
+      "inventory": {
+        "id": "inventory_agent_adam_davis",
+        "name": "adam_davis's Inventory",
+        "container": null
+      },
+      "equipped_items_in_limb": {},
+      "items_in_hands": {},
+      "max_hp": 100,
+      "hp": 100,
+      "xp": 0,
+      "level": 1,
+      "min_attack": 10,
+      "attack": 10,
+      "defense": 0,
+      "xp_per_level": 100,
+      "available_actions": [
+        {
+          "name": "action_attack",
+          "verb": "attack",
+          "params": [
+            "npc_name"
+          ],
+          "description": "The agent attacks a designated NPC in the current area; deals single-round damage based on agent's attack power. If NPC is in 'defend' state, damage is reduced to 25%."
+        },
+        {
+          "name": "action_barricade",
+          "verb": "barricade",
+          "params": [
+            "area_name"
+          ],
+          "description": "Barricade the path to a neighboring area using wooden materials (requires 3 wood units from hand/inventory: wood_log or wood_plank each count as 1). The path is permanently blocked for everyone \u2014 players and NPCs alike."
+        },
+        {
+          "name": "action_burn_corpses",
+          "verb": "burn corpses",
+          "params": [],
+          "description": "Burn the corpses in the current area using a chemical and a rag from hand or inventory. Removes all corpses and resets the area's corruption level, preventing mutated enemies from spawning."
+        },
+        {
+          "name": "action_buy",
+          "verb": "buy",
+          "params": [
+            "amount",
+            "obj_name",
+            "npc_name"
+          ],
+          "description": "Buy a specified amount of an object from a merchant NPC using coins."
+        },
+        {
+          "name": "action_concoct",
+          "verb": "concoct",
+          "params": [
+            "herb1_name",
+            "herb2_name"
+          ],
+          "description": "Combine two herbs to concoct a medical remedy that restores HP. Different herb combinations yield different potency: green+green=20HP, green+red=40HP, red+red=60HP, green+blue=50HP, red+blue=70HP, blue+blue=90HP."
+        },
+        {
+          "name": "action_craft",
+          "verb": "craft",
+          "params": [
+            "amount",
+            "obj_name"
+          ],
+          "description": "The agent crafts a specified amount of an object if all necessary ingredients and dependencies are met."
+        },
+        {
+          "name": "action_defend",
+          "verb": "defend",
+          "params": [],
+          "description": "The agent takes a defensive stance. If attacked by an NPC while defending, damage received is reduced to 10%. Defending also partially recovers stamina."
+        },
+        {
+          "name": "action_discard",
+          "verb": "discard",
+          "params": [
+            "amount",
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent discards a specified amount of an object from a designated container or inventory."
+        },
+        {
+          "name": "action_drop",
+          "verb": "drop",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent drops an object from hand to the current area."
+        },
+        {
+          "name": "action_eavesdrop",
+          "verb": "eavesdrop",
+          "params": [
+            "area_name"
+          ],
+          "description": "Press your ear against the door to a neighboring area and listen for sounds on the other side. Reveals the names and number of NPCs in the adjacent area without entering it. Costs one full turn and has a small chance of alerting enemy NPCs behind the door, initiating combat."
+        },
+        {
+          "name": "action_enter",
+          "verb": "enter",
+          "params": [
+            "area_name"
+          ],
+          "description": "The agent enters a designated neighboring area; if the path is locked, a key is required to unlock it. Cannot leave during active combat."
+        },
+        {
+          "name": "action_equip",
+          "verb": "equip",
+          "params": [
+            "obj_name"
+          ],
+          "description": "The agent equips an object from hand, either as armor or as the inventory container."
+        },
+        {
+          "name": "action_inspect",
+          "verb": "inspect",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent inspects an object to obtain its text content, or inspects inventory to see its contents."
+        },
+        {
+          "name": "action_pick_up",
+          "verb": "pick up",
+          "params": [
+            "object_name"
+          ],
+          "description": "The agent picks up an object from the current area."
+        },
+        {
+          "name": "action_refuel",
+          "verb": "refuel",
+          "params": [
+            "light_source_name"
+          ],
+          "description": "Refuel a light source (lantern or flashlight) held in hand using lantern_fuel from hand, inventory, or held containers. Restores the light source to full fuel."
+        },
+        {
+          "name": "action_sell",
+          "verb": "sell",
+          "params": [
+            "amount",
+            "obj_name",
+            "npc_name"
+          ],
+          "description": "Sell a specified amount of an object to a merchant NPC. Payout is 0.5 times the real value of the objects."
+        },
+        {
+          "name": "action_shove",
+          "verb": "shove",
+          "params": [
+            "furniture_name",
+            "npc_name"
+          ],
+          "description": "Shove a piece of furniture (e.g. desk, shelf) in the current area at an NPC you are in combat with, stunning it for one round so it skips its next combat action. The furniture is destroyed in the process."
+        },
+        {
+          "name": "action_store",
+          "verb": "store",
+          "params": [
+            "amount",
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent stores a specified amount of an object into a designated container or inventory."
+        },
+        {
+          "name": "action_take_out",
+          "verb": "take out",
+          "params": [
+            "obj_name",
+            "container_name"
+          ],
+          "description": "The agent takes out an object from a designated container or inventory into hand."
+        },
+        {
+          "name": "action_talk_to",
+          "verb": "talk to",
+          "params": [
+            "npc_name"
+          ],
+          "description": "The agent talks to a designated NPC in the current area to receive dialogue."
+        },
+        {
+          "name": "action_unequip",
+          "verb": "unequip",
+          "params": [
+            "obj_name"
+          ],
+          "description": "The agent unequips an equipped object back into hand."
+        },
+        {
+          "name": "action_wait",
+          "verb": "wait",
+          "params": [],
+          "description": "The agent waits for a while without taking any action. During combat, waiting fully recovers stamina."
+        },
+        {
+          "name": "action_write",
+          "verb": "write",
+          "params": [
+            "text",
+            "writable_name"
+          ],
+          "description": "The agent writes text on a writable object, if holding writing tools."
+        }
+      ]
+    },
+    "new_targets": [
+      {
+        "id": "obj_lantern",
+        "name": "lantern",
+        "ingredients": {
+          "obj_scrap_metal": 2,
+          "obj_glass_shard": 1,
+          "obj_chemical": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_flashlight",
+        "name": "flashlight",
+        "ingredients": {
+          "obj_plastic_tube": 1,
+          "obj_circuit_board": 1,
+          "obj_chemical": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_lantern_fuel",
+        "name": "lantern_fuel",
+        "ingredients": {
+          "obj_chemical": 2,
+          "obj_rag": 1
+        },
+        "stations": [],
+        "size": 1
+      },
+      {
+        "id": "obj_pen",
+        "name": "pen",
+        "ingredients": {
+          "obj_plastic_tube": 1,
+          "obj_rag": 0.5
+        },
+        "stations": [],
+        "size": 1
+      },
+      {
+        "id": "obj_paper",
+        "name": "paper",
+        "ingredients": {
+          "obj_rag": 0.25
+        },
+        "stations": [],
+        "size": 1
+      },
+      {
+        "id": "obj_journal",
+        "name": "journal",
+        "ingredients": {
+          "obj_paper": 5,
+          "obj_duct_tape": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_small_bag",
+        "name": "small_bag",
+        "ingredients": {
+          "obj_rag": 3,
+          "obj_duct_tape": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_iron_bar",
+        "name": "iron_bar",
+        "ingredients": {
+          "obj_scrap_metal": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_workbench",
+        "name": "workbench",
+        "ingredients": {
+          "obj_wood_log": 5,
+          "obj_scrap_metal": 3
+        },
+        "stations": [],
+        "size": null
+      },
+      {
+        "id": "obj_furnace",
+        "name": "furnace",
+        "ingredients": {
+          "obj_scrap_metal": 8,
+          "obj_chemical": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": null
+      },
+      {
+        "id": "obj_duct_tape",
+        "name": "duct_tape",
+        "ingredients": {
+          "obj_rag": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_bandage",
+        "name": "bandage",
+        "ingredients": {
+          "obj_rag": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_splint",
+        "name": "splint",
+        "ingredients": {
+          "obj_wood_log": 1,
+          "obj_duct_tape": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_wood_plank",
+        "name": "wood_plank",
+        "ingredients": {
+          "obj_wood_log": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_wood_stake",
+        "name": "wood_stake",
+        "ingredients": {
+          "obj_wood_plank": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_pipe_handle",
+        "name": "pipe_handle",
+        "ingredients": {
+          "obj_scrap_metal": 1,
+          "obj_duct_tape": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_shiv",
+        "name": "shiv",
+        "ingredients": {
+          "obj_glass_shard": 1,
+          "obj_duct_tape": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_metal_plate",
+        "name": "metal_plate",
+        "ingredients": {
+          "obj_scrap_metal": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      },
+      {
+        "id": "obj_metal_strip",
+        "name": "metal_strip",
+        "ingredients": {
+          "obj_metal_plate": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_padded_vest",
+        "name": "padded_vest",
+        "ingredients": {
+          "obj_rag": 3,
+          "obj_duct_tape": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_reinforced_plate",
+        "name": "reinforced_plate",
+        "ingredients": {
+          "obj_metal_plate": 1,
+          "obj_metal_strip": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_scale_bundle",
+        "name": "scale_bundle",
+        "ingredients": {
+          "obj_iron_scale": 6,
+          "obj_duct_tape": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 6
+      },
+      {
+        "id": "obj_sharpened_blade",
+        "name": "sharpened_blade",
+        "ingredients": {
+          "obj_forged_blade": 1,
+          "obj_glass_shard": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 4
+      },
+      {
+        "id": "obj_detonator",
+        "name": "detonator",
+        "ingredients": {
+          "obj_circuit_board": 1,
+          "obj_chemical": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_titanium_nugget",
+        "name": "titanium_nugget",
+        "ingredients": {
+          "obj_titanium_shard": 0.5
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_titanium_ingot",
+        "name": "titanium_ingot",
+        "ingredients": {
+          "obj_titanium_nugget": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_titanium_blade_blank",
+        "name": "titanium_blade_blank",
+        "ingredients": {
+          "obj_titanium_ingot": 2,
+          "obj_pipe_handle": 1
+        },
+        "stations": [
+          "obj_workbench",
+          "obj_furnace"
+        ],
+        "size": 4
+      },
+      {
+        "id": "obj_titanium_blade",
+        "name": "titanium_blade",
+        "ingredients": {
+          "obj_titanium_blade_blank": 1,
+          "obj_biohazard_sample": 0.5
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 4
+      },
+      {
+        "id": "obj_mutagen_vial",
+        "name": "mutagen_vial",
+        "ingredients": {
+          "obj_biohazard_sample": 1,
+          "obj_chemical": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_titanium_plate",
+        "name": "titanium_plate",
+        "ingredients": {
+          "obj_titanium_ingot": 2
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 4
+      },
+      {
+        "id": "obj_titanium_scale",
+        "name": "titanium_scale",
+        "ingredients": {
+          "obj_titanium_plate": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_titanium_scale_bundle",
+        "name": "titanium_bundle",
+        "ingredients": {
+          "obj_titanium_scale": 4,
+          "obj_duct_tape": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 6
+      },
+      {
+        "id": "obj_pipe_club",
+        "name": "pipe_club",
+        "ingredients": {
+          "obj_pipe_handle": 1,
+          "obj_duct_tape": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 4
+      },
+      {
+        "id": "obj_nail_bat",
+        "name": "nail_bat",
+        "ingredients": {
+          "obj_wood_plank": 1,
+          "obj_scrap_metal": 1,
+          "obj_duct_tape": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_pipe_bomb",
+        "name": "pipe_bomb",
+        "ingredients": {
+          "obj_explosive_charge": 1,
+          "obj_detonator": 1,
+          "obj_pipe_handle": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 3
+      },
+      {
+        "id": "obj_titanium_sword",
+        "name": "titanium_sword",
+        "ingredients": {
+          "obj_titanium_blade": 1,
+          "obj_pipe_handle": 1,
+          "obj_metal_strip": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_mutant_cleaver",
+        "name": "mutant_cleaver",
+        "ingredients": {
+          "obj_titanium_blade": 1,
+          "obj_mutagen_vial": 1,
+          "obj_licker_tongue": 1,
+          "obj_pipe_handle": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_rag_armor",
+        "name": "rag_armor",
+        "ingredients": {
+          "obj_padded_vest": 1,
+          "obj_duct_tape": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_scrap_vest",
+        "name": "scrap_vest",
+        "ingredients": {
+          "obj_padded_vest": 1,
+          "obj_reinforced_plate": 2,
+          "obj_metal_strip": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 7
+      },
+      {
+        "id": "obj_iron_scale_armor",
+        "name": "iron_scale_armor",
+        "ingredients": {
+          "obj_scale_bundle": 1,
+          "obj_padded_vest": 1,
+          "obj_metal_strip": 3
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 10
+      },
+      {
+        "id": "obj_riot_armor",
+        "name": "riot_armor",
+        "ingredients": {
+          "obj_iron_sheet": 2,
+          "obj_padded_vest": 2,
+          "obj_metal_strip": 4,
+          "obj_duct_tape": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 10
+      },
+      {
+        "id": "obj_titanium_armor",
+        "name": "titanium_armor",
+        "ingredients": {
+          "obj_titanium_scale_bundle": 1,
+          "obj_padded_vest": 2,
+          "obj_mutagen_vial": 1,
+          "obj_metal_strip": 2
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 10
+      },
+      {
+        "id": "obj_brine_concentrate",
+        "name": "brine_concentrate",
+        "ingredients": {
+          "obj_sea_salt_crystal": 3,
+          "obj_rag": 0.1
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_tide_alloy_ingot",
+        "name": "tide_alloy_ingot",
+        "ingredients": {
+          "obj_titanium_ingot": 1,
+          "obj_brine_concentrate": 1
+        },
+        "stations": [
+          "obj_furnace"
+        ],
+        "size": 1
+      },
+      {
+        "id": "obj_water_sword",
+        "name": "water_sword",
+        "ingredients": {
+          "obj_tide_alloy_ingot": 2,
+          "obj_nail_bat": 1,
+          "obj_heart_of_the_ocean": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_wooden_sword",
+        "name": "wooden_sword",
+        "ingredients": {
+          "obj_wood_plank": 1,
+          "obj_wood_stake": 1,
+          "obj_duct_tape": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_stone_sword",
+        "name": "stone_sword",
+        "ingredients": {
+          "obj_reinforced_plate": 1,
+          "obj_pipe_handle": 1,
+          "obj_metal_strip": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_iron_sword",
+        "name": "iron_sword",
+        "ingredients": {
+          "obj_sharpened_blade": 1,
+          "obj_pipe_handle": 1,
+          "obj_metal_strip": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_star_metal_sword",
+        "name": "star_metal_sword",
+        "ingredients": {
+          "obj_titanium_blade": 1,
+          "obj_pipe_handle": 1,
+          "obj_metal_strip": 1,
+          "obj_zombie_claw": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 5
+      },
+      {
+        "id": "obj_antivirus_serum",
+        "name": "antivirus_serum",
+        "ingredients": {
+          "obj_biohazard_sample": 1,
+          "obj_chemical": 2,
+          "obj_blue_herb": 1
+        },
+        "stations": [
+          "obj_workbench"
+        ],
+        "size": 2
+      }
+    ],
+    "old_targets": [
+      "combat_knife",
+      "complete first ten official tutorial stages",
+      "explosive_charge",
+      "forged_blade",
+      "iron_scale",
+      "iron_sheet",
+      "key",
+      "key_blank",
+      "machete",
+      "master_keycard",
+      "medkit",
+      "rooftop"
+    ],
+    "areas": [
+      {
+        "id": "area_hospital_lobby",
+        "name": "lobby",
+        "objects": {
+          "obj_coin": 10,
+          "obj_key": 2,
+          "obj_small_bag_0": 1,
+          "obj_paper_1": 1,
+          "obj_pen": 1,
+          "obj_workbench": 1,
+          "obj_lantern": 1
+        },
+        "npcs": [],
+        "neighbors": {
+          "area_hospital_ward": {
+            "to_id": "area_hospital_ward",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_hospital_rooftop": {
+            "to_id": "area_hospital_rooftop",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_tutorial_room": {
+            "to_id": "area_tutorial_room",
+            "locked": false,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_hospital_ward",
+        "name": "ward",
+        "objects": {
+          "obj_green_herb": 2,
+          "obj_red_herb": 9,
+          "obj_desk": 5,
+          "obj_shelf": 4,
+          "obj_wood_log": 7,
+          "obj_rag": 3,
+          "obj_scrap_metal": 7,
+          "obj_glass_shard": 4,
+          "obj_plastic_tube": 4,
+          "obj_lantern_fuel": 2,
+          "obj_duct_tape": 1,
+          "obj_wood_plank": 1
+        },
+        "npcs": [
+          "npc_quest_nurse_chen"
+        ],
+        "neighbors": {
+          "area_hospital_lobby": {
+            "to_id": "area_hospital_lobby",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_hospital_morgue": {
+            "to_id": "area_hospital_morgue",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_hospital_rooftop": {
+            "to_id": "area_hospital_rooftop",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_hospital_morgue",
+        "name": "morgue",
+        "objects": {
+          "obj_red_herb": 7,
+          "obj_blue_herb": 8,
+          "obj_shelf": 3,
+          "obj_rag": 3,
+          "obj_scrap_metal": 6,
+          "obj_chemical": 7,
+          "obj_gunpowder": 7,
+          "obj_lantern_fuel": 2,
+          "obj_iron_bar": 1,
+          "obj_paper_0": 1,
+          "obj_coin": 5
+        },
+        "npcs": [
+          "npc_nurse_chen",
+          "npc_zombie_0",
+          "npc_lab_zombie_1_7",
+          "npc_lab_zombie_2_8"
+        ],
+        "neighbors": {
+          "area_hospital_ward": {
+            "to_id": "area_hospital_ward",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_hospital_rooftop": {
+            "to_id": "area_hospital_rooftop",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_lab_entrance": {
+            "to_id": "area_lab_entrance",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_hospital_rooftop",
+        "name": "rooftop",
+        "objects": {
+          "obj_green_herb": 4,
+          "obj_red_herb": 6,
+          "obj_desk": 3,
+          "obj_wood_log": 9,
+          "obj_rag": 3,
+          "obj_scrap_metal": 6,
+          "obj_glass_shard": 4,
+          "obj_wood_plank": 2,
+          "obj_coin": 2
+        },
+        "npcs": [
+          "npc_zombie_1",
+          "npc_ward_zombie_1_5",
+          "npc_ward_zombie_2_6"
+        ],
+        "neighbors": {
+          "area_hospital_lobby": {
+            "to_id": "area_hospital_lobby",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_hospital_ward": {
+            "to_id": "area_hospital_ward",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_hospital_morgue": {
+            "to_id": "area_hospital_morgue",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_lab_entrance",
+        "name": "entrance",
+        "objects": {
+          "obj_green_herb": 3,
+          "obj_red_herb": 5,
+          "obj_blue_herb": 6,
+          "obj_shelf": 3,
+          "obj_wood_log": 4,
+          "obj_scrap_metal": 5,
+          "obj_chemical": 5,
+          "obj_plastic_tube": 4,
+          "obj_gunpowder": 7,
+          "obj_sea_salt_crystal": 3,
+          "obj_lantern_fuel": 3,
+          "obj_iron_bar": 4
+        },
+        "npcs": [
+          "npc_zombie_2",
+          "npc_licker_0",
+          "npc_morgue_licker_3"
+        ],
+        "neighbors": {
+          "area_hospital_morgue": {
+            "to_id": "area_hospital_morgue",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          },
+          "area_lab_chamber": {
+            "to_id": "area_lab_chamber",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_lab_reactor": {
+            "to_id": "area_lab_reactor",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_lab_chamber",
+        "name": "chamber",
+        "objects": {
+          "obj_blue_herb": 7,
+          "obj_shelf": 4,
+          "obj_chemical": 4,
+          "obj_gunpowder": 6,
+          "obj_circuit_board": 8,
+          "obj_biohazard_sample": 7,
+          "obj_titanium_shard": 7,
+          "obj_sea_salt_crystal": 4,
+          "obj_lantern_fuel": 1,
+          "obj_coin": 1
+        },
+        "npcs": [
+          "npc_zombie_3",
+          "npc_licker_1"
+        ],
+        "neighbors": {
+          "area_lab_entrance": {
+            "to_id": "area_lab_entrance",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_lab_reactor": {
+            "to_id": "area_lab_reactor",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_lab_reactor",
+        "name": "reactor",
+        "objects": {
+          "obj_blue_herb": 5,
+          "obj_circuit_board": 8,
+          "obj_biohazard_sample": 10,
+          "obj_titanium_shard": 7,
+          "obj_coin": 3
+        },
+        "npcs": [
+          "npc_zombie_4",
+          "npc_licker_2",
+          "npc_tyrant_0",
+          "npc_boss_tyrant"
+        ],
+        "neighbors": {
+          "area_lab_entrance": {
+            "to_id": "area_lab_entrance",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          },
+          "area_lab_chamber": {
+            "to_id": "area_lab_chamber",
+            "locked": false,
+            "object_to_unlock": null,
+            "_type": "path"
+          }
+        }
+      },
+      {
+        "id": "area_tutorial_room",
+        "name": "room",
+        "objects": {
+          "obj_small_bag_1": 1
+        },
+        "npcs": [],
+        "neighbors": {
+          "area_hospital_lobby": {
+            "to_id": "area_hospital_lobby",
+            "locked": true,
+            "object_to_unlock": "obj_key",
+            "_type": "path"
+          }
+        }
+      }
+    ]
+  }
+]
