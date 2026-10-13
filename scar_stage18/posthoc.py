@@ -290,7 +290,7 @@ def main():
     for name,values in [('evidence_index',actions),('acquisition_events',acquisition),('decision_events',decisions),('model_context_evidence',contexts)]:gzip_rows(RESULTS/(name+'.jsonl.gz'),values)
     fields=sorted(set().union(*(set(r) for r in allstats))-{'arbitration_reasons'})
     with (RESULTS/'per_task.csv').open('w') as f:
-        writer=csv.DictWriter(f,fields,extrasaction='ignore');writer.writeheader();writer.writerows(allstats)
+        writer=csv.DictWriter(f,fields,extrasaction='ignore',lineterminator='\n');writer.writeheader();writer.writerows(allstats)
     wide=[]
     for t in tasks:
         out={k:t[k] for k in ('task_id','game_name','target_item','initial_seed','dependency_depth','recipe_nodes')}
@@ -299,7 +299,7 @@ def main():
             out.update({method+'_'+k:r.get(k,0) for k in ('status','success','steps','craft_failed','invalid','repeated_inspections','material_rejection','station_rejection','api_calls','input_tokens','output_tokens','cost_usd','dangerous_acquisition','first_native_failure')})
         wide.append(out)
     with (RESULTS/'paired_24.csv').open('w') as f:
-        writer=csv.DictWriter(f,list(wide[0]));writer.writeheader();writer.writerows(wide)
+        writer=csv.DictWriter(f,list(wide[0]),lineterminator='\n');writer.writeheader();writer.writerows(wide)
     prior=load(RESULTS/'prior_manifest.json')['files'];assert all(sha(ROOT/p)==h for p,h in prior.items())
     write(RESULTS/'analysis_receipt.json',dict(site='server',passed=True,historical_runs_unchanged=120,all_runs=144,
         new_runs=24,new_api_calls=0,network_guard=True,historical_files_unchanged=len(prior),
