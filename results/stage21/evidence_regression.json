@@ -1,0 +1,3065 @@
+[
+  {
+    "id": "s17-02-robot_kingdom-war_banner:d006:p1",
+    "proposal": {
+      "direction": "The war_banner recipe is missing and no public object in the courtyard (war_bench, war_parchment_7, charcoal_stylus, crown_shard, siege_key) has yielded it after inspection. The barracks is a publicly reachable neighboring location from the courtyard and is a plausible place where a war_banner recipe or its public prerequisite could be located. Moving to the barracks frontier is the next bounded step to search for the missing recipe source.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E8933b2b4b365",
+        "E89a0c0e27b48",
+        "E8815537e8dc2"
+      ],
+      "target": "barracks",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether the war_banner recipe or its prerequisite exists in the barracks is unknown.",
+        "Whether the recipe instead resides in cellar or trailhead is unknown.",
+        "Whether any additional materials beyond crown_shard and siege_key are required for war_banner is unknown.",
+        "Whether the war_bench itself must be used with a specific item to expose the recipe is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "barracks"
+        ],
+        "first_action": "enter barracks"
+      },
+      "first_action": "enter barracks",
+      "field_relations": [
+        {
+          "id": "E8933b2b4b365",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E89a0c0e27b48",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E8815537e8dc2",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-04-robot_kingdom-ruin_club:d012:p1",
+    "proposal": {
+      "direction": "The blocker is a missing ruin_club recipe; all inspected objects at courtyard and barracks yielded no recipe or crafting path. cellar is a reachable, unvisited public location listed in the blocker's reachable set and adjacent to the courtyard (which connects to barracks), so move toward cellar to inspect its public objects for a ruin_club recipe or required material path.",
+      "entry": "cellar",
+      "evidence_ids": [
+        "E1eecc9074296",
+        "E2b100f550e16",
+        "Ee916fde7fc11",
+        "Ebe77e2b46b35"
+      ],
+      "target": "cellar",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether cellar contains a ruin_club recipe, related ingredients, or a crafting station is unknown.",
+        "Whether the ruin_club recipe exists at trailhead or watchtower instead is unknown.",
+        "Required materials, quantities, and station for ruin_club remain unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "courtyard",
+          "cellar"
+        ],
+        "first_action": "enter courtyard"
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "courtyard",
+          "cellar"
+        ],
+        "first_action": "enter courtyard"
+      },
+      "first_action": "enter courtyard",
+      "field_relations": [
+        {
+          "id": "E1eecc9074296",
+          "entry_fields": [
+            "public_entries.reachable"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E2b100f550e16",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "Ee916fde7fc11",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "Ebe77e2b46b35",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-05-robot_kingdom-cog_assembly:d004:p1",
+    "proposal": {
+      "direction": "Move from courtyard into the cellar to search for a public recipe, crafting station, or materials needed to craft cog_assembly, since no cog_assembly recipe is currently visible in the courtyard.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E7eb6a3b39de4",
+        "Ee4243933a119"
+      ],
+      "target": "cellar",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether the cellar contains any cog_assembly recipe, crafting station, or required materials is unknown.",
+        "The full recipe for cog_assembly is not publicly known from the current evidence.",
+        "The barracks and trailhead remain unexplored alternatives if cellar does not reveal a usable path."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "cellar"
+        ],
+        "first_action": "enter cellar"
+      },
+      "first_action": "enter cellar",
+      "field_relations": [
+        {
+          "id": "E7eb6a3b39de4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Ee4243933a119",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-05-robot_kingdom-cog_assembly:d005:p1",
+    "proposal": {
+      "direction": "Move from courtyard into the cellar to search for a public cog_assembly recipe or a crafting station, since the missing_target_recipe blocker shows no cog_assembly recipe is available among current courtyard objects and the cellar is a reachable frontier.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E7eb6a3b39de4",
+        "Eb3ed52f94f17"
+      ],
+      "target": "cellar",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether the cellar contains a cog_assembly recipe, crafting station, or required materials is unknown.",
+        "The full recipe for cog_assembly is not publicly known from current evidence.",
+        "barracks and trailhead remain unexplored alternatives if cellar does not reveal a usable path."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "cellar"
+        ],
+        "first_action": "enter cellar"
+      },
+      "first_action": "enter cellar",
+      "field_relations": [
+        {
+          "id": "E7eb6a3b39de4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Eb3ed52f94f17",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-05-robot_kingdom-cog_assembly:d007:p1",
+    "proposal": {
+      "direction": "Move from courtyard into the barracks to search for a public cog_assembly recipe, crafting station, or required materials, since the missing_target_recipe blocker shows no cog_assembly recipe is available among current courtyard objects and barracks is a reachable frontier not yet explored.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E89a0c0e27b48",
+        "E58f3ba27f4cb"
+      ],
+      "target": "barracks",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether the barracks contains a cog_assembly recipe, crafting station, or required materials is unknown.",
+        "The full recipe for cog_assembly is not publicly known from current evidence.",
+        "cellar and trailhead remain unexplored alternatives if barracks does not reveal a usable path."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "barracks"
+        ],
+        "first_action": "enter barracks"
+      },
+      "first_action": "enter barracks",
+      "field_relations": [
+        {
+          "id": "E89a0c0e27b48",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E58f3ba27f4cb",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-05-robot_kingdom-cog_assembly:d008:p1",
+    "proposal": {
+      "direction": "Move from courtyard into the cellar to look for a public cog_assembly recipe, crafting station, or required materials, since the missing_target_recipe blocker shows no cog_assembly recipe among current courtyard objects and cellar is a reachable frontier not yet explored.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E7eb6a3b39de4",
+        "Eddd397cd04b3"
+      ],
+      "target": "cellar",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether the cellar contains a cog_assembly recipe, crafting station, or materials is unknown.",
+        "The full recipe for cog_assembly is not publicly known from current evidence.",
+        "barracks and trailhead remain unexplored alternatives if cellar does not reveal a usable path."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "cellar"
+        ],
+        "first_action": "enter cellar"
+      },
+      "first_action": "enter cellar",
+      "field_relations": [
+        {
+          "id": "E7eb6a3b39de4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Eddd397cd04b3",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-05-robot_kingdom-cog_assembly:d009:p1",
+    "proposal": {
+      "direction": "Move from courtyard to the trailhead frontier to search for a public cog_assembly recipe, crafting station, or required materials, since the missing_target_recipe blocker shows no cog_assembly recipe among inspected courtyard objects and trailhead is a reachable, not-yet-explored frontier.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "Ec3f05d63b653",
+        "Ef52a5bf6d13a"
+      ],
+      "target": "trailhead",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether trailhead contains a cog_assembly recipe, crafting station, or materials is unknown.",
+        "The full recipe for cog_assembly is not publicly known from current evidence.",
+        "barracks and cellar remain unexplored reachable alternatives if trailhead yields no usable path."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "trailhead"
+        ],
+        "first_action": "enter trailhead"
+      },
+      "first_action": "enter trailhead",
+      "field_relations": [
+        {
+          "id": "Ec3f05d63b653",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Ef52a5bf6d13a",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-05-robot_kingdom-cog_assembly:d022:p2",
+    "proposal": {
+      "direction": "Acquire the publicly present 7 iron_bar at the watchtower, since the cog_assembly recipe requires cog plus devil_oil, and iron_bar is the only observed metal stock that could be worked into a cog via a public recipe path; the current location already exposes iron_bar so no travel is needed.",
+      "entry": "watchtower",
+      "evidence_ids": [
+        "E0d823cb5a40d",
+        "E09acb944b306",
+        "Ee9abf6fdbfc4"
+      ],
+      "target": "iron_bar",
+      "type": "ACQUIRE_MATERIAL",
+      "uncertainty": [
+        "No public recipe producing cog from iron_bar has been disclosed.",
+        "Whether a crafting station is required to convert iron_bar into cog is unknown.",
+        "The cog ingredient quantities for cog_assembly are unknown.",
+        "cellar devil_oil is available but cog source remains unverified."
+      ]
+    },
+    "result": {
+      "category": "II",
+      "reason": "bounded_public_material_hypothesis_not_yet_in_proven_dependency_closure",
+      "structural_accept": false,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "current_public_object",
+        "route": [],
+        "first_action": "inspect iron_bar"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E0d823cb5a40d",
+          "entry_fields": [
+            "object_location"
+          ],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "E09acb944b306",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "Ee9abf6fdbfc4",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.visible"
+          ]
+        }
+      ],
+      "target_dependency_unproven": true,
+      "inherited_exploration_exhausted": true,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-07-robot_kingdom-charcoal_brick:d010:p1",
+    "proposal": {
+      "direction": "The missing charcoal_brick recipe has not been found in courtyard objects or cellar contents; watchtower is a reachable frontier from the cellar and may expose a public recipe source or required materials.",
+      "entry": "cellar",
+      "evidence_ids": [
+        "Edf44ccc23e79",
+        "E0158f7afe684"
+      ],
+      "target": "watchtower",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether watchtower contains a public recipe, station, or inputs for charcoal_brick is unknown.",
+        "The recipe, required inputs, and crafting location for charcoal_brick remain unknown.",
+        "Barracks and trailhead are also reachable and uninspected."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "watchtower"
+        ],
+        "first_action": "enter watchtower"
+      },
+      "first_action": "enter watchtower",
+      "field_relations": [
+        {
+          "id": "Edf44ccc23e79",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E0158f7afe684",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-08-robot_kingdom-iron_nugget:d004:p1",
+    "proposal": {
+      "direction": "Move from the courtyard into the barracks to search for a public source or station related to iron_nugget, since the current courtyard objects and inspected scout_satchel_0 provide no iron_nugget recipe or material.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E89a0c0e27b48",
+        "E83fa76ee5958"
+      ],
+      "target": "barracks",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether barracks contains any iron_nugget recipe, iron material, or relevant crafting station is unknown.",
+        "Whether cellar or trailhead would be a better frontier is unknown; barracks is chosen only as one reachable public frontier.",
+        "The public recipe for iron_nugget remains unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "barracks"
+        ],
+        "first_action": "enter barracks"
+      },
+      "first_action": "enter barracks",
+      "field_relations": [
+        {
+          "id": "E89a0c0e27b48",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E83fa76ee5958",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-08-robot_kingdom-iron_nugget:d009:p1",
+    "proposal": {
+      "direction": "Move from the courtyard into the cellar to search for a public source, station, or material path related to iron_nugget, since all courtyard objects and the war_bench have been inspected with no recipe or material found.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E7eb6a3b39de4",
+        "E1c08d6c27dc6"
+      ],
+      "target": "cellar",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether cellar contains any iron_nugget recipe, iron material, or relevant crafting station is unknown.",
+        "Whether barracks or trailhead would be a better frontier is unknown; cellar is chosen as one reachable unexplored public frontier.",
+        "The public recipe for iron_nugget remains unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "cellar"
+        ],
+        "first_action": "enter cellar"
+      },
+      "first_action": "enter cellar",
+      "field_relations": [
+        {
+          "id": "E7eb6a3b39de4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E1c08d6c27dc6",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-08-robot_kingdom-iron_nugget:d024:p1",
+    "proposal": {
+      "direction": "The public iron_nugget recipe requires 1 scrap_iron at a crucible. I am in the barracks where 12 scrap_iron lie on the ground, so pick up scrap_iron here to secure the ingredient, then continue locating a usable crucible path.",
+      "entry": "barracks",
+      "evidence_ids": [
+        "Ee2e64ab99079",
+        "E1b6f8dee4575",
+        "Ebe0ff052cdbf"
+      ],
+      "target": "scrap_iron",
+      "type": "ACQUIRE_MATERIAL",
+      "uncertainty": [
+        "Whether a crucible or a public path to one exists in any reachable area remains unknown.",
+        "Whether the crucible must be crafted or found is unknown; no public crucible recipe has been disclosed.",
+        "Whether picking up scrap_iron will itself surface a crucible path is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "current_public_object",
+        "route": [],
+        "first_action": "inspect scrap_iron"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "Ee2e64ab99079",
+          "entry_fields": [
+            "object_location"
+          ],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "E1b6f8dee4575",
+          "entry_fields": [],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "Ebe0ff052cdbf",
+          "entry_fields": [
+            "container_location"
+          ],
+          "target_fields": [
+            "names",
+            "container_counts"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": true,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-08-robot_kingdom-iron_nugget:d024:p2",
+    "proposal": {
+      "direction": "The public iron_nugget recipe needs a crucible station, but no crucible has been surfaced in barracks, courtyard, cellar, or watchtower, and entrance is locked. Move from barracks toward the reachable trailhead frontier, the only reachable area not yet inspected, to search for a usable public path to a crucible.",
+      "entry": "trailhead",
+      "evidence_ids": [
+        "Ee3553aef06d2",
+        "E1b6f8dee4575",
+        "Ebe77e2b46b35",
+        "Eba88052a309c"
+      ],
+      "target": "crucible",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "Whether trailhead contains a crucible or any public path to one is unknown.",
+        "Whether the crucible must be crafted or found is unknown; no public crucible recipe has been disclosed.",
+        "Whether trailhead is reachable from barracks directly or only via another area is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "courtyard",
+          "trailhead"
+        ],
+        "first_action": "enter courtyard"
+      },
+      "target_access": {
+        "accessible": false,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null,
+        "first_action": null
+      },
+      "first_action": "enter courtyard",
+      "field_relations": [
+        {
+          "id": "Ee3553aef06d2",
+          "entry_fields": [
+            "public_entries.reachable"
+          ],
+          "target_fields": []
+        },
+        {
+          "id": "E1b6f8dee4575",
+          "entry_fields": [],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "Ebe77e2b46b35",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "Eba88052a309c",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": true,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-09-robot_kingdom-repair_kit:d009:p1",
+    "proposal": {
+      "direction": "The repair_kit recipe is not publicly known and war_bench has been inspected with no recipe revealed. Cellar is an unexplored reachable location from courtyard that may publicly expose the repair_kit recipe or its ingredients.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E1e796512449d",
+        "E7eb6a3b39de4"
+      ],
+      "target": "cellar",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether cellar contains a public source of the repair_kit recipe is unknown.",
+        "The required ingredients and quantities for repair_kit remain unknown.",
+        "Whether barracks or trailhead rather than cellar hold the needed recipe is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "cellar"
+        ],
+        "first_action": "enter cellar"
+      },
+      "first_action": "enter cellar",
+      "field_relations": [
+        {
+          "id": "E1e796512449d",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E7eb6a3b39de4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-09-robot_kingdom-repair_kit:d014:p1",
+    "proposal": {
+      "direction": "The repair_kit recipe remains undisclosed after inspecting war_bench, charred_timber, and other accessible objects; only weapon/bench recipes are public. entrance is a reachable, publicly listed frontier from the current watchtower that has not been visited and may publicly expose the repair_kit recipe or a usable crafting path needed to craft the target item.",
+      "entry": "watchtower",
+      "evidence_ids": [
+        "Ef943e9ae0fb2",
+        "E647d4db1dd2d",
+        "Edf0164cd6c9a"
+      ],
+      "target": "entrance",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether entrance contains any public source of the repair_kit recipe or its ingredients is unknown.",
+        "The required ingredients and quantities for repair_kit remain unknown.",
+        "Whether trailhead or any other reachable location rather than entrance holds the needed public recipe is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "entrance"
+        ],
+        "first_action": "enter entrance"
+      },
+      "first_action": "enter entrance",
+      "field_relations": [
+        {
+          "id": "Ef943e9ae0fb2",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E647d4db1dd2d",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Edf0164cd6c9a",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-09-robot_kingdom-repair_kit:d020:p1",
+    "proposal": {
+      "direction": "repair_kit publicly requires oil_flask, scrap_iron and sinew_cord; oil_flask is the only ingredient with no observed public source, and cellar currently holds 9 devil_oil, a plausible public precursor for an oil_flask. Acquire devil_oil here as the bounded next material step toward producing the missing oil_flask.",
+      "entry": "cellar",
+      "evidence_ids": [
+        "E921992d1780d",
+        "E9146c89464ce",
+        "Ef7e8491fbbe3"
+      ],
+      "target": "devil_oil",
+      "type": "ACQUIRE_MATERIAL",
+      "uncertainty": [
+        "Whether devil_oil can be converted into oil_flask is unknown; no public oil_flask recipe has been disclosed.",
+        "Whether oil_flask must instead be found at another reachable location (barracks, entrance, trailhead) is unknown.",
+        "Required quantities for oil_flask and repair_kit remain unknown."
+      ]
+    },
+    "result": {
+      "category": "II",
+      "reason": "bounded_public_material_hypothesis_not_yet_in_proven_dependency_closure",
+      "structural_accept": false,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "current_public_object",
+        "route": [],
+        "first_action": "inspect devil_oil"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E921992d1780d",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.visible"
+          ]
+        },
+        {
+          "id": "E9146c89464ce",
+          "entry_fields": [
+            "object_location"
+          ],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "Ef7e8491fbbe3",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": true,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-09-robot_kingdom-repair_kit:d021:p1",
+    "proposal": {
+      "direction": "repair_kit publicly requires oil_flask, scrap_iron and sinew_cord; oil_flask is the only ingredient with no observed public source, and cellar currently holds 9 devil_oil, a plausible public precursor for producing an oil_flask. Acquire devil_oil here as the bounded next material step toward producing the missing oil_flask.",
+      "entry": "cellar",
+      "evidence_ids": [
+        "Ec61a9d46d10c",
+        "Ef7e8491fbbe3",
+        "E9146c89464ce"
+      ],
+      "target": "devil_oil",
+      "type": "ACQUIRE_MATERIAL",
+      "uncertainty": [
+        "Whether devil_oil can be converted into oil_flask is unknown; no public oil_flask recipe has been disclosed.",
+        "Whether oil_flask must instead be found at another reachable location (barracks, entrance, trailhead) is unknown.",
+        "Required quantities for oil_flask and repair_kit remain unknown."
+      ]
+    },
+    "result": {
+      "category": "II",
+      "reason": "bounded_public_material_hypothesis_not_yet_in_proven_dependency_closure",
+      "structural_accept": false,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "current_public_object",
+        "route": [],
+        "first_action": "inspect devil_oil"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "Ec61a9d46d10c",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.visible"
+          ]
+        },
+        {
+          "id": "Ef7e8491fbbe3",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "E9146c89464ce",
+          "entry_fields": [
+            "object_location"
+          ],
+          "target_fields": [
+            "names"
+          ]
+        }
+      ],
+      "target_dependency_unproven": true,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-10-robot_kingdom-scrap_helm:d009:p1",
+    "proposal": {
+      "direction": "The scrap_helm recipe is not exposed by any inspected courtyard object or the war_bench, and all courtyard entries are exhausted. Barracks is an unexplored reachable frontier where a recipe source, crafting station, or required material for scrap_helm may be found.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "Ea946df29f2eb",
+        "E89a0c0e27b48"
+      ],
+      "target": "barracks",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether barracks contains the scrap_helm recipe or a usable crafting station is unknown.",
+        "Required materials and quantities for scrap_helm remain unknown.",
+        "Whether cellar or trailhead would be a better recipe source is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "barracks"
+        ],
+        "first_action": "enter barracks"
+      },
+      "first_action": "enter barracks",
+      "field_relations": [
+        {
+          "id": "Ea946df29f2eb",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E89a0c0e27b48",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-10-robot_kingdom-scrap_helm:d011:p1",
+    "proposal": {
+      "direction": "The scrap_helm recipe is not publicly disclosed by any inspected object or the war_bench, and barracks/courtyard entries are exhausted. Watchtower is an unvisited reachable frontier from barracks where a recipe source or crafting station for scrap_helm may exist.",
+      "entry": "barracks",
+      "evidence_ids": [
+        "Eba88052a309c",
+        "E3608f7a04cd4",
+        "E1bdec8e22905"
+      ],
+      "target": "watchtower",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether watchtower contains the scrap_helm recipe or a usable crafting station is unknown.",
+        "Required materials and quantities for scrap_helm remain unknown.",
+        "Whether cellar or trailhead would be a better recipe source is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "watchtower"
+        ],
+        "first_action": "enter watchtower"
+      },
+      "first_action": "enter watchtower",
+      "field_relations": [
+        {
+          "id": "Eba88052a309c",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E3608f7a04cd4",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E1bdec8e22905",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-11-robot_kingdom-hellcoal_concentrate:d023:p2",
+    "proposal": {
+      "direction": "hellcoal_concentrate requires 3 hellcoal plus 1 devil_oil; devil_oil is already held, but no public location among cellar/barracks/courtyard/watchtower exposes any hellcoal. Trailhead is a reachable frontier not yet visited, so start there to seek a usable public path to hellcoal.",
+      "entry": "trailhead",
+      "evidence_ids": [
+        "Ea439e2f65684",
+        "E5a615c2b5cac",
+        "E54bde3f599b2"
+      ],
+      "target": "hellcoal",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "Whether trailhead exposes hellcoal or a hellcoal source is unknown.",
+        "How hellcoal is obtained (gathered, crafted, or dropped) remains publicly unknown.",
+        "Whether entrance would be more productive than trailhead is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "courtyard",
+          "trailhead"
+        ],
+        "first_action": "enter courtyard"
+      },
+      "target_access": {
+        "accessible": false,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null,
+        "first_action": null
+      },
+      "first_action": "enter courtyard",
+      "field_relations": [
+        {
+          "id": "Ea439e2f65684",
+          "entry_fields": [
+            "public_entries.reachable"
+          ],
+          "target_fields": []
+        },
+        {
+          "id": "E5a615c2b5cac",
+          "entry_fields": [],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "E54bde3f599b2",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": true,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-12-robot_kingdom-ruin_spear:d009:p1",
+    "proposal": {
+      "direction": "The ruin_spear recipe is not exposed at any inspected courtyard object, so move from the courtyard into the reachable barracks frontier to look for a public recipe source or crafting station that unlocks ruin_spear.",
+      "entry": "courtyard",
+      "evidence_ids": [
+        "E4be172429597",
+        "E89a0c0e27b48",
+        "Ed5b2d25f4216"
+      ],
+      "target": "barracks",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether barracks contains the ruin_spear recipe or a station that exposes it is unknown.",
+        "Required ingredients, quantities, and crafting station for ruin_spear remain unknown.",
+        "Whether cellar or trailhead rather than barracks holds the needed recipe is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "barracks"
+        ],
+        "first_action": "enter barracks"
+      },
+      "first_action": "enter barracks",
+      "field_relations": [
+        {
+          "id": "E4be172429597",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E89a0c0e27b48",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Ed5b2d25f4216",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-12-robot_kingdom-ruin_spear:d011:p1",
+    "proposal": {
+      "direction": "The ruin_spear recipe is not disclosed by any inspected object or observed location; barracks and courtyard expose only unrelated recipes, so move to the reachable watchtower frontier to look for a public recipe source or crafting station that reveals ruin_spear.",
+      "entry": "barracks",
+      "evidence_ids": [
+        "Ed5b2d25f4216",
+        "E5399c3175a3c",
+        "Eba88052a309c"
+      ],
+      "target": "watchtower",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether watchtower contains the ruin_spear recipe or a station that exposes it is unknown.",
+        "Required ingredients, quantities, and crafting station for ruin_spear remain unknown.",
+        "Whether cellar or trailhead rather than watchtower holds the needed recipe is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "watchtower"
+        ],
+        "first_action": "enter watchtower"
+      },
+      "first_action": "enter watchtower",
+      "field_relations": [
+        {
+          "id": "Ed5b2d25f4216",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "E5399c3175a3c",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "Eba88052a309c",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-12-robot_kingdom-ruin_spear:d014:p1",
+    "proposal": {
+      "direction": "The ruin_spear recipe is now public and requires knapped_edge, sinew_cord, and wooden_rod; sinew_cord is already present in the barracks, but knapped_edge has no public path, so the bounded need is to acquire or locate a source of knapped_edge starting from the current reachable barracks location.",
+      "entry": "barracks",
+      "evidence_ids": [
+        "E49b158bd3361",
+        "Eebea1016de6c"
+      ],
+      "target": "knapped_edge",
+      "type": "ACQUIRE_MATERIAL",
+      "uncertainty": [
+        "Whether knapped_edge is obtainable as a public material or must be crafted from some other public item is unknown.",
+        "Whether a recipe or source for knapped_edge exists in cellar, courtyard, trailhead, or watchtower is unknown.",
+        "Required quantities for ruin_spear and knapped_edge remain unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": false,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null,
+        "first_action": null
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E49b158bd3361",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": []
+        },
+        {
+          "id": "Eebea1016de6c",
+          "entry_fields": [],
+          "target_fields": [
+            "names"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-14-robot_kingdom-oil_flask:d011:p1",
+    "proposal": {
+      "direction": "The oil_flask recipe is still missing; all inspected entries (war_bench, war_parchment_0, charite, crown_shard) failed to disclose it, and watchtower only shows iron_bar/scrap_iron. Move to the reachable, unexplored barracks frontier from watchtower to search for a public recipe source or crafting station that discloses the oil_flask recipe.",
+      "entry": "watchtower",
+      "evidence_ids": [
+        "Ec651e8f92f58",
+        "Ebcfc7be0272d",
+        "E48fdeab7dcaa"
+      ],
+      "target": "barracks",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "Whether barracks contains the oil_flask recipe or a crafting station is unknown.",
+        "Required ingredients and quantities for oil_flask remain unknown.",
+        "Whether entrance or trailhead would be more useful than barracks is unknown."
+      ]
+    },
+    "result": {
+      "category": "III",
+      "reason": "LOCATE_object_type_used_for_location_not_unresolved_prerequisite",
+      "structural_accept": false,
+      "hypothesis_accept": false,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "barracks"
+        ],
+        "first_action": "enter barracks"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "Ec651e8f92f58",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "Ebcfc7be0272d",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E48fdeab7dcaa",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": true,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-14-robot_kingdom-oil_flask:d012:p1",
+    "proposal": {
+      "direction": "The oil_flask recipe remains undisclosed across all inspected entries (war_bench, war_parchment_0, charite, crown_shard, iron_bar); the current watchtower only shows iron_bar/scrap_iron. Move to the reachable, unexplored barracks frontier from watchtower to search for a public recipe source or crafting station that discloses the oil_flask recipe.",
+      "entry": "watchtower",
+      "evidence_ids": [
+        "Edfb7324e9c17",
+        "Ebcfc7be0272d",
+        "E48fdeab7dcaa"
+      ],
+      "target": "barracks",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "Whether barracks contains the oil_flask recipe or a crafting station is unknown.",
+        "Required ingredients and quantities for oil_flask remain unknown.",
+        "Whether entrance or trailhead would be more useful than barracks is unknown."
+      ]
+    },
+    "result": {
+      "category": "III",
+      "reason": "LOCATE_object_type_used_for_location_not_unresolved_prerequisite",
+      "structural_accept": false,
+      "hypothesis_accept": false,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "barracks"
+        ],
+        "first_action": "enter barracks"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "Edfb7324e9c17",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "Ebcfc7be0272d",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E48fdeab7dcaa",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": true,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-14-robot_kingdom-oil_flask:d015:p1",
+    "proposal": {
+      "direction": "The oil_flask recipe is undisclosed by all inspected objects; move from barracks toward the reachable cellar, whose public objects (devil_oil, charite, rubble, war_parchment_0) have not all been inspected, to find a public recipe source or crafting station that discloses the oil_flask recipe.",
+      "entry": "barracks",
+      "evidence_ids": [
+        "E945892debfda",
+        "E7304e6422b5b",
+        "Ebe77e2b46b35"
+      ],
+      "target": "cellar",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "Whether cellar contains the oil_flask recipe or a crafting station is unknown.",
+        "Required ingredients and quantities for oil_flask remain unknown.",
+        "Whether entrance or trailhead would be more useful than cellar is unknown.",
+        "Whether reaching cellar requires passing through courtyard is unknown."
+      ]
+    },
+    "result": {
+      "category": "III",
+      "reason": "LOCATE_object_type_used_for_location_not_unresolved_prerequisite",
+      "structural_accept": false,
+      "hypothesis_accept": false,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "courtyard",
+          "cellar"
+        ],
+        "first_action": "enter courtyard"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E945892debfda",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable",
+            "public_entries.observed_locations"
+          ]
+        },
+        {
+          "id": "E7304e6422b5b",
+          "entry_fields": [],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Ebe77e2b46b35",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": true,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-15-robot_kingdom-gate_cipher:d021:p1",
+    "proposal": {
+      "direction": "The gate_cipher recipe requires 2 cog and 1 scrap_iron; scrap_iron is already held in scout_satchel_0, so the remaining missing material is cog. However, the only public acquisition path for cog is unknown; the public recipe list shows cog_assembly (from cog) as a prerequisite for gearwork_frame, but no cog recipe or source is exposed. Since the controller cannot proceed to craft gate_cipher without cog, and cog is not observed in any location, the bounded subgoal is to acquire the known missing material scrap_iron first to free the path for cog search or to enable crafting of intermediate items that may reveal cog. watchtower is the current location with 7 scrap_iron on the ground, and scout_satchel_0 has capacity to hold it.",
+      "entry": "watchtower",
+      "evidence_ids": [
+        "E8d808e8525a3",
+        "Efb56a0fa1700",
+        "E4779ee3958e9",
+        "E482f38e0d442"
+      ],
+      "target": "scrap_iron",
+      "type": "ACQUIRE_MATERIAL",
+      "uncertainty": [
+        "Whether cog can be acquired or crafted from any public source is unknown.",
+        "Whether acquiring more scrap_iron enables a cog recipe is unknown.",
+        "Whether cog exists in an unexplored location (entrance, trailhead) is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "current_public_object",
+        "route": [],
+        "first_action": "inspect scrap_iron"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E8d808e8525a3",
+          "entry_fields": [
+            "public_entries.reachable",
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.visible"
+          ]
+        },
+        {
+          "id": "Efb56a0fa1700",
+          "entry_fields": [],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "E4779ee3958e9",
+          "entry_fields": [
+            "object_location"
+          ],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "E482f38e0d442",
+          "entry_fields": [
+            "container_location"
+          ],
+          "target_fields": [
+            "names",
+            "container_counts"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-16-quarantine-wood_stake:d010:p1",
+    "proposal": {
+      "direction": "Travel from the lobby into the adjacent ward to search for a public crafting station or recipe source that exposes the wood_stake recipe, since the lobby workbench inspection showed no available recipe and wood_stake remains uncraftable here.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E282704991cd4",
+        "E78c019326dca",
+        "E5ef8a381532c"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "The wood_stake recipe is not publicly disclosed and may not exist at the ward.",
+        "Required ingredients and quantities for wood_stake remain unknown.",
+        "The ward may contain no crafting station or may be unreachable despite being listed as a neighbor."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E78c019326dca",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E5ef8a381532c",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-17-quarantine-nail_bat:d008:p1",
+    "proposal": {
+      "direction": "The blocker is a missing public recipe for nail_bat, and the only inspected crafting station (lobby workbench) disclosed no nail_bat recipe. Move from the lobby into the reachable public frontier ward to look for a public recipe disclosure or a usable crafting path for nail_bat, since lobby inspection is exhausted.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "Efe04a5da1a86",
+        "E282704991cd4",
+        "Ed358c3bde9a6"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether ward discloses the nail_bat recipe or its ingredients",
+        "Whether nail_bat requires a workbench, furnace, or no station",
+        "Which ingredients and quantities nail_bat needs",
+        "Whether required materials exist in lobby, room, rooftop, or ward"
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "Efe04a5da1a86",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Ed358c3bde9a6",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-17-quarantine-nail_bat:d010:p1",
+    "proposal": {
+      "direction": "The blocker is a missing public recipe for nail_bat; the lobby workbench disclosed no nail_bat recipe and ward objects were already inspected without revealing it. Move from the current ward into the reachable public frontier morgue to look for a public recipe disclosure or usable crafting path for nail_bat.",
+      "entry": "ward",
+      "evidence_ids": [
+        "Ef7bc9ae49e9f",
+        "E4338416e7d7f",
+        "Ed358c3bde9a6"
+      ],
+      "target": "morgue",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether morgue discloses the nail_bat recipe or its ingredients",
+        "Whether nail_bat requires a workbench, furnace, or no station",
+        "Which ingredients and quantities nail_bat needs",
+        "Whether required materials exist in morgue or other reachable areas"
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "morgue"
+        ],
+        "first_action": "enter morgue"
+      },
+      "first_action": "enter morgue",
+      "field_relations": [
+        {
+          "id": "Ef7bc9ae49e9f",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E4338416e7d7f",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Ed358c3bde9a6",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d006:p1",
+    "proposal": {
+      "direction": "Move from lobby into the reachable ward to search for a public sharpened_blade recipe, blade-compatible station, or required material, since lobby's visible objects and known recipes do not disclose any sharpened_blade recipe.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E282704991cd4",
+        "E5a10474f2364",
+        "E125ea05fb399"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "The sharpened_blade recipe and required ingredients are not publicly disclosed.",
+        "Whether ward contains a usable station, recipe, or material for sharpened_blade is unknown.",
+        "The room location lists furnace and iron_bar, but no public path from lobby to room is currently known.",
+        "No public evidence confirms that workbench, furnace, or any observed object can craft sharpened_blade."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E5a10474f2364",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E125ea05fb399",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d007:p1",
+    "proposal": {
+      "direction": "The sharpened_blade recipe is undisclosed and no current location contains a usable path or station for it; move from lobby into the reachable ward to search for a public recipe, station, or material that unlocks crafting sharpened_blade.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E616c4fb8b630",
+        "E282704991cd4"
+      ],
+      "target": "ward",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "The sharpened_blade recipe and its required ingredients or station are not publicly disclosed.",
+        "Whether ward contains any recipe, station, or material relevant to sharpened_blade is unknown.",
+        "The room location lists furnace and iron_bar but no public path from lobby to room is known.",
+        "No public evidence confirms workbench or any observed object can craft sharpened_blade."
+      ]
+    },
+    "result": {
+      "category": "III",
+      "reason": "LOCATE_object_type_used_for_location_not_unresolved_prerequisite",
+      "structural_accept": false,
+      "hypothesis_accept": false,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E616c4fb8b630",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        }
+      ],
+      "target_dependency_unproven": true,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d008:p1",
+    "proposal": {
+      "direction": "Move from lobby into the reachable ward to search for a public sharpened_blade recipe, station, or required material, since no public recipe for sharpened_blade is disclosed and lobby's visible objects and known recipes do not reveal one.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E282704991cd4",
+        "Ee41a0e0c2a54",
+        "E125ea05fb399"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "The sharpened_blade recipe and its required ingredients or station are not publicly disclosed.",
+        "Whether ward contains any recipe, station, or material relevant to sharpened_blade is unknown.",
+        "The room location lists furnace and iron_bar but no public path from lobby to room is known.",
+        "No public evidence confirms workbench or any observed object can craft sharpened_blade."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Ee41a0e0c2a54",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E125ea05fb399",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d009:p1",
+    "proposal": {
+      "direction": "From lobby, move into the reachable ward to look for a public sharpened_blade recipe, station, or ingredient, since the blocker shows no disclosed sharpened_blade recipe and lobby's visible objects and known recipes do not reveal one.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E282704991cd4",
+        "E68b8fb09929a",
+        "E125ea05fb399"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "The sharpened_blade recipe, required ingredients, and required station are not publicly disclosed.",
+        "Whether ward contains any recipe, station, or material relevant to sharpened_blade is unknown.",
+        "The observed room lists furnace and iron_bar, but no public path from lobby to room is currently known.",
+        "No public evidence confirms that workbench, furnace, or any observed object can craft sharpened_blade."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E68b8fb09929a",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E125ea05fb399",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d010:p1",
+    "proposal": {
+      "direction": "Move from lobby to the reachable rooftop frontier to search for a public sharpened_blade recipe, blade-compatible station, or required material, since no public sharpened_blade recipe is disclosed and inspected lobby objects show no usable recipe.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E27787fc6a2a3",
+        "E4470a5a7c193",
+        "E125ea05fb399"
+      ],
+      "target": "rooftop",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "The sharpened_blade recipe, required ingredients, and required station are not publicly disclosed.",
+        "Whether rooftop contains any recipe, station, or material relevant to sharpened_blade is unknown.",
+        "The observed room lists furnace and iron_bar, but no public path from lobby to room is known.",
+        "No public evidence confirms that workbench, furnace, or any observed object can craft sharpened_blade."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "rooftop"
+        ],
+        "first_action": "enter rooftop"
+      },
+      "first_action": "enter rooftop",
+      "field_relations": [
+        {
+          "id": "E27787fc6a2a3",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E4470a5a7c193",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E125ea05fb399",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d011:p1",
+    "proposal": {
+      "direction": "Pick up scrap_metal from the rooftop ground, since the sharpened_blade recipe is undisclosed and scrap_metal is a publicly available crafting material present at the current location that may feed into a blade-crafting chain.",
+      "entry": "rooftop",
+      "evidence_ids": [
+        "E25cc7c984831",
+        "E3d4cadf561d0",
+        "E125ea05fb399"
+      ],
+      "target": "scrap_metal",
+      "type": "ACQUIRE_MATERIAL",
+      "uncertainty": [
+        "The sharpened_blade recipe, its ingredients, and its required station are not publicly disclosed.",
+        "Whether scrap_metal is actually an ingredient for sharpened_blade or any intermediate is unknown.",
+        "No public evidence confirms that workbench, furnace, or any observed object can craft sharpened_blade.",
+        "The room location lists furnace and iron_bar, but no public path from rooftop to room is currently known."
+      ]
+    },
+    "result": {
+      "category": "II",
+      "reason": "bounded_public_material_hypothesis_not_yet_in_proven_dependency_closure",
+      "structural_accept": false,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "current_public_object",
+        "route": [],
+        "first_action": "inspect scrap_metal"
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E25cc7c984831",
+          "entry_fields": [
+            "object_location"
+          ],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "E3d4cadf561d0",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.visible"
+          ]
+        },
+        {
+          "id": "E125ea05fb399",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": true,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d018:p1",
+    "proposal": {
+      "direction": "The public sharpened_blade recipe requires forged_blade plus glass_shard, but no public forged_blade recipe or acquisition path is disclosed. The observed non-reachable 'room' lists furnace and iron_bar, and iron_bar is publicly craftable from scrap_metal; search for a public path from a reachable area into room to expose a forged_blade recipe/station.",
+      "entry": "room",
+      "evidence_ids": [
+        "E885f4859a576",
+        "Effcc35527156",
+        "E25f025fe9032"
+      ],
+      "target": "forged_blade",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "No public forged_blade recipe, ingredient list, or station is disclosed.",
+        "Whether room is reachable from lobby/ward/morgue, or contains any forged_blade recipe or station, is unknown.",
+        "Whether furnace or iron_bar is actually required for forged_blade is unknown.",
+        "Quantities for sharpened_blade and iron_bar recipes are not disclosed."
+      ]
+    },
+    "result": {
+      "category": "III",
+      "reason": "entry_not_publicly_accessible",
+      "structural_accept": false,
+      "hypothesis_accept": false,
+      "entry_access": {
+        "accessible": false,
+        "mode": "public_location_route",
+        "route": null,
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": false,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null,
+        "first_action": null
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E885f4859a576",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": []
+        },
+        {
+          "id": "Effcc35527156",
+          "entry_fields": [],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "E25f025fe9032",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d019:p1",
+    "proposal": {
+      "direction": "The blocker names forged_blade as the missing material path for sharpened_blade, and the public sharpened_blade recipe requires forged_blade plus glass_shard. No public forged_blade recipe or acquisition path is disclosed. Start at the inspected workbench and search for a public recipe/station disclosure that produces forged_blade.",
+      "entry": "workbench",
+      "evidence_ids": [
+        "Ed6b6509b27ad",
+        "Effcc35527156"
+      ],
+      "target": "forged_blade",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "No public forged_blade recipe, ingredient list, or required station is disclosed.",
+        "Whether workbench can craft forged_blade is unknown.",
+        "Whether iron_bar, furnace, or any observed material is required for forged_blade is unknown.",
+        "Quantities for sharpened_blade and iron_bar recipes are not disclosed."
+      ]
+    },
+    "result": {
+      "category": "II",
+      "reason": "public_accessible_entry_and_supported_target_but_relation_hypothetical",
+      "structural_accept": false,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "historically_observed_object_route",
+        "route": [
+          "rooftop",
+          "lobby"
+        ],
+        "first_action": "enter rooftop",
+        "destination": "lobby",
+        "contents_currently_confirmed": false
+      },
+      "target_access": {
+        "accessible": false,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null,
+        "first_action": null
+      },
+      "first_action": "enter rooftop",
+      "field_relations": [
+        {
+          "id": "Ed6b6509b27ad",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "Effcc35527156",
+          "entry_fields": [],
+          "target_fields": [
+            "names"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-18-quarantine-sharpened_blade:d022:p2",
+    "proposal": {
+      "direction": "The blocker names forged_blade as the missing material path for sharpened_blade, and the public sharpened_blade recipe requires forged_blade plus glass_shard. No public forged_blade recipe or acquisition path is disclosed. The observed non-reachable 'room' lists furnace, iron_bar, and workbench; iron_bar is publicly craftable from scrap_metal, and a furnace is a plausible forging station. Search for a public path from a reachable area into room to expose a forged_blade recipe/station.",
+      "entry": "room",
+      "evidence_ids": [
+        "E35ef06e91d28",
+        "Effcc35527156",
+        "E25f025fe9032"
+      ],
+      "target": "forged_blade",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "No public forged_blade recipe, ingredient list, or required station is disclosed.",
+        "Whether room is reachable from entrance/lobby/rooftop/ward, or contains any forged_blade recipe or station, is unknown.",
+        "Whether furnace or iron_bar is actually required for forged_blade is unknown.",
+        "Quantities for sharpened_blade and iron_bar recipes are not disclosed."
+      ]
+    },
+    "result": {
+      "category": "III",
+      "reason": "entry_not_publicly_accessible",
+      "structural_accept": false,
+      "hypothesis_accept": false,
+      "entry_access": {
+        "accessible": false,
+        "mode": "public_location_route",
+        "route": null,
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": false,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null,
+        "first_action": null
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E35ef06e91d28",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": []
+        },
+        {
+          "id": "Effcc35527156",
+          "entry_fields": [],
+          "target_fields": [
+            "names"
+          ]
+        },
+        {
+          "id": "E25f025fe9032",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": true,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-19-quarantine-metal_strip:d010:p1",
+    "proposal": {
+      "direction": "The metal_strip recipe is not disclosed by any inspected lobby object, and the only observed room with metal-related objects (furnace, iron_bar) is not yet reached. Explore the public frontier ward from lobby to look for a public recipe source or metal_strip-relevant station before attempting any craft.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E282704991cd4",
+        "E824cf352fa2f",
+        "E61b48746e6bd"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether ward contains a metal_strip recipe or a usable crafting station is unknown.",
+        "The ingredients, quantities, and station requirements for metal_strip remain undisclosed.",
+        "Whether the room with furnace/iron_bar is reachable from ward or rooftop is unknown."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E824cf352fa2f",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E61b48746e6bd",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-19-quarantine-metal_strip:d022:p2",
+    "proposal": {
+      "direction": "The metal_strip recipe is still undisclosed and no inspected object revealed it. The room location publicly lists a furnace and iron_bar; since related metal recipes (iron_bar from scrap_metal, metal_plate from scrap_metal) are publicly disclosed, reach and inspect the room furnace as the plausible metal-processing station to check whether it exposes a metal_strip recipe or names the required material path.",
+      "entry": "furnace",
+      "evidence_ids": [
+        "E61b48746e6bd",
+        "E5c5b263ebdf4",
+        "E25f025fe9032",
+        "Eca187a95197d",
+        "E3685e57511ab"
+      ],
+      "target": "metal_strip",
+      "type": "LOCATE_PRECONDITION",
+      "uncertainty": [
+        "Whether the room furnace discloses a metal_strip recipe or only serves as a generic station is unknown.",
+        "Ingredients, quantities, and station requirements for metal_strip are not publicly known.",
+        "Whether metal_strip requires iron_bar, scrap_metal, or another material is unknown.",
+        "Whether the room location is currently reachable from the morgue is unknown."
+      ]
+    },
+    "result": {
+      "category": "III",
+      "reason": "entry_not_publicly_accessible",
+      "structural_accept": false,
+      "hypothesis_accept": false,
+      "entry_access": {
+        "accessible": false,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null,
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": false,
+        "mode": "no_current_public_access_or_unblocked_route",
+        "route": null,
+        "first_action": null
+      },
+      "first_action": null,
+      "field_relations": [
+        {
+          "id": "E61b48746e6bd",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "E5c5b263ebdf4",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "E25f025fe9032",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "Eca187a95197d",
+          "entry_fields": [],
+          "target_fields": []
+        },
+        {
+          "id": "E3685e57511ab",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": true,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-21-quarantine-pipe_handle:d005:p1",
+    "proposal": {
+      "direction": "The pipe_handle recipe is not disclosed by any inspected or visible object in the lobby; the ward is a reachable neighboring area not yet inspected, so exploring it may reveal a public recipe or material needed to craft pipe_handle.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E282704991cd4",
+        "E994830e2fd47"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether the ward contains a pipe_handle recipe or relevant crafting materials is unknown.",
+        "Whether pipe_handle requires a workbench or other station is unknown.",
+        "Whether the rooftop would be more informative than the ward is unknown, but ward is chosen as the single bounded entry."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E994830e2fd47",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-21-quarantine-pipe_handle:d010:p1",
+    "proposal": {
+      "direction": "The pipe_handle recipe is not disclosed by any inspected or visible object in the lobby, and the workbench inspection yielded no crafting options. The ward is a reachable neighboring area not yet explored; exploring it may reveal a public recipe, station, or material needed to craft pipe_handle.",
+      "entry": "lobby",
+      "evidence_ids": [
+        "E282704991cd4",
+        "E56c5010f4c28",
+        "E8ec95a4e6d1f"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether the ward contains a pipe_handle recipe or relevant crafting materials is unknown.",
+        "Whether pipe_handle requires a workbench or other station is unknown.",
+        "Whether the rooftop would be more informative than the ward is unknown, but ward is chosen as the single bounded entry."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "E282704991cd4",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "E56c5010f4c28",
+          "entry_fields": [
+            "public_entries.observed_locations"
+          ],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E8ec95a4e6d1f",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  },
+  {
+    "id": "s17-21-quarantine-pipe_handle:d011:p1",
+    "proposal": {
+      "direction": "The pipe_handle recipe is not disclosed by any inspected object (workbench, lantern, paper_1, pen) or visible object in the lobby, and the morgue is already entered. The ward is a reachable neighboring area from the current rooftop location that has not yet been explored; exploring it may reveal a public recipe, crafting station, or material needed to craft pipe_handle.",
+      "entry": "rooftop",
+      "evidence_ids": [
+        "E703ecb3e1761",
+        "Ee7f63c5fcb63",
+        "E8ec95a4e6d1f"
+      ],
+      "target": "ward",
+      "type": "EXPLORE_FRONTIER",
+      "uncertainty": [
+        "Whether the ward contains a pipe_handle recipe or relevant crafting materials is unknown.",
+        "Whether pipe_handle requires a specific station or ingredient not yet seen is unknown.",
+        "Whether the morgue would be more informative than the ward is unknown, but ward is chosen as the single bounded entry."
+      ]
+    },
+    "result": {
+      "category": "I",
+      "reason": "typed_cited_public_fields_support_accessible_entry",
+      "structural_accept": true,
+      "hypothesis_accept": true,
+      "entry_access": {
+        "accessible": true,
+        "mode": "current_location",
+        "route": [],
+        "first_action": null
+      },
+      "target_access": {
+        "accessible": true,
+        "mode": "public_location_route",
+        "route": [
+          "ward"
+        ],
+        "first_action": "enter ward"
+      },
+      "first_action": "enter ward",
+      "field_relations": [
+        {
+          "id": "E703ecb3e1761",
+          "entry_fields": [
+            "from_location"
+          ],
+          "target_fields": [
+            "names",
+            "location_key",
+            "route"
+          ]
+        },
+        {
+          "id": "Ee7f63c5fcb63",
+          "entry_fields": [],
+          "target_fields": [
+            "public_entries.reachable"
+          ]
+        },
+        {
+          "id": "E8ec95a4e6d1f",
+          "entry_fields": [],
+          "target_fields": []
+        }
+      ],
+      "target_dependency_unproven": false,
+      "inherited_exploration_exhausted": false,
+      "causal_target_entry_relation_proven": false,
+      "action_outcome": "UNKNOWN until native branch",
+      "bounded_hypothesis_scope": true
+    }
+  }
+]
