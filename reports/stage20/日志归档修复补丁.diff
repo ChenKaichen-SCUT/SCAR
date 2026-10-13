@@ -1,0 +1,11 @@
+--- a/scar_stage20/run.py
++++ b/scar_stage20/run.py
+@@ -132,7 +132,7 @@
+                 goal=task['objective_text'],observation=obs,action=action,feedback=afterobs,done=bool(done),death=death,
+                 reward={k:vars(v) for k,v in reward.items()},info=info,state_hash=after['state_hash'],
+                 physical_before=before,physical_after=after,decision=decision,
+-                mechanism_outcome=copy.deepcopy(agent.controller.outcome19),
++                mechanism_outcome=copy.deepcopy(agent.controller.outcome20),
+                 public_knowledge_before=knowledge_before,public_knowledge_after=knowledge.view(),knowledge_delta=delta,
+                 ambiguous_public_evidence=copy.deepcopy(knowledge.ambiguous),metrics=scores,
+                 target_produced_during_task=produced,success=success,recorded=time.time())

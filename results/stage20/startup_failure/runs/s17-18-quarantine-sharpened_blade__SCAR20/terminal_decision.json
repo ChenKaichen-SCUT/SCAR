@@ -1,0 +1,1400 @@
+{
+  "step": 1,
+  "decision": {
+    "decision": {
+      "llm_called": false,
+      "planning_calls": [],
+      "executed_action": "inspect small_bag_0",
+      "controller_before": {
+        "mode": "fifo",
+        "table": {
+          "state": {
+            "location": "lobby",
+            "location_full": "Raccoon Hospital, lobby",
+            "hands": {},
+            "equipment": {},
+            "ground": {
+              "coin": 10.0,
+              "key": 2.0,
+              "small_bag_0": 1.0,
+              "paper_1": 1.0,
+              "pen": 1.0,
+              "workbench": 1.0,
+              "lantern": 1.0
+            },
+            "neighbors": [
+              "ward",
+              "rooftop"
+            ],
+            "step": 28,
+            "feedback": "I used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.",
+            "public_goal": null
+          },
+          "places": {
+            "room": {
+              "objects": {
+                "coin": 1.0,
+                "workbench": 1.0,
+                "furnace": 1.0,
+                "iron_bar": 1.0
+              },
+              "step": 27,
+              "source": "public_ground_observation"
+            },
+            "lobby": {
+              "objects": {
+                "coin": 10.0,
+                "key": 2.0,
+                "small_bag_0": 1.0,
+                "paper_1": 1.0,
+                "pen": 1.0,
+                "workbench": 1.0,
+                "lantern": 1.0
+              },
+              "step": 28,
+              "source": "public_ground_observation"
+            }
+          },
+          "links": {
+            "room": [
+              "lobby"
+            ],
+            "lobby": [
+              "ward",
+              "rooftop"
+            ]
+          },
+          "containers": {
+            "small_bag_1": {
+              "counts": null,
+              "load": null,
+              "capacity": 20.0,
+              "location": "room",
+              "step": 6,
+              "source": "public_container_inspection"
+            }
+          },
+          "inventory": null,
+          "recipes": {
+            "splint": {
+              "ingredients": [
+                "duct_tape",
+                "wood_log"
+              ],
+              "quantities": null,
+              "step": 18,
+              "source": "native_public_disclosure",
+              "first_relation_step": 18,
+              "first_quantity_step": null,
+              "evidence_ids": [
+                "k14_0da73db1c73824dd"
+              ],
+              "station_completeness": "UNKNOWN"
+            },
+            "wood_plank": {
+              "ingredients": [
+                "wood_log"
+              ],
+              "quantities": null,
+              "step": 18,
+              "source": "native_public_disclosure",
+              "first_relation_step": 18,
+              "first_quantity_step": null,
+              "evidence_ids": [
+                "k14_5e9ed5fd9ae53040"
+              ],
+              "station_completeness": "UNKNOWN"
+            },
+            "workbench": {
+              "ingredients": [
+                "scrap_metal",
+                "wood_log"
+              ],
+              "quantities": null,
+              "step": 18,
+              "source": "native_public_disclosure",
+              "first_relation_step": 18,
+              "first_quantity_step": null,
+              "evidence_ids": [
+                "k14_ad70b7c1c4d02e98"
+              ],
+              "station_completeness": "UNKNOWN"
+            }
+          },
+          "inspected": [
+            "inventory",
+            "small_bag_1",
+            "wood_log"
+          ],
+          "guards": {
+            "room->lobby": {
+              "locked": false,
+              "required": null,
+              "expires_on": "explicit_locked_failure",
+              "source": "I used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.",
+              "step": 28
+            }
+          },
+          "observations": 84,
+          "events": [],
+          "pending_craft": null,
+          "knowledge": {
+            "facts": {
+              "splint": {
+                "product": "splint",
+                "ingredients": [
+                  "duct_tape",
+                  "wood_log"
+                ],
+                "quantities": null,
+                "stations": null,
+                "source_action": "inspect wood_log",
+                "observed_step": 18,
+                "first_relation_step": 18,
+                "first_quantity_step": null,
+                "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+                "certainty": "EXPLICIT_RELATION",
+                "station_completeness": "UNKNOWN",
+                "evidence_ids": [
+                  "k14_0da73db1c73824dd"
+                ]
+              },
+              "wood_plank": {
+                "product": "wood_plank",
+                "ingredients": [
+                  "wood_log"
+                ],
+                "quantities": null,
+                "stations": null,
+                "source_action": "inspect wood_log",
+                "observed_step": 18,
+                "first_relation_step": 18,
+                "first_quantity_step": null,
+                "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+                "certainty": "EXPLICIT_RELATION",
+                "station_completeness": "UNKNOWN",
+                "evidence_ids": [
+                  "k14_5e9ed5fd9ae53040"
+                ]
+              },
+              "workbench": {
+                "product": "workbench",
+                "ingredients": [
+                  "scrap_metal",
+                  "wood_log"
+                ],
+                "quantities": null,
+                "stations": null,
+                "source_action": "inspect wood_log",
+                "observed_step": 18,
+                "first_relation_step": 18,
+                "first_quantity_step": null,
+                "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+                "certainty": "EXPLICIT_RELATION",
+                "station_completeness": "UNKNOWN",
+                "evidence_ids": [
+                  "k14_ad70b7c1c4d02e98"
+                ]
+              }
+            },
+            "events": [
+              {
+                "product": "splint",
+                "ingredients": [
+                  "wood_log",
+                  "duct_tape"
+                ],
+                "quantities": null,
+                "stations": null,
+                "source_action": "inspect wood_log",
+                "observed_step": 18,
+                "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+                "certainty": "EXPLICIT_RELATION",
+                "format": "inspection_names",
+                "station_completeness": "UNKNOWN",
+                "changes": [
+                  "new_relation"
+                ],
+                "source": {
+                  "action": "inspect wood_log",
+                  "step": 18
+                },
+                "conflict": false,
+                "event_id": "k14_0da73db1c73824dd"
+              },
+              {
+                "product": "wood_plank",
+                "ingredients": [
+                  "wood_log"
+                ],
+                "quantities": null,
+                "stations": null,
+                "source_action": "inspect wood_log",
+                "observed_step": 18,
+                "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+                "certainty": "EXPLICIT_RELATION",
+                "format": "inspection_names",
+                "station_completeness": "UNKNOWN",
+                "changes": [
+                  "new_relation"
+                ],
+                "source": {
+                  "action": "inspect wood_log",
+                  "step": 18
+                },
+                "conflict": false,
+                "event_id": "k14_5e9ed5fd9ae53040"
+              },
+              {
+                "product": "workbench",
+                "ingredients": [
+                  "wood_log",
+                  "scrap_metal"
+                ],
+                "quantities": null,
+                "stations": null,
+                "source_action": "inspect wood_log",
+                "observed_step": 18,
+                "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+                "certainty": "EXPLICIT_RELATION",
+                "format": "inspection_names",
+                "station_completeness": "UNKNOWN",
+                "changes": [
+                  "new_relation"
+                ],
+                "source": {
+                  "action": "inspect wood_log",
+                  "step": 18
+                },
+                "conflict": false,
+                "event_id": "k14_ad70b7c1c4d02e98"
+              }
+            ],
+            "ambiguous": [],
+            "seen": [
+              "0bffb8b2b79a17282e7bb1ce1ff1cc8d613329a036e3813b22e4efe4abcc2a55",
+              "11b6dd025d126736077bf0049c8751ade22e481fc6d99cea945b4fda8fa8f33f",
+              "1ed8403ec74c4a46851adc5443847cfda52e77d28df3e5025cfeb70daddf94cd",
+              "20af803e457a694c1ede1c357b97ddd5587d624bd30fcccf0f29d8986a821518",
+              "29a102b17f26ce3720af34bf7f8c95d9dcb00524fd0749bf6c05b1e0453b0ceb",
+              "412c59591745c1e279d96bffa047df1ac15111c9a1c8acb137ee46d832ce1fb4",
+              "4787b235cc0e491734f812a2358dfe54f8648b1c01ae3b1fc938c84b5aa61317",
+              "4a338f73683f93211ae25e19c62be2d4e79fafa32ae74920daeefd9d0748e1b2",
+              "6b8cd6642f346b9b53856c9ff0a4c4d571bb498f6288000dc98b5b71f8228f85",
+              "6e741b55f213792c4547b0bd5bb6bea23a49adec811368ae4032e7a48ab7fb5f",
+              "74c23c8de9252935d50dcef7f7d52ac8d10aac576a5392efd366595b7327c79d",
+              "7fdbb85f1341e34d2c569e12a520d3838a2e884e49a6b435f225b18850093013",
+              "821f4d56f572112154de0aad80cf21ff314554b8d0d434d7efe8059d8617f77b",
+              "92c361295ea9d094cda99e5c4e5af523df77cc244d80ecce7158a837b9acee1c",
+              "935872ca198427195da33c3ab2e9376fd41fe82c37b405cbfb4d385308430af4",
+              "99567b17f7d3039998abd32b1e64576e5570eec8fa0741171732ffd711f76f2c",
+              "9fed3627d56d604c4249636658678f99a1c43aecc3c48e060c8b915b26f23bb9",
+              "a09f5126cd5964114d070bc006ad13f988fc500894d69143efcc8778872607c5",
+              "ae984ba5d329e04debf86c513e62ac11116b60fd18bc97ae5ae3d70849abc65d",
+              "cd76abf88b569f70f03698504abaa09faf3829d62f58e70dfdfe2d4d23429986",
+              "cdeacf8466d05e68507fb8802f023d9f5dc68bd2d7a83268d6064271382a7285",
+              "d8fb87d6b0f6082117dc435f25ad6742ac98bf861de8b83f289f52de07169955",
+              "eba0c7b82b6a039c07aaedc483f65123fadaf2d8514104e61039736cdc2a1dbd",
+              "f0972da74fbf5c4af37260ee11772f6879eaa94edfc33768225c9b501bceaaa2",
+              "fa6eaa5c4a1b5a16f115114ed8c4e78b3069e409c5330e000738e39b8791b87f",
+              "fd6a07100b7b94fba6ffa0e58514479dd0c86bff5dd720f6490c853a7ec7b516",
+              "fea83581a1a2135090f9bc7b20d52067dc7c828e62c75faa367634090e407848",
+              "ffa86d95d9b4d68697a7589a8929310cc077e5ee5088f88b58103cfbc094e9c2"
+            ]
+          }
+        },
+        "target": "craft 1 sharpened_blade",
+        "objective": "Craft at least 1 sharpened_blade during this task and obtain at least 1 sharpened_blade in your own possession. A product left on the ground does not count. Achieve this within 100 environment actions. This is the current evaluation objective.",
+        "follow_public": false,
+        "graph": {},
+        "queue": [],
+        "events": [],
+        "quotas": {},
+        "attempts": {},
+        "visits": {},
+        "last_choice": null,
+        "generation": 1,
+        "amount": 1,
+        "queue_needs": {},
+        "directed": true,
+        "batch": "learned",
+        "exploration_spent": 0,
+        "probes": {},
+        "trials": {},
+        "explore_pending": null,
+        "last_produced": "key",
+        "quantity_facts": {
+          "table": {
+            "state": {
+              "location": "lobby",
+              "location_full": "Raccoon Hospital, lobby",
+              "hands": {},
+              "equipment": {},
+              "ground": {
+                "coin": 10.0,
+                "key": 2.0,
+                "small_bag_0": 1.0,
+                "paper_1": 1.0,
+                "pen": 1.0,
+                "workbench": 1.0,
+                "lantern": 1.0
+              },
+              "neighbors": [
+                "ward",
+                "rooftop"
+              ],
+              "step": 28,
+              "feedback": "I used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.",
+              "public_goal": null
+            },
+            "places": {
+              "room": {
+                "objects": {
+                  "coin": 1.0,
+                  "workbench": 1.0,
+                  "furnace": 1.0,
+                  "iron_bar": 1.0
+                },
+                "step": 27,
+                "source": "public_ground_observation"
+              },
+              "lobby": {
+                "objects": {
+                  "coin": 10.0,
+                  "key": 2.0,
+                  "small_bag_0": 1.0,
+                  "paper_1": 1.0,
+                  "pen": 1.0,
+                  "workbench": 1.0,
+                  "lantern": 1.0
+                },
+                "step": 28,
+                "source": "public_ground_observation"
+              }
+            },
+            "links": {
+              "room": [
+                "lobby"
+              ],
+              "lobby": [
+                "ward",
+                "rooftop"
+              ]
+            },
+            "containers": {
+              "small_bag_1": {
+                "counts": null,
+                "load": null,
+                "capacity": 20.0,
+                "location": "room",
+                "step": 6,
+                "source": "public_container_inspection"
+              }
+            },
+            "inventory": null,
+            "recipes": {
+              "splint": {
+                "quantities": null,
+                "ingredients": [
+                  "wood_log",
+                  "duct_tape"
+                ],
+                "step": 18,
+                "source": "public_inspection"
+              },
+              "wood_plank": {
+                "quantities": null,
+                "ingredients": [
+                  "wood_log"
+                ],
+                "step": 18,
+                "source": "public_inspection"
+              },
+              "workbench": {
+                "quantities": null,
+                "ingredients": [
+                  "wood_log",
+                  "scrap_metal"
+                ],
+                "step": 18,
+                "source": "public_inspection"
+              }
+            },
+            "inspected": [
+              "inventory",
+              "small_bag_1",
+              "wood_log"
+            ],
+            "guards": {
+              "room->lobby": {
+                "locked": false,
+                "required": null,
+                "expires_on": "explicit_locked_failure",
+                "source": "I used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.",
+                "step": 28
+              }
+            },
+            "observations": 56,
+            "events": [],
+            "pending_craft": null
+          },
+          "effects": [],
+          "failures": [],
+          "pending": null,
+          "produced": {
+            "key_blank": 1,
+            "key": 1
+          },
+          "target": "sharpened_blade",
+          "goal": "Craft at least 1 sharpened_blade during this task and obtain at least 1 sharpened_blade in your own possession. A product left on the ground does not count. Achieve this within 100 environment actions. This is the current evaluation objective.",
+          "amount": 1
+        },
+        "batch_decisions": [],
+        "mechanism_decision": {},
+        "in_episode": true,
+        "flags": {
+          "retry_context_fix": true,
+          "knowledge_gap_exploration": false,
+          "explore_execute_switch": false,
+          "resource_goal_guard": false
+        },
+        "retry_records": {},
+        "attempt_log": [],
+        "pending_probe": null,
+        "gap": {},
+        "gap_log": [],
+        "execution_mode": "EXPLORE",
+        "mode_signature": null,
+        "subgoals": {},
+        "mode_log": [],
+        "blocked_execution": null,
+        "stage7_decision": {},
+        "last_ready": [],
+        "public_quantity_rules": {},
+        "stage10": true,
+        "opportunistic": false,
+        "storage": false,
+        "failures10": {},
+        "actual_visits": {
+          "9a1e83b366974119d0d351883b0be1484dfb533c71aa321026f42f58aa5765df": 1,
+          "c0f7b15d8e20c4ed6dc6dd249f306743b6aa90c315cc47ef8e1d4e723d233f75": 1,
+          "eb0a937ac7abd11111db7effcb43b5fe4e18a4c6d07b0a5fe174d22c73e0f363": 1,
+          "cf0e9eb3bfb507236e0ed0e8d1981584f377ca9d21f5860fa4020bf6d79c0d42": 1,
+          "fa0aefdacc546a3958f1689af447d71cdda8a34c960e79ca52ac75f497b6fee2": 1,
+          "555bb541446e2e559cf7825fd9085db1c262c92283596eedbbf2483b143aad89": 1,
+          "9636d17632f227215740ad804e644f084849603d2a159b61276ea02d59280590": 1,
+          "b497532175671f76bd954b78a27d8f6a0d8744d9c0fb1b4bf3dac61d2d8ccb53": 1,
+          "965fd9d3d94272121e7dbbc37ecab05ceffc3a39df7a5627b56ea10dcd009280": 1,
+          "ac34238061a85acef1a9160ff2eb54c25cdca64bdeae10f482089ed54a943a79": 1,
+          "546584ac1c71ea06dd745aa996b3e10ff446e1af56b17fa83b29373edf8f6b5f": 1,
+          "0032f1d8adeb8de4b424e22079087f4488a77f7be29c6bcf73f59bb5352e8561": 1,
+          "f3cd8a7a56bee8d70d2ef200fde48161dcdfd4e5646e2e139f58389e4db03774": 1,
+          "576d40f37bb9b5fd740ae5ab3f89d70ad2a87e5dee218d69889ea907078bf7ff": 1,
+          "3a96cbe56917af1553b65290dba60f8718d36f9f333f9685b6a7c9a3d67841b7": 1,
+          "cf06a6aa579e1d468974a89949195ed37b89d45cb343a8dc6e4d0164dee8a399": 1,
+          "d2e6e3c4e71fbf915949758b42b1b4efb88619c0a2787be5e50bf0e7ae9c081b": 1,
+          "cb6bdf30d0ef0c2cb9399b8e3572432d0e25baab0a7931e54d7088b29e45a1d0": 1,
+          "6b473ad395806567eb94a8bfed53940295ac20bd30bc5ab2fb021b381f37a75b": 1,
+          "fbdbb130a62265badd3f76bc10041260277fbc180a080e5090a7ed7bb51eb5ee": 1,
+          "3aeffc6d0d9fe77f66a8468d8cc045f02e7396bd5f5e154c61b540e40cdd1430": 1,
+          "2d82c9f8ca6c9525de88e894fca30b8e39b7cc50e6ffb696ca57b02cbab28dc2": 1,
+          "4a60d1ac541f5041813426aa51001381f931bd77a05c40d761124f0e2dd062d3": 1,
+          "e25ccad2217dfa3f635c9f529bf01e2128087f68d29f59930430f52673dd1054": 1,
+          "f063c06c1d57aa768dabfb1b14ee918bcc4ba5a804c5a280e58d644ec24a02a6": 1,
+          "8f6cfb00f38cf81fa1195e746133815f02a6a59559b3c537d9e781da8709ed32": 1,
+          "ca04eaef4e228296d84f645f8ba1d44acd2786a7d958c78ee1c3d1b19a495d89": 1,
+          "6de8cda0265336c883e232b015e65159ead5101f1f3fa37163536cf5b56922b4": 1
+        },
+        "condition_log": [],
+        "decision10": {},
+        "selected_meta": null,
+        "stashes": {},
+        "stash_events": [],
+        "storage_intent": null,
+        "stash_spent": 0,
+        "opportunity_spent": 0,
+        "loss_locations": {},
+        "explore_depth": 0,
+        "variant16": "S1_P1_P3",
+        "step16": 0,
+        "risk16": false,
+        "health16": 100.0,
+        "audit16": {},
+        "intent20": null,
+        "intent_log20": [],
+        "acceptance20": [],
+        "request_contexts20": [],
+        "plan_calls20": 0,
+        "blocker20": {},
+        "preconditions20": {},
+        "precondition_events20": [],
+        "active_precondition20": null,
+        "probe_candidates20": [],
+        "acquisitions20": [],
+        "audit20": {},
+        "outcome20": {
+          "action": "enter lobby",
+          "feedback": "I used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.",
+          "new_recipe_names": [],
+          "new_preconditions": [],
+          "public_craft_success": false,
+          "active_intent": null,
+          "latest_intent_end": [],
+          "preconditions": {},
+          "exploration_spent": 0,
+          "lifecycle": [],
+          "suspended_intent": null,
+          "recovery": {
+            "state": "EXECUTE",
+            "reason": null
+          }
+        },
+        "evidence20": {},
+        "request_evidence20": [],
+        "context_counts20": {},
+        "lifecycle20": [],
+        "suspended20": null,
+        "recovery20": {
+          "state": "EXECUTE",
+          "reason": null
+        },
+        "recovery_log20": [],
+        "entry_attempts20": {
+          "70712836ded44a3149074a2b2170914445974f757abc4511fe68b8f8c95ad99e": 1,
+          "c0f7b15d8e20c4ed6dc6dd249f306743b6aa90c315cc47ef8e1d4e723d233f75": 1,
+          "eb0a937ac7abd11111db7effcb43b5fe4e18a4c6d07b0a5fe174d22c73e0f363": 1,
+          "cf0e9eb3bfb507236e0ed0e8d1981584f377ca9d21f5860fa4020bf6d79c0d42": 1,
+          "5d4a1aa96c347d439191c36f15750c9c5434739b2a5b7531d1d0786d818e265f": 1,
+          "555bb541446e2e559cf7825fd9085db1c262c92283596eedbbf2483b143aad89": 1,
+          "9636d17632f227215740ad804e644f084849603d2a159b61276ea02d59280590": 1,
+          "b497532175671f76bd954b78a27d8f6a0d8744d9c0fb1b4bf3dac61d2d8ccb53": 1,
+          "965fd9d3d94272121e7dbbc37ecab05ceffc3a39df7a5627b56ea10dcd009280": 1,
+          "ac34238061a85acef1a9160ff2eb54c25cdca64bdeae10f482089ed54a943a79": 1,
+          "546584ac1c71ea06dd745aa996b3e10ff446e1af56b17fa83b29373edf8f6b5f": 1,
+          "0032f1d8adeb8de4b424e22079087f4488a77f7be29c6bcf73f59bb5352e8561": 1,
+          "f3cd8a7a56bee8d70d2ef200fde48161dcdfd4e5646e2e139f58389e4db03774": 1,
+          "576d40f37bb9b5fd740ae5ab3f89d70ad2a87e5dee218d69889ea907078bf7ff": 1,
+          "3a96cbe56917af1553b65290dba60f8718d36f9f333f9685b6a7c9a3d67841b7": 1,
+          "cf06a6aa579e1d468974a89949195ed37b89d45cb343a8dc6e4d0164dee8a399": 1,
+          "d2e6e3c4e71fbf915949758b42b1b4efb88619c0a2787be5e50bf0e7ae9c081b": 1,
+          "cb6bdf30d0ef0c2cb9399b8e3572432d0e25baab0a7931e54d7088b29e45a1d0": 1,
+          "6b473ad395806567eb94a8bfed53940295ac20bd30bc5ab2fb021b381f37a75b": 1,
+          "fbdbb130a62265badd3f76bc10041260277fbc180a080e5090a7ed7bb51eb5ee": 1,
+          "3aeffc6d0d9fe77f66a8468d8cc045f02e7396bd5f5e154c61b540e40cdd1430": 1,
+          "2d82c9f8ca6c9525de88e894fca30b8e39b7cc50e6ffb696ca57b02cbab28dc2": 1,
+          "4a60d1ac541f5041813426aa51001381f931bd77a05c40d761124f0e2dd062d3": 1,
+          "e25ccad2217dfa3f635c9f529bf01e2128087f68d29f59930430f52673dd1054": 1,
+          "f063c06c1d57aa768dabfb1b14ee918bcc4ba5a804c5a280e58d644ec24a02a6": 1,
+          "8f6cfb00f38cf81fa1195e746133815f02a6a59559b3c537d9e781da8709ed32": 1,
+          "ca04eaef4e228296d84f645f8ba1d44acd2786a7d958c78ee1c3d1b19a495d89": 1,
+          "6de8cda0265336c883e232b015e65159ead5101f1f3fa37163536cf5b56922b4": 1
+        },
+        "last_plan20": null,
+        "observation_count20": 28
+      },
+      "stage20": {
+        "source": "known_FIFO_execution",
+        "final_action": "inspect small_bag_0",
+        "assessment": {
+          "action": "inspect small_bag_0",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 28,
+              "valid_until": "relevant public condition changes"
+            }
+          ]
+        },
+        "accepted_intent": null,
+        "prerequisite": null,
+        "blocker": {},
+        "acquisition": [],
+        "transaction": {
+          "exploration_before": 0,
+          "exploration_after": 0,
+          "executed_probe": null,
+          "discarded_probes": 0,
+          "failures_unchanged": true,
+          "attempts_unchanged": true
+        },
+        "original_task": "craft 1 sharpened_blade",
+        "internal_horizon": 100
+      },
+      "active_subgoal": null,
+      "recovery": {
+        "state": "EXECUTE",
+        "reason": null
+      },
+      "variant": "SCAR20",
+      "no_action_proposal_interface": true,
+      "extra_repair_call": false
+    },
+    "controller": {
+      "mode": "fifo",
+      "table": {
+        "state": {
+          "location": "lobby",
+          "location_full": "Raccoon Hospital, lobby",
+          "hands": {},
+          "equipment": {},
+          "ground": {
+            "coin": 10.0,
+            "key": 2.0,
+            "small_bag_0": 1.0,
+            "paper_1": 1.0,
+            "pen": 1.0,
+            "workbench": 1.0,
+            "lantern": 1.0
+          },
+          "neighbors": [
+            "ward",
+            "rooftop"
+          ],
+          "step": 29,
+          "feedback": "I inspected small_bag_0: A bloodstained messenger bag, still functional for carrying supplies.\nIt contains: no objects (capacity: 0/20).",
+          "public_goal": null
+        },
+        "places": {
+          "room": {
+            "objects": {
+              "coin": 1.0,
+              "workbench": 1.0,
+              "furnace": 1.0,
+              "iron_bar": 1.0
+            },
+            "step": 27,
+            "source": "public_ground_observation"
+          },
+          "lobby": {
+            "objects": {
+              "coin": 10.0,
+              "key": 2.0,
+              "small_bag_0": 1.0,
+              "paper_1": 1.0,
+              "pen": 1.0,
+              "workbench": 1.0,
+              "lantern": 1.0
+            },
+            "step": 29,
+            "source": "public_ground_observation"
+          }
+        },
+        "links": {
+          "room": [
+            "lobby"
+          ],
+          "lobby": [
+            "ward",
+            "rooftop"
+          ]
+        },
+        "containers": {
+          "small_bag_1": {
+            "counts": null,
+            "load": null,
+            "capacity": 20.0,
+            "location": "room",
+            "step": 6,
+            "source": "public_container_inspection"
+          },
+          "small_bag_0": {
+            "counts": {},
+            "load": 0.0,
+            "capacity": 20.0,
+            "location": "lobby",
+            "step": 29,
+            "source": "public_container_inspection"
+          }
+        },
+        "inventory": null,
+        "recipes": {
+          "splint": {
+            "ingredients": [
+              "duct_tape",
+              "wood_log"
+            ],
+            "quantities": null,
+            "step": 18,
+            "source": "native_public_disclosure",
+            "first_relation_step": 18,
+            "first_quantity_step": null,
+            "evidence_ids": [
+              "k14_0da73db1c73824dd"
+            ],
+            "station_completeness": "UNKNOWN"
+          },
+          "wood_plank": {
+            "ingredients": [
+              "wood_log"
+            ],
+            "quantities": null,
+            "step": 18,
+            "source": "native_public_disclosure",
+            "first_relation_step": 18,
+            "first_quantity_step": null,
+            "evidence_ids": [
+              "k14_5e9ed5fd9ae53040"
+            ],
+            "station_completeness": "UNKNOWN"
+          },
+          "workbench": {
+            "ingredients": [
+              "scrap_metal",
+              "wood_log"
+            ],
+            "quantities": null,
+            "step": 18,
+            "source": "native_public_disclosure",
+            "first_relation_step": 18,
+            "first_quantity_step": null,
+            "evidence_ids": [
+              "k14_ad70b7c1c4d02e98"
+            ],
+            "station_completeness": "UNKNOWN"
+          }
+        },
+        "inspected": [
+          "inventory",
+          "small_bag_1",
+          "wood_log",
+          "small_bag_0"
+        ],
+        "guards": {
+          "room->lobby": {
+            "locked": false,
+            "required": null,
+            "expires_on": "explicit_locked_failure",
+            "source": "I used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.",
+            "step": 28
+          }
+        },
+        "observations": 89,
+        "events": [],
+        "pending_craft": null,
+        "knowledge": {
+          "facts": {
+            "splint": {
+              "product": "splint",
+              "ingredients": [
+                "duct_tape",
+                "wood_log"
+              ],
+              "quantities": null,
+              "stations": null,
+              "source_action": "inspect wood_log",
+              "observed_step": 18,
+              "first_relation_step": 18,
+              "first_quantity_step": null,
+              "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+              "certainty": "EXPLICIT_RELATION",
+              "station_completeness": "UNKNOWN",
+              "evidence_ids": [
+                "k14_0da73db1c73824dd"
+              ]
+            },
+            "wood_plank": {
+              "product": "wood_plank",
+              "ingredients": [
+                "wood_log"
+              ],
+              "quantities": null,
+              "stations": null,
+              "source_action": "inspect wood_log",
+              "observed_step": 18,
+              "first_relation_step": 18,
+              "first_quantity_step": null,
+              "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+              "certainty": "EXPLICIT_RELATION",
+              "station_completeness": "UNKNOWN",
+              "evidence_ids": [
+                "k14_5e9ed5fd9ae53040"
+              ]
+            },
+            "workbench": {
+              "product": "workbench",
+              "ingredients": [
+                "scrap_metal",
+                "wood_log"
+              ],
+              "quantities": null,
+              "stations": null,
+              "source_action": "inspect wood_log",
+              "observed_step": 18,
+              "first_relation_step": 18,
+              "first_quantity_step": null,
+              "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+              "certainty": "EXPLICIT_RELATION",
+              "station_completeness": "UNKNOWN",
+              "evidence_ids": [
+                "k14_ad70b7c1c4d02e98"
+              ]
+            }
+          },
+          "events": [
+            {
+              "product": "splint",
+              "ingredients": [
+                "wood_log",
+                "duct_tape"
+              ],
+              "quantities": null,
+              "stations": null,
+              "source_action": "inspect wood_log",
+              "observed_step": 18,
+              "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+              "certainty": "EXPLICIT_RELATION",
+              "format": "inspection_names",
+              "station_completeness": "UNKNOWN",
+              "changes": [
+                "new_relation"
+              ],
+              "source": {
+                "action": "inspect wood_log",
+                "step": 18
+              },
+              "conflict": false,
+              "event_id": "k14_0da73db1c73824dd"
+            },
+            {
+              "product": "wood_plank",
+              "ingredients": [
+                "wood_log"
+              ],
+              "quantities": null,
+              "stations": null,
+              "source_action": "inspect wood_log",
+              "observed_step": 18,
+              "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+              "certainty": "EXPLICIT_RELATION",
+              "format": "inspection_names",
+              "station_completeness": "UNKNOWN",
+              "changes": [
+                "new_relation"
+              ],
+              "source": {
+                "action": "inspect wood_log",
+                "step": 18
+              },
+              "conflict": false,
+              "event_id": "k14_5e9ed5fd9ae53040"
+            },
+            {
+              "product": "workbench",
+              "ingredients": [
+                "wood_log",
+                "scrap_metal"
+              ],
+              "quantities": null,
+              "stations": null,
+              "source_action": "inspect wood_log",
+              "observed_step": 18,
+              "raw_evidence": "It can be used to craft: splint (made of wood_log, duct_tape), wood_plank (made of wood_log), workbench (made of wood_log, scrap_metal).",
+              "certainty": "EXPLICIT_RELATION",
+              "format": "inspection_names",
+              "station_completeness": "UNKNOWN",
+              "changes": [
+                "new_relation"
+              ],
+              "source": {
+                "action": "inspect wood_log",
+                "step": 18
+              },
+              "conflict": false,
+              "event_id": "k14_ad70b7c1c4d02e98"
+            }
+          ],
+          "ambiguous": [],
+          "seen": [
+            "0bffb8b2b79a17282e7bb1ce1ff1cc8d613329a036e3813b22e4efe4abcc2a55",
+            "11b6dd025d126736077bf0049c8751ade22e481fc6d99cea945b4fda8fa8f33f",
+            "1ed8403ec74c4a46851adc5443847cfda52e77d28df3e5025cfeb70daddf94cd",
+            "20af803e457a694c1ede1c357b97ddd5587d624bd30fcccf0f29d8986a821518",
+            "29a102b17f26ce3720af34bf7f8c95d9dcb00524fd0749bf6c05b1e0453b0ceb",
+            "412c59591745c1e279d96bffa047df1ac15111c9a1c8acb137ee46d832ce1fb4",
+            "4787b235cc0e491734f812a2358dfe54f8648b1c01ae3b1fc938c84b5aa61317",
+            "4a338f73683f93211ae25e19c62be2d4e79fafa32ae74920daeefd9d0748e1b2",
+            "6b8cd6642f346b9b53856c9ff0a4c4d571bb498f6288000dc98b5b71f8228f85",
+            "6e741b55f213792c4547b0bd5bb6bea23a49adec811368ae4032e7a48ab7fb5f",
+            "74c23c8de9252935d50dcef7f7d52ac8d10aac576a5392efd366595b7327c79d",
+            "7fdbb85f1341e34d2c569e12a520d3838a2e884e49a6b435f225b18850093013",
+            "821f4d56f572112154de0aad80cf21ff314554b8d0d434d7efe8059d8617f77b",
+            "92c361295ea9d094cda99e5c4e5af523df77cc244d80ecce7158a837b9acee1c",
+            "935872ca198427195da33c3ab2e9376fd41fe82c37b405cbfb4d385308430af4",
+            "99567b17f7d3039998abd32b1e64576e5570eec8fa0741171732ffd711f76f2c",
+            "9fed3627d56d604c4249636658678f99a1c43aecc3c48e060c8b915b26f23bb9",
+            "a09f5126cd5964114d070bc006ad13f988fc500894d69143efcc8778872607c5",
+            "a3f14188d8f1cd21b68d867f1e663d41ce2322e2f90694a1056852c9df873812",
+            "ae984ba5d329e04debf86c513e62ac11116b60fd18bc97ae5ae3d70849abc65d",
+            "cd76abf88b569f70f03698504abaa09faf3829d62f58e70dfdfe2d4d23429986",
+            "cdeacf8466d05e68507fb8802f023d9f5dc68bd2d7a83268d6064271382a7285",
+            "d8fb87d6b0f6082117dc435f25ad6742ac98bf861de8b83f289f52de07169955",
+            "eba0c7b82b6a039c07aaedc483f65123fadaf2d8514104e61039736cdc2a1dbd",
+            "f0972da74fbf5c4af37260ee11772f6879eaa94edfc33768225c9b501bceaaa2",
+            "fa6eaa5c4a1b5a16f115114ed8c4e78b3069e409c5330e000738e39b8791b87f",
+            "fd6a07100b7b94fba6ffa0e58514479dd0c86bff5dd720f6490c853a7ec7b516",
+            "fea83581a1a2135090f9bc7b20d52067dc7c828e62c75faa367634090e407848",
+            "ffa86d95d9b4d68697a7589a8929310cc077e5ee5088f88b58103cfbc094e9c2"
+          ]
+        }
+      },
+      "target": "craft 1 sharpened_blade",
+      "objective": "Craft at least 1 sharpened_blade during this task and obtain at least 1 sharpened_blade in your own possession. A product left on the ground does not count. Achieve this within 100 environment actions. This is the current evaluation objective.",
+      "follow_public": false,
+      "graph": {},
+      "queue": [
+        "sharpened_blade"
+      ],
+      "events": [],
+      "quotas": {},
+      "attempts": {},
+      "visits": {
+        "294a42fb1b982247fc68fbda8a34aff7b4943b23203cd59089004c14fa9c0d25": 1
+      },
+      "last_choice": {
+        "action": "inspect small_bag_0",
+        "reason": "known_FIFO_execution",
+        "queue": [
+          "sharpened_blade"
+        ],
+        "target": "craft 1 sharpened_blade"
+      },
+      "generation": 1,
+      "amount": 1,
+      "queue_needs": {},
+      "directed": true,
+      "batch": "learned",
+      "exploration_spent": 0,
+      "probes": {},
+      "trials": {},
+      "explore_pending": null,
+      "last_produced": "key",
+      "quantity_facts": {
+        "table": {
+          "state": {
+            "location": "lobby",
+            "location_full": "Raccoon Hospital, lobby",
+            "hands": {},
+            "equipment": {},
+            "ground": {
+              "coin": 10.0,
+              "key": 2.0,
+              "small_bag_0": 1.0,
+              "paper_1": 1.0,
+              "pen": 1.0,
+              "workbench": 1.0,
+              "lantern": 1.0
+            },
+            "neighbors": [
+              "ward",
+              "rooftop"
+            ],
+            "step": 29,
+            "feedback": "I inspected small_bag_0: A bloodstained messenger bag, still functional for carrying supplies.\nIt contains: no objects (capacity: 0/20).",
+            "public_goal": null
+          },
+          "places": {
+            "room": {
+              "objects": {
+                "coin": 1.0,
+                "workbench": 1.0,
+                "furnace": 1.0,
+                "iron_bar": 1.0
+              },
+              "step": 27,
+              "source": "public_ground_observation"
+            },
+            "lobby": {
+              "objects": {
+                "coin": 10.0,
+                "key": 2.0,
+                "small_bag_0": 1.0,
+                "paper_1": 1.0,
+                "pen": 1.0,
+                "workbench": 1.0,
+                "lantern": 1.0
+              },
+              "step": 29,
+              "source": "public_ground_observation"
+            }
+          },
+          "links": {
+            "room": [
+              "lobby"
+            ],
+            "lobby": [
+              "ward",
+              "rooftop"
+            ]
+          },
+          "containers": {
+            "small_bag_1": {
+              "counts": null,
+              "load": null,
+              "capacity": 20.0,
+              "location": "room",
+              "step": 6,
+              "source": "public_container_inspection"
+            },
+            "small_bag_0": {
+              "counts": {},
+              "load": 0.0,
+              "capacity": 20.0,
+              "location": "lobby",
+              "step": 29,
+              "source": "public_container_inspection"
+            }
+          },
+          "inventory": null,
+          "recipes": {
+            "splint": {
+              "quantities": null,
+              "ingredients": [
+                "wood_log",
+                "duct_tape"
+              ],
+              "step": 18,
+              "source": "public_inspection"
+            },
+            "wood_plank": {
+              "quantities": null,
+              "ingredients": [
+                "wood_log"
+              ],
+              "step": 18,
+              "source": "public_inspection"
+            },
+            "workbench": {
+              "quantities": null,
+              "ingredients": [
+                "wood_log",
+                "scrap_metal"
+              ],
+              "step": 18,
+              "source": "public_inspection"
+            }
+          },
+          "inspected": [
+            "inventory",
+            "small_bag_1",
+            "wood_log",
+            "small_bag_0"
+          ],
+          "guards": {
+            "room->lobby": {
+              "locked": false,
+              "required": null,
+              "expires_on": "explicit_locked_failure",
+              "source": "I used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.",
+              "step": 28
+            }
+          },
+          "observations": 58,
+          "events": [],
+          "pending_craft": null
+        },
+        "effects": [],
+        "failures": [],
+        "pending": null,
+        "produced": {
+          "key_blank": 1,
+          "key": 1
+        },
+        "target": "sharpened_blade",
+        "goal": "Craft at least 1 sharpened_blade during this task and obtain at least 1 sharpened_blade in your own possession. A product left on the ground does not count. Achieve this within 100 environment actions. This is the current evaluation objective.",
+        "amount": 1
+      },
+      "batch_decisions": [],
+      "mechanism_decision": {},
+      "in_episode": true,
+      "flags": {
+        "retry_context_fix": true,
+        "knowledge_gap_exploration": false,
+        "explore_execute_switch": false,
+        "resource_goal_guard": false
+      },
+      "retry_records": {
+        "inspect:small_bag_0": {
+          "action": "inspect small_bag_0",
+          "target": "small_bag_0",
+          "context": {
+            "location": "lobby",
+            "stations": {},
+            "materials": {},
+            "visible": true
+          },
+          "feedback": "I inspected small_bag_0: A bloodstained messenger bag, still functional for carrying supplies.\nIt contains: no objects (capacity: 0/20).",
+          "state": "SUCCESS",
+          "meaningful_trial": true,
+          "failure_type": null,
+          "retry_condition": null,
+          "actual_action_cost": 1,
+          "observed_resource_consumption": null,
+          "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+          "was_forward_trial": false,
+          "step": 29,
+          "retry_after_block": false
+        }
+      },
+      "attempt_log": [
+        {
+          "action": "inspect small_bag_0",
+          "target": "small_bag_0",
+          "context": {
+            "location": "lobby",
+            "stations": {},
+            "materials": {},
+            "visible": true
+          },
+          "feedback": "I inspected small_bag_0: A bloodstained messenger bag, still functional for carrying supplies.\nIt contains: no objects (capacity: 0/20).",
+          "state": "SUCCESS",
+          "meaningful_trial": true,
+          "failure_type": null,
+          "retry_condition": null,
+          "actual_action_cost": 1,
+          "observed_resource_consumption": null,
+          "resource_status": "UNKNOWN until independently audited; failed attempt cost retained",
+          "was_forward_trial": false,
+          "step": 29,
+          "retry_after_block": false
+        }
+      ],
+      "pending_probe": null,
+      "gap": {},
+      "gap_log": [],
+      "execution_mode": "EXPLORE",
+      "mode_signature": null,
+      "subgoals": {},
+      "mode_log": [],
+      "blocked_execution": null,
+      "stage7_decision": {},
+      "last_ready": [],
+      "public_quantity_rules": {},
+      "stage10": true,
+      "opportunistic": false,
+      "storage": false,
+      "failures10": {},
+      "actual_visits": {
+        "9a1e83b366974119d0d351883b0be1484dfb533c71aa321026f42f58aa5765df": 1,
+        "c0f7b15d8e20c4ed6dc6dd249f306743b6aa90c315cc47ef8e1d4e723d233f75": 1,
+        "eb0a937ac7abd11111db7effcb43b5fe4e18a4c6d07b0a5fe174d22c73e0f363": 1,
+        "cf0e9eb3bfb507236e0ed0e8d1981584f377ca9d21f5860fa4020bf6d79c0d42": 1,
+        "fa0aefdacc546a3958f1689af447d71cdda8a34c960e79ca52ac75f497b6fee2": 1,
+        "555bb541446e2e559cf7825fd9085db1c262c92283596eedbbf2483b143aad89": 1,
+        "9636d17632f227215740ad804e644f084849603d2a159b61276ea02d59280590": 1,
+        "b497532175671f76bd954b78a27d8f6a0d8744d9c0fb1b4bf3dac61d2d8ccb53": 1,
+        "965fd9d3d94272121e7dbbc37ecab05ceffc3a39df7a5627b56ea10dcd009280": 1,
+        "ac34238061a85acef1a9160ff2eb54c25cdca64bdeae10f482089ed54a943a79": 1,
+        "546584ac1c71ea06dd745aa996b3e10ff446e1af56b17fa83b29373edf8f6b5f": 1,
+        "0032f1d8adeb8de4b424e22079087f4488a77f7be29c6bcf73f59bb5352e8561": 1,
+        "f3cd8a7a56bee8d70d2ef200fde48161dcdfd4e5646e2e139f58389e4db03774": 1,
+        "576d40f37bb9b5fd740ae5ab3f89d70ad2a87e5dee218d69889ea907078bf7ff": 1,
+        "3a96cbe56917af1553b65290dba60f8718d36f9f333f9685b6a7c9a3d67841b7": 1,
+        "cf06a6aa579e1d468974a89949195ed37b89d45cb343a8dc6e4d0164dee8a399": 1,
+        "d2e6e3c4e71fbf915949758b42b1b4efb88619c0a2787be5e50bf0e7ae9c081b": 1,
+        "cb6bdf30d0ef0c2cb9399b8e3572432d0e25baab0a7931e54d7088b29e45a1d0": 1,
+        "6b473ad395806567eb94a8bfed53940295ac20bd30bc5ab2fb021b381f37a75b": 1,
+        "fbdbb130a62265badd3f76bc10041260277fbc180a080e5090a7ed7bb51eb5ee": 1,
+        "3aeffc6d0d9fe77f66a8468d8cc045f02e7396bd5f5e154c61b540e40cdd1430": 1,
+        "2d82c9f8ca6c9525de88e894fca30b8e39b7cc50e6ffb696ca57b02cbab28dc2": 1,
+        "4a60d1ac541f5041813426aa51001381f931bd77a05c40d761124f0e2dd062d3": 1,
+        "e25ccad2217dfa3f635c9f529bf01e2128087f68d29f59930430f52673dd1054": 1,
+        "f063c06c1d57aa768dabfb1b14ee918bcc4ba5a804c5a280e58d644ec24a02a6": 1,
+        "8f6cfb00f38cf81fa1195e746133815f02a6a59559b3c537d9e781da8709ed32": 1,
+        "ca04eaef4e228296d84f645f8ba1d44acd2786a7d958c78ee1c3d1b19a495d89": 1,
+        "6de8cda0265336c883e232b015e65159ead5101f1f3fa37163536cf5b56922b4": 1,
+        "4a5d3c4b2bab2b7d3b59786b7ff7ba842749e210c1b1a72fb5e27fcc17c7341e": 1
+      },
+      "condition_log": [
+        {
+          "action": "inspect small_bag_0",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 28,
+              "valid_until": "relevant public condition changes"
+            }
+          ]
+        }
+      ],
+      "decision10": {
+        "frozen_F0_candidate": "inspect small_bag_0",
+        "base_action": "wait",
+        "selected_action": "inspect small_bag_0",
+        "reason": "retain_F0",
+        "override": true,
+        "overlay_changed_F0": false,
+        "conditions": [
+          {
+            "action": "inspect small_bag_0",
+            "status": "UNKNOWN",
+            "conditions": [
+              {
+                "kind": "public_trial",
+                "status": "UNKNOWN",
+                "evidence": "no known negative condition",
+                "observed_step": 28,
+                "valid_until": "relevant public condition changes"
+              }
+            ]
+          }
+        ],
+        "selected_meta": null,
+        "stash_memory": {},
+        "batch_rule": "inherited_F0_unchanged",
+        "candidate_limit": 32
+      },
+      "selected_meta": null,
+      "stashes": {},
+      "stash_events": [],
+      "storage_intent": null,
+      "stash_spent": 0,
+      "opportunity_spent": 0,
+      "loss_locations": {},
+      "explore_depth": 0,
+      "variant16": "S1_P1_P3",
+      "step16": 1,
+      "risk16": false,
+      "health16": 100.0,
+      "audit16": {
+        "base_proposal": "wait",
+        "P1_action": "inspect small_bag_0",
+        "selected": "inspect small_bag_0",
+        "checks": [
+          {
+            "module": "finish",
+            "candidate": null,
+            "conditions": {
+              "reason": "final_nominal_requirements_UNKNOWN"
+            }
+          }
+        ],
+        "modules": [
+          "finish"
+        ],
+        "selected_module": null,
+        "remaining_actions": 100
+      },
+      "intent20": null,
+      "intent_log20": [],
+      "acceptance20": [],
+      "request_contexts20": [],
+      "plan_calls20": 0,
+      "blocker20": {},
+      "preconditions20": {},
+      "precondition_events20": [],
+      "active_precondition20": null,
+      "probe_candidates20": [],
+      "acquisitions20": [],
+      "audit20": {
+        "source": "known_FIFO_execution",
+        "final_action": "inspect small_bag_0",
+        "assessment": {
+          "action": "inspect small_bag_0",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 28,
+              "valid_until": "relevant public condition changes"
+            }
+          ]
+        },
+        "accepted_intent": null,
+        "prerequisite": null,
+        "blocker": {},
+        "acquisition": [],
+        "transaction": {
+          "exploration_before": 0,
+          "exploration_after": 0,
+          "executed_probe": null,
+          "discarded_probes": 0,
+          "failures_unchanged": true,
+          "attempts_unchanged": true
+        },
+        "original_task": "craft 1 sharpened_blade",
+        "internal_horizon": 100
+      },
+      "outcome20": {
+        "action": "inspect small_bag_0",
+        "feedback": "I inspected small_bag_0: A bloodstained messenger bag, still functional for carrying supplies.\nIt contains: no objects (capacity: 0/20).",
+        "new_recipe_names": [],
+        "new_preconditions": [],
+        "public_craft_success": false,
+        "active_intent": null,
+        "latest_intent_end": [],
+        "preconditions": {},
+        "exploration_spent": 0,
+        "lifecycle": [],
+        "suspended_intent": null,
+        "recovery": {
+          "state": "EXECUTE",
+          "reason": null
+        }
+      },
+      "evidence20": {},
+      "request_evidence20": [],
+      "context_counts20": {},
+      "lifecycle20": [],
+      "suspended20": null,
+      "recovery20": {
+        "state": "EXECUTE",
+        "reason": null
+      },
+      "recovery_log20": [],
+      "entry_attempts20": {
+        "70712836ded44a3149074a2b2170914445974f757abc4511fe68b8f8c95ad99e": 1,
+        "c0f7b15d8e20c4ed6dc6dd249f306743b6aa90c315cc47ef8e1d4e723d233f75": 1,
+        "eb0a937ac7abd11111db7effcb43b5fe4e18a4c6d07b0a5fe174d22c73e0f363": 1,
+        "cf0e9eb3bfb507236e0ed0e8d1981584f377ca9d21f5860fa4020bf6d79c0d42": 1,
+        "5d4a1aa96c347d439191c36f15750c9c5434739b2a5b7531d1d0786d818e265f": 1,
+        "555bb541446e2e559cf7825fd9085db1c262c92283596eedbbf2483b143aad89": 1,
+        "9636d17632f227215740ad804e644f084849603d2a159b61276ea02d59280590": 1,
+        "b497532175671f76bd954b78a27d8f6a0d8744d9c0fb1b4bf3dac61d2d8ccb53": 1,
+        "965fd9d3d94272121e7dbbc37ecab05ceffc3a39df7a5627b56ea10dcd009280": 1,
+        "ac34238061a85acef1a9160ff2eb54c25cdca64bdeae10f482089ed54a943a79": 1,
+        "546584ac1c71ea06dd745aa996b3e10ff446e1af56b17fa83b29373edf8f6b5f": 1,
+        "0032f1d8adeb8de4b424e22079087f4488a77f7be29c6bcf73f59bb5352e8561": 1,
+        "f3cd8a7a56bee8d70d2ef200fde48161dcdfd4e5646e2e139f58389e4db03774": 1,
+        "576d40f37bb9b5fd740ae5ab3f89d70ad2a87e5dee218d69889ea907078bf7ff": 1,
+        "3a96cbe56917af1553b65290dba60f8718d36f9f333f9685b6a7c9a3d67841b7": 1,
+        "cf06a6aa579e1d468974a89949195ed37b89d45cb343a8dc6e4d0164dee8a399": 1,
+        "d2e6e3c4e71fbf915949758b42b1b4efb88619c0a2787be5e50bf0e7ae9c081b": 1,
+        "cb6bdf30d0ef0c2cb9399b8e3572432d0e25baab0a7931e54d7088b29e45a1d0": 1,
+        "6b473ad395806567eb94a8bfed53940295ac20bd30bc5ab2fb021b381f37a75b": 1,
+        "fbdbb130a62265badd3f76bc10041260277fbc180a080e5090a7ed7bb51eb5ee": 1,
+        "3aeffc6d0d9fe77f66a8468d8cc045f02e7396bd5f5e154c61b540e40cdd1430": 1,
+        "2d82c9f8ca6c9525de88e894fca30b8e39b7cc50e6ffb696ca57b02cbab28dc2": 1,
+        "4a60d1ac541f5041813426aa51001381f931bd77a05c40d761124f0e2dd062d3": 1,
+        "e25ccad2217dfa3f635c9f529bf01e2128087f68d29f59930430f52673dd1054": 1,
+        "f063c06c1d57aa768dabfb1b14ee918bcc4ba5a804c5a280e58d644ec24a02a6": 1,
+        "8f6cfb00f38cf81fa1195e746133815f02a6a59559b3c537d9e781da8709ed32": 1,
+        "ca04eaef4e228296d84f645f8ba1d44acd2786a7d958c78ee1c3d1b19a495d89": 1,
+        "6de8cda0265336c883e232b015e65159ead5101f1f3fa37163536cf5b56922b4": 1,
+        "4a5d3c4b2bab2b7d3b59786b7ff7ba842749e210c1b1a72fb5e27fcc17c7341e": 1
+      },
+      "last_plan20": null,
+      "observation_count20": 29
+    },
+    "memory": [
+      "\nCurrent Time: 0001-01-01 12:10:00\nCurrent Location: Tutorial, room\n\nI picked up key_blank.\n\nTutorial Step 25 complete.\nTutorial Step 26 — Craft a key.\nRequired action: `craft 1 key`\n\nWarning lights flash in room. The facility's quarantine sensors are detecting biological contamination from the corpses. A lockdown may be imminent — burn the corpses or leave soon!\n\nI am holding 1 pen, 1 key_blank.\nI have equipped 1 small_bag_1.\nI see 1 coin, 1 workbench, 1 furnace, 1 iron_bar near me.\nI see selene_wyatt nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: lobby.\n\nAction: craft 1 key\n\nCurrent Time: 0001-01-01 12:20:00\nCurrent Location: Tutorial, room\n\nI successfully crafted 1 key. It is now on the ground.\n\nTutorial Step 26 complete.\nTutorial Step 27 — Pick up the key.\nNow hold the key out on your hand for entering a locked area.\nRequired action: `pick up key`\n\nA foul stench rises from the unburned corpses in room. The area is becoming corrupted.\n\nI am holding 1 pen.\nI have equipped 1 small_bag_1.\nI see 1 coin, 1 workbench, 1 furnace, 1 iron_bar, 1 key near me.\nI see selene_wyatt nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: lobby.\n",
+      "\nCurrent Time: 0001-01-01 12:20:00\nCurrent Location: Tutorial, room\n\nI successfully crafted 1 key. It is now on the ground.\n\nTutorial Step 26 complete.\nTutorial Step 27 — Pick up the key.\nNow hold the key out on your hand for entering a locked area.\nRequired action: `pick up key`\n\nA foul stench rises from the unburned corpses in room. The area is becoming corrupted.\n\nI am holding 1 pen.\nI have equipped 1 small_bag_1.\nI see 1 coin, 1 workbench, 1 furnace, 1 iron_bar, 1 key near me.\nI see selene_wyatt nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: lobby.\n\nAction: pick up key\n\nCurrent Time: 0001-01-01 12:30:00\nCurrent Location: Tutorial, room\n\nI picked up key.\n\nTutorial Step 27 complete.\nTutorial Step 28 — Enter.\nWith the key in your hand, enter the locked area to leave the tutorial.\nRequired action: `enter lobby`\n\nI am holding 1 pen, 1 key.\nI have equipped 1 small_bag_1.\nI see 1 coin, 1 workbench, 1 furnace, 1 iron_bar near me.\nI see selene_wyatt nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: lobby.\n",
+      "\nCurrent Time: 0001-01-01 12:30:00\nCurrent Location: Tutorial, room\n\nI picked up key.\n\nTutorial Step 27 complete.\nTutorial Step 28 — Enter.\nWith the key in your hand, enter the locked area to leave the tutorial.\nRequired action: `enter lobby`\n\nI am holding 1 pen, 1 key.\nI have equipped 1 small_bag_1.\nI see 1 coin, 1 workbench, 1 furnace, 1 iron_bar near me.\nI see selene_wyatt nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: lobby.\n\nAction: enter lobby\n\nCurrent Time: 0001-01-01 12:40:00\nCurrent Location: Raccoon Hospital, lobby\n\nI used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.\n\nI am holding no objects.\nI have equipped no objects.\nI see 10 coin, 2 key, 1 small_bag_0, 1 paper_1, 1 pen, 1 workbench, 1 lantern near me.\nI see alex_smith nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: ward, rooftop.\n",
+      "Recovery objective: Craft at least 1 sharpened_blade during this task and obtain at least 1 sharpened_blade in your own possession. A product left on the ground does not count. Achieve this within 100 environment actions. This is the current evaluation objective.",
+      "\nCurrent Time: 0001-01-01 12:40:00\nCurrent Location: Raccoon Hospital, lobby\n\nI used a key to unlock the path to lobby. I entered lobby.\nTutorial Finished. You have exited to spawn.\n\nIn addition to the actions in the tutorial, there are some other actions available:\n- barricade <area_name>\n- burn corpses \n- concoct <herb1_name> <herb2_name>\n- eavesdrop <area_name>\n- refuel <light_source_name>\n- shove <furniture_name> <npc_name>\n\nYou awaken on the cold tile floor of Raccoon Hospital's lobby. The fluorescent lights flicker overhead, casting sickly shadows across overturned gurneys and shattered glass. The air reeks of antiseptic and something far worse — decay. You can hear shuffling footsteps echoing from deeper within the building. A note is pinned to your sleeve: 'Find alex_smith. She knows the way out.' You need to survive, find answers, and escape before whatever lurks in this hospital finds you first.The hospital lobby is in ruins. Emergency lights bathe everything in a dull red glow. You need to find alex_smith — she's somewhere in this building and may know how to escape. But first, you should arm yourself. The shuffling sounds from deeper in the hospital are growing louder.\n\nChapter goal: Survive the hospital and reach the morgue.\nalex_smith enters the area.\n\nI am holding no objects.\nI have equipped no objects.\nI see 10 coin, 2 key, 1 small_bag_0, 1 paper_1, 1 pen, 1 workbench, 1 lantern near me.\nI see alex_smith nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: ward, rooftop.\n\nExecuted action: inspect small_bag_0\nSource: known_FIFO_execution"
+    ]
+  },
+  "public_observation": {
+    "step": 29,
+    "text": "\nCurrent Time: 0001-01-01 12:50:00\nCurrent Location: Raccoon Hospital, lobby\n\nI inspected small_bag_0: A bloodstained messenger bag, still functional for carrying supplies.\nIt contains: no objects (capacity: 0/20).\n\nI am holding no objects.\nI have equipped no objects.\nI see 10 coin, 2 key, 1 small_bag_0, 1 paper_1, 1 pen, 1 workbench, 1 lantern near me.\nI see alex_smith nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: ward, rooftop.\n"
+  },
+  "status": "method_exception",
+  "decision_scope": "last selected action or stalled choice; check executed_action and status"
+}
