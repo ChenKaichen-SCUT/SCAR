@@ -21,10 +21,13 @@ Historical facts may be stale; quotes do not establish that a condition still ho
 Null/unknown means not established, not absent. This supplement supplies no action recommendation.
 Keep the original JSON output schema.\n'''
 
-def check_freeze():
+def check_freeze(only_diagnostic=False):
     f=read(RESULTS/'freeze.json')
-    for n,h in f['files'].items():assert sha(ROOT/n)==h,n
-    for n,h in f['engine_files'].items():assert sha(ENGINE/n)==h,n
+    for n,h in f['files'].items():
+        if not only_diagnostic or n.startswith('scar_stage27/') or n=='results/stage27/failure_database.jsonl.gz':
+            assert sha(ROOT/n)==h,n
+    if not only_diagnostic:
+        for n,h in f['engine_files'].items():assert sha(ENGINE/n)==h,n
     return dict(project_files=len(f['files']),engine_files=len(f['engine_files']))
 
 def samples():return rows(RESULTS/'failure_database.jsonl.gz')

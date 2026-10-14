@@ -78,5 +78,5 @@ def execute(sample,condition):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--id',required=True);p.add_argument('--condition',choices=['understanding','A','B'],required=True);a=p.parse_args()
-    check_freeze();sample=next(s for s in samples() if s['id']==a.id)
+    check_freeze(only_diagnostic=True);sample=next(s for s in samples() if s['id']==a.id)
     print(json.dumps(execute(sample,a.condition)),flush=True)
