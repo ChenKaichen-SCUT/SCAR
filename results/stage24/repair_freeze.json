@@ -1,0 +1,39 @@
+{
+  "user_authorized": true,
+  "scope": "Normalize only whitespace for evidence matching; preserve first attempts, resume original episodes.",
+  "overrides": {
+    "agents/agc/control.py": {
+      "before": "aa795dbb7c331e45833a91085b5ce373f8e76ca83cc16ac9a00d6133f29c8414",
+      "after": "b3eed1f0a47c1eb944bef3fcf005feb5fc92817025b4caa608f5236d8b01d738"
+    },
+    "scar_stage24/common.py": {
+      "before": "59c8f46ad6e9e340a0272f725d20fca1a5361fc2ee20f1b2f71827218dfd8be9",
+      "after": "a12248060fd2497f73ba9efbef6681cc5e21016ec74104156fa59f079b871ad1"
+    }
+  },
+  "new_files": {
+    "scar_stage24/repair.py": "1c69acbc5595700c7abf4ced159b6d0a2c869d99ea5dada89e0d9c5189088927"
+  },
+  "checks": [
+    {
+      "game": "remnant",
+      "resume_before_action": 6,
+      "old_rejected": true,
+      "new_accepts_existing_response": true,
+      "new_model_calls": 0
+    },
+    {
+      "game": "mark",
+      "resume_before_action": 106,
+      "old_rejected": true,
+      "new_accepts_existing_response": true,
+      "new_model_calls": 0
+    }
+  ],
+  "policy_edit": {
+    "file": "agents/agc/control.py",
+    "removed_lines": 1,
+    "added_lines": 2
+  },
+  "new_model_calls_before_repair": 0
+}

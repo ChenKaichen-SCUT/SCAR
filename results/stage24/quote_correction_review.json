@@ -1,0 +1,73 @@
+{
+  "applied": false,
+  "new_model_calls": 0,
+  "patch": "reports/stage24/空白字符规范化候选修复.patch",
+  "changed_file": "agents/agc/control.py",
+  "removed_lines": 1,
+  "added_lines": 2,
+  "unchanged": "No action/goal generation, no word/punctuation rewriting, no thresholds or game rules changed.",
+  "cases": [
+    {
+      "game": "remnant",
+      "step": 6,
+      "action": "inspect small_bag_1",
+      "quote": "Tutorial Step 6 — Inspect the bag. Required action: `inspect small_bag_1`",
+      "strict_reasons": [
+        "goal_evidence_not_an_exact_public_quote"
+      ],
+      "whitespace_equivalent_public_quote": true,
+      "observation": {
+        "step": 5,
+        "text": "\nCurrent Time: 0001-01-01 08:50:00\nCurrent Location: Tutorial, room\n\nI stored 1 coin in small_bag_1.\n\nTutorial Step 5 complete.\nTutorial Step 6 — Inspect the bag.\nRequired action: `inspect small_bag_1`\n\nI am holding 1 small_bag_1.\nI have equipped no objects.\nI see no objects near me.\nI see no one nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: hall.\n"
+      },
+      "before_hash": "acacde7facc88f0550dfe1b8f38994e00dd8d716783f0ba52a21d754d7c55c3f",
+      "native_feedback": {
+        "step": 6,
+        "text": "\nCurrent Time: 0001-01-01 09:00:00\nCurrent Location: Tutorial, room\n\nI inspected small_bag_1: A small cloth bag acting as lightweight storage for essentials.\nIt contains: 1 coin (capacity: 0/10).\n\nTutorial Step 6 complete.\nTutorial Step 7 — Take the coin out of the bag.\nRequired action: `take out coin small_bag_1`\n\nI am holding 1 small_bag_1.\nI have equipped no objects.\nI see no objects near me.\nI see no one nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 0.\n\nNeighboring areas: hall.\n"
+      },
+      "native_reward": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 0,
+        "exploration": 0,
+        "death": 0,
+        "trade": 0,
+        "quest": 0,
+        "side_quest": 0
+      },
+      "invalid_action": false,
+      "scope": "Offline same-state one-action replay, no model call; not a resumed AGC run."
+    },
+    {
+      "game": "mark",
+      "step": 106,
+      "action": "enter library",
+      "quote": "remy says: The trail leads to Night Market, backstreets. Go there and find where the pages have been carried off.",
+      "strict_reasons": [
+        "goal_evidence_not_an_exact_public_quote"
+      ],
+      "whitespace_equivalent_public_quote": true,
+      "observation": {
+        "step": 105,
+        "text": "\nCurrent Time: 0001-01-02 01:30:00\nCurrent Location: Old Castle, hall\n\nI talked to remy.\nremy says: The trail leads to Night Market, backstreets.\nGo there and find where the pages have been carried off.\n\nI am holding 1 torch.\nI have equipped no objects.\nI see 7 coin, 1 small_pouch_0, 1 small_pouch_1, 2 berry, 1 workbench, 2 torch near me.\nI see scrap_goblin_0, remy nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 67.\nMy experience is at 5.\n\nNeighboring areas: armory, library.\n"
+      },
+      "before_hash": "bc9a574a132c0ef9e6908feac0d2baf257394398d48876a193042e3d6aee11bf",
+      "native_feedback": {
+        "step": 106,
+        "text": "\nCurrent Time: 0001-01-02 01:40:00\nCurrent Location: Old Castle, library\n\nI entered library.\nI was attacked by scrap_goblin_8 and lost 1 HP.\n\nI am holding 1 torch.\nI have equipped no objects.\nI see 9 resin_clump, 5 fiber_bundle, 4 oak_log, 8 bread, 2 coin, 1 goblin_token, 1 hide_scrap, 1 cloth, 1 copper_sword near me.\nI see lydia_rowe, librarian_rowan, scrap_goblin_8 nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 66.\nMy experience is at 5.\n\nNeighboring areas: hall.\n"
+      },
+      "native_reward": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 0,
+        "exploration": 0,
+        "death": 0,
+        "trade": 0,
+        "quest": 0,
+        "side_quest": 0
+      },
+      "invalid_action": false,
+      "scope": "Offline same-state one-action replay, no model call; not a resumed AGC run."
+    }
+  ]
+}

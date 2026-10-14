@@ -21,9 +21,15 @@ def gzwrite(p,data):
 def source(game):return ROOT/'results/stage22/runs'/f'{game}__Stage18-Fixed'
 def check_freeze():
     d=read(RESULTS/'freeze.json')
-    for n,h in d['files'].items():assert sha(ROOT/n)==h,n
+    correction=read(RESULTS/'repair_freeze.json') if (RESULTS/'repair_freeze.json').exists() else {}
+    overrides=correction.get('overrides',{})
+    for n,h in d['files'].items():
+        expected=overrides.get(n,{}).get('after',h)
+        if n in overrides:assert overrides[n]['before']==h,n
+        assert sha(ROOT/n)==expected,n
     for n,h in d['engine_files'].items():assert sha(ENGINE/n)==h,n
-    return dict(project_files=len(d['files']),engine_files=len(d['engine_files']))
+    for n,h in correction.get('new_files',{}).items():assert sha(ROOT/n)==h,n
+    return dict(project_files=len(d['files']),engine_files=len(d['engine_files']),authorized_corrections=list(overrides))
 def offline():
     import socket
     def deny(*a,**k):raise RuntimeError('Offline verification: network prohibited')

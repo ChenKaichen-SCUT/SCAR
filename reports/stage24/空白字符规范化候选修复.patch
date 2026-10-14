@@ -1,0 +1,12 @@
+--- a/agents/agc/control.py
++++ b/agents/agc/control.py
+@@ -127,7 +127,8 @@
+         if not isinstance(quote,str) or not 4<=len(quote)<=500:hard.append('missing_or_oversized_public_evidence')
+         else:
+             corpus=self.public_recent+[obs['text']]+([e['quote'] for e in self.goal.evidence] if self.goal else [])
+-            if not any(quote in text for text in corpus):hard.append('goal_evidence_not_an_exact_public_quote')
++            normalized_quote=' '.join(quote.split())
++            if not any(normalized_quote in ' '.join(text.split()) for text in corpus):hard.append('goal_evidence_not_an_exact_public_quote')
+         if self.goal and self.goal.status in ('INVALID','COMPLETED'):
+             if description==self.goal.goal_description:hard.append('retaining_invalid_or_completed_goal')
+             if self.goal.status=='INVALID' and action==self.goal.goal_description:hard.append('executing_literal_invalid_goal')
