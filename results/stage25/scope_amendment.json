@@ -1,0 +1,164 @@
+{
+  "user_instruction": "不要跑9局，只跑3局，每个游戏一次",
+  "created_utc": "2026-10-14T06:19:59.018924+00:00",
+  "formal_cases": [
+    "remnant__s42__AGC-v2",
+    "mark__s42__AGC-v2",
+    "metropolis__s42__AGC-v2"
+  ],
+  "cancelled_cases": [
+    "remnant__s43__AGC-v2",
+    "remnant__s44__AGC-v2",
+    "mark__s43__AGC-v2",
+    "mark__s44__AGC-v2",
+    "metropolis__s43__AGC-v2",
+    "metropolis__s44__AGC-v2"
+  ],
+  "cancellation": {
+    "user_requested_one_run_per_game": true,
+    "retained_seeds": [
+      42
+    ],
+    "cancelled_seeds": [
+      43,
+      44
+    ],
+    "requested_at_unix": 1791958740.0654323,
+    "mechanism": "SQLite before-insert abort on the cancelled episode ledger: permit in-flight response to settle, block every next request before dispatch.",
+    "cases": [
+      {
+        "case": "remnant__s43__AGC-v2",
+        "seed": 43,
+        "game": "remnant",
+        "progress_at_cancel": {
+          "step": 46,
+          "scores": {
+            "unique_kill": 0,
+            "kill": 0,
+            "craft": 0,
+            "exploration": 2,
+            "death": 0,
+            "trade": 0,
+            "quest": 1,
+            "side_quest": 0
+          },
+          "cost_usd": 0.029670876,
+          "requests": 50,
+          "updated": 1791958739.2867463
+        }
+      },
+      {
+        "case": "remnant__s44__AGC-v2",
+        "seed": 44,
+        "game": "remnant",
+        "progress_at_cancel": {
+          "step": 46,
+          "scores": {
+            "unique_kill": 0,
+            "kill": 0,
+            "craft": 0,
+            "exploration": 2,
+            "death": 0,
+            "trade": 0,
+            "quest": 1,
+            "side_quest": 0
+          },
+          "cost_usd": 0.029605103999999997,
+          "requests": 47,
+          "updated": 1791958739.676721
+        }
+      },
+      {
+        "case": "mark__s43__AGC-v2",
+        "seed": 43,
+        "game": "mark",
+        "progress_at_cancel": {
+          "step": 43,
+          "scores": {
+            "unique_kill": 0,
+            "kill": 0,
+            "craft": 1,
+            "exploration": 1,
+            "death": 0,
+            "trade": 0,
+            "quest": 1,
+            "side_quest": 0
+          },
+          "cost_usd": 0.024342443999999998,
+          "requests": 43,
+          "updated": 1791958739.8233378
+        }
+      },
+      {
+        "case": "mark__s44__AGC-v2",
+        "seed": 44,
+        "game": "mark",
+        "progress_at_cancel": {
+          "step": 26,
+          "scores": {
+            "unique_kill": 0,
+            "kill": 0,
+            "craft": 0,
+            "exploration": 0,
+            "death": 0,
+            "trade": 0,
+            "quest": 0,
+            "side_quest": 0
+          },
+          "cost_usd": 0.013010232,
+          "requests": 26,
+          "updated": 1791958739.7148652
+        }
+      },
+      {
+        "case": "metropolis__s43__AGC-v2",
+        "seed": 43,
+        "game": "metropolis",
+        "progress_at_cancel": {
+          "step": 19,
+          "scores": {
+            "unique_kill": 0,
+            "kill": 0,
+            "craft": 0,
+            "exploration": 4,
+            "death": 0,
+            "trade": 0,
+            "quest": 7,
+            "side_quest": 1
+          },
+          "cost_usd": 0.013631639999999999,
+          "requests": 19,
+          "updated": 1791958737.5462878
+        }
+      },
+      {
+        "case": "metropolis__s44__AGC-v2",
+        "seed": 44,
+        "game": "metropolis",
+        "progress_at_cancel": {
+          "step": 21,
+          "scores": {
+            "unique_kill": 0,
+            "kill": 0,
+            "craft": 0,
+            "exploration": 3,
+            "death": 0,
+            "trade": 0,
+            "quest": 4,
+            "side_quest": 0
+          },
+          "cost_usd": 0.014401404,
+          "requests": 21,
+          "updated": 1791958738.0086715
+        }
+      }
+    ]
+  },
+  "frozen_policy_unchanged": true,
+  "original_nine_case_protocol_preserved": true,
+  "effective_repetitions_per_game": 1,
+  "decision_adjustment": "Use the same reward thresholds with one seed42 observation per game; remove replication-based 2/3 and 3/3 requirements. Treat all conclusions as one-sample descriptive observations.",
+  "classify_success": "mark>=11 and chapter1; remnant>1 and no action-reliability termination; metropolis>=7 and chapter1",
+  "classify_partial": "Otherwise, at least one game improves Stage24 reward by >=1, or remnant avoids action-reliability termination while reward>=1.",
+  "cost_scope": "All paid responses from cancelled seeds remain in total cost, reported separately, excluded from formal performance metrics by explicit user instruction."
+}
