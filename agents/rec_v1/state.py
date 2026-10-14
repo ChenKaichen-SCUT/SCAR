@@ -1,0 +1,179 @@
+"""Tracks disclosed facts only. No environment internals, maps or item rules."""
+import copy
+import re
+from collections import Counter
+from agents.agc.state import extract
+from scar.io import digest
+
+def failed(obs):
+    x=extract(obs)
+    return bool(x['failed'] or re.search(r'^Failed to\b',x['feedback'],re.I))
+
+def craft(action):
+    m=re.fullmatch(r'craft (\d+(?:\.\d+)?) (\S+)',action or '')
+    return (m[2],float(m[1])) if m else (None,None)
+
+def visible(obs):return extract(obs)['hands'] is not None
+
+class Tracker:
+    def __init__(self):
+        self.recipes={};self.stations={};self.tools={};self.containers={};self.area_views={}
+        self.failures=[];self.loss_patterns=[];self.completed=[];self.task=None;self.current=None
+
+    def to_dict(self):return copy.deepcopy(self.__dict__)
+
+    @classmethod
+    def from_dict(cls,state):
+        obj=cls();obj.__dict__.update(copy.deepcopy(state));return obj
+
+    def ingest(self,obs):
+        state=extract(obs);step=int(obs['step']);text=obs['text']
+        # Parse the environment's public disclosure grammar, never a recipe file.
+        for m in re.finditer(r'\b([a-z][a-z0-9_]*) \(([^()\n]+)\)',text):
+            raw=m[2];parts=raw.removeprefix('made of ').split(', ');ingredients={}
+            for part in parts:
+                p=re.fullmatch(r'(?:(\d+(?:\.\d+)?) )?([a-z][a-z0-9_]*)',part)
+                if not p:break
+                ingredients[p[2]]=float(p[1]) if p[1] else None
+            else:
+                if not ingredients:continue
+                old=self.recipes.get(m[1]);precise=all(q is not None for q in ingredients.values())
+                if old and old['precise'] and not precise:continue
+                self.recipes[m[1]]=dict(ingredients=ingredients,precise=precise,quote=m[0],step=step)
+        inspected=re.search(r'I inspected ([^:\n]+):',text)
+        if inspected:
+            description=text[inspected.end():].split('\n')[0]
+            if re.search(r'\btool\b',description,re.I):self.tools[inspected[1]]=dict(quote=description,step=step)
+        if inspected and state['observed_container_contents'] is not None:
+            self.containers[inspected[1]]=dict(contents=state['observed_container_contents'],step=step,
+                location=state['location'],quote=state['feedback'])
+        if state['ground'] is not None:
+            self.area_views[state['location']]=dict(ground=state['ground'],step=step)
+        self.current=dict(step=step,location=state['location'],hands=state['hands'],equipment=state['equipment'],
+            ground=state['ground'],visibility='observed' if visible(obs) else 'unknown_or_obscured',
+            neighbors=state['neighbors'],npcs=state['npcs'])
+        return self.current
+
+    def inventory(self):
+        s=self.current or {};held=s.get('hands');equipment=s.get('equipment')
+        if held is None:return dict(owned_counts=None,known_container_contents={},unknown=True)
+        owned=Counter(held)+Counter(equipment or {});contents={};unknown=[]
+        for name in list(owned):
+            if name in self.containers:
+                record=self.containers[name];contents[name]=record
+                if record['contents'] is not None:owned.update(record['contents'])
+                else:unknown.append(name)
+        return dict(owned_counts=dict(owned),known_container_contents=contents,
+            unknown=bool(unknown),unknown_container_contents=unknown,
+            scope='observed lower bound: public hands/equipment plus last observed contents of currently carried containers; uninspected contents and hidden inventory are unknown')
+
+    def fingerprint(self):
+        return digest(dict(state=self.current_without_time(),inventory=self.inventory(),
+            disclosed_recipes={k:v['ingredients'] for k,v in self.recipes.items()},
+            disclosed_stations={k:v['name'] for k,v in self.stations.items()}))
+
+    def current_without_time(self):
+        return {k:v for k,v in (self.current or {}).items() if k!='step'}
+
+    def requirements(self,goal,action=''):
+        target,amount=craft(action);description=goal or '';lower=description.lower()
+        matches=[name for name in self.recipes if re.search(r'(?<![a-z0-9_])'+re.escape(name)+r'(?![a-z0-9_])',lower)]
+        explicit=re.search(r'\bcraft(?:ing)?\s+(?:(?:a|an|the)\s+)?(?:(\d+(?:\.\d+)?)\s+)?([a-z][a-z0-9_]*)',lower)
+        if target is None:
+            if explicit and explicit[2] in self.recipes:target=explicit[2];amount=float(explicit[1] or 1)
+            elif self.task and self.task['goal']==description:target=self.task['target'];amount=self.task['amount']
+            elif len(matches)==1:target=matches[0];amount=1.
+        if target is None or target not in self.recipes:return dict(goal=description,target=target,known=False,protected={},missing={},reason='No unambiguous publicly disclosed recipe for this goal.')
+        # A successful production attempt discharges that production requirement.
+        if not craft(action)[0] and self.task and self.task.get('completed') and self.task['target']==target and self.task['goal']==description:
+            return dict(goal=description,target=target,known=False,protected={},missing={},reason='This production attempt already completed in public feedback.')
+        amount=amount or 1.;recipe=self.recipes[target];required={k:(v*amount if v is not None else None) for k,v in recipe['ingredients'].items()}
+        inventory=self.inventory();owned=inventory['owned_counts'];missing={k:(max(0.,v-(owned or {}).get(k,0)) if v is not None and owned is not None and not inventory['unknown'] else None) for k,v in required.items()}
+        return dict(goal=description,target=target,known=True,amount=amount,requirements=required,protected=required,
+            missing=missing,missing_scope='gap in observed ownership only, not proof of global absence or crafting impossibility',
+            recipe=recipe,station=self.stations.get(target),quantity_scope='explicit attempted quantity or one disclosed recipe unit; unspecified whole-goal total remains unknown')
+
+    def summary(self,goal):
+        req=self.requirements(goal)
+        return dict(current_state=self.current,inventory=self.inventory(),required_state=req,
+            known_tools_and_facilities={k:v for k,v in self.stations.items() if k==req.get('target')},
+            publicly_identified_tools=self.tools,
+            known_failed_actions=[dict(action=x['action'],quote=x['quote'],step=x['step']) for x in self.failures if x['fingerprint']==self.fingerprint()][-4:],
+            completed_subgoals=self.completed[-4:],
+            evidence_boundary='Only public observations and executed transitions; unknown is not absent. This is not an action plan.')
+
+    def assess(self,proposal):
+        action=proposal.get('action','') if isinstance(proposal,dict) else ''
+        goal=proposal.get('goal_description','') if isinstance(proposal,dict) else ''
+        if not isinstance(action,str) or not isinstance(goal,str):return dict(decision='ALLOW',reasons=[],requirements=None)
+        action=action.strip();req=self.requirements(goal,action);reasons=[]
+        # Transfers to an already carried container preserve custody and are not
+        # classified as destruction merely because the resource is required.
+        loss=re.fullmatch(r'(drop|discard|sell|throw|eat|disassemble) (?:(\d+(?:\.\d+)?) )?(\S+)(?: (.+))?',action)
+        if loss and loss[3] in req.get('protected',{}):
+            item=loss[3];owned=self.inventory()['owned_counts'];needed=req['protected'][item]
+            if owned is not None and owned.get(item,0)>0:
+                qty=float(loss[2]) if loss[2] else None
+                if needed is None or qty is None or owned[item]-qty<needed:
+                    reasons.append(dict(kind='required_resource_custody_risk',item=item,held_or_carried=owned[item],required=needed,
+                        evidence=req['recipe'],certainty='risk_only',
+                        statement='The proposal removes or consumes a publicly required resource. A drop may remain recoverable; reconsider the tradeoff from public evidence.'))
+        previous=next((x for x in reversed(self.failures) if x['action']==action and x['fingerprint']==self.fingerprint()),None)
+        fully_observed=bool(self.current and all(self.current[k] is not None for k in ['hands','equipment','ground','npcs']) and not self.inventory()['unknown'])
+        if previous and fully_observed:
+            reasons.append(dict(kind='unchanged_public_failure',evidence=previous,certainty='observed_same_public_context',
+                statement='This exact action was rejected and the tracked public state has not changed.'))
+        removal=re.fullmatch(r'(?:drop|unequip) (\S+)|store (\d+(?:\.\d+)?) (\S+) (\S+)',action)
+        if removal and self.current and self.current['visibility']=='observed':
+            item=removal[1] or removal[3];held=(self.current['hands'] or {}).get(item,0)
+            qty=float(removal[2]) if removal[2] else held
+            destinations=set(self.current['hands'] or {})|set(self.current['equipment'] or {})|set(self.current['ground'] or {})
+            destination_observed=not removal[4] or removal[4] in destinations
+            if held>0 and qty>=held and destination_observed:
+                event=next((x for x in reversed(self.loss_patterns) if x['item']==item and x['location']==self.current['location']),None)
+                if event:
+                    reasons.append(dict(kind='observed_condition_loss_risk',item=item,evidence=event,certainty='observational_not_causal',
+                        statement='Previously, removing this held object here coincided with loss of visible state. Reconsider the current condition dependency.'))
+        move=re.fullmatch(r'enter (.+)',action)
+        if move and req.get('known') and req.get('station') and all(v==0 for v in req['missing'].values()):
+            station=req['station']['name'];ground=self.current.get('ground')
+            destinations=[v for k,v in self.area_views.items() if k and k.split(',')[-1].strip()==move[1]]
+            dest=destinations[0] if len(destinations)==1 else None
+            if ground is not None and station in ground and dest is not None and station not in dest['ground']:
+                reasons.append(dict(kind='facility_departure_risk',evidence=dict(requirement=req['station'],destination_last_observation=dest),
+                    certainty='historical_destination_may_change',statement='Known materials are carried and the current facility is visible; the destination was last observed without that facility. Reconsider consistency with the proposed goal.'))
+        return dict(decision='RECONSIDER' if reasons else 'ALLOW',reasons=reasons,requirements=req)
+
+    def observe(self,before,action,after,goal=''):
+        self.ingest(before);fingerprint=self.fingerprint();b=extract(before);a=extract(after);step=int(after['step'])
+        target,amount=craft(action)
+        if target:self.task=dict(goal=goal,target=target,amount=amount,completed=False)
+        elif self.task and self.task['goal']!=goal:self.task=None
+        if target:
+            station=re.search(r'Missing necessary (.+?) in the current area',a['feedback'],re.I)
+            if station:self.stations[target]=dict(name=station[1],quote=station[0],step=step)
+        if failed(after):
+            self.failures=(self.failures+[dict(action=action,quote=a['feedback'],step=step,fingerprint=fingerprint)])[-64:]
+        else:
+            self.failures=[x for x in self.failures if not(x['action']==action and x['fingerprint']==fingerprint)]
+            if target and re.search(r'I successfully crafted ',a['feedback']):
+                self.task['completed']=True
+                self.completed=(self.completed+[dict(action=action,target=target,amount=amount,step=step,quote=a['feedback'])])[-32:]
+            m=re.fullmatch(r'(store|discard) (\d+(?:\.\d+)?) (\S+) (\S+)|take out (\S+) (\S+)',action)
+            if m:
+                verb=m[1] or 'take';item=m[3] or m[5];name=m[4] or m[6];qty=float(m[2]) if m[2] else 1.
+                if name not in self.containers:self.containers[name]=dict(contents=None,step=step,location=a['location'],quote=a['feedback'])
+                if self.containers[name]['contents'] is not None:
+                    c=self.containers[name]['contents'];c[item]=max(0.,c.get(item,0)+(qty if verb=='store' else -qty))
+                    if not c[item]:c.pop(item,None)
+                    self.containers[name].update(step=step,quote=a['feedback'])
+            lost=re.fullmatch(r'(?:drop|unequip) (\S+)|store (\d+(?:\.\d+)?) (\S+) (\S+)',action)
+            if lost and visible(before) and not visible(after) and re.search(r'too dark to see',after['text'],re.I) and b['location']==a['location']:
+                self.loss_patterns=(self.loss_patterns+[dict(item=lost[1] or lost[3],location=b['location'],step=step,
+                    action=action,before_public=before['text'],after_public=after['text'])])[-32:]
+        # If a resource was consumed/created without a container inspection, its
+        # remembered stored quantity may be stale: forget those contents.
+        if not failed(after) and (target or action.startswith(('eat ','disassemble ','write '))):
+            for name in list(self.containers):
+                if not re.search(r'I inspected '+re.escape(name)+':',after['text']):self.containers[name].update(contents=None,step=step,quote='Contents may have changed after a consuming action; amount unknown.')
+        self.ingest(after)
