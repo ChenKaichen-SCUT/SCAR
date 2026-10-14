@@ -9,3 +9,5 @@
 - 请求结束后保留批处理汇总打印异常，不修改冻结诊断代码、不重跑模型；见 `harness_anomaly.json`。
 
 结果提交与远端发布信息在 `results/stage27/publication.json` 中记录。
+
+- 结果、统计与报告提交：`1769a435e605ae6a7befa82e0a65c2166594d0e4`。
