@@ -1,0 +1,51 @@
+{
+  "game": "remnant",
+  "method": "AGC-v2",
+  "seed": 44,
+  "status": "infrastructure_error",
+  "error": {
+    "type": "IntegrityError",
+    "message": "Stage25 user cancelled this seed before the next API request",
+    "traceback": "Traceback (most recent call last):\n  File \"/mnt/Space0/AINative/scar_agentodyssey/scar_stage25/run.py\", line 40, in execute\n    with contextlib.redirect_stdout(io.StringIO()):action,tin,tout,response=agent.act(before)\n                                                                            ^^^^^^^^^^^^^^^^^\n  File \"/mnt/Space0/scar_dependencies/agentodyssey_stage22/games/generated/remnant/agent.py\", line 164, in act\n    action = self._act(obs)\n             ^^^^^^^^^^^^^^\n  File \"/mnt/Space0/AINative/scar_agentodyssey/agents/agc_v2/agent.py\", line 27, in _act\n    self.last_user_prompt=prompt;output=self.llm.generate(user_prompt=prompt,system_prompt=self.cfg.system_prompt)\n                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/Space0/AINative/scar_agentodyssey/scar_stage24/provider.py\", line 9, in generate\n    try:return super().generate(*a,**kw)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/Space0/AINative/scar_agentodyssey/scar_stage22/provider.py\", line 67, in generate\n    try: self.episode.reserve(ident, upper)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/Space0/AINative/scar_agentodyssey/scar/providers/deepseek.py\", line 65, in reserve\n    db.execute(\"INSERT INTO requests VALUES (?,?,NULL,'reserved')\", (request_id, upper))\nsqlite3.IntegrityError: Stage25 user cancelled this seed before the next API request\n"
+  },
+  "steps": 47,
+  "max_steps": 300,
+  "scores": {
+    "unique_kill": 1,
+    "kill": 1,
+    "craft": 0,
+    "exploration": 2,
+    "death": 0,
+    "trade": 0,
+    "quest": 1,
+    "side_quest": 0
+  },
+  "main_quest_progress": {
+    "chapter": 0,
+    "stage": 1,
+    "complete": false,
+    "mq_kills": [
+      {
+        "npc_id": "npc_goblin_warrior_5",
+        "enemy": true,
+        "role": "goblin",
+        "area_id": "area_fields_meadow",
+        "area_level": 1,
+        "area_light": true
+      }
+    ],
+    "mq_lit_dark_areas": [],
+    "mq_guide_name": "chris_brown",
+    "mq_guide_inst": "npc_quest_wayfarer_guide",
+    "mq_guide_area": "area_castle_library",
+    "mq_stage_key": "0:1"
+  },
+  "requests": 48,
+  "reconsider_calls": 1,
+  "input_tokens": 96953,
+  "output_tokens": 5277,
+  "cost_usd": 0.030563772,
+  "charged_or_reserved_usd": 0.030563772,
+  "elapsed_seconds": 78.45374965667725,
+  "initial_state_hash": "508e3dc39ed7f31e37b4b4c47e95e2d4c26f990c122f846547bed53063d74355"
+}
