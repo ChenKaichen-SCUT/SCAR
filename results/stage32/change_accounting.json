@@ -1,0 +1,1565 @@
+{
+  "base": "05b64a5",
+  "freeze": "96f824ec29a58c6b1bd33d16d6ffbd7e104f7691",
+  "results": "f94b3cc4796516399684d22d6223e19cda917c9d",
+  "commits": [
+    {
+      "hash": "39acfb1da0945297ee104f7a02c21cb2d199a508",
+      "subject": "stage32: repair public action syntax feedback and reset to one clean seed"
+    },
+    {
+      "hash": "96f824ec29a58c6b1bd33d16d6ffbd7e104f7691",
+      "subject": "stage32: freeze repaired seed42-only experiment before model calls"
+    },
+    {
+      "hash": "f94b3cc4796516399684d22d6223e19cda917c9d",
+      "subject": "stage32: report all SAER runs with exact replay and local counterfactual audit"
+    }
+  ],
+  "files": [
+    {
+      "path": "agents/saer/agent.py",
+      "added": 10,
+      "deleted": 2
+    },
+    {
+      "path": "agents/saer/syntax.py",
+      "added": 40,
+      "deleted": 0
+    },
+    {
+      "path": "reports/stage32/README.md",
+      "added": 11,
+      "deleted": 0
+    },
+    {
+      "path": "\"reports/stage32/Stage32\\345\\256\\236\\351\\252\\214\\346\\212\\245\\345\\221\\212.md\"",
+      "added": 58,
+      "deleted": 0
+    },
+    {
+      "path": "\"reports/stage32/\\344\\270\\211\\346\\270\\270\\346\\210\\217\\346\\211\\251\\345\\261\\225\\344\\270\\216\\347\\240\\224\\347\\251\\266\\345\\210\\244\\346\\226\\255.md\"",
+      "added": 9,
+      "deleted": 0
+    },
+    {
+      "path": "\"reports/stage32/\\345\\212\\250\\344\\275\\234\\345\\217\\215\\346\\200\\235\\344\\270\\216\\350\\257\\255\\346\\263\\225\\345\\256\\241\\350\\256\\241.md\"",
+      "added": 45,
+      "deleted": 0
+    },
+    {
+      "path": "\"reports/stage32/\\346\\234\\272\\345\\210\\266\\350\\256\\276\\350\\256\\241\\344\\270\\216\\351\\242\\204\\347\\231\\273\\350\\256\\260\\345\\215\\217\\350\\256\\256.md\"",
+      "added": 0,
+      "deleted": 46
+    },
+    {
+      "path": "\"reports/stage32/\\347\\246\\273\\347\\272\\277\\345\\244\\261\\350\\264\\245\\350\\246\\206\\347\\233\\226\\350\\241\\245\\345\\205\\205.md\"",
+      "added": 0,
+      "deleted": 17
+    },
+    {
+      "path": "\"reports/stage32/\\347\\246\\273\\347\\272\\277\\351\\252\\214\\350\\257\\201\\346\\212\\245\\345\\221\\212.md\"",
+      "added": 0,
+      "deleted": 111
+    },
+    {
+      "path": "\"reports/stage32/\\350\\257\\255\\346\\263\\225\\344\\277\\256\\345\\244\\215\\344\\270\\216\\345\\215\\225\\347\\247\\215\\345\\255\\220\\345\\215\\217\\350\\256\\256.md\"",
+      "added": 31,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/action_metrics/remnant__s42__AGC-v2.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/action_metrics/remnant__s42__SAER.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/analysis_verification.json",
+      "added": 26,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/artifact_audit.json",
+      "added": 25,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/artifact_manifest.json",
+      "added": 275,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/case_review.json",
+      "added": 10996,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a028/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a029/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a030/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a035/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a036/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a038/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a052/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a058/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a061/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a066/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a079/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a083/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a084/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a096/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a100/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a110/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a113/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s42_a114/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a028/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a029/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a030/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a034/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a037/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a039/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a041/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a043/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a047/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a052/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a057/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a062/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a064/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a065/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a067/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a072/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a078/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a085/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a089/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a095/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a097/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a098/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a116/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a117/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a118/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a133/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a134/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a152/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a166/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a167/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a170/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a201/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a203/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a206/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a218/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a220/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a241/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a242/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a244/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a257/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a271/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a273/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a283/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a292/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s43_a294/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a029/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a030/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a031/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a032/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a035/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a039/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a056/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a133/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a141/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a144/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a148/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/checkpoints/s44_a149/physical.pkl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/comparison.csv",
+      "added": 3,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/conclusion.json",
+      "added": 12,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/cost_reconciliation.json",
+      "added": 14,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/development_notes.json",
+      "added": 12,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/evidence_index.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/freeze.json",
+      "added": 30,
+      "deleted": 105
+    },
+    {
+      "path": "results/stage32/logs/analyze.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/audit.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/cases.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/finish.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/freeze.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/online_42.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/online_batch.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/report.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/smoke.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/validate_analysis.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/logs/verify.log.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/metrics.json",
+      "added": 750,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/official_scores.json",
+      "added": 92,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/offline/s42_a028_rejected_000/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a028_rejected_000/result.json",
+      "added": 0,
+      "deleted": 146
+    },
+    {
+      "path": "results/stage32/offline/s42_a029_rejected_001/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a029_rejected_001/result.json",
+      "added": 0,
+      "deleted": 157
+    },
+    {
+      "path": "results/stage32/offline/s42_a030_rejected_002/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a030_rejected_002/result.json",
+      "added": 0,
+      "deleted": 177
+    },
+    {
+      "path": "results/stage32/offline/s42_a035_rejected_003/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a035_rejected_003/result.json",
+      "added": 0,
+      "deleted": 198
+    },
+    {
+      "path": "results/stage32/offline/s42_a036_rejected_004/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a036_rejected_004/result.json",
+      "added": 0,
+      "deleted": 212
+    },
+    {
+      "path": "results/stage32/offline/s42_a038_rejected_005/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a038_rejected_005/result.json",
+      "added": 0,
+      "deleted": 303
+    },
+    {
+      "path": "results/stage32/offline/s42_a052_rejected_006/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a052_rejected_006/result.json",
+      "added": 0,
+      "deleted": 259
+    },
+    {
+      "path": "results/stage32/offline/s42_a058_rejected_007/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a058_rejected_007/result.json",
+      "added": 0,
+      "deleted": 150
+    },
+    {
+      "path": "results/stage32/offline/s42_a061_condition_loss_008/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a061_condition_loss_008/result.json",
+      "added": 0,
+      "deleted": 191
+    },
+    {
+      "path": "results/stage32/offline/s42_a066_rejected_009/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a066_rejected_009/result.json",
+      "added": 0,
+      "deleted": 256
+    },
+    {
+      "path": "results/stage32/offline/s42_a079_rejected_010/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a079_rejected_010/result.json",
+      "added": 0,
+      "deleted": 222
+    },
+    {
+      "path": "results/stage32/offline/s42_a083_rejected_011/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a083_rejected_011/result.json",
+      "added": 0,
+      "deleted": 324
+    },
+    {
+      "path": "results/stage32/offline/s42_a084_rejected_012/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a084_rejected_012/result.json",
+      "added": 0,
+      "deleted": 312
+    },
+    {
+      "path": "results/stage32/offline/s42_a096_rejected_013/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a096_rejected_013/result.json",
+      "added": 0,
+      "deleted": 411
+    },
+    {
+      "path": "results/stage32/offline/s42_a100_rejected_014/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a100_rejected_014/result.json",
+      "added": 0,
+      "deleted": 446
+    },
+    {
+      "path": "results/stage32/offline/s42_a110_rejected_015/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a110_rejected_015/result.json",
+      "added": 0,
+      "deleted": 458
+    },
+    {
+      "path": "results/stage32/offline/s42_a113_rejected_016/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a113_rejected_016/result.json",
+      "added": 0,
+      "deleted": 476
+    },
+    {
+      "path": "results/stage32/offline/s42_a114_terminal_017/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a114_terminal_017/result.json",
+      "added": 0,
+      "deleted": 487
+    },
+    {
+      "path": "results/stage32/offline/s42_a114_terminal_018/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s42_a114_terminal_018/result.json",
+      "added": 0,
+      "deleted": 487
+    },
+    {
+      "path": "results/stage32/offline/s43_a028_rejected_019/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a028_rejected_019/result.json",
+      "added": 0,
+      "deleted": 146
+    },
+    {
+      "path": "results/stage32/offline/s43_a029_rejected_020/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a029_rejected_020/result.json",
+      "added": 0,
+      "deleted": 157
+    },
+    {
+      "path": "results/stage32/offline/s43_a030_rejected_021/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a030_rejected_021/result.json",
+      "added": 0,
+      "deleted": 177
+    },
+    {
+      "path": "results/stage32/offline/s43_a034_rejected_022/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a034_rejected_022/result.json",
+      "added": 0,
+      "deleted": 316
+    },
+    {
+      "path": "results/stage32/offline/s43_a037_rejected_023/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a037_rejected_023/result.json",
+      "added": 0,
+      "deleted": 266
+    },
+    {
+      "path": "results/stage32/offline/s43_a039_rejected_024/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a039_rejected_024/result.json",
+      "added": 0,
+      "deleted": 170
+    },
+    {
+      "path": "results/stage32/offline/s43_a041_rejected_025/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a041_rejected_025/result.json",
+      "added": 0,
+      "deleted": 260
+    },
+    {
+      "path": "results/stage32/offline/s43_a043_rejected_026/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a043_rejected_026/result.json",
+      "added": 0,
+      "deleted": 300
+    },
+    {
+      "path": "results/stage32/offline/s43_a047_rejected_027/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a047_rejected_027/result.json",
+      "added": 0,
+      "deleted": 315
+    },
+    {
+      "path": "results/stage32/offline/s43_a052_rejected_028/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a052_rejected_028/result.json",
+      "added": 0,
+      "deleted": 410
+    },
+    {
+      "path": "results/stage32/offline/s43_a057_rejected_029/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a057_rejected_029/result.json",
+      "added": 0,
+      "deleted": 398
+    },
+    {
+      "path": "results/stage32/offline/s43_a062_rejected_030/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a062_rejected_030/result.json",
+      "added": 0,
+      "deleted": 298
+    },
+    {
+      "path": "results/stage32/offline/s43_a064_rejected_031/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a064_rejected_031/result.json",
+      "added": 0,
+      "deleted": 316
+    },
+    {
+      "path": "results/stage32/offline/s43_a065_rejected_032/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a065_rejected_032/result.json",
+      "added": 0,
+      "deleted": 378
+    },
+    {
+      "path": "results/stage32/offline/s43_a067_rejected_033/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a067_rejected_033/result.json",
+      "added": 0,
+      "deleted": 230
+    },
+    {
+      "path": "results/stage32/offline/s43_a072_condition_loss_034/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a072_condition_loss_034/result.json",
+      "added": 0,
+      "deleted": 152
+    },
+    {
+      "path": "results/stage32/offline/s43_a078_rejected_035/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a078_rejected_035/result.json",
+      "added": 0,
+      "deleted": 389
+    },
+    {
+      "path": "results/stage32/offline/s43_a085_rejected_036/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a085_rejected_036/result.json",
+      "added": 0,
+      "deleted": 302
+    },
+    {
+      "path": "results/stage32/offline/s43_a089_rejected_037/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a089_rejected_037/result.json",
+      "added": 0,
+      "deleted": 340
+    },
+    {
+      "path": "results/stage32/offline/s43_a095_rejected_038/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a095_rejected_038/result.json",
+      "added": 0,
+      "deleted": 372
+    },
+    {
+      "path": "results/stage32/offline/s43_a097_rejected_039/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a097_rejected_039/result.json",
+      "added": 0,
+      "deleted": 416
+    },
+    {
+      "path": "results/stage32/offline/s43_a098_rejected_040/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a098_rejected_040/result.json",
+      "added": 0,
+      "deleted": 391
+    },
+    {
+      "path": "results/stage32/offline/s43_a116_rejected_041/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a116_rejected_041/result.json",
+      "added": 0,
+      "deleted": 345
+    },
+    {
+      "path": "results/stage32/offline/s43_a117_rejected_042/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a117_rejected_042/result.json",
+      "added": 0,
+      "deleted": 369
+    },
+    {
+      "path": "results/stage32/offline/s43_a118_rejected_043/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a118_rejected_043/result.json",
+      "added": 0,
+      "deleted": 353
+    },
+    {
+      "path": "results/stage32/offline/s43_a133_rejected_044/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a133_rejected_044/result.json",
+      "added": 0,
+      "deleted": 414
+    },
+    {
+      "path": "results/stage32/offline/s43_a134_rejected_045/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a134_rejected_045/result.json",
+      "added": 0,
+      "deleted": 398
+    },
+    {
+      "path": "results/stage32/offline/s43_a152_rejected_046/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a152_rejected_046/result.json",
+      "added": 0,
+      "deleted": 201
+    },
+    {
+      "path": "results/stage32/offline/s43_a166_rejected_047/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a166_rejected_047/result.json",
+      "added": 0,
+      "deleted": 229
+    },
+    {
+      "path": "results/stage32/offline/s43_a167_rejected_048/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a167_rejected_048/result.json",
+      "added": 0,
+      "deleted": 219
+    },
+    {
+      "path": "results/stage32/offline/s43_a170_rejected_049/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a170_rejected_049/result.json",
+      "added": 0,
+      "deleted": 352
+    },
+    {
+      "path": "results/stage32/offline/s43_a201_rejected_050/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a201_rejected_050/result.json",
+      "added": 0,
+      "deleted": 352
+    },
+    {
+      "path": "results/stage32/offline/s43_a203_rejected_051/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a203_rejected_051/result.json",
+      "added": 0,
+      "deleted": 351
+    },
+    {
+      "path": "results/stage32/offline/s43_a206_rejected_052/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a206_rejected_052/result.json",
+      "added": 0,
+      "deleted": 416
+    },
+    {
+      "path": "results/stage32/offline/s43_a218_rejected_053/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a218_rejected_053/result.json",
+      "added": 0,
+      "deleted": 210
+    },
+    {
+      "path": "results/stage32/offline/s43_a220_rejected_054/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a220_rejected_054/result.json",
+      "added": 0,
+      "deleted": 296
+    },
+    {
+      "path": "results/stage32/offline/s43_a241_rejected_055/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a241_rejected_055/result.json",
+      "added": 0,
+      "deleted": 261
+    },
+    {
+      "path": "results/stage32/offline/s43_a242_rejected_056/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a242_rejected_056/result.json",
+      "added": 0,
+      "deleted": 313
+    },
+    {
+      "path": "results/stage32/offline/s43_a244_rejected_057/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a244_rejected_057/result.json",
+      "added": 0,
+      "deleted": 244
+    },
+    {
+      "path": "results/stage32/offline/s43_a257_rejected_058/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a257_rejected_058/result.json",
+      "added": 0,
+      "deleted": 424
+    },
+    {
+      "path": "results/stage32/offline/s43_a271_rejected_059/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a271_rejected_059/result.json",
+      "added": 0,
+      "deleted": 151
+    },
+    {
+      "path": "results/stage32/offline/s43_a273_rejected_060/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a273_rejected_060/result.json",
+      "added": 0,
+      "deleted": 151
+    },
+    {
+      "path": "results/stage32/offline/s43_a283_rejected_061/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a283_rejected_061/result.json",
+      "added": 0,
+      "deleted": 227
+    },
+    {
+      "path": "results/stage32/offline/s43_a292_rejected_062/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a292_rejected_062/result.json",
+      "added": 0,
+      "deleted": 564
+    },
+    {
+      "path": "results/stage32/offline/s43_a294_terminal_063/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a294_terminal_063/result.json",
+      "added": 0,
+      "deleted": 541
+    },
+    {
+      "path": "results/stage32/offline/s43_a294_terminal_064/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s43_a294_terminal_064/result.json",
+      "added": 0,
+      "deleted": 541
+    },
+    {
+      "path": "results/stage32/offline/s44_a029_rejected_065/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a029_rejected_065/result.json",
+      "added": 0,
+      "deleted": 156
+    },
+    {
+      "path": "results/stage32/offline/s44_a030_rejected_066/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a030_rejected_066/result.json",
+      "added": 0,
+      "deleted": 157
+    },
+    {
+      "path": "results/stage32/offline/s44_a031_rejected_067/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a031_rejected_067/result.json",
+      "added": 0,
+      "deleted": 177
+    },
+    {
+      "path": "results/stage32/offline/s44_a032_rejected_068/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a032_rejected_068/result.json",
+      "added": 0,
+      "deleted": 197
+    },
+    {
+      "path": "results/stage32/offline/s44_a035_rejected_069/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a035_rejected_069/result.json",
+      "added": 0,
+      "deleted": 326
+    },
+    {
+      "path": "results/stage32/offline/s44_a039_rejected_070/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a039_rejected_070/result.json",
+      "added": 0,
+      "deleted": 316
+    },
+    {
+      "path": "results/stage32/offline/s44_a056_rejected_071/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a056_rejected_071/result.json",
+      "added": 0,
+      "deleted": 327
+    },
+    {
+      "path": "results/stage32/offline/s44_a133_rejected_072/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a133_rejected_072/result.json",
+      "added": 0,
+      "deleted": 411
+    },
+    {
+      "path": "results/stage32/offline/s44_a141_rejected_073/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a141_rejected_073/result.json",
+      "added": 0,
+      "deleted": 266
+    },
+    {
+      "path": "results/stage32/offline/s44_a144_rejected_074/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a144_rejected_074/result.json",
+      "added": 0,
+      "deleted": 370
+    },
+    {
+      "path": "results/stage32/offline/s44_a148_rejected_075/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a148_rejected_075/result.json",
+      "added": 0,
+      "deleted": 437
+    },
+    {
+      "path": "results/stage32/offline/s44_a149_terminal_076/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/offline/s44_a149_terminal_076/result.json",
+      "added": 0,
+      "deleted": 205
+    },
+    {
+      "path": "results/stage32/offline_comparison.json",
+      "added": 0,
+      "deleted": 1927
+    },
+    {
+      "path": "results/stage32/offline_completion.json",
+      "added": 0,
+      "deleted": 23751
+    },
+    {
+      "path": "results/stage32/offline_failure_coverage.json",
+      "added": 0,
+      "deleted": 1539
+    },
+    {
+      "path": "results/stage32/offline_summary.json",
+      "added": 0,
+      "deleted": 29
+    },
+    {
+      "path": "results/stage32/online_completion.json",
+      "added": 137,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/online_gate.json",
+      "added": 0,
+      "deleted": 16
+    },
+    {
+      "path": "results/stage32/online_native_probes.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/paired_comparison.json",
+      "added": 65,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/preparation.json",
+      "added": 0,
+      "deleted": 44
+    },
+    {
+      "path": "results/stage32/reflection_audit.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/request_index.csv",
+      "added": 1455,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/resource_events.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/response_anomalies.json",
+      "added": 95,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/config.json",
+      "added": 6777,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/final_memory/agc_v2.json",
+      "added": 743,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/final_memory/memory.json",
+      "added": 15,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/final_memory/saer.json",
+      "added": 749,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/initial_public.json",
+      "added": 9,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/new_requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/requests.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/summary.json",
+      "added": 128,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/runs/remnant__s42__SAER/trajectory.jsonl.gz",
+      "added": null,
+      "deleted": null
+    },
+    {
+      "path": "results/stage32/samples.json",
+      "added": 0,
+      "deleted": 83166
+    },
+    {
+      "path": "results/stage32/smoke.json",
+      "added": 3,
+      "deleted": 10
+    },
+    {
+      "path": "results/stage32/syntax_repair_audit.json",
+      "added": 1672,
+      "deleted": 0
+    },
+    {
+      "path": "results/stage32/verification.json",
+      "added": 20,
+      "deleted": 0
+    },
+    {
+      "path": "scar_stage32/analyze.py",
+      "added": 5,
+      "deleted": 3
+    },
+    {
+      "path": "scar_stage32/audit.py",
+      "added": 9,
+      "deleted": 10
+    },
+    {
+      "path": "scar_stage32/batch.py",
+      "added": 11,
+      "deleted": 19
+    },
+    {
+      "path": "scar_stage32/cases.py",
+      "added": 2,
+      "deleted": 10
+    },
+    {
+      "path": "scar_stage32/common.py",
+      "added": 2,
+      "deleted": 2
+    },
+    {
+      "path": "scar_stage32/finish.py",
+      "added": 6,
+      "deleted": 5
+    },
+    {
+      "path": "scar_stage32/freeze.py",
+      "added": 8,
+      "deleted": 7
+    },
+    {
+      "path": "scar_stage32/offline_analyze.py",
+      "added": 0,
+      "deleted": 59
+    },
+    {
+      "path": "scar_stage32/offline_report.py",
+      "added": 0,
+      "deleted": 47
+    },
+    {
+      "path": "scar_stage32/offline_review.py",
+      "added": 0,
+      "deleted": 38
+    },
+    {
+      "path": "scar_stage32/offline_run.py",
+      "added": 0,
+      "deleted": 48
+    },
+    {
+      "path": "scar_stage32/prepare.py",
+      "added": 0,
+      "deleted": 60
+    },
+    {
+      "path": "scar_stage32/report.py",
+      "added": 92,
+      "deleted": 119
+    },
+    {
+      "path": "scar_stage32/run.py",
+      "added": 2,
+      "deleted": 2
+    },
+    {
+      "path": "scar_stage32/smoke.py",
+      "added": 30,
+      "deleted": 1
+    },
+    {
+      "path": "scar_stage32/validate_analysis.py",
+      "added": 4,
+      "deleted": 7
+    },
+    {
+      "path": "scar_stage32/verify.py",
+      "added": 2,
+      "deleted": 3
+    }
+  ],
+  "files_count": 307,
+  "added": 24480,
+  "deleted": 134641,
+  "metadata_self_excluded": true,
+  "new_requests": 1130,
+  "cost_usd": 0.718147098,
+  "old_algorithm_files_changed": 0,
+  "post_freeze_policy_changes": 0,
+  "new_analysis_model_calls": 0
+}
