@@ -1,0 +1,676 @@
+[
+  {
+    "id": "parent_a031",
+    "knowledge_cutoff": 31,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Find the one who knows where cinder-smoke gathers",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：lockpick library",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have a lockpick tool held in hand before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "source",
+        "parent": "recovery",
+        "level": 3,
+        "goal": "确认所需工具或设施的公开可获得性/可访问性",
+        "evidence": [
+          0
+        ],
+        "kind": "information_requirement"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 31,
+        "quote": "Cannot lockpick library. No lockpick tool in hand.",
+        "source": "saved_failure_feedback"
+      }
+    ],
+    "unknowns": [
+      "这个条件本身不提供工具/设施获取方法，也不证明需要新建；未知路径保持未知。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "parent_a054",
+    "knowledge_cutoff": 54,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Arm myself with a weapon before following the ash",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：pick up iron_bar",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have sufficient free hand space for iron_bar before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "space",
+        "parent": "recovery",
+        "level": 3,
+        "goal": "使已被拒绝的容量约束得到满足，同时重新核验待保留资源",
+        "evidence": [
+          0
+        ],
+        "kind": "resource_condition"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 54,
+        "quote": "Cannot pick up iron_bar, not enough space in hand.",
+        "source": "saved_failure_feedback"
+      }
+    ],
+    "unknowns": [
+      "目标关系本身不决定丢弃/存储哪个物品、能否访问容器或是否牺牲照明。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "parent_a060",
+    "knowledge_cutoff": 60,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Gather materials to craft a weapon",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：craft 1 wood_plank",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have access to a workbench for crafting wood_plank before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "source",
+        "parent": "recovery",
+        "level": 3,
+        "goal": "确认所需工具或设施的公开可获得性/可访问性",
+        "evidence": [
+          0
+        ],
+        "kind": "information_requirement"
+      },
+      {
+        "id": "component_0",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 wood_log",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 60,
+        "quote": "Cannot craft wood_plank. Missing necessary workbench in the current area.",
+        "source": "saved_failure_feedback"
+      },
+      {
+        "step": 59,
+        "quote": "wood_plank (1 wood_log)",
+        "full_line": "I have acquired a new item: wood_log. It can be used to craft: workbench (5 wood_log, 5 stone), wood_plank (1 wood_log)",
+        "source": "public_prefix_feedback"
+      }
+    ],
+    "unknowns": [
+      "这个条件本身不提供工具/设施获取方法，也不证明需要新建；未知路径保持未知。",
+      "列出成品组件不等于知道各组件的递归制作方法、设施或资源位置。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "parent_a113",
+    "knowledge_cutoff": 113,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Gather crafting materials from defeated goblin to improve equipment",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：take out wooden_rod small_bag_0",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have sufficient free hand space for wooden_rod before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "space",
+        "parent": "recovery",
+        "level": 3,
+        "goal": "使已被拒绝的容量约束得到满足，同时重新核验待保留资源",
+        "evidence": [
+          0
+        ],
+        "kind": "resource_condition"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 113,
+        "quote": "Cannot take out wooden_rod, not enough space in hand.",
+        "source": "saved_failure_feedback"
+      }
+    ],
+    "unknowns": [
+      "目标关系本身不决定丢弃/存储哪个物品、能否访问容器或是否牺牲照明。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "parent_a136",
+    "knowledge_cutoff": 136,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Improve equipment and carrying capacity to safely gather crafting materials",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：write quiet paper_7",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have a writing tool held in hand before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "source",
+        "parent": "recovery",
+        "level": 3,
+        "goal": "确认所需工具或设施的公开可获得性/可访问性",
+        "evidence": [
+          0
+        ],
+        "kind": "information_requirement"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 136,
+        "quote": "Cannot write on paper_7. No writing tools held in hand.",
+        "source": "saved_failure_feedback"
+      }
+    ],
+    "unknowns": [
+      "这个条件本身不提供工具/设施获取方法，也不证明需要新建；未知路径保持未知。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "parent_a235",
+    "knowledge_cutoff": 235,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Prepare a light source to explore the dark armory",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：craft 1 torch",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have sufficient necessary ingredients for crafting torch before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "component_0",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 wooden_rod",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      },
+      {
+        "id": "component_1",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 mountain_sulfur",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 235,
+        "quote": "Cannot craft a single torch. Do not have sufficient amount of necessary ingredients.",
+        "source": "saved_failure_feedback"
+      },
+      {
+        "step": 132,
+        "quote": "torch (1 wooden_rod, 1 mountain_sulfur)",
+        "full_line": "I have acquired a new item: mountain_sulfur. It can be used to craft: sulfur_powder (1 mountain_sulfur), torch (1 wooden_rod, 1 mountain_sulfur)",
+        "source": "public_prefix_feedback"
+      }
+    ],
+    "unknowns": [
+      "列出成品组件不等于知道各组件的递归制作方法、设施或资源位置。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "parent_a270",
+    "knowledge_cutoff": 270,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Find or craft a weapon or armor to improve combat readiness",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：store 1 cloth small_satchel_0",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have sufficient free space in small_satchel_0 for cloth before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "space",
+        "parent": "recovery",
+        "level": 3,
+        "goal": "使已被拒绝的容量约束得到满足，同时重新核验待保留资源",
+        "evidence": [
+          0
+        ],
+        "kind": "resource_condition"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 270,
+        "quote": "Cannot store any number of cloth, not enough space in small_satchel_0.",
+        "source": "saved_failure_feedback"
+      }
+    ],
+    "unknowns": [
+      "目标关系本身不决定丢弃/存储哪个物品、能否访问容器或是否牺牲照明。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "oracle032_a256",
+    "knowledge_cutoff": 256,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Craft a usable item from available materials at the workbench",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：craft 1 glass_shard",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have access to a furnace for crafting glass_shard before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "source",
+        "parent": "recovery",
+        "level": 3,
+        "goal": "确认所需工具或设施的公开可获得性/可访问性",
+        "evidence": [
+          0
+        ],
+        "kind": "information_requirement"
+      },
+      {
+        "id": "component_0",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 quartz_chunk",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 256,
+        "quote": "Cannot craft glass_shard. Missing necessary furnace in the current area.",
+        "source": "saved_failure_feedback"
+      },
+      {
+        "step": 233,
+        "quote": "glass_shard (1 quartz_chunk)",
+        "full_line": "I have acquired a new item: quartz_chunk. It can be used to craft: glass_shard (1 quartz_chunk)",
+        "source": "public_prefix_feedback"
+      }
+    ],
+    "unknowns": [
+      "这个条件本身不提供工具/设施获取方法，也不证明需要新建；未知路径保持未知。",
+      "列出成品组件不等于知道各组件的递归制作方法、设施或资源位置。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "oracle037_a122",
+    "knowledge_cutoff": 122,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Equip gear and gather resources for survival",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：craft 1 lockpick",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have access to a workbench for crafting lockpick before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "source",
+        "parent": "recovery",
+        "level": 3,
+        "goal": "确认所需工具或设施的公开可获得性/可访问性",
+        "evidence": [
+          0
+        ],
+        "kind": "information_requirement"
+      },
+      {
+        "id": "component_0",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 rust_scrap",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      },
+      {
+        "id": "component_1",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 iron_bar",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      },
+      {
+        "id": "component_2",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 thread",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 122,
+        "quote": "Cannot craft lockpick. Missing necessary workbench in the current area.",
+        "source": "saved_failure_feedback"
+      },
+      {
+        "step": 121,
+        "quote": "lockpick (1 rust_scrap, 1 iron_bar, 1 thread)",
+        "full_line": "I have acquired a new item: iron_bar. It can be used to craft: tension_wrench (0.5 iron_bar), lockpick (1 rust_scrap, 1 iron_bar, 1 thread), iron_sheet (2 iron_bar), forged_blade_blank (2 iron_bar, 1 wooden_rod), key_blank (1 iron_bar, 1 wood_plank)",
+        "source": "public_prefix_feedback"
+      }
+    ],
+    "unknowns": [
+      "这个条件本身不提供工具/设施获取方法，也不证明需要新建；未知路径保持未知。",
+      "列出成品组件不等于知道各组件的递归制作方法、设施或资源位置。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  },
+  {
+    "id": "oracle079_a165",
+    "knowledge_cutoff": 165,
+    "kind": "paper_counterfactual_not_executed",
+    "nodes": [
+      {
+        "id": "parent",
+        "parent": null,
+        "level": 0,
+        "goal": "Escape goblin_warrior_15 and find a weapon",
+        "source": "original accepted agent goal; not necessarily the whole game objective"
+      },
+      {
+        "id": "attempt",
+        "parent": "parent",
+        "level": 1,
+        "goal": "使原先尝试的动作可行：craft 1 star_metal_sword",
+        "relation": "chosen_method_not_proven_necessary",
+        "alternative": "原方法是否必要未知；合法替代或生存优先可能合理。"
+      },
+      {
+        "id": "recovery",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "Have sufficient necessary ingredients for crafting star_metal_sword before continuing the original objective.",
+        "evidence": [
+          0
+        ],
+        "completion": "以公开反馈/实际成功核验缺口，不以目标标题为完成条件。"
+      },
+      {
+        "id": "component_0",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 star_metal_blade",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      },
+      {
+        "id": "component_1",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 wooden_rod",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      },
+      {
+        "id": "component_2",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 cloth_strap",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      },
+      {
+        "id": "component_3",
+        "parent": "attempt",
+        "level": 2,
+        "goal": "核验公开材料条件：1 goblin_eye",
+        "evidence": [
+          1
+        ],
+        "kind": "public_recipe_condition",
+        "note": "需要重新核验当前持有/可达状态；过去公开并不等于当前拥有。"
+      }
+    ],
+    "evidence": [
+      {
+        "step": 165,
+        "quote": "Cannot craft a single star_metal_sword. Do not have sufficient amount of necessary ingredients.",
+        "source": "saved_failure_feedback"
+      },
+      {
+        "step": 164,
+        "quote": "star_metal_sword (1 star_metal_blade, 1 wooden_rod, 1 cloth_strap, 1 goblin_eye)",
+        "full_line": "I have acquired a new item: goblin_eye. It can be used to craft: star_metal_sword (1 star_metal_blade, 1 wooden_rod, 1 cloth_strap, 1 goblin_eye)",
+        "source": "public_prefix_feedback"
+      }
+    ],
+    "unknowns": [
+      "列出成品组件不等于知道各组件的递归制作方法、设施或资源位置。"
+    ],
+    "boundary": "No action sequence, hidden rule, resource location or reward oracle. A different hierarchy does not by itself choose actions or validate facts.",
+    "prompt_information_confound": "如果把旧配方加入模型 Stack，但原模型上下文没有该配方，就同时改变了信息量，不能把可能收益全部归于层级结构。"
+  }
+]

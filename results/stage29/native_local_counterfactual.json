@@ -1,0 +1,172 @@
+{
+  "id": "oracle037_a122",
+  "step": 147,
+  "source": "results/stage28/runs/oracle037_a122/OracleRecovery/trajectory.jsonl.gz",
+  "source_line": 25,
+  "observation": {
+    "step": 146,
+    "text": "\nCurrent Time: 0001-01-02 08:20:00\nCurrent Location: Old Castle, armory\n\nI entered armory.\n\nI am holding 1 torch.\nI have equipped 1 small_bag_0.\nI see 3 iron_ore, 4 stone, 4 rust_scrap, 1 paper_1, 5 iron_bar, 4 mountain_sulfur, 1 thread, 5 coin, 1 wood_log, 1 small_satchel_0, 1 apple, 1 torch near me.\nI see villager_0, goblin_warrior_1, goblin_warrior_12 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 33.\nMy experience is at 35.\n\nNeighboring areas: hall, plain.\n"
+  },
+  "original_reasoning": "I'm in the armory with the torch, and I can see iron_bar nearby. My goal is to gather an iron_bar to craft a lockpick at the hall workbench. I need to free a hand to pick up the iron_bar, but my hands are full with the torch. However, the torch is necessary for light. I should pick up the iron_bar, but I need space. I can drop the torch here since the armory is now lit? Actually, if I drop the torch, it might become dark again. But I can pick up the iron_bar and then leave. Since I only need one iron_bar, I can drop the torch to free a hand, pick up the iron_bar, then go back to the hall. But dropping the torch might make it dark, but I can still pick up the iron_bar if I do it immediately? The game might allow picking up after dropping. Alternatively, I could store the torch in my small_bag, but that might not be possible if the bag is full. I previously stored thread in small_bag_0, so it has space? I don't know capacity. Safer to drop torch, pick up iron_bar, then go to hall. But then I lose light in armory. However, I only need to pick up iron_bar, then leave. I can drop torch, pick up iron_bar, then enter hall. In hall, I can pick up torch again if needed. But I need torch for crafting? Crafting might not require light. I'll drop torch to free hand, then pick up iron_bar.",
+  "current_goal": {
+    "goal_description": "Gather an iron_bar from the armory to craft a lockpick at the hall workbench",
+    "creation_step": 146,
+    "evidence": [
+      {
+        "quote": "I see 10 coin, 1 workbench, 1 cloth, 1 goblin_eye, 1 paper_7, 1 pen near me.",
+        "step": 146,
+        "source": "model_selected_public_quote",
+        "verified": true
+      }
+    ],
+    "last_progress_step": 146,
+    "status": "ACTIVE",
+    "source": "model",
+    "confidence": 0.64
+  },
+  "same_state_hash": "ca3e21a2d138706fe9fcbb45d77ad6c13ff6883eee210ae83952f1e1b1ff851a",
+  "alternatives": [
+    {
+      "action": "drop torch",
+      "feedback": {
+        "step": 147,
+        "text": "\nCurrent Time: 0001-01-02 08:30:00\nCurrent Location: Old Castle, armory\n\nI dropped torch.\nI was attacked by goblin_warrior_1 and lost 11 HP.\nI was attacked by goblin_warrior_12 and lost 1 HP.\nIt is too dark to see anything here.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 21.\nMy experience is at 35.\n\nNeighboring areas: hall, plain.\n"
+      },
+      "public_state": {
+        "location": "Old Castle, armory",
+        "hands": null,
+        "equipment": null,
+        "observed_container_contents": null,
+        "ground_names": [],
+        "npcs": [],
+        "neighbors": "hall, plain",
+        "ground": null,
+        "feedback": "I dropped torch.\nI was attacked by goblin_warrior_1 and lost 11 HP.\nI was attacked by goblin_warrior_12 and lost 1 HP.\nIt is too dark to see anything here.",
+        "event": "I dropped torch.\nIt is too dark to see anything here.",
+        "public_goal": null,
+        "failed": false,
+        "permanent": false,
+        "signature": "b38d827e84996fb4799a1e28b9f3a3fbd5cbc062e184b38ad6ad943ea289d6c9",
+        "context": "1d76093e873d5cd5c7650a3aabbc2a3d702e2492535f4fbc25b384c9ae1f7bb1",
+        "entities": []
+      },
+      "state_hash": "09c99ad29f12f64189cf6dbca1b14a55ead71fb04ce99268f213be384a5b5968",
+      "reward": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 0,
+        "exploration": 0,
+        "death": 0,
+        "trade": 0,
+        "quest": 0,
+        "side_quest": 0
+      },
+      "info": {
+        "step_invalid_action": {
+          "agent_adam_davis": false
+        }
+      },
+      "done": false
+    },
+    {
+      "action": "pick up iron_bar",
+      "feedback": {
+        "step": 147,
+        "text": "\nCurrent Time: 0001-01-02 08:30:00\nCurrent Location: Old Castle, armory\n\nI picked up iron_bar.\nI was attacked by goblin_warrior_1 and lost 11 HP.\nI was attacked by goblin_warrior_12 and lost 1 HP.\n\nI am holding 1 torch, 1 iron_bar.\nI have equipped 1 small_bag_0.\nI see 3 iron_ore, 4 stone, 4 rust_scrap, 1 paper_1, 4 iron_bar, 4 mountain_sulfur, 1 thread, 5 coin, 1 wood_log, 1 small_satchel_0, 1 apple, 1 torch near me.\nI see villager_0, goblin_warrior_1, goblin_warrior_12 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 21.\nMy experience is at 35.\n\nNeighboring areas: hall, plain.\n"
+      },
+      "public_state": {
+        "location": "Old Castle, armory",
+        "hands": {
+          "torch": 1.0,
+          "iron_bar": 1.0
+        },
+        "equipment": {
+          "small_bag_0": 1.0
+        },
+        "observed_container_contents": null,
+        "ground_names": [
+          "apple",
+          "coin",
+          "iron_bar",
+          "iron_ore",
+          "mountain_sulfur",
+          "paper_1",
+          "rust_scrap",
+          "small_satchel_0",
+          "stone",
+          "thread",
+          "torch",
+          "wood_log"
+        ],
+        "npcs": [
+          "goblin_warrior_1",
+          "goblin_warrior_12",
+          "villager_0"
+        ],
+        "neighbors": "hall, plain",
+        "ground": {
+          "iron_ore": 3.0,
+          "stone": 4.0,
+          "rust_scrap": 4.0,
+          "paper_1": 1.0,
+          "iron_bar": 4.0,
+          "mountain_sulfur": 4.0,
+          "thread": 1.0,
+          "coin": 5.0,
+          "wood_log": 1.0,
+          "small_satchel_0": 1.0,
+          "apple": 1.0,
+          "torch": 1.0
+        },
+        "feedback": "I picked up iron_bar.\nI was attacked by goblin_warrior_1 and lost 11 HP.\nI was attacked by goblin_warrior_12 and lost 1 HP.",
+        "event": "I picked up iron_bar.",
+        "public_goal": null,
+        "failed": false,
+        "permanent": false,
+        "signature": "39a8bc5b01d350bdaae9b3e6406a15e6f1faa8bcf19953af41f168c515ba7c9a",
+        "context": "3d95bf5c08e330d8d52bf3cefb434b185ba80f5e924c1d9ec46fe917e6a38755",
+        "entities": [
+          "apple",
+          "coin",
+          "goblin_warrior_1",
+          "goblin_warrior_12",
+          "iron_bar",
+          "iron_ore",
+          "mountain_sulfur",
+          "paper_1",
+          "rust_scrap",
+          "small_bag_0",
+          "small_satchel_0",
+          "stone",
+          "thread",
+          "torch",
+          "villager_0",
+          "wood_log"
+        ]
+      },
+      "state_hash": "f62d07095ad7a928e5fd152e750edb6c48227a2be5f1827aa1041bdf178167db",
+      "reward": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 0,
+        "exploration": 0,
+        "death": 0,
+        "trade": 0,
+        "quest": 0,
+        "side_quest": 0
+      },
+      "info": {
+        "step_invalid_action": {
+          "agent_adam_davis": false
+        }
+      },
+      "done": false
+    }
+  ],
+  "source_selection": "Post-hoc public-state contradiction: original reasoning claims full hands while observation shows only torch; iron_bar is visible and proposal reasoning itself considers picking it up.",
+  "exact_prefix_actions": 24,
+  "exact_saved_model_contexts": 24,
+  "native_probe_actions": 2,
+  "new_model_calls": 0,
+  "inference_limit": "Verifies only immediate feasible resource gain, not survival superiority, eventual task success, or the effect of adding a Goal Stack."
+}
