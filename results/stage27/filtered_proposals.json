@@ -1,0 +1,363 @@
+[
+  {
+    "trajectory": "parent",
+    "step": 175,
+    "proposal": {
+      "reasoning": "The goblin_warrior_14 is defeated, so that goal is complete. However, a new enemy goblin_warrior_15 has arrived, and the game explicitly suggests writing a note with 'quiet' to hush the area and avoid drawing more enemies. My health is 29 and I have no defense, so avoiding additional combat is prudent. Writing 'quiet' on a note may prevent further enemy spawns while I recover.",
+      "action": "write quiet",
+      "goal_description": "Defeat goblin_warrior_14 to survive",
+      "goal_evidence": "I attacked goblin_warrior_14 for 10 damage and defeated goblin_warrior_14!"
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "parent",
+    "step": 177,
+    "proposal": {
+      "reasoning": "The goblin_warrior_15 is still nearby and has not attacked yet, but the previous 'quiet' note suggestion indicates a way to avoid further enemy attention. My health is 29 and defense is 0, so I should try to reduce the threat without engaging in combat. Writing a 'quiet' note may hush the area and prevent additional enemies from being drawn in, helping me survive.",
+      "action": "write quiet",
+      "goal_description": "Survive the new goblin scout goblin_warrior_15",
+      "goal_evidence": "Noise draws in an enemy scout (goblin_warrior_15)! You may hush the area through a note with \"quiet\" written on it."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "parent",
+    "step": 177,
+    "proposal": {
+      "reasoning": "The goblin_warrior_15 is present and has not attacked yet, but my defense is 0 and health is 29. The game suggested writing a 'quiet' note to hush the area and prevent further enemies from being drawn in. Since I have shadow_ink and cloth available, I should attempt to write a quiet note to avoid escalating the situation and potentially stop the goblin scout from attacking.",
+      "action": "write quiet",
+      "goal_description": "Survive the new goblin scout goblin_warrior_15",
+      "goal_evidence": "Noise draws in an enemy scout (goblin_warrior_15)! You may hush the area through a note with \"quiet\" written on it."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle028",
+    "step": 65,
+    "proposal": {
+      "reasoning": "I cannot pick up the thread because my hands are full (torch and wood_plank). The current goal of finding a weapon in the armory is not directly supported, as no weapon is visible and I cannot craft one without free hands and a workbench. However, the armory contains iron_ore, stone, rust_scrap, and iron_bar, which could be used to craft a weapon at the workbench in the hall. To make progress, I need to free a hand. I can discard the torch, which is not needed for crafting a wooden_dagger (requires wood_plank and thread). Dropping the torch will allow me to pick up the thread, then return to the hall to craft the dagger. This is a reasonable step toward acquiring a weapon.",
+      "action": "discard 1 torch",
+      "goal_description": "Find a weapon in the armory",
+      "goal_evidence": "I see 3 iron_ore, 3 stone, 5 rust_scrap, 1 paper_1, 5 iron_bar, 4 mountain_sulfur, 1 thread, 7 apple, 2 coin near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax",
+      "goal_confidence_requires_review"
+    ]
+  },
+  {
+    "trajectory": "oracle028",
+    "step": 224,
+    "proposal": {
+      "reasoning": "I have freed up one hand slot by storing cloth. Now I can pick up one of the valuable items from the ground to progress toward collecting loot. The coin is a useful resource, and picking it up will help secure the goblin's drop. I'll pick up the coin.",
+      "action": "pick up 10 coin",
+      "goal_description": "Collect loot from defeated goblin",
+      "goal_evidence": "I see 10 coin, 1 small_satchel_0, 1 workbench, 3 goblin_eye, 3 cloth, 1 small_bag_0, 1 paper_7, 1 pen near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle028",
+    "step": 224,
+    "proposal": {
+      "reasoning": "The previous attempt to store cloth succeeded, freeing one hand slot. I still hold only a wood_plank, so I can now pick up more loot from the ground. The goal is to collect loot from the defeated goblin, and the most valuable visible item is the 10 coin. Picking up the coin directly advances the loot collection goal.",
+      "action": "pick up 10 coin",
+      "goal_description": "Collect loot from defeated goblin",
+      "goal_evidence": "I see 10 coin, 1 small_satchel_0, 1 workbench, 3 goblin_eye, 3 cloth, 1 small_bag_0, 1 paper_7, 1 pen near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle032",
+    "step": 112,
+    "proposal": {
+      "reasoning": "I now hold both the paper and the pen, which are the required tools for writing. My current goal is to write on the paper, so I should proceed with that action.",
+      "action": "write paper_7",
+      "goal_description": "Write on the paper using the pen",
+      "goal_evidence": "I am holding 1 paper_7, 1 pen."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle032",
+    "step": 112,
+    "proposal": {
+      "reasoning": "I now hold both the pen and paper_7, which are the tools needed to write. The current subgoal is to write on the paper, so I should use the write action with an appropriate text.",
+      "action": "write Hello",
+      "goal_description": "Write on the paper using the pen",
+      "goal_evidence": "I picked up pen."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle032",
+    "step": 112,
+    "proposal": {
+      "reasoning": "I now hold both the pen and the paper, which are the tools needed to write. The goal was to retrieve the paper so I can write with the pen. I should now use the write action to write text on the paper.",
+      "action": "write I am here",
+      "goal_description": "Retrieve paper from satchel so I can write with the pen",
+      "goal_evidence": "I took out paper_7 from small_satchel_0."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle032",
+    "step": 122,
+    "proposal": {
+      "reasoning": "The goblin warrior is defeated and no threats remain nearby. My health is 64 and stamina is 80%, so I can safely explore or gather resources. The nearby items include goblin eyes, cloth, and coins, but my goal is to survive and progress. Since combat is over, I should secure useful resources or explore neighboring areas like the armory or library to find better equipment. Picking up nearby loot is a low-risk way to improve my situation.",
+      "action": "pick up 2 goblin_eye",
+      "goal_description": "Survive and gather resources after defeating the goblin warrior",
+      "goal_evidence": "I attacked goblin_warrior_13 for 10 damage and defeated goblin_warrior_13!"
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle032",
+    "step": 160,
+    "proposal": null,
+    "reasons": [
+      "missing_action"
+    ]
+  },
+  {
+    "trajectory": "oracle032",
+    "step": 206,
+    "proposal": {
+      "reasoning": "My hand is full with a goblin_eye, and a new goblin_warrior_16 has appeared and is dealing damage. The area can be quieted by writing 'quiet' on a note, which may stop further enemies from being drawn in. Storing the held goblin_eye first frees my hand and keeps the resource, but the immediate threat of attracting more enemies makes writing the hush note the safer priority.",
+      "action": "write quiet",
+      "goal_description": "Gather nearby resources safely",
+      "goal_evidence": "Noise draws in an enemy scout (goblin_warrior_16)! You may hush the area through a note with \"quiet\" written on it."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax",
+      "goal_confidence_requires_review"
+    ]
+  },
+  {
+    "trajectory": "oracle037",
+    "step": 180,
+    "proposal": null,
+    "reasons": [
+      "missing_action"
+    ]
+  },
+  {
+    "trajectory": "oracle037",
+    "step": 192,
+    "proposal": {
+      "reasoning": "My health is at 2, and any attack from the goblin will kill me. Both escape routes are blocked, but a note with 'quiet' written on it can hush the area and potentially prevent the newly arrived scout from joining the fight or allow me to escape unnoticed. Writing the note is the only action that might change the situation without risking immediate death.",
+      "action": "write quiet",
+      "goal_description": "Escape from the goblin warrior to survive",
+      "goal_evidence": "Cannot enter plain. goblin_warrior_1 has blocked the way out."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle037",
+    "step": 209,
+    "proposal": {
+      "reasoning": "The armory and library are too dark to explore without a light source, and I have no light source or wood_logs. The goblin_warrior_14 is a feral fighter and not helpful. Daniel Cross only repeats the same quests. I need to find a light source or wood_logs, but the only accessible areas are dark. Since I have a pen and paper, I can write a note to Daniel Cross asking for help or a light source, which might trigger a new interaction or quest. Writing is a safe action that uses my held items.",
+      "action": "write I need a light source or wood_logs. Can you help? paper_7",
+      "goal_description": "Find a light source or wood_logs to progress on quests",
+      "goal_evidence": "daniel_cross says: I'm a helpful guide who tracks your side quest progress. You current tasks are:\n- collect 2 wood_log (reward: 3 coins)\n- craft a iron_bar (reward: 5 coins)\n- talk to villager_0 (reward: 3 coins)\n- [trade]: No task available"
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle054",
+    "step": 252,
+    "proposal": {
+      "reasoning": "I am still in the hall with a goblin_warrior_16 nearby, unequipped and vulnerable. The workbench cannot craft anything useful right now. I need to improve my gear to survive. Picking up cloth fails due to insufficient hand space, but there are coins and other materials. I should try to pick up a coin to increase my buying power, or equip something, but there is no equipment visible. Since the goal is to equip better gear, and crafting is not possible, I will pick up a coin to potentially buy gear later.",
+      "action": "pick up 1 coin",
+      "goal_description": "Equip myself with better gear using available materials",
+      "goal_evidence": "I see 11 coin, 1 workbench, 3 goblin_eye, 1 mountain_sulfur, 1 pen, 1 paper_7, 4 cloth, 1 crimson_lichen, 1 thread near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle060",
+    "step": 228,
+    "proposal": {
+      "reasoning": "The goblin_warrior_18 is defeated, so the immediate threat is gone. I should now secure useful items to improve my survivability. I see 10 coin and a small_bag_0 nearby, but my hands are full with a pen and paper_7. I'll pick up the coin first since it may be useful for buying equipment later, and it doesn't require inventory space.",
+      "action": "pick up 10 coin",
+      "goal_description": "Collect useful items and prepare for further exploration",
+      "goal_evidence": "I see 10 coin, 1 workbench, 3 goblin_eye, 3 cloth, 1 wood_plank, 1 small_bag_0 near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle060",
+    "step": 242,
+    "proposal": {
+      "reasoning": "The small_bag_0 is full, so I cannot store more items in it. The goal to collect and store useful items remains active, but I need to free up space or use a different approach. I see a workbench and other items nearby. I could try to craft a larger container, but I lack materials and knowledge. Alternatively, I can pick up items if my hands are free, but my hand is holding the small_bag_0. I could drop the small_bag_0 to free my hand, then pick up items, but that would leave the bag on the ground. I could also try to store items in another container if one exists, but I only see small_bag_0. Since the bag is full, I should consider dropping it to pick up other items, but that might not be ideal. Another option is to inspect the workbench to see if I can craft a larger bag. However, I don't have materials. Given the current situation, I should probably drop the small_bag_0 to free my hand and then pick up other items, but that would mean losing the stored items. Alternatively, I could try to use the workbench to craft a new container. But I don't know the recipe. I think the best action is to drop the small_bag_0 to free my hand, then I can pick up other items and maybe find a better container. But dropping the bag would leave it on the ground, and I could pick it up later. However, I might lose the items if something happens. Since the area is safe, dropping is low risk. But I need to be careful. Let's drop the small_bag_0 to free my hand, then I can pick up other items. But wait, I can also try to store items in the workbench? No, workbench is not a container. I think dropping the bag is the best immediate action to free my hand and continue collecting. But the goal is to store items in small_bag_0, which is full. So maybe I should change the goal to find a larger container. But the goal is still active. I'll drop the small_bag_0 to free my hand, then pick up other items, and later find a way to store them. However, dropping the bag might be considered a failure for the goal. But the goal is to collect and store, and I can't store more. So I need to adapt. I'll drop the small_bag_0."
+    },
+    "reasons": [
+      "missing_action"
+    ]
+  },
+  {
+    "trajectory": "oracle079",
+    "step": 260,
+    "proposal": {
+      "reasoning": "The hall is now clear of goblin warriors, completing the goal of eliminating them. I should collect the loot (coins, goblin eyes, cloth) to improve my resources, and then explore the neighboring areas (armory or library) for further objectives or items.",
+      "action": "pick up 10 coin",
+      "goal_description": "Eliminate the goblin warriors attacking me",
+      "goal_evidence": "I see no one nearby."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle079",
+    "step": 260,
+    "proposal": {
+      "reasoning": "All goblin warriors in the hall have been defeated and no enemies remain nearby. My current goal of eliminating the attacking goblins is complete. Since I am at low health (54) and stamina (60%), I should pick up the loot and useful items in the area, starting with the coins, to prepare for future encounters and exploration.",
+      "action": "pick up 10 coin",
+      "goal_description": "Collect loot and useful items from the hall",
+      "goal_evidence": "I see 10 coin, 1 workbench, 1 paper_7, 1 wood_plate, 7 goblin_eye, 4 cloth near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle085",
+    "step": 88,
+    "proposal": {
+      "reasoning": "The goblin has left the hall, so I am safe for now. My goal is to gather useful items and equipment. I see coins, paper, a pen, and apples nearby, plus a workbench. Picking up the coins is a simple step toward gathering resources, and there is no immediate threat.",
+      "action": "pick up 10 coin",
+      "goal_description": "Gather useful items and equipment at the starting point",
+      "goal_evidence": "I see 10 coin, 1 paper_7, 1 pen, 2 apple, 1 workbench near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle085",
+    "step": 88,
+    "proposal": {
+      "reasoning": "The goblin has left toward the armory, so the hall is currently safe. I should continue gathering useful items at the starting point, such as the coins, apples, and paper, which are portable and potentially useful. Picking up the coins is a safe, productive step toward my goal of gathering useful items.",
+      "action": "pick up 10 coin",
+      "goal_description": "Gather useful items and equipment at the starting point",
+      "goal_evidence": "I see 10 coin, 1 paper_7, 1 pen, 2 apple, 1 workbench near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle136",
+    "step": 172,
+    "proposal": {
+      "reasoning": "I have equipped my satchel and now have free hands to pick up items. I see 10 coin nearby, which is a valuable resource for buying equipment later. Picking up the coin is a safe action that progresses my goal of recovering basic equipment after death.",
+      "action": "pick up 10 coin",
+      "goal_description": "Recover from death by gathering basic equipment",
+      "goal_evidence": "I revived at the starting point with full health but lost all items in hand, equipped items, and inventory items at the place I died."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle136",
+    "step": 172,
+    "proposal": {
+      "reasoning": "I have equipped the small satchel, so now I should gather useful nearby items while I have the carrying capacity. Picking up the coin is a safe, useful resource that supports recovering from death. I'll avoid the nearby hostile creatures and focus on collecting basic items.",
+      "action": "pick up 10 coin",
+      "goal_description": "Recover from death by gathering basic equipment",
+      "goal_evidence": "I revived at the starting point with full health but lost all items in hand, equipped items, and inventory items at the place I died."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle136",
+    "step": 231,
+    "proposal": null,
+    "reasons": [
+      "missing_action"
+    ]
+  },
+  {
+    "trajectory": "oracle136",
+    "step": 277,
+    "proposal": {
+      "reasoning": "The peak_vulture_5 has been defeated, so the survival goal is complete. I am at 101 health with no equipped items and no immediate threats. I should now gather resources and equipment to prepare for future encounters. I'll pick up the coin to build wealth, which can be used for trading or crafting.",
+      "action": "pick up 8 coin",
+      "goal_description": "Gather resources and equipment",
+      "goal_evidence": "I see 8 coin, 1 workbench, 15 cloth, 15 goblin_eye, 2 mountain_sulfur, 2 crimson_lichen, 1 small_satchel_0 near me."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle136",
+    "step": 298,
+    "proposal": {
+      "reasoning": "The library is too dark to explore and I still lack a light source. The hall is safe with no hostiles nearby. I have a satchel with a pen and paper. I should try crafting a light source using available materials. I have cloth, goblin_eye, mountain_sulfur, and crimson_lichen. Perhaps combining cloth with mountain_sulfur or crimson_lichen can create a light source. I'll attempt to craft a torch again, but maybe I need more cloth. I'll pick up more cloth first to have sufficient materials.",
+      "action": "pick up 14 cloth",
+      "goal_description": "Explore the library to find useful equipment, knowledge, or materials for survival",
+      "goal_evidence": "It is too dark to see anything here."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle270",
+    "step": 278,
+    "proposal": {
+      "reasoning": "I am in the safe hall with a goblin_warrior_27 present. My health is 102 and I took no damage from its attack, but I still have no weapon equipped and my defense is 0. The public state suggests a note with 'quiet' written could hush the area and prevent further enemies from being drawn in. I have a pen, so I can write a note. Writing 'quiet' on a note may reduce noise and help me survive while I figure out how to get light or a weapon. This is a low-risk action that addresses the immediate threat of attracting more enemies.",
+      "action": "write quiet",
+      "goal_description": "Survive the immediate threat from swamp_raider_9",
+      "goal_evidence": "An enemy swamp_raider_9 arrives from armory and prowls into the area."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  },
+  {
+    "trajectory": "oracle270",
+    "step": 278,
+    "proposal": {
+      "reasoning": "A goblin_warrior_27 has appeared and attacked me (0 damage this turn), while swamp_raider_9 left toward the armory. The public observation hints that writing 'quiet' on a note could hush the area and prevent scout enemies from being drawn in. I have a pen and cloth, and the hint explicitly mentions a note, so writing 'quiet' is a direct, low-risk way to address the noise mechanic and survive the immediate threat. This is preferable to attacking with my low attack and no defense, and better than waiting passively.",
+      "action": "write quiet",
+      "goal_description": "Survive the immediate threat from swamp_raider_9",
+      "goal_evidence": "Noise draws in an enemy scout (goblin_warrior_27)! You may hush the area through a note with \"quiet\" written on it."
+    },
+    "reasons": [
+      "action_not_in_public_action_syntax"
+    ]
+  }
+]
