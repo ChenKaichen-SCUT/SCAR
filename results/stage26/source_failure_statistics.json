@@ -1,0 +1,1037 @@
+{
+  "actions": 300,
+  "model_proposals": 324,
+  "counts": {
+    "accepted_without_main_reward": 265,
+    "B_actual_failed": 34,
+    "C_consecutive_same_context": 1,
+    "C_recurrent_same_context": 2,
+    "rejected_A": 3
+  },
+  "rejected_proposals": [
+    {
+      "step": 175,
+      "category": "A",
+      "ordinal": 1,
+      "proposal": {
+        "reasoning": "The goblin_warrior_14 is defeated, so that goal is complete. However, a new enemy goblin_warrior_15 has arrived, and the game explicitly suggests writing a note with 'quiet' to hush the area and avoid drawing more enemies. My health is 29 and I have no defense, so avoiding additional combat is prudent. Writing 'quiet' on a note may prevent further enemy spawns while I recover.",
+        "action": "write quiet",
+        "goal_description": "Defeat goblin_warrior_14 to survive",
+        "goal_evidence": "I attacked goblin_warrior_14 for 10 damage and defeated goblin_warrior_14!"
+      },
+      "executed": false,
+      "hard": true,
+      "reasons": [
+        "action_not_in_public_action_syntax"
+      ],
+      "request_line": 190,
+      "request_id": "9200594188ac863d1e1d0d3fbe77034c018d1642e990fede6b35d175fd06df18",
+      "confidence_review": false
+    },
+    {
+      "step": 177,
+      "category": "A",
+      "ordinal": 1,
+      "proposal": {
+        "reasoning": "The goblin_warrior_15 is still nearby and has not attacked yet, but the previous 'quiet' note suggestion indicates a way to avoid further enemy attention. My health is 29 and defense is 0, so I should try to reduce the threat without engaging in combat. Writing a 'quiet' note may hush the area and prevent additional enemies from being drawn in, helping me survive.",
+        "action": "write quiet",
+        "goal_description": "Survive the new goblin scout goblin_warrior_15",
+        "goal_evidence": "Noise draws in an enemy scout (goblin_warrior_15)! You may hush the area through a note with \"quiet\" written on it."
+      },
+      "executed": false,
+      "hard": true,
+      "reasons": [
+        "action_not_in_public_action_syntax"
+      ],
+      "request_line": 193,
+      "request_id": "03d38300c17c17e8552212492fe5ec7bfa84b8e264d19a399832af12993db7c1",
+      "confidence_review": false
+    },
+    {
+      "step": 177,
+      "category": "A",
+      "ordinal": 2,
+      "proposal": {
+        "reasoning": "The goblin_warrior_15 is present and has not attacked yet, but my defense is 0 and health is 29. The game suggested writing a 'quiet' note to hush the area and prevent further enemies from being drawn in. Since I have shadow_ink and cloth available, I should attempt to write a quiet note to avoid escalating the situation and potentially stop the goblin scout from attacking.",
+        "action": "write quiet",
+        "goal_description": "Survive the new goblin scout goblin_warrior_15",
+        "goal_evidence": "Noise draws in an enemy scout (goblin_warrior_15)! You may hush the area through a note with \"quiet\" written on it."
+      },
+      "executed": false,
+      "hard": true,
+      "reasons": [
+        "action_not_in_public_action_syntax"
+      ],
+      "request_line": 194,
+      "request_id": "498fe6828599c604710ba38a5053367e2f0e4a5e753da8576a9daf3409f3d99e",
+      "confidence_review": false
+    }
+  ],
+  "failed_actions": [
+    {
+      "step": 28,
+      "action": "enter library",
+      "subtype": "locked_exit",
+      "feedback": "Cannot enter library, the door is locked.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 29,
+      "action": "enter armory",
+      "subtype": "locked_exit",
+      "feedback": "Cannot enter armory, the door is locked.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 31,
+      "action": "lockpick library",
+      "subtype": "missing_lockpick_tool",
+      "feedback": "Cannot lockpick library. No lockpick tool in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 32,
+      "action": "lockpick library",
+      "subtype": "missing_lockpick_tool",
+      "feedback": "Cannot lockpick library. No lockpick tool in hand.",
+      "previous_same_context": [
+        31
+      ],
+      "adjacent_repeat": true
+    },
+    {
+      "step": 34,
+      "action": "enter library",
+      "subtype": "locked_exit",
+      "feedback": "Cannot enter library, the door is locked.",
+      "previous_same_context": [
+        28
+      ],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 37,
+      "action": "equip key",
+      "subtype": "object_not_held_or_visible",
+      "feedback": "Cannot equip key, not found in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 42,
+      "action": "enter armory",
+      "subtype": "locked_exit",
+      "feedback": "Cannot enter armory, the door is locked.\nAn enemy goblin_warrior_2 arrives from library and prowls into the area.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 54,
+      "action": "pick up iron_bar",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up iron_bar, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 60,
+      "action": "craft 1 wood_plank",
+      "subtype": "missing_workbench",
+      "feedback": "Cannot craft wood_plank. Missing necessary workbench in the current area.\nFriction recedes. Focus steadies, and intent becomes clear.\nI was attacked by goblin_warrior_1 and lost 11 HP.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 61,
+      "action": "pick up stone",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up stone, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 64,
+      "action": "enter plain",
+      "subtype": "locked_exit",
+      "feedback": "Cannot enter plain, the door is locked.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 79,
+      "action": "enter hall",
+      "subtype": "combat_blocks_exit",
+      "feedback": "Cannot enter hall. goblin_warrior_1 has blocked the way out.\ngoblin_warrior_1 is waiting.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 81,
+      "action": "enter hall",
+      "subtype": "combat_blocks_exit",
+      "feedback": "Cannot enter hall. goblin_warrior_1 has blocked the way out.\ngoblin_warrior_1 is attacking.\nI was attacked by goblin_warrior_1 and lost 22 HP.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 85,
+      "action": "equip torch",
+      "subtype": "not_equippable",
+      "feedback": "Cannot equip torch, it is not equippable.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 86,
+      "action": "pick up small_satchel_0",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up small_satchel_0, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 89,
+      "action": "pick up apple",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up apple, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 94,
+      "action": "enter library",
+      "subtype": "combat_blocks_exit",
+      "feedback": "Cannot enter library. goblin_warrior_2 has blocked the way out.\ngoblin_warrior_2 is waiting.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 98,
+      "action": "enter armory",
+      "subtype": "combat_blocks_exit",
+      "feedback": "Cannot enter armory. goblin_warrior_2 has blocked the way out.\ngoblin_warrior_2 is waiting.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 107,
+      "action": "pick up goblin_eye",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up goblin_eye, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 110,
+      "action": "pick up cloth",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up cloth, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 113,
+      "action": "take out wooden_rod small_bag_0",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot take out wooden_rod, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 122,
+      "action": "equip wooden_rod",
+      "subtype": "not_equippable",
+      "feedback": "Cannot equip wooden_rod, it is not equippable.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 135,
+      "action": "pick up small_satchel_0",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up small_satchel_0, not enough space in hand.\nNoise draws in an enemy scout (goblin_warrior_13)! You may hush the area through a note with \"quiet\" written on it.\ngoblin_warrior_13 left towards armory.\nI was attacked by goblin_warrior_12 and lost 2 HP.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 136,
+      "action": "write quiet paper_7",
+      "subtype": "missing_writing_tool",
+      "feedback": "Cannot write on paper_7. No writing tools held in hand.\nI was attacked by goblin_warrior_12 and lost 2 HP.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 143,
+      "action": "pick up cloth",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up cloth, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 146,
+      "action": "pick up cloth",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up cloth, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 161,
+      "action": "enter hall",
+      "subtype": "combat_blocks_exit",
+      "feedback": "Cannot enter hall. peak_vulture_0 has blocked the way out.\npeak_vulture_0 is waiting.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 235,
+      "action": "craft 1 torch",
+      "subtype": "insufficient_ingredients",
+      "feedback": "Cannot craft a single torch. Do not have sufficient amount of necessary ingredients.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 260,
+      "action": "enter plain",
+      "subtype": "locked_exit",
+      "feedback": "Cannot enter plain, the door is locked.\nIt is too dark to see anything here.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 269,
+      "action": "pick up cloth",
+      "subtype": "hand_capacity",
+      "feedback": "Cannot pick up cloth, not enough space in hand.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 270,
+      "action": "store 1 cloth small_satchel_0",
+      "subtype": "container_capacity",
+      "feedback": "Cannot store any number of cloth, not enough space in small_satchel_0.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 280,
+      "action": "inspect paper_7",
+      "subtype": "object_not_held_or_visible",
+      "feedback": "Cannot inspect paper_7, the object not found in hand, arms, inventory, or the current area.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 289,
+      "action": "craft 1 paper",
+      "subtype": "insufficient_ingredients",
+      "feedback": "Cannot craft a single paper. Do not have sufficient amount of necessary ingredients.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    },
+    {
+      "step": 290,
+      "action": "craft 2 paper",
+      "subtype": "insufficient_ingredients",
+      "feedback": "Cannot craft a single paper. Do not have sufficient amount of necessary ingredients.",
+      "previous_same_context": [],
+      "adjacent_repeat": false
+    }
+  ],
+  "subtype_counts": {
+    "locked_exit": 6,
+    "missing_lockpick_tool": 2,
+    "object_not_held_or_visible": 2,
+    "hand_capacity": 11,
+    "missing_workbench": 1,
+    "combat_blocks_exit": 5,
+    "not_equippable": 2,
+    "missing_writing_tool": 1,
+    "insufficient_ingredients": 3,
+    "container_capacity": 1
+  },
+  "failure_runs": [
+    [
+      28,
+      29
+    ],
+    [
+      31,
+      32
+    ],
+    [
+      34
+    ],
+    [
+      37
+    ],
+    [
+      42
+    ],
+    [
+      54
+    ],
+    [
+      60,
+      61
+    ],
+    [
+      64
+    ],
+    [
+      79
+    ],
+    [
+      81
+    ],
+    [
+      85,
+      86
+    ],
+    [
+      89
+    ],
+    [
+      94
+    ],
+    [
+      98
+    ],
+    [
+      107
+    ],
+    [
+      110
+    ],
+    [
+      113
+    ],
+    [
+      122
+    ],
+    [
+      135,
+      136
+    ],
+    [
+      143
+    ],
+    [
+      146
+    ],
+    [
+      161
+    ],
+    [
+      235
+    ],
+    [
+      260
+    ],
+    [
+      269,
+      270
+    ],
+    [
+      280
+    ],
+    [
+      289,
+      290
+    ]
+  ],
+  "long_no_information_steps": [],
+  "short_public_state_cycles": [
+    {
+      "start": 2,
+      "end": 5,
+      "actions": [
+        "equip small_bag_1",
+        "inspect inventory",
+        "unequip small_bag_1",
+        "store 1 coin small_bag_1"
+      ],
+      "context": "68adfcd995e659eb8406afa3da9bf23b924e5a0b797e2a11f695dae30c60501a"
+    },
+    {
+      "start": 5,
+      "end": 8,
+      "actions": [
+        "store 1 coin small_bag_1",
+        "inspect small_bag_1",
+        "take out coin small_bag_1",
+        "drop coin"
+      ],
+      "context": "291fd4ac51394a6f2ed4482062e098ba7e7239e754a2155019aef8a33e548b19"
+    },
+    {
+      "start": 3,
+      "end": 10,
+      "actions": [
+        "inspect inventory",
+        "unequip small_bag_1",
+        "store 1 coin small_bag_1",
+        "inspect small_bag_1",
+        "take out coin small_bag_1",
+        "drop coin",
+        "equip small_bag_1",
+        "store 1 coin inventory"
+      ],
+      "context": "02c3a5560b7fd06f46f4a9c797dd2d42b8c7d2c1f4b4e726987d465d066ba102"
+    },
+    {
+      "start": 35,
+      "end": 36,
+      "actions": [
+        "inspect workbench",
+        "talk to bob_johnson"
+      ],
+      "context": "7f14e5684ee59f162245935d5e201e2f39dd4f1fa117da980060c034d34ef1bc"
+    },
+    {
+      "start": 55,
+      "end": 56,
+      "actions": [
+        "drop torch",
+        "pick up torch"
+      ],
+      "context": "724b9507763a4ab85771253414496408a60c90e25f2fd1e729847ac09402a808"
+    },
+    {
+      "start": 55,
+      "end": 57,
+      "actions": [
+        "drop torch",
+        "pick up torch",
+        "inspect wood_log"
+      ],
+      "context": "724b9507763a4ab85771253414496408a60c90e25f2fd1e729847ac09402a808"
+    },
+    {
+      "start": 65,
+      "end": 66,
+      "actions": [
+        "attack goblin_warrior_1",
+        "defend"
+      ],
+      "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac"
+    },
+    {
+      "start": 65,
+      "end": 67,
+      "actions": [
+        "attack goblin_warrior_1",
+        "defend",
+        "defend"
+      ],
+      "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac"
+    },
+    {
+      "start": 65,
+      "end": 68,
+      "actions": [
+        "attack goblin_warrior_1",
+        "defend",
+        "defend",
+        "defend"
+      ],
+      "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac"
+    },
+    {
+      "start": 65,
+      "end": 69,
+      "actions": [
+        "attack goblin_warrior_1",
+        "defend",
+        "defend",
+        "defend",
+        "defend"
+      ],
+      "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac"
+    },
+    {
+      "start": 65,
+      "end": 70,
+      "actions": [
+        "attack goblin_warrior_1",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend"
+      ],
+      "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac"
+    },
+    {
+      "start": 65,
+      "end": 71,
+      "actions": [
+        "attack goblin_warrior_1",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend"
+      ],
+      "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac"
+    },
+    {
+      "start": 65,
+      "end": 72,
+      "actions": [
+        "attack goblin_warrior_1",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend"
+      ],
+      "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac"
+    },
+    {
+      "start": 65,
+      "end": 73,
+      "actions": [
+        "attack goblin_warrior_1",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend",
+        "defend"
+      ],
+      "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac"
+    },
+    {
+      "start": 95,
+      "end": 96,
+      "actions": [
+        "attack goblin_warrior_2",
+        "defend"
+      ],
+      "context": "9352fd19ae9e4cf0f1b735f3148ef7c65f645f33dd4241af05df4c3941f176fb"
+    },
+    {
+      "start": 95,
+      "end": 97,
+      "actions": [
+        "attack goblin_warrior_2",
+        "defend",
+        "defend"
+      ],
+      "context": "9352fd19ae9e4cf0f1b735f3148ef7c65f645f33dd4241af05df4c3941f176fb"
+    },
+    {
+      "start": 99,
+      "end": 100,
+      "actions": [
+        "attack goblin_warrior_2",
+        "defend"
+      ],
+      "context": "9352fd19ae9e4cf0f1b735f3148ef7c65f645f33dd4241af05df4c3941f176fb"
+    },
+    {
+      "start": 99,
+      "end": 101,
+      "actions": [
+        "attack goblin_warrior_2",
+        "defend",
+        "defend"
+      ],
+      "context": "9352fd19ae9e4cf0f1b735f3148ef7c65f645f33dd4241af05df4c3941f176fb"
+    },
+    {
+      "start": 118,
+      "end": 119,
+      "actions": [
+        "enter library",
+        "enter hall"
+      ],
+      "context": "09f2d9e57d3389d546659be6d0c6432da7945be7fba8d5e0b011ae565b11eb19"
+    },
+    {
+      "start": 116,
+      "end": 120,
+      "actions": [
+        "pick up small_bag_0",
+        "defend",
+        "enter library",
+        "enter hall",
+        "drop small_bag_0"
+      ],
+      "context": "b70a21fb2349fdeff49447cc2101481a0e2d515e23eb971cd11016ca4e318a85"
+    },
+    {
+      "start": 125,
+      "end": 126,
+      "actions": [
+        "enter library",
+        "enter hall"
+      ],
+      "context": "5a87573a08a7989aad009b65837d8f89361599ac75e6033a01f136ace526786b"
+    },
+    {
+      "start": 149,
+      "end": 150,
+      "actions": [
+        "drop torch",
+        "pick up torch"
+      ],
+      "context": "4d8466d5707380ac80c1cf3384e3f0bd8621a53bb9da3285f590d010109a6486"
+    },
+    {
+      "start": 159,
+      "end": 160,
+      "actions": [
+        "defend",
+        "attack peak_vulture_0"
+      ],
+      "context": "b887f40542c2120992fcee556e8c013a03fc71c1f7723e3657a771ddfb38df73"
+    },
+    {
+      "start": 163,
+      "end": 164,
+      "actions": [
+        "attack peak_vulture_0",
+        "defend"
+      ],
+      "context": "b887f40542c2120992fcee556e8c013a03fc71c1f7723e3657a771ddfb38df73"
+    },
+    {
+      "start": 163,
+      "end": 165,
+      "actions": [
+        "attack peak_vulture_0",
+        "defend",
+        "defend"
+      ],
+      "context": "b887f40542c2120992fcee556e8c013a03fc71c1f7723e3657a771ddfb38df73"
+    },
+    {
+      "start": 165,
+      "end": 166,
+      "actions": [
+        "defend",
+        "attack peak_vulture_0"
+      ],
+      "context": "b887f40542c2120992fcee556e8c013a03fc71c1f7723e3657a771ddfb38df73"
+    },
+    {
+      "start": 165,
+      "end": 167,
+      "actions": [
+        "defend",
+        "attack peak_vulture_0",
+        "attack peak_vulture_0"
+      ],
+      "context": "b887f40542c2120992fcee556e8c013a03fc71c1f7723e3657a771ddfb38df73"
+    },
+    {
+      "start": 167,
+      "end": 168,
+      "actions": [
+        "attack peak_vulture_0",
+        "defend"
+      ],
+      "context": "b887f40542c2120992fcee556e8c013a03fc71c1f7723e3657a771ddfb38df73"
+    },
+    {
+      "start": 172,
+      "end": 173,
+      "actions": [
+        "defend",
+        "attack goblin_warrior_14"
+      ],
+      "context": "671136401721810aa064ac54ff5828bf24ad225633b3ad3a2b8279e1e5135894"
+    },
+    {
+      "start": 205,
+      "end": 206,
+      "actions": [
+        "attack swamp_raider_9",
+        "defend"
+      ],
+      "context": "c0d0645ac619dc170c118af0b52bb0be20826e046d96b3a30919273960b8378b"
+    },
+    {
+      "start": 206,
+      "end": 207,
+      "actions": [
+        "defend",
+        "attack swamp_raider_9"
+      ],
+      "context": "c0d0645ac619dc170c118af0b52bb0be20826e046d96b3a30919273960b8378b"
+    },
+    {
+      "start": 207,
+      "end": 208,
+      "actions": [
+        "attack swamp_raider_9",
+        "defend"
+      ],
+      "context": "c0d0645ac619dc170c118af0b52bb0be20826e046d96b3a30919273960b8378b"
+    },
+    {
+      "start": 215,
+      "end": 216,
+      "actions": [
+        "enter armory",
+        "enter hall"
+      ],
+      "context": "8a4632d4a46e184e6d66163b46a7905cfeba436adebfc2b30e3edcc8c0ecc219"
+    },
+    {
+      "start": 217,
+      "end": 218,
+      "actions": [
+        "enter library",
+        "enter hall"
+      ],
+      "context": "8a4632d4a46e184e6d66163b46a7905cfeba436adebfc2b30e3edcc8c0ecc219"
+    },
+    {
+      "start": 217,
+      "end": 219,
+      "actions": [
+        "enter library",
+        "enter hall",
+        "inspect workbench"
+      ],
+      "context": "8a4632d4a46e184e6d66163b46a7905cfeba436adebfc2b30e3edcc8c0ecc219"
+    },
+    {
+      "start": 219,
+      "end": 220,
+      "actions": [
+        "inspect workbench",
+        "talk to goblin_warrior_13"
+      ],
+      "context": "8a4632d4a46e184e6d66163b46a7905cfeba436adebfc2b30e3edcc8c0ecc219"
+    },
+    {
+      "start": 231,
+      "end": 232,
+      "actions": [
+        "enter armory",
+        "enter hall"
+      ],
+      "context": "f5215754797243cae4ca10f30d96174e17cc2d6ff94e1c77070f50bc7fc509ea"
+    },
+    {
+      "start": 236,
+      "end": 237,
+      "actions": [
+        "enter library",
+        "enter hall"
+      ],
+      "context": "e5f78433929f0375a10e646202a877aefb360e0ca9cc5da40fb48eec7f534af5"
+    },
+    {
+      "start": 236,
+      "end": 238,
+      "actions": [
+        "enter library",
+        "enter hall",
+        "attack goblin_warrior_13"
+      ],
+      "context": "e5f78433929f0375a10e646202a877aefb360e0ca9cc5da40fb48eec7f534af5"
+    },
+    {
+      "start": 246,
+      "end": 247,
+      "actions": [
+        "defend",
+        "attack goblin_warrior_23"
+      ],
+      "context": "204d59b96f3dbe7b3e104c712e1536fa2af4b1b2337b3c19a19a702c3e55471d"
+    },
+    {
+      "start": 254,
+      "end": 255,
+      "actions": [
+        "wait",
+        "inspect workbench"
+      ],
+      "context": "071c18ea6a3b312b4e320c60ac0537bd87b9f39d09883e21ea73065ca8facc78"
+    },
+    {
+      "start": 262,
+      "end": 263,
+      "actions": [
+        "enter library",
+        "enter hall"
+      ],
+      "context": "f8c95ded543c20d16c734f8745574b3cd30d50e2db0163e71bedc44795a2934c"
+    },
+    {
+      "start": 263,
+      "end": 264,
+      "actions": [
+        "enter hall",
+        "enter library"
+      ],
+      "context": "1082bb9b9ff430b1e8e3e9c8e649c7002507bfc11363ae3c4a2ff2c9ba49e247"
+    },
+    {
+      "start": 264,
+      "end": 265,
+      "actions": [
+        "enter library",
+        "enter hall"
+      ],
+      "context": "f8c95ded543c20d16c734f8745574b3cd30d50e2db0163e71bedc44795a2934c"
+    },
+    {
+      "start": 267,
+      "end": 268,
+      "actions": [
+        "inspect workbench",
+        "inspect pen"
+      ],
+      "context": "f2885ff32d1dcf315d8c53773bb31e99b066819ba404c0cfed4b3d9adbb2b283"
+    },
+    {
+      "start": 272,
+      "end": 273,
+      "actions": [
+        "enter armory",
+        "enter hall"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 274,
+      "end": 275,
+      "actions": [
+        "enter library",
+        "enter hall"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 274,
+      "end": 276,
+      "actions": [
+        "enter library",
+        "enter hall",
+        "inspect workbench"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 276,
+      "end": 277,
+      "actions": [
+        "inspect workbench",
+        "inspect pen"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 277,
+      "end": 278,
+      "actions": [
+        "inspect pen",
+        "inspect goblin_eye"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 281,
+      "end": 282,
+      "actions": [
+        "enter armory",
+        "enter hall"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 281,
+      "end": 283,
+      "actions": [
+        "enter armory",
+        "enter hall",
+        "inspect workbench"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 284,
+      "end": 287,
+      "actions": [
+        "enter library",
+        "enter hall",
+        "inspect goblin_eye",
+        "talk to swamp_raider_9"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 284,
+      "end": 288,
+      "actions": [
+        "enter library",
+        "enter hall",
+        "inspect goblin_eye",
+        "talk to swamp_raider_9",
+        "inspect cloth"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 292,
+      "end": 293,
+      "actions": [
+        "enter library",
+        "enter hall"
+      ],
+      "context": "c0aded204ac724dd4d3faf0d3022bf00f6a99337ad31afe2b6b841b174f6d586"
+    },
+    {
+      "start": 299,
+      "end": 300,
+      "actions": [
+        "inspect goblin_eye",
+        "inspect cloth"
+      ],
+      "context": "c02e6f10e5b94eb0c98ad9a124bd25c3289bfa8196b384ca268b673166b2abda"
+    }
+  ],
+  "last_main_progress_step": 39,
+  "tail_steps": 261,
+  "tail_failed_actions": 28,
+  "tail_accepted_without_main": 233,
+  "tail_actions_by_verb": {
+    "talk": 4,
+    "enter": 51,
+    "defend": 33,
+    "pick": 44,
+    "drop": 10,
+    "inspect": 20,
+    "craft": 5,
+    "attack": 53,
+    "equip": 4,
+    "eat": 12,
+    "disassemble": 1,
+    "store": 17,
+    "take": 2,
+    "write": 2,
+    "wait": 3
+  },
+  "stage25_final_main": 1,
+  "new_model_calls": 0,
+  "hidden_rules_used": false,
+  "caveat": "A uses proposal denominator; B/C use 300 actual actions and C overlaps B. D is a strict no-information proxy, not all low-reward actions. Cycles use public state only, never strict complete-state equivalence."
+}
