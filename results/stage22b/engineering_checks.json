@@ -1,0 +1,1294 @@
+{
+  "passed": true,
+  "methods": [
+    {
+      "method": "Stage18-Fixed",
+      "steps": 300,
+      "requests": 300,
+      "observation_in_prompt_exact": 300,
+      "saved_memory_in_prompt_exact": 300,
+      "parsed_proposal_exact": 300,
+      "exact_saved_final_memory": true,
+      "save_load_roundtrip_exact": true,
+      "fallback_steps": [],
+      "native_invalid_steps": [],
+      "output_finish_reasons": {
+        "stop": 300
+      },
+      "request_status": {
+        "ok": 300
+      },
+      "input_min": 935,
+      "input_max": 3259,
+      "input_first": 935,
+      "input_last": 2943,
+      "input_tokens": 852830,
+      "output_tokens": 21639,
+      "cost_usd": 0.1352631,
+      "cache_hit_tokens": 38400,
+      "memory_limit": 5,
+      "memory_first_size": 0,
+      "memory_last_size": 5,
+      "memory_size_unit": "records"
+    },
+    {
+      "method": "ShortTermMemoryAgent",
+      "steps": 300,
+      "requests": 300,
+      "observation_in_prompt_exact": 300,
+      "saved_memory_in_prompt_exact": 300,
+      "parsed_proposal_exact": 300,
+      "exact_saved_final_memory": true,
+      "save_load_roundtrip_exact": true,
+      "fallback_steps": [
+        268
+      ],
+      "native_invalid_steps": [],
+      "output_finish_reasons": {
+        "stop": 300
+      },
+      "request_status": {
+        "ok": 300
+      },
+      "input_min": 550,
+      "input_max": 2197,
+      "input_first": 550,
+      "input_last": 1770,
+      "input_tokens": 528774,
+      "output_tokens": 24737,
+      "cost_usd": 0.087459804,
+      "cache_hit_tokens": 45568,
+      "memory_limit": 5,
+      "memory_first_size": 0,
+      "memory_last_size": 5,
+      "memory_size_unit": "records"
+    },
+    {
+      "method": "LongContextAgent",
+      "steps": 300,
+      "requests": 300,
+      "observation_in_prompt_exact": 300,
+      "saved_memory_in_prompt_exact": 300,
+      "parsed_proposal_exact": 300,
+      "exact_saved_final_memory": true,
+      "save_load_roundtrip_exact": true,
+      "fallback_steps": [
+        205
+      ],
+      "native_invalid_steps": [
+        278,
+        279,
+        290
+      ],
+      "output_finish_reasons": {
+        "stop": 300
+      },
+      "request_status": {
+        "ok": 300
+      },
+      "input_min": 550,
+      "input_max": 74276,
+      "input_first": 550,
+      "input_last": 74276,
+      "input_tokens": 10792906,
+      "output_tokens": 25936,
+      "cost_usd": 0.075234396,
+      "cache_hit_tokens": 10607232,
+      "memory_limit": null,
+      "memory_first_size": 0,
+      "memory_last_size": 246720,
+      "memory_size_unit": "characters"
+    }
+  ],
+  "reproductions": [
+    {
+      "id": "goal_contract_a32",
+      "step": 32,
+      "target": "enter hall",
+      "public_goal_parser_output": null,
+      "location": "hall",
+      "completion_status": {
+        "goal": "hall",
+        "required": 1,
+        "owned": {
+          "lower_bound": 0,
+          "exact": true
+        },
+        "complete": false,
+        "completion_status": "KNOWN",
+        "completion_basis": "owned public accounting; production or ground presence alone never sufficient",
+        "direct_acquisition_actions": [],
+        "execution": {
+          "product": "hall",
+          "s1_assessment": {
+            "action": "craft 1 hall",
+            "status": "UNKNOWN",
+            "conditions": [
+              {
+                "kind": "station",
+                "status": "UNKNOWN",
+                "evidence": {
+                  "required": null,
+                  "current_ground": {
+                    "coin": 5.0,
+                    "key": 1.0,
+                    "small_pouch_0": 1.0,
+                    "small_pouch_1": 1.0,
+                    "paper_0": 1.0,
+                    "pen": 1.0,
+                    "berry": 2.0,
+                    "workbench": 1.0
+                  }
+                },
+                "observed_step": 31,
+                "valid_until": "relevant public condition changes"
+              },
+              {
+                "kind": "recipe",
+                "status": "UNKNOWN",
+                "evidence": "ingredient names not publicly disclosed",
+                "observed_step": 31,
+                "valid_until": "relevant public condition changes"
+              }
+            ]
+          },
+          "nominal_material_conditions": [],
+          "blockers": [],
+          "knowledge_status": "UNKNOWN",
+          "unknown_conditions": [
+            "materials",
+            "quantities",
+            "stations",
+            "station_completeness",
+            "batch_consumption"
+          ],
+          "retry_allowed": true,
+          "as_of_step": 31,
+          "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+        }
+      },
+      "observation_contains_explicit_oak_objective": false,
+      "source": "scar_v3/state.py:PublicState.observe; scar_sequence/planner.py:Controller.observe; scar_stage16/state.py:PublicRuleState.get_goal_status"
+    },
+    {
+      "id": "goal_contract_a64",
+      "step": 64,
+      "target": "enter hall",
+      "public_goal_parser_output": null,
+      "location": "hall",
+      "completion_status": {
+        "goal": "hall",
+        "required": 1,
+        "owned": {
+          "lower_bound": 0,
+          "exact": true
+        },
+        "complete": false,
+        "completion_status": "KNOWN",
+        "completion_basis": "owned public accounting; production or ground presence alone never sufficient",
+        "direct_acquisition_actions": [],
+        "execution": {
+          "product": "hall",
+          "s1_assessment": {
+            "action": "craft 1 hall",
+            "status": "UNKNOWN",
+            "conditions": [
+              {
+                "kind": "station",
+                "status": "UNKNOWN",
+                "evidence": {
+                  "required": null,
+                  "current_ground": {
+                    "coin": 5.0,
+                    "key": 1.0,
+                    "small_pouch_0": 1.0,
+                    "small_pouch_1": 1.0,
+                    "pen": 1.0,
+                    "berry": 2.0,
+                    "workbench": 1.0,
+                    "hide_scrap": 1.0,
+                    "cloth": 1.0
+                  }
+                },
+                "observed_step": 63,
+                "valid_until": "relevant public condition changes"
+              },
+              {
+                "kind": "recipe",
+                "status": "UNKNOWN",
+                "evidence": "ingredient names not publicly disclosed",
+                "observed_step": 63,
+                "valid_until": "relevant public condition changes"
+              }
+            ]
+          },
+          "nominal_material_conditions": [],
+          "blockers": [],
+          "knowledge_status": "UNKNOWN",
+          "unknown_conditions": [
+            "materials",
+            "quantities",
+            "stations",
+            "station_completeness",
+            "batch_consumption"
+          ],
+          "retry_allowed": true,
+          "as_of_step": 63,
+          "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+        }
+      },
+      "observation_contains_explicit_oak_objective": true,
+      "source": "scar_v3/state.py:PublicState.observe; scar_sequence/planner.py:Controller.observe; scar_stage16/state.py:PublicRuleState.get_goal_status"
+    },
+    {
+      "id": "goal_contract_a68",
+      "step": 68,
+      "target": "enter hall",
+      "public_goal_parser_output": null,
+      "location": "hall",
+      "completion_status": {
+        "goal": "hall",
+        "required": 1,
+        "owned": {
+          "lower_bound": 0,
+          "exact": true
+        },
+        "complete": false,
+        "completion_status": "KNOWN",
+        "completion_basis": "owned public accounting; production or ground presence alone never sufficient",
+        "direct_acquisition_actions": [],
+        "execution": {
+          "product": "hall",
+          "s1_assessment": {
+            "action": "craft 1 hall",
+            "status": "UNKNOWN",
+            "conditions": [
+              {
+                "kind": "station",
+                "status": "UNKNOWN",
+                "evidence": {
+                  "required": null,
+                  "current_ground": {
+                    "coin": 5.0,
+                    "key": 1.0,
+                    "small_pouch_0": 1.0,
+                    "small_pouch_1": 1.0,
+                    "pen": 1.0,
+                    "berry": 2.0,
+                    "workbench": 1.0,
+                    "hide_scrap": 1.0,
+                    "cloth": 1.0
+                  }
+                },
+                "observed_step": 67,
+                "valid_until": "relevant public condition changes"
+              },
+              {
+                "kind": "recipe",
+                "status": "UNKNOWN",
+                "evidence": "ingredient names not publicly disclosed",
+                "observed_step": 67,
+                "valid_until": "relevant public condition changes"
+              }
+            ]
+          },
+          "nominal_material_conditions": [],
+          "blockers": [],
+          "knowledge_status": "UNKNOWN",
+          "unknown_conditions": [
+            "materials",
+            "quantities",
+            "stations",
+            "station_completeness",
+            "batch_consumption"
+          ],
+          "retry_allowed": true,
+          "as_of_step": 67,
+          "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+        }
+      },
+      "observation_contains_explicit_oak_objective": false,
+      "source": "scar_v3/state.py:PublicState.observe; scar_sequence/planner.py:Controller.observe; scar_stage16/state.py:PublicRuleState.get_goal_status"
+    },
+    {
+      "id": "goal_contract_a70",
+      "step": 70,
+      "target": "enter hall",
+      "public_goal_parser_output": null,
+      "location": "hall",
+      "completion_status": {
+        "goal": "hall",
+        "required": 1,
+        "owned": {
+          "lower_bound": 0,
+          "exact": true
+        },
+        "complete": false,
+        "completion_status": "KNOWN",
+        "completion_basis": "owned public accounting; production or ground presence alone never sufficient",
+        "direct_acquisition_actions": [],
+        "execution": {
+          "product": "hall",
+          "s1_assessment": {
+            "action": "craft 1 hall",
+            "status": "UNKNOWN",
+            "conditions": [
+              {
+                "kind": "station",
+                "status": "UNKNOWN",
+                "evidence": {
+                  "required": null,
+                  "current_ground": {
+                    "coin": 5.0,
+                    "key": 1.0,
+                    "small_pouch_0": 1.0,
+                    "small_pouch_1": 1.0,
+                    "pen": 1.0,
+                    "berry": 2.0,
+                    "workbench": 1.0,
+                    "hide_scrap": 1.0,
+                    "cloth": 1.0
+                  }
+                },
+                "observed_step": 69,
+                "valid_until": "relevant public condition changes"
+              },
+              {
+                "kind": "recipe",
+                "status": "UNKNOWN",
+                "evidence": "ingredient names not publicly disclosed",
+                "observed_step": 69,
+                "valid_until": "relevant public condition changes"
+              }
+            ]
+          },
+          "nominal_material_conditions": [],
+          "blockers": [],
+          "knowledge_status": "UNKNOWN",
+          "unknown_conditions": [
+            "materials",
+            "quantities",
+            "stations",
+            "station_completeness",
+            "batch_consumption"
+          ],
+          "retry_allowed": true,
+          "as_of_step": 69,
+          "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+        }
+      },
+      "observation_contains_explicit_oak_objective": false,
+      "source": "scar_v3/state.py:PublicState.observe; scar_sequence/planner.py:Controller.observe; scar_stage16/state.py:PublicRuleState.get_goal_status"
+    },
+    {
+      "id": "goal_contract_a184",
+      "step": 184,
+      "target": "enter hall",
+      "public_goal_parser_output": null,
+      "location": "hall",
+      "completion_status": {
+        "goal": "hall",
+        "required": 1,
+        "owned": {
+          "lower_bound": 0,
+          "exact": true
+        },
+        "complete": false,
+        "completion_status": "KNOWN",
+        "completion_basis": "owned public accounting; production or ground presence alone never sufficient",
+        "direct_acquisition_actions": [],
+        "execution": {
+          "product": "hall",
+          "s1_assessment": {
+            "action": "craft 1 hall",
+            "status": "UNKNOWN",
+            "conditions": [
+              {
+                "kind": "station",
+                "status": "UNKNOWN",
+                "evidence": {
+                  "required": null,
+                  "current_ground": {
+                    "coin": 5.0,
+                    "key": 1.0,
+                    "small_pouch_0": 1.0,
+                    "small_pouch_1": 1.0,
+                    "pen": 1.0,
+                    "berry": 2.0,
+                    "workbench": 1.0,
+                    "hide_scrap": 3.0,
+                    "cloth": 3.0,
+                    "goblin_token": 2.0
+                  }
+                },
+                "observed_step": 183,
+                "valid_until": "relevant public condition changes"
+              },
+              {
+                "kind": "recipe",
+                "status": "UNKNOWN",
+                "evidence": "ingredient names not publicly disclosed",
+                "observed_step": 183,
+                "valid_until": "relevant public condition changes"
+              }
+            ]
+          },
+          "nominal_material_conditions": [],
+          "blockers": [],
+          "knowledge_status": "UNKNOWN",
+          "unknown_conditions": [
+            "materials",
+            "quantities",
+            "stations",
+            "station_completeness",
+            "batch_consumption"
+          ],
+          "retry_allowed": true,
+          "as_of_step": 183,
+          "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+        }
+      },
+      "observation_contains_explicit_oak_objective": true,
+      "source": "scar_v3/state.py:PublicState.observe; scar_sequence/planner.py:Controller.observe; scar_stage16/state.py:PublicRuleState.get_goal_status"
+    },
+    {
+      "id": "goal_contract_a200",
+      "step": 200,
+      "target": "enter hall",
+      "public_goal_parser_output": null,
+      "location": "hall",
+      "completion_status": {
+        "goal": "hall",
+        "required": 1,
+        "owned": {
+          "lower_bound": 0,
+          "exact": true
+        },
+        "complete": false,
+        "completion_status": "KNOWN",
+        "completion_basis": "owned public accounting; production or ground presence alone never sufficient",
+        "direct_acquisition_actions": [],
+        "execution": {
+          "product": "hall",
+          "s1_assessment": {
+            "action": "craft 1 hall",
+            "status": "UNKNOWN",
+            "conditions": [
+              {
+                "kind": "station",
+                "status": "UNKNOWN",
+                "evidence": {
+                  "required": null,
+                  "current_ground": {
+                    "coin": 5.0,
+                    "key": 1.0,
+                    "small_pouch_0": 1.0,
+                    "small_pouch_1": 1.0,
+                    "pen": 1.0,
+                    "workbench": 1.0,
+                    "hide_scrap": 3.0,
+                    "cloth": 1.0,
+                    "goblin_token": 3.0,
+                    "paper_0": 1.0
+                  }
+                },
+                "observed_step": 199,
+                "valid_until": "relevant public condition changes"
+              },
+              {
+                "kind": "recipe",
+                "status": "UNKNOWN",
+                "evidence": "ingredient names not publicly disclosed",
+                "observed_step": 199,
+                "valid_until": "relevant public condition changes"
+              }
+            ]
+          },
+          "nominal_material_conditions": [],
+          "blockers": [],
+          "knowledge_status": "UNKNOWN",
+          "unknown_conditions": [
+            "materials",
+            "quantities",
+            "stations",
+            "station_completeness",
+            "batch_consumption"
+          ],
+          "retry_allowed": true,
+          "as_of_step": 199,
+          "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+        }
+      },
+      "observation_contains_explicit_oak_objective": false,
+      "source": "scar_v3/state.py:PublicState.observe; scar_sequence/planner.py:Controller.observe; scar_stage16/state.py:PublicRuleState.get_goal_status"
+    },
+    {
+      "id": "goal_contract_a300",
+      "step": 300,
+      "target": "enter hall",
+      "public_goal_parser_output": null,
+      "location": "hall",
+      "completion_status": {
+        "goal": "hall",
+        "required": 1,
+        "owned": {
+          "lower_bound": 0,
+          "exact": true
+        },
+        "complete": false,
+        "completion_status": "KNOWN",
+        "completion_basis": "owned public accounting; production or ground presence alone never sufficient",
+        "direct_acquisition_actions": [],
+        "execution": {
+          "product": "hall",
+          "s1_assessment": {
+            "action": "craft 1 hall",
+            "status": "UNKNOWN",
+            "conditions": [
+              {
+                "kind": "station",
+                "status": "UNKNOWN",
+                "evidence": {
+                  "required": null,
+                  "current_ground": {
+                    "coin": 5.0,
+                    "key": 1.0,
+                    "small_pouch_0": 1.0,
+                    "small_pouch_1": 1.0,
+                    "pen": 1.0,
+                    "workbench": 1.0,
+                    "hide_scrap": 7.0,
+                    "cloth": 5.0,
+                    "goblin_token": 6.0,
+                    "paper_0": 1.0
+                  }
+                },
+                "observed_step": 299,
+                "valid_until": "relevant public condition changes"
+              },
+              {
+                "kind": "recipe",
+                "status": "UNKNOWN",
+                "evidence": "ingredient names not publicly disclosed",
+                "observed_step": 299,
+                "valid_until": "relevant public condition changes"
+              }
+            ]
+          },
+          "nominal_material_conditions": [],
+          "blockers": [],
+          "knowledge_status": "UNKNOWN",
+          "unknown_conditions": [
+            "materials",
+            "quantities",
+            "stations",
+            "station_completeness",
+            "batch_consumption"
+          ],
+          "retry_allowed": true,
+          "as_of_step": 299,
+          "scope": "public conditions only; not a craft feasibility guarantee or P2 policy"
+        }
+      },
+      "observation_contains_explicit_oak_objective": false,
+      "source": "scar_v3/state.py:PublicState.observe; scar_sequence/planner.py:Controller.observe; scar_stage16/state.py:PublicRuleState.get_goal_status"
+    },
+    {
+      "id": "arbitration_a33",
+      "step": 33,
+      "proposal": "talk to remy",
+      "candidate": "enter hall",
+      "executed": "enter hall",
+      "reason": "retain_structured_default_when_evidence_does_not_resolve",
+      "checks": {
+        "llm": {
+          "action": "talk to remy",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 32,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "original_controller": {
+          "action": "enter hall",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "hall"
+                ],
+                "guard": "UNKNOWN"
+              },
+              "observed_step": 32,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "bounded_controller": {
+          "action": "enter hall",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "hall"
+                ],
+                "guard": "UNKNOWN"
+              },
+              "observed_step": 32,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        }
+      },
+      "source": "scar_stage18/arbitration.py:choose",
+      "scope": "Exact local frozen arbitration, no modified controller or new model response"
+    },
+    {
+      "id": "arbitration_a35",
+      "step": 35,
+      "proposal": "talk to remy",
+      "candidate": "enter hall",
+      "executed": "enter hall",
+      "reason": "retain_structured_default_when_evidence_does_not_resolve",
+      "checks": {
+        "llm": {
+          "action": "talk to remy",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 34,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "original_controller": {
+          "action": "enter hall",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "hall"
+                ],
+                "guard": "UNLOCKED"
+              },
+              "observed_step": 34,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "bounded_controller": {
+          "action": "enter hall",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "hall"
+                ],
+                "guard": "UNLOCKED"
+              },
+              "observed_step": 34,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        }
+      },
+      "source": "scar_stage18/arbitration.py:choose",
+      "scope": "Exact local frozen arbitration, no modified controller or new model response"
+    },
+    {
+      "id": "arbitration_a65",
+      "step": 65,
+      "proposal": "pick up oak_log",
+      "candidate": "enter hall",
+      "executed": "enter hall",
+      "reason": "retain_controller_correction_of_rejected_llm",
+      "checks": {
+        "llm": {
+          "action": "pick up oak_log",
+          "status": "REJECT",
+          "conditions": [
+            {
+              "kind": "hands",
+              "status": "REJECT",
+              "evidence": {
+                "paper_0": 1.0,
+                "goblin_token": 1.0
+              },
+              "observed_step": 64,
+              "valid_until": "relevant public condition changes"
+            },
+            {
+              "kind": "ground_presence",
+              "status": "SUPPORTED",
+              "evidence": {
+                "target": "oak_log",
+                "current_ground": {
+                  "resin_clump": 9.0,
+                  "fiber_bundle": 6.0,
+                  "oak_log": 7.0,
+                  "bread": 9.0,
+                  "coin": 2.0
+                }
+              },
+              "observed_step": 64,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "original_controller": {
+          "action": "enter hall",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "hall"
+                ],
+                "guard": "UNLOCKED"
+              },
+              "observed_step": 64,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "bounded_controller": {
+          "action": "enter hall",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "hall"
+                ],
+                "guard": "UNLOCKED"
+              },
+              "observed_step": 64,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        }
+      },
+      "source": "scar_stage18/arbitration.py:choose",
+      "scope": "Exact local frozen arbitration, no modified controller or new model response"
+    },
+    {
+      "id": "arbitration_a67",
+      "step": 67,
+      "proposal": "pick up oak_log",
+      "candidate": "enter hall",
+      "executed": "enter hall",
+      "reason": "retain_controller_correction_of_rejected_llm",
+      "checks": {
+        "llm": {
+          "action": "pick up oak_log",
+          "status": "REJECT",
+          "conditions": [
+            {
+              "kind": "hands",
+              "status": "REJECT",
+              "evidence": {
+                "paper_0": 1.0,
+                "goblin_token": 1.0
+              },
+              "observed_step": 66,
+              "valid_until": "relevant public condition changes"
+            },
+            {
+              "kind": "ground_presence",
+              "status": "SUPPORTED",
+              "evidence": {
+                "target": "oak_log",
+                "current_ground": {
+                  "resin_clump": 9.0,
+                  "fiber_bundle": 6.0,
+                  "oak_log": 7.0,
+                  "bread": 9.0,
+                  "coin": 2.0
+                }
+              },
+              "observed_step": 66,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "original_controller": {
+          "action": "enter hall",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "hall"
+                ],
+                "guard": "UNLOCKED"
+              },
+              "observed_step": 66,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "bounded_controller": {
+          "action": "enter hall",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "hall"
+                ],
+                "guard": "UNLOCKED"
+              },
+              "observed_step": 66,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        }
+      },
+      "source": "scar_stage18/arbitration.py:choose",
+      "scope": "Exact local frozen arbitration, no modified controller or new model response"
+    },
+    {
+      "id": "arbitration_a68",
+      "step": 68,
+      "proposal": "enter library",
+      "candidate": "wait",
+      "executed": "wait",
+      "reason": "retain_structured_default_when_evidence_does_not_resolve",
+      "checks": {
+        "llm": {
+          "action": "enter library",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "armory",
+                  "library"
+                ],
+                "guard": "UNLOCKED"
+              },
+              "observed_step": 67,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "original_controller": {
+          "action": "wait",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 67,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "bounded_controller": {
+          "action": "wait",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 67,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        }
+      },
+      "source": "scar_stage18/arbitration.py:choose",
+      "scope": "Exact local frozen arbitration, no modified controller or new model response"
+    },
+    {
+      "id": "arbitration_a69",
+      "step": 69,
+      "proposal": "enter library",
+      "candidate": "wait",
+      "executed": "wait",
+      "reason": "retain_structured_default_when_evidence_does_not_resolve",
+      "checks": {
+        "llm": {
+          "action": "enter library",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "route",
+              "status": "UNKNOWN",
+              "evidence": {
+                "neighbors": [
+                  "armory",
+                  "library"
+                ],
+                "guard": "UNLOCKED"
+              },
+              "observed_step": 68,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "original_controller": {
+          "action": "wait",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 68,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "bounded_controller": {
+          "action": "wait",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 68,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        }
+      },
+      "source": "scar_stage18/arbitration.py:choose",
+      "scope": "Exact local frozen arbitration, no modified controller or new model response"
+    },
+    {
+      "id": "arbitration_a179",
+      "step": 179,
+      "proposal": "attack fen_cutthroat_8",
+      "candidate": "wait",
+      "executed": "wait",
+      "reason": "retain_structured_default_when_evidence_does_not_resolve",
+      "checks": {
+        "llm": {
+          "action": "attack fen_cutthroat_8",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 178,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "original_controller": {
+          "action": "wait",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 178,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        },
+        "bounded_controller": {
+          "action": "wait",
+          "status": "UNKNOWN",
+          "conditions": [
+            {
+              "kind": "public_trial",
+              "status": "UNKNOWN",
+              "evidence": "no known negative condition",
+              "observed_step": 178,
+              "valid_until": "relevant public condition changes"
+            }
+          ],
+          "risk": {
+            "status": "UNKNOWN",
+            "evidence": [],
+            "reason": "changed_or_unobserved_conditions_allow_trial",
+            "permanent_item_ban": false
+          },
+          "known_goal_progress": false,
+          "complete_feasibility_certified": false
+        }
+      },
+      "source": "scar_stage18/arbitration.py:choose",
+      "scope": "Exact local frozen arbitration, no modified controller or new model response"
+    }
+  ],
+  "system_prompt_checks": [
+    {
+      "game": "mark",
+      "method": "Stage18-Fixed",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "446405d65db0dda835e216f649371d050fe08933d1f48b6b016620105c8da937",
+      "only_scar_registered_fact_append": true
+    },
+    {
+      "game": "mark",
+      "method": "ShortTermMemoryAgent",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "446405d65db0dda835e216f649371d050fe08933d1f48b6b016620105c8da937",
+      "only_scar_registered_fact_append": false
+    },
+    {
+      "game": "mark",
+      "method": "LongContextAgent",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "446405d65db0dda835e216f649371d050fe08933d1f48b6b016620105c8da937",
+      "only_scar_registered_fact_append": false
+    },
+    {
+      "game": "remnant",
+      "method": "Stage18-Fixed",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "717f379ba766631b0e724c34694f988dc25aa840073915a0b50a76b910f5587f",
+      "only_scar_registered_fact_append": true
+    },
+    {
+      "game": "remnant",
+      "method": "ShortTermMemoryAgent",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "717f379ba766631b0e724c34694f988dc25aa840073915a0b50a76b910f5587f",
+      "only_scar_registered_fact_append": false
+    },
+    {
+      "game": "remnant",
+      "method": "LongContextAgent",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "717f379ba766631b0e724c34694f988dc25aa840073915a0b50a76b910f5587f",
+      "only_scar_registered_fact_append": false
+    },
+    {
+      "game": "metropolis",
+      "method": "Stage18-Fixed",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "9a9933f4642f2f5ec207ef5f7e1533db18ff38b3a3b038f2567341a6ad8f7c5a",
+      "only_scar_registered_fact_append": true
+    },
+    {
+      "game": "metropolis",
+      "method": "ShortTermMemoryAgent",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "9a9933f4642f2f5ec207ef5f7e1533db18ff38b3a3b038f2567341a6ad8f7c5a",
+      "only_scar_registered_fact_append": false
+    },
+    {
+      "game": "metropolis",
+      "method": "LongContextAgent",
+      "requests": 300,
+      "same_official_system_prefix": true,
+      "official_prefix_sha256": "9a9933f4642f2f5ec207ef5f7e1533db18ff38b3a3b038f2567341a6ad8f7c5a",
+      "only_scar_registered_fact_append": false
+    }
+  ],
+  "api_calls": 0,
+  "prior_files_unchanged": 4368,
+  "official_files_unchanged": 278,
+  "confirmed_transport_or_serialization_defect": false,
+  "permissible_patch_gate_met": false,
+  "patch_applied": false,
+  "patched_ab_runs": 0,
+  "verdict": "DESIGN_LIMIT"
+}
