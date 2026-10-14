@@ -1,0 +1,127 @@
+{
+  "stage": "Stage23",
+  "title": "Minimal Controller Reset Ablation",
+  "source_commit": "1dfc7d5ffee659de0b49d02b4b44cb1a09fc5f0d",
+  "created_utc": "2026-10-14T03:33:08.877238+00:00",
+  "game": "mark",
+  "parent_episode": "mark__Stage18-Fixed seed42 original Stage22 300 actions",
+  "independent_parent_episodes": 1,
+  "cases": [
+    {
+      "case": "mark-a033",
+      "start_before_action": 33,
+      "remaining_actions": 268,
+      "rationale": "first suppressed guide conversation"
+    },
+    {
+      "case": "mark-a035",
+      "start_before_action": 35,
+      "remaining_actions": 266,
+      "rationale": "second suppressed guide conversation"
+    },
+    {
+      "case": "mark-a052",
+      "start_before_action": 52,
+      "remaining_actions": 249,
+      "rationale": "first long wait segment, hands full"
+    },
+    {
+      "case": "mark-a064",
+      "start_before_action": 64,
+      "remaining_actions": 237,
+      "rationale": "explicit oak task newly in STM, hands full"
+    },
+    {
+      "case": "mark-a070",
+      "start_before_action": 70,
+      "remaining_actions": 231,
+      "rationale": "first explicit-task STM eviction"
+    },
+    {
+      "case": "mark-a100",
+      "start_before_action": 100,
+      "remaining_actions": 201,
+      "rationale": "redisclosed task evicted; new enemy arrives"
+    },
+    {
+      "case": "mark-a179",
+      "start_before_action": 179,
+      "remaining_actions": 122,
+      "rationale": "attack proposal suppressed during combat"
+    },
+    {
+      "case": "mark-a193",
+      "start_before_action": 193,
+      "remaining_actions": 108,
+      "rationale": "post-death state, both hands hold cloth"
+    },
+    {
+      "case": "mark-a244",
+      "start_before_action": 244,
+      "remaining_actions": 57,
+      "rationale": "after longest wait; task reminder current"
+    },
+    {
+      "case": "mark-a271",
+      "start_before_action": 271,
+      "remaining_actions": 30,
+      "rationale": "late task reminder with 30 actions remaining"
+    }
+  ],
+  "variants": [
+    "Stage18-Origin",
+    "Stage18-Reset",
+    "Oracle-Reset"
+  ],
+  "user_confirmed_sample_scope": "10 checkpoints of one parent trajectory, not ten independent failures",
+  "user_confirmed_prompt_scope": "Preserve original model input pipeline and memory; release old-goal authority only in action arbitration",
+  "fixed_absolute_horizon": 300,
+  "workers": 10,
+  "origin": "Reuse exactly the original recorded suffix; no new baseline model sampling",
+  "normal_reset": {
+    "stagnation": "registered goal generation and string unchanged for 12 observed transitions; not hidden quest-state detection",
+    "consecutive_failures": "three failed attempts of the same goal verb/target",
+    "feedback_disagreement": "current public location satisfies enter target and current explicit public statement does not repeat it, or explicit public goal differs",
+    "combination": "OR",
+    "counter_warmup": "Only age/failure counters reconstructed from original prefix; no retroactive completed-location trigger",
+    "latch": "Release this (generation,target) until original public-goal update changes identity"
+  },
+  "oracle_reset": "Release current old-goal authority immediately at each selected checkpoint; a33/a35 primary anchors, other eight are late same-state diagnostic releases, no rewinding to a33",
+  "intervention": "Only original unresolved-default arbitration may return existing non-REJECT LLM proposal; all original checks/bounds/transactions/syntax persist; do not clear target field or modify facts/render/STM",
+  "paired_response_reuse": "Within a checkpoint, identical environment-state hash, step and exact messages reuse the same sampled response; exact old-state/input requests use Stage22 response; new calls only after divergence; never share across different checkpoint cases",
+  "stopping": "Original native done or absolute action300; no early stopping for bad score or repeated wait; no failed-run resampling",
+  "hidden_state_access": "Only reset-independent runner/replay, cache identity, evaluation and logging; detector receives only original public observations and controller goal/counters",
+  "interpretation": "This is conditional ablation of arbitration authority, not deletion of all stale input, full controller bypass, ten independent episodes, or a mathematical oracle performance bound",
+  "outcomes": [
+    "chapter1 completion",
+    "main quest reward gain",
+    "key publicly observable milestones",
+    "state novelty excluding clock/HP/stamina",
+    "new areas",
+    "accepted non-wait action fraction",
+    "observable progress proxy fraction",
+    "wait fraction",
+    "stale authority duration",
+    "reset timing and first information/progress after reset"
+  ],
+  "meaningful_recovery_rule": "At least 5/10 checkpoints gain >=1 main quest reward OR at least one checkpoint completes chapter1; descriptive preregistered threshold, no significance claim",
+  "decision_rule": [
+    "Reset meets recovery rule: ENGINEERING_FIX_SUPPORTED",
+    "Reset does not meet rule and Oracle does: CONTROLLER_LIMIT_CONFIRMED",
+    "Neither meets rule: DESIGN_LIMIT_CONFIRMED, restricted to this ablation and budgets; do not infer absence of all planning ability"
+  ],
+  "incomplete_runs": "Do not classify pending or infrastructure-aborted runs as completed failures; all 30 trace slots must be accounted for",
+  "budget": "No $20 limit; inherited $100/$25 anomaly guards, not spending targets; bounded at most3538 new model decisions before exact-response reuse",
+  "price_verification": {
+    "date_utc": "2026-10-14",
+    "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "peak_per_million": {
+      "cache_hit": 0.006,
+      "cache_miss": 0.3,
+      "output": 1.2
+    },
+    "off_peak_factor": 0.5,
+    "peak_hours_utc": "01-04 and 06-10 Monday-Friday excluding Chinese public holidays",
+    "cost_scope": "Usage-based listed-rate cost; no provider account invoice access"
+  }
+}
