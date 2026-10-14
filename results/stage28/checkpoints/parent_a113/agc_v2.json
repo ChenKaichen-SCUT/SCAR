@@ -1,0 +1,618 @@
+{
+  "schema": 2,
+  "control": {
+    "goal": {
+      "goal_description": "Gather crafting materials from defeated goblin to improve equipment",
+      "creation_step": 107,
+      "evidence": [
+        {
+          "quote": "I see 10 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 apple, 1 workbench, 1 mountain_sulfur, 1 cloth near me.",
+          "step": 113,
+          "source": "model_selected_public_quote",
+          "verified": true
+        }
+      ],
+      "last_progress_step": 111,
+      "status": "ACTIVE",
+      "source": "model",
+      "confidence": 0.58
+    },
+    "archive": [
+      {
+        "goal_description": "Gather materials to craft a weapon",
+        "creation_step": 57,
+        "evidence": [
+          {
+            "quote": "It can be used to craft: tension_wrench (0.5 iron_bar), lockpick (1 rust_scrap, 1 iron_bar, 1 thread), iron_sheet (2 iron_bar), forged_blade_blank (2 iron_bar, 1 wooden_rod), key_blank (1 iron_bar, 1 wood_plank)",
+            "step": 65,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 57,
+        "status": "SUSPICIOUS",
+        "source": "model",
+        "confidence": 0.3,
+        "retired_step": 66
+      },
+      {
+        "goal_description": "Survive the goblin attacks and reassess",
+        "creation_step": 66,
+        "evidence": [
+          {
+            "quote": "I was attacked by goblin_warrior_1 and lost 2 HP.",
+            "step": 78,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 76,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 0.48,
+        "retired_step": 79
+      },
+      {
+        "goal_description": "Escape the goblin attacks by moving to an adjacent area",
+        "creation_step": 79,
+        "evidence": [
+          {
+            "quote": "Cannot enter hall. goblin_warrior_1 has blocked the way out.",
+            "step": 82,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 82,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 0.7,
+        "retired_step": 83
+      },
+      {
+        "goal_description": "Gather useful items and equipment at the starting point",
+        "creation_step": 83,
+        "evidence": [
+          {
+            "quote": "I see 10 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 apple, 1 workbench, 1 torch near me.",
+            "step": 89,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 83,
+        "status": "SUSPICIOUS",
+        "source": "model",
+        "confidence": 0.25,
+        "retired_step": 90
+      },
+      {
+        "goal_description": "Find a usable weapon or armor to improve combat ability",
+        "creation_step": 90,
+        "evidence": [
+          {
+            "quote": "It is too dark to see anything here.",
+            "step": 92,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 92,
+        "status": "SUSPICIOUS",
+        "source": "model",
+        "confidence": 0.39,
+        "retired_step": 93
+      },
+      {
+        "goal_description": "Survive the goblin_warrior_2 encounter by healing and avoiding death",
+        "creation_step": 93,
+        "evidence": [
+          {
+            "quote": "I was attacked by goblin_warrior_2 and lost 14 HP.",
+            "step": 93,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 93,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 0.78,
+        "retired_step": 94
+      },
+      {
+        "goal_description": "Survive the goblin_warrior_2 encounter by escaping to a safer area",
+        "creation_step": 94,
+        "evidence": [
+          {
+            "quote": "Cannot enter library. goblin_warrior_2 has blocked the way out.",
+            "step": 98,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 97,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 0.78,
+        "retired_step": 99
+      },
+      {
+        "goal_description": "Survive the goblin_warrior_2 encounter by defeating it since escape is blocked",
+        "creation_step": 99,
+        "evidence": [
+          {
+            "quote": "Cannot enter armory. goblin_warrior_2 has blocked the way out.",
+            "step": 106,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 106,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 1.0,
+        "retired_step": 107
+      }
+    ],
+    "failures": [
+      {
+        "action": "pick up stone",
+        "context": "7cbe377692d7122bb757d9f3e86e156cf8abc080770499c2e3b07310018a564d",
+        "result": "failed",
+        "avoid_reason": "Cannot pick up stone, not enough space in hand.",
+        "count": 1,
+        "step": 61
+      },
+      {
+        "action": "enter plain",
+        "context": "f41d14f2a16bdf5a996ca6e22e583394fac7ddee0b6d29f50c19b86aaea514ac",
+        "result": "failed",
+        "avoid_reason": "Cannot enter plain, the door is locked.",
+        "count": 1,
+        "step": 64
+      },
+      {
+        "action": "enter hall",
+        "context": "f0d5b14f57a38c8561fec816845e6dfae3774e91b6ce0a04fb50f446d1e174a0",
+        "result": "failed",
+        "avoid_reason": "Cannot enter hall. goblin_warrior_1 has blocked the way out.\ngoblin_warrior_1 is waiting.",
+        "count": 1,
+        "step": 79
+      },
+      {
+        "action": "enter hall",
+        "context": "4bafa857bd52410959e4c4c3b8d0b5a2323fc9fdb5f0ca30c28d66e41c3bba2a",
+        "result": "failed",
+        "avoid_reason": "Cannot enter hall. goblin_warrior_1 has blocked the way out.\ngoblin_warrior_1 is attacking.\nI was attacked by goblin_warrior_1 and lost 22 HP.",
+        "count": 1,
+        "step": 81
+      },
+      {
+        "action": "equip torch",
+        "context": "d5ae3808f1e64bad63841502e33dc0eae56ad6c5a3a7cc013e9dc665f65cd991",
+        "result": "failed",
+        "avoid_reason": "Cannot equip torch, it is not equippable.",
+        "count": 1,
+        "step": 85
+      },
+      {
+        "action": "pick up small_satchel_0",
+        "context": "d5ae3808f1e64bad63841502e33dc0eae56ad6c5a3a7cc013e9dc665f65cd991",
+        "result": "failed",
+        "avoid_reason": "Cannot pick up small_satchel_0, not enough space in hand.",
+        "count": 1,
+        "step": 86
+      },
+      {
+        "action": "pick up apple",
+        "context": "39a254801c46a9152a19f50be889303944c2a5658f3093daeadcaf92d6e06c8b",
+        "result": "failed",
+        "avoid_reason": "Cannot pick up apple, not enough space in hand.",
+        "count": 1,
+        "step": 89
+      },
+      {
+        "action": "enter library",
+        "context": "9352fd19ae9e4cf0f1b735f3148ef7c65f645f33dd4241af05df4c3941f176fb",
+        "result": "failed",
+        "avoid_reason": "Cannot enter library. goblin_warrior_2 has blocked the way out.\ngoblin_warrior_2 is waiting.",
+        "count": 1,
+        "step": 94
+      },
+      {
+        "action": "enter armory",
+        "context": "9352fd19ae9e4cf0f1b735f3148ef7c65f645f33dd4241af05df4c3941f176fb",
+        "result": "failed",
+        "avoid_reason": "Cannot enter armory. goblin_warrior_2 has blocked the way out.\ngoblin_warrior_2 is waiting.",
+        "count": 1,
+        "step": 98
+      },
+      {
+        "action": "pick up goblin_eye",
+        "context": "fa2dabac1b5f8938f9740f8069f5c55946a8df61a4974abcad1c6f23731e025d",
+        "result": "failed",
+        "avoid_reason": "Cannot pick up goblin_eye, not enough space in hand.",
+        "count": 1,
+        "step": 107
+      },
+      {
+        "action": "pick up cloth",
+        "context": "11df29d671146751cbac2113d4bc3bca5cb8ddd69da1cd4b6c97ba9565a0e349",
+        "result": "failed",
+        "avoid_reason": "Cannot pick up cloth, not enough space in hand.",
+        "count": 1,
+        "step": 110
+      },
+      {
+        "action": "take out wooden_rod small_bag_0",
+        "context": "7327c44667d58ce826d8e89a1977c62dd6395445a39c3b0e01c19713ee3068ef",
+        "result": "failed",
+        "avoid_reason": "Cannot take out wooden_rod, not enough space in hand.",
+        "count": 1,
+        "step": 113
+      }
+    ],
+    "history": [
+      {
+        "step": 106,
+        "action": "attack goblin_warrior_2",
+        "progress": 1,
+        "failed": false,
+        "context": "771dfc71166983ef829ca30bdcf87ff189c687293213ee06b0f63ace9ed0d4c4",
+        "flags": {
+          "observation_new": true,
+          "inventory_changed": false,
+          "location_changed": false,
+          "new_entities": [
+            "cloth",
+            "goblin_eye"
+          ],
+          "event_new": true
+        }
+      },
+      {
+        "step": 107,
+        "action": "pick up goblin_eye",
+        "progress": 1,
+        "failed": true,
+        "context": "fa2dabac1b5f8938f9740f8069f5c55946a8df61a4974abcad1c6f23731e025d",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": false,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 108,
+        "action": "store 1 wooden_rod small_bag_0",
+        "progress": 1,
+        "failed": false,
+        "context": "fa2dabac1b5f8938f9740f8069f5c55946a8df61a4974abcad1c6f23731e025d",
+        "flags": {
+          "observation_new": true,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 109,
+        "action": "pick up goblin_eye",
+        "progress": 1,
+        "failed": false,
+        "context": "2dbf3f68eac064fc47c14d8764b2bd8c437b5f6f93b8c1c32cbe667f9928fdb2",
+        "flags": {
+          "observation_new": true,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [
+            "peak_vulture_0"
+          ],
+          "event_new": true
+        }
+      },
+      {
+        "step": 110,
+        "action": "pick up cloth",
+        "progress": 1,
+        "failed": true,
+        "context": "11df29d671146751cbac2113d4bc3bca5cb8ddd69da1cd4b6c97ba9565a0e349",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": false,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 111,
+        "action": "store 1 goblin_eye small_bag_0",
+        "progress": 1,
+        "failed": false,
+        "context": "11df29d671146751cbac2113d4bc3bca5cb8ddd69da1cd4b6c97ba9565a0e349",
+        "flags": {
+          "observation_new": true,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 112,
+        "action": "pick up cloth",
+        "progress": 1,
+        "failed": false,
+        "context": "6b6313f5ed9676850c86854e8002109ff653336acfe683bc3337f0d82dd0343f",
+        "flags": {
+          "observation_new": true,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 113,
+        "action": "take out wooden_rod small_bag_0",
+        "progress": 1,
+        "failed": true,
+        "context": "7327c44667d58ce826d8e89a1977c62dd6395445a39c3b0e01c19713ee3068ef",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": false,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      }
+    ],
+    "seen_states": [
+      "f6da1aeeb0b0459b30c139c65df92fb752b344e58163aa5f73282795b1b635ea",
+      "80d833edec0b0880beb8fad83e285d9c8720b4514b07dc8b416a8a6b464a904f",
+      "d924a5f2ce35fc676fe99e24b0e1675695f7c3201b66b300cba37e068dbed97f",
+      "f182e614a953ef5937f5ea63a0e1deb0860a77a78abac656f03dc4317cc8a13d",
+      "6c6834478bd80e54961b1921d9cfdeace590115a12ab0b9aa65a8e3f18b58b96",
+      "ff93a42282122add9aa86bed548bfcf1d86e7fe16736673c14557c9e9d00a6fa",
+      "aafdcf4134d69e2ec8fa0588cb3d3a8fbbc6a1c520d2139cf1264aca8e9ef151",
+      "1a51c9739063a5b79cb06d381069e0710efde934e5aae8054f0aadbad31896c0",
+      "126ceeea2a455a9668d3c28355b63a1df2e3034819ca3dd1ae04037c32885b5d",
+      "2f2b0a1b4eead7dd918bfc20d4f164ed3fd54cb1335d1cedc578842272eaf32e",
+      "25e45a32cd67de1573723dfd82bf9dbb227689ef6113bbdf3cdae838b5d330a1",
+      "cd14423b2442d7bf40d0333c5957bd61f0b59619984845e013a06bd81882529a",
+      "18e270d6eeef0d2f95f57dfe715f1afd3ae942c06d3e681c408e8cbfef21ef8c",
+      "9066c65fd6d7c0c4f67c4775232446991c5766669b98dd9048acff48afadab8a",
+      "ebf2c83deb57f67ebe3c69a01bc30eb2ed7a20119cfaa99858e3f59801601c09",
+      "0cae7ea741f08c3492aad845c6d6b5d61dd3b3cbbe2a5aa256c12981d2c761ce",
+      "f6e37cd5a98fef7d872fa7f6fef30a8498019b0456bc17a13f420fc8ddf7a0f1",
+      "37a9d842914019d951a7593904bf0d22965421dd47b3ad1e14413bd285ab745f",
+      "c49f86d03620f5418b5201333d44403afeb312af0b5e7cfe5a2f8873505515d3",
+      "574a8ffda5dfa4d302b4ff5d7a80af36d3bfb2bb97e27a285ecf7797b84cc104",
+      "a7c2732de07d2ebb5c7458d8c7add250dc598b244fb6a35abe116721b1eade26",
+      "d7ef064fa27d396f1aba44cb692ce195e520a39c267ab1c59d436c22e0b6ed97",
+      "4a233015d5fd89980e35576bb4fe566e8733f14750b6877a2c5337a0644edd02",
+      "463d3a45dec2d6504d3f367451ea0010e30f3e386b422d3340c65391be6ddbaf",
+      "f4ee7f5ec444d44f792efc758db6f6259b3f7ba113d338850c7bcf1e51f85322",
+      "d7e94915641797676e81a466744c8d1b02e3569eb8142224d24dea31dca7efe4",
+      "b38d827e84996fb4799a1e28b9f3a3fbd5cbc062e184b38ad6ad943ea289d6c9",
+      "5dc3f5e3d3254ced17ef344d91a873dede243aa2767e31d93a7955074d5cea41",
+      "8de3d16f7b5d2e23f368158abf306de02f77a03abf4d970f93a7088468e5d059",
+      "4bce25f22362679d07b13c98e315af9277cbf82b6e51423ee14a3c8bf6daaa2e",
+      "4da5cc6c39cb5e027e8b98ae1fbbfc64e9edbc295943096bfeed6bcee10e9f0b",
+      "cf55a454e27fde72fd3928813607b46c1692918a88ad826af950421de7b0bcc4",
+      "25d670de850636272fc07537c304c64052fa12db5722470ae2903923a5693dac",
+      "09c4a3c3221f973f97fcff576ea437d372efb5e7ab10a604786c9a332017fc9e",
+      "b3528472e9d741aa75892571e5fb3165970492dbc925d1faaaf2114b7252d0ca",
+      "8ddaa22a3a90d115ece9b63d0eb35705680de4b935a07857bcb1717dc57e7b67",
+      "e1734cd394a68bfb5daf9e625c51b1321a1db5f932e0f712e5f74df9248c6184",
+      "2464f1603ee97b0fd86c993416435c15e94545f1e69d796f96f008fc01709892",
+      "3b98b7ffcba19066bb3ea7e4d0433014dcb5de3dd612e471b09c3c5d840135cd",
+      "675206fd401cfeed215da3ca81c3787a9e373e9be6a24786a79f1357d27a8606",
+      "b7cca68cf83c849b874cf73937cc88b0e978a63dcdb8ff44880c737f44fc8246",
+      "41bdd0fd35d71726b18fd6d4770d825b368a7a8d5c8dc9e2629473ee5812ed81",
+      "e32c3477ab8c0b2e9b2bd0f38e0976fffbd4db80082f3633a3f1cb6eb7270af6",
+      "1f4245c940d17e1a396e278cc9d101bd06625b598964213e65748b4b06abc5df",
+      "06f894f1dc0169ded682bf1e804a181832684c1b90f3d2e477707baf08f2ed32",
+      "e2fd3a0d114bbb05ffd71fdb2e6149559873ce76018c72aa336cbbeb46b241ac",
+      "ac5103bcd67bbb0888475fc15969d62389c335bbb76effe641cff21bf5c77bca",
+      "18ff22ff5d3318315e13db965f41280e31b411905de55d541a4bb2651984eeda",
+      "ffa6fcce7bbe2cccc2aec21dc301ca7f6bd9791b863a5f622e5c91ed818cf362"
+    ],
+    "seen_events": [
+      "a78d37b3b29e81928a3f04e2f67e3579533c7286659698c1a7658cac2961b5e0",
+      "382d167fdf03ead35816cd96b7da330f228d75c6b1bfed0be110db36ba71d299",
+      "920ca365cc9ca6f0242e083b5232a4eca6ac41dbf206786d298ffe767f31676c",
+      "90e5295b0c85a9737ce45a60bef9e028c9ab58954163dd600ffc64e04c4b7922",
+      "e6073a7528cd56dd9c69c95269ae2a2e62f2b907842d55970ed79962e98e2671",
+      "db5d9d6f0cad86eaed17ec229cd79184d29fdd402c6ebd0cd0f58c3912cf867f",
+      "c1e7227a595fa2230a8b3c45d0162a2f8fb8ca76773807e18f4d59922367acbd",
+      "885957335b48e8ac5067e987343da46ba530e35df1974fb74a79b9c5f382012f",
+      "9a5626232c226552bd25832a74e42ea85d9210f64d114df5f5aaf055aacaf56d",
+      "37566ff4e26a1123a8a2f24e0a5f2d215761145af467add93b0d18452012bb50",
+      "042c15c8b6075c89b876241700c4e206b501680b8ca8f2246eec360b21f84b1c",
+      "8d7c9b112ccec5bdf06e16bb39e6bb0fc5fca188b1762f13eafa90fd25b7dfef",
+      "ec3354b3fbb9b304d13c573f29ab149965e76ef1a1cd3b2a6473aae882e4fe27",
+      "5cbf782bea534776ef7de79c204c3f63403484a7254cdb0ca5f0a1e99ea62787",
+      "df7dc091b77cfd7f9012b7d1a1c3a0512c2e6163281f9e405fd1dd78fa885226",
+      "c0d0345f47c116fa76ab44f53ed136410fb410c4bbe9fbea36a394eabc005f27",
+      "4e38a5e0d87d0880a65fa8f7b7093ca69d07f0b46bcdccb28b4474f1d9e021ce",
+      "776e62c69e44f914c3f65cc0683f082cdad8e469c1f207897c28a577945262ac",
+      "ad7458c103743ef5cfdcfc56c1ed1f42febdbb3ffeb53231bba36b910a53177b",
+      "0de982d574299037549d097341d3bc2c8bff567b37c8e39528ff7b59882688e1",
+      "e6c82081036a708ae571c0a5af1a682c5355c4e4b872daf7817c2047ec76848e",
+      "882a48e033ae966da302a7bc4d8b4a6a7aa323b3c5f1433f326fc00c0f4fa8e1",
+      "7ad5133a73d277a913521cbca962ab706fad4c3d945030a1324213bed95ccfdc",
+      "a969d4388f1dd6976c9e28112c6e0d16ef9d82c582384e6604c22eda62387d85",
+      "d9a06d6e409a712f0230a62ce77a29f85e65e13990fa02a1e702e52592bebc2d",
+      "d8daa28ec06b248bf88a25dcef594c15ef4824e934f95064889464454b133c26",
+      "4e7306e4f7e505afaf0c1707a918cc086eec63177e09f2d9cb491b2518672084",
+      "2840b69eb7b8d81bf85d1f8a6118aa386ff3542fafc32b9c6fe7e178ba590bb9",
+      "13f594805d0163c0e7b179be03678d3083baec3b309c5461104429d0787eb1d8",
+      "40b788ba12dabdff2e66a17c259698b18dbe9f354362e53915d67c4f2b98cfb7",
+      "924165d7e334e8cf04de2726f4fe72d55c621f46fc473f4eca6480a821d84adf",
+      "420db154901b041ffe9ebfa6192e44b24a6824009cb78fa3ba7031168217b533",
+      "d2dba517c2755ec093c29b487450adfac01d1cd6127a79976d879d0cec4ddba7",
+      "bdc36e1197f0e62d267e2ba36cff40bcd34e9548921e87ffbbe03b401c06d2bc",
+      "4d6ce7093557d27107ab1d3e5bfbfa9c9dc0d25e059aa51c881f0534073bed73",
+      "63aed58cc02a17590174027dd2baa549c9623590f54ecef311dade7cc060ab06",
+      "9fa4c1bfe798ecc1c2a991c7c7f86c412c45eeed9d0047322357ff625313490a",
+      "4331b80a35ef51c10d62f02c2eb9f58931a7a8fbf32d6786a7a092c5a1187033",
+      "69dd16746e0500aa4ba61fdaaefd4bdef0a562429bfabe752c4518f3e37f4234",
+      "3e6a5e43603ceb775f62b905749dadada4d35a6d21e12ebe45af29073141333a",
+      "4d53d1972872aab9a3bdc49d8c3527d1986c1c8667126fdaf71367590479a0b0",
+      "65cd0ceb0ab85620e2d801ff7cf5ffd105908e5c0e2c8e53399b485183b534f1",
+      "9be34f8b1054176520214a0f9a4581ea34a4dc94da7f40b8ad69b60f48bfb287",
+      "abc6f482e1bb61e638bc03d30927a5a2b3ebdd4a07af4a34aa6f3d74ec3ac4bc",
+      "fcc5563155bad0814c4268460616cd25e1b4f8544eca92a4d8ad6151bd8a2374",
+      "dbdc68a24cff6348b17e89782b5dea2c1598aff4f9b3887d6960e8edf25a50e8",
+      "47949a733ca8b1f479d6db64850d75b78e9d5b1df9ff275de7495f8f5098c943",
+      "c5cf5096f1026e4ef023b0b34bdc06b63955dd06cfde2af479a1a4c8ba6ab12c",
+      "109b61f56a79f40dc24a680add4b5ec1afed43b654ffb52064a62b555cfdab0c",
+      "49c09d3ca2db405bb75027c1ee0681ea543deda28829c66e73956e1c1d58bad8",
+      "396c4c0d9664fb335793d067d3a001a028ee01e184e89482c503023d29dac037",
+      "79239a7cca6039b227d007600bc8d1348ec70b97384a26f44d940b1a34739a7a",
+      "db4f50b5abe264b049d0275e44fb904bbd8fe1852779cd3fa7d8d0d7a7a8d55f",
+      "c6c38620307de5a040b68f42ee35184bbc94f11dd5cf3264a646f297fe9fd480",
+      "8d561147f2361719b6896f869a3e0ae237687f2a7c3e17ce25c0bf7a3f971300",
+      "913caa1acdf23d63af77f8d74592aa2246446b90ea2e536bd1a0cf3f0f48a1f5",
+      "3ae96efa8470a15d4b6d2665df81e6fb7b52e949b5e099c616357f488d5c9018",
+      "abef74637b584c43fd6d7c31b4480daf245925f92cc5642f2ab4bf0110804f9f",
+      "fbf03799b19b8734963122f7fa900e25fad2b7345fc9e34b01e84e15f0e90f83",
+      "f2a0cb0c2b3f604fe2c84f82384299f150ff39cb331fb8e4bc991f87f09e80df",
+      "3f23c56b1545143ce053adbf82a932c21b53178cdced8e993924a369df5b046a",
+      "5279a57354f220942df03221891bccbfdb81b3e0291ac3610a369204629ffe62",
+      "7ae89e921cfb5ffb84c2d348b3038beac06c56c5cf768775ae2b8ea3c4fa600d",
+      "9b1e3c46bc86333d8ab545f55b7b57ae3b15ae62e4016adf993488083e2be7a6",
+      "a4460f47827d2ef61a50747f30b32a6b038b39f9ec3d1f8728341848b68ba32f",
+      "c86c2d92d35f6ad65b4750149041543bd0bf723941fac54436e762efb84544d5",
+      "edb129d30718670e2d46141e69654c39e8d563e1078ed0bf56a4c8f3c395b8bf",
+      "214742e35d5850bbd9e39e1790fdd737ff0d8a637ebf990204c9bf45f6b21222",
+      "3c030b5376642e14c95fb053a0abc38b3844f9440af629d36d75a9b00f5fa33f",
+      "737990bbad712dafab4f5b835f7c80f56c88da1117deef223a9ea3bd40f9a099",
+      "6d2975b486aee3e11eccd86a4f05d1f04b13b3083ca0c05f6b0546162a879606",
+      "b3644d37f494762a5cfd4975b9b9f96311b7124dfb224cf8eaa2d9c0760865eb",
+      "239c8e949c55983a59d8dc468a06ef0b0211f1b9e60c82451c77dbe924d22ac9",
+      "dd872c6db6cbd9df65ddda4e55e750f422c0381475c6089aedb2db1b16f78f5c",
+      "ecf782d6131935a441f80125c9235e1eee903fa642913cc878cb64505efb44eb",
+      "2da1aa401793b38023a75389337cafb2336ae1491b2b197105adb01ce203a87f",
+      "de09ca8f7f88c05591d53fe31b6694521956f5cceb2a724083961c516bbbf610",
+      "4ae972d0484f1142fda81d9c19efb6190620c290b8c4daceef9d2662efc1e085",
+      "17fb2eeba96e6a882ad55ac1c7640f117c49ac8850f1ce722dd44f00e3373538",
+      "029c29c3abf225f7f833c8fb87fc398abebedad34458b03b1993fa921c4aba28",
+      "daeda38d9bb3c1e0d21750877ec7dba68bde9197bd3542e83a9c4fa1592df2d0",
+      "4edbb37e4a490ea7b7d4b9d7f56d375877d3a23664cca92dde51e0e654dc7a68",
+      "61b8f13368d7a26f5f9fbe3bcafeee8be14bd62afed4edf576573b4a354f0f36",
+      "a3a9a3e7db51005a0681da5ec8aea944854fd55693e04f47e5636f508592a1b4",
+      "ab57b88d821cacbca9152014e2fb23301c8f0725d74bd14aacd1f71fdcd5b1db",
+      "30c33294fc5968c5f95b25441f6e135f12458f5e00dc9ffc902b0bcf41da8414",
+      "bdf51afb03f0e3e01d4b5f36db5a5958464e9b628a7bda0a17e8d01665dfdb0a",
+      "944997370fd10b3b25f960b85b5c386db9af9675c82f302a459384afadafb8d7",
+      "9b2f9bb0da9b78a0ec2854dd2d6eb478ab8943d1f0cc8092b4c6eba9775da2b2",
+      "e0e6c9e29cfbd669a0c7a7ee3b35b184ce874992ec162a4573fc719037db79ce",
+      "16ad4c557aade16344d3c7929d43b6ccdd0a30a415d6b601b81ff3027e222a04",
+      "a6ac12f70de208858acdb2d77d6c7a818762b3949a9f1f0a45cc1622a994f456",
+      "7ecfa13fb750c08c6a5e1dc4b6206d6201b159762012718dd1396def56a6a797",
+      "f1e7df40a3214bdebf97b764e001b27fd36fa9b58168f7afbd89234b3cc304db",
+      "1dfcfc4e6630ed031ce9e901af2bdeda6da27c504477d641f63d1aef26d1903c"
+    ],
+    "seen_entities": [
+      "small_bag_1",
+      "coin",
+      "pen",
+      "paper_8",
+      "selene_wyatt",
+      "wood_log",
+      "goblin_raider_0",
+      "furnace",
+      "key_blank",
+      "workbench",
+      "key",
+      "apple",
+      "bob_johnson",
+      "paper_7",
+      "small_bag_0",
+      "small_satchel_0",
+      "torch",
+      "goblin_warrior_2",
+      "daniel_cross",
+      "goblin_warrior_1",
+      "iron_bar",
+      "iron_ore",
+      "mountain_sulfur",
+      "paper_1",
+      "rust_scrap",
+      "stone",
+      "thread",
+      "villager_0",
+      "wooden_rod",
+      "cloth",
+      "goblin_eye",
+      "peak_vulture_0"
+    ],
+    "last_public_goal": "enter hall",
+    "public_recent": [
+      "\nCurrent Time: 0001-01-02 02:10:00\nCurrent Location: Old Castle, hall\n\nI picked up goblin_eye.\nI have acquired a new item: goblin_eye. It can be used to craft: star_metal_sword (1 star_metal_blade, 1 wooden_rod, 1 cloth_strap, 1 goblin_eye)\nAn enemy peak_vulture_0 arrives from library and prowls into the area.\nI was attacked by peak_vulture_0 and lost 10 HP.\n\nI am holding 1 small_bag_0, 1 goblin_eye.\nI have equipped no objects.\nI see 10 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 apple, 1 workbench, 1 mountain_sulfur, 1 cloth near me.\nI see peak_vulture_0 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 33.\nMy experience is at 40.\n\nNeighboring areas: armory, library.\n",
+      "\nCurrent Time: 0001-01-02 02:20:00\nCurrent Location: Old Castle, hall\n\nCannot pick up cloth, not enough space in hand.\n\nI am holding 1 small_bag_0, 1 goblin_eye.\nI have equipped no objects.\nI see 10 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 apple, 1 workbench, 1 mountain_sulfur, 1 cloth near me.\nI see peak_vulture_0 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 33.\nMy experience is at 40.\n\nNeighboring areas: armory, library.\n",
+      "\nCurrent Time: 0001-01-02 02:30:00\nCurrent Location: Old Castle, hall\n\nI stored 1 goblin_eye in small_bag_0.\n\nI am holding 1 small_bag_0.\nI have equipped no objects.\nI see 10 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 apple, 1 workbench, 1 mountain_sulfur, 1 cloth near me.\nI see peak_vulture_0 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 33.\nMy experience is at 40.\n\nNeighboring areas: armory, library.\n",
+      "\nCurrent Time: 0001-01-02 02:40:00\nCurrent Location: Old Castle, hall\n\nI picked up cloth.\nI have acquired a new item: cloth. It can be used to craft: paper (0.25 cloth), brine_concentrate (3 sea_salt_crystal, 0.1 cloth), thread (0.5 cloth), bandage (1 cloth, 1 meadow_herb, 0.5 crimson_lichen), padded_lining (1 stitched_panel, 1 cloth), cloth_roll (1 cloth, 2 thread), pen (1 wooden_rod, 0.5 cloth)\n\nI am holding 1 small_bag_0, 1 cloth.\nI have equipped no objects.\nI see 10 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 apple, 1 workbench, 1 mountain_sulfur near me.\nI see peak_vulture_0 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 33.\nMy experience is at 40.\n\nNeighboring areas: armory, library.\n",
+      "\nCurrent Time: 0001-01-02 02:50:00\nCurrent Location: Old Castle, hall\n\nCannot take out wooden_rod, not enough space in hand.\n\nI am holding 1 small_bag_0, 1 cloth.\nI have equipped no objects.\nI see 10 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 apple, 1 workbench, 1 mountain_sulfur near me.\nI see peak_vulture_0 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 33.\nMy experience is at 40.\n\nNeighboring areas: armory, library.\n"
+    ],
+    "last": {
+      "location": "Old Castle, hall",
+      "hands": {
+        "small_bag_0": 1.0,
+        "cloth": 1.0
+      },
+      "equipment": {},
+      "observed_container_contents": null,
+      "ground_names": [
+        "apple",
+        "coin",
+        "mountain_sulfur",
+        "paper_7",
+        "pen",
+        "small_satchel_0",
+        "workbench"
+      ],
+      "npcs": [
+        "peak_vulture_0"
+      ],
+      "neighbors": "armory, library",
+      "ground": {
+        "coin": 10.0,
+        "small_satchel_0": 1.0,
+        "paper_7": 1.0,
+        "pen": 1.0,
+        "apple": 1.0,
+        "workbench": 1.0,
+        "mountain_sulfur": 1.0
+      },
+      "feedback": "Cannot take out wooden_rod, not enough space in hand.",
+      "event": "Cannot take out wooden_rod, not enough space in hand.",
+      "public_goal": null,
+      "failed": true,
+      "permanent": false,
+      "signature": "ffa6fcce7bbe2cccc2aec21dc301ca7f6bd9791b863a5f622e5c91ed818cf362",
+      "context": "7327c44667d58ce826d8e89a1977c62dd6395445a39c3b0e01c19713ee3068ef",
+      "entities": [
+        "apple",
+        "cloth",
+        "coin",
+        "mountain_sulfur",
+        "paper_7",
+        "peak_vulture_0",
+        "pen",
+        "small_bag_0",
+        "small_satchel_0",
+        "workbench"
+      ]
+    },
+    "events": []
+  },
+  "system_prompt": "\nYou are the player in a text adventure games. The world is described in text form.\nAt each turn, you may choose ONE action from the action space below.\n\nAction space:\n- attack <npc_name>\n- buy <amount> <obj_name> <npc_name>\n- craft <amount> <obj_name>\n- defend \n- disassemble <obj_name>\n- discard <amount> <obj_name> <container_name>\n- drop <object_name>\n- eat <object_name>\n- enter <area_name>\n- equip <obj_name>\n- inspect <object_name>\n- lockpick <area_name>\n- pick up <object_name>\n- pickpocket <npc_name>\n- sell <amount> <obj_name> <npc_name>\n- store <amount> <obj_name> <container_name>\n- take out <obj_name> <container_name>\n- talk to <npc_name>\n- throw <obj_name> <npc_name>\n- unequip <obj_name>\n- wait \n- write <text> <writable_name>\n\nOutput format (STRICT):\nReturn a single JSON object with exactly these keys:\n{\n  \"reasoning\": \"A few sentences explaining why you choose the action.\",\n  \"action\": \"<action>\",\n  \"goal_description\": \"<current subgoal>\",\n  \"goal_evidence\": \"<exact public observation quote>\"\n}\n\nRules:\n- The JSON must be the ONLY content in your reply (no extra text before/after).\n- The action must exactly match one option from the action space.\n"
+}

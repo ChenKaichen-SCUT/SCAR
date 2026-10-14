@@ -1,0 +1,522 @@
+{
+  "schema": 2,
+  "control": {
+    "goal": {
+      "goal_description": "Gather materials to craft a weapon",
+      "creation_step": 57,
+      "evidence": [
+        {
+          "quote": "It can be used to craft: tension_wrench (0.5 iron_bar), lockpick (1 rust_scrap, 1 iron_bar, 1 thread), iron_sheet (2 iron_bar), forged_blade_blank (2 iron_bar, 1 wooden_rod), key_blank (1 iron_bar, 1 wood_plank)",
+          "step": 60,
+          "source": "model_selected_public_quote",
+          "verified": true
+        }
+      ],
+      "last_progress_step": 57,
+      "status": "ACTIVE",
+      "source": "model",
+      "confidence": 0.56
+    },
+    "archive": [
+      {
+        "goal_description": "pick up key",
+        "creation_step": 24,
+        "evidence": [
+          {
+            "quote": "pick up key",
+            "step": 25,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 25,
+        "status": "COMPLETED",
+        "source": "public",
+        "confidence": 1.0,
+        "retired_step": 25
+      },
+      {
+        "goal_description": "enter hall",
+        "creation_step": 25,
+        "evidence": [
+          {
+            "quote": "Required action: `enter hall`",
+            "step": 26,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 26,
+        "status": "COMPLETED",
+        "source": "public",
+        "confidence": 1.0,
+        "retired_step": 27
+      },
+      {
+        "goal_description": "Talk to bob_johnson about what to do next",
+        "creation_step": 27,
+        "evidence": [
+          {
+            "quote": "Talk to bob_johnson about what to do next.",
+            "step": 27,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 27,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 0.78,
+        "retired_step": 28
+      },
+      {
+        "goal_description": "Find the one who knows where cinder-smoke gathers",
+        "creation_step": 28,
+        "evidence": [
+          {
+            "quote": "bob_johnson says: Find the one who knows where cinder-smoke gathers and why it should be approached carefully.",
+            "step": 34,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 30,
+        "status": "SUSPICIOUS",
+        "source": "model",
+        "confidence": 0.28,
+        "retired_step": 35
+      },
+      {
+        "goal_description": "Find a way to unlock the library or armory",
+        "creation_step": 35,
+        "evidence": [
+          {
+            "quote": "Cannot enter library, the door is locked.",
+            "step": 39,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 39,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 0.6,
+        "retired_step": 40
+      },
+      {
+        "goal_description": "Talk to bob_johnson about what to do next",
+        "creation_step": 40,
+        "evidence": [
+          {
+            "quote": "Talk to bob_johnson about what to do next.",
+            "step": 40,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 40,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 0.78,
+        "retired_step": 41
+      },
+      {
+        "goal_description": "Arm myself with a weapon before following the ash",
+        "creation_step": 41,
+        "evidence": [
+          {
+            "quote": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+            "step": 55,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 41,
+        "status": "SUSPICIOUS",
+        "source": "model",
+        "confidence": 0.2,
+        "retired_step": 56
+      },
+      {
+        "goal_description": "Restore visibility by picking up the torch",
+        "creation_step": 56,
+        "evidence": [
+          {
+            "quote": "It is too dark to see anything here.",
+            "step": 56,
+            "source": "model_selected_public_quote",
+            "verified": true
+          }
+        ],
+        "last_progress_step": 56,
+        "status": "ACTIVE",
+        "source": "model",
+        "confidence": 0.64,
+        "retired_step": 57
+      }
+    ],
+    "failures": [
+      {
+        "action": "enter armory",
+        "context": "7f14e5684ee59f162245935d5e201e2f39dd4f1fa117da980060c034d34ef1bc",
+        "result": "failed",
+        "avoid_reason": "Cannot enter armory, the door is locked.",
+        "count": 1,
+        "step": 29
+      },
+      {
+        "action": "lockpick library",
+        "context": "7f14e5684ee59f162245935d5e201e2f39dd4f1fa117da980060c034d34ef1bc",
+        "result": "failed",
+        "avoid_reason": "Cannot lockpick library. No lockpick tool in hand.",
+        "count": 2,
+        "step": 32
+      },
+      {
+        "action": "enter library",
+        "context": "7f14e5684ee59f162245935d5e201e2f39dd4f1fa117da980060c034d34ef1bc",
+        "result": "failed",
+        "avoid_reason": "Cannot enter library, the door is locked.",
+        "count": 2,
+        "step": 34
+      },
+      {
+        "action": "equip key",
+        "context": "7f14e5684ee59f162245935d5e201e2f39dd4f1fa117da980060c034d34ef1bc",
+        "result": "failed",
+        "avoid_reason": "Cannot equip key, not found in hand.",
+        "count": 1,
+        "step": 37
+      },
+      {
+        "action": "enter armory",
+        "context": "3873f84b3f2f558b849f5a6d026ed442b7aa7a2b7eb51b652f5e7b5449d57298",
+        "result": "failed",
+        "avoid_reason": "Cannot enter armory, the door is locked.\nAn enemy goblin_warrior_2 arrives from library and prowls into the area.",
+        "count": 1,
+        "step": 42
+      },
+      {
+        "action": "pick up iron_bar",
+        "context": "724b9507763a4ab85771253414496408a60c90e25f2fd1e729847ac09402a808",
+        "result": "failed",
+        "avoid_reason": "Cannot pick up iron_bar, not enough space in hand.",
+        "count": 1,
+        "step": 54
+      },
+      {
+        "action": "craft 1 wood_plank",
+        "context": "7cbe377692d7122bb757d9f3e86e156cf8abc080770499c2e3b07310018a564d",
+        "result": "failed",
+        "avoid_reason": "Cannot craft wood_plank. Missing necessary workbench in the current area.\nFriction recedes. Focus steadies, and intent becomes clear.\nI was attacked by goblin_warrior_1 and lost 11 HP.",
+        "count": 1,
+        "step": 60
+      }
+    ],
+    "history": [
+      {
+        "step": 53,
+        "action": "pick up iron_bar",
+        "progress": 1,
+        "failed": false,
+        "context": "261e35c3aa0df9cef709b2d8ab4cfd0c50f80a8add81f268997e6a848fec1996",
+        "flags": {
+          "observation_new": true,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 54,
+        "action": "pick up iron_bar",
+        "progress": 1,
+        "failed": true,
+        "context": "724b9507763a4ab85771253414496408a60c90e25f2fd1e729847ac09402a808",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": false,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 55,
+        "action": "drop torch",
+        "progress": 1,
+        "failed": false,
+        "context": "724b9507763a4ab85771253414496408a60c90e25f2fd1e729847ac09402a808",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 56,
+        "action": "pick up torch",
+        "progress": 0,
+        "failed": false,
+        "context": "1d76093e873d5cd5c7650a3aabbc2a3d702e2492535f4fbc25b384c9ae1f7bb1",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": false
+        }
+      },
+      {
+        "step": 57,
+        "action": "inspect wood_log",
+        "progress": 1,
+        "failed": false,
+        "context": "724b9507763a4ab85771253414496408a60c90e25f2fd1e729847ac09402a808",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": false,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 58,
+        "action": "drop iron_bar",
+        "progress": 1,
+        "failed": false,
+        "context": "724b9507763a4ab85771253414496408a60c90e25f2fd1e729847ac09402a808",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 59,
+        "action": "pick up wood_log",
+        "progress": 1,
+        "failed": false,
+        "context": "261e35c3aa0df9cef709b2d8ab4cfd0c50f80a8add81f268997e6a848fec1996",
+        "flags": {
+          "observation_new": true,
+          "inventory_changed": true,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      },
+      {
+        "step": 60,
+        "action": "craft 1 wood_plank",
+        "progress": 1,
+        "failed": true,
+        "context": "7cbe377692d7122bb757d9f3e86e156cf8abc080770499c2e3b07310018a564d",
+        "flags": {
+          "observation_new": false,
+          "inventory_changed": false,
+          "location_changed": false,
+          "new_entities": [],
+          "event_new": true
+        }
+      }
+    ],
+    "seen_states": [
+      "f6da1aeeb0b0459b30c139c65df92fb752b344e58163aa5f73282795b1b635ea",
+      "80d833edec0b0880beb8fad83e285d9c8720b4514b07dc8b416a8a6b464a904f",
+      "d924a5f2ce35fc676fe99e24b0e1675695f7c3201b66b300cba37e068dbed97f",
+      "f182e614a953ef5937f5ea63a0e1deb0860a77a78abac656f03dc4317cc8a13d",
+      "6c6834478bd80e54961b1921d9cfdeace590115a12ab0b9aa65a8e3f18b58b96",
+      "ff93a42282122add9aa86bed548bfcf1d86e7fe16736673c14557c9e9d00a6fa",
+      "aafdcf4134d69e2ec8fa0588cb3d3a8fbbc6a1c520d2139cf1264aca8e9ef151",
+      "1a51c9739063a5b79cb06d381069e0710efde934e5aae8054f0aadbad31896c0",
+      "126ceeea2a455a9668d3c28355b63a1df2e3034819ca3dd1ae04037c32885b5d",
+      "2f2b0a1b4eead7dd918bfc20d4f164ed3fd54cb1335d1cedc578842272eaf32e",
+      "25e45a32cd67de1573723dfd82bf9dbb227689ef6113bbdf3cdae838b5d330a1",
+      "cd14423b2442d7bf40d0333c5957bd61f0b59619984845e013a06bd81882529a",
+      "18e270d6eeef0d2f95f57dfe715f1afd3ae942c06d3e681c408e8cbfef21ef8c",
+      "9066c65fd6d7c0c4f67c4775232446991c5766669b98dd9048acff48afadab8a",
+      "ebf2c83deb57f67ebe3c69a01bc30eb2ed7a20119cfaa99858e3f59801601c09",
+      "0cae7ea741f08c3492aad845c6d6b5d61dd3b3cbbe2a5aa256c12981d2c761ce",
+      "f6e37cd5a98fef7d872fa7f6fef30a8498019b0456bc17a13f420fc8ddf7a0f1",
+      "37a9d842914019d951a7593904bf0d22965421dd47b3ad1e14413bd285ab745f",
+      "c49f86d03620f5418b5201333d44403afeb312af0b5e7cfe5a2f8873505515d3",
+      "574a8ffda5dfa4d302b4ff5d7a80af36d3bfb2bb97e27a285ecf7797b84cc104",
+      "a7c2732de07d2ebb5c7458d8c7add250dc598b244fb6a35abe116721b1eade26",
+      "d7ef064fa27d396f1aba44cb692ce195e520a39c267ab1c59d436c22e0b6ed97",
+      "4a233015d5fd89980e35576bb4fe566e8733f14750b6877a2c5337a0644edd02",
+      "463d3a45dec2d6504d3f367451ea0010e30f3e386b422d3340c65391be6ddbaf",
+      "f4ee7f5ec444d44f792efc758db6f6259b3f7ba113d338850c7bcf1e51f85322",
+      "d7e94915641797676e81a466744c8d1b02e3569eb8142224d24dea31dca7efe4",
+      "b38d827e84996fb4799a1e28b9f3a3fbd5cbc062e184b38ad6ad943ea289d6c9",
+      "5dc3f5e3d3254ced17ef344d91a873dede243aa2767e31d93a7955074d5cea41",
+      "8de3d16f7b5d2e23f368158abf306de02f77a03abf4d970f93a7088468e5d059",
+      "4bce25f22362679d07b13c98e315af9277cbf82b6e51423ee14a3c8bf6daaa2e",
+      "4da5cc6c39cb5e027e8b98ae1fbbfc64e9edbc295943096bfeed6bcee10e9f0b",
+      "cf55a454e27fde72fd3928813607b46c1692918a88ad826af950421de7b0bcc4",
+      "25d670de850636272fc07537c304c64052fa12db5722470ae2903923a5693dac",
+      "09c4a3c3221f973f97fcff576ea437d372efb5e7ab10a604786c9a332017fc9e"
+    ],
+    "seen_events": [
+      "a78d37b3b29e81928a3f04e2f67e3579533c7286659698c1a7658cac2961b5e0",
+      "382d167fdf03ead35816cd96b7da330f228d75c6b1bfed0be110db36ba71d299",
+      "920ca365cc9ca6f0242e083b5232a4eca6ac41dbf206786d298ffe767f31676c",
+      "90e5295b0c85a9737ce45a60bef9e028c9ab58954163dd600ffc64e04c4b7922",
+      "e6073a7528cd56dd9c69c95269ae2a2e62f2b907842d55970ed79962e98e2671",
+      "db5d9d6f0cad86eaed17ec229cd79184d29fdd402c6ebd0cd0f58c3912cf867f",
+      "c1e7227a595fa2230a8b3c45d0162a2f8fb8ca76773807e18f4d59922367acbd",
+      "885957335b48e8ac5067e987343da46ba530e35df1974fb74a79b9c5f382012f",
+      "9a5626232c226552bd25832a74e42ea85d9210f64d114df5f5aaf055aacaf56d",
+      "37566ff4e26a1123a8a2f24e0a5f2d215761145af467add93b0d18452012bb50",
+      "042c15c8b6075c89b876241700c4e206b501680b8ca8f2246eec360b21f84b1c",
+      "8d7c9b112ccec5bdf06e16bb39e6bb0fc5fca188b1762f13eafa90fd25b7dfef",
+      "ec3354b3fbb9b304d13c573f29ab149965e76ef1a1cd3b2a6473aae882e4fe27",
+      "5cbf782bea534776ef7de79c204c3f63403484a7254cdb0ca5f0a1e99ea62787",
+      "df7dc091b77cfd7f9012b7d1a1c3a0512c2e6163281f9e405fd1dd78fa885226",
+      "c0d0345f47c116fa76ab44f53ed136410fb410c4bbe9fbea36a394eabc005f27",
+      "4e38a5e0d87d0880a65fa8f7b7093ca69d07f0b46bcdccb28b4474f1d9e021ce",
+      "776e62c69e44f914c3f65cc0683f082cdad8e469c1f207897c28a577945262ac",
+      "ad7458c103743ef5cfdcfc56c1ed1f42febdbb3ffeb53231bba36b910a53177b",
+      "0de982d574299037549d097341d3bc2c8bff567b37c8e39528ff7b59882688e1",
+      "e6c82081036a708ae571c0a5af1a682c5355c4e4b872daf7817c2047ec76848e",
+      "882a48e033ae966da302a7bc4d8b4a6a7aa323b3c5f1433f326fc00c0f4fa8e1",
+      "7ad5133a73d277a913521cbca962ab706fad4c3d945030a1324213bed95ccfdc",
+      "a969d4388f1dd6976c9e28112c6e0d16ef9d82c582384e6604c22eda62387d85",
+      "d9a06d6e409a712f0230a62ce77a29f85e65e13990fa02a1e702e52592bebc2d",
+      "d8daa28ec06b248bf88a25dcef594c15ef4824e934f95064889464454b133c26",
+      "4e7306e4f7e505afaf0c1707a918cc086eec63177e09f2d9cb491b2518672084",
+      "2840b69eb7b8d81bf85d1f8a6118aa386ff3542fafc32b9c6fe7e178ba590bb9",
+      "13f594805d0163c0e7b179be03678d3083baec3b309c5461104429d0787eb1d8",
+      "40b788ba12dabdff2e66a17c259698b18dbe9f354362e53915d67c4f2b98cfb7",
+      "924165d7e334e8cf04de2726f4fe72d55c621f46fc473f4eca6480a821d84adf",
+      "420db154901b041ffe9ebfa6192e44b24a6824009cb78fa3ba7031168217b533",
+      "d2dba517c2755ec093c29b487450adfac01d1cd6127a79976d879d0cec4ddba7",
+      "bdc36e1197f0e62d267e2ba36cff40bcd34e9548921e87ffbbe03b401c06d2bc",
+      "4d6ce7093557d27107ab1d3e5bfbfa9c9dc0d25e059aa51c881f0534073bed73",
+      "63aed58cc02a17590174027dd2baa549c9623590f54ecef311dade7cc060ab06",
+      "9fa4c1bfe798ecc1c2a991c7c7f86c412c45eeed9d0047322357ff625313490a",
+      "4331b80a35ef51c10d62f02c2eb9f58931a7a8fbf32d6786a7a092c5a1187033",
+      "69dd16746e0500aa4ba61fdaaefd4bdef0a562429bfabe752c4518f3e37f4234",
+      "3e6a5e43603ceb775f62b905749dadada4d35a6d21e12ebe45af29073141333a",
+      "4d53d1972872aab9a3bdc49d8c3527d1986c1c8667126fdaf71367590479a0b0",
+      "65cd0ceb0ab85620e2d801ff7cf5ffd105908e5c0e2c8e53399b485183b534f1",
+      "9be34f8b1054176520214a0f9a4581ea34a4dc94da7f40b8ad69b60f48bfb287",
+      "abc6f482e1bb61e638bc03d30927a5a2b3ebdd4a07af4a34aa6f3d74ec3ac4bc",
+      "fcc5563155bad0814c4268460616cd25e1b4f8544eca92a4d8ad6151bd8a2374",
+      "dbdc68a24cff6348b17e89782b5dea2c1598aff4f9b3887d6960e8edf25a50e8",
+      "47949a733ca8b1f479d6db64850d75b78e9d5b1df9ff275de7495f8f5098c943",
+      "c5cf5096f1026e4ef023b0b34bdc06b63955dd06cfde2af479a1a4c8ba6ab12c",
+      "109b61f56a79f40dc24a680add4b5ec1afed43b654ffb52064a62b555cfdab0c",
+      "49c09d3ca2db405bb75027c1ee0681ea543deda28829c66e73956e1c1d58bad8",
+      "396c4c0d9664fb335793d067d3a001a028ee01e184e89482c503023d29dac037",
+      "79239a7cca6039b227d007600bc8d1348ec70b97384a26f44d940b1a34739a7a",
+      "db4f50b5abe264b049d0275e44fb904bbd8fe1852779cd3fa7d8d0d7a7a8d55f"
+    ],
+    "seen_entities": [
+      "small_bag_1",
+      "coin",
+      "pen",
+      "paper_8",
+      "selene_wyatt",
+      "wood_log",
+      "goblin_raider_0",
+      "furnace",
+      "key_blank",
+      "workbench",
+      "key",
+      "apple",
+      "bob_johnson",
+      "paper_7",
+      "small_bag_0",
+      "small_satchel_0",
+      "torch",
+      "goblin_warrior_2",
+      "daniel_cross",
+      "goblin_warrior_1",
+      "iron_bar",
+      "iron_ore",
+      "mountain_sulfur",
+      "paper_1",
+      "rust_scrap",
+      "stone",
+      "thread",
+      "villager_0"
+    ],
+    "last_public_goal": "enter hall",
+    "public_recent": [
+      "\nCurrent Time: 0001-01-01 17:20:00\nCurrent Location: Old Castle, armory\n\nI picked up torch.\n\nI am holding 1 iron_bar, 1 torch.\nI have equipped no objects.\nI see 3 iron_ore, 3 stone, 5 rust_scrap, 1 paper_1, 4 iron_bar, 4 mountain_sulfur, 1 thread, 6 apple, 3 coin, 1 wood_log near me.\nI see villager_0, goblin_warrior_1, daniel_cross nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 35.\n\nNeighboring areas: hall, plain.\n",
+      "\nCurrent Time: 0001-01-01 17:30:00\nCurrent Location: Old Castle, armory\n\nI inspected wood_log: A rough timber log.\nIt can be used to craft: workbench (made of wood_log, stone), wood_plank (made of wood_log).\nIt has nothing written on it.\n\nI am holding 1 iron_bar, 1 torch.\nI have equipped no objects.\nI see 3 iron_ore, 3 stone, 5 rust_scrap, 1 paper_1, 4 iron_bar, 4 mountain_sulfur, 1 thread, 6 apple, 3 coin, 1 wood_log near me.\nI see villager_0, goblin_warrior_1, daniel_cross nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 35.\n\nNeighboring areas: hall, plain.\n",
+      "\nCurrent Time: 0001-01-01 17:40:00\nCurrent Location: Old Castle, armory\n\nI dropped iron_bar.\n\nI am holding 1 torch.\nI have equipped no objects.\nI see 3 iron_ore, 3 stone, 5 rust_scrap, 1 paper_1, 5 iron_bar, 4 mountain_sulfur, 1 thread, 6 apple, 3 coin, 1 wood_log near me.\nI see villager_0, goblin_warrior_1, daniel_cross nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 35.\n\nNeighboring areas: hall, plain.\n",
+      "\nCurrent Time: 0001-01-01 17:50:00\nCurrent Location: Old Castle, armory\n\nI picked up wood_log.\nI have acquired a new item: wood_log. It can be used to craft: workbench (5 wood_log, 5 stone), wood_plank (1 wood_log)\n\nI am holding 1 torch, 1 wood_log.\nI have equipped no objects.\nI see 3 iron_ore, 3 stone, 5 rust_scrap, 1 paper_1, 5 iron_bar, 4 mountain_sulfur, 1 thread, 6 apple, 3 coin near me.\nI see villager_0, goblin_warrior_1, daniel_cross nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 35.\n\nNeighboring areas: hall, plain.\n",
+      "\nCurrent Time: 0001-01-01 18:00:00\nCurrent Location: Old Castle, armory\n\nCannot craft wood_plank. Missing necessary workbench in the current area.\nFriction recedes. Focus steadies, and intent becomes clear.\nI was attacked by goblin_warrior_1 and lost 11 HP.\n\nI am holding 1 torch, 1 wood_log.\nI have equipped no objects.\nI see 3 iron_ore, 3 stone, 5 rust_scrap, 1 paper_1, 5 iron_bar, 4 mountain_sulfur, 1 thread, 6 apple, 3 coin near me.\nI see villager_0, goblin_warrior_1, daniel_cross nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 89.\nMy experience is at 35.\n\nNeighboring areas: hall, plain.\n"
+    ],
+    "last": {
+      "location": "Old Castle, armory",
+      "hands": {
+        "torch": 1.0,
+        "wood_log": 1.0
+      },
+      "equipment": {},
+      "observed_container_contents": null,
+      "ground_names": [
+        "apple",
+        "coin",
+        "iron_bar",
+        "iron_ore",
+        "mountain_sulfur",
+        "paper_1",
+        "rust_scrap",
+        "stone",
+        "thread"
+      ],
+      "npcs": [
+        "daniel_cross",
+        "goblin_warrior_1",
+        "villager_0"
+      ],
+      "neighbors": "hall, plain",
+      "ground": {
+        "iron_ore": 3.0,
+        "stone": 3.0,
+        "rust_scrap": 5.0,
+        "paper_1": 1.0,
+        "iron_bar": 5.0,
+        "mountain_sulfur": 4.0,
+        "thread": 1.0,
+        "apple": 6.0,
+        "coin": 3.0
+      },
+      "feedback": "Cannot craft wood_plank. Missing necessary workbench in the current area.\nFriction recedes. Focus steadies, and intent becomes clear.\nI was attacked by goblin_warrior_1 and lost 11 HP.",
+      "event": "Cannot craft wood_plank. Missing necessary workbench in the current area.\nFriction recedes. Focus steadies, and intent becomes clear.",
+      "public_goal": null,
+      "failed": true,
+      "permanent": false,
+      "signature": "09c4a3c3221f973f97fcff576ea437d372efb5e7ab10a604786c9a332017fc9e",
+      "context": "7cbe377692d7122bb757d9f3e86e156cf8abc080770499c2e3b07310018a564d",
+      "entities": [
+        "apple",
+        "coin",
+        "daniel_cross",
+        "goblin_warrior_1",
+        "iron_bar",
+        "iron_ore",
+        "mountain_sulfur",
+        "paper_1",
+        "rust_scrap",
+        "stone",
+        "thread",
+        "torch",
+        "villager_0",
+        "wood_log"
+      ]
+    },
+    "events": []
+  },
+  "system_prompt": "\nYou are the player in a text adventure games. The world is described in text form.\nAt each turn, you may choose ONE action from the action space below.\n\nAction space:\n- attack <npc_name>\n- buy <amount> <obj_name> <npc_name>\n- craft <amount> <obj_name>\n- defend \n- disassemble <obj_name>\n- discard <amount> <obj_name> <container_name>\n- drop <object_name>\n- eat <object_name>\n- enter <area_name>\n- equip <obj_name>\n- inspect <object_name>\n- lockpick <area_name>\n- pick up <object_name>\n- pickpocket <npc_name>\n- sell <amount> <obj_name> <npc_name>\n- store <amount> <obj_name> <container_name>\n- take out <obj_name> <container_name>\n- talk to <npc_name>\n- throw <obj_name> <npc_name>\n- unequip <obj_name>\n- wait \n- write <text> <writable_name>\n\nOutput format (STRICT):\nReturn a single JSON object with exactly these keys:\n{\n  \"reasoning\": \"A few sentences explaining why you choose the action.\",\n  \"action\": \"<action>\",\n  \"goal_description\": \"<current subgoal>\",\n  \"goal_evidence\": \"<exact public observation quote>\"\n}\n\nRules:\n- The JSON must be the ONLY content in your reply (no extra text before/after).\n- The action must exactly match one option from the action space.\n"
+}
