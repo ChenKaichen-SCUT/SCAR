@@ -1,4 +1,4 @@
-"""Three SAER runs; complete baselines reused without new calls."""
+"""One repaired SAER run from the original initial state."""
 import argparse
 import contextlib
 import copy
@@ -16,7 +16,7 @@ def execute(seed,key):
     method="SAER"
     from scar.environment import restore,state_digest
     from agents.agc.agent import DecisionUnavailable
-    check_freeze(light=True);assert read(RESULTS/"offline_summary.json")["complete"];case=ident(seed);folder=RUNTIME/'runs'/case;out=RESULTS/'runs'/case
+    check_freeze(light=True);case=ident(seed);folder=RUNTIME/'runs'/case;out=RESULTS/'runs'/case
     if (out/'summary.json').exists():return read(out/'summary.json')
     folder.mkdir(parents=True,exist_ok=True)
     for name in ['steps','native_transitions']:(folder/name).mkdir(exist_ok=True)

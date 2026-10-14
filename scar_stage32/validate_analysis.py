@@ -42,17 +42,14 @@ def main():
             assert sum(r['reward']['quest'] for r in rr)==s['scores']['quest']==m['counts']['main_final']
             assert len(qq)==m['requests'];assert math.isclose(sum(q.get('cost_usd',0) for q in qq),m['cost_usd'],abs_tol=1e-12)
             (allq if method=='SAER' else historical).extend(qq);total_actions+=len(rr);receipts.append(dict(seed=seed,method=method,actions=len(rr),requests=len(qq)))
-    assert len(historical)==970;assert len(evidence)==total_actions
-    sampleids={x['id'] for x in read(RESULTS/'samples.json')};results={p.parent.name for p in (RESULTS/'offline').glob('*/result.json')};assert sampleids==results and len(results)==77
-    for ident_ in sampleids:
-        r=read(RESULTS/'offline'/ident_/'result.json');q=rows(RESULTS/'offline'/ident_/'requests.jsonl.gz');assert r['status']=='complete' and len(q)==2;allq.extend(q)
+    assert SEEDS==[42];assert len(historical)==len(rows(baseline(42)/'requests.jsonl.gz'));assert len(evidence)==total_actions
+    assert not (RESULTS/'offline').exists() and not (RESULTS/'samples.json').exists()
     assert len(allq)==cost['new_requests'] and len({q['request_id'] for q in allq})==len(allq)
     assert math.isclose(sum(q.get('cost_usd',0) for q in allq),cost['cost_usd'],abs_tol=1e-12)
     assert sum(q['usage']['prompt_tokens'] for q in allq)==cost['input_tokens'];assert sum(q['usage']['completion_tokens'] for q in allq)==cost['output_tokens']
     with (RESULTS/'request_index.csv').open() as f:ri=list(csv.DictReader(f))
-    assert len(ri)==len(historical)+len(allq)-154;assert sum(x['new']=='True' for x in ri)==len(allq)-154
-    case=read(RESULTS/'case_review.json');assert len(case['stage31_correspondence'])==7
-    for name in ['Stage32实验报告.md','离线验证报告.md','与Stage31失败案例对应分析.md','软反思与合法路径审计.md','三游戏扩展与研究判断.md']:
+    assert len(ri)==len(historical)+len(allq);assert sum(x['new']=='True' for x in ri)==len(allq)
+    for name in ['Stage32实验报告.md','语法修复与单种子协议.md','动作反思与语法审计.md','三游戏扩展与研究判断.md']:
         assert (REPORTS/name).stat().st_size>100
     write(RESULTS/'analysis_verification.json',dict(passed=True,receipts=receipts,actions=total_actions,new_requests=len(allq),historical_requests=len(historical),
         all_samples_retained=True,all_call_roles_accounted=True,all_evidence_checked=True,raw_usage_verified=True,saer_risk_vetoes=0,new_model_calls=0))

@@ -3,7 +3,7 @@ from agents.agc.state import extract
 from .common import *
 
 def main():
-    offline();rr=rows(RESULTS/'reflection_audit.jsonl.gz');off=read(RESULTS/'offline_comparison.json');samples={x['id']:x for x in read(RESULTS/'samples.json')}
+    offline();rr=rows(RESULTS/'reflection_audit.jsonl.gz')
     selected={};indexes={}
     tests={
         'rejection_avoided':lambda x:x['final_applied'] and x['rejected_to_accepted'],
@@ -26,14 +26,6 @@ def main():
         for x in chosen:
             n=x['step'];source=trajectories[x['seed']]
             selected[name].append(dict(reflection=x,window=[dict(step=r['step'],action=r['action'],observation=r['observation'],feedback=r['feedback'],reward=r['reward']) for r in source[max(0,n-3):n+2]]))
-    correspondence=[]
-    for x in off:
-        if x['kind'] not in ['terminal','condition_loss']:continue
-        s=samples[x['id']];raw=read(ROOT/x['source'])
-        correspondence.append(dict(id=x['id'],kind=x['kind'],seed=x['seed'],step=x['step'],source_candidate=s['candidate'],
-            summary=x,observation=s['observation'] if 'observation' in s else s.get('current_observation'),
-            prediction=raw['record']['prediction'],final=raw['final_proposal'],candidate_native=raw['candidate_native'],final_native=raw['final_native'],
-            source_sample=s,strict_long_term_causal_claim=False))
     branch=[]
     for seed in SEEDS:
         a=rows(baseline(seed)/'trajectory.jsonl.gz');b=trajectories[seed]
@@ -42,7 +34,7 @@ def main():
             baseline=None if div is None else a[div],saer=None if div is None else b[div],
             saer_main_events=[r for r in b if r['reward']['quest']],
             saer_first_rejection=next((r for r in b if extract(r['feedback'])['failed'] or r['feedback']['text'].find('Failed to')>=0),None)))
-    write(RESULTS/'case_review.json',dict(stage31_correspondence=correspondence,all_qualifying_indexes=indexes,representative_rule='First chronological qualifying case in each seed; no outcome screening.',
+    write(RESULTS/'case_review.json',dict(all_qualifying_indexes=indexes,representative_rule='First chronological qualifying case; all qualifying indexes retained.',
         online_examples=selected,paired_first_divergence=branch,new_model_calls=0))
     print(json.dumps({k:len(v) for k,v in indexes.items()}),flush=True)
 

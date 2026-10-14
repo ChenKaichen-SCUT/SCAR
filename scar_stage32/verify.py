@@ -58,7 +58,6 @@ def main(archive_only=False):
             for name in agent.memory_paths:assert read(Path(tmp)/'final'/name)==read(out/'final_memory'/name)
             assert len(p.calls)==sum(q['status']=='ok' for q in qq);assert env.scores[AGENT_ID]==s['scores']
         allq.extend(qq);receipts.append(dict(seed=seed,actions=len(rr),contexts=len(p.calls),passed=True));print(json.dumps(receipts[-1]),flush=True)
-    for sample in read(RESULTS/'samples.json'):allq.extend(rows(RESULTS/'offline'/sample['id']/'requests.jsonl.gz'))
     for q in allq:
         if q['status']=='ok':
             assert q['unit_prices']==prices_at(q['raw_response'].get('created') or q['start']);assert math.isclose(q['cost_usd'],estimate_cost(q['usage'],q['unit_prices']),abs_tol=1e-12)
@@ -67,13 +66,13 @@ def main(archive_only=False):
     if not archive_only:
         assert not list(RUNTIME.rglob('pending_request.json'));ll=ledger(RUNTIME/'budget.sqlite')
         assert {x[0] for x in ll}=={q['request_id'] for q in allq};assert math.isclose(sum(x[1] for x in ll),cost,abs_tol=1e-12)
-        for path in list((RUNTIME/'offline').glob('*/budget.sqlite'))+list((RUNTIME/'runs').glob('*/budget.sqlite')):
+        for path in list((RUNTIME/'runs').glob('*/budget.sqlite')):
             ep=ledger(path);own=[q for q in allq if q['request_id'] in {x[0] for x in ep}]
             assert len(own)==len(ep) and math.isclose(sum(q['cost_usd'] for q in own),sum(x[1] for x in ep),abs_tol=1e-12)
     gzwrite(RESULTS/'online_native_probes.jsonl.gz',probes)
     write(RESULTS/'verification.json',dict(passed=True,receipts=receipts,exact_native_actions=sum(x['actions'] for x in receipts),exact_model_contexts=sum(x['contexts'] for x in receipts),
         isolated_probe_actions=sum(sum(p is not None for p in x['pair'].values()) for x in probes),new_verification_model_calls=0,freeze_integrity=integrity,
-        baseline_reuse_verification='Unchanged Stage31 exact replay verified all 900 baseline actions and 970 contexts; files covered by this freeze.'))
+        baseline_reuse_verification='Existing seed42 AGC-v2 baseline already verified in Stage31; unchanged files covered by this freeze.'))
     write(RESULTS/'cost_reconciliation.json',dict(passed=True,new_requests=len(allq),cost_usd=cost,input_tokens=sum(q.get('usage',{}).get('prompt_tokens',0) for q in allq),
         output_tokens=sum(q.get('usage',{}).get('completion_tokens',0) for q in allq),statuses=dict(Counter(q['status'] for q in allq)),private_ledgers_verified=not archive_only,
         unknown_billing=0,provider_invoice_available=False,analysis_model_calls=0))

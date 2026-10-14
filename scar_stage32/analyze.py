@@ -24,6 +24,8 @@ def main():
                 counters['native_action_retries']+=d.get('action_retry_calls',0);counters['native_confidence_reviews']+=d.get('confidence_review_calls',0)
                 for ordinal,call in enumerate(d.get('saer_calls',[]),1):counters['calls_'+call['phase']]+=1;phases[n,ordinal]=call['phase']
                 for i,r in enumerate(d.get('saer_records',[]),1):
+                    counters['syntax_diagnostic_feedback_rounds']+=r.get('syntax_feedback_received') is not None
+                    counters['invalid_returned_proposals']+=r.get('returned_format_issues') is not None
                     if 'prediction' not in r:counters['invalid_candidate_skips']+=1;continue
                     p=probes[seed,n,i];a=p['pair']['candidate'];b=p['pair']['final'];changed=bool(a and b and a['action']!=b['action']);applied=p['final_applied'];warning=r['warning']
                     base_visible=extract(actual['observation'] if actual else terminal['observation'])['hands'] is not None
@@ -80,8 +82,8 @@ def main():
             extra_method_early_stop=b['status']=='agent_decision_exhausted',first_action_divergence=div))
     gain=sum(p['main_delta']>0 or p['chapter_delta']>0 for p in pairs);worse=any(p['main_delta']<0 or p['chapter_delta']<0 for p in pairs);early=any(p['extra_method_early_stop'] for p in pairs)
     ea=sum(p['AGC_v2']['public_rejected'] for p in pairs);eb=sum(p['SAER']['public_rejected'] for p in pairs);better=sum(p['SAER']['public_rejected']<p['AGC_v2']['public_rejected'] for p in pairs)
-    local=better>=2 and ea>0 and eb<=.9*ea
-    verdict='REGRESSION_OR_BLOCKING' if worse or early else 'PROGRESS_AND_RELIABILITY_SUPPORT' if gain>=2 and local else 'LOCAL_RELIABILITY_ONLY' if local else 'NO_CLEAR_SUPPORT'
+    local=better==1 and ea>0 and eb<=.9*ea
+    verdict='NATIVE_DECISION_EXHAUSTED' if early else 'SINGLE_SEED_REGRESSION' if worse else 'SINGLE_SEED_PROGRESS' if gain==1 else 'NO_MAIN_PROGRESS_GAIN'
     write(RESULTS/'metrics.json',allmetrics);write(RESULTS/'paired_comparison.json',pairs);gzwrite(RESULTS/'evidence_index.jsonl.gz',evidence);gzwrite(RESULTS/'reflection_audit.jsonl.gz',reflection)
     gzwrite(RESULTS/'resource_events.jsonl.gz',resource_events)
     write(RESULTS/'response_anomalies.json',anomalies);csvwrite(RESULTS/'request_index.csv',requests)
@@ -92,7 +94,7 @@ def main():
     for method in ['AGC-v2','SAER']:
         folders=[baseline(seed) if method=='AGC-v2' else RESULTS/'runs'/ident(seed) for seed in SEEDS]
         args=[sys.executable,str(ENGINE/'challenge_eval.py'),'--remnant',*[str(p) for p in folders],'--json'];r=json.loads(subprocess.run(args,capture_output=True,text=True,check=True).stdout)
-        assert r['games']['remnant']['main_quest']==sum(x['counts']['main_final'] for x in allmetrics if x['method']==method)/3
+        assert r['games']['remnant']['main_quest']==sum(x['counts']['main_final'] for x in allmetrics if x['method']==method)/len(SEEDS)
         official.append(dict(method=method,args=args,result=r,scorer_sha256=sha(ENGINE/'challenge_eval.py')))
     write(RESULTS/'official_scores.json',official);print(json.dumps(read(RESULTS/'conclusion.json')),flush=True)
 

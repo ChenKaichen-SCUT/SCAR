@@ -17,7 +17,7 @@ def main():
             if time.time()-started>24*3600:raise RuntimeError('Existing online batch did not finish within 24 hours; no rerun launched')
             time.sleep(30)
         assert read(RESULTS/'online_completion.json')['complete'],'Existing batch reported an error; retain all states, no rerun'
-        modules=['verify','analyze','cases','offline_review','offline_report','report','validate_analysis','audit']
+        modules=['verify','analyze','cases','report','validate_analysis','audit']
         for name in modules:
             note(name);command([sys.executable,'-m','scar_stage32.'+name],f'{name}.log')
         note('commit_results');manifest=read(RESULTS/'artifact_manifest.json')['files'];paths=list(manifest)+['results/stage32/artifact_manifest.json','results/stage32/artifact_audit.json']
@@ -30,21 +30,22 @@ def main():
         for line in subprocess.check_output(['git','diff','--numstat',BASE,result_commit,'--','agents/saer','scar_stage32','reports/stage32','results/stage32'],cwd=ROOT,text=True).splitlines():
             added,deleted,path=line.split('\t',2);counts.append(dict(path=path,added=int(added) if added.isdigit() else None,deleted=int(deleted) if deleted.isdigit() else None))
         commits=[dict(hash=h,subject=s) for h,s in (line.split('\t',1) for line in subprocess.check_output(['git','log','--reverse','--format=%H%x09%s',f'{BASE}..{result_commit}'],cwd=ROOT,text=True).splitlines())]
-        write(RESULTS/'change_accounting.json',dict(base=BASE,freeze='eb2b7b6c385d01b20404350d57057fb4e4050875',offline='6e09388',results=result_commit,commits=commits,files=counts,
+        freeze_commit=read(RESULTS/'artifact_audit.json')['freeze_commit']
+        write(RESULTS/'change_accounting.json',dict(base=BASE,freeze=freeze_commit,results=result_commit,commits=commits,files=counts,
             files_count=len(counts),added=sum(x['added'] or 0 for x in counts),deleted=sum(x['deleted'] or 0 for x in counts),metadata_self_excluded=True,
             new_requests=cost['new_requests'],cost_usd=cost['cost_usd'],old_algorithm_files_changed=0,post_freeze_policy_changes=0,new_analysis_model_calls=0))
-        write(RESULTS/'publication.json',dict(result_commit=result_commit,freeze_commit='eb2b7b6c385d01b20404350d57057fb4e4050875',verdict=conclusion['verdict'],
+        write(RESULTS/'publication.json',dict(result_commit=result_commit,freeze_commit=freeze_commit,verdict=conclusion['verdict'],
             results_complete=True,all_validation_passed=True,new_requests=cost['new_requests'],cost_usd=cost['cost_usd'],publication_commit_self_excluded=True))
         from scar_stage31.report import save,table
         save(REPORTS/'Git变更记录.md',f'''# Stage32 Git 与变更记录
 
-基线 `{BASE}`，算法冻结 `eb2b7b6c385d01b20404350d57057fb4e4050875`，离线归档 `6e09388`，完整结果 `{result_commit}`。
+本次修复前提交 `{BASE}`，修复后冻结 `{freeze_commit}`，完整单种子结果 `{result_commit}`。
 
 {table(['提交','说明'],[[x['hash'],x['subject']] for x in commits])}
 
 截至结果提交，共{len(counts)}个文件；文本新增{sum(x['added'] or 0 for x in counts)}行、删除{sum(x['deleted'] or 0 for x in counts)}行，二进制不计行数。逐文件统计见results/stage32/change_accounting.json；本元数据提交不包含自身哈希/行数，避免循环引用。
 
-本轮新增模型请求{cost['new_requests']}次，usage费用${cost['cost_usd']:.9f}。分析与验证新增调用0。原AGC-v2、模型、环境不变，冻结后策略修改0，付费重跑0。全部77个离线样本和三个在线种子均保留。仅提交自研代码、报告和实验归档，没有下载依赖或凭据。
+修复后新增模型请求{cost['new_requests']}次，usage费用${cost['cost_usd']:.9f}。分析与验证新增调用0。原AGC-v2、模型、环境不变，修复后冻结策略未再修改。正式记录只有seed42一次300步上限运行，修复后没有重跑。用户要求删除的旧Stage32结果已从当前版本移除，不混入本次统计。仅提交自研代码、报告和实验归档，没有下载依赖或凭据。
 ''')
         command(['git','add','--','results/stage32/change_accounting.json','results/stage32/publication.json','reports/stage32/Git变更记录.md'])
         command(['git','commit','-m','stage32: record result provenance and usage accounting'])
