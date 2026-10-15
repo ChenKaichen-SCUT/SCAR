@@ -111,3 +111,33 @@ def test_real_environments_and_baselines(tmp_path):
         two.update_scores(reward2)
         assert next1 == next2 and info1 == info2 and done1 == done2
         assert state_digest(one) == state_digest(two)
+
+
+def test_contract_keeps_counterexamples_but_never_promotes_them_to_facts():
+    from scar_public.contract import ContractMemory
+    memory = ContractMemory()
+    before = "Task: deliver the sealed package.\nThe blue desk accepts deliveries."
+    memory.prompt(before)
+    proposal = {"action": "drop package", "frame": {
+        "goal_quote": "Task: deliver the sealed package.", "method": "deliver at desk",
+        "target_test": "delivery acknowledged", "expected": "package placed",
+        "bindings": [{"role": "destination", "value": "blue desk", "quote": "The blue desk accepts deliveries."},
+                     {"role": "invented", "value": "red desk", "quote": "A red desk was never observed."}]}}
+    memory.update(proposal, before, 0)
+    assert len(memory.frame["bindings"]) == 1
+    after = "I dropped package.\nDelivery is still awaiting a sealed package."
+    memory.prompt(after)
+    memory.update({**proposal, "review": {"verdict": "counterexample",
+        "quote": "Delivery is still awaiting a sealed package.",
+        "interpretation": "Dropping an unsealed package did not establish delivery."}}, after, 1)
+    prompt = memory.prompt("The package is nearby.")
+    assert "Dropping an unsealed package" in prompt
+    assert "Dropping an unsealed package" not in memory.ledger
+    assert memory.trials[0]["review"]["verdict"] == "counterexample"
+    restored = ContractMemory()
+    restored.load(json.loads(json.dumps(memory.state())))
+    assert restored.state() == memory.state()
+    # A historical quote cannot masquerade as current outcome evidence.
+    restored.update({**proposal, "review": {"verdict": "progress",
+        "quote": "I dropped package.", "interpretation": "Complete"}}, "Nothing happened.", 2)
+    assert restored.trials[-2]["review"]["verdict"] == "uncertain"

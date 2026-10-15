@@ -137,3 +137,33 @@ Hypothesis: fewer preparation cycles should translate into greater main-task rew
 in metropolis and remnant. If only repetition metrics improve, regard the hypothesis as not
 supported on the main task. V3 remains an LLM-interpreted contract, not a sound symbolic planner.
 Finish this phase after this revision and report every version; do not keep tuning indefinitely.
+
+## User-authorized continuation: task-bound trials (v4)
+
+The user requested further diagnosis and improvement after the completed v3 report. Existing
+baselines and all completed runs remain frozen. This is a new development phase, not an extension
+of the previous claim or a replacement for its negative findings.
+
+V3/metropolis repeatedly confused two public phrases serving different task roles. At checkpoint
+62, an offline same-state action substitution yields quest 8 -> 10 for the task-bound phrase versus
+8 -> 8 for the original phrase. At checkpoint 255 both phrases fail because the document already
+contains other text and writing appends. These scripted, source-informed mechanistic replays are
+NOT autonomous agent results. They do not enter the agent's inputs, memory or policy.
+
+V4 replaces the v2+v3 prompt with one task-bound execution-trial representation: a quoted goal,
+quoted argument bindings, a method's joint arrangement, an observable target test distinct from
+the next command effect, and reviews of eight recent trials. Quotes are checked for provenance
+only. Reviews are explicitly tentative model interpretations; a review's evidence must occur in
+the current observation. No inferred review creates a hard action veto. No game-specific names,
+phrases, recipes or solutions are encoded. One API call per action, shared inference settings.
+
+First compare v3 and v4 for 30 actions from each of two identical v3 checkpoints: metropolis 62
+(before the mistaken binding) and 178 (already contaminated document, repeated failed method).
+Each pair restores identical environment, RNG and inherited public memory. Additional v4 fields
+start empty. Record cost and failures separately; these are targeted diagnostics, not 300-step
+benchmark scores. Two fresh v3 continuations are algorithm controls, not rerun baselines.
+
+Only if these diagnostics show actual task gain or a directly observed repair of the intended
+bottleneck, run v4 once from each shared initial world for the full 300 steps. Compare all three
+scores with v3 and frozen baselines; retain regressions. Stop after this candidate unless a specific
+implementation defect invalidates the test. Do not infer stable performance or novelty from it.

@@ -15,8 +15,8 @@ from scar_public.provider import Provider, usage_summary
 from scar_public.agent import PublicAgent
 
 GAMES = ("remnant", "mark", "metropolis")
-METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3")
-PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3")
+METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4")
+PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4")
 REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
 
 
@@ -52,6 +52,9 @@ def build_agent(method, env, provider):
         if method == "viability_v3":
             from scar_public.viability import ViabilityAgent
             return ViabilityAgent(provider, cfg.system_prompt)
+        if method == "contract_v4":
+            from scar_public.contract import ContractAgent
+            return ContractAgent(provider, cfg.system_prompt)
         return PublicAgent(provider, cfg.system_prompt)
     base = type(env.agents[0])
     factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
@@ -110,6 +113,17 @@ def run(args):
         "source_revision": args.revision, "initial_snapshot_sha256": hashlib.sha256(initial.read_bytes()).hexdigest(),
         "temperature": .7, "top_p": .8, "presence_penalty": 0, "max_tokens": 1536,
         "thinking": "disabled", "enable_obs_valid_actions": False}
+    fork = Path(args.fork_checkpoint).resolve() if args.fork_checkpoint else None
+    if fork:
+        source_manifest = json.loads((fork.parent.parent / "manifest.json").read_text())
+        if source_manifest["game"] != args.game or not 0 < int(fork.name) < args.steps:
+            raise ValueError("Fork must match the game and precede the absolute final step")
+        if source_manifest["initial_snapshot_sha256"] != manifest["initial_snapshot_sha256"]:
+            raise ValueError("Fork and destination must share the initial world")
+        manifest["diagnostic_fork"] = {"path": str(fork), "start_step": int(fork.name),
+            "environment_sha256": hashlib.sha256((fork / "environment.pkl").read_bytes()).hexdigest(),
+            "agent_sha256": hashlib.sha256((fork / "agent.json").read_bytes()).hexdigest(),
+            "source_method": source_manifest["method"]}
     manifest_path = directory / "manifest.json"
     if manifest_path.exists() and json.loads(manifest_path.read_text()) != manifest:
         raise RuntimeError("Run manifest differs; use a new stage instead of overwriting")
@@ -130,6 +144,10 @@ def run(args):
         env = restore(cp / "environment.pkl", directory)
         saved_agent = json.loads((cp / "agent.json").read_text())
         step = previous["steps"]
+    elif fork:
+        env = restore(fork / "environment.pkl", directory)
+        saved_agent = json.loads((fork / "agent.json").read_text())
+        step = int(fork.name)
     else:
         env = restore(initial, directory)
         saved_agent = None
@@ -181,6 +199,8 @@ def main():
     p.add_argument("--model", default="deepseek-flash")
     p.add_argument("--revision", default="uncommitted")
     p.add_argument("--transport-revision", default=None)
+    p.add_argument("--fork-checkpoint", default=None,
+                   help="Diagnostic continuation only; --steps is the absolute final step")
     args = p.parse_args()
     if args.command == "prepare":
         prepare(Path(args.root))
