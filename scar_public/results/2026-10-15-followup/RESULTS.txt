@@ -1,0 +1,54 @@
+SCAR follow-up: local causal diagnosis and a rejected candidate
+
+Question: Do provenance/entailment confusion and local-action/method confusion explain
+the remaining failures? Answer: both explain concrete recoverable bottlenecks, but neither
+their prevalence nor their share of total reward loss is established.
+
+Source-informed offline mechanism probes (zero API calls; NOT autonomous performance):
+- V3 metropolis checkpoint 62: identical world/RNG, substitute only the phrase in the next
+  write action. Wrong task-role binding: 8 -> 8; task-bound phrase: 8 -> 10.
+- V3 checkpoint 255: both phrases leave 9 -> 9. Public inspection shows mixed content;
+  engine write appends, and the task evaluator requires exact full-text equality. Correct
+  content added to the wrong final document state still fails. Engine inspection is used
+  only to explain this mechanism, never as online policy input.
+- V2 metropolis checkpoint 206: replay original next eight actions leaves 10 -> 10.
+  An eight-action container arrangement followed by craft/pickup yields 10 -> 11.
+  This establishes that the local resource/capacity bottleneck was recoverable, not that
+  an autonomous policy has learned the repair. Original replay matches the stored score.
+
+Candidate v4: replace v2/v3 prompting with goal-bound arguments, separate target and action
+predictions, and eight retained tentative trial reviews. Quotations remain provenance checks,
+not semantic certificates. No game-specific solution is encoded in the policy.
+
+Four paid diagnostic continuations, each 30 NEW actions from the same source checkpoint:
+                         v3 control       v4 candidate
+  checkpoint 62          8 -> 8           8 -> 8
+  checkpoint 178         9 -> 9           9 -> 9
+
+The candidate still labels the restoration clause as the cipher, accepts writing as a
+task-success test, and repeats infeasible material preparations. 59/60 v4 responses contained
+the requested frame/review fields, so this is not primarily a failure to output the schema.
+More structured self-description did not repair the intended bottlenecks in these tests.
+Do not promote v4. No 300-step v4 runs were launched. V3 remains the best full-run development
+version (mean 9.0 on the three games); this follow-up does not revise that performance claim.
+
+All five protocol tests passed. Diagnostics verify identical source environment digests,
+checkpoint hashes, 30 actions per continuation, and final snapshot/score consistency.
+All nine frozen baseline manifest/config/status hashes still match. The 30-action diagnostics
+are explicitly exempt from the default 300-step full-run budget and are never mixed into it.
+
+New calls: 129 successful HTTP responses for 120 actions (9 formatting retries), zero unknown
+charge attempts. Conservative peak-rate estimate: USD 0.175758552. Total across both phases:
+USD 4.718401416, 5581 responses. These are usage-based estimates, not an invoice.
+
+Limits: one stochastic sample per method/checkpoint; deliberately selected failure states;
+same three development games; mixed memory/schema/prompt intervention. No claim of statistical
+significance, universal failure of v4, overall causal attribution, or established originality.
+
+Next research hypothesis (NOT implemented or validated here): derive an observable terminal
+condition from the public task before proposing a method, and check candidate arrangements
+against observed transition/capacity constraints. Semantic argument bindings should remain
+alternatives until discriminating environment evidence resolves them. A success criterion
+must not be invented solely to match an already chosen action. This needs a precise update
+and rejection rule, matched-compute ablations and held-out validation; another memory field
+or generic reflection instruction is not a sufficient contribution.

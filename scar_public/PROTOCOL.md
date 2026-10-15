@@ -167,3 +167,9 @@ Only if these diagnostics show actual task gain or a directly observed repair of
 bottleneck, run v4 once from each shared initial world for the full 300 steps. Compare all three
 scores with v3 and frozen baselines; retain regressions. Stop after this candidate unless a specific
 implementation defect invalidates the test. Do not infer stable performance or novelty from it.
+
+Outcome: all four diagnostic continuations completed. Both versions gained zero main reward
+from either checkpoint, and v4 retained the targeted binding/preparation failures. V4 is rejected
+for promotion in this phase; no full v4 runs are justified by these diagnostics. Results and all
+new costs are in `results/2026-10-15-followup`. Separate offline same-state action substitutions
+confirmed recoverable binding and capacity bottlenecks; those scripted repairs are not agent scores.
