@@ -1,0 +1,67 @@
+SCAR — 2026-10-15 development phase
+
+All 18 rollouts completed 300 environment actions (5400 total). Single run per
+method/game; shared randomly generated initial snapshot per game. DeepSeek Flash,
+thinking disabled. This is not the official Qwen/500-step TTCL evaluation.
+
+Method          remnant  mark  metropolis  Main mean  Supplementary mean  Peak USD
+STM                   1    10           8       6.33               13.67     0.5423
+LongContext           0    13           4       5.67                8.67     0.4984
+ReflAct adaptation    1    13           9       7.67               11.00     0.6031
+PublicState v1        1    11           4       5.33               14.33     1.5445
+Evidence v2           2    13          10       8.33               11.33     0.6374
+Viability v3          2    16           9       9.00               13.00     0.7169
+
+V3 has the highest development mean: +1.33 raw reward (+17.4%) over ReflAct.
+V2-to-v3 changes are [0, +3, -1]; the gain is concentrated in mark, while
+metropolis regresses. Report all variants, not just the selected candidate.
+There are no replications, error bars or significance claims. The test games
+were used for iterative diagnosis, so they are development games, not held out.
+
+V1 promoted explanations supported only by loosely relevant literal quotations.
+In metropolis this reinforced an invented document-editing prerequisite; score 4.
+V2 stores raw public evidence rather than inferred factual claims. It reached
+metropolis score 7 at step 26 and 10 at step 83; remnant score 2 at step 228.
+However, it still cycled through individually successful preparation actions.
+V3 checks the jointly required arrangement for the current method. It reached
+remnant score 2 at step 196 and mark score 16 at step 283. Its intended
+metropolis improvement was not demonstrated: it obtained a weapon but repeatedly
+used another cipher phrase without completing the requested task. Goal/evidence
+binding remains a likely issue requiring a controlled checkpoint comparison.
+
+This is a lightweight LLM-interpreted contract, not a sound symbolic verifier.
+Novelty is not established: ReflAct, BeliefMem, Hindsight and Sentry already cover
+closely related state reflection, belief uncertainty and conditional memory.
+See RESEARCH_NOTES.txt and PROTOCOL.md for precise scope and next evidence needed.
+
+Accounting: 5452 successful HTTP responses, including 51 extra formatting
+attempts and one connectivity probe; all charged usage retained. No transport
+attempt has unknown charging status. 138,912,872 input tokens, 131,263,744 cache
+hit input tokens, 1,216,935 output tokens. Conservative peak-price estimate:
+USD 4.542642864. This is not an invoice; off-peak rates can be lower.
+
+ReflAct/remnant resumed at step 207 after three outputs omitted action. The
+common transport allowance was extended uniformly to six JSON-only attempts;
+the first three requests were reused byte-for-byte. No baseline restarted.
+
+Verification: four interface/accounting/evidence/real-environment tests passed.
+All 18 final checkpoint state hashes match their final traces; initial snapshot
+hashes match manifests. The official evaluator CLI independently reproduces all
+six aggregates. Its side-quest state-list warnings are retained in the JSON;
+the official accumulated rewards are used, and main reward is unaffected.
+
+Deployed source revisions (local, preserved in the deployment archive):
+round1: 5f194dc1b7d9e69e22ea4b8b2f85a7449e93358a
+round2: 4bad83846ce26a2bdc5cf9a4496bfb26702366a8
+round3: 592d5ecc2c35b81792d0fd511ae1614a05832161
+transport amendment: 769bdf43916f125f8e0ad5ae22a6d2cad21cbf29
+
+GitHub API mirror 8cde4f8372ac7e4071e5516245e07fe63ebc3fd6 has exact source
+tree ddf64440871dd2540a2244c5ef1759c389b37bf1, including all algorithm variants.
+The API was used after local Git HTTPS connectivity failed. This results commit
+adds reporting only, without altering any executed algorithm.
+
+Raw API responses, traces and physical/memory snapshots remain in the isolated
+server workspace. Secret files and bulky raw outputs are excluded from Git.
+Baselines are frozen; file digests are in frozen-baselines.json. This phase is
+complete; no further paid experiments are scheduled.

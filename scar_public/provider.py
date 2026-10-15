@@ -127,4 +127,7 @@ def usage_summary(directory):
             "peak_usd_estimate": sum(r.get("peak_usd", 0) for r in complete),
             "unknown_charge_attempts": sum(bool(r.get("charge_unknown")) for r in rows) + len(started-ended),
             "prompt_tokens": sum(r.get("usage", {}).get("prompt_tokens", 0) for r in complete),
-            "completion_tokens": sum(r.get("usage", {}).get("completion_tokens", 0) for r in complete)}
+            "completion_tokens": sum(r.get("usage", {}).get("completion_tokens", 0) for r in complete),
+            "cache_hit_tokens": sum(r.get("usage", {}).get("prompt_cache_hit_tokens", 0) for r in complete),
+            "actual_models": sorted({r.get("actual_model", "unknown") for r in complete}),
+            "summed_request_seconds": sum(r.get("elapsed_s", 0) for r in complete)}
