@@ -39,7 +39,11 @@ class PublicModel:
         self.locations = {}
         self.edges = {}
         self.completed = []
+        self.completion_reports = []
+        self.known_tasks = []
         self.tasks = []
+        self.inspected = []
+        self.discovery_checks = []
         self.documents = {}
         self.source_lines = []
         self.seen_lines = set()
@@ -76,9 +80,20 @@ class PublicModel:
         self.current["fresh_tasks"] = tasks
         if tasks:
             self.tasks = tasks
+            self.known_tasks = list(dict.fromkeys(self.known_tasks + tasks))
         for goal in re.findall(r"^Stage completed: (.+)$", text, re.M):
-            if goal not in self.completed:
-                self.completed.append(goal)
+            if goal not in self.completion_reports:
+                self.completion_reports.append(goal)
+        # The public interface sometimes truncates the task title. Resolve only a unique
+        # sufficiently long prefix among titles actually observed, never a fuzzy semantic match.
+        self.completed = []
+        for report in self.completion_reports:
+            candidates = [task for task in self.known_tasks if task == report or
+                          (len(report) >= 24 and task.startswith(report))]
+            if len(candidates) == 1:
+                self.completed.append(candidates[0])
+            elif not candidates:
+                self.completed.append(report)
         self.tasks = [task for task in self.tasks if task not in self.completed]
         for line in text.splitlines():
             if "It can be used to craft:" in line:
@@ -97,6 +112,8 @@ class PublicModel:
                 self.seen_lines.add(line)
         inspected = re.search(r"I inspected ([\w-]+):", text)
         if inspected:
+            if inspected[1] not in self.inspected:
+                self.inspected.append(inspected[1])
             contents = re.search(r"It contains: (.*?) \(capacity: ([\d.]+)/([\d.]+)\)\.", text)
             if contents:
                 self.containers[inspected[1]] = {"items": quantities(contents[1]),
@@ -263,6 +280,21 @@ class PublicModel:
                         queue.append((successor, path + [action]))
         if candidates:
             return min(candidates, key=lambda c: len(c["plan"]))
+        conflict = sum(needs.values()) > self.hand_capacity
+        if conflict:
+            # Search failure identifies the missing affordance: more carried capacity. Acquire
+            # object attributes through the public inspect interface, at most six queries per
+            # target recipe. This does not assume that an uninspected object is a container.
+            tried = [x for x in self.discovery_checks if x["target"] == target]
+            unknown_objects = [name for name in s["ground"] if name not in needs and name != station and
+                               name not in self.inspected and name not in bags]
+            if unknown_objects and len(tried) < 6:
+                item = unknown_objects[0]
+                # Count emitted inspection proposals; the next call checks real feedback.
+                self.discovery_checks.append({"target":target, "item":item})
+                return {"status":"capacity_discovery", "plan":["inspect " + item],
+                        "required":needs, "hand_capacity":self.hand_capacity,
+                        "assumption":"unknown object may expose a capacity affordance; observation required"}
         return {"status": "unknown", "reason": "no arrangement within local observed inventory/search bound",
                 "required": needs, "hand_capacity": self.hand_capacity,
-                "hand_only_conflict": sum(needs.values()) > self.hand_capacity}
+                "hand_only_conflict": conflict}

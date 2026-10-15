@@ -123,7 +123,8 @@ class SpecificationMemory(EvidenceMemory):
             self.audit.append({"step": step, "experiment": "not_discriminating_or_preconditions_unknown"})
 
     def state(self):
-        return {k:v for k,v in vars(self).items() if k != "model"}
+        return {**{k:v for k,v in vars(self).items() if k != "model"},
+                "discovery_checks": self.model.discovery_checks}
 
     def load(self, state):
         # Migrate raw public observations, never the previous actor's execution frame.
@@ -136,6 +137,7 @@ class SpecificationMemory(EvidenceMemory):
         actions = {int(i): a for i,a in re.findall(r"^Action (\d+): (.*)$", self.ledger, re.M)}
         for i, obs in enumerate(self.observations):
             self.model.observe(obs, actions.get(i-1))
+        self.model.discovery_checks = state.get("discovery_checks", [])
 
 
 class SpecificationAgent:

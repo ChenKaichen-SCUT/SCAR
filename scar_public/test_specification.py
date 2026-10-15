@@ -27,7 +27,7 @@ def test_joint_resource_search_requires_capacity_escape():
     model.observe(public_observation(extra="Cannot pick up wire, not enough space in hand.\n"
         "It can be used to craft: hammer (2 plank, 1 wire)"))
     conflict = model.arrange("hammer")
-    assert conflict["status"] == "unknown" and conflict["hand_only_conflict"]
+    assert conflict["status"] == "capacity_discovery" and conflict["plan"] == ["inspect pack_0"]
     model.observe(public_observation(extra="I inspected pack_0: a container.\nIt contains: nothing (capacity: 0/6)."))
     result = model.arrange("hammer")
     assert result["plan"][-1] == "craft 1 hammer"
@@ -102,3 +102,15 @@ def test_navigation_checks_current_location_and_observed_edges():
     assert model.check_action("enter hall")["status"] == "contradicted"
     # A past forward edge does not establish the reverse edge.
     assert model.route("hall") is None
+
+
+def test_truncated_completion_requires_unique_public_title():
+    model = PublicModel()
+    task = "Record the phrase on the requested document for later use."
+    model.observe("Current tasks:\n[1] " + task)
+    model.observe("Stage completed: Record the phrase on the requested doc")
+    assert task in model.completed
+    ambiguous = PublicModel()
+    ambiguous.observe("[1] Record the phrase on the requested document A.\n[2] Record the phrase on the requested document B.")
+    ambiguous.observe("Stage completed: Record the phrase on the requested doc")
+    assert not ambiguous.completed

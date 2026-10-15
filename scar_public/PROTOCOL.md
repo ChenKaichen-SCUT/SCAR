@@ -210,3 +210,14 @@ gain or directly repairs an intended bottleneck. Retain every result. Stop this 
 candidate's full comparison or a negative diagnostic, allowing only identified implementation
 defects to be fixed and explicitly recorded. Formal claims require compute-matched ablations
 and held-out evaluation beyond these development games.
+
+V5 diagnostic amendment (retain the initial runs): checkpoint 62 gained 2 main reward, while
+178 and 206 gained none. The public completion message truncates task titles; exact matching
+missed a genuine completion. Match a truncated prefix only when >=24 characters and uniquely
+identifies an actually observed task. Do not fuzzy-match ambiguous titles. The numeric solver
+could detect a hand-only conflict but had no inspected container model; ordinary fallback
+continued the old loop. Add at most six public inspections of uncharacterized non-ingredient
+objects per recipe when that conflict is established, to discover capacity affordances. This
+second change is an explicit information-acquisition revision, not merely a parser bug fix.
+Repeat only the three diagnostics under a new stage/revision, retain both outcomes/costs,
+then perform the full comparison if task gains remain. No further candidate tuning this phase.
