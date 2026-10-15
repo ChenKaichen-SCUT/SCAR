@@ -221,3 +221,12 @@ objects per recipe when that conflict is established, to discover capacity affor
 second change is an explicit information-acquisition revision, not merely a parser bug fix.
 Repeat only the three diagnostics under a new stage/revision, retain both outcomes/costs,
 then perform the full comparison if task gains remain. No further candidate tuning this phase.
+
+Full-run implementation correction: the public adapter stored visited resource locations and
+directed routes but omitted them from view(), while source-line filtering removed their repeated
+text. Thus neither specification nor actor could use that history. Add the already observed
+location/route maps to the view, explicitly labeled historical. Preserve and stop the three
+incomplete round5 rollouts; report their actions and cost, not 300-step scores. Restart only this
+candidate as round6 from the same initial snapshots with the corrected source. Do not rerun
+baselines or the six already recorded diagnostics. This is an information-interface repair,
+not a new task rule or hidden-state input. Finish this phase after the corrected full comparison.

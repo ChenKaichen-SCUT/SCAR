@@ -150,7 +150,9 @@ class PublicModel:
                 "capacity_bounds": [self.capacity_lower, self.capacity_upper],
                 "capacity_evidence": self.capacity_evidence[-2:], "recipes": self.recipes,
                 "stations": self.stations, "containers": self.containers, "documents": self.documents,
-                "tasks": self.tasks, "completed": self.completed, "failed_crafts": self.failed_crafts[-3:]}
+                "tasks": self.tasks, "completed": self.completed, "failed_crafts": self.failed_crafts[-3:],
+                "last_observed_locations_not_guaranteed_current": self.locations,
+                "previously_successful_directed_routes": self.edges}
 
     def predicate(self, condition):
         """Three-valued evaluation of a proposed condition, NOT task success."""

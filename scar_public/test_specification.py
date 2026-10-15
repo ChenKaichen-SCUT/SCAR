@@ -102,6 +102,17 @@ def test_navigation_checks_current_location_and_observed_edges():
     assert model.check_action("enter hall")["status"] == "contradicted"
     # A past forward edge does not establish the reverse edge.
     assert model.route("hall") is None
+    view = model.view()
+    assert view["previously_successful_directed_routes"]["Home, hall"]["yard"] == "Garden, yard"
+
+
+def test_actor_view_retains_public_resource_locations_after_moving():
+    model = PublicModel()
+    model.observe("Current Location: Home, hall\nI see 4 metal_bar near me.\nNeighboring areas: yard.")
+    model.observe("Current Location: Garden, yard\nI see 1 tree near me.\nI entered yard.\nNeighboring areas: hall.", "enter yard")
+    view = model.view()
+    assert view["last_observed_locations_not_guaranteed_current"]["Home, hall"]["objects"]["metal_bar"] == 4
+    assert model.current["ground"].get("metal_bar", 0) == 0
 
 
 def test_truncated_completion_requires_unique_public_title():
