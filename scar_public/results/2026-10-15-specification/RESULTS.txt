@@ -1,0 +1,64 @@
+Specification-first study: a locally helpful, globally regressing prototype
+
+Full evaluation: corrected source 7e68dc34b0a04befd785cdd940fe43dc19ed58fb, round6.
+Three shared initial worlds, 300 environment actions each, DeepSeek Flash, no new fixed seed.
+Upstream official main-quest scores:
+stm: remnant=1.0, mark=10.0, metropolis=8.0; mean=6.333333
+longcontext: remnant=0.0, mark=13.0, metropolis=4.0; mean=5.666667
+reflact: remnant=1.0, mark=13.0, metropolis=9.0; mean=7.666667
+public_v1: remnant=1.0, mark=11.0, metropolis=4.0; mean=5.333333
+evidence_v2: remnant=2.0, mark=13.0, metropolis=10.0; mean=8.333333
+viability_v3: remnant=2.0, mark=16.0, metropolis=9.0; mean=9.000000
+spec_v5: remnant=1.0, mark=1.0, metropolis=10.0; mean=4.000000
+
+Decision: do not promote V5. V3 remains the strongest observed complete development candidate.
+Selected 30-action diagnostics did show local gains: cp62 8->10 and revised cp206 10->12;
+cp178 remained 9->9. These selected-state continuations do not establish full-task viability.
+Controls were reused, not rerun; environment budget is matched but inference budget is not.
+
+Implemented: independent proposed task specification; public observation adapter; three-valued
+condition evaluation; bounded local inventory search; one-step execution and feedback; an
+optional interface for discriminating semantic experiments. Online policy receives no hidden
+state or reward decomposition. No game-specific recipes, phrases, capacities or solutions.
+
+Full-run mechanism counts: 47 direct numeric-arrangement actions; 0 registered semantic
+experiments. The semantic branch is not demonstrated. A field/schema is not a working policy.
+
+Observed counterexamples: mark step138 adds held(copper_bar) to the copper-sword terminal goal,
+mixing means with ends. Metropolis repeatedly uses the category 'weapon' as a concrete object
+or 'equipped' as a public report value. Such expressions are parseable but not grounded goal
+semantics. Local inventory search does not solve missing upstream recipes, distant resources,
+navigation under changed conditions, or combat. De-duplicated source lines omit action order
+and recurrence; the actor is not given the public action-transition ledger. These are plausible
+mechanisms supported by traces/code, not isolated causal attribution of the complete regression.
+
+Prior failed candidates/implementation defects are retained. Initial full runs round5 stopped
+after mark 240 步, metropolis 205 步, remnant 195 步 because observed location maps were omitted from model input. The fixed
+candidate alone was restarted. Stopped runs are not 300-step scores and all costs are counted.
+
+Validation: 13 tests passed (protocol + specification); final/start environment digests and
+official evaluator scores checked; all nine frozen baseline hashes unchanged. Tests verify
+selected mechanics, not semantic soundness or whole-method performance.
+
+This phase: 1944 HTTP attempts, 1941 responses, known usage-based peak-rate
+estimate USD 1.443407952, including diagnostics USD 0.232374480, stopped
+runs USD 0.452610216, corrected full runs USD 0.758423256. Unknown-charge attempts:
+3; possible charges for interrupted requests are not included in that estimate.
+All phases: 7522 responses, known estimate USD 6.161809368,
+3 unknown-charge attempts. Not an invoice; no zero-cost assumption for unknowns.
+
+Interpretation: establish proposed observable task semantics before committing to a method,
+but preserve uncertainty when public evidence cannot identify a unique goal. Separate goal
+fidelity, joint feasibility under a partial model, and actual observed completion. A stronger
+next design would make unresolved goal/model obligations control action selection, rather
+than adding another reflection field. Numeric contradictions need supported assumptions;
+semantic trials need distinct predictions for the same observable with established conditions.
+
+Novelty is unestablished. LLM+P, CaStL, LLM-Modulo, Agent Interrogation and RAMP already cover
+major ingredients. Tru-POMDP already maintains joint world/goal hypotheses, and Bayesian
+Active Learning for Intent Disambiguation selects informative task-specification questions.
+The potential research question is goal-interpretation/action-model
+uncertainty jointly guiding costly online queries in persistent partially observed worlds.
+Require a precise selection/update rule, matched-compute ablations and held-out tasks before
+claiming a contribution. Single development rollouts are not statistical evidence. No further
+paid candidate tuning in this phase. See SPECIFICATION_RESEARCH.txt for primary-source links.

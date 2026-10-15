@@ -230,3 +230,12 @@ incomplete round5 rollouts; report their actions and cost, not 300-step scores. 
 candidate as round6 from the same initial snapshots with the corrected source. Do not rerun
 baselines or the six already recorded diagnostics. This is an information-interface repair,
 not a new task rule or hidden-state input. Finish this phase after the corrected full comparison.
+
+Outcome: the corrected round6 runs all completed 300 steps. Main-quest scores are remnant 1,
+mark 1, metropolis 10, mean 4.0 (V3 mean 9.0; frozen ReflAct adaptation mean 7.667). Do not
+promote V5. Its six selected-state diagnostics and three interrupted runs remain in the record.
+There were 47 direct numeric-arrangement actions in the full runs and zero registered semantic
+experiments. Thus the optional semantic interface did not become an active experiment policy.
+Specification errors, incomplete local search and missing action-order input remain; the
+coupled changes do not isolate their causal contributions to regression. No more paid tuning
+in this phase. All usage and validation records are in results/2026-10-15-specification.

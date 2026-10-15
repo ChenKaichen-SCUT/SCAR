@@ -58,13 +58,28 @@ Explicitly distinguishes solvability of generated PDDL from fidelity to the orig
 Its multi-role reinforcement learning differs from this inference-only prototype, but the
 underlying problem of solver success rewarding a changed goal is directly related.
 
+Tru-POMDP (2025), https://arxiv.org/html/2506.02860v1
+Constructs a tree of hypotheses over world states and goals, combines LLM hypotheses with
+Bayesian belief updates and online POMDP search. The studied rearrangement domain specifies
+four action types and structured state/observation semantics. Joint goal/world uncertainty
+and hypothesis-based planning are already explicit prior work, not a novelty claim for SCAR.
+
+Bayesian Active Learning for Intent Disambiguation in Interactive Robot Planning (2026
+preprint), https://arxiv.org/html/2609.34270v1
+Maintains uncertainty over grounded STL specifications and selects clarification queries by
+information gain before formal planning. It obtains human intent information through questions;
+SCAR's proposed setting would also need to learn uncertain operation semantics from actual
+environment transitions. The broad idea of actively disambiguating specifications is prior work.
+
 Potential research contribution, not established novelty:
 Jointly track uncertainty in the TASK INTERPRETATION and the ACTION MODEL; use the earliest
 unresolved obligation to decide between executing, repairing a numeric arrangement, and gathering
 discriminating evidence. Test in persistent, partially observed environments without hidden
 state or model resets. To make this a paper contribution requires a precise update/selection
 rule and evidence that it helps beyond specification-only, solver-only and matched-compute
-LLM feedback baselines. The current implementation is an exploratory approximation.
+LLM feedback baselines. It must also distinguish itself from Tru-POMDP and active specification
+clarification; simply adding uncertain goals to uncertain states is insufficient. The current
+implementation is an exploratory approximation.
 
 Required reporting: actual task reward, local repair rate, premature success claims, unresolved
 predicates, conditional-model prediction errors, experiment outcomes, API tokens/cost and total
