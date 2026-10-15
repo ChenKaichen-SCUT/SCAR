@@ -79,3 +79,61 @@ python -m scar_public.run run --root /path/to/runtime --stage round1 --method st
 
 Use immutable deployed source directories. Keep raw API logs and binary snapshots outside Git;
 commit source, protocol, summarized results and meaningful failure analysis.
+
+## Revision v2: evidence-only memory (specified while round 1 runs)
+
+Observed mechanism: in metropolis, PublicState v1 stayed at quest reward 4 from step 11
+through at least step 111. Its notebook repeatedly inferred that an NPC's flavor description
+required rewriting a document. The supporting quote established neither that requirement nor
+that method. In the same initial world, ReflAct advanced by testing a direct alternative
+interpretation of the publicly stated delivery goal. In remnant, v1 also deleted useful
+mechanics when revising transient post-death state. These are observation-grounded diagnoses,
+not hidden-engine solutions.
+
+Replace the synthesized fact notebook with an append-only ledger of actions and verbatim
+observation changes. Full observations remain in saved state; the prompt shows the initial
+observation, changed lines with +/- markers, and the complete current observation. Removed
+lines mean disappearance from the report, not necessarily a state reversal. No model-written
+factual claim or past reasoning is promoted into this ledger; no learned fact eviction occurs.
+The tentative execution frame has a verbatim task anchor, current method, assessment of the
+last prediction, and expected observable result. The method can change without changing the
+task's stated outcome. All operations remain in one request per action, with identical API
+settings and initial snapshots; no game names or solution actions enter the algorithm.
+
+Hypothesis: this redesign should reduce detours driven by invented prerequisites and improve
+metropolis main-quest reward beyond v1's current plateau, while preserving useful public
+mechanics for remnant/mark. This changes memory representation and execution prompting
+together; a positive result alone would **not** isolate either component's causal contribution.
+Run only `evidence_v2` on all three games for 300 steps in `round2`, without rerunning baselines.
+The incomplete round-1 scores above are diagnostic checkpoints, not final comparison scores.
+
+## Shared transport amendment
+
+ReflAct/remnant stopped after 207 actions because three consecutive valid JSON responses
+omitted `action`. They were not truncated and all are retained and charged in the audit.
+The retry allowance is extended uniformly to six, with an explicit JSON shape after the
+third malformed response. The first three requests are byte-for-byte unchanged. Completed
+rollouts never reached this limit, so their decisions are unaffected and they are not rerun.
+Any interrupted rollout resumes from its last checkpoint and reuses the three cached
+responses before the additional formatting-only requests. No game feedback is introduced.
+Original algorithm revision and amended transport revision are recorded separately.
+
+## Revision v3: method-level feasibility
+
+At v2/metropolis steps 207–211 the actor repeatedly dropped and picked up crafting materials:
+two held items filled capacity, while its selected recipe needed three ingredient units.
+Each local prediction (e.g. dropping frees a slot) was true, but the chosen sequence undid a
+previous prerequisite. This is a distinct failure from forgetting or hallucinated memory.
+
+Keep the evidence ledger and API unchanged; replace the action-success framing with a
+method-level required arrangement and feasibility assessment. It must consider whether inputs
+for one atomic operation can coexist under observed constraints, and whether preparation
+reverses earlier preparation. This is scoped to the current method, not a global veto on the
+goal, and does not require all resources for a multi-stage quest to coexist. No resource counts,
+recipes, container names, solution actions or hidden-state checks are encoded in the prompt.
+
+Run three fresh 300-step rollouts from the same shared initial snapshots in `round3`.
+Hypothesis: fewer preparation cycles should translate into greater main-task reward, particularly
+in metropolis and remnant. If only repetition metrics improve, regard the hypothesis as not
+supported on the main task. V3 remains an LLM-interpreted contract, not a sound symbolic planner.
+Finish this phase after this revision and report every version; do not keep tuning indefinitely.

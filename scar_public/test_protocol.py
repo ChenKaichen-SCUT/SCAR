@@ -54,6 +54,28 @@ def test_cache_is_step_specific_and_accounting(tmp_path):
     assert abs(summary["peak_usd_estimate"] - 2 * (40*.006+60*.30+10*1.20)/1e6) < 1e-12
 
 
+def test_evidence_has_no_promoted_inference_and_delta_is_reversible():
+    import difflib
+    from scar_public.evidence import EvidenceMemory, observation_delta
+    old = "Goal: deliver the package.\nHolding package.\nAn archivist knows the pattern is wrong."
+    new = "Goal: deliver the package.\nHolding nothing.\nThe package was delivered."
+    delta = observation_delta(old, new)
+    assert "".join(difflib.restore(delta, 1)) == old
+    assert "".join(difflib.restore(delta, 2)) == new
+    memory = EvidenceMemory()
+    memory.prompt(old)
+    memory.update({"reasoning": "Imagined requirement: rewrite the package", "action": "drop package",
+        "frame": {"goal_quote": "Goal: deliver the package.", "method": "deliver", "assessment": "untested",
+                  "expected": "delivery confirmed"}}, old, 0)
+    prompt = memory.prompt(new)
+    assert "Imagined requirement" not in prompt
+    assert "- Holding package." in prompt and "+ Holding nothing." in prompt
+    assert memory.frame["goal_quote"] in old
+    memory.update({"action": "wait", "frame": {"goal_quote": "You must rewrite the package.",
+        "method": "reassess", "assessment": "unknown", "expected": "new feedback"}}, new, 1)
+    assert memory.frame["goal_quote"] == "Goal: deliver the package."
+
+
 def test_real_environments_and_baselines(tmp_path):
     from scar.environment import create_environment, snapshot, restore, state_digest, AGENT_ID
     from scar_public.run import build_agent, agent_state, load_agent_state, GAMES, METHODS

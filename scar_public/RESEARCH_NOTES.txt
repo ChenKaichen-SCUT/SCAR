@@ -1,0 +1,73 @@
+SCAR development notes — 2026-10-15
+
+Observed problems, rather than additional modules
+
+1. Provenance is not entailment. In PublicState v1, an actual NPC quote was used
+   to support an invented document-editing prerequisite. The quote checker was
+   working as implemented, but the claim exceeded what the quote established.
+   A persistent explanation can amplify an error instead of repairing memory.
+
+2. Single-action prediction is not method progress. Evidence v2/metropolis
+   repeatedly freed one hand slot and filled it again while pursuing a recipe
+   requiring a jointly unavailable arrangement. The local predictions were true.
+   This motivates checking which method prerequisites are gained and undone.
+
+3. Historical achievement and present capability are different. Having once
+   acquired a resource does not mean it is still held; consuming a resource while
+   completing a stage does not automatically invalidate that completed stage.
+   V1 also erased useful mechanics while revising post-death transient state.
+
+4. Short-memory selection itself can be the bottleneck. V1 wrote many tutorial
+   milestones and ephemeral locations, evicting useful mechanics. V2 retains
+   public evidence without promoting model interpretations into factual memory.
+   Its context is not matched in length to V1; costs and token counts must be
+   reported, and the memory/prompt changes are not a clean single-factor ablation.
+
+Related work verified from primary sources
+
+ReflAct (EMNLP 2025): goal-relative state reflection is already the core idea.
+Merely instructing SCAR to reflect on goal/state is not a defensible novelty claim.
+https://arxiv.org/html/2505.15182v2
+
+BeliefMem (2026): preserves competing interpretations and evidence-dependent
+confidence instead of committing each partial observation to a deterministic fact.
+It directly overlaps with the problem of self-reinforcing false memory. Our current
+prototype does not implement its probabilistic belief update and must not claim
+to originate uncertainty-preserving memory.
+https://arxiv.org/html/2605.05583v1
+
+Hindsight (ACL 2026 demos): separates facts and beliefs, with temporal structures
+and evolving opinions. Fact-versus-inference separation alone is not new.
+https://aclanthology.org/2026.acl-demo.27/
+
+Sentry (2026): exposes failure knowledge only for matching failures and admits a
+new recovery lesson after verification. It addresses the harm of persistent
+failure rules. A failure-triggered guard plus learned repair memory would need
+direct comparison with this work, not just STM/LongContext.
+https://arxiv.org/html/2610.02994v1
+
+Nous (2026): studies when probabilistic belief updating helps, including reliability-
+conditional updates and provenance limits. Adding hand-chosen confidence updates
+is not, by itself, a strong contribution.
+https://arxiv.org/abs/2606.22030
+
+Assessment
+
+The problem matters: useful long-horizon behavior depends on keeping task outcomes,
+temporary methods, current resources and past achievements consistent. The present
+implementation is a lightweight experimental vehicle, not yet an established novel
+algorithm. V1/V2/V3 are not clean component ablations or statistically replicated
+comparisons. All run outcomes should be reported, including regressions.
+
+A promising narrower contribution is method-scoped prerequisite maintenance:
+learn/check what must currently hold for an atomic operation, distinguish it from
+already completed milestones, and revise only the failed implementation rather
+than the goal. A full paper would need a precise update rule, observed failure
+taxonomy, matched-budget ablations, independent trials and generalization beyond
+the three development games. The same games cannot honestly be described as unseen
+after iterative trace-based development. DeepSeek/300-step results are developmental;
+the TTCL model and 500-step settings still need a separate formal evaluation.
+
+Further experiments should be driven by main-task improvement. A decrease in loop
+counts, action invalidity or local recovery time without reward gains is insufficient.
+Do not add another classifier, retriever or verifier unless a traced failure justifies it.

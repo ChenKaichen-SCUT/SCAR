@@ -15,7 +15,8 @@ from scar_public.provider import Provider, usage_summary
 from scar_public.agent import PublicAgent
 
 GAMES = ("remnant", "mark", "metropolis")
-METHODS = ("stm", "longcontext", "reflact", "public_v1")
+METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3")
+PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3")
 REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
 
 
@@ -42,9 +43,15 @@ def build_agent(method, env, provider):
         cfg.system_prompt = cfg.system_prompt.replace("A few sentences explaining why you choose the action.",
             "Reflection on the current state in relation to the task goal.")
         cfg.action_prompt = REFLACT + " Put the reflection in reasoning. Return only JSON."
-    if method == "public_v1":
+    if method in PUBLIC_METHODS:
         cfg.available_actions = env.agents[0].available_actions
         cfg.__post_init__()
+        if method == "evidence_v2":
+            from scar_public.evidence import EvidenceAgent
+            return EvidenceAgent(provider, cfg.system_prompt)
+        if method == "viability_v3":
+            from scar_public.viability import ViabilityAgent
+            return ViabilityAgent(provider, cfg.system_prompt)
         return PublicAgent(provider, cfg.system_prompt)
     base = type(env.agents[0])
     factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
@@ -54,7 +61,7 @@ def build_agent(method, env, provider):
 
 
 def agent_state(agent, method):
-    if method == "public_v1":
+    if method in PUBLIC_METHODS:
         return agent.notebook.state()
     if method == "stm":
         return {"history": agent.short_term_memory}
@@ -62,7 +69,7 @@ def agent_state(agent, method):
 
 
 def load_agent_state(agent, method, state):
-    if method == "public_v1":
+    if method in PUBLIC_METHODS:
         agent.notebook.load(state)
     elif method == "stm":
         agent.short_term_memory = state["history"]
@@ -107,6 +114,12 @@ def run(args):
     if manifest_path.exists() and json.loads(manifest_path.read_text()) != manifest:
         raise RuntimeError("Run manifest differs; use a new stage instead of overwriting")
     atomic_json(manifest_path, manifest)
+    if args.transport_revision:
+        from scar.io import append_jsonl
+        append_jsonl(directory / "transport_amendments.jsonl", {
+            "time": time.time(), "agent_revision": args.revision,
+            "transport_revision": args.transport_revision,
+            "change": "Preserve first three requests exactly; permit three more JSON-only repairs"})
     current = directory / "current.json"
     previous = json.loads(current.read_text()) if current.exists() else None
     if previous and previous["complete"]:
@@ -167,6 +180,7 @@ def main():
     p.add_argument("--key", default=os.environ.get("DEEPSEEK_KEY_FILE"))
     p.add_argument("--model", default="deepseek-flash")
     p.add_argument("--revision", default="uncommitted")
+    p.add_argument("--transport-revision", default=None)
     args = p.parse_args()
     if args.command == "prepare":
         prepare(Path(args.root))

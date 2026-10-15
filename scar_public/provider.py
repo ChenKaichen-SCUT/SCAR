@@ -87,7 +87,7 @@ class Provider:
     def generate(self, user_prompt, system_prompt):
         messages = [{"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}]
-        for repair in range(3):
+        for repair in range(6):
             result = self.request(messages, repair)
             choice = result["choices"][0]
             raw = choice["message"].get("content", "")
@@ -105,10 +105,15 @@ class Provider:
                         "num_output_tokens": usage.get("completion_tokens", 0)}
             except (ValueError, TypeError):
                 # Common JSON-only repair. No environment feedback or semantic action repair.
-                messages += [{"role": "assistant", "content": raw}, {"role": "user", "content":
+                correction = (
                     "Your output was malformed or truncated. Return a complete JSON object with string "
-                    "reasoning and action fields. Keep it concise. Follow the original schema."}]
-        raise RuntimeError("Three invalid model outputs; no silent wait action")
+                    "reasoning and action fields. Keep it concise. Follow the original schema.")
+                if repair >= 2:
+                    correction += (' The action key is mandatory, separate from reasoning. '
+                        'Required shape: {"reasoning":"brief explanation","action":"one game command"}. '
+                        'Include both keys. Keep any additional fields required by the original schema.')
+                messages += [{"role": "assistant", "content": raw}, {"role": "user", "content": correction}]
+        raise RuntimeError("Six invalid model outputs; no silent wait action")
 
 
 def usage_summary(directory):
