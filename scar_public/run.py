@@ -1,0 +1,185 @@
+"""Immutable, resumable one-game runs with isolated evaluator state."""
+import argparse
+import contextlib
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import time
+
+from scar.io import atomic_json
+from scar_public.provider import Provider, usage_summary
+from scar_public.agent import PublicAgent
+
+GAMES = ("remnant", "mark", "metropolis")
+METHODS = ("stm", "longcontext", "reflact", "public_v1")
+REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
+
+
+def build_agent(method, env, provider):
+    from agents.llm_agent_config import LLMAgentConfig
+    from agents.fixed_size.short_term_memory_agent import create_short_term_memory_agent
+    from agents.long_context_agent import create_long_context_agent
+
+    class SharedConfig(LLMAgentConfig):
+        def get_llm(self, *args, **kwargs):
+            return provider
+
+        def response_parser(self, raw):
+            value = json.loads(raw)
+            return {"reasoning": value["reasoning"], "action": value["action"].strip()}
+
+        def construct_user_prompt_long_context(self, memory, observation):
+            return ("My Memories: " + memory if memory else "") + f"My Current Observation: {observation}\n" + self.action_prompt
+
+    cfg = SharedConfig(torch_seed=None, llm_name=provider.model, llm_provider="audited-deepseek",
+                       max_new_tokens=1536, temperature=.7, top_p=.8, presence_penalty=0,
+                       short_term_memory_size=5, enable_reflection=False, enable_summarization=False)
+    if method == "reflact":
+        cfg.system_prompt = cfg.system_prompt.replace("A few sentences explaining why you choose the action.",
+            "Reflection on the current state in relation to the task goal.")
+        cfg.action_prompt = REFLACT + " Put the reflection in reasoning. Return only JSON."
+    if method == "public_v1":
+        cfg.available_actions = env.agents[0].available_actions
+        cfg.__post_init__()
+        return PublicAgent(provider, cfg.system_prompt)
+    base = type(env.agents[0])
+    factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
+    agent = factory(base)(env.agents[0].id, env.agents[0].name, cfg=cfg)
+    assert {a.verb for a in cfg.available_actions} == {a.verb for a in env.agents[0].available_actions}
+    return agent
+
+
+def agent_state(agent, method):
+    if method == "public_v1":
+        return agent.notebook.state()
+    if method == "stm":
+        return {"history": agent.short_term_memory}
+    return {"history": agent.memory.context}
+
+
+def load_agent_state(agent, method, state):
+    if method == "public_v1":
+        agent.notebook.load(state)
+    elif method == "stm":
+        agent.short_term_memory = state["history"]
+    else:
+        agent.memory.context = state["history"]
+
+
+def prepare(root):
+    from scar.environment import create_environment, save_snapshot, state_digest
+    for game in GAMES:
+        directory = root / "initial" / game
+        directory.mkdir(parents=True, exist_ok=True)
+        if (directory / "manifest.json").exists():
+            continue
+        env, obs = create_environment(game, None, directory / "environment")
+        sha = save_snapshot(directory / "initial.pkl", env)
+        atomic_json(directory / "manifest.json", {"game": game, "drawn_seed": env.seed,
+            "snapshot_sha256": sha, "initial_state_digest": state_digest(env),
+            "upstream_commit": "248430692a9d4a61d38c6c03ab2126287faaf450"})
+        atomic_json(directory / "public_observation.json", obs)
+        print(game, "initial prepared", flush=True)
+
+
+def run(args):
+    from scar.environment import AGENT_ID, restore, save_snapshot, state_digest
+    root = Path(args.root)
+    directory = root / args.stage / args.method / args.game
+    directory.mkdir(parents=True, exist_ok=True)
+    # Prevent accidental duplicate paid workers on a run (Linux server).
+    import fcntl
+    lock = (directory / "worker.lock").open("w")
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    initial = root / "initial" / args.game / "initial.pkl"
+    if not initial.exists():
+        raise RuntimeError("Prepare shared initial snapshots before launching any method")
+    manifest = {"method": args.method, "game": args.game, "max_steps": args.steps,
+        "stage": args.stage, "requested_model": args.model,
+        "source_revision": args.revision, "initial_snapshot_sha256": hashlib.sha256(initial.read_bytes()).hexdigest(),
+        "temperature": .7, "top_p": .8, "presence_penalty": 0, "max_tokens": 1536,
+        "thinking": "disabled", "enable_obs_valid_actions": False}
+    manifest_path = directory / "manifest.json"
+    if manifest_path.exists() and json.loads(manifest_path.read_text()) != manifest:
+        raise RuntimeError("Run manifest differs; use a new stage instead of overwriting")
+    atomic_json(manifest_path, manifest)
+    current = directory / "current.json"
+    previous = json.loads(current.read_text()) if current.exists() else None
+    if previous and previous["complete"]:
+        print("Already complete", directory)
+        return
+    if previous:
+        cp = directory / "checkpoints" / previous["checkpoint"]
+        env = restore(cp / "environment.pkl", directory)
+        saved_agent = json.loads((cp / "agent.json").read_text())
+        step = previous["steps"]
+    else:
+        env = restore(initial, directory)
+        saved_agent = None
+        step = 0
+    provider = Provider(directory / "api", args.key, model=args.model)
+    # Logical agent is intentionally detached from physical evaluator state.
+    agent = build_agent(args.method, env, provider)
+    if saved_agent is not None:
+        load_agent_state(agent, args.method, saved_agent)
+    while step < args.steps:
+        provider.step = step
+        observation = {"text": env.obs[AGENT_ID]["text"], "step": env.obs[AGENT_ID]["step"]}
+        with contextlib.redirect_stdout(sys.stderr):
+            action, _, _, response = agent.act(observation)
+        before = state_digest(env)
+        obs, reward, done, info = env.step({AGENT_ID: action})
+        env.update_scores(reward)
+        step += 1
+        cp = directory / "checkpoints" / f"{step:04d}"
+        cp.mkdir(parents=True, exist_ok=True)
+        save_snapshot(cp / "environment.pkl", env)
+        atomic_json(cp / "agent.json", agent_state(agent, args.method))
+        # Trace is one atomic record per environment step, safe after interruptions.
+        atomic_json(directory / "trace" / f"{step:04d}.json", {"step": step,
+            "observation": observation["text"], "action": action, "response": response,
+            "next_observation": obs[AGENT_ID]["text"], "reward": vars(reward[AGENT_ID]),
+            "scores": env.scores[AGENT_ID], "done": done, "info": info,
+            "before_digest": before, "after_digest": state_digest(env)})
+        env.update_config()
+        status = {"steps": step, "checkpoint": cp.name, "complete": bool(done or step >= args.steps),
+                  "termination": "environment" if done else ("step_limit" if step >= args.steps else None),
+                  "scores": env.scores[AGENT_ID], "usage": usage_summary(directory / "api"),
+                  "updated_utc": time.time()}
+        atomic_json(current, status)
+        print(json.dumps({"game": args.game, "method": args.method, **status}), flush=True)
+        if status["complete"]:
+            break
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("command", choices=("prepare", "run", "status"))
+    p.add_argument("--root", required=True)
+    p.add_argument("--stage", default="round1")
+    p.add_argument("--method", choices=METHODS)
+    p.add_argument("--game", choices=GAMES)
+    p.add_argument("--steps", type=int, default=300)
+    p.add_argument("--key", default=os.environ.get("DEEPSEEK_KEY_FILE"))
+    p.add_argument("--model", default="deepseek-flash")
+    p.add_argument("--revision", default="uncommitted")
+    args = p.parse_args()
+    if args.command == "prepare":
+        prepare(Path(args.root))
+    elif args.command == "status":
+        for path in sorted((Path(args.root)/args.stage).glob("*/*/current.json")):
+            state = json.loads(path.read_text())
+            print(path.parent.parent.name, path.parent.name, state["steps"],
+                  state["scores"].get("quest"), state["complete"], state["usage"])
+    else:
+        if not all((args.method, args.game, args.key)):
+            p.error("run requires --method, --game and --key")
+        run(args)
+
+
+if __name__ == "__main__":
+    main()
