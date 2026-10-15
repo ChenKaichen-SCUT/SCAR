@@ -1,0 +1,72 @@
+Specification before action: research hypothesis and literature boundaries
+
+Problem. A verified source excerpt does not establish the inferred goal semantics. A valid
+action does not establish a feasible joint arrangement. A feasible plan can still satisfy a
+mis-specified goal. These are separate obligations, not interchangeable success indicators.
+
+Maintain proposed goal interpretations G, a partial observation-derived transition/constraint
+model M, and public evidence E. Evaluate each candidate predicate in {true,false,unknown}.
+Finding a plan pi with M predicting G at its end establishes only model-relative feasibility.
+Do not infer actual task success until matching public completion feedback is observed.
+
+Specification occurs before action generation and cannot be rewritten by the action response.
+This removes one direct path for the actor to invent a convenient success test. It does NOT
+guarantee semantic faithfulness: the separate specification request can still mistranslate.
+
+For numeric arrangements, enforce known constraints at every intermediate state: count of
+held units <= observed capacity; material counts cannot be duplicated by moves; all required
+inputs must be available together at the operation; a known station must be at the location.
+Only current observations establish current state. Missing fields are unknown, not zero.
+The present solver handles local inventory rearrangement, not global numeric task planning.
+Unverified storage/crafting semantics remain explicit assumptions tested by execution.
+
+For ambiguity, an experiment q is potentially distinguishing only when two hypotheses predict
+different values of one observable Y under q. Comparing paraphrased predictions is insufficient.
+If Y is unavailable, retain both hypotheses. If preconditions are incomplete or effects are
+stochastic, mismatches are conditional evidence, not sound elimination. Non-destructive probes
+should be preferred, but the prototype does not assume that cheap actions are reversible.
+
+Verified related work (primary sources, accessed 2026-10-15)
+
+LLM+P (2023), https://arxiv.org/abs/2304.11477
+Translates natural-language planning descriptions to PDDL and delegates search to a classical
+planner. Specification followed by symbolic planning is established prior work.
+
+CaStL (2024), https://arxiv.org/html/2410.22225v1
+Extracts goal, ordering and blocking constraints through language translation, using PDDL/Python
+and a solver. Goal/constraint extraction alone cannot be claimed as our novelty.
+
+LLM-Modulo evaluation (2024), https://arxiv.org/html/2411.14484v1
+Uses candidate generation and external critics. Its correctness statements depend on sound
+critics; the reported scheduling domains provide all needed specification information. Our
+partially observed text adapter and learned assumptions do not inherit such guarantees.
+
+Asking the Right Questions / Agent Interrogation (AAAI 2021),
+https://arxiv.org/abs/1912.12613
+Learns interpretable action models via queries designed to distinguish candidates. Distinguishing
+experiments and model elimination are established ideas. Our real trajectory cannot freely
+reset or query arbitrary hypothetical states online, and carries missing-observation/confounding
+risks not removed by simply borrowing the phrase "active experiment."
+
+RAMP / numeric action-model learning (2025), https://arxiv.org/abs/2502.13006
+Combines execution data, numeric action-model learning, planning and reinforcement learning in
+Minecraft. Learning numeric constraints while acting is also prior work; V5 is much narrower.
+
+From Solver Feedback to Faithful Plans (2026 preprint),
+https://arxiv.org/html/2608.21897v1
+Explicitly distinguishes solvability of generated PDDL from fidelity to the original task.
+Its multi-role reinforcement learning differs from this inference-only prototype, but the
+underlying problem of solver success rewarding a changed goal is directly related.
+
+Potential research contribution, not established novelty:
+Jointly track uncertainty in the TASK INTERPRETATION and the ACTION MODEL; use the earliest
+unresolved obligation to decide between executing, repairing a numeric arrangement, and gathering
+discriminating evidence. Test in persistent, partially observed environments without hidden
+state or model resets. To make this a paper contribution requires a precise update/selection
+rule and evidence that it helps beyond specification-only, solver-only and matched-compute
+LLM feedback baselines. The current implementation is an exploratory approximation.
+
+Required reporting: actual task reward, local repair rate, premature success claims, unresolved
+predicates, conditional-model prediction errors, experiment outcomes, API tokens/cost and total
+environment steps. A lower invalid-action count without task gain is insufficient. Reusing known
+failure checkpoints establishes local development evidence, not unseen-task generalization.

@@ -83,6 +83,9 @@ def test_real_environments_and_baselines(tmp_path):
         model = "mock"
         step = 0
         def generate(self, user_prompt, system_prompt):
+            if 'action="specification_only"' in system_prompt:
+                return {"num_input_tokens": 0, "num_output_tokens": 0,
+                        "response": json.dumps({"reasoning":"smoke", "action":"specification_only"})}
             assert "Action space:" in system_prompt and "My Current Observation:" in user_prompt
             self.prompt = user_prompt
             return {"num_input_tokens": 0, "num_output_tokens": 0,

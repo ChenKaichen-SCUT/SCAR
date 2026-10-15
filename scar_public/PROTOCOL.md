@@ -173,3 +173,40 @@ from either checkpoint, and v4 retained the targeted binding/preparation failure
 for promotion in this phase; no full v4 runs are justified by these diagnostics. Results and all
 new costs are in `results/2026-10-15-followup`. Separate offline same-state action substitutions
 confirmed recoverable binding and capacity bottlenecks; those scripted repairs are not agent scores.
+
+## Specification-first research phase (v5, user-requested)
+
+The user requested research on observable terminal conditions, joint state constraints, and
+discriminating experiments. V5 implements a bounded prototype, not a sound general planner.
+The specification is produced in a separate request before an action proposal; it sees only
+public observations, parsed public state, and conditional experiment records, never old actor
+reasoning. It is refreshed after public completion or every eight actions. Proposed predicates
+have true/false/unknown values, and cannot substitute for explicit public stage-completion text.
+
+An AgentOdyssey text adapter extracts current counts, observed recipes, visited transitions and
+capacity bounds. The exact hand bound is used only when observed lower and upper bounds agree.
+A local breadth-first search (depth <=9, <=12000 visited states per observed container) proposes
+a joint inventory arrangement and executes one action before observing and replanning. Unknown
+craft-from-container accessibility remains an experiment, not a certified rule. A failed craft
+records its local arrangement; changed arrangements remain testable. The parser/action abstraction
+is a shared benchmark adapter. No game-specific objects, recipe values, phrases or solutions are
+encoded. Online inputs still exclude engine state, source code, snapshots and reward breakdowns.
+
+Semantic experiments must name two retained interpretations, different predicted Boolean values
+for the SAME observable predicate, and currently satisfied observable preconditions. Unknown
+feedback leaves both unresolved. A mismatch is conditional on the proposed precondition set,
+not unconditional elimination: the set may omit a real condition. No claim of formal soundness.
+
+API settings are unchanged, but inference count differs: one specification request per refresh,
+one actor request when a numeric arrangement is unavailable or immediate attacks require judgment,
+and at most one semantic action repair for a parsed capacity/adjacency contradiction. All calls,
+including formatting retries, are charged and reported. Direct numeric steps need no actor call.
+
+Run 30-action diagnostics from v3/metropolis checkpoints 62 and 178, plus v2/metropolis 206.
+Reuse the frozen v3 diagnostic controls and the original v2 continuation; do not rerun baselines.
+Controls match starting state and environment budget, not inference tokens. These are not fresh
+replicates. Advance to one full 300-step run per game only if the candidate achieves a real task
+gain or directly repairs an intended bottleneck. Retain every result. Stop this phase after the
+candidate's full comparison or a negative diagnostic, allowing only identified implementation
+defects to be fixed and explicitly recorded. Formal claims require compute-matched ablations
+and held-out evaluation beyond these development games.
