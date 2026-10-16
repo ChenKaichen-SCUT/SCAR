@@ -1,0 +1,52 @@
+
+ff: parsing domain file
+domain 'MEDICAL' defined
+ ... done.
+ff: parsing problem file
+problem 'MEDICAL2' defined
+ ... done.
+
+
+domination test not valid. turning full state equality on.
+
+
+lowest leaf goal distance/initial state f value seen:      1/     1; maxdepth reached:    0
+                                                           0/     1                       1
+                                                           0/     1                       2
+                                                           0/     1                       3
+                                                           0/     1                       4
+                                                           0/     1                       5
+
+ff: found plan as follows
+-------------------------------------------------
+  0||0 --- STAIN --- SON: 1||0
+-------------------------------------------------
+  1||0 --- COUNT_WHITE_CELLS --- SON: 2||0
+-------------------------------------------------
+  2||0 --- INSPECT-STAIN S1 --- TRUESON: 3||0 --- FALSESON: 3||1
+-------------------------------------------------
+  3||0 --- MEDICATE I3 --- SON: 4||-1
+  3||1 --- INSPECT-BLOOD --- TRUESON: 4||0 --- FALSESON: 4||1
+-------------------------------------------------
+  4||0 --- MEDICATE I1 --- SON: 5||-1
+  4||1 --- MEDICATE I2 --- SON: 5||-1
+-------------------------------------------------
+
+tree layers: 5
+total nr. actions: 7
+
+statistics:    0.00 seconds instantiating 13 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 21 facts and 13 actions
+               0.00 seconds creating final representation with 18 relevant facts (16 max U, 8 CNF max U)
+               final representation has 6 unknown facts and 6 observation actions    
+               0.00 seconds building connectivity graph
+               0.00 seconds (   0.00 pure) evaluating 298 states
+               0.00 seconds generating,    0.00 seconds encoding 345 state transition base CNFs
+               0.00 seconds in DP solving 407 state transition CNFs
+               0.00 seconds checking for self-contradictions, including 0 DP calls
+               0.00 seconds checking for stagnating states (41 hits), including 552 DP calls
+                959 total DP calls, 2556 total UP calls,    0.00 sec membership
+              0.00 seconds for remaining searching duties
+               0.00 seconds total time (+    0.00 secs for CNF memory allocation)
+
+

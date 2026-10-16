@@ -1,0 +1,253 @@
+Resource-constrained policy coverage from symbolic action formulae
+2026-10-16. Research implementation; separate from the V6/TTCL agent.
+
+1. Exact problem and implemented scope
+
+An instance has a finite set M of named initial hypotheses, Boolean state x,
+nonnegative integer resource vector r, deterministic actions, and a Boolean
+terminal formula G(x). Each initial hypothesis determines exactly one state.
+An action a has a Boolean precondition P_a, simultaneous conditional Boolean
+effects defining T_a(x), fixed nonnegative consumption c_a, and either no
+observation or one Boolean observation O_a(T_a(x)). Every action costs one step.
+It is legal iff P_a(x) and r >= c_a componentwise. Invalid actions are forbidden,
+not informative observations. A belief B contains one current state per surviving
+initial hypothesis. Models remain named even if their physical states converge.
+
+A finite strong policy uses only actual observation histories. An action must be
+legal in every surviving world. Stopping requires G in every world. Goal truth
+does not itself generate an observation. Earlier goal achievement can be undone.
+J_H(B) is minimum worst-case number of actions over policies finishing within H;
+J_H=+infinity if none exists. Timeouts and representation limits mean UNKNOWN,
+never +infinity. The implementation's exact recursion optimizes this objective.
+
+The frontend supports a restricted grounded Boolean contingent-PDDL fragment,
+not arbitrary PDDL: simple object types, Boolean formulae, initial uncertainty,
+deterministic conditional effects and Boolean sensing. No numeric PDDL,
+probabilities, quantifiers, nondeterministic effects, replenishment, continuous
+resources, general type hierarchies, or arbitrary action-dependent integer costs.
+Resource overlays are explicitly declared and separated from original sources.
+
+2. Symbolic overapproximation, including ambiguous successor projections
+
+Choose k dynamic atoms to retain. Let q=(r,p) be remaining resources and their
+bit projection p. Static ground atoms are those no action can modify. Their
+values remain model-specific. For model m and projection p, X_m(p) contains ALL
+Boolean valuations agreeing with m's static facts and p. Unselected dynamic
+atoms are unconstrained: X_m(p) may contain unreachable states. This relaxation
+is deliberate. It does not assert that these valuations are attainable.
+
+For a resource-feasible action a, define sets of distinct model names:
+
+F(q,a) = {m: exists x in X_m(p), not G(x), P_a(x), G(T_a(x))}.
+
+U(q,a,o,p') = {m: exists x in X_m(p), not G(x), P_a(x),
+                    not G(T_a(x)), O_a(T_a(x))=o, proj(T_a(x))=p'}.
+
+If no observation exists, o is the empty symbol. Write f=|F| and u=|U|.
+For a successor bucket, q'=(r-c_a,p'). SAT checks construct these sets on demand
+from formulae, never by pre-enumerating all concrete reachable states. The
+implementation shares equivalent formula signatures and static-model groups.
+
+Different witnesses for one model may contribute to different buckets, or to
+F and U simultaneously. They are NOT asserted to be jointly attainable. Such
+double counting increases an upper bound, so it is safe but can reduce pruning.
+
+Crucially, the bound treats (o,p') as an augmented observation. This grants extra
+information when actual observation o does not determine p'. Only the relaxation
+gets this extra information. Actual policy search branches on o alone. This
+replaces the older implementation's global fallback on ambiguous p'.
+
+3. Capacity and admissibility theorem
+
+Let N=|M|. Define capacities for unfinished worlds:
+
+ C(q,0)=0,
+ C(q,t)=min(N, max over resource-feasible a [
+              f(q,a) + sum over nonempty (o,p') buckets
+                       min(u(q,a,o,p'), C((r-c_a,p'),t-1)) ]).
+
+The maximum of an empty set is 0 here. Already-goal worlds are optimistically
+absorbed when using this relaxation, even though exact search does not absorb
+them. C bounds how many distinct named models any policy can finish from any
+choice of unfinished states with common q, under the original semantics.
+
+Proof. Induct on t. No unfinished world finishes with zero actions. For t>0,
+consider the first action a of any successful policy on any subset of models
+with common q. Models first reaching G after a number at most f(q,a); every such
+concrete transition is a witness for its name in F. Partition the remaining
+successful models by their actual observation AND actual projected successor.
+The partition is legitimate for counting even if the controller cannot observe
+p'. Each bucket has at most u members. The original continuation, restricted to
+one bucket, is a legal continuation of depth at most t-1; providing p' as extra
+information only enlarges the policy class. By induction it finishes at most
+C(q',t-1) members. Sum the bucket bounds and the first-hit goal members, then
+maximize over a and cap by N. Removing worlds that reached G earlier only
+relaxes obligations: the real policy may need to act again in those worlds and
+maintain their final goals. Therefore this first-hit counting upper bound also
+bounds final simultaneous success. QED.
+
+At a search belief remove already-goal worlds only for the bound, leaving L.
+If L is empty, h_C=0. If its projections differ, use h_C=0. Otherwise let
+n be the number of distinct model names in L and use
+
+ h_C(B,H)= min {t in 1..H : C(q,t)>=n}, or +infinity if the set is empty.
+
+Any valid policy of worst-case length d<=H implies C(q,d)>=n by the theorem,
+hence h_C<=d. If no such t exists, no bounded strong policy exists. Thus h_C
+is admissible for J_H. It is combined by maximum with exact singleton tails.
+Any SAT UNKNOWN or outcome enumeration limit disables this bound and returns
+zero, rather than using an incomplete channel set for an infeasibility claim.
+This preserves admissibility. No consistency/monotonicity-across-belief-edges
+claim is needed; search uses admissible bounds and a finite remaining horizon.
+
+4. Relation to the reachable-state version and resources
+
+Construct C_exp with the SAME augmented buckets and recurrence, but allow
+witnesses only from concrete states reachable from each model's initial state.
+Every such witness belongs to X_m(p). Therefore F_exp is a subset of F_sym and
+each U_exp a subset of U_sym. Induction gives C_exp(q,t)<=C_sym(q,t), and at a
+common valid query h_sym<=h_exp<=J_H. This is a cost/precision tradeoff, not a
+claim that removing the graph always strengthens the heuristic.
+
+Forgetting resources admits all actions and merges resource states; it also
+relaxes the count recurrence. At a corresponding common query its capacity is
+at least the resource-aware capacity, so its bound is no stronger. Equality
+is expected on original tasks with no consumable resource overlay.
+
+All statements assume complete channel construction for a queried recurrence,
+correct deterministic action semantics, fixed nonnegative resource consumption,
+and the finite named model set. They do not establish correctness of LLM-derived
+action specifications or the game's semantics.
+
+5. Separation from bounded-size model projections, and non-dominance
+
+For any fixed k, choose n>k hidden bomb locations, k units of water, no sensing,
+and horizon H>=k. Dunking package i consumes one water unit and defuses the bomb
+only in model i; it produces no observation. Every subset of at most k models
+has a strong policy (dunk those packages), so the maximum exact k-model-subset
+distance is finite. The full belief cannot finish: any policy is a sequence
+with at most k dunks and can cover at most k distinct locations. For this family
+the symbolic recurrence gives C(r,t)=min(n,r,t), proving full-belief infeasibility
+without considering all k+1 or larger subsets. This extends the prior separation
+to the symbolic implementation; it does not establish novelty over all existing
+belief-space abstraction heuristics.
+
+No universal dominance is claimed. In a long deterministic preparation chain,
+if the preparation stage is omitted, existential witnesses can place the state
+just before the final action. h_C can be 1 although singleton distance is large.
+The combined bound retains singleton distance. More informative projections or
+proved invariants can remove such witnesses, but choosing them efficiently is
+an open implementation issue, not a completed contribution.
+
+6. Cost accounting and implementation correspondence
+
+Let A be ground actions, Q visited abstract resource/projection states, Q_p
+visited projections without resource values, S<=N static-model groups, and O
+the largest number of output tuples for one formula (at most 2^(k+1) for one
+Boolean sensor). Ignoring formula construction cost, channel generation uses
+O(S Q_p A (O+1)) SAT queries before signature sharing; dynamic programming costs
+O(H Q A O) once channels are available. These are bounds in terms of visited
+abstract states, NOT a polynomial-time guarantee in compact input size. SAT
+queries can be exponential, k creates exponentially many projections, and
+integer budgets create a pseudo-polynomial product of resource ranges.
+
+The implementation bounds each SAT query at 1 second and output enumeration at
+512 tuples. Both limits trigger a safe zero fallback. The study additionally
+limits each whole work cell to 15 seconds and 2 GiB; these produce UNKNOWN.
+
+symbolic_task.py: grounded action formulae, lazy exact transition semantics.
+SymbolicCoverage.pattern: existential F and augmented U witnesses.
+SymbolicCoverage.get_channels/capacity/lower: recurrence and admissible query.
+ExplicitCoverage: concrete reachable-state comparison, same recurrence.
+LazyCoveragePlanner: shared exact search and singleton/pair controls.
+published_planners.py: separate external Contingent-FF execution and replay.
+
+Only the CAPACITY BOUND avoids a complete concrete graph. The overall solver
+still enumerates initial models (limit 256), grounds actions (limit 20,000), and
+may explore many concrete states in singleton BFS or exact belief search.
+Unbounded general scalability has not been achieved or claimed.
+
+7. Search pseudocode (unit step cost; repeated states cached by remaining H)
+
+SEARCH(B,H):
+  if any world violates constraints: return exact +infinity
+  if all worlds satisfy G: return exact 0 with STOP
+  if H=0: return exact +infinity
+  if cached exact answer exists: return it
+  lower := max(h_single(B,H), h_C(B,H))
+  if lower=+infinity: return exact +infinity
+  for each a legal in every world:
+    split successors by ACTUAL observation only
+    omit a if it is a positive-cost, single-branch identical-belief loop
+    edge lower := 1 + max(child lower bounds at H-1)
+  visit actions in increasing edge lower order:
+    skip edge if its lower >= incumbent feasible policy cost
+    recursively solve its branches, largest child lower first
+    prune edge once 1+max(child lower) >= incumbent
+    if all child upper bounds finite: update incumbent and policy
+  result lower := max(initial lower, minimum updated edge lower)
+  result upper := incumbent; cache if equal
+  return result; replay every returned finite policy in every initial model
+
+The singleton, pair, symbolic, resource-blind, and explicit-channel variants in
+this study use this SAME search. Improvements from lazy transitions or legal
+action filtering must not be attributed to the capacity heuristic.
+
+8. Closest work and remaining novelty claim
+
+Rintanen (2004), Distance Estimates for Planning in the Discrete Belief Space:
+https://users.aalto.fi/~rintanj1/jussi/papers/Rintanen04heu.pdf
+Existing n-distance/subset reasoning already addresses incompatibility between
+individual world plans. Our pair_exact is an exact finite-horizon small-subset
+control, not an official implementation of that complete paper.
+
+Bryce, Kambhampati, Smith (2006), Planning Graph Heuristics for Belief Space Search:
+https://arxiv.org/abs/1103.1711
+LUG shares structure across possible worlds. Sharing model/action formulae alone
+is therefore not a sufficient novelty claim.
+
+Hoffmann and Brafman (2005), Contingent Planning via Heuristic Forward Search
+with Implicit Belief States; author's revised implementation:
+https://fai.cs.uni-saarland.de/hoffmann/cff.html
+Our external comparison uses the author's AO* implementation and actual plan
+trees. FF heuristic configurations do not supply our exact-optimality guarantee.
+
+The candidate contribution is a resource-indexed upper bound on the number of
+models that a bounded strong policy can finish, its separation from fixed-size
+model projections, and on-demand conservative channels with explicit cost and
+precision accounting. The generic ingredients (SAT, abstractions, cardinalities,
+AND/OR search, resource budgets) individually are not new. Broad usefulness and
+advantage over strong published planners must be demonstrated empirically;
+these propositions and test counts alone do not establish publishability.
+
+9. Subsequent diagnostic refinement: static support invariants
+
+After freezing the main study, invariant_coverage.py adds a separate, paired
+diagnostic. For each dynamic atom v, collect (i) static model cubes where v is
+initially true and (ii) a static relaxation of precondition AND conditional-add
+guard for every action that can add v. Erase dynamic literals in negation normal
+form by replacing them with true. Let S_v be their disjunction. The candidate
+invariant is v => S_v. If v holds after a real prefix, it either held initially
+and survived, or was added by an action whose static conditions imply S_v.
+Static facts never change, so this is a sound support argument.
+
+The code additionally checks the conjunction I on every enumerated initial
+world and checks UNSAT of I(x) AND P_a(x) AND NOT I(T_a(x)) for every ground
+action. SAT/UNKNOWN disables the entire refinement. Channels then require I(x).
+Every reachable witness still survives, so C_exp <= C_inv <= C_sym, with the
+reverse ordering for admissible lower bounds at a common valid query.
+
+Both diagnostic variants also skip actions whose preconditions simplify to
+false under common static facts and the fixed projection, and skip patterns
+with a false witness condition before constructing successor formulae. These
+are semantics-preserving construction optimizations. They are applied equally
+to symbolic_filtered (no invariants) and symbolic_invariants, so speed from
+filtering cannot be credited to the invariant refinement.
+
+The 15-case paired diagnostic is post hoc and separately recorded. Both variants
+solve 7/15, with no additional instance solved by invariants. This negative result
+does not justify a performance claim for this refinement. The independently
+validated invariants and tests remain useful research code, not a new headline
+contribution. Sources of weakness left open include model identity discarded
+between channels, repeated counting, coarse projections, and SAT construction
+cost. Current evidence does not isolate one of these as the sole cause.

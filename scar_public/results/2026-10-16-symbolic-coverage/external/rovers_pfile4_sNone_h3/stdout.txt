@@ -1,0 +1,71 @@
+
+ff: parsing domain file
+domain 'ROVER' defined
+ ... done.
+ff: parsing problem file
+problem 'ROVERPROB1234' defined
+ ... done.
+
+
+lowest leaf goal distance/initial state f value seen:      3/     3; maxdepth reached:    0
+                                                           2/     3                       1
+                                                           1/     3                       2
+                                                           1/     3                       3
+                                                           1/     3                       4
+                                                           1/     3                       5
+                                                           1/     3                       6
+                                                           1/     3                       7
+                                                           1/     3                       8
+                                                           1/     3                       9
+
+ff: found plan as follows
+-------------------------------------------------
+  0||0 --- NAVIGATE ROVER0 WAYPOINT3 WAYPOINT0 CAMERA0 OBJECTIVE1 --- SON: 1||0
+-------------------------------------------------
+  1||0 --- SENSE_VIS ROVER0 OBJECTIVE1 WAYPOINT0 --- TRUESON: 2||0 --- FALSESON: 2||1
+-------------------------------------------------
+  2||0 --- CALIBRATE ROVER0 CAMERA0 OBJECTIVE1 WAYPOINT0 --- SON: 3||0
+  2||1 --- NAVIGATE ROVER0 WAYPOINT0 WAYPOINT3 CAMERA0 OBJECTIVE1 --- SON: 3||1
+-------------------------------------------------
+  3||0 --- TAKE_IMAGE ROVER0 WAYPOINT0 OBJECTIVE1 CAMERA0 HIGH_RES --- SON: 4||0
+  3||1 --- SENSE_VIS ROVER0 OBJECTIVE1 WAYPOINT3 --- TRUESON: 4||1 --- FALSESON: 4||2
+-------------------------------------------------
+  4||0 --- NAVIGATE ROVER0 WAYPOINT0 WAYPOINT3 CAMERA0 OBJECTIVE1 --- SON: 5||0
+  4||1 --- CALIBRATE ROVER0 CAMERA0 OBJECTIVE1 WAYPOINT3 --- SON: 5||1
+  4||2 --- NAVIGATE ROVER0 WAYPOINT3 WAYPOINT1 CAMERA0 OBJECTIVE1 --- SON: 5||2
+-------------------------------------------------
+  5||0 --- COMMUNICATE_IMAGE_DATA ROVER0 GENERAL OBJECTIVE1 HIGH_RES WAYPOINT3 WAYPOINT0 --- SON: 6||-1
+  5||1 --- TAKE_IMAGE ROVER0 WAYPOINT3 OBJECTIVE1 CAMERA0 HIGH_RES --- SON: 6||0
+  5||2 --- SENSE_VIS ROVER0 OBJECTIVE1 WAYPOINT1 --- TRUESON: 6||1 --- FALSESON: 6||2
+-------------------------------------------------
+  6||0 --- COMMUNICATE_IMAGE_DATA ROVER0 GENERAL OBJECTIVE1 HIGH_RES WAYPOINT3 WAYPOINT0 --- SON: 7||-1
+  6||1 --- CALIBRATE ROVER0 CAMERA0 OBJECTIVE1 WAYPOINT1 --- SON: 7||0
+  6||2 --- NAVIGATE ROVER0 WAYPOINT1 WAYPOINT2 CAMERA0 OBJECTIVE1 --- SON: 7||1
+-------------------------------------------------
+  7||0 --- TAKE_IMAGE ROVER0 WAYPOINT1 OBJECTIVE1 CAMERA0 HIGH_RES --- SON: 8||0
+  7||1 --- CALIBRATE ROVER0 CAMERA0 OBJECTIVE1 WAYPOINT2 --- SON: 8||1
+-------------------------------------------------
+  8||0 --- COMMUNICATE_IMAGE_DATA ROVER0 GENERAL OBJECTIVE1 HIGH_RES WAYPOINT1 WAYPOINT0 --- SON: 9||-1
+  8||1 --- TAKE_IMAGE ROVER0 WAYPOINT2 OBJECTIVE1 CAMERA0 HIGH_RES --- SON: 9||0
+-------------------------------------------------
+  9||0 --- COMMUNICATE_IMAGE_DATA ROVER0 GENERAL OBJECTIVE1 HIGH_RES WAYPOINT2 WAYPOINT0 --- SON: 10||-1
+-------------------------------------------------
+
+tree layers: 10
+total nr. actions: 20
+
+statistics:    0.00 seconds instantiating 45 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 28 facts and 36 actions
+               0.00 seconds creating final representation with 20 relevant facts (10 max U, 6 CNF max U)
+               final representation has 8 unknown facts and 12 observation actions    
+               0.00 seconds building connectivity graph
+               0.00 seconds (   0.00 pure) evaluating 60494 states
+               0.20 seconds generating,    0.14 seconds encoding 103540 state transition base CNFs
+               0.20 seconds in DP solving 130809 state transition CNFs
+               0.00 seconds checking for self-contradictions, including 0 DP calls
+               0.07 seconds checking for stagnating states (42375 hits), including 316679 DP calls
+             447488 total DP calls, 2229751 total UP calls,    0.00 sec membership
+              0.33 seconds for remaining searching duties
+               0.94 seconds total time (+    0.00 secs for CNF memory allocation)
+
+

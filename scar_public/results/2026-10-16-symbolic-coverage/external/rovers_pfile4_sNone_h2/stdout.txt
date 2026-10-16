@@ -1,0 +1,79 @@
+
+ff: parsing domain file
+domain 'ROVER' defined
+ ... done.
+ff: parsing problem file
+problem 'ROVERPROB1234' defined
+ ... done.
+
+
+lowest leaf goal distance/initial state f value seen:     12/    12; maxdepth reached:    0
+                                                           3/    11                       1
+                                                           2/    11                       2
+                                                           1/    11                       3
+                                                           1/    11                       4
+                                                           1/    11                       5
+                                                           1/    11                       6
+                                                           1/    11                       7
+                                                           1/    11                       8
+                                                           1/    11                       9
+                                                           1/    11                      10
+                                                           1/    11                      11
+
+ff: found plan as follows
+-------------------------------------------------
+  0||0 --- SENSE_VIS ROVER0 OBJECTIVE1 WAYPOINT3 --- TRUESON: 1||0 --- FALSESON: 1||1
+-------------------------------------------------
+  1||0 --- CALIBRATE ROVER0 CAMERA0 OBJECTIVE1 WAYPOINT3 --- SON: 2||0
+  1||1 --- NAVIGATE ROVER0 WAYPOINT3 WAYPOINT1 CAMERA0 OBJECTIVE1 --- SON: 2||1
+-------------------------------------------------
+  2||0 --- TAKE_IMAGE ROVER0 WAYPOINT3 OBJECTIVE1 CAMERA0 HIGH_RES --- SON: 3||0
+  2||1 --- SENSE_VIS ROVER0 OBJECTIVE1 WAYPOINT1 --- TRUESON: 3||1 --- FALSESON: 3||2
+-------------------------------------------------
+  3||0 --- COMMUNICATE_IMAGE_DATA ROVER0 GENERAL OBJECTIVE1 HIGH_RES WAYPOINT3 WAYPOINT0 --- SON: 4||-1
+  3||1 --- CALIBRATE ROVER0 CAMERA0 OBJECTIVE1 WAYPOINT1 --- SON: 4||0
+  3||2 --- NAVIGATE ROVER0 WAYPOINT1 WAYPOINT2 CAMERA0 OBJECTIVE1 --- SON: 4||1
+-------------------------------------------------
+  4||0 --- TAKE_IMAGE ROVER0 WAYPOINT1 OBJECTIVE1 CAMERA0 HIGH_RES --- SON: 5||0
+  4||1 --- SENSE_VIS ROVER0 OBJECTIVE1 WAYPOINT2 --- TRUESON: 5||1 --- FALSESON: 5||2
+-------------------------------------------------
+  5||0 --- COMMUNICATE_IMAGE_DATA ROVER0 GENERAL OBJECTIVE1 HIGH_RES WAYPOINT1 WAYPOINT0 --- SON: 6||-1
+  5||1 --- CALIBRATE ROVER0 CAMERA0 OBJECTIVE1 WAYPOINT2 --- SON: 6||0
+  5||2 --- NAVIGATE ROVER0 WAYPOINT2 WAYPOINT1 CAMERA0 OBJECTIVE1 --- SON: 6||1
+-------------------------------------------------
+  6||0 --- TAKE_IMAGE ROVER0 WAYPOINT2 OBJECTIVE1 CAMERA0 HIGH_RES --- SON: 7||0
+  6||1 --- NAVIGATE ROVER0 WAYPOINT1 WAYPOINT3 CAMERA0 OBJECTIVE1 --- SON: 7||1
+-------------------------------------------------
+  7||0 --- COMMUNICATE_IMAGE_DATA ROVER0 GENERAL OBJECTIVE1 HIGH_RES WAYPOINT2 WAYPOINT0 --- SON: 8||-1
+  7||1 --- NAVIGATE ROVER0 WAYPOINT3 WAYPOINT0 CAMERA0 OBJECTIVE1 --- SON: 8||0
+-------------------------------------------------
+  8||0 --- CALIBRATE ROVER0 CAMERA0 OBJECTIVE1 WAYPOINT0 --- SON: 9||0
+-------------------------------------------------
+  9||0 --- TAKE_IMAGE ROVER0 WAYPOINT0 OBJECTIVE1 CAMERA0 HIGH_RES --- SON: 10||0
+-------------------------------------------------
+ 10||0 --- NAVIGATE ROVER0 WAYPOINT0 WAYPOINT3 CAMERA0 OBJECTIVE1 --- SON: 11||0
+-------------------------------------------------
+ 11||0 --- COMMUNICATE_IMAGE_DATA ROVER0 GENERAL OBJECTIVE1 HIGH_RES WAYPOINT3 WAYPOINT0 --- SON: 12||-1
+-------------------------------------------------
+
+tree layers: 12
+total nr. actions: 21
+
+statistics:    0.00 seconds instantiating 45 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 28 facts and 36 actions
+               0.00 seconds creating final representation with 20 relevant facts (10 max U, 6 CNF max U)
+               final representation has 8 unknown facts and 12 observation actions    
+               0.00 seconds building connectivity graph
+               0.00 seconds (   0.00 pure) evaluating 171 states
+               0.00 seconds generating,    0.00 seconds encoding Rplan S-CNFs
+               0.00 seconds in DP for 2217 RPG S-CNF implication checks
+               0.00 seconds in DP for 174 RPlan extract S-CNF implication checks (12 lits removed)
+               0.01 seconds generating,    0.00 seconds encoding 264 state transition base CNFs
+               0.00 seconds in DP solving 81 state transition CNFs
+               0.00 seconds checking for self-contradictions, including 0 DP calls
+               0.00 seconds checking for stagnating states (87 hits), including 192 DP calls
+               2664 total DP calls, 5241 total UP calls,    0.00 sec membership
+              0.00 seconds for remaining searching duties
+               0.01 seconds total time (+    0.00 secs for CNF memory allocation)
+
+

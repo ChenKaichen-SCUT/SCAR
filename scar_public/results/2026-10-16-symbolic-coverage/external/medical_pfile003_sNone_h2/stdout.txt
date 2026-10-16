@@ -1,0 +1,54 @@
+
+ff: parsing domain file
+domain 'MEDICAL' defined
+ ... done.
+ff: parsing problem file
+problem 'MEDICAL2' defined
+ ... done.
+
+
+domination test not valid. turning full state equality on.
+
+
+lowest leaf goal distance/initial state f value seen:      3/     3; maxdepth reached:    0
+                                                           3/     3                       1
+                                                           1/     3                       2
+                                                           1/     3                       3
+                                                           1/     3                       4
+
+ff: found plan as follows
+-------------------------------------------------
+  0||0 --- STAIN --- SON: 1||0
+-------------------------------------------------
+  1||0 --- COUNT_WHITE_CELLS --- SON: 2||0
+-------------------------------------------------
+  2||0 --- INSPECT-STAIN S1 --- TRUESON: 3||0 --- FALSESON: 3||1
+-------------------------------------------------
+  3||0 --- MEDICATE I3 --- SON: 4||-1
+  3||1 --- INSPECT-BLOOD --- TRUESON: 4||0 --- FALSESON: 4||1
+-------------------------------------------------
+  4||0 --- MEDICATE I1 --- SON: 5||-1
+  4||1 --- MEDICATE I2 --- SON: 5||-1
+-------------------------------------------------
+
+tree layers: 5
+total nr. actions: 7
+
+statistics:    0.00 seconds instantiating 13 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 21 facts and 13 actions
+               0.00 seconds creating final representation with 18 relevant facts (16 max U, 8 CNF max U)
+               final representation has 6 unknown facts and 6 observation actions    
+               0.00 seconds building connectivity graph
+               0.01 seconds (   0.01 pure) evaluating 127 states
+               0.00 seconds generating,    0.00 seconds encoding Rplan S-CNFs
+               0.00 seconds in DP for 587 RPG S-CNF implication checks
+               0.00 seconds in DP for 51 RPlan extract S-CNF implication checks (0 lits removed)
+               0.00 seconds generating,    0.00 seconds encoding 140 state transition base CNFs
+               0.00 seconds in DP solving 154 state transition CNFs
+               0.00 seconds checking for self-contradictions, including 0 DP calls
+               0.00 seconds checking for stagnating states (8 hits), including 156 DP calls
+                948 total DP calls, 1985 total UP calls,    0.00 sec membership
+              0.00 seconds for remaining searching duties
+               0.01 seconds total time (+    0.01 secs for CNF memory allocation)
+
+

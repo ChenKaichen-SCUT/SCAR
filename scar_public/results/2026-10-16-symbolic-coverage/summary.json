@@ -1,0 +1,150 @@
+{
+  "internal": [
+    {
+      "mode": "single",
+      "total_solved": 11,
+      "original_solved": 6,
+      "extension_solved": 5,
+      "plans": 7,
+      "statuses": {
+        "UNKNOWN_TIMEOUT": 23,
+        "PLAN_FOUND": 7,
+        "NO_STRONG_POLICY_WITHIN_H": 4
+      }
+    },
+    {
+      "mode": "pair_exact",
+      "total_solved": 11,
+      "original_solved": 4,
+      "extension_solved": 7,
+      "plans": 6,
+      "statuses": {
+        "UNKNOWN_TIMEOUT": 23,
+        "NO_STRONG_POLICY_WITHIN_H": 5,
+        "PLAN_FOUND": 6
+      }
+    },
+    {
+      "mode": "symbolic",
+      "total_solved": 19,
+      "original_solved": 14,
+      "extension_solved": 5,
+      "plans": 15,
+      "statuses": {
+        "PLAN_FOUND": 15,
+        "NO_STRONG_POLICY_WITHIN_H": 4,
+        "UNKNOWN_TIMEOUT": 15
+      }
+    },
+    {
+      "mode": "resource_blind",
+      "total_solved": 19,
+      "original_solved": 14,
+      "extension_solved": 5,
+      "plans": 15,
+      "statuses": {
+        "PLAN_FOUND": 15,
+        "UNKNOWN_TIMEOUT": 15,
+        "NO_STRONG_POLICY_WITHIN_H": 4
+      }
+    },
+    {
+      "mode": "explicit_channels",
+      "total_solved": 21,
+      "original_solved": 14,
+      "extension_solved": 7,
+      "plans": 15,
+      "statuses": {
+        "PLAN_FOUND": 15,
+        "UNKNOWN_TIMEOUT": 9,
+        "NO_STRONG_POLICY_WITHIN_H": 6,
+        "UNKNOWN_LIMIT_OR_ERROR": 4
+      }
+    }
+  ],
+  "external": [
+    {
+      "method": "cff_h2",
+      "verified": 12,
+      "original_attempts": 18,
+      "syntax_incompatible": [
+        "doors_5_sNone",
+        "localize_5_sNone"
+      ],
+      "common_source_instances": 16,
+      "common_source_verified": 12,
+      "statuses": {
+        "VERIFIED_POLICY": 12,
+        "UNKNOWN_TIMEOUT": 4,
+        "NO_VERIFIED_POLICY": 2
+      },
+      "compatibility_results": [
+        {
+          "id": "doors_5_sNone",
+          "status": "NO_VERIFIED_POLICY",
+          "depth": null
+        },
+        {
+          "id": "localize_5_sNone",
+          "status": "UNKNOWN_TIMEOUT",
+          "depth": null
+        }
+      ]
+    },
+    {
+      "method": "cff_h3",
+      "verified": 6,
+      "original_attempts": 18,
+      "syntax_incompatible": [
+        "doors_5_sNone",
+        "localize_5_sNone"
+      ],
+      "common_source_instances": 16,
+      "common_source_verified": 6,
+      "statuses": {
+        "UNKNOWN_TIMEOUT": 10,
+        "VERIFIED_POLICY": 6,
+        "NO_VERIFIED_POLICY": 2
+      },
+      "compatibility_results": [
+        {
+          "id": "doors_5_sNone",
+          "status": "UNKNOWN_TIMEOUT",
+          "depth": null
+        },
+        {
+          "id": "localize_5_sNone",
+          "status": "UNKNOWN_TIMEOUT",
+          "depth": null
+        }
+      ]
+    }
+  ],
+  "diagnostic": [
+    {
+      "mode": "symbolic_filtered",
+      "solved": 7,
+      "total": 15
+    },
+    {
+      "mode": "symbolic_invariants",
+      "solved": 7,
+      "total": 15
+    }
+  ],
+  "consistency": {
+    "equal_exact_values": 72,
+    "root_lower_checks": 83,
+    "all_passed": true
+  },
+  "api_calls": 0,
+  "original_sources": 18,
+  "resource_extensions": 16,
+  "limitations": [
+    "Single timings; no significance claims.",
+    "External hFF plans are verified feasible, not presumed optimal.",
+    "Raw syntax failures excluded from the common 16-source comparison.",
+    "Peak RSS is available only for completed cells; timeout memory is censored.",
+    "No general advantage on Doors/Rovers or resource overlays established."
+  ]
+}

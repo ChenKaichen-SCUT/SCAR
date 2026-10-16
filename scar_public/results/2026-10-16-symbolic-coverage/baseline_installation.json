@@ -1,0 +1,36 @@
+{
+  "Contingent-FF": {
+    "author_page": "https://fai.cs.uni-saarland.de/hoffmann/cff.html",
+    "binary_archive": "https://fai.cs.uni-saarland.de/hoffmann/ff/Contingent-FF.zip",
+    "binary_archive_sha256": "3e5b8785e9465ba6f95d9863c7351658615d3d8f2b482b66b24ef055478e5744",
+    "source_archive_sha256": "1c54138af5de51ffa08b6e4895071de01c778370a3b26944d647f9cffa6afbd1",
+    "status": "author binary ran; all reported policies replayed on original task semantics",
+    "flags": "-a 0 -m 1 -h 2 or -h 3; no -G or -H",
+    "raw_syntax_incompatibility": "CPOR :contingent requirement, nested :init and, and missing explicit unknown declarations",
+    "compatibility_status": "see compatibility_v3/analysis.json; semantic normalization separately declared"
+  },
+  "POND": {
+    "repository": "https://svn.code.sf.net/p/pond/code/",
+    "revision": 313,
+    "cudd_version": "2.4.2",
+    "cudd_distribution": "https://github.com/seahorn/ldd",
+    "cudd_distribution_commit": "4329f4132e47c92ddd00ad0a7e59920a530568f1",
+    "cudd_archive_sha256": "1fca1c3891f5ac3edd6df001a6011a596640af210b30bca9c392f55309d36acb",
+    "cudd_status": "static libraries built, SIZEOF_LONG=8 and SIZEOF_VOID_P=8",
+    "portability_change": "Add description arguments to AC_DEFINE for SIZEOF_LONG/SIZEOF_VOID_P",
+    "final_build_error": "strxml.cc: conflicting declaration typedef std::ostrstream std::ostringstream; std::ostringstream incomplete type",
+    "status": "unavailable; no planning result and not counted as a baseline"
+  },
+  "server_environment": {
+    "os": "Ubuntu 22.04",
+    "python": "3.10",
+    "numpy": "1.21.5",
+    "scipy": "1.8.0",
+    "z3": "4.8.12",
+    "physical_cores": 8,
+    "logical_cpus": 16,
+    "main_internal_affinity": [0,2,4,6,8,10,12,14],
+    "external_affinity": [0],
+    "blas_threads": 1
+  }
+}
