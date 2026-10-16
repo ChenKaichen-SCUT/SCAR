@@ -1,0 +1,35 @@
+{
+  "config": {
+    "id": "doors_5_s4",
+    "family": "doors",
+    "instance": "5",
+    "horizon": 40,
+    "sensor_budget": 4,
+    "actuation_budget": 40,
+    "cohort": "declared_resource_extension",
+    "projection_predicates": [
+      "at"
+    ]
+  },
+  "source": {
+    "repository": "https://github.com/aiplan4eu/up-cpor",
+    "commit": "4776479597e33610f68dcc20613850f414eb6688",
+    "paths": [
+      "Tests/doors5/d.pddl",
+      "Tests/doors5/p.pddl"
+    ],
+    "content_sha256": [
+      "bd71538cc44f7937d4e7b735c79bc1aa7617dd7fd1f2dcbe371f1de9ff7c4fd0",
+      "d5446fb22a108548fe863ce683c30d1d7c50f3f836b258d1c6fae38f6a334008"
+    ]
+  },
+  "models": 25,
+  "sensor_budget": 4,
+  "checked_pair_conflicts": 300,
+  "maximum_models_per_terminal_history": 1,
+  "maximum_boolean_observation_leaves": 16,
+  "conclusion": "NO_STRONG_POLICY_FOR_ANY_H_WITH_THIS_SENSOR_BUDGET",
+  "elapsed_seconds": 0.8048530999803916,
+  "argument": "A common terminal action history must give a move path through cells open in every remaining model. For every model pair this common-open graph has no start-goal path. Observations have no effects; removing them cannot create such a path. Thus each terminal history covers at most one model. A binary observation tree of sensor depth at most four has at most 16 leaves, fewer than the 25 initial models. All models require completion.",
+  "scope": "Domain-specific independent certificate, not a timed generic baseline or novel bound."
+}

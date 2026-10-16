@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "doors_5_s4",
+      "family": "doors",
+      "instance": "5",
+      "horizon": 40,
+      "sensor_budget": 4,
+      "actuation_budget": 40,
+      "cohort": "declared_resource_extension",
+      "projection_predicates": [
+        "at"
+      ]
+    }
+  ],
+  "variants": [
+    [
+      "threshold_lineage",
+      100000
+    ],
+    [
+      "threshold_matching",
+      100000
+    ],
+    [
+      "threshold_lineage",
+      200000
+    ],
+    [
+      "threshold_matching",
+      200000
+    ],
+    [
+      "threshold_lineage",
+      500000
+    ],
+    [
+      "threshold_matching",
+      500000
+    ]
+  ],
+  "work_limit_seconds": 15,
+  "termination_grace_seconds": 2,
+  "memory_limit_mib": 2048,
+  "repetitions": 1,
+  "input_provenance": {
+    "repository": "https://github.com/aiplan4eu/up-cpor",
+    "commit": "4776479597e33610f68dcc20613850f414eb6688",
+    "paths": [
+      "Tests/doors5/d.pddl",
+      "Tests/doors5/p.pddl"
+    ],
+    "content_sha256": [
+      "bd71538cc44f7937d4e7b735c79bc1aa7617dd7fd1f2dcbe371f1de9ff7c4fd0",
+      "d5446fb22a108548fe863ce683c30d1d7c50f3f836b258d1c6fae38f6a334008"
+    ]
+  },
+  "sources": {
+    "study_relation_budget.py": "a99222058fc13c146d8d4312741ae0af08262f16b3c3dc5821a927ed258c8387",
+    "bounded_resource_coverage.py": "d4a229f74f5f03c4f20244d42ea7f7f3f87a6f9d51ee0e11629c72887164b665",
+    "study_resource_keys.py": "d09bf05d74857f0742d1ed6b966fd8d482275ec330083efc33d83936c6faabea",
+    "demand_coverage.py": "20a7b5041176e046f112c41128f10a8c9de961b1bc398680e1374442089c6691",
+    "threshold_search.py": "2c1c1133ed5c4d825d047470c753f3538e9591a485f513a516f0d1f1e29d3971",
+    "study_threshold_search.py": "dc553f8f3fd26f9ddab43a4a794c058229296f4c1d8981b35b346a562cc19569",
+    "relational_coverage.py": "512bf6fc1e0b7ad6f8fffef694f21eb78128aa66c4c67ff951498ee8817ca9bd",
+    "invariant_coverage.py": "d807bb36eff94f69e6fa0a2ff0622ccb70087cd1145efff2f1802a9a683078e5",
+    "symbolic_coverage.py": "90ce1f6713fffc78dc9bf204ce23cf035951c165e33265709f0b8d185ac54a8d",
+    "symbolic_task.py": "d1ec0398cfe25cd0404d9f005d0fc0cfdd0cf0bbf5c2cd3123b09af952759f52",
+    "coverage_planner.py": "f8e81f62ea8faf453941c89c68a63a91e9ab2285c24635e1ce13793ce224baf1",
+    "information_bound.py": "26a8498b57f37283ea3fa691bd9b7c1fb4f06c56810cd285e7092bdde1f206de",
+    "finite_planner.py": "ff5c21e55946bcbc3bd056346a04091e24f382e3e840f4f7c242234e827bed6e",
+    "benchmark_suite.py": "a3dd9aaea3d71334bb8a0a9a569c571dbe0cdc4d6ab44354e1ef63d54406c1ac"
+  },
+  "rationale": "Target selected after 5000/50000-node diagnostic exhausted the relation budget and returned root 14/29. This is an exploratory cost-sensitivity sweep on ONE failed instance, not a holdout or new aggregate main method. Both identity and matching variants are included. Every worker retains a 15-second total work limit; no unlimited runs."
+}

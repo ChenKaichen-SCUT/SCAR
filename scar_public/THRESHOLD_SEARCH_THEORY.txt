@@ -1,0 +1,128 @@
+Budget-decision search for exact resource-constrained strong policies
+2026-10-16. Shared infrastructure, not an independent heuristic novelty claim.
+
+Scope
+The finite deterministic SymbolicTask semantics remain unchanged: named initial
+models, one exact current state per live name, Boolean post-action observations,
+unit action costs, fixed nonnegative resource consumption and forbidden illegal
+actions. Stopping requires every state's actual goal, even if goal truth is
+unobserved. Already-completed worlds are NOT removed from the actual search.
+The coverage relaxation may absorb them optimistically, as proved separately.
+
+V(B) is the minimum worst-case depth of a finite strong policy from exact belief
+B, or infinity if none exists. A finite decision asks D(B,d) := [V(B) <= d].
+Resource amounts are part of B, so sharing B never forgets remaining budgets.
+
+D(B,d):
+  if some current state is forbidden: false
+  if all current states satisfy the goal: true with stop policy
+  if d == 0: false
+  if a stored policy U(B) <= d exists: true
+  if certified L(B) > d: false
+  update L(B) with an admissible coverage/perfect-information lower bound
+  for each legal action a (ordered by already available child lower bounds):
+    form the actual-observation successor beliefs B_o
+    if D(B_o,d-1) is true for every nonempty observed branch:
+      store a with these child policies, U=1+max_o U(B_o); return true
+  after ALL legal actions have been rejected: L(B) = max(L(B),d+1); false
+
+Only a single-branch exact self-loop is omitted: its positive cost cannot improve
+any shortest finite strong policy. No path/ancestor-dependent exclusion is used.
+Thus a failed decision may be reused in another history reaching the same B.
+The recursion is finite because d decreases, even when physical states cycle.
+Child evaluation stops as soon as one required branch fails. The planner does
+not compute expensive new heuristics for every child of every action in advance.
+
+Shared interval table
+Each exact belief has an interval L(B) <= V(B) <= U(B), with a policy witnessing
+finite U. A bounded heuristic's infinity at d is stored as d+1, not global
+infinity. A failed bounded search is likewise only d+1. The implementation uses
+global infinity only for an actually forbidden belief or an exhausted legal
+action list with no way to leave an unfinished belief. Successful policies and
+proved lower bounds are valid across all queried horizons.
+
+Exact known-world completion uses BFS with the same action interpreter and
+resources. A successful shortest path supplies shortest suffix policies too:
+a shorter suffix to any goal would shorten the original path, a contradiction.
+A BFS that did not reach a goal by depth d supplies only the lower bound d+1.
+Transitions and complete legal edge lists are cached exactly, with no relaxed
+states or augmented observations in the actual search. Model labels are retained
+in beliefs even if two models reach the same state. SymbolicTask's transition
+function is common to all labels, permitting a (state,action) transition cache.
+
+Optimality and interruption
+Start at the current admissible integer L(root). Run the decision; after failure,
+increase to the updated L(root), until success or the user horizon H is exceeded.
+Induction on d proves each completed decision correct. A returned policy has
+cost at most d, while all costs smaller than d have been excluded by a sound
+lower bound or completed decisions; the first root success is therefore optimal.
+If L(root)>H after completed certificates, no strong policy of depth <=H exists.
+An expansion budget interruption produces the current sound interval, UNKNOWN
+when no root policy is known. A wall timeout remains UNKNOWN in the study even
+if a worker finishes during the termination-recording grace interval. Incomplete
+max/min computations are never cached as infeasibility certificates.
+
+Limitations
+This is a finite-depth AND/OR decision search, not an anytime planner. Its first
+root policy is also its optimality certificate; it does not promise a quick
+suboptimal incumbent. Belief and transition tables may grow exponentially. BFS
+tails and the coverage bound can each consume the entire wall budget. There is
+no new asymptotic search-complexity theorem. The cache/decision changes are shared
+across heuristic variants; they must not be attributed to candidate identity
+propagation or sibling matching.
+
+Separate constant-formula optimization
+The prior no-invariant control substituted every atom into the constant True.
+invariant_coverage.py now returns that constant directly. No channels change.
+Both legacy-search controls and all new coverage variants receive this change,
+so their matched comparison isolates search infrastructure from this shortcut.
+
+Code correspondence
+threshold_search.py: record/estimate = interval table and admissible bounds;
+known_world = BFS suffix policies; edges/_step = exact transition sharing;
+decision = bounded AND/OR decision; solve = increasing certified thresholds.
+test_threshold_search.py: independent oracle on reachable exact beliefs and
+subsets, increasing/decreasing budgets, hidden completion, goal undo, resource
+exhaustion, interruption and resumption; every returned policy is replayed.
+
+Experimental attribution
+study_threshold_search.py retains all prior 34 cases and fixed projections.
+Six variants: legacy counts/matching, new single/counts/lineage/matching.
+All receive the constant-True shortcut, 15 s work and 2 GiB address-space limits.
+Doors was used during development; this is a paired regression study, not an
+independent holdout. Public/game baseline results are reused without rerunning.
+Timed subroutine counters cover completed calls; an interrupted active call may
+not yet appear in its elapsed counter. Whole-worker wall time remains recorded.
+
+Post-primary cost diagnostic: demand-driven formulas
+demand_coverage.py constructs exactly the same precondition, current non-goal,
+successor goal, observation and retained-atom formulas. It reads only referenced
+pre-state atoms and computes only required successor atoms. Boolean constants
+are propagated before calling SAT. If every required formula is constant, direct
+Boolean evaluation suffices; otherwise the original SAT timeout/outcome limit
+and safe UNKNOWN fallback apply. Structural induction on the Boolean expression
+and the simultaneous add/delete semantics proves formula equivalence. This is
+an implementation improvement, not a stronger heuristic. Both count and model
+identity versions receive it. A test compares complete channel tables, not only
+root lower bounds, including unreachable abstract valuations in small cases.
+
+Post-primary resource-key diagnostic
+Let c_i^max=max_a c_i(a). For a t-step query replace resource r_i by
+  r'_i = min(r_i, t*c_i^max).
+If r_i was clipped, every length-at-most-t action sequence has cumulative
+consumption at most t*c_i^max. Therefore it is affordable in that dimension
+under both budgets. If it was not clipped, the resource is unchanged. Boolean
+state transitions, observations and goals do not read resource values. Thus
+the feasible finite-depth policies and successful candidate sets are unchanged.
+This argument applies independently in every resource dimension and branch.
+
+The unlimited count and relational recurrences are identical under these keys.
+The finite work cap can be reached in a different order because equivalent
+subproblems now share cached results. Both implementations remain admissible,
+but equality with independently capped old runs is NOT claimed. The diagnostic
+keeps counts/matching at 5000 nodes, and reports matching with 50000 nodes as a
+separate cost sensitivity variant. It is not silently substituted into the
+primary results. This reduction relies on nonnegative fixed consumption and
+Boolean resource-independent goals/observations: replenishment, stock-dependent
+effects, numeric goals, and variable resource prices invalidate this proof.
+No novelty claim is made for the elementary resource saturation reduction.

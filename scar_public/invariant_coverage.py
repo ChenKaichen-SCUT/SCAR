@@ -90,7 +90,10 @@ class InvariantCoverage(SymbolicCoverage):
                 for i,v in enumerate(t.zvars)]
         vs=self.variable_cache[static,projected]
         if (static,projected) not in self.specialized_invariants:
-            self.specialized_invariants[static,projected]=z3.simplify(z3.substitute(self.invariant,*zip(t.zvars,vs)))
+            # The shared no-invariant control needs no O(number-of-atoms)
+            # substitution into the constant True. Keep the logical formula.
+            self.specialized_invariants[static,projected]=(self.invariant if z3.is_true(self.invariant)
+                else z3.simplify(z3.substitute(self.invariant,*zip(t.zvars,vs))))
         invariant=self.specialized_invariants[static,projected]
         condition=z3.simplify(z3.And(invariant,ze(action.pre,vs),z3.Not(ze(t.goal_expr,vs))))
         if z3.is_false(condition):
