@@ -1,0 +1,219 @@
+Resource-indexed policy coverage: definition, proof, separation, and scope
+Research checkpoint, 2026-10-16. Candidate contribution; not a novelty verdict.
+
+1. Planning problem and exact search semantics
+
+There is a finite set M of deterministic candidate worlds/models. A world is
+(m,s). The immutable label m may encode a hidden initial state, an unknown action
+model, or both. A belief contains at most one current state per m. A legal action
+has a model-dependent successor and a finite observation. An action whose
+precondition fails in ANY possible world is not legal for a strong policy.
+Our total transition API sends such worlds to a forbidden state; those successors
+cannot produce a successful policy or an informative recovery action.
+
+The state contains bounded nonnegative integer resources and finite symbols.
+The planner knows the initial belief and transition/observation models, but not
+the true m. A finite policy chooses actions from observed histories. A stop is
+legal only if every remaining world satisfies the actual goal. Success need NOT
+produce an observation. Actions may continue in goal worlds while other worlds
+are unfinished, and such actions may undo a goal. The exact search must retain
+and check these worlds. Resource limits must hold on every execution branch.
+
+We minimize worst-case action count with unit costs, within a supplied depth H.
+V(B,H)=infinity means no strong policy within H, not unbounded impossibility.
+We do not model probabilities, expected cost, fairness, or strong-cyclic policies.
+Unknown true models outside M and incorrect goals invalidate application-level
+guarantees; the theorem cannot certify LLM-produced models as correct.
+
+2. The optimistic coverage table
+
+Let alpha(s)=q retain the resource vector and a fixed set of symbolic variables.
+All live (not yet goal) states queried in B must share q. For each q and action a,
+compile from all legal concrete transitions in the complete finite graph:
+
+  G(q,a) = model IDs with some live state at q whose a-successor is a goal;
+  N(q,a,o) = IDs with some live state at q whose a-successor is live and emits o.
+
+Let g(q,a)=|G(q,a)|, n(q,a,o)=|N(q,a,o)|. For this implementation all non-goal
+successors for fixed (q,a,o) must have a unique projection q'(q,a,o). If not, the
+table is disabled and contributes zero, NOT infinity. A more general max over
+possible successor projections is not implemented or covered by this recurrence.
+Goal successors can have any observation and any projection. This is deliberate:
+only the bound optimistically absorbs a model as soon as it first reaches a goal.
+There is no added completion sensor in the real transition or search semantics.
+
+Let N=|M|. Empty maximum is zero. Define
+
+  C(q,0) = 0
+  C(q,t) = max_a min(N,
+                 g(q,a) + SUM_o min(n(q,a,o), C(q'(q,a,o),t-1))).
+
+Sets are unioned across states, but only their cardinalities remain in the DP.
+The same ID may therefore be counted in several channels or again deeper in the
+tree. Different nodes may use mutually incompatible witnesses. These operations
+can only inflate the count; they explain why C is an UPPER bound, not a feasible
+policy and not the exact number of simultaneously completable models.
+
+Theorem 1 (coverage upper bound).
+Choose any subset of live worlds sharing q and any observation-based policy of
+depth at most t. Count the distinct initial model IDs whose trajectories remain
+legal and reach a goal at least once within that depth. That count is <=C(q,t).
+
+Proof. At depth zero no live world has reached a goal. At the first action a,
+at most g(q,a) IDs reach a goal immediately. Remove those IDs for the optimistic
+count, regardless of whether the policy receives a goal signal. Partition the
+remaining successful trajectories by their actual first observation o. This
+partition has at most n(q,a,o) IDs, and all its successors share q'(q,a,o).
+The same continuation policy is used within each observation branch. By the
+induction hypothesis its count is at most C(q',t-1). Sum the branch bounds,
+add immediate successes, cap by the total number of models, and maximize over
+the first action. Illegal trajectories do not contribute. Double counting in
+the global tables only relaxes the inequality. This proves the induction.
+
+Corollary 1 (safe horizon pruning and admissibility).
+Let L(B) be the set of IDs currently in non-goal states. If all these states
+share q, define
+
+  h_cov(B,H) = min {t in 1..H : C(q,t) >= |L(B)|},
+
+with infinity for an empty set and zero when L(B) is empty. Any strong policy
+that finally stops with every goal true must, in particular, make every live
+world hit a goal at least once. Thus h_cov(B,H)<=V(B,H). Removing currently-goal
+worlds may ignore future damage or illegal actions in them; this only makes the
+bound more optimistic. A forbidden state returns infinity. If common q or the
+table contract fails, return zero. An empty actual belief is a model error,
+not a solved task.
+
+Consequently max(h_cov,h_single) is admissible, where h_single is the maximum
+exact known-world distance. If h_cov is already infinity, skip singleton DP.
+The actual AND/OR search continues to group worlds ONLY by real observations.
+
+Corollary 2 (conditional projection refinement).
+If alpha_f refines alpha_c, both tables satisfy the unique-successor contract,
+and use the same complete transitions, then C_f(q,t)<=C_c(f(q),t). For each
+action the fine ID sets are subsets of the coarse ID sets. Their successors
+map to the unique coarse successor. Induction and monotonicity of min, max,
+and sum yield the result. This statement does not cover disabled-table fallbacks.
+
+3. Separation from every fixed-size exact projection
+
+Define h_k(B,H)=max_{nonempty S subset B, |S|<=k} V(S,H). Subset restriction is
+a relaxation, so h_k is admissible. This is closely related to Rintanen's
+n-distance hierarchy; it is a comparison family, NOT our proposed innovation.
+Our implementation has exact k=1,2,3 variants with real observation branching.
+For deterministic no-observation tasks these coincide with the corresponding
+finite-horizon exact subset distances. We do not claim to reproduce Rintanen's
+BDD implementation or its more general nondeterministic transition semantics.
+
+Theorem 2 (fixed-k misses joint infeasibility).
+For every k>=1 and n>k, take n possible bomb locations/packages. Action dunk_i
+consumes one unit of water and makes the goal true exactly if i is the hidden
+location, preserving goals already achieved. There are no usable sensing actions
+(sensor budget zero), all productive actions have the same empty observation,
+and there are k units of water. Let H>=k.
+
+Any subset S of at most k worlds is solved by dunking its locations. The optimal
+cost on S is |S|, since each action newly completes at most one world. Thus h_k=k.
+But a single observation-based policy must use the same blind sequence in all
+worlds, and k dunks can cover at most k<n locations. The full belief is infeasible.
+The coverage recurrence here reduces to
+
+  C(r,t)=min(n,r,t).
+
+Therefore h_cov=infinity at r=k for any finite H. This construction works for
+every fixed k, not only the implemented pair/triple comparisons.
+
+Corollary 3 (unbounded accuracy gap on solvable tasks).
+With r>=n and H>=n, V(B,H)=h_cov(B,H)=n whereas h_k=k. Hence n/k is unbounded
+as n grows at fixed k. This is a separation family, NOT a universal dominance
+theorem: there are other tasks where exact small subsets detect identity-specific
+conflicts that the counting relaxation loses. No dominance over LUG, CEGAR,
+landmark, or all information-aware heuristics is established.
+
+4. Computation and search pseudocode
+
+COMPILE complete legal transitions into (q,a,g,{(o,n,q')}) channels.
+If unit-cost, domain-schema, or unique-successor requirements fail, disable C.
+
+COVER(q,t):
+  if t=0: return 0
+  if cached(q,t): return cache[q,t]
+  answer=0
+  for channel in actions_at(q):
+    value=g[channel]
+    for (o,n,q') in channel:
+      value += min(n,COVER(q',t-1))
+    answer=max(answer,min(N,value))
+  cache[q,t]=answer
+  return answer
+
+LOWER(B,H):
+  reject forbidden worlds; if all worlds goal: return 0
+  compute live IDs and shared projected state
+  c=first t<=H whose COVER reaches live count, or infinity; fallback 0 if disabled
+  if c=infinity: return infinity
+  return max(c,max_world EXACT_KNOWN_WORLD_DISTANCE(world,H))
+
+SEARCH(B,H):
+  check terminal/forbidden/horizon and memoized exact values
+  lower=LOWER(B,H); if infinity: return certified no-policy-within-H
+  for each action a, partition exact successors by actual observation
+  edge_lower[a]=1+max_o LOWER(child[a,o],H-1)
+  order actions by edge_lower, branches by descending child lower
+  recursively solve branches; maintain best verified policy upper bound
+  skip an edge only when its lower bound >= incumbent upper bound
+  cache completed exact results; return interval and policy if found
+
+Finite horizon decreases on every action, so exhaustive search terminates for
+finite graphs. Admissible edge bounds cannot prune a better policy. A timeout
+or expansion limit is UNKNOWN unless a completed certificate already proves
+infeasibility. An unfinished minimum over actions must never be used as a lower
+bound. Policy replay checks all initial worlds through the actual observation
+branches and checks the actual goal at every final stop.
+
+If the supplied concrete graph has T transitions and the projected channel
+graph has E action/observation entries and Q projected states, compilation takes
+O(T) expected hash-table work; DP takes O(H E) arithmetic operations and O(H Q)
+value storage. Counts use O(log N) bits. These costs EXCLUDE obtaining the full
+concrete graph. The current adapter enumerates it and includes that time in
+experiments. Q can contain a product of resource budgets: the method is not
+polynomial in succinct PDDL size or binary-encoded resource magnitudes.
+Removing this compilation bottleneck is still a paper-level engineering gap.
+
+5. Exact analytic reference for the source-derived benchmark family
+
+Original BTS: unlimited dunk/sense; BTCS additionally requires flush between
+dunks. Both originals have optimum n (sense at most n-1 packages, then dunk).
+H<n makes a strong policy impossible under worst-case unit action count.
+
+Declared extension: water r limits dunks; sensor budget s limits sensep actions.
+There is a policy iff r>=1 and r+s>=n, ignoring a too-small H. With a sufficient
+horizon BTS optimum is n. BTCS optimum is 2n-min(s,n-1)-1. Return infinity if
+this exceeds H.
+
+Proof sketch. Repeatedly choose the negative branch of each informative test
+while some not-yet-treated location remains. Each test excludes at most one
+location; each dunk newly covers at most one. On a worst-case path d+s'>=n,
+d>=1, d<=r, s'<=s. BTS therefore needs at least n actions. BTCS needs at least
+d-1 flushes, for at least 2d+s'-1>=2n-min(s,n-1)-1 actions. The matching policy
+tests min(s,n-1) locations first; a positive result needs one dunk, while the
+all-negative branch dunks the remaining locations, flushing between them in
+BTCS. This respects the water condition. These formulae are references for
+validation only; neither the search nor the coverage computation reads them.
+
+6. Implemented, conditional, and outstanding
+
+Implemented: coverage with hidden completion; real mixed-goal belief search;
+exact singleton/pair/triple controls; resource-forgetting ablation; strict
+source-domain adapter; independent PDDL transition conformance interpreter;
+finite hidden-goal/goal-undo tests; frozen 32-case scaling pilot, five variants.
+
+Only under stated assumptions: all proofs above; safe infeasibility is relative
+to the finite candidate family and supplied H. State/model correctness is not
+proved. No probabilistic reliability statement follows from these guarantees.
+
+Outstanding: representative domain diversity, published heuristic/planner
+reproductions with matching semantics, symbolic channel construction, bounded
+automatic projection selection, memory scaling, and evidence on realistic
+resource-consuming sensing. A game case needs faithful extracted models and
+end-to-end results; it remains secondary to the planning experiments.

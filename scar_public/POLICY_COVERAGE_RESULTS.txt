@@ -1,0 +1,55 @@
+资源预算下的条件策略覆盖：本轮结果
+2026-10-16
+
+已完成：隐藏终止的正确搜索语义、覆盖上界定义与归纳证明、任意固定k投影分离族、原始基准适配、冻结规模试验。
+原始基准为BTS和BTCS的8个源问题，各测试H=n和H=n-1，共16个配置。另有16个明确标注的资源扩展配置。
+五个比较版本使用同一个精确AND/OR搜索器。它们是机制比较和消融，不是五个公开规划器的复现。
+每配置每方法3秒工作预算、一次计时。计入完整模型展开、规划器构造、下界和搜索；统一排除解释器启动与策略回放。
+配置在计时前冻结。超时记UNKNOWN；不能记作无解。全部有限解逐候选世界回放，最优值与仅用于校验的解析公式比较。
+
+方法 | 全部完成/32 | 原始配置完成/16 | 资源扩展完成/16
+精确单模型 | 8 | 0 | 8
+精确二模型投影 | 8 | 0 | 8
+精确三模型投影 | 6 | 0 | 6
+覆盖上界：忽略资源 | 27 | 14 | 13
+覆盖上界：保留资源 | 30 | 14 | 16
+
+保留资源的覆盖上界在全部8个资源不足的扩展配置中，根节点即得到不可行性证书。
+不保留资源的版本在这些根节点中没有得到不可行性证书；仍有部分可以经完整搜索证明无解。
+原始无资源限制任务中，两种覆盖版本结果相同；不能将这部分收益归因于资源约束。
+BTCS，n=16、水=14、传感预算=2、H=31：真实最优成本29。保留资源的根下界29，完整求解约0.819秒、展开31节点；
+忽略资源的根下界16，3秒内未完成。保留资源版本的0.819秒中，模型展开0.267秒、规划器构造0.225秒、
+根下界0.123秒、搜索0.205秒。这里预处理成本已不可忽略。
+BTCS，n=16、水=3、传感预算=0：保留资源根节点证明无解，总计约0.035秒；忽略资源约0.788秒、展开273节点。
+两个n=70且H=70的原始任务，覆盖根下界已正确达到70，但完整搜索仍超过3秒。准确下界不等于快速完整求解。
+计时是一次工程测量；上述数值不表示统计显著性或稳定加速倍数。不同方法完成的集合不同，不比较其“仅成功任务耗时之和”。
+
+正确性检查：
+{
+  "source_transition_checks": 1240,
+  "analytic_reference_checks": 48,
+  "solver_value_checks": 300,
+  "policy_replays": 140,
+  "hidden_goal_subset_queries": 603,
+  "coverage_admissibility_checks": 1206,
+  "raw_capacity_final_success_checks": 138,
+  "hidden_goal_machines": 12,
+  "all_checks_passed": true,
+  "api_calls": 0,
+  "random_seeds_used": false,
+  "scope": "Finite deterministic generated systems and 48 small resource configurations; exhaustive reachable contexts/subsets in the 12 hidden-goal machines, not all machines."
+}
+全目录pytest为96项通过、1项因本地缺少cloudpickle而无法执行游戏环境集成测试。新规划代码的5项测试全部通过。
+独立枚举与规划器共享有限环境API；另用源PDDL解释器核对原始转移。这些检查不证明真实游戏模型正确。
+
+仍缺：异质规划域、公开规划器/启发式比较、避免全图展开的保守通道构造、内存规模实验、投影与重复计数失效边界。
+当前结果足以支持继续研究这个候选贡献，不能支持“已证实独有”“已优于SOTA”或“已达到ICAPS录用门槛”。
+核心相关工作和具体差异见POLICY_COVERAGE_RESEARCH.txt；定义、证明和伪代码见POLICY_COVERAGE_THEORY.txt。
+
+复现（在仓库根目录）：
+python -m scar_public.study_policy_coverage --freeze
+python -m scar_public.study_policy_coverage
+python -m scar_public.validate_policy_coverage
+python -m pytest scar_public/test_policy_coverage.py -q
+默认从作者URL取得校验过的源归档，或使用--archive指定已有归档。重新计时请用--output指定新目录，避免恢复已有结果。
+API调用0，游戏动作0，冻结LLM游戏基线重跑0。
