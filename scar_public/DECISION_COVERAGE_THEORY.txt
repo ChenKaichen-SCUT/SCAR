@@ -1,0 +1,143 @@
+Decision-relevant coverage evaluation and safe implementation changes
+2026-10-16. Deterministic Boolean contingent planning, unit action cost, fixed
+nonnegative resource consumption; no numeric resource goal or hidden observations.
+These are refinements to the existing coverage recurrence, not a new task model.
+
+1. Static joins and applicability
+Before enumerating action parameter tuples, collect predicates changed by ANY
+action effect, including conditional effects. All other predicates are static.
+For a static predicate, initial positive and uncertain atoms form an optimistic
+set of possible true tuples. An atom outside this set is false by closed world.
+Join only positive static literals that are required conjuncts of the action
+precondition. Equality and fully grounded static formulae can reject partial
+bindings when provably false. Uncertainty is retained, never treated as false.
+
+Soundness: a binding rejected by a required static literal cannot be applicable
+in any initial state or reachable successor, since its truth never changes.
+The generator emits every potentially applicable binding, or reports a work/
+grounding limit; it never returns a truncated action set. The old frontend is
+retained, and the compiled frontend uses the same exact transition interpreter.
+Removed impossible actions can expose additional invariant ground atoms, making
+the compiled abstraction tighter while preserving the concrete planning task.
+
+The state action index selects one mandatory signed literal per action. An
+action can enter the candidate set only when its selected literal is true;
+the full Boolean precondition and resources are then checked. Non-conjunctive
+preconditions without mandatory literals stay in the unanchored candidate set.
+Thus the index cannot remove a legal action. Cache size is bounded at 32768
+state bit patterns; a full cache disables insertion, not correctness checks.
+
+Pure observations with the same outcome in every current world are dominated:
+they change no Boolean state, gain no information, cost one step, and cannot
+increase any resource. The remaining policy can execute directly instead.
+In a fully known single world, all effect-free actions are dominated. These
+arguments require the stated fixed nonnegative resource model and Boolean goal.
+They do not apply to numeric resource goals, replenishment or time-dependent tasks.
+
+2. Query the actual decision threshold
+Let q contain resources and retained dynamic predicates, M the live candidate
+identity mask, and d the remaining search budget. Let C0(q,d) be the existing
+scalar capacity upper bound. Channels for action a contain immediate goal names
+G_a and eligible successor sets (E_j,q_j). The lineage recurrence is
+
+ C1(q,M,d) = min(|M|, C0(q,d),
+                 max_a [ |M intersect G_a| +
+                   sum_j C1(q_j,(M minus G_a) intersect E_j,d-1) ]).
+
+C0(q,0)=C1(q,M,0)=0 for live candidates. Channels remain optimistic; artificial
+distinctions between retained projected successors exist in the bound only.
+The actual search keeps exact beliefs and all concrete observations.
+
+Instead of computing an entire lower bound by scanning 1,...,H, ask only whether
+C1(q,M,d)<|M| at the current AND/OR decision. If yes, set the record lower bound
+to d+1. This proves failure at d, not global infeasibility. If not, continue.
+The initial H-wide estimate does not trigger this optional work. Only a live
+decision which survived cheap bounds can request it. Interrupted values are
+discarded; completed DP/cache entries remain reusable.
+
+3. Scalar witness and a certified skip
+When computing C0, retain a maximizing action a0(q,d). Define W using that same
+chosen action at each child, but propagate candidate names and remove immediate
+goal names exactly as C1 does:
+
+ W(q,M,d) = min(|M|, C0(q,d), |M intersect G_a0| +
+                 sum_j W(q_j,(M minus G_a0) intersect E_j,d-1)).
+
+If there is no productive witness, W=0. There is no maximization over other
+actions in W. This is a value of one optimistic abstract strategy skeleton,
+not a real executable policy and not the exact count of distinct solved models.
+In particular, the lineage recurrence still relaxes sibling overlap.
+
+Lemma: 0 <= W(q,M,d) <= C1(q,M,d) <= min(|M|,C0(q,d)).
+Proof: the base case is immediate. By induction each child W is no larger
+than the corresponding C1. Evaluating one fixed action cannot exceed the
+maximum over actions; clipping by the same ceiling is monotone. QED.
+
+Corollary: if W=|M|, the lineage recurrence cannot prune this search decision.
+Skipping it is therefore justified for this threshold. This does not show that
+the real task is feasible, nor that other abstractions cannot prune it.
+
+Define D=|M|-W after C0>=|M|. D is the identity-aware witness coverage deficit.
+It reflects repeated/irrelevant candidate counting and choices of a suboptimal
+witness; it is NOT an exact redundancy count and D>0 does not prove C1<|M|.
+
+For resource dimension i, let cmax_i=max_a consumption(a,i). Define
+ P=max_{i:cmax_i>0} (1-min(1,r_i/(d*cmax_i))), with P=0 when no such dimension.
+P>0 means the resource could constrain some d-step action sequence; it does not
+prove that a best policy is resource constrained. A separate time-pressure flag
+is C0(q,d-1)<|M|. The implemented schedule is:
+
+ if C0(q,d)<|M|: prune using the scalar bound;
+ elif W(q,M,d)==|M|: skip with the threshold-effect certificate;
+ elif P>0 or C0(q,d-1)<|M|: evaluate C1 and prune only if C1<|M|;
+ else: skip by an engineering schedule, with no infeasibility claim.
+
+This is a bounded allocation rule, not a learned value-of-computation estimator
+or an optimal scheduling theorem. It may skip useful future refinements. The
+witness certificate applies to this C1 recurrence, not to the matching variant
+or all possible information bounds. Small-case tests check the inequality and
+exact search against an independent oracle, including tight and loose resources.
+
+4. A pre-channel saturation certificate
+The first ablation showed that avoiding C1 evaluation alone saves little when
+channel construction and scalar capacity dominate. The follow-up therefore tests
+a sufficient condition BEFORE constructing SAT channel tables.
+
+Proposition: for d>=1, if there exists one resource-affordable action a such that
+for every live static-model group i there exists a Boolean state s_i satisfying
+  static_i(s_i), projection_q(s_i), not goal(s_i), pre_a(s_i), goal(T_a(s_i)),
+then C1(q,M,d)=|M|.
+Proof: each i is an immediate-goal witness for action a, so M is a subset of G_a.
+That action contributes |M|, and C1 is capped at |M|. QED.
+
+Implementation: for conjunctive goals and preconditions, select a goal-achieving
+effect, require its guard and preconditions, make that goal literal false before
+the action and other goal literals true, and respect every fixed static/retained
+literal. Assign the remaining free dynamic variables false. Execute the REAL
+transition interpreter and check the full precondition, all conditional effects
+and goal. A certificate is accepted only if a witness is verified for every
+surviving static group under the SAME action. Negative goals and conflicting
+effects are covered by tests. Failed construction means unknown, not absence of
+a witness; complex formulae simply fall back to the previous gate.
+
+Crucially, s_i need NOT be the actual current world or reachable. These witnesses
+prove saturation of an optimistic bound, not feasibility of the original task.
+Their existence explains why retaining model labels alone can still be weak:
+forgotten task-progress predicates permit artificial one-step completion states.
+The direct test has limits of 2048 model trials/query and 50000/run; exceeding
+them omits the certificate. Positive certificates cache by q and candidate mask.
+
+5. Limits, attribution and evidence
+Optional work has a nominal 3-second run allowance, <=0.25s/query, at least
+0.025s remaining to start, and <=64 attempts/run. A single SAT operation can
+overrun a checkpoint. All variants have a separate 15-second/2-GiB process limit.
+Singleton BFS has state, transition and time allowances; hmax has a separate
+effect-work budget. Its last charged check may exceed 2000000 by one.
+
+Static joins and action indexing are established implementation techniques,
+not claimed theoretical novelty. The new proofs concern safe decision-specific
+skipping and the implemented optimistic recurrence. No generic polynomial bound
+on C1, expected search-speed guarantee, or dominance over existing higher-order
+planning heuristics is claimed. All evaluated public cases were already observed
+in the prior experiment; the direct certificate was designed after inspecting
+the four-mode ablation. These are development results, not a fresh holdout.
