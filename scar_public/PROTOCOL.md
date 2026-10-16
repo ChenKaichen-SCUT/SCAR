@@ -291,3 +291,16 @@ retesting. Add one 30-action diagnostic from v3/metropolis172, immediately befor
 freshly observed nonempty write, and repeat cp178 to test reuse/repair of existing evidence.
 These are selected development states, not independent benchmark trials. Retain all eight
 diagnostics and their costs; do not rerun unaffected cp62/cp206 or the mark regression state.
+
+Scheduled cp172 executed a real, discriminating append/replace experiment and observed append;
+cp178 reused prior evidence. Neither gained main score in 30 steps. Their attempted fresh-document
+production exposed a numeric-model contradiction: sufficient PUBLIC recipe inputs still yielded
+an insufficient-ingredients error. Offline source inspection found that writable-output crafting
+counts only suffixed instance IDs, so ordinary material IDs are omitted. Do not change the engine
+or give that hidden rule/object-specific exception to the policy. Instead use a generic public
+counterexample update: exclude a failed projected ingredient arrangement, and after two distinct
+counterexamples suspend automatic use of the unchanged recipe model pending new evidence.
+Actor-proposed new tests remain allowed. Validate this with public-text regression tests, without
+another paid checkpoint rerun. The mechanism gates now include local task gains, real semantic
+intervention/observation, and independent multi-location dependency execution. Run the final
+candidate once per shared initial world for 300 actions; no further prompt tuning in that run.

@@ -130,3 +130,20 @@ def test_controller_selects_semantic_probe_even_when_actor_would_wait():
     assert action=='inspect note'
     assert a.notebook.pending_write['payload']=='GATE-7'
     assert a.notebook.active_write_attempts
+
+
+def test_contradicted_public_recipe_model_does_not_drive_automatic_repetition():
+    m=ExecutionModel()
+    extra='It can be used to craft: sheet (0.5 pulp)\nCannot craft a single sheet. Do not have sufficient amount of necessary ingredients.'
+    m.observe(obs(holding='1 pulp',ground='2 pulp',extra='It can be used to craft: sheet (0.5 pulp)'))
+    m.capacity_lower=m.capacity_upper=2
+    m.observe(obs(holding='1 pulp',ground='2 pulp',extra=extra),'craft 1 sheet')
+    assert len(m.recipe_counterexamples)==1
+    # A changed quantity is a different conditional test; a second counterexample
+    # prevents blind recipe-model search but does not forbid all actor actions.
+    m.observe(obs(holding='2 pulp',ground='1 pulp'),'pick up pulp')
+    m.observe(obs(holding='2 pulp',ground='1 pulp',extra=extra),'craft 1 sheet')
+    result=m.acquisition('sheet')
+    assert result['status']=='unknown'
+    assert result['automatic_recipe_models_suspended_pending_new_evidence']==['sheet']
+    assert m.check_action('craft 1 sheet')['status']=='unknown'

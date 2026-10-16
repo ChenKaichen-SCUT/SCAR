@@ -51,12 +51,26 @@ class ExecutionModel(PublicModel):
         self.blocked_routes = []
         self.new_outputs = []
         self.writing_tools = []
+        self.recipe_counterexamples = []
 
     def observe(self, text, last_action=None):
         before = copy.deepcopy(self.current)
+        before_bags=copy.deepcopy(self.containers)
         before_docs = copy.deepcopy(self.documents)
         before_index = len(self.history)-1
         super().observe(text, last_action)
+        if last_action and last_action.startswith('craft ') and 'Do not have sufficient amount of necessary ingredients' in text:
+            target=last_action.split()[-1];recipe=self.recipes.get(target)
+            held=before.get('holding') or {};equipped=before.get('equipped') or {}
+            if recipe and before.get('holding') is not None:
+                counts={n:held.get(n,0) for n in recipe['needs']}
+                for name,bag in before_bags.items():
+                    if (held.get(name) or equipped.get(name)) and not bag.get('uncertain_after_craft'):
+                        for n in counts:counts[n]+=bag['items'].get(n,0)
+                if all(counts[n]>=q for n,q in recipe['needs'].items()):
+                    self.recipe_counterexamples.append({'target':target,'location':before.get('location'),
+                        'counts':counts,'recipe':copy.deepcopy(recipe['needs']),'step':len(self.history)-1,
+                        'meaning':'The observed-input model predicted enough ingredients, but execution contradicted it; an omitted condition or wrong public model remains possible.'})
         for target, ingredients in re.findall(r"([\w-]+) \(made of ([^()]+)\)", text):
             self.qualitative_recipes[target] = ingredients.split(", ")
         if last_action and last_action.startswith("craft ") and "I successfully crafted " in text:
@@ -200,6 +214,12 @@ class ExecutionModel(PublicModel):
             closure |= more
         if len(closure)>20: return {'status':'unknown','reason':'dependency search bound'}
         recipes = {n:r['needs'] for n,r in self.recipes.items() if n in closure}
+        # Repeated counterexamples suspend automatic use of that recipe model.
+        # The actor may still propose a new, justified test. This is not a global
+        # action ban or a conclusion that the task is impossible.
+        unresolved={n for n,r in recipes.items() if len({json.dumps((c['location'],c['counts']),sort_keys=True)
+            for c in self.recipe_counterexamples if c['target']==n and c['recipe']==r})>=2}
+        recipes={n:r for n,r in recipes.items() if n not in unresolved}
         graph = self.routes()
         start_loc = current.get('location')
         locations = sorted(self.locations)
@@ -275,6 +295,9 @@ class ExecutionModel(PublicModel):
                 if station and not self.locations[locations[loc]]['objects'].get(station):continue
                 if h[output]+b[output]+gs[loc][output]>=required_limit[names[output]]:continue
                 if not all(h[j]+(b[j] if attached else 0)>=amount for j,amount in needs.items()):continue
+                projected={names[j]:(h[j]+(b[j] if attached else 0))/scale for j in needs}
+                if any(c['target']==names[output] and c['location']==locations[loc] and c['counts']==projected and
+                       c['recipe']==self.recipes[names[output]]['needs'] for c in self.recipe_counterexamples):continue
                 hh=list(h);bb=list(b);gg=[list(x) for x in gs]
                 for j,amount in needs.items():
                     used=min(hh[j],amount);hh[j]-=used;bb[j]-=amount-used
@@ -292,4 +315,6 @@ class ExecutionModel(PublicModel):
         if local.get('plan') and local.get('status')=='capacity_discovery':
             return {**local,'target':target,'search_nodes':len(best)}
         return {'status':'unknown','reason':'no plan within observed dependency/location model and bounds',
-                'search_nodes':len(best),'dependency':self.dependency_view(target)}
+                'search_nodes':len(best),'dependency':self.dependency_view(target),
+                'automatic_recipe_models_suspended_pending_new_evidence':sorted(unresolved),
+                'counterexamples':self.recipe_counterexamples[-4:]}

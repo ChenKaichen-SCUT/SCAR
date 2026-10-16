@@ -83,6 +83,7 @@ class ObligationMemory(ViabilityMemory):
             'resource_target':self.resource_target,'previous_resource_plan':self.last_plan,
             'write_semantics_observed':self.model.append_documents,
             'operation_experiments':self.model.semantic_trials[-3:],
+            'recipe_model_counterexamples':self.model.recipe_counterexamples[-4:],
             'binding_experiments':self.binding_trials[-3:]},ensure_ascii=False)
 
     def state(self):
