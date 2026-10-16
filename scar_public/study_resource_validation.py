@@ -14,6 +14,14 @@ MODES = ['leaf','resource_tree','incremental_refinement','amortized_count','amor
 
 
 def planner(task,mode):
+    if mode in ('focus_root','focus_priority','focus_multistep'):
+        from scar_public.focused_scheduler import FocusedPlanner
+        return FocusedPlanner(task,{'focus_root':'root_only','focus_priority':'focused',
+            'focus_multistep':'focused_multistep'}[mode])
+    if mode in ('frontier_fifo','frontier_priority','frontier_multistep'):
+        from scar_public.frontier_scheduler import FrontierPlanner
+        return FrontierPlanner(task,{'frontier_fifo':'fifo','frontier_priority':'priority',
+            'frontier_multistep':'priority_multistep'}[mode])
     if mode in ('final_work','persistent_multistep'):
         from scar_public.persistent_multistep_refinement import FinalWorkPlanner
         return FinalWorkPlanner(task,multistep=mode=='persistent_multistep')
