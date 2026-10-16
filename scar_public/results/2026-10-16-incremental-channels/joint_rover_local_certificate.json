@@ -1,0 +1,3027 @@
+{
+  "config": {
+    "id": "rovers_pfile4_a16s1",
+    "family": "rovers",
+    "instance": "pfile4",
+    "projection_predicates": [
+      "at",
+      "calibrated",
+      "communicated_soil_data",
+      "communicated_rock_data",
+      "communicated_image_data"
+    ],
+    "source_kind": "benchmark",
+    "domain": "rovers/domain.pddl",
+    "problem": "rovers/pfile4",
+    "overlay": "a16s1",
+    "actuation": 16,
+    "sensors": 1
+  },
+  "origin": {
+    "url": "https://fai.cs.uni-saarland.de/hoffmann/ff/contff-tests.tgz",
+    "archive_sha256": "e30a16ab8dbfb00e65e6d3dfca31820686d0a8289a718238e25417236ee31e49",
+    "members": [
+      "contff-tests/rovers/domain.pddl",
+      "contff-tests/rovers/pfile4"
+    ],
+    "content_sha256": [
+      "97c147a6b7fdf95ec7d5d233a3d75bd05759e76b06980bab35e2f94a87d3bc4f",
+      "bae1ded4231181f80e5405cc1293d9269854a67c4a4aee65bab47bec0d139e2f"
+    ]
+  },
+  "depth": 8,
+  "added_atoms": [
+    [
+      "have_image",
+      "rover0",
+      "objective1",
+      "high_res"
+    ]
+  ],
+  "scalar": 4,
+  "identity": 3,
+  "scalar_witness_under_identities": 1,
+  "scalar_witness_root_action": "sense_vis rover0 objective1 waypoint3",
+  "root_action_audit": [
+    {
+      "action": "sense_vis rover0 objective1 waypoint3",
+      "immediate": 0,
+      "children": [
+        {
+          "eligible": 7,
+          "surviving": 7,
+          "capacity": 2,
+          "successor": [
+            [
+              8,
+              0
+            ],
+            16384
+          ]
+        },
+        {
+          "eligible": 8,
+          "surviving": 8,
+          "capacity": 1,
+          "successor": [
+            [
+              8,
+              0
+            ],
+            16384
+          ]
+        }
+      ],
+      "contribution": 3
+    },
+    {
+      "action": "sense_rock rover0 objective1 waypoint3",
+      "immediate": 0,
+      "children": [
+        {
+          "eligible": 15,
+          "surviving": 15,
+          "capacity": 2,
+          "successor": [
+            [
+              8,
+              0
+            ],
+            16384
+          ]
+        }
+      ],
+      "contribution": 2
+    },
+    {
+      "action": "sense_soil rover0 objective1 waypoint3",
+      "immediate": 0,
+      "children": [
+        {
+          "eligible": 15,
+          "surviving": 15,
+          "capacity": 2,
+          "successor": [
+            [
+              8,
+              0
+            ],
+            16384
+          ]
+        }
+      ],
+      "contribution": 2
+    },
+    {
+      "action": "navigate rover0 waypoint3 waypoint0 camera0 objective1",
+      "immediate": 0,
+      "children": [
+        {
+          "eligible": 15,
+          "surviving": 15,
+          "capacity": 2,
+          "successor": [
+            [
+              7,
+              1
+            ],
+            4294967296
+          ]
+        }
+      ],
+      "contribution": 2
+    },
+    {
+      "action": "navigate rover0 waypoint3 waypoint1 camera0 objective1",
+      "immediate": 0,
+      "children": [
+        {
+          "eligible": 15,
+          "surviving": 15,
+          "capacity": 2,
+          "successor": [
+            [
+              7,
+              1
+            ],
+            8589934592
+          ]
+        }
+      ],
+      "contribution": 2
+    },
+    {
+      "action": "calibrate rover0 camera0 objective1 waypoint3",
+      "immediate": 0,
+      "children": [
+        {
+          "eligible": 15,
+          "surviving": 15,
+          "capacity": 3,
+          "successor": [
+            [
+              7,
+              1
+            ],
+            8796093038592
+          ]
+        }
+      ],
+      "contribution": 3
+    },
+    {
+      "action": "communicate_image_data rover0 general objective1 colour waypoint3 waypoint0",
+      "immediate": 0,
+      "children": [
+        {
+          "eligible": 15,
+          "surviving": 15,
+          "capacity": 2,
+          "successor": [
+            [
+              7,
+              1
+            ],
+            562949953437696
+          ]
+        }
+      ],
+      "contribution": 2
+    }
+  ],
+  "deployed_selector_runs": [
+    {
+      "id": "rovers_pfile2_original",
+      "value": 7,
+      "seconds": 0.025163899990729988,
+      "statistics": {
+        "single_nodes": 164,
+        "pair_nodes": 0,
+        "transition_lookups": 526,
+        "calls": 11,
+        "budget_exhausted": false,
+        "search_expanded": 3,
+        "search_pruned": 0,
+        "cached_singletons": 0,
+        "cached_pairs": 0,
+        "coverage": null,
+        "lp_calls": 0,
+        "lp_certificates": {
+          "dual": 0,
+          "farkas": 0,
+          "zero_fallback": 0
+        },
+        "k_nodes": 0,
+        "k_subset_queries": 0,
+        "threshold": {
+          "decisions": 13,
+          "decision_hits": 3,
+          "bound_prunes": 7,
+          "failed_decisions": 1,
+          "successful_decisions": 2,
+          "edges_built": 10,
+          "singleton_seconds": 0.0024085999466478825,
+          "coverage_seconds": 0.0,
+          "edge_seconds": 7.810001261532307e-05,
+          "thresholds": [
+            5,
+            6,
+            7
+          ],
+          "first_policy_seconds": 0.024645600002259016,
+          "transition_cache_hits": 233,
+          "belief_records": 12,
+          "world_records": 33,
+          "cached_edges": 3,
+          "cached_transitions": 293
+        },
+        "cost_control": {
+          "hmax_calls": 8,
+          "hmax_work": 1056,
+          "hmax_fallbacks": 0,
+          "hmax_seconds": 0.0009793000062927604,
+          "bfs_fallbacks": 0,
+          "coverage_seconds": 0.0,
+          "coverage_attempts": 0,
+          "coverage_skipped": 0,
+          "coverage_interrupted": 0,
+          "coverage_helpful": 0,
+          "coverage_pruning": 0,
+          "bfs_nodes": 164
+        },
+        "information_control": {
+          "work": 2141,
+          "conflict_pairs": 0,
+          "unknown_pairs": 0,
+          "compatible_pairs": 1,
+          "conflict_seconds": 0.008444800041615963,
+          "pair_seconds": 0.0,
+          "pair_calls": 0,
+          "pair_fallbacks": 0,
+          "leaf_calls": 4,
+          "leaf_prunes": 0,
+          "largest_clique": 1
+        },
+        "indexed_engine": {
+          "edge_action_candidates": 18,
+          "uninformative_senses": 7,
+          "tail_stops": 0,
+          "tail_steps": 504,
+          "tail_seconds": 0.0024085999466478825,
+          "applicability": {
+            "candidate_checks": 3631,
+            "queries": 396,
+            "cache_hits": 229,
+            "pure_senses_skipped": 0
+          }
+        },
+        "target_capacity": {
+          "skipped_budget": 0,
+          "interrupted": 0,
+          "prunes": 3,
+          "seconds": 0.01250009995419532,
+          "attempts": 6,
+          "evidence": [
+            {
+              "candidates": 2,
+              "budget": 5,
+              "scalar": 2,
+              "identity_capacity": 1,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.008539500006008893
+            },
+            {
+              "candidates": 2,
+              "budget": 6,
+              "scalar": 2,
+              "identity_capacity": 1,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.002025499998126179
+            },
+            {
+              "candidates": 2,
+              "budget": 7,
+              "scalar": 2,
+              "identity_capacity": 2,
+              "reason": "refined_relation_pass",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.5699958465993404e-05
+            },
+            {
+              "candidates": 2,
+              "budget": 6,
+              "scalar": 2,
+              "identity_capacity": 1,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.0005830000154674053
+            },
+            {
+              "candidates": 2,
+              "budget": 6,
+              "scalar": 2,
+              "witness": 2,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.0010941000073216856
+            },
+            {
+              "candidates": 2,
+              "budget": 5,
+              "scalar": 2,
+              "witness": 2,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.00019859999883919954
+            }
+          ],
+          "coverage": {
+            "sat_calls": 0,
+            "sat_patterns": 0,
+            "abstract_outcomes": 0,
+            "channel_queries": 4,
+            "lower_calls": 0,
+            "dp_nodes": 13,
+            "inapplicable_queries": 0,
+            "disabled_reason": null,
+            "concrete_states_enumerated": 0,
+            "concrete_transitions_enumerated": 0,
+            "abstract_states": 4,
+            "cached_entries": 13,
+            "invariants": {
+              "candidate_invariants": 0,
+              "verified": false,
+              "reason": "control: no invariants",
+              "seconds": 0
+            },
+            "relation": {
+              "nodes": 0,
+              "fallbacks": 0,
+              "matching_calls": 0,
+              "matching_seconds": 0,
+              "sibling_deduplications": 0,
+              "capacity_reductions": 0,
+              "lower_seconds": 0,
+              "mask_cardinalities": {},
+              "mode": "lineage",
+              "node_limit": 100000,
+              "cache_entries": 0
+            },
+            "demand": {
+              "pre_atom_reads": 0,
+              "successor_atoms": 0,
+              "constant_patterns": 0
+            },
+            "direct": {
+              "queries": 2,
+              "certificates": 0,
+              "model_tests": 0,
+              "cache_hits": 0,
+              "work_skips": 0
+            },
+            "refinement": {
+              "queries": 6,
+              "certificates": 2,
+              "witness_tests": 4,
+              "selection_cache_hits": 2,
+              "selected": 4,
+              "added_atoms": 4,
+              "cap_exceeded": 0,
+              "no_known_separator": 0,
+              "round_limit": 0,
+              "constructed_certificate_removed": 2,
+              "refined_queries": 4,
+              "refined_scalar_prunes": 0,
+              "refined_relation_prunes": 3,
+              "refined_passes": 1,
+              "selection_seconds": 0.00010250002378597856,
+              "inference_seconds": 0.010932800127193332,
+              "witness_seconds": 0.0,
+              "refinement_cache_limit": 0,
+              "projections": 1,
+              "children": [
+                {
+                  "sat_calls": 0,
+                  "sat_patterns": 0,
+                  "abstract_outcomes": 0,
+                  "channel_queries": 70,
+                  "lower_calls": 0,
+                  "dp_nodes": 186,
+                  "inapplicable_queries": 0,
+                  "disabled_reason": null,
+                  "concrete_states_enumerated": 0,
+                  "concrete_transitions_enumerated": 0,
+                  "abstract_states": 70,
+                  "cached_entries": 186,
+                  "invariants": {
+                    "candidate_invariants": 0,
+                    "verified": false,
+                    "reason": "control: no invariants",
+                    "seconds": 0
+                  },
+                  "relation": {
+                    "nodes": 99,
+                    "fallbacks": 0,
+                    "matching_calls": 0,
+                    "matching_seconds": 0,
+                    "sibling_deduplications": 0,
+                    "capacity_reductions": 38,
+                    "lower_seconds": 0,
+                    "mask_cardinalities": {
+                      "2": 46,
+                      "1": 53
+                    },
+                    "mode": "lineage",
+                    "node_limit": 100000,
+                    "cache_entries": 99
+                  },
+                  "demand": {
+                    "pre_atom_reads": 0,
+                    "successor_atoms": 0,
+                    "constant_patterns": 0
+                  },
+                  "incremental_pool": {
+                    "pattern_hits": 135,
+                    "pattern_misses": 167,
+                    "channel_hits": 2513,
+                    "channel_misses": 151,
+                    "sat_calls": 20,
+                    "core_outcomes": 51,
+                    "copied_outputs": 34208,
+                    "formula_seconds": 0.0008254998829215765,
+                    "sat_seconds": 0.0005368999554775655,
+                    "patterns": 167,
+                    "channel_cores": 151
+                  }
+                }
+              ]
+            },
+            "incremental_pool": {
+              "pattern_hits": 135,
+              "pattern_misses": 167,
+              "channel_hits": 2513,
+              "channel_misses": 151,
+              "sat_calls": 20,
+              "core_outcomes": 51,
+              "copied_outputs": 34208,
+              "formula_seconds": 0.0008254998829215765,
+              "sat_seconds": 0.0005368999554775655,
+              "patterns": 167,
+              "channel_cores": 151
+            }
+          },
+          "decisions": {
+            "scalar_queries": 2,
+            "witness_nodes": 20,
+            "witness_saturated": 2,
+            "scalar_prunes": 0,
+            "relation_queries": 0,
+            "relation_prunes": 0,
+            "pressure_skips": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "rovers_pfile4_original",
+      "value": 10,
+      "seconds": 0.07716609997441992,
+      "statistics": {
+        "single_nodes": 512,
+        "pair_nodes": 0,
+        "transition_lookups": 2050,
+        "calls": 64,
+        "budget_exhausted": false,
+        "search_expanded": 23,
+        "search_pruned": 0,
+        "cached_singletons": 0,
+        "cached_pairs": 0,
+        "coverage": null,
+        "lp_calls": 0,
+        "lp_certificates": {
+          "dual": 0,
+          "farkas": 0,
+          "zero_fallback": 0
+        },
+        "k_nodes": 0,
+        "k_subset_queries": 0,
+        "threshold": {
+          "decisions": 86,
+          "decision_hits": 4,
+          "bound_prunes": 59,
+          "failed_decisions": 17,
+          "successful_decisions": 6,
+          "edges_built": 81,
+          "singleton_seconds": 0.006494599801953882,
+          "coverage_seconds": 0.0,
+          "edge_seconds": 0.0006365998997353017,
+          "thresholds": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "first_policy_seconds": 0.0763806999893859,
+          "transition_cache_hits": 1192,
+          "belief_records": 74,
+          "world_records": 126,
+          "cached_edges": 22,
+          "cached_transitions": 858
+        },
+        "cost_control": {
+          "hmax_calls": 48,
+          "hmax_work": 5720,
+          "hmax_fallbacks": 0,
+          "hmax_seconds": 0.004288500233087689,
+          "bfs_fallbacks": 0,
+          "coverage_seconds": 0.0,
+          "coverage_attempts": 0,
+          "coverage_skipped": 0,
+          "coverage_interrupted": 0,
+          "coverage_helpful": 0,
+          "coverage_pruning": 0,
+          "bfs_nodes": 512
+        },
+        "information_control": {
+          "work": 5540,
+          "conflict_pairs": 0,
+          "unknown_pairs": 0,
+          "compatible_pairs": 6,
+          "conflict_seconds": 0.0248954999842681,
+          "pair_seconds": 0.0,
+          "pair_calls": 0,
+          "pair_fallbacks": 0,
+          "leaf_calls": 34,
+          "leaf_prunes": 0,
+          "largest_clique": 1
+        },
+        "indexed_engine": {
+          "edge_action_candidates": 146,
+          "uninformative_senses": 49,
+          "tail_stops": 0,
+          "tail_steps": 1716,
+          "tail_seconds": 0.006494599801953882,
+          "applicability": {
+            "candidate_checks": 9691,
+            "queries": 1760,
+            "cache_hits": 1317,
+            "pure_senses_skipped": 0
+          }
+        },
+        "target_capacity": {
+          "skipped_budget": 0,
+          "interrupted": 0,
+          "prunes": 16,
+          "seconds": 0.039021900098305196,
+          "attempts": 39,
+          "evidence": [
+            {
+              "candidates": 4,
+              "budget": 5,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.008528299978934228
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "identity_capacity": 2,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.003081300004851073
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.004107300017494708
+            },
+            {
+              "candidates": 4,
+              "budget": 8,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.005952800041995943
+            },
+            {
+              "candidates": 4,
+              "budget": 9,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.007529900001827627
+            },
+            {
+              "candidates": 4,
+              "budget": 10,
+              "scalar": 4,
+              "identity_capacity": 4,
+              "reason": "refined_relation_pass",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 6.240000948309898e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 9,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.0022551000001840293
+            },
+            {
+              "candidates": 4,
+              "budget": 9,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.0012162000057287514
+            },
+            {
+              "candidates": 4,
+              "budget": 8,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.00021989998640492558
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.0025221999967470765
+            },
+            {
+              "candidates": 3,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 3,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.6899971999228e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 6,
+              "scalar": 4,
+              "identity_capacity": 2,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.000651800015475601
+            },
+            {
+              "candidates": 3,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 3,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.1899992134422064e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 5,
+              "scalar": 3,
+              "identity_capacity": 2,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 3.860000288113952e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.670002868399024e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 3.520003519952297e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 5,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.8900023102760315e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "identity_capacity": 2,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.7900015488266945e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.4499953724443913e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.2899999748915434e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 5.070003680884838e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.269997589290142e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 6,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.770001396536827e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.250003257766366e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.090002039447427e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.379998426884413e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.320003790780902e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 3.4599972423166037e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 3.920000744983554e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 3.3299962524324656e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 8,
+              "scalar": 4,
+              "witness": 3,
+              "identity_deficit": 0,
+              "resource_pressure": 0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.039998071268201e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 7,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_pass",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 2.1499989088624716e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 6,
+              "scalar": 4,
+              "identity_capacity": 2,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.0004428999964147806
+            },
+            {
+              "candidates": 3,
+              "budget": 6,
+              "scalar": 4,
+              "identity_capacity": 2,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint1 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.0012935000122524798
+            },
+            {
+              "candidates": 2,
+              "budget": 6,
+              "scalar": 4,
+              "identity_capacity": 2,
+              "reason": "refined_relation_pass",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.669994814321399e-05
+            },
+            {
+              "candidates": 2,
+              "budget": 5,
+              "scalar": 4,
+              "identity_capacity": 1,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 3.660004585981369e-05
+            },
+            {
+              "candidates": 2,
+              "budget": 5,
+              "scalar": 3,
+              "identity_capacity": 2,
+              "reason": "refined_relation_pass",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint1 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 3.809999907389283e-05
+            },
+            {
+              "candidates": 2,
+              "budget": 4,
+              "scalar": 3,
+              "identity_capacity": 1,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint1 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.00014900002861395478
+            },
+            {
+              "candidates": 2,
+              "budget": 4,
+              "scalar": 2,
+              "identity_capacity": 1,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint2 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.00011630001245066524
+            }
+          ],
+          "coverage": {
+            "sat_calls": 0,
+            "sat_patterns": 0,
+            "abstract_outcomes": 0,
+            "channel_queries": 4,
+            "lower_calls": 0,
+            "dp_nodes": 19,
+            "inapplicable_queries": 0,
+            "disabled_reason": null,
+            "concrete_states_enumerated": 0,
+            "concrete_transitions_enumerated": 0,
+            "abstract_states": 4,
+            "cached_entries": 19,
+            "invariants": {
+              "candidate_invariants": 0,
+              "verified": false,
+              "reason": "control: no invariants",
+              "seconds": 0
+            },
+            "relation": {
+              "nodes": 0,
+              "fallbacks": 0,
+              "matching_calls": 0,
+              "matching_seconds": 0,
+              "sibling_deduplications": 0,
+              "capacity_reductions": 0,
+              "lower_seconds": 0,
+              "mask_cardinalities": {},
+              "mode": "lineage",
+              "node_limit": 100000,
+              "cache_entries": 0
+            },
+            "demand": {
+              "pre_atom_reads": 0,
+              "successor_atoms": 0,
+              "constant_patterns": 0
+            },
+            "direct": {
+              "queries": 19,
+              "certificates": 10,
+              "model_tests": 37,
+              "cache_hits": 0,
+              "work_skips": 0
+            },
+            "refinement": {
+              "queries": 39,
+              "certificates": 24,
+              "witness_tests": 79,
+              "selection_cache_hits": 7,
+              "selected": 20,
+              "added_atoms": 20,
+              "cap_exceeded": 0,
+              "no_known_separator": 10,
+              "round_limit": 0,
+              "constructed_certificate_removed": 14,
+              "refined_queries": 20,
+              "refined_scalar_prunes": 2,
+              "refined_relation_prunes": 14,
+              "refined_passes": 4,
+              "selection_seconds": 0.0007360999006778002,
+              "inference_seconds": 0.036159399955067784,
+              "witness_seconds": 0.0,
+              "refinement_cache_limit": 0,
+              "projections": 1,
+              "children": [
+                {
+                  "sat_calls": 0,
+                  "sat_patterns": 0,
+                  "abstract_outcomes": 0,
+                  "channel_queries": 166,
+                  "lower_calls": 0,
+                  "dp_nodes": 647,
+                  "inapplicable_queries": 0,
+                  "disabled_reason": null,
+                  "concrete_states_enumerated": 0,
+                  "concrete_transitions_enumerated": 0,
+                  "abstract_states": 166,
+                  "cached_entries": 647,
+                  "invariants": {
+                    "candidate_invariants": 0,
+                    "verified": false,
+                    "reason": "control: no invariants",
+                    "seconds": 0
+                  },
+                  "relation": {
+                    "nodes": 1641,
+                    "fallbacks": 0,
+                    "matching_calls": 0,
+                    "matching_seconds": 0,
+                    "sibling_deduplications": 0,
+                    "capacity_reductions": 918,
+                    "lower_seconds": 0,
+                    "mask_cardinalities": {
+                      "4": 293,
+                      "3": 613,
+                      "1": 395,
+                      "2": 340
+                    },
+                    "mode": "lineage",
+                    "node_limit": 100000,
+                    "cache_entries": 1641
+                  },
+                  "demand": {
+                    "pre_atom_reads": 0,
+                    "successor_atoms": 0,
+                    "constant_patterns": 0
+                  },
+                  "incremental_pool": {
+                    "pattern_hits": 432,
+                    "pattern_misses": 192,
+                    "channel_hits": 5964,
+                    "channel_misses": 156,
+                    "sat_calls": 20,
+                    "core_outcomes": 55,
+                    "copied_outputs": 78752,
+                    "formula_seconds": 0.0008163999882526696,
+                    "sat_seconds": 0.0005753999575972557,
+                    "patterns": 192,
+                    "channel_cores": 156
+                  }
+                }
+              ]
+            },
+            "incremental_pool": {
+              "pattern_hits": 432,
+              "pattern_misses": 192,
+              "channel_hits": 5964,
+              "channel_misses": 156,
+              "sat_calls": 20,
+              "core_outcomes": 55,
+              "copied_outputs": 78752,
+              "formula_seconds": 0.0008163999882526696,
+              "sat_seconds": 0.0005753999575972557,
+              "patterns": 192,
+              "channel_cores": 156
+            }
+          },
+          "decisions": {
+            "scalar_queries": 9,
+            "witness_nodes": 34,
+            "witness_saturated": 9,
+            "scalar_prunes": 0,
+            "relation_queries": 0,
+            "relation_prunes": 0,
+            "pressure_skips": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "rovers_pfile4_a16s1",
+      "value": 12,
+      "seconds": 0.3284577000304125,
+      "statistics": {
+        "single_nodes": 4096,
+        "pair_nodes": 0,
+        "transition_lookups": 25795,
+        "calls": 2071,
+        "budget_exhausted": false,
+        "search_expanded": 850,
+        "search_pruned": 0,
+        "cached_singletons": 0,
+        "cached_pairs": 0,
+        "coverage": null,
+        "lp_calls": 0,
+        "lp_certificates": {
+          "dual": 0,
+          "farkas": 0,
+          "zero_fallback": 0
+        },
+        "k_nodes": 0,
+        "k_subset_queries": 0,
+        "threshold": {
+          "decisions": 3286,
+          "decision_hits": 2,
+          "bound_prunes": 2434,
+          "failed_decisions": 838,
+          "successful_decisions": 12,
+          "edges_built": 3293,
+          "singleton_seconds": 0.047863100306130946,
+          "coverage_seconds": 0.0,
+          "edge_seconds": 0.031139699451159686,
+          "thresholds": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "first_policy_seconds": 0.32701609999639913,
+          "transition_cache_hits": 16383,
+          "belief_records": 2307,
+          "world_records": 2142,
+          "cached_edges": 850,
+          "cached_transitions": 9412
+        },
+        "cost_control": {
+          "hmax_calls": 385,
+          "hmax_work": 46024,
+          "hmax_fallbacks": 0,
+          "hmax_seconds": 0.034462700656149536,
+          "bfs_fallbacks": 2647,
+          "coverage_seconds": 0.0,
+          "coverage_attempts": 0,
+          "coverage_skipped": 0,
+          "coverage_interrupted": 0,
+          "coverage_helpful": 0,
+          "coverage_pruning": 0,
+          "bfs_nodes": 4096
+        },
+        "information_control": {
+          "work": 5540,
+          "conflict_pairs": 0,
+          "unknown_pairs": 0,
+          "compatible_pairs": 6,
+          "conflict_seconds": 0.023509800026658922,
+          "pair_seconds": 0.0,
+          "pair_calls": 0,
+          "pair_fallbacks": 0,
+          "leaf_calls": 865,
+          "leaf_prunes": 0,
+          "largest_clique": 1
+        },
+        "indexed_engine": {
+          "edge_action_candidates": 4279,
+          "uninformative_senses": 892,
+          "tail_stops": 1,
+          "tail_steps": 13781,
+          "tail_seconds": 0.047863100306130946,
+          "applicability": {
+            "candidate_checks": 10701,
+            "queries": 6082,
+            "cache_hits": 5593,
+            "pure_senses_skipped": 0
+          }
+        },
+        "target_capacity": {
+          "skipped_budget": 808,
+          "interrupted": 0,
+          "prunes": 22,
+          "seconds": 0.16243759979261085,
+          "attempts": 64,
+          "evidence": [
+            {
+              "candidates": 4,
+              "budget": 5,
+              "scalar": 2,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.014234000002034009
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.006742600002326071
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.009560199978295714
+            },
+            {
+              "candidates": 4,
+              "budget": 8,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.03465729998424649
+            },
+            {
+              "candidates": 4,
+              "budget": 9,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.020547399995848536
+            },
+            {
+              "candidates": 4,
+              "budget": 10,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.02860059996601194
+            },
+            {
+              "candidates": 4,
+              "budget": 11,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.03317310003330931
+            },
+            {
+              "candidates": 4,
+              "budget": 12,
+              "scalar": 4,
+              "identity_capacity": 4,
+              "reason": "refined_relation_pass",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.003847000014502555
+            },
+            {
+              "candidates": 4,
+              "budget": 11,
+              "scalar": 4,
+              "identity_capacity": 4,
+              "reason": "refined_relation_pass",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 0.005537200020626187
+            },
+            {
+              "candidates": 4,
+              "budget": 10,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.319999763742089e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 10,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.9,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.0021443000296130776
+            },
+            {
+              "candidates": 4,
+              "budget": 9,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8888888888888888,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.00046420004218816757
+            },
+            {
+              "candidates": 4,
+              "budget": 8,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.875,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.00017800001660361886
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8571428571428572,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.00017150002531707287
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8333333333333334,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.00018989999080076814
+            },
+            {
+              "candidates": 4,
+              "budget": 5,
+              "scalar": 2,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.289999535307288e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.329999839887023e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 3,
+              "identity_deficit": 0,
+              "resource_pressure": 1.0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 3.1999952625483274e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 5,
+              "scalar": 2,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.39999857917428e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8333333333333334,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.00014409999130293727
+            },
+            {
+              "candidates": 4,
+              "budget": 5,
+              "scalar": 2,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.119998240843415e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8333333333333334,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.629996743053198e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.7200010158121586e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.869996337220073e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.370000144466758e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 3,
+              "identity_deficit": 0,
+              "resource_pressure": 1.0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 3.070000093430281e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 6,
+              "scalar": 2,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.880002234131098e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 3,
+              "identity_deficit": 0,
+              "resource_pressure": 1.0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 7.829995593056083e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 5,
+              "scalar": 2,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.1499966755509377e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8571428571428572,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 0.00010159995872527361
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8333333333333334,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.6799971237778664e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 5,
+              "scalar": 2,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.850002005696297e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.4500007536262274e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8571428571428572,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.5800021830946207e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8333333333333334,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.3100001271814108e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.600000102072954e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.8900023102760315e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 6,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.999997327104211e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.75000124424696e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.199997056275606e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 5.0600036047399044e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.7900015488266945e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 3.9000005926936865e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 3.850000211969018e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 3.3999967854470015e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 8,
+              "scalar": 4,
+              "identity_capacity": 3,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.3800002206116915e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 8,
+              "scalar": 4,
+              "witness": 3,
+              "identity_deficit": 0,
+              "resource_pressure": 1.0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.619996666908264e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 7,
+              "scalar": 3,
+              "identity_capacity": 2,
+              "reason": "refined_relation_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.5599997974932194e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 3,
+              "identity_deficit": 0,
+              "resource_pressure": 1.0,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 7.580005330964923e-05
+            },
+            {
+              "candidates": 3,
+              "budget": 6,
+              "scalar": 2,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 4.3199979700148106e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 8,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.875,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 8.909997995942831e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8571428571428572,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.359994687139988e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.0399976316839457e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 6,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8333333333333334,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.6800029445439577e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 3.189995186403394e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 2.7699978090822697e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 3,
+              "reason": "refined_scalar_prune",
+              "refinement": {
+                "clauses": 1,
+                "actions": [
+                  "communicate_image_data rover0 general objective1 high_res waypoint3 waypoint0"
+                ],
+                "constructed_certificate_removed": true,
+                "minimal_for_collected": true,
+                "selection": "certificate",
+                "added_atoms": [
+                  [
+                    "have_image",
+                    "rover0",
+                    "objective1",
+                    "high_res"
+                  ]
+                ],
+                "known_values": [
+                  false
+                ]
+              },
+              "seconds": 5.270005203783512e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 8,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.875,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.5799963623285294e-05
+            },
+            {
+              "candidates": 4,
+              "budget": 7,
+              "scalar": 4,
+              "witness": 4,
+              "identity_deficit": 0,
+              "resource_pressure": 0.8571428571428572,
+              "reason": "certified_no_threshold_effect",
+              "refinement": {
+                "clauses": 0,
+                "actions": [],
+                "constructed_certificate_removed": false,
+                "minimal_for_collected": true
+              },
+              "seconds": 2.3200002033263445e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 6,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.529999569058418e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 5.339999916031957e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.579999949783087e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 5,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.349998198449612e-05
+            },
+            {
+              "reason": "direct_abstract_saturation",
+              "budget": 4,
+              "refinement": {
+                "reason": "no_known_separator",
+                "clauses": 1
+              },
+              "seconds": 4.8200017772614956e-05
+            }
+          ],
+          "coverage": {
+            "sat_calls": 0,
+            "sat_patterns": 0,
+            "abstract_outcomes": 0,
+            "channel_queries": 35,
+            "lower_calls": 0,
+            "dp_nodes": 35,
+            "inapplicable_queries": 0,
+            "disabled_reason": null,
+            "concrete_states_enumerated": 0,
+            "concrete_transitions_enumerated": 0,
+            "abstract_states": 35,
+            "cached_entries": 35,
+            "invariants": {
+              "candidate_invariants": 0,
+              "verified": false,
+              "reason": "control: no invariants",
+              "seconds": 0
+            },
+            "relation": {
+              "nodes": 0,
+              "fallbacks": 0,
+              "matching_calls": 0,
+              "matching_seconds": 0,
+              "sibling_deduplications": 0,
+              "capacity_reductions": 0,
+              "lower_seconds": 0,
+              "mask_cardinalities": {},
+              "mode": "lineage",
+              "node_limit": 100000,
+              "cache_entries": 0
+            },
+            "demand": {
+              "pre_atom_reads": 0,
+              "successor_atoms": 0,
+              "constant_patterns": 0
+            },
+            "direct": {
+              "queries": 40,
+              "certificates": 17,
+              "model_tests": 65,
+              "cache_hits": 2,
+              "work_skips": 0
+            },
+            "refinement": {
+              "queries": 64,
+              "certificates": 36,
+              "witness_tests": 136,
+              "selection_cache_hits": 7,
+              "selected": 24,
+              "added_atoms": 24,
+              "cap_exceeded": 0,
+              "no_known_separator": 19,
+              "round_limit": 0,
+              "constructed_certificate_removed": 17,
+              "refined_queries": 24,
+              "refined_scalar_prunes": 15,
+              "refined_relation_prunes": 7,
+              "refined_passes": 2,
+              "selection_seconds": 0.0012528002262115479,
+              "inference_seconds": 0.1566412000101991,
+              "witness_seconds": 0.0,
+              "refinement_cache_limit": 0,
+              "projections": 1,
+              "children": [
+                {
+                  "sat_calls": 0,
+                  "sat_patterns": 0,
+                  "abstract_outcomes": 0,
+                  "channel_queries": 1776,
+                  "lower_calls": 0,
+                  "dp_nodes": 1776,
+                  "inapplicable_queries": 0,
+                  "disabled_reason": null,
+                  "concrete_states_enumerated": 0,
+                  "concrete_transitions_enumerated": 0,
+                  "abstract_states": 1776,
+                  "cached_entries": 1776,
+                  "invariants": {
+                    "candidate_invariants": 0,
+                    "verified": false,
+                    "reason": "control: no invariants",
+                    "seconds": 0
+                  },
+                  "relation": {
+                    "nodes": 4484,
+                    "fallbacks": 0,
+                    "matching_calls": 0,
+                    "matching_seconds": 0,
+                    "sibling_deduplications": 0,
+                    "capacity_reductions": 2055,
+                    "lower_seconds": 0,
+                    "mask_cardinalities": {
+                      "4": 775,
+                      "3": 1864,
+                      "1": 1126,
+                      "2": 719
+                    },
+                    "mode": "lineage",
+                    "node_limit": 100000,
+                    "cache_entries": 4484
+                  },
+                  "demand": {
+                    "pre_atom_reads": 0,
+                    "successor_atoms": 0,
+                    "constant_patterns": 0
+                  },
+                  "incremental_pool": {
+                    "pattern_hits": 441,
+                    "pattern_misses": 195,
+                    "channel_hits": 54717,
+                    "channel_misses": 159,
+                    "sat_calls": 22,
+                    "core_outcomes": 55,
+                    "copied_outputs": 695028,
+                    "formula_seconds": 0.0009383001015521586,
+                    "sat_seconds": 0.0008567000622861087,
+                    "patterns": 195,
+                    "channel_cores": 159
+                  }
+                }
+              ]
+            },
+            "incremental_pool": {
+              "pattern_hits": 441,
+              "pattern_misses": 195,
+              "channel_hits": 54717,
+              "channel_misses": 159,
+              "sat_calls": 22,
+              "core_outcomes": 55,
+              "copied_outputs": 695028,
+              "formula_seconds": 0.0009383001015521586,
+              "sat_seconds": 0.0008567000622861087,
+              "patterns": 195,
+              "channel_cores": 159
+            }
+          },
+          "decisions": {
+            "scalar_queries": 21,
+            "witness_nodes": 60,
+            "witness_saturated": 21,
+            "scalar_prunes": 0,
+            "relation_queries": 0,
+            "relation_prunes": 0,
+            "pressure_skips": 0
+          }
+        }
+      }
+    }
+  ],
+  "scope": "Post-discovery recurrence certificate plus three deployed dynamic-selector checks. H=16; not part of the 39-case 15s performance study."
+}

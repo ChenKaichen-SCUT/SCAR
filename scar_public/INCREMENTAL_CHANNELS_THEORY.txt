@@ -1,0 +1,105 @@
+Exact channel-core reuse and the scope of identity-capacity separation
+2026-10-16. See incremental_channels.py and prior coverage/refinement definitions.
+
+1. What changes and what stays mathematically identical
+The Boolean existential action abstraction, successful-model masks, C0 scalar
+recurrence, C1 lineage recurrence, and bound-only optimistic observations are
+unchanged. This implementation changes representation and memoization only.
+Real policies still receive only environment observations and cannot observe
+goal completion implicitly. Fixed nonnegative action resource costs are required.
+
+2. Dependency-keyed cores
+For action a, let W_a be the ground atoms mentioned as effect targets and P the
+current projection. Split outputs into O=P intersect W_a and F=P minus W_a.
+Every p in F has successor value equal to its current retained value. Therefore
+only O, together with the real observation, needs outcome enumeration. The full
+projected successor is reconstructed by copying all F bits.
+
+The support S includes atoms in pre_a and goal before the action, atoms needed
+for goal/observation/O after the action, and every conditional-effect guard
+affecting one of those post-state atoms. Retaining the original value of each
+post-state atom in S handles frame persistence and add/delete conflicts.
+The pattern cache key is
+  (action identity, ordered O, known_mask, known_values),
+where known_mask=(S intersect Static) union (S intersect P). Its explicit mask
+is essential: an atom known false must not collide with a forgotten free atom.
+Conditional effects use the unchanged add-wins simultaneous semantics.
+
+Proposition: equal core keys yield identical immediate-goal truth and core
+outcome sets. Proof: all variables read by the condition and post expressions
+are in S. Static or retained reads have identical substitutions; all remaining
+reads use the same free variables. Thus the SAT formulas and core output
+expressions are identical. The remaining projected atoms are unwritten and can
+be copied without affecting satisfiability or correlations. QED.
+
+A second cache collects static-group goal/eligibility masks by the same action,
+core output shape and retained relevant values. It excludes the resource vector:
+fixed costs affect action affordability and successor budgets, not Boolean
+transitions. Each query filters affordability and attaches its successor resource
+vector after retrieving the core. All views share the same immutable action
+dictionary and initial model labels; this is asserted at pool attachment.
+
+Corollary: reconstructed nonempty abstract action channels, C0 and C1 agree
+exactly with the previous implementation whenever both calculations complete.
+Actions with no immediate goals and no live successor contribute zero to both
+maxima and may be omitted. A different timeout or useful cache prefix can change
+which optional query completes, but not a completed bound's mathematical value.
+Incomplete SAT enumeration never enters either cache. Each cache caps at 100000
+entries and thereafter computes uncached. This does not bound total planning time.
+
+3. When searching for a C0/C1 separation is provably pointless
+Suppose ALL initial candidate models share one static valuation, not merely the
+currently live subset. Then each nonempty channel eligibility mask is the full
+initial model set and every immediate-goal mask is either empty or that full set.
+Let N be its cardinality. Inducting on d gives C0(q,d) in {0,N}. For every nonempty
+M, C1(q,M,d)=0 when C0=0 and C1(q,M,d)=|M| when C0=N. At d=0 both are zero.
+For the induction step, a positive contribution has either universal immediate
+goals or a positive child; either yields the full cap in both recurrences.
+Thus C0>=|M| and C1<|M| cannot coexist in this abstraction, for ANY retained
+projection with a common current key. This is a limitation of this implemented
+model abstraction, not a theorem that the concrete planning task is easy.
+
+The 39-case metadata audit finds this condition in 22 configurations. Their
+initial uncertainty is dynamic and was merged by the existential abstraction;
+keeping opaque model labels alone cannot recover the lost distinctions. Search
+for a useful identity separation must target surviving static distinctions or
+change the abstract model representation, not simply increase recursion budget.
+
+4. A public-task joint obstruction, with explicit resource overlay
+Source: the pinned Contingent-FF rovers/domain.pddl and rovers/pfile4. Preserve
+all source formulas and initial models. Declare actuation budget 16 and sensor
+budget 1: non-observing actions cost (1,0), observing actions cost (0,1). This is
+a resource extension, NOT the unmodified benchmark. Check a total horizon d=8.
+The previous projection is augmented automatically by exactly one known-false
+ground atom: have_image(rover0,objective1,high_res).
+
+Under this SAME projection: |M|=4, C0=4, C1=3. Both old and new channel engines
+agree without relation-node fallback. An independent transition-only oracle
+confirms every singleton and every pair feasible within eight steps, but the
+four-model belief infeasible. Pair values are 6,5,7,6,8,6 (ordering follows model
+enumeration); the resource-blind incompatible-leaf lower bound is 0.
+Hence this query separates C1 from C0, all completed 1/2-model feasibility
+projections at the threshold, and the implemented resource-blind leaf control.
+It does not establish dominance over other higher-order or resource-aware
+information heuristics, nor first-in-literature novelty.
+
+The root audit enumerates all seven contributing abstract actions. Every action
+has identity contribution at most three. The scalar optimizer's chosen abstract
+skeleton scores four under cardinalities but only one when evaluated with the
+inherited candidate identities; the best identity-aware action still scores at
+most three. The audit proves the implemented bound, while the independent oracle
+separately checks the real planning conclusion. This avoids treating an abstract
+witness or a locally successful action as a real policy.
+
+5. Evidence limits
+Original Rover-2 and Rover-4 also separate C0/C1, but exact pair projections
+detect those failures, so they do not support a claim beyond the pair control.
+Some medical resource extensions separate C0/C1 and pair projections, but the
+existing leaf/sensor control already rejects them. The joint Rover resource
+case above survives both stronger controls tested here.
+The discovery sweep uses root states, at most seven proposed projections and
+thresholds 1..16 with explicit time caps. It is neither exhaustive absence
+evidence nor a held-out performance study. Known-single/prefix projections in
+that sweep are diagnostic choices; only the automatic label is produced by
+the deployed certificate selector. Unmodified and resource-extension results,
+root-query timing and full-search timing must remain separate.
