@@ -304,3 +304,28 @@ Actor-proposed new tests remain allowed. Validate this with public-text regressi
 another paid checkpoint rerun. The mechanism gates now include local task gains, real semantic
 intervention/observation, and independent multi-location dependency execution. Run the final
 candidate once per shared initial world for 300 actions; no further prompt tuning in that run.
+
+Final round7 outcome (online source 62bddd8fa1bef9b0952a863d5487007ede20716e): remnant
+3 at 300 actions, mark 17 with explicit main-quest completion at action 282, metropolis
+9 at 300 actions. Mean 9.666667 versus V3 9.0 and V5 4.0. Keep V6 as a development
+candidate only: these single runs and coupled changes establish neither stable superiority
+nor attribution. metropolis remains below V2/V5's 10 and stalls after action 111.
+
+The actual mark copper-sword task completes at action 69 after crafting and picking up the
+sword; its supported checks do not include copper_bar. Grammar coverage is nevertheless
+only 32 of 882 decisions (all in mark), not a general goal-translation solution. The full
+runs execute 69 resource-search actions, one actively selected writing obligation, and zero
+new distinguishing operation experiments. Public-only replay shows all six write attempts
+follow freshly observed empty text (five accepted), where append and replace predict the
+same result. metropolis's controller selects inspect/write/inspect at actions 110-112 and
+the write advances 8->9. The one real distinguishing operation trial remains the selected
+cp172 diagnostic; it does not establish general or natural-run active disambiguation.
+
+All eight 30-action diagnostics remain in the record, including failures. Official main
+scores, start/final snapshots and the nine frozen baseline hashes validate. The evaluator's
+remnant side-quest accumulated/state-count mismatch is disclosed separately and does not
+change its main score. Twenty-two protocol/mechanism tests passed before the final runs.
+This phase used 1096 responses and a known peak-rate estimate of USD 1.942785396, with no
+unknown-charge attempts. All phases total USD 8.104594764 known, plus three previously
+unknown-charge attempts. No more paid runs in this bounded phase; results and eligibility
+audit are saved in results/2026-10-15-obligations.

@@ -1,0 +1,97 @@
+V6 obligation-controller iteration: separate mechanism evidence from end-to-end results
+
+Final online source: 62bddd8fa1bef9b0952a863d5487007ede20716e. Full stage: round7.
+Each game uses the same frozen initial snapshot and a 300-action cap (natural termination allowed). DeepSeek Flash settings
+are unchanged; no new seed is chosen and no baseline is rerun. Single development samples.
+stm: remnant=1, mark=10, metropolis=8; mean=6.333333
+longcontext: remnant=0, mark=13, metropolis=4; mean=5.666667
+reflact: remnant=1, mark=13, metropolis=9; mean=7.666667
+public_v1: remnant=1, mark=11, metropolis=4; mean=5.333333
+evidence_v2: remnant=2, mark=13, metropolis=10; mean=8.333333
+viability_v3: remnant=2, mark=16, metropolis=9; mean=9.000000
+spec_v5: remnant=1, mark=1, metropolis=10; mean=4.000000
+obligation_v6: remnant=3, mark=17, metropolis=9; mean=9.666667
+
+V6 mean 9.666667; previous V3 mean 9.000000. Promotion is based on these observed scores only,
+not statistical significance. All regressions and unsuccessful diagnostics remain reported.
+Actual full-run actions: remnant=300 (step_limit), mark=282 (environment), metropolis=300 (step_limit).
+mark ended with explicit public main-quest completion and congratulations at step 282.
+
+Changes:
+1. Preserve V3's chronological evidence. Remove model-generated terminal-condition lists.
+   A narrow grammar produces only source-grounded explicit named crafted/held/equipped
+   checks. Ingredients are method dependencies. Unbound categories and other semantics
+   remain unknown; supported predicates are not a sufficient task-completion certificate.
+2. Search known recipe dependencies and routes with joint counts, capacity and a carried
+   container. Execute one action and observe. Current adjacency and recent failed traversal
+   invalidate stale route proposals. Contradicted ingredient arrangements feed back into the
+   model; repeated counterexamples suspend automatic recipe use, not all actor tests.
+3. Pending public writing obligations with an explicit role-bound literal and observed
+   operands can activate inspection/intervention/inspection without an actor request.
+   Compare append vs replace only on a freshly inspected nonempty document, where the
+   predicted full strings differ. Reuse existing operation evidence rather than count a
+   redundant experiment. Goal-binding alternatives are tracked separately and conditionally.
+
+Eight 30-action diagnostics (240 actions total):
+v6diag_b_cp178 metropolis: 9->9, stored control endpoint 9, new operation experiments 0
+v6diag_b_cp62 metropolis: 8->11, stored control endpoint 8, new operation experiments 0
+v6diag_c_cp172 metropolis: 9->9, stored control endpoint 9, new operation experiments 1
+v6diag_c_cp178 metropolis: 9->9, stored control endpoint 9, new operation experiments 0
+v6diag_cp138 mark: 1->1, stored control endpoint 1, new operation experiments 0
+v6diag_cp178 metropolis: 9->9, stored control endpoint 9, new operation experiments 0
+v6diag_cp206 metropolis: 10->12, stored control endpoint 10, new operation experiments 0
+v6diag_cp62 metropolis: 8->9, stored control endpoint 8, new operation experiments 0
+
+Diagnostic controls are stored continuations, not fresh replicates; inference is not matched.
+The revised cp62 gained 8->11, cp206 gained 10->12, while contaminated-document cp172/cp178
+and the mark138 state did not gain main reward. cp172 did execute a distinguishing real write
+experiment and observe append. That is mechanism evidence, not evidence that the task was solved.
+
+Full-run controller actions: 69 resource-search actions; 1 actively selected writing obligations;
+0 new measured operation trials;
+0 recorded task-binding trials. Diagnostic operation trials: 1. A zero in a clean-text
+full run does not invalidate the executed diagnostic, nor establish general active disambiguation.
+Public-only replay found one pending metropolis writing goal for 79 decisions, with held operands
+and an observed tool for only two decisions. The controller selected it at step 110; step 111's
+write advanced main reward 8->9. All six actual full-run write attempts had freshly observed empty
+text (five were accepted), so append and replace predicted the same result. No such write is a
+distinguishing experiment. The scheduler operated, but natural-run active disambiguation remains
+unvalidated. The contaminated checkpoint diagnostic is the sole new operation trial.
+
+Explicit terminal checks appeared on only 32/882 decisions: remnant 0/300,
+mark 32/282, metropolis 0/300. This measures applicability, not semantic accuracy; retained
+raw goals drive the remaining behavior. The compiler is substantially incomplete.
+The actual copper-sword task completes at step 69 after craft at 68 and pickup at 69;
+its supported predicates are crafted(copper_sword) and held(copper_sword), not held(copper_bar).
+metropolis still stalls after step 111 on resource/capacity arrangement and locked routes.
+Observed gains do not establish that any one changed component caused them.
+
+Offline engine finding (NOT policy input): at cp203, the held ordinary parchment material
+count was 1 and the engine recipe needed 0.5. The writable-output branch indexed only
+suffixed instance IDs, yielding an empty ingredient index. The original failed action and
+final state digest were reproduced with zero API calls. No engine patch, hidden rule, or
+game-object-specific policy exception was introduced. The policy learns only from public
+failed predictions. This explains why the tested fresh-document crafting method failed;
+it does not prove that every possible recovery route is impossible.
+
+Verification: 22 protocol/mechanism tests passed, including independent execution of a plan
+with remote resources and intermediate production, active-probe dispatch, unchanged-condition
+route failure, and recipe counterexamples. Official scores and start/final snapshot digests
+match. All nine baseline hashes unchanged. No claim that tests prove overall semantic soundness.
+The official evaluator warns that remnant's accumulated side-quest reward is 2 while the final
+agent-state counter is 0, and uses accumulated reward. The main-quest score 3 is unaffected.
+
+This iteration: 1096 successful responses / 1096 attempts;
+known peak-rate estimate USD 1.942785396 (diagnostics 0.331282812; full 1.611502584);
+unknown-charge attempts 0. All phases known estimate USD
+8.104594764, 3 unknown-charge attempts (retained from prior
+interrupted requests when applicable). Estimates are not invoices and unknowns are not free.
+
+Limits: narrow literal-role grammar and writing-specific active experiments; a partial observed
+transition model; bounded heuristic search; danger handling and unknown affordances remain
+imperfect. Coupled changes and selected checkpoints do not isolate causal effect sizes.
+Originality is not established: language-to-specification, symbolic planning, active queries
+and goal/world hypotheses already exist (see SPECIFICATION_RESEARCH.txt). The general research
+question concerns when a contradicted model should trigger execution, repair, or a costly probe;
+this prototype does not establish a general solution. Formal work needs held-out tasks,
+matched-compute ablations and repeated runs under the intended official benchmark settings.
