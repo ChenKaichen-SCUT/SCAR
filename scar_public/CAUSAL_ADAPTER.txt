@@ -1,0 +1,94 @@
+SCAR causal transition adapter — 2026-10-16
+
+Status: an opt-in SHADOW integration with V6, not a promoted V7 controller.
+New method: causal_shadow_v7. Existing obligation_v6 behavior/code is preserved.
+The V6 actor chooses every command. The shadow adapter observes public text, proposes
+bounded transition hypotheses, checks their predictions, and runs a conditional local
+planning query where representable. It never overrides the executed action.
+
+LLM role: ground public entities into guards/effects/operation outcomes; propose
+alternative transition hypotheses; revise the exact mismatches after feedback.
+Planner role: solve the represented finite conditional fragment with the same
+LP-bound / AND-OR reference used in the theory document. The planner does not decide
+whether an LLM interpretation is true. A successful operation is not task completion.
+
+Files:
+causal_model.py: prefix-only retrieval, exact integer quantities, schema validation,
+  exact-command history consistency, prediction/evaluation, model-version invalidation.
+causal_compiler.py: bounded finite grounding into finite_planner.py; all missing effects,
+  unsatisfied guards and out-of-region transitions become explicit unmodelled branches.
+causal_agent.py: V6 memory/checkpoint/terminal-observation adapter; at most six logical
+  model requests per episode (provider retry attempts are separately audited).
+replay_causal.py: fixed action/time selection, prediction persisted before outcome
+  release, at most one repair at a real repeated command within 30 actions.
+audit_causal.py: reproduce frozen revised proposals/predictions/feedback/planner results
+  with zero API calls, using the same public trace files.
+test_causal_model.py: unknown-vs-zero, provenance/time leakage, counterexamples,
+  stale certificates, shared policies, checkpoints, and unchanged V6 actor prompts.
+finite_planner.py: byte-identical copy of the earlier finite reference; SHA256
+  ff5c21e55946bcbc3bd056346a04091e24f382e3e840f4f7c242234e827bed6e.
+
+Important semantics:
+- Guard op eq/ge/le; effect add/set/same, with numeric set disallowed in schema v1.
+  Quantities are milli-units (1000=one). Only a fully parsed fresh inventory can
+  establish zero for absent objects. Omitted effects are UNKNOWN, not frame axioms.
+- Rules with different hypotheses are candidate partial worlds, not automatically
+  complementary cases of a complete model. No closed-world coverage is asserted.
+- Historical consistency checks only exact same commands. Cross-object examples
+  are supplied to the LLM as examples; the validator never promotes them to universal rules.
+- A matched rule remains a candidate. It can have the right failure label for the
+  wrong reason. All unknown conditions remain qualifications on candidate plans.
+- New model versions invalidate prior certificates. Reuse also requires exactly
+  the same public prefix. State changes invalidate applicability even after a match.
+- The automatic fragment query is a bounded local resource milestone (pickup or
+  craft output), not a compiled quest. The generic compiler can take multiple actions,
+  but the current automatic integration has not acquired a complete multi-action model.
+- Text fields are rejected by the planning compiler until an explicit delayed
+  observation/inspection adapter exists. Missing post-write text is unobserved.
+- UNKNOWN_FOR_ENVIRONMENT never means the real task is impossible. Lower/upper
+  bounds refer only to the represented candidate projection and action set.
+
+Validation and costs:
+45 tests pass on the server, including real-environment construction and baseline
+interfaces with a mock LLM. 42 finite instance/horizon checks and 18 search-budget
+checks pass. Final source exactly reproduces all 18 frozen revised diagnostic phases,
+including context hashes, predictions, feedback and planning results, with zero API calls.
+First pass: 14 selected cases, 19 API responses, 17 schema-valid proposals.
+Revised pass: same 14 cases, 18 API responses, 17 schema-valid proposals.
+Second pass: 7 matched prediction hypotheses, 7 contradicted, 1 partly observed;
+inactive/absent hypotheses are NOT counted as successful predictions.
+Seven conditional local plans were found; THREE had contradicted next-step predictions.
+This is a direct reason to keep the integration in shadow mode.
+Total: 37 successful API responses; estimated USD 0.080599296; zero unknown-charge attempts.
+Estimate uses the unchanged research transport's recorded tariff, not a billing receipt.
+No new game rollout, no new seed, no unchanged-baseline rerun. Development traces
+retain the original 300-action cap; mark terminated naturally at 282.
+
+Interpretation:
+The revised leather_strip proposal changed ground consumption to held consumption
+and placed output on the ground, matching its next recorded transition. The oak_rod
+repair added a workbench precondition but still predicted consumption 0.5 vs observed 1.
+These are local mechanism diagnostics, not end-to-end gains. The two adaptive passes
+are not a controlled ablation, a held-out test, or evidence of statistical improvement.
+The history admission gate had no newly history-rejected admitted rules in pass two;
+one unchanged already-refuted repair was rejected during validation. Unit tests
+exercise the broader history gate; do not claim a measured general benefit for it.
+
+Reproduce from the research repository with NumPy/SciPy (tested SciPy 1.17.1):
+python -m pytest -q scar_public/test_causal_model.py scar_public/test_obligations.py
+  scar_public/test_protocol.py scar_public/test_specification.py
+python -m scar_public.replay_causal --public PUBLIC_ONLY_TRACE_DIRECTORY
+  --output NEW_DIAGNOSTIC_DIRECTORY --key EXTERNAL_KEY_FILE --workers 8
+python -m scar_public.audit_causal --public PUBLIC_ONLY_TRACE_DIRECTORY
+  --summary scar_public/results/2026-10-16-causal-adapter/analysis.json
+The public directory has GAME.public.json arrays containing only step, observation,
+action, next_observation. Selection/source hashes and raw proposal diagnostics are
+in results/2026-10-16-causal-adapter/analysis.json. Do not reuse an output directory
+after changing source/model; code hashes enforce this for completed cases.
+The original audited provider saves all request attempts, retries and returned usage.
+Credentials and environment snapshots are never included in this source package.
+
+Next scientific work: acquire competing quantitative/resource-access models with
+explicit scope, then select a task-relevant test with resource/travel effects and
+verified continuation. Only after this bridge affects useful decisions should it
+be promoted to an online controller and compared against frozen V6.

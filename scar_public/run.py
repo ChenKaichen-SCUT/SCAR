@@ -15,8 +15,8 @@ from scar_public.provider import Provider, usage_summary
 from scar_public.agent import PublicAgent
 
 GAMES = ("remnant", "mark", "metropolis")
-METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6")
-PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6")
+METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7")
+PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7")
 REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
 
 
@@ -61,6 +61,9 @@ def build_agent(method, env, provider):
         if method == "obligation_v6":
             from scar_public.obligation_agent import ObligationAgent
             return ObligationAgent(provider, cfg.system_prompt)
+        if method == "causal_shadow_v7":
+            from scar_public.causal_agent import CausalShadowAgent
+            return CausalShadowAgent(provider, cfg.system_prompt)
         return PublicAgent(provider, cfg.system_prompt)
     base = type(env.agents[0])
     factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
@@ -172,6 +175,8 @@ def run(args):
         obs, reward, done, info = env.step({AGENT_ID: action})
         env.update_scores(reward)
         step += 1
+        if args.method == "causal_shadow_v7" and (done or step >= args.steps):
+            agent.observe_terminal(obs[AGENT_ID])
         cp = directory / "checkpoints" / f"{step:04d}"
         cp.mkdir(parents=True, exist_ok=True)
         save_snapshot(cp / "environment.pkl", env)
