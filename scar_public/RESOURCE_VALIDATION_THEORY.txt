@@ -1,0 +1,140 @@
+Resource-aware information controls and amortized projection selection
+2026-10-16
+
+Scope
+The task has finite deterministic physical transitions, initial uncertainty,
+Boolean observations, unit action length, fixed nonnegative resource consumption
+and a strong finite goal-policy objective. Resource vectors are part of the exact
+state. Goals are not additional observations. A policy must terminate in a goal
+in every candidate; recognizing an unavoidable dead end does not count as success.
+The following control does not use the C0/C1 projection or optimistic channels.
+
+1. Joint task/observation budget
+For a concrete candidate state s, define K(s,d) as the maximum number of observing
+actions in a legal action sequence of length at most d ending in a goal. Every
+action must respect all resources simultaneously. If no such sequence exists,
+K(s,d)=-1. A sequence may pass through a goal and continue; an observation action
+may also have effects. These details prevent underestimating the maximum.
+
+Recurrence:
+ K(s,0) = 0 if goal(s), otherwise -1.
+ K(s,d) = max( {0 if goal(s)} union
+              {obs(a)+K(T(s,a),d-1): a legal, K(T(s,a),d-1)>=0} ).
+Here obs(a) is 0 or 1. Empty maxima are -1. A cheap ceiling is
+ min(d, min_i floor(resource_i/min_observation_cost_i)), ignoring zero divisors.
+With no observation actions the ceiling is zero. Early termination upon reaching
+this ceiling is exact. On interruption this ceiling replaces an unfinished K;
+it is an upper bound, so cannot manufacture a rejection.
+
+2. Resource-aware conflict graph
+An edge (s,t) is established only after proving there is no common legal action
+sequence of length <=d that ends in goals for both states under their resource
+budgets. This search ignores observation outcomes and continues to require the
+same action in both states. Ignoring outcomes may miss conflicts but cannot add
+an invalid conflict. Completed memo entries are reusable; unfinished searches
+add no edge. This differs from the older resource-blind, unbounded pair graph.
+
+Lemma: two endpoints of an edge cannot reach the same terminal leaf in any
+feasible strong policy of depth <=d.
+Proof: a shared terminal leaf would provide precisely the common legal action
+sequence ruled out by the edge. Contradiction.
+
+3. Weighted leaf certificate
+Let Q be any clique in the conflict graph, and let K_s be K(s,d), or a valid upper
+bound on it after interruption. If K_s=-1 for any s the task is already infeasible.
+Otherwise a necessary condition is
+                  sum_{s in Q} 2^(-K_s) <= 1.
+Proof: members of Q occupy distinct terminal leaves. Remove non-observing actions
+from the policy tree. The observation words of distinct leaves are prefix-free:
+the same history cannot both stop and continue. For actual observation depths
+l_s, Kraft's inequality gives sum 2^(-l_s)<=1. Each actual goal-reaching branch
+is a feasible single-world sequence, so l_s<=K_s. Therefore
+sum 2^(-K_s)<=sum 2^(-l_s)<=1. Violation certifies infeasibility.
+Unary or uninformative observations do not invalidate the proof; they merely
+make the upper bounds weaker. Already-goal worlds are retained in this control.
+
+The implementation constructs valid greedy cliques, trying every first vertex;
+it does NOT mistake a greedy coloring upper bound for a clique lower bound.
+All weights are integers scaled by 2^max(K_s), avoiding rounding-based rejection.
+Unknown edges and overestimated K_s weaken the condition safely. A completed
+certificate may be used even when other subproblems are unfinished; absence of
+a certificate after interrupted work is UNKNOWN, not a passed exact control.
+
+This is a stronger, explicitly implemented research control combining standard
+observation-tree counting with exact resource-aware subproblems. It is not
+claimed as a faithful reproduction of a named published planner or as our core
+novelty. Its exponential worst case is controlled by time/work budgets. The
+experiments report completed versus interrupted checks separately.
+
+4. Two- and three-candidate projections
+For each k-element candidate subset, solve the original resource-aware planning
+task restricted to those candidates. The maximum of subset optimal distances
+is an admissible lower bound: restricting any feasible full policy gives a
+feasible subset policy. Small beliefs use the whole belief if size<k. A single
+completed infeasible subset suffices for rejection. A PASS requires all subsets
+to complete; a timeout does not pass. The same exact indexed search engine is
+used, independently of the C0/C1 capacity projection.
+This follows the established small-belief/n-distance principle, adapted to the
+present deterministic contingent/resource task; it is not new as a principle.
+Rintanen (2004): https://users.aalto.fi/~rintanj1/jussi/papers/Rintanen04heu.pdf
+
+5. Amortized predicate selection
+The previous certificate selector minimizes the hitting set of collected
+one-step saturation witnesses, under its stated caps. The new variant selects
+automatically at the first applicable query, then retains the selected *atom
+identities* across queries. It always uses current common values, propagates
+effects, and maintains separate capacity caches keyed by projection and state.
+If any selected atom stops being common across the current live candidates,
+selection may run again, with at most four attempts per search. An empty initial
+selection is retained; this can miss later refinement opportunities.
+
+Correctness proposition: reusing a projection or skipping reselection preserves
+the soundness of every completed C0/C1 rejection and exact-search result.
+Proof: at each use, a common projection key is checked and the ordinary sound
+capacity computation is performed on that projection with current resources,
+current values and unchanged transitions. Selection quality is not a premise
+of capacity soundness. Skipping queries cannot strengthen a lower bound.
+Interrupted results are discarded. Hence each raised search lower bound remains
+admissible. Under unrestricted search time, finite positive-cost threshold search
+remains complete; a timed experiment may of course return UNKNOWN.
+
+The four-attempt cap is an engineering choice, not a theorem of optimal scheduling.
+Fewer selections need not imply faster total search; retaining the wrong atoms
+can increase search. Counts and relations use the same selection procedure and
+channel engine. Entire-run times include construction, selection and inference.
+Rational heuristic scheduling is prior work, not claimed new here:
+https://arxiv.org/abs/1305.5030
+
+6. Evidence boundaries
+An automatic C0-pass/C1-reject query on one common projection establishes a
+separation only against the controls that completed on that exact query.
+It does not establish universal dominance, asymptotic superiority, or novelty
+over all information lower bounds. Root-query separation, fewer expansions,
+and lower full-run time are measured separately. A 15-second timeout does not
+prove infeasibility, and an H-step proof does not prove unrestricted infeasibility.
+
+Fresh public inputs are read from the author repository at a fixed commit:
+https://github.com/shanigu/ContingentPlanning/tree/9ce9a55dc74d021cb10bed73681ee4eb3f9d101a
+Only d.pddl and p.pddl are used. No reference policy, previous result or deadend
+annotation is inspected by the experiment. The archive also serves a different
+deadend-handling objective; our strong-goal objective is explicitly declared.
+All unsupported inputs and enumeration/grounding limits remain in the denominator.
+
+Post-run audit and second development stage
+Three Cavediving source pairs are identical after replacing only domain/problem
+header names: the 21 source labels represent 19 distinct normalized tasks.
+No raw rows are removed; aggregate independent evidence counts each group once.
+Woodworking declares type inheritance. A missing general frontend feature was
+fixed with transitive membership, cycle checks and tests. However, hashes of all
+six complete compiled tasks before/after the fix are identical: the actual
+action parameters in these files use only leaf types. The initial suspicion
+recorded in the audit manifest was incorrect. Original timing rows remain the
+primary comparison; the 36 repeat runs are supplementary audit records only.
+See source_audit.json and type_audit.json.
+
+The witness-gated amortized variant reuses the existing scalar witness theorem
+0<=W<=C1<=|M|. W=|M| proves this C1 recurrence cannot prune that query. Only that
+certificate skips C1; no timing/pressure threshold is fitted. An interrupted W
+does not reject. This is an integration of the prior certificate, not a new
+lower-bound principle. It was tested after viewing the 50-case results, hence
+is development evidence. The five unchanged baseline result sets are reused.

@@ -24,12 +24,28 @@ def changed_predicates(domain):
 class StaticGrounder:
     def __init__(self,domain,objects,names,positive,uncertain,work_limit=2000000):
         self.dynamic=changed_predicates(domain);self.objects=objects
+        declaration=next((x[1:] for x in domain if isinstance(x,list) and x and x[0]==':types'),[])
+        self.type_parents=typed_list(declaration)
+        for child,parent in self.type_parents.items():
+            if parent!='object' and parent not in self.type_parents:
+                raise ValueError('undeclared parent type '+parent)
+            visited=set();current=child
+            while current!='object':
+                if current in visited:raise ValueError('cyclic type hierarchy')
+                visited.add(current);current=self.type_parents.get(current,'object')
         self.possible={names[i] for i in positive|uncertain if names[i][0] not in self.dynamic}
         self.certain={names[i] for i in positive if names[i][0] not in self.dynamic}
         self.relations=defaultdict(list)
         for fact in sorted(self.possible):self.relations[fact[0]].append(fact[1:])
         self.stats=dict(cartesian_bindings=0,join_checks=0,emitted_bindings=0,static_rejections=0)
         self.work_limit=work_limit
+
+    def compatible_type(self,actual,expected):
+        if expected=='object':return True
+        while actual!='object':
+            if actual==expected:return True
+            actual=self.type_parents.get(actual,'object')
+        return False
 
     def charge(self):
         self.stats['join_checks']+=1
@@ -54,7 +70,7 @@ class StaticGrounder:
 
     def bindings(self,fields):
         params=typed_list(fields.get(':parameters',[]))
-        choices={p:tuple(o for o,t in self.objects.items() if ty=='object' or t==ty)
+        choices={p:tuple(o for o,t in self.objects.items() if self.compatible_type(t,ty))
                  for p,ty in params.items()}
         domains={p:set(values) for p,values in choices.items()}
         self.stats['cartesian_bindings']+=prod(len(v) for v in choices.values())
