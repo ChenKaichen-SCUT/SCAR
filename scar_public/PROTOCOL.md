@@ -281,3 +281,13 @@ observed task giver. Failed writes cannot refute a content hypothesis; nonempty 
 confound a binding test. A known append conflict may initiate production of a fresh document,
 whose actual contents must still be inspected. Repeat only cp62 and cp178, retaining the first
 four diagnostics and the successful cp206 mechanism result. Do not rerun baselines.
+
+The revised cp62 gained 8->11. The cp178 trace exposed a scheduler gap: prior public
+inspect/write/inspect feedback already identified append semantics, but no actor-selected
+write activated its repair. Add controller selection of a pending recording task only when
+the exact role has an explicit observed literal, its document is held, and a co-held tool was
+previously associated with an accepted write. Inspect first; use known semantics rather than
+retesting. Add one 30-action diagnostic from v3/metropolis172, immediately before the first
+freshly observed nonempty write, and repeat cp178 to test reuse/repair of existing evidence.
+These are selected development states, not independent benchmark trials. Retain all eight
+diagnostics and their costs; do not rerun unaffected cp62/cp206 or the mark regression state.

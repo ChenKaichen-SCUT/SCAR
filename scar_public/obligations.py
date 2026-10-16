@@ -50,6 +50,7 @@ class ExecutionModel(PublicModel):
         self.append_documents = {}
         self.blocked_routes = []
         self.new_outputs = []
+        self.writing_tools = []
 
     def observe(self, text, last_action=None):
         before = copy.deepcopy(self.current)
@@ -76,6 +77,8 @@ class ExecutionModel(PublicModel):
         if last_action and last_action.startswith("write "):
             payload, document = last_action[6:].rsplit(" ",1)
             self.new_outputs=[n for n in self.new_outputs if n!=document]
+            if 'I wrote on '+document+':' in text:
+                self.writing_tools=list(dict.fromkeys(self.writing_tools+[n for n in (before.get('holding') or {}) if n!=document]))
             old = before_docs.get(document)
             if old and old['observed_at'] == before_index and old['text'] and "I wrote on " in text:
                 self.write_probe = {"document":document,"before":old['text'],"payload":payload,

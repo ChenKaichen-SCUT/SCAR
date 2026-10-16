@@ -112,3 +112,21 @@ def test_probe_workflow_executes_inspect_write_inspect_without_optional_model_sc
     saved=json.loads(json.dumps(a.notebook.state()));restored=ObligationMemory();restored.load(saved)
     assert restored.state()==a.notebook.state()
     assert restored.model.write_probe==a.notebook.model.write_probe
+
+
+def test_controller_selects_semantic_probe_even_when_actor_would_wait():
+    class NeverCalled:
+        step=4
+        def generate(self,p,s):raise AssertionError('Known unresolved obligation should activate without actor request')
+    a=ObligationAgent(NeverCalled(),'Action space: write inspect')
+    m=a.notebook
+    m.last_action=None
+    m.prompt(obs(holding='1 scratch, 1 pen',extra='I inspected scratch: paper.\nIt writes: '))
+    m.last_action='write TEST scratch'
+    m.prompt(obs(holding='1 scratch, 1 pen',extra='I wrote on scratch: TEST'))
+    m.last_action='inspect note'
+    current=obs(holding='1 note, 1 pen',extra='[1] Record the access code on a note.\nThe access code is GATE-7.\nI inspected note: paper.\nIt writes: OLD')
+    action,_,_,response=a.act({'text':current})
+    assert action=='inspect note'
+    assert a.notebook.pending_write['payload']=='GATE-7'
+    assert a.notebook.active_write_attempts

@@ -2,7 +2,7 @@
 import json
 import re
 
-from scar_public.obligations import ExecutionModel, base_name, explicit_role_bindings
+from scar_public.obligations import ExecutionModel, base_name, words, explicit_role_bindings
 from scar_public.viability import ViabilityMemory, VIABILITY_INSTRUCTION
 from scar_public.evidence import EVIDENCE_INSTRUCTION
 
@@ -59,6 +59,7 @@ class ObligationMemory(ViabilityMemory):
         self.binding_queries = 0
         self.last_plan = None
         self.contracts = []
+        self.active_write_attempts = []
 
     def prompt(self, observation):
         self.model.observe(observation,self.last_action)
@@ -160,6 +161,26 @@ class ObligationAgent:
                     memory.task_query=None
                 else:
                     prompt+='\nThe last task-binding experiment has no decisive task feedback. Seek a fresh task report when accessible; do not infer success from writing.\n'
+        # Select an unresolved public writing obligation when its content role and
+        # currently held operands are known. This is a controller decision, not an
+        # optional model annotation. Prior operation evidence avoids redundant trials.
+        if parsed is None and 'I was attacked' not in obs['text']:
+            held=model.current.get('holding') or {}
+            for goal in model.tasks:
+                binding=explicit_role_bindings(goal,model.source_lines)
+                destination=re.search(r'\b(?:on|onto|in|into) (?:a |an |the )?(.+?)(?: so\b| to\b|[.!?]|$)',goal,re.I)
+                if len(binding)!=1 or not destination:continue
+                documents=[n for n in held if words(n)==destination[1].strip().lower()]
+                if not documents or not any(n in held for n in model.writing_tools):continue
+                name=documents[0];payload=binding[0]['value']
+                doc=model.documents.get(name,{})
+                signature={'goal':goal,'document':name,'observed_text':doc.get('text')}
+                if doc.get('text')==payload or signature in memory.active_write_attempts:continue
+                memory.active_write_attempts.append(signature)
+                memory.frame.update(goal_quote=goal,method='Resolve the observed content-role and document-state obligation.')
+                parsed=program('write '+payload+' '+name,'active_semantic_obligation',
+                    'A pending public recording task has an explicit role-bound value and held operands; inspect the document and test unresolved write semantics or use prior evidence.')
+                break
         if parsed is None and memory.resource_target and step-memory.resource_started<24:
             plan=model.acquisition(memory.resource_target,fresh=memory.resource_fresh);memory.last_plan=plan
             if plan.get('status')=='acquired':memory.resource_target='';memory.resource_fresh=False
@@ -193,7 +214,7 @@ class ObligationAgent:
             trial=None
             direct=explicit_role_bindings(goal,model.source_lines)
             choices=[]
-            if memory.binding_queries<6:
+            if memory.binding_queries<6 and parsed.get('decision_source')!='active_semantic_obligation':
                 resolution=query('My Current Observation:\n'+obs['text']+'\nExact public task: '+goal+
                     '\nProposed write: '+parsed['action']+'\nChronological public evidence:\n'+memory.ledger,BINDING_INSTRUCTION)
                 memory.binding_queries+=1
