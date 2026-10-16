@@ -1,0 +1,2504 @@
+{
+  "scope": "150 new-variant development runs on50 observed configs,46 distinct. No baseline reruns. Predictors reset per instance; predictions precede outcomes. Shadow does not prune. Single measurements; no independent holdout or formal calibration guarantee.",
+  "methods": {
+    "forecast_gate": {
+      "status": {
+        "NO_STRONG_POLICY_WITHIN_H": 30,
+        "UNSUPPORTED_INPUT": 6,
+        "UNKNOWN_TIMEOUT": 10,
+        "PLAN_FOUND": 4
+      },
+      "deduplicated_status": {
+        "NO_STRONG_POLICY_WITHIN_H": 26,
+        "UNSUPPORTED_INPUT": 6,
+        "UNKNOWN_TIMEOUT": 10,
+        "PLAN_FOUND": 4
+      },
+      "prunes": 0,
+      "gate_skips": 1977,
+      "prediction_log_dropped": 0
+    },
+    "forecast_observe": {
+      "status": {
+        "NO_STRONG_POLICY_WITHIN_H": 30,
+        "UNSUPPORTED_INPUT": 6,
+        "UNKNOWN_TIMEOUT": 10,
+        "PLAN_FOUND": 4
+      },
+      "deduplicated_status": {
+        "NO_STRONG_POLICY_WITHIN_H": 26,
+        "UNSUPPORTED_INPUT": 6,
+        "UNKNOWN_TIMEOUT": 10,
+        "PLAN_FOUND": 4
+      },
+      "prunes": 1,
+      "gate_skips": 0,
+      "prediction_log_dropped": 0
+    },
+    "forecast_shadow": {
+      "status": {
+        "NO_STRONG_POLICY_WITHIN_H": 31,
+        "UNSUPPORTED_INPUT": 6,
+        "UNKNOWN_TIMEOUT": 9,
+        "PLAN_FOUND": 4
+      },
+      "deduplicated_status": {
+        "NO_STRONG_POLICY_WITHIN_H": 27,
+        "UNSUPPORTED_INPUT": 6,
+        "UNKNOWN_TIMEOUT": 9,
+        "PLAN_FOUND": 4
+      },
+      "prunes": 0,
+      "gate_skips": 0,
+      "prediction_log_dropped": 0
+    }
+  },
+  "prediction": {
+    "shadow_all": {
+      "cost": {
+        "learned": {
+          "pairs": 194,
+          "median_predicted_over_actual": 1.388465022296544,
+          "median_multiplicative_error": 12.21001461673658,
+          "mean_abs_log_error": 3.138408758738374,
+          "within_factor2": 39,
+          "within_factor10": 92
+        },
+        "old_spine": {
+          "pairs": 194,
+          "median_predicted_over_actual": 0.19692076692076693,
+          "median_multiplicative_error": 7.219502198375439,
+          "mean_abs_log_error": 2.2359771993604625,
+          "within_factor2": 41,
+          "within_factor10": 109
+        },
+        "censored": 1574
+      },
+      "lifetime": {
+        "natural_exits": 1794,
+        "median_identified": 876,
+        "unidentified": 918,
+        "median_predicted_over_actual": 0.8226174190606474,
+        "median_multiplicative_error": 2.1222014925373136,
+        "within_factor2": 430
+      },
+      "timely_completion": {
+        "n": 1794,
+        "positives": 220,
+        "brier": 0.10447159888065385,
+        "zero_brier": 0.12263099219620958,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 1285,
+            "predicted": 0.011607564507593362,
+            "observed": 0.021011673151750974
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 146,
+            "predicted": 0.27384764643590814,
+            "observed": 0.2191780821917808
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 60,
+            "predicted": 0.4549383368746412,
+            "observed": 0.35
+          },
+          {
+            "low": 0.6,
+            "high": 0.8,
+            "n": 65,
+            "predicted": 0.631958571376122,
+            "observed": 0.35384615384615387
+          },
+          {
+            "low": 0.8,
+            "high": 1.0,
+            "n": 238,
+            "predicted": 0.8665128381409894,
+            "observed": 0.49159663865546216
+          }
+        ]
+      },
+      "timely_rejection": {
+        "n": 1794,
+        "positives": 1,
+        "brier": 0.0196859789334485,
+        "zero_brier": 0.0005574136008918618,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 1577,
+            "predicted": 0.020428367147441007,
+            "observed": 0.0006341154090044388
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 98,
+            "predicted": 0.2732653344497262,
+            "observed": 0
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 119,
+            "predicted": 0.4407203544808587,
+            "observed": 0
+          }
+        ]
+      }
+    },
+    "shadow_first_per_query": {
+      "cost": {
+        "learned": {
+          "pairs": 150,
+          "median_predicted_over_actual": 1.7303886925795053,
+          "median_multiplicative_error": 15.591902986755564,
+          "mean_abs_log_error": 3.2378039708033577,
+          "within_factor2": 28,
+          "within_factor10": 63
+        },
+        "old_spine": {
+          "pairs": 150,
+          "median_predicted_over_actual": 0.06073714821031266,
+          "median_multiplicative_error": 16.703968253968256,
+          "mean_abs_log_error": 2.5357607279460876,
+          "within_factor2": 28,
+          "within_factor10": 69
+        },
+        "censored": 311
+      },
+      "lifetime": {
+        "natural_exits": 487,
+        "median_identified": 453,
+        "unidentified": 34,
+        "median_predicted_over_actual": 0.75,
+        "median_multiplicative_error": 2.0,
+        "within_factor2": 228
+      },
+      "timely_completion": {
+        "n": 487,
+        "positives": 176,
+        "brier": 0.21258877259908154,
+        "zero_brier": 0.3613963039014374,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 224,
+            "predicted": 0.004189647048662366,
+            "observed": 0.07589285714285714
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 45,
+            "predicted": 0.25737236399205754,
+            "observed": 0.7111111111111111
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 31,
+            "predicted": 0.4321387165315636,
+            "observed": 0.5806451612903226
+          },
+          {
+            "low": 0.6,
+            "high": 0.8,
+            "n": 32,
+            "predicted": 0.6293082092188589,
+            "observed": 0.3125
+          },
+          {
+            "low": 0.8,
+            "high": 1.0,
+            "n": 155,
+            "predicted": 0.8750305213047149,
+            "observed": 0.6387096774193548
+          }
+        ]
+      },
+      "timely_rejection": {
+        "n": 487,
+        "positives": 1,
+        "brier": 0.03123432191591611,
+        "zero_brier": 0.002053388090349076,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 398,
+            "predicted": 0.022566676273439452,
+            "observed": 0.002512562814070352
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 42,
+            "predicted": 0.28138895498586913,
+            "observed": 0
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 47,
+            "predicted": 0.45841616692680526,
+            "observed": 0
+          }
+        ]
+      }
+    },
+    "shadow_continuations": {
+      "cost": {
+        "learned": {
+          "pairs": 44,
+          "median_predicted_over_actual": 0.686202731657277,
+          "median_multiplicative_error": 4.872720718722272,
+          "mean_abs_log_error": 2.7995614448804766,
+          "within_factor2": 11,
+          "within_factor10": 29
+        },
+        "old_spine": {
+          "pairs": 44,
+          "median_predicted_over_actual": 0.4074720723363153,
+          "median_multiplicative_error": 3.2791276244506964,
+          "mean_abs_log_error": 1.2139878973640146,
+          "within_factor2": 13,
+          "within_factor10": 40
+        },
+        "censored": 1263
+      },
+      "lifetime": {
+        "natural_exits": 1307,
+        "median_identified": 423,
+        "unidentified": 884,
+        "median_predicted_over_actual": 0.85,
+        "median_multiplicative_error": 2.1666666666666665,
+        "within_factor2": 202
+      },
+      "timely_completion": {
+        "n": 1307,
+        "positives": 44,
+        "brier": 0.06418616383790382,
+        "zero_brier": 0.03366488140780413,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 1061,
+            "predicted": 0.013173646987141472,
+            "observed": 0.00942507068803016
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 101,
+            "predicted": 0.28118811881188116,
+            "observed": 0
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 29,
+            "predicted": 0.4793103448275862,
+            "observed": 0.10344827586206896
+          },
+          {
+            "low": 0.6,
+            "high": 0.8,
+            "n": 33,
+            "predicted": 0.6345286195286195,
+            "observed": 0.3939393939393939
+          },
+          {
+            "low": 0.8,
+            "high": 1.0,
+            "n": 83,
+            "predicted": 0.8506063213894539,
+            "observed": 0.21686746987951808
+          }
+        ]
+      },
+      "timely_rejection": {
+        "n": 1307,
+        "positives": 0,
+        "brier": 0.01538296207617097,
+        "zero_brier": 0,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 1179,
+            "predicted": 0.01970652912187071,
+            "observed": 0
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 56,
+            "predicted": 0.267172619047619,
+            "observed": 0
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 72,
+            "predicted": 0.4291689213564214,
+            "observed": 0
+          }
+        ]
+      }
+    },
+    "shadow_first_continuation_per_query": {
+      "cost": {
+        "learned": {
+          "pairs": 20,
+          "median_predicted_over_actual": 0.3277914065644541,
+          "median_multiplicative_error": 6.843212025316456,
+          "mean_abs_log_error": 3.0895097369039806,
+          "within_factor2": 3,
+          "within_factor10": 11
+        },
+        "old_spine": {
+          "pairs": 20,
+          "median_predicted_over_actual": 0.24118483601723706,
+          "median_multiplicative_error": 4.196139447923247,
+          "mean_abs_log_error": 1.2803738358682892,
+          "within_factor2": 6,
+          "within_factor10": 18
+        },
+        "censored": 141
+      },
+      "lifetime": {
+        "natural_exits": 161,
+        "median_identified": 134,
+        "unidentified": 27,
+        "median_predicted_over_actual": 0.8229166666666667,
+        "median_multiplicative_error": 2.034307359307359,
+        "within_factor2": 66
+      },
+      "timely_completion": {
+        "n": 161,
+        "positives": 20,
+        "brier": 0.1458853006666353,
+        "zero_brier": 0.12422360248447205,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 108,
+            "predicted": 0.0059934530490086055,
+            "observed": 0.046296296296296294
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 5,
+            "predicted": 0.26,
+            "observed": 0
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 7,
+            "predicted": 0.4523809523809524,
+            "observed": 0.14285714285714285
+          },
+          {
+            "low": 0.6,
+            "high": 0.8,
+            "n": 13,
+            "predicted": 0.632051282051282,
+            "observed": 0.3076923076923077
+          },
+          {
+            "low": 0.8,
+            "high": 1.0,
+            "n": 28,
+            "predicted": 0.8241187384044527,
+            "observed": 0.35714285714285715
+          }
+        ]
+      },
+      "timely_rejection": {
+        "n": 161,
+        "positives": 0,
+        "brier": 0.030537824611061287,
+        "zero_brier": 0,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 124,
+            "predicted": 0.016643553838163346,
+            "observed": 0
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 18,
+            "predicted": 0.2675925925925926,
+            "observed": 0
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 19,
+            "predicted": 0.4177717019822283,
+            "observed": 0
+          }
+        ]
+      }
+    },
+    "shadow_lifetime_supported": {
+      "cost": {
+        "learned": {
+          "pairs": 183,
+          "median_predicted_over_actual": 1.5,
+          "median_multiplicative_error": 12.388392857142858,
+          "mean_abs_log_error": 3.1665070471001,
+          "within_factor2": 38,
+          "within_factor10": 85
+        },
+        "old_spine": {
+          "pairs": 183,
+          "median_predicted_over_actual": 0.1676300578034682,
+          "median_multiplicative_error": 7.554597701149425,
+          "mean_abs_log_error": 2.2626053271147897,
+          "within_factor2": 38,
+          "within_factor10": 101
+        },
+        "censored": 989
+      },
+      "lifetime": {
+        "natural_exits": 1198,
+        "median_identified": 823,
+        "unidentified": 375,
+        "median_predicted_over_actual": 0.875,
+        "median_multiplicative_error": 2.0,
+        "within_factor2": 426
+      },
+      "timely_completion": {
+        "n": 1198,
+        "positives": 209,
+        "brier": 0.13681413796392478,
+        "zero_brier": 0.17445742904841402,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 772,
+            "predicted": 0.0019633683837532003,
+            "observed": 0.03367875647668394
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 114,
+            "predicted": 0.28340721970446714,
+            "observed": 0.2719298245614035
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 39,
+            "predicted": 0.44605897980714027,
+            "observed": 0.5384615384615384
+          },
+          {
+            "low": 0.6,
+            "high": 0.8,
+            "n": 60,
+            "predicted": 0.6279551189907988,
+            "observed": 0.38333333333333336
+          },
+          {
+            "low": 0.8,
+            "high": 1.0,
+            "n": 213,
+            "predicted": 0.8672772557631713,
+            "observed": 0.5070422535211268
+          }
+        ]
+      },
+      "timely_rejection": {
+        "n": 1198,
+        "positives": 1,
+        "brier": 0.023712160560880904,
+        "zero_brier": 0.0008347245409015025,
+        "bins": [
+          {
+            "low": 0.0,
+            "high": 0.2,
+            "n": 1030,
+            "predicted": 0.020990334752850517,
+            "observed": 0.000970873786407767
+          },
+          {
+            "low": 0.2,
+            "high": 0.4,
+            "n": 72,
+            "predicted": 0.2795833718899052,
+            "observed": 0
+          },
+          {
+            "low": 0.4,
+            "high": 0.6,
+            "n": 96,
+            "predicted": 0.4426637727418978,
+            "observed": 0
+          }
+        ]
+      }
+    }
+  },
+  "rover_comparison": [
+    {
+      "config": {
+        "id": "rover2_original",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "amortized_relation",
+      "status": "PLAN_FOUND",
+      "expanded": 2,
+      "total_seconds": 0.08921231600106694
+    },
+    {
+      "config": {
+        "id": "rover4_original",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "amortized_relation",
+      "status": "PLAN_FOUND",
+      "expanded": 6,
+      "total_seconds": 0.16307681900070747
+    },
+    {
+      "config": {
+        "id": "rover2_original",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "leaf",
+      "status": "PLAN_FOUND",
+      "expanded": 9,
+      "total_seconds": 0.05155392299639061
+    },
+    {
+      "config": {
+        "id": "rover4_original",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "leaf",
+      "status": "PLAN_FOUND",
+      "expanded": 207,
+      "total_seconds": 0.13555256599647691
+    },
+    {
+      "config": {
+        "id": "rover2_a16s1",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "leaf",
+      "status": "PLAN_FOUND",
+      "expanded": 14,
+      "total_seconds": 0.06307328100228915
+    },
+    {
+      "config": {
+        "id": "rover2_a16s1",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "amortized_relation",
+      "status": "PLAN_FOUND",
+      "expanded": 2,
+      "total_seconds": 0.11681892200431321
+    },
+    {
+      "config": {
+        "id": "rover4_a16s1",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "amortized_relation",
+      "status": "PLAN_FOUND",
+      "expanded": 203,
+      "total_seconds": 0.49664172800112283
+    },
+    {
+      "config": {
+        "id": "rover4_a16s1",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "leaf",
+      "status": "PLAN_FOUND",
+      "expanded": 2295,
+      "total_seconds": 0.3781812520028325
+    },
+    {
+      "config": {
+        "id": "rover6_original",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "leaf",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 58273,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover6_a16s1",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "amortized_relation",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 26348,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover6_original",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "amortized_relation",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 52196,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover8_original",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "leaf",
+      "status": "NO_STRONG_POLICY_WITHIN_H",
+      "expanded": 80616,
+      "total_seconds": 12.842827305001265
+    },
+    {
+      "config": {
+        "id": "rover8_original",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "amortized_relation",
+      "status": "NO_STRONG_POLICY_WITHIN_H",
+      "expanded": 80616,
+      "total_seconds": 13.841813314997125
+    },
+    {
+      "config": {
+        "id": "rover8_a16s1",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "amortized_relation",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 51439,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover6_a16s1",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "leaf",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 28084,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover8_a16s1",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "leaf",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 57284,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover2_a16s1",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "focus_priority",
+      "status": "PLAN_FOUND",
+      "expanded": 14,
+      "total_seconds": 0.11765282200212823
+    },
+    {
+      "config": {
+        "id": "rover2_original",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "focus_priority",
+      "status": "PLAN_FOUND",
+      "expanded": 9,
+      "total_seconds": 0.09962136299873237
+    },
+    {
+      "config": {
+        "id": "rover4_original",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "focus_priority",
+      "status": "PLAN_FOUND",
+      "expanded": 207,
+      "total_seconds": 0.23973386499710614
+    },
+    {
+      "config": {
+        "id": "rover4_a16s1",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "focus_priority",
+      "status": "PLAN_FOUND",
+      "expanded": 2295,
+      "total_seconds": 0.6268671419966267
+    },
+    {
+      "config": {
+        "id": "rover8_original",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "focus_priority",
+      "status": "NO_STRONG_POLICY_WITHIN_H",
+      "expanded": 80616,
+      "total_seconds": 13.921024023002246
+    },
+    {
+      "config": {
+        "id": "rover6_original",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "focus_priority",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 51727,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover6_a16s1",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "focus_priority",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 26325,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover8_a16s1",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "focus_priority",
+      "status": "UNKNOWN_TIMEOUT",
+      "expanded": 50410,
+      "total_seconds": null
+    },
+    {
+      "config": {
+        "id": "rover2_a16s1",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_observe",
+      "status": "PLAN_FOUND",
+      "value": 7,
+      "verified_policy_depth": 7,
+      "total_seconds": 0.11503986800380517,
+      "parse_seconds": 0.03244140300375875,
+      "construct_seconds": 0.0029074229969410226,
+      "search_seconds": 0.06593981900368817,
+      "timed_out": false,
+      "expanded": 14,
+      "optional_seconds": 0.050147362002462614,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 2,
+        "model_seconds": 0.0002465659999870695,
+        "completed_queries": 0,
+        "retired_queries": 2,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 6425,
+        "delivered_expansions": 8,
+        "mode": "observe",
+        "lifetime_events": 14,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 373,
+            "catalog_samples": 31,
+            "predictions": 2,
+            "extrapolations": 2
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover2_a16s1",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_shadow",
+      "status": "PLAN_FOUND",
+      "value": 7,
+      "verified_policy_depth": 7,
+      "total_seconds": 0.11513916900003096,
+      "parse_seconds": 0.032268048998957966,
+      "construct_seconds": 0.0029820339987054467,
+      "search_seconds": 0.06614372300100513,
+      "timed_out": false,
+      "expanded": 14,
+      "optional_seconds": 0.05014496100193355,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 2,
+        "model_seconds": 0.00023776601301506162,
+        "completed_queries": 0,
+        "retired_queries": 2,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 5970,
+        "delivered_expansions": 8,
+        "mode": "shadow",
+        "lifetime_events": 14,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 345,
+            "catalog_samples": 28,
+            "predictions": 2,
+            "extrapolations": 2
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover4_a16s1",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_gate",
+      "status": "PLAN_FOUND",
+      "value": 12,
+      "verified_policy_depth": 12,
+      "total_seconds": 0.6076604490008322,
+      "parse_seconds": 0.040318100996955764,
+      "construct_seconds": 0.002885141999286134,
+      "search_seconds": 0.5239059000014095,
+      "timed_out": false,
+      "expanded": 2295,
+      "optional_seconds": 0.22109302498574834,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 22,
+        "model_seconds": 0.02616160493926145,
+        "completed_queries": 0,
+        "retired_queries": 22,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 42185,
+        "delivered_expansions": 2280,
+        "mode": "joint",
+        "lifetime_events": 2295,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 5054,
+            "catalog_samples": 121,
+            "predictions": 84,
+            "extrapolations": 67
+          },
+          {
+            "action_samples": 0,
+            "catalog_samples": 0,
+            "predictions": 1,
+            "extrapolations": 1
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover2_original",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_shadow",
+      "status": "PLAN_FOUND",
+      "value": 7,
+      "verified_policy_depth": 7,
+      "total_seconds": 0.10567015699780313,
+      "parse_seconds": 0.0334958759995061,
+      "construct_seconds": 0.002868620998924598,
+      "search_seconds": 0.05625453099492006,
+      "timed_out": false,
+      "expanded": 9,
+      "optional_seconds": 0.05061505000048783,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 2,
+        "model_seconds": 0.0002321540014236234,
+        "completed_queries": 1,
+        "retired_queries": 1,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 5260,
+        "delivered_expansions": 8,
+        "mode": "shadow",
+        "lifetime_events": 9,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 530,
+            "catalog_samples": 24,
+            "predictions": 2,
+            "extrapolations": 2
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover2_original",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_observe",
+      "status": "PLAN_FOUND",
+      "value": 7,
+      "verified_policy_depth": 7,
+      "total_seconds": 0.1048765200030175,
+      "parse_seconds": 0.03237722199992277,
+      "construct_seconds": 0.0028526309979497455,
+      "search_seconds": 0.05627000200183829,
+      "timed_out": false,
+      "expanded": 9,
+      "optional_seconds": 0.05046814799425192,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 2,
+        "model_seconds": 0.00021136498980922624,
+        "completed_queries": 1,
+        "retired_queries": 1,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 5260,
+        "delivered_expansions": 8,
+        "mode": "observe",
+        "lifetime_events": 9,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 530,
+            "catalog_samples": 24,
+            "predictions": 2,
+            "extrapolations": 2
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover4_original",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_observe",
+      "status": "PLAN_FOUND",
+      "value": 10,
+      "verified_policy_depth": 10,
+      "total_seconds": 0.23940117400343297,
+      "parse_seconds": 0.03886187999887625,
+      "construct_seconds": 0.0028765720053343102,
+      "search_seconds": 0.15931194300355855,
+      "timed_out": false,
+      "expanded": 207,
+      "optional_seconds": 0.09840158106089802,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 9,
+        "model_seconds": 0.00316256803489523,
+        "completed_queries": 0,
+        "retired_queries": 9,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 17921,
+        "delivered_expansions": 192,
+        "mode": "observe",
+        "lifetime_events": 207,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 2992,
+            "catalog_samples": 63,
+            "predictions": 18,
+            "extrapolations": 18
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover2_original",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_gate",
+      "status": "PLAN_FOUND",
+      "value": 7,
+      "verified_policy_depth": 7,
+      "total_seconds": 0.10464465499535436,
+      "parse_seconds": 0.033257179995416664,
+      "construct_seconds": 0.002940502999990713,
+      "search_seconds": 0.05525566000142135,
+      "timed_out": false,
+      "expanded": 9,
+      "optional_seconds": 0.049631559995759744,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 2,
+        "model_seconds": 0.00021781599934911355,
+        "completed_queries": 1,
+        "retired_queries": 1,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 5221,
+        "delivered_expansions": 8,
+        "mode": "joint",
+        "lifetime_events": 9,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 518,
+            "catalog_samples": 24,
+            "predictions": 2,
+            "extrapolations": 2
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover2_a16s1",
+        "family": "rovers",
+        "instance": "pfile2",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_gate",
+      "status": "PLAN_FOUND",
+      "value": 7,
+      "verified_policy_depth": 7,
+      "total_seconds": 0.11624198299978161,
+      "parse_seconds": 0.03282562100503128,
+      "construct_seconds": 0.0029584430012619123,
+      "search_seconds": 0.06648496999696363,
+      "timed_out": false,
+      "expanded": 14,
+      "optional_seconds": 0.0501551509660203,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 2,
+        "model_seconds": 0.00025390496011823416,
+        "completed_queries": 0,
+        "retired_queries": 2,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 6169,
+        "delivered_expansions": 8,
+        "mode": "joint",
+        "lifetime_events": 14,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 362,
+            "catalog_samples": 30,
+            "predictions": 2,
+            "extrapolations": 2
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover4_a16s1",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_shadow",
+      "status": "PLAN_FOUND",
+      "value": 12,
+      "verified_policy_depth": 12,
+      "total_seconds": 0.6228341230016667,
+      "parse_seconds": 0.0398179500043625,
+      "construct_seconds": 0.0029112819975125603,
+      "search_seconds": 0.5396011260017985,
+      "timed_out": false,
+      "expanded": 2295,
+      "optional_seconds": 0.22597576356929494,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 28,
+        "model_seconds": 0.02574479952454567,
+        "completed_queries": 0,
+        "retired_queries": 28,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 45738,
+        "delivered_expansions": 2272,
+        "mode": "shadow",
+        "lifetime_events": 2295,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 5600,
+            "catalog_samples": 126,
+            "predictions": 80,
+            "extrapolations": 66
+          },
+          {
+            "action_samples": 0,
+            "catalog_samples": 0,
+            "predictions": 4,
+            "extrapolations": 4
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover4_a16s1",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_observe",
+      "status": "PLAN_FOUND",
+      "value": 12,
+      "verified_policy_depth": 12,
+      "total_seconds": 0.6395609709943528,
+      "parse_seconds": 0.039390881996951066,
+      "construct_seconds": 0.0029241520023788325,
+      "search_seconds": 0.5569090849967324,
+      "timed_out": false,
+      "expanded": 2295,
+      "optional_seconds": 0.23199186781130265,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 31,
+        "model_seconds": 0.028489119802543428,
+        "completed_queries": 0,
+        "retired_queries": 31,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 53244,
+        "delivered_expansions": 2280,
+        "mode": "observe",
+        "lifetime_events": 2295,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 6690,
+            "catalog_samples": 143,
+            "predictions": 92,
+            "extrapolations": 71
+          },
+          {
+            "action_samples": 0,
+            "catalog_samples": 0,
+            "predictions": 1,
+            "extrapolations": 1
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover4_original",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_shadow",
+      "status": "PLAN_FOUND",
+      "value": 10,
+      "verified_policy_depth": 10,
+      "total_seconds": 0.24087424900062615,
+      "parse_seconds": 0.0379098499979591,
+      "construct_seconds": 0.002841241002897732,
+      "search_seconds": 0.16146266199939419,
+      "timed_out": false,
+      "expanded": 207,
+      "optional_seconds": 0.09916461600369075,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 12,
+        "model_seconds": 0.0033639680332271382,
+        "completed_queries": 0,
+        "retired_queries": 12,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 17771,
+        "delivered_expansions": 192,
+        "mode": "shadow",
+        "lifetime_events": 207,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 3136,
+            "catalog_samples": 57,
+            "predictions": 19,
+            "extrapolations": 19
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover6_original",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_gate",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.0793839059988386,
+      "construct_seconds": 0.00316788800409995,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 42405,
+      "optional_seconds": 1.45582313300838,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 114,
+        "cold_probes": 64,
+        "model_seconds": 0.24833959987881826,
+        "completed_queries": 43,
+        "retired_queries": 21,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 110268,
+        "delivered_expansions": 1608,
+        "mode": "joint",
+        "lifetime_events": 42396,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 17459,
+            "catalog_samples": 231,
+            "predictions": 188,
+            "extrapolations": 167
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover8_original",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_observe",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": "infinity",
+      "verified_policy_depth": null,
+      "total_seconds": 14.908245199992962,
+      "parse_seconds": 0.04693591299292166,
+      "construct_seconds": 0.0031613570026820526,
+      "search_seconds": 13.307853895996232,
+      "timed_out": true,
+      "expanded": 80616,
+      "optional_seconds": 1.6509862146194791,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.37744617050339,
+        "completed_queries": 37,
+        "retired_queries": 27,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 113889,
+        "delivered_expansions": 688,
+        "mode": "observe",
+        "lifetime_events": 80616,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 13686,
+            "catalog_samples": 277,
+            "predictions": 84,
+            "extrapolations": 60
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover4_original",
+        "family": "rovers",
+        "instance": "pfile4",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_gate",
+      "status": "PLAN_FOUND",
+      "value": 10,
+      "verified_policy_depth": 10,
+      "total_seconds": 0.2382201319996966,
+      "parse_seconds": 0.03821342699666275,
+      "construct_seconds": 0.0028691010011243634,
+      "search_seconds": 0.1586529310006881,
+      "timed_out": false,
+      "expanded": 207,
+      "optional_seconds": 0.09813573097926565,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 12,
+        "model_seconds": 0.0029757649754174054,
+        "completed_queries": 0,
+        "retired_queries": 12,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 18717,
+        "delivered_expansions": 192,
+        "mode": "joint",
+        "lifetime_events": 207,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 3424,
+            "catalog_samples": 58,
+            "predictions": 18,
+            "extrapolations": 18
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover6_a16s1",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_shadow",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.07907186900411034,
+      "construct_seconds": 0.003130616998532787,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 24614,
+      "optional_seconds": 1.2077370990082272,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.14183575198694598,
+        "completed_queries": 40,
+        "retired_queries": 24,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 95755,
+        "delivered_expansions": 648,
+        "mode": "shadow",
+        "lifetime_events": 24602,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 9233,
+            "catalog_samples": 163,
+            "predictions": 78,
+            "extrapolations": 32
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover8_original",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_shadow",
+      "status": "NO_STRONG_POLICY_WITHIN_H",
+      "value": "infinity",
+      "verified_policy_depth": null,
+      "total_seconds": 14.573829267996189,
+      "parse_seconds": 0.046699227998033166,
+      "construct_seconds": 0.0030573149997508153,
+      "search_seconds": 13.05203120999795,
+      "timed_out": false,
+      "expanded": 80616,
+      "optional_seconds": 1.6174462945273262,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.37174133437656565,
+        "completed_queries": 37,
+        "retired_queries": 27,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 113833,
+        "delivered_expansions": 688,
+        "mode": "shadow",
+        "lifetime_events": 80616,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 13667,
+            "catalog_samples": 276,
+            "predictions": 84,
+            "extrapolations": 60
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover6_original",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_observe",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.07844246600143379,
+      "construct_seconds": 0.003112115999101661,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 45610,
+      "optional_seconds": 1.3886115807035821,
+      "prunes": 1,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.2368324464041507,
+        "completed_queries": 53,
+        "retired_queries": 11,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 112186,
+        "delivered_expansions": 784,
+        "mode": "observe",
+        "lifetime_events": 45597,
+        "lifetime_censored": 2,
+        "engines": [
+          {
+            "action_samples": 18534,
+            "catalog_samples": 226,
+            "predictions": 90,
+            "extrapolations": 57
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover6_a16s1",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_observe",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.07799204599723453,
+      "construct_seconds": 0.003158797000651248,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 24519,
+      "optional_seconds": 1.129890429059742,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.14399115419655573,
+        "completed_queries": 41,
+        "retired_queries": 23,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 95763,
+        "delivered_expansions": 648,
+        "mode": "observe",
+        "lifetime_events": 24507,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 9244,
+            "catalog_samples": 163,
+            "predictions": 78,
+            "extrapolations": 32
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover6_a16s1",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_gate",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.07938055699924007,
+      "construct_seconds": 0.0032095080023282208,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 24073,
+      "optional_seconds": 1.3125890373048605,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 4,
+        "cold_probes": 64,
+        "model_seconds": 0.14762614254868822,
+        "completed_queries": 41,
+        "retired_queries": 23,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 98977,
+        "delivered_expansions": 784,
+        "mode": "joint",
+        "lifetime_events": 24060,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 10920,
+            "catalog_samples": 147,
+            "predictions": 93,
+            "extrapolations": 43
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover8_a16s1",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_observe",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.04724257899943041,
+      "construct_seconds": 0.0031504180005867966,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 46132,
+      "optional_seconds": 1.2760627939132974,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.22379287963121897,
+        "completed_queries": 45,
+        "retired_queries": 19,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 101603,
+        "delivered_expansions": 664,
+        "mode": "observe",
+        "lifetime_events": 46121,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 8705,
+            "catalog_samples": 202,
+            "predictions": 76,
+            "extrapolations": 34
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover6_original",
+        "family": "rovers",
+        "instance": "pfile6",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_shadow",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.07872560300165787,
+      "construct_seconds": 0.003238058998249471,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 48397,
+      "optional_seconds": 1.3873309049304225,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.2376127181123593,
+        "completed_queries": 52,
+        "retired_queries": 12,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 1,
+        "delivered_units": 113093,
+        "delivered_expansions": 792,
+        "mode": "shadow",
+        "lifetime_events": 48383,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 18979,
+            "catalog_samples": 226,
+            "predictions": 90,
+            "extrapolations": 57
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover8_original",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "original",
+        "actuation": null,
+        "sensors": null,
+        "horizon": 16
+      },
+      "mode": "forecast_gate",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": "infinity",
+      "verified_policy_depth": null,
+      "total_seconds": 14.800128538998251,
+      "parse_seconds": 0.04678433100343682,
+      "construct_seconds": 0.002997963994857855,
+      "search_seconds": 13.365065421996405,
+      "timed_out": true,
+      "expanded": 80616,
+      "optional_seconds": 1.5520365862030303,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 51,
+        "cold_probes": 64,
+        "model_seconds": 0.37379852241429035,
+        "completed_queries": 26,
+        "retired_queries": 38,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 96128,
+        "delivered_expansions": 992,
+        "mode": "joint",
+        "lifetime_events": 80616,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 8018,
+            "catalog_samples": 255,
+            "predictions": 121,
+            "extrapolations": 95
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover8_a16s1",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_shadow",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.047020145000715274,
+      "construct_seconds": 0.003077456000028178,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 47140,
+      "optional_seconds": 1.3292759968389873,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.2324191175866872,
+        "completed_queries": 46,
+        "retired_queries": 18,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 97431,
+        "delivered_expansions": 776,
+        "mode": "shadow",
+        "lifetime_events": 47128,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 8245,
+            "catalog_samples": 192,
+            "predictions": 93,
+            "extrapolations": 47
+          }
+        ]
+      }
+    },
+    {
+      "config": {
+        "id": "rover8_a16s1",
+        "family": "rovers",
+        "instance": "pfile8",
+        "projection_predicates": [
+          "at",
+          "calibrated",
+          "communicated_soil_data",
+          "communicated_rock_data",
+          "communicated_image_data"
+        ],
+        "source": "development",
+        "source_kind": "benchmark",
+        "cohort": "observed_rover_scale",
+        "overlay": "a16s1",
+        "actuation": 16,
+        "sensors": 1,
+        "horizon": 16
+      },
+      "mode": "forecast_gate",
+      "status": "UNKNOWN_TIMEOUT",
+      "value": null,
+      "verified_policy_depth": null,
+      "total_seconds": null,
+      "parse_seconds": 0.04651207500137389,
+      "construct_seconds": 0.002967533000628464,
+      "search_seconds": null,
+      "timed_out": true,
+      "expanded": 49309,
+      "optional_seconds": 1.2502043665444944,
+      "prunes": 0,
+      "prediction": {
+        "gate_skips": 0,
+        "cold_probes": 64,
+        "model_seconds": 0.2287554954236839,
+        "completed_queries": 46,
+        "retired_queries": 18,
+        "prediction_log_dropped": 0,
+        "shadow_rejects": 0,
+        "delivered_units": 101690,
+        "delivered_expansions": 656,
+        "mode": "joint",
+        "lifetime_events": 49293,
+        "lifetime_censored": 0,
+        "engines": [
+          {
+            "action_samples": 8714,
+            "catalog_samples": 203,
+            "predictions": 73,
+            "extrapolations": 33
+          }
+        ]
+      }
+    }
+  ],
+  "api_calls": 0
+}

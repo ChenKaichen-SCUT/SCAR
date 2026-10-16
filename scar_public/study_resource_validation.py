@@ -14,6 +14,10 @@ MODES = ['leaf','resource_tree','incremental_refinement','amortized_count','amor
 
 
 def planner(task,mode):
+    if mode in ('forecast_shadow','forecast_observe','forecast_gate'):
+        from scar_public.predictive_scheduler import PredictivePlanner
+        return PredictivePlanner(task,{'forecast_shadow':'shadow','forecast_observe':'observe',
+            'forecast_gate':'joint'}[mode])
     if mode in ('focus_root','focus_priority','focus_multistep'):
         from scar_public.focused_scheduler import FocusedPlanner
         return FocusedPlanner(task,{'focus_root':'root_only','focus_priority':'focused',
