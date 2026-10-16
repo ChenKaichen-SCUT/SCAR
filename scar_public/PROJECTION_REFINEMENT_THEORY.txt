@@ -1,0 +1,117 @@
+Certificate-guided progress retention: definition, proofs and limits
+2026-10-16. Development implementation; see certificate_refinement.py.
+
+1. Scope and notation
+Use the finite deterministic contingent-planning fragment and conservative C0/C1
+recurrences in DECISION_COVERAGE_THEORY.txt. Resources have fixed nonnegative
+action costs. The exact controller receives only actual action observations;
+neither goal completion nor projected successor distinctions are extra sensors.
+Only the bound optimistically absorbs successful model names and distinguishes
+abstract successor projections. A timeout or failed witness search is UNKNOWN.
+
+At a decision query (B,d), let L be the live, not-yet-goal worlds and P the
+existing retained atom set. Refinement applies only when d>=1, |L|>=2 and all
+live worlds have the same resource vector and P projection. Let K(B) contain
+dynamic ground atoms outside P that have a common Boolean value v(p) throughout
+L. K(B) is computed from the whole belief, not from the actual hidden world.
+Completed worlds may be discarded only inside the optimistic bound.
+
+The refinement unit is a ground atom, e.g. in_ot(package1,bos_truck), rather
+than all instances of a predicate schema. Uncertain atoms outside K(B) cannot
+be selected by this implementation. This restricts coverage but preserves a
+single current abstract state; no arbitrary truth value is invented.
+
+2. Saturation witnesses and separator clauses
+A concrete certificate W=(a,{s_g}) has one common affordable action a and one
+verified prestate for each live static-model group g. Every s_g respects the
+group's invariant static facts and current retained projection, is not a goal,
+and its legal successor under the real interpreter is a goal. States s_g may
+be unreachable. The earlier theorem gives C1_P(q,M,d)=|M| for d>=1.
+
+Define D_g(W)={p in K(B): s_g(p) != v(p)} and D(W)=union_g D_g(W).
+For a selected set E subset K(B), the concrete certificate W survives the
+additional current-state constraints exactly when E intersects D(W) trivially.
+Proof: W survives iff every member agrees with every added literal, equivalently
+there is no selected atom differing in any member. Conversely, selecting one
+atom in D(W) rejects at least one member of this particular certificate. QED.
+
+Rejecting that member does not reject the action or a replacement certificate.
+For collected W_1,...,W_k, solve
+    minimize |E| subject to E subset K(B), E intersects D(W_j) for every j.
+The implementation enumerates cardinality 0,1,2,3 by branching on an unhit
+clause. A completed solution is cardinality-minimum for these collected
+certificates. If there is no solution within three atoms, omit refinement.
+An empty clause means known-atom retention cannot exclude that witness.
+Interruption never returns an incomplete minimum or an infeasibility result.
+
+3. Counterexample loop and safety
+E := empty; clauses := empty
+repeat at most 32 times:
+    seek a verified concrete saturation certificate with P union E fixed
+    if none found by the bounded constructive witness finder: exit loop
+    append its separator clause
+    E := minimum hitting set of the collected clauses, with |E|<=3
+    if absent, empty separator, or work/time cap: omit this refinement
+if E is nonempty:
+    create/reuse a bound-only task view retaining P union E
+    compute C0 at this decision threshold
+    if C0<|M|: prune
+    else compute C1 and prune only if C1<|M|
+else use the previous direct-certificate gate
+
+Selected facts are NOT frozen for all future steps: their Boolean values evolve
+through the original simultaneous conditional effects in every abstract channel.
+Each projection owns separate channel, SAT-formula and recursion caches; the
+exact task and exact search are never mutated. If the refined result is incomplete,
+ignore it. The existing safe inference already completed remains available.
+
+Safety proposition: every pruning decision made by this refinement is sound
+within the same bounded-horizon fragment as the underlying capacity bound.
+Proof: the current concrete states satisfy the new projection by construction.
+For each concrete transition, its predecessor is a witness for the existential
+abstract transition with the added atoms. Thus the refined abstraction still
+contains every real policy branch. Artificial successor distinctions, absorbed
+goal names, and capacity sums are optimistic. The established induction on
+remaining horizon therefore gives true successful-model capacity <= C1 <= C0.
+A completed bound below |M| excludes a strong policy at this threshold. Atom
+selection and certificate elimination alone never enter this inference. QED.
+
+No monotone-improvement theorem is assumed: adding projected outputs can introduce
+more optimistic successor distinctions and repeated capacity contributions. We
+do not assume C1_(P union E)<=C1_P for this implementation. Safe bounds from
+different projections can coexist; refinement can simply fail to help.
+
+4. What 'minimum' and 'certificate removed' do NOT claim
+Minimum is cardinality minimum for collected concrete witnesses, under the
+known-atom restriction and three-atom cap. It is not minimum time, minimum
+global projection, minimum explanation over all SAT witnesses, or minimum
+projection sufficient for pruning. Failure of the constructive finder does not
+prove all existential one-step witnesses absent. Only the subsequent full
+conservative channel/capacity calculation can justify pruning.
+
+The equal-cardinality goal-first ablation pays the same certificate-selection
+cost, then replaces E by known goal atoms followed by other known atoms in index
+order. In its raw evidence, minimal_for_collected and constructed_certificate_removed
+describe the certificate-selection stage BEFORE that replacement, not a property
+of the replacement atoms. The analysis and report explicitly keep this distinction.
+
+5. Resource use and attribution
+Reuse the 3s nominal run / 0.25s nominal query / 64 attempt budget; individual SAT
+queries can overrun a checkpoint. Added limits: <=3 atoms, <=32 witness rounds,
+<=4096 hitting-set search nodes per call, <=2048 witness trials per certificate
+search, <=50000 accepted-budget trials per run (the rejected trial increments
+the counter once more), <=16 bound projections, <=4096 cached belief selections.
+None of these is a polynomial-time guarantee for channel construction or search.
+
+The existing constructed n-model family, with end removed from its projection,
+demonstrates one-atom restoration of a joint resource obstruction: at budget 2,
+original C1=n, refined C0=n, refined C1=n-1, while every pair has a two-action
+solution and the resource-blind leaf control gives 0. With budget 3 recovery is
+feasible and neither refinement nor C1 prunes. This reuses a controlled family;
+it is not new independent public benchmark evidence.
+
+The public experiment must separately report (a) verified certificate rejection,
+(b) scalar pruning after refinement, (c) extra identity pruning beyond that
+scalar bound, and (d) total search time. Progress tracking, predicate abstraction
+and counterexample-guided refinement are established ideas. This implementation
+does not establish novelty merely by connecting them to a coverage certificate.
