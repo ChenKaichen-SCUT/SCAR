@@ -1,0 +1,160 @@
+Candidate identities across abstract observation channels
+2026-10-16. Extension of SYMBOLIC_COVERAGE_THEORY.txt; separate from V6/game code.
+
+Question
+Can a small amount of model identity information remove spurious combinations
+of channel capacities without constructing the concrete state graph? The
+implementation tests two distinct mechanisms: descendant eligibility (lineage)
+and distinct-model allocation across sibling channels (matching).
+
+Assumptions and unchanged semantics
+Finite named initial models; one current state per surviving model; deterministic
+unit-cost actions; Boolean observations; fixed nonnegative resource consumption.
+Stopping requires the goal in every current world. Goal truth is not observed
+automatically. q=(remaining resources, retained dynamic projection). The symbolic
+channels allow arbitrary unretained dynamic valuations consistent with each
+model's static facts. Only the bound treats (observation, next projection) as an
+augmented observation. The real policy sees actual observations only.
+
+For each q,a, retain BITSETS instead of discarding them after taking cardinality:
+ F(q,a): models with some legal unfinished witness immediately reaching the goal.
+ U_j(q,a): models with some legal unfinished witness reaching non-goal bucket j.
+ q_j: resource/projection successor for bucket j.
+These are the SAME existential witnesses as the count baseline. No new invariant,
+observation, goal condition, or resource rule is introduced in the primary study.
+
+Definitions
+C_0(q,t) denotes the original global count upper bound (at most N model names).
+Let S be a candidate bitset, usually propagated from a particular branch history.
+For an action, let F_S=S intersect F and S_j=(S minus F) intersect U_j.
+Removing all F_S is optimistic early absorption; those names are already counted
+even if the actual detailed state would not yet finish under this action.
+
+Base: C_L(q,S,0)=C_M(q,S,0)=0; capacities for empty S are zero.
+
+Lineage recurrence:
+ C_L(q,S,t) = min(|S|, C_0(q,t),
+                 max_a [ |F_S| + sum_j C_L(q_j,S_j,t-1) ]).
+
+Matching recurrence:
+ For a fixed action construct a bipartite capacitated network. Each model name
+ in S minus F has a unit-capacity edge from the source. It has an edge to bucket
+ j iff it belongs to S_j. Bucket j has capacity C_M(q_j,S_j,t-1) to the sink.
+ Let nu_a be the integral maximum flow / b-matching cardinality.
+
+ C_M(q,S,t) = min(|S|, C_0(q,t), max_a [ |F_S| + nu_a ]).
+
+The code uses augmenting paths with reassignable bucket owners, not a greedy
+allocation. Disjoint bucket masks return their capacity sum without matching.
+The branch masks describe eligibility; the algorithm does NOT assert that an
+arbitrary chosen subset of size equal to a child capacity can actually finish.
+That remaining relaxation is a reason the result is an upper bound, not a
+complete feasibility test.
+
+Safety theorem
+For any choice of one unfinished state per name in S with common q, every strong
+policy of depth at most t finishes at most C_L and at most C_M names from S.
+
+Proof by induction on t. Zero-step unfinished completion is impossible. For a
+policy starting with a, optimistically count every name in F_S. Consider its
+actually successful names outside F_S. Each actual successor has a witness in
+exactly one actual (observation, projected successor) bucket, and that name is
+in S_j. The restricted actual continuation is a valid policy on those states,
+even after we grant extra projected-state information to the relaxed controller.
+By induction its successful names number at most the child's capacity. Counting
+them by bucket proves the lineage sum bound. Moreover these actual successes
+give a feasible integral flow: one unit per name, assigned to its actual bucket,
+respecting each child capacity. Hence their count is at most nu_a. Counting all
+F_S may overcount unsuccessful or not-yet-goal names, but cannot underestimate
+the actual successful names removed from consideration. Maximizing over a and
+taking the minimum with |S| and C_0 preserves an upper bound. QED.
+
+At a real belief B, discard already-goal worlds only for the bound. If remaining
+worlds have a common q and named set S, return the first t<=H with C(q,S,t)>=|S|;
+return infinity if none exists. If projections differ, return zero. This is an
+admissible lower bound on the optimal bounded strong-policy cost. In search it
+is maximized with the exact known-world tail bound. SAT UNKNOWN disables the
+coverage bound safely; whole-solver timeouts remain UNKNOWN, never infeasibility.
+
+Strength relationship (unlimited completed recurrences, same channels)
+ C_M(q,S,t) <= C_L(q,S,t) <= min(|S|,C_0(q,t)).
+The first inequality follows inductively since matching is at most the sum of
+bucket capacities and is monotone in those capacities. The second follows from
+the cap and the same induction. The corresponding lower bounds reverse order.
+
+Finite additional-work budget
+The primary study permits 5000 newly expanded (q,S,t) relational DP nodes over
+each solver's lifetime. At exhaustion it returns min(|S|,C_0(q,t)), NOT a partial
+maximum over actions. This is still an upper bound, so pruning remains sound.
+With different budget-exhaustion patterns, matching need not dominate lineage
+pointwise; both still dominate the corresponding global count ceiling. A node
+cap is not a bound on all SAT work: the shared C_0 and channel queries can still
+be expensive. No universal low-runtime or polynomial-input-size claim is made.
+
+Strict examples, tested independently of SAT
+Lineage: a root channel admits only model 0 but its successor can finish only
+model 1. The scalar recurrence incorrectly borrows successor capacity 1. The
+propagated mask yields capacity zero.
+
+Sibling overlap: at the root there are three buckets with masks {0}, {0}, {1,2}.
+The first two can each finish model 0; the third has two alternative terminal
+actions, one finishing model 1 and the other model 2, hence capacity one. Each
+model is individually completable. The scalar and lineage sums give 3; matching
+gives 2 because model 0 cannot be assigned twice. This is a valid abstract-channel
+separation example, not evidence of an additional benchmark task solved.
+
+Cost
+An N-bit integer stores each candidate set; intersection, union and population
+count avoid exact policy search on every candidate subset. Only masks encountered
+by channel intersections are expanded, but their worst-case number is still 2^N.
+With K buckets and E model/bucket incidences, augmenting paths use polynomial
+time (a conservative O(N E) bound for the simple implementation), and store
+O(N+K+E) incidence/assignment information. In the implementation incidences are
+implicit bit tests, with repeated scans of buckets and current owners; a safe
+coarse bound is O(N^2 K). This polynomial matching subroutine does not make the
+whole planning heuristic polynomial in compact input size. Additional mask DP
+nodes are capped, and all construction/search costs are timed in the study.
+
+Implementation mapping
+relational_coverage.py:
+ get_channels: same symbolic witnesses, retaining candidate bitsets;
+ relational_capacity: lineage or matching recurrence and safe work-limit fallback;
+ matching_size: integral sibling allocation;
+ lower: admissible cost query; RelationalPlanner: existing exact search wrapper.
+Counts, lineage, matching all share the same channel construction and search.
+
+Separate diagnostic: immediate goal-support stages
+study_relational_stages.py adds dynamic precondition/guard atoms of actions that
+affect goal atoms to the original projection. It is a declared post-primary
+factorial test on all eight Rover configurations, not held-out evidence. Both
+counts and matching are rerun under the SAME changed projection. Different
+projections can introduce extra abstract observations or cause a common-q
+fallback; no universal dominance over the earlier projection is asserted.
+
+Independent Doors reference
+doors_exact_reference.py checks the original two-action Doors schema and builds
+the full reachable graph of (known position, candidate bitset). A move is legal
+only when its destination is open in every candidate. Informative sensing splits
+the bitset. Uninformative positive-cost self-loops are omitted. A retrograde
+label-setting min/max algorithm starts at goal nodes; an action becomes eligible
+when all children have settled values and proposes 1+max(child value). The lowest
+proposal settles next. Positive unit costs justify this label-setting order.
+This is a specialized explicit reference, not part of the generic heuristic and
+not a comparable general-planner speed baseline. Its 24-step optimal policy is
+replayed on all 25 original worlds using the Boolean PDDL transition interpreter.
+
+Relation to prior work and limits of the novelty claim
+Model labels, overlap, and cross-world constraints already appear in LUG/POND:
+Bryce, Kambhampati, Smith, Planning Graph Heuristics for Belief Space Search,
+https://arxiv.org/abs/1103.1711
+Author presentation of labelled propagation and coverage:
+https://rakaposhi.eas.asu.edu/belief-search/WS904BryceD.pdf
+Related n-distance world-subset reasoning:
+https://users.aalto.fi/~rintanj1/jussi/papers/Rintanen04heu.pdf
+
+Neither labels nor bipartite matching alone is claimed as new. The specific
+candidate is their use in a resource-indexed upper bound on successful model
+coverage, with explicit admissibility and computation/precision accounting.
+The current experiments show a stronger navigation bound, not broader search
+success. They do not establish priority over all prior labelled abstractions,
+universal superiority to small-world projections, or readiness for publication.

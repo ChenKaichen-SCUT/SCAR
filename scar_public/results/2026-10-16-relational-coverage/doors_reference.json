@@ -1,0 +1,2993 @@
+{
+  "config": {
+    "id": "doors_5_sNone",
+    "family": "doors",
+    "instance": "5",
+    "horizon": 40,
+    "sensor_budget": null,
+    "actuation_budget": null,
+    "cohort": "original",
+    "projection_predicates": [
+      "at"
+    ]
+  },
+  "source": {
+    "repository": "https://github.com/aiplan4eu/up-cpor",
+    "commit": "4776479597e33610f68dcc20613850f414eb6688",
+    "paths": [
+      "Tests/doors5/d.pddl",
+      "Tests/doors5/p.pddl"
+    ],
+    "content_sha256": [
+      "bd71538cc44f7937d4e7b735c79bc1aa7617dd7fd1f2dcbe371f1de9ff7c4fd0",
+      "d5446fb22a108548fe863ce683c30d1d7c50f3f836b258d1c6fae38f6a334008"
+    ]
+  },
+  "optimal_worst_case_depth": 24,
+  "policy_verified": true,
+  "explicit_belief_states": 1925,
+  "hyperedges": 3913,
+  "settled_states": 1925,
+  "policy_nodes": 148,
+  "build_seconds": 0.6258610000368208,
+  "total_seconds": 0.6292267999961041,
+  "scope": "Domain-specific explicit reference, separate from generic planner timing and heuristics.",
+  "initial": [
+    "p1-3",
+    33554431
+  ],
+  "policy_certificate": [
+    {
+      "state": [
+        "p1-1",
+        1082401
+      ],
+      "value": 14,
+      "action": "move p1-1 p2-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p2-1",
+            1082401
+          ],
+          "value": 13
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-1",
+        32472030
+      ],
+      "value": 21,
+      "action": "move p1-1 p1-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p1-2",
+            32472030
+          ],
+          "value": 20
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-1",
+        33554431
+      ],
+      "value": 22,
+      "action": "sense-door p1-1 p2-1",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p1-1",
+            1082401
+          ],
+          "value": 14
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p1-1",
+            32472030
+          ],
+          "value": 21
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-2",
+        2164802
+      ],
+      "value": 15,
+      "action": "move p1-2 p2-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p2-2",
+            2164802
+          ],
+          "value": 14
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-2",
+        30307228
+      ],
+      "value": 19,
+      "action": "move p1-2 p1-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p1-3",
+            30307228
+          ],
+          "value": 18
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-2",
+        32472030
+      ],
+      "value": 20,
+      "action": "sense-door p1-2 p2-2",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p1-2",
+            2164802
+          ],
+          "value": 15
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p1-2",
+            30307228
+          ],
+          "value": 19
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-2",
+        33554431
+      ],
+      "value": 23,
+      "action": "move p1-2 p1-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p1-1",
+            33554431
+          ],
+          "value": 22
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-3",
+        4329604
+      ],
+      "value": 16,
+      "action": "move p1-3 p2-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p2-3",
+            4329604
+          ],
+          "value": 15
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-3",
+        25977624
+      ],
+      "value": 17,
+      "action": "move p1-3 p1-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p1-4",
+            25977624
+          ],
+          "value": 16
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-3",
+        30307228
+      ],
+      "value": 18,
+      "action": "sense-door p1-3 p2-3",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p1-3",
+            4329604
+          ],
+          "value": 16
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p1-3",
+            25977624
+          ],
+          "value": 17
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-3",
+        33554431
+      ],
+      "value": 24,
+      "action": "move p1-3 p1-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p1-2",
+            33554431
+          ],
+          "value": 23
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-4",
+        8659208
+      ],
+      "value": 15,
+      "action": "move p1-4 p2-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p2-4",
+            8659208
+          ],
+          "value": 14
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-4",
+        17318416
+      ],
+      "value": 15,
+      "action": "move p1-4 p1-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p1-5",
+            17318416
+          ],
+          "value": 14
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-4",
+        25977624
+      ],
+      "value": 16,
+      "action": "sense-door p1-4 p2-4",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p1-4",
+            8659208
+          ],
+          "value": 15
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p1-4",
+            17318416
+          ],
+          "value": 15
+        }
+      ]
+    },
+    {
+      "state": [
+        "p1-5",
+        17318416
+      ],
+      "value": 14,
+      "action": "move p1-5 p2-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p2-5",
+            17318416
+          ],
+          "value": 13
+        }
+      ]
+    },
+    {
+      "state": [
+        "p2-1",
+        1082401
+      ],
+      "value": 13,
+      "action": "move p2-1 p3-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-1",
+            1082401
+          ],
+          "value": 12
+        }
+      ]
+    },
+    {
+      "state": [
+        "p2-2",
+        2164802
+      ],
+      "value": 14,
+      "action": "move p2-2 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            2164802
+          ],
+          "value": 13
+        }
+      ]
+    },
+    {
+      "state": [
+        "p2-3",
+        4329604
+      ],
+      "value": 15,
+      "action": "move p2-3 p3-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-3",
+            4329604
+          ],
+          "value": 14
+        }
+      ]
+    },
+    {
+      "state": [
+        "p2-4",
+        8659208
+      ],
+      "value": 14,
+      "action": "move p2-4 p3-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-4",
+            8659208
+          ],
+          "value": 13
+        }
+      ]
+    },
+    {
+      "state": [
+        "p2-5",
+        17318416
+      ],
+      "value": 13,
+      "action": "move p2-5 p3-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-5",
+            17318416
+          ],
+          "value": 12
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        1
+      ],
+      "value": 4,
+      "action": "move p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-1",
+            1
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        2
+      ],
+      "value": 4,
+      "action": "move p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-1",
+            2
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        4
+      ],
+      "value": 4,
+      "action": "move p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-1",
+            4
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        8
+      ],
+      "value": 4,
+      "action": "move p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-1",
+            8
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        16
+      ],
+      "value": 4,
+      "action": "move p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-1",
+            16
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        8448
+      ],
+      "value": 5,
+      "action": "move p3-1 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            8448
+          ],
+          "value": 4
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        8456
+      ],
+      "value": 6,
+      "action": "sense-door p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-1",
+            8
+          ],
+          "value": 4
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-1",
+            8448
+          ],
+          "value": 5
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        16896
+      ],
+      "value": 5,
+      "action": "move p3-1 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            16896
+          ],
+          "value": 4
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        16912
+      ],
+      "value": 6,
+      "action": "sense-door p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-1",
+            16
+          ],
+          "value": 4
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-1",
+            16896
+          ],
+          "value": 5
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        1082400
+      ],
+      "value": 11,
+      "action": "move p3-1 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            1082400
+          ],
+          "value": 10
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        1082401
+      ],
+      "value": 12,
+      "action": "sense-door p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-1",
+            1
+          ],
+          "value": 4
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-1",
+            1082400
+          ],
+          "value": 11
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        2164800
+      ],
+      "value": 11,
+      "action": "move p3-1 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            2164800
+          ],
+          "value": 10
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        2164802
+      ],
+      "value": 12,
+      "action": "sense-door p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-1",
+            2
+          ],
+          "value": 4
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-1",
+            2164800
+          ],
+          "value": 11
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        4329600
+      ],
+      "value": 11,
+      "action": "move p3-1 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            4329600
+          ],
+          "value": 10
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-1",
+        4329604
+      ],
+      "value": 12,
+      "action": "sense-door p3-1 p4-1",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-1",
+            4
+          ],
+          "value": 4
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-1",
+            4329600
+          ],
+          "value": 11
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        32
+      ],
+      "value": 3,
+      "action": "move p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-2",
+            32
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        64
+      ],
+      "value": 3,
+      "action": "move p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-2",
+            64
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        128
+      ],
+      "value": 3,
+      "action": "move p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-2",
+            128
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        256
+      ],
+      "value": 3,
+      "action": "move p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-2",
+            256
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        512
+      ],
+      "value": 3,
+      "action": "move p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-2",
+            512
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        8192
+      ],
+      "value": 3,
+      "action": "move p3-2 p3-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-3",
+            8192
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        8448
+      ],
+      "value": 4,
+      "action": "sense-door p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-2",
+            256
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-2",
+            8192
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        8456
+      ],
+      "value": 7,
+      "action": "move p3-2 p3-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-1",
+            8456
+          ],
+          "value": 6
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        16384
+      ],
+      "value": 3,
+      "action": "move p3-2 p3-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-3",
+            16384
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        16896
+      ],
+      "value": 4,
+      "action": "sense-door p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-2",
+            512
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-2",
+            16384
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        16912
+      ],
+      "value": 7,
+      "action": "move p3-2 p3-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-1",
+            16912
+          ],
+          "value": 6
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        1082368
+      ],
+      "value": 9,
+      "action": "move p3-2 p3-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-3",
+            1082368
+          ],
+          "value": 8
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        1082400
+      ],
+      "value": 10,
+      "action": "sense-door p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-2",
+            32
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-2",
+            1082368
+          ],
+          "value": 9
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        2164736
+      ],
+      "value": 9,
+      "action": "move p3-2 p3-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-3",
+            2164736
+          ],
+          "value": 8
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        2164800
+      ],
+      "value": 10,
+      "action": "sense-door p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-2",
+            64
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-2",
+            2164736
+          ],
+          "value": 9
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        2164802
+      ],
+      "value": 13,
+      "action": "move p3-2 p3-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-1",
+            2164802
+          ],
+          "value": 12
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        4329472
+      ],
+      "value": 9,
+      "action": "move p3-2 p3-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-3",
+            4329472
+          ],
+          "value": 8
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        4329600
+      ],
+      "value": 10,
+      "action": "sense-door p3-2 p4-2",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-2",
+            128
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-2",
+            4329472
+          ],
+          "value": 9
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-2",
+        4329604
+      ],
+      "value": 13,
+      "action": "move p3-2 p3-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-1",
+            4329604
+          ],
+          "value": 12
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        1024
+      ],
+      "value": 2,
+      "action": "move p3-3 p4-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-3",
+            1024
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        2048
+      ],
+      "value": 2,
+      "action": "move p3-3 p4-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-3",
+            2048
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        4096
+      ],
+      "value": 2,
+      "action": "move p3-3 p4-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-3",
+            4096
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        8192
+      ],
+      "value": 2,
+      "action": "move p3-3 p4-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-3",
+            8192
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        8456
+      ],
+      "value": 8,
+      "action": "move p3-3 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            8456
+          ],
+          "value": 7
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        16384
+      ],
+      "value": 2,
+      "action": "move p3-3 p4-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-3",
+            16384
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        16912
+      ],
+      "value": 8,
+      "action": "move p3-3 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            16912
+          ],
+          "value": 7
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        1081344
+      ],
+      "value": 7,
+      "action": "move p3-3 p3-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-4",
+            1081344
+          ],
+          "value": 6
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        1082368
+      ],
+      "value": 8,
+      "action": "sense-door p3-3 p4-3",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-3",
+            1024
+          ],
+          "value": 2
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-3",
+            1081344
+          ],
+          "value": 7
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        2162688
+      ],
+      "value": 7,
+      "action": "move p3-3 p3-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-4",
+            2162688
+          ],
+          "value": 6
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        2164736
+      ],
+      "value": 8,
+      "action": "sense-door p3-3 p4-3",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-3",
+            2048
+          ],
+          "value": 2
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-3",
+            2162688
+          ],
+          "value": 7
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        4325376
+      ],
+      "value": 7,
+      "action": "move p3-3 p3-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-4",
+            4325376
+          ],
+          "value": 6
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        4329472
+      ],
+      "value": 8,
+      "action": "sense-door p3-3 p4-3",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-3",
+            4096
+          ],
+          "value": 2
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-3",
+            4325376
+          ],
+          "value": 7
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-3",
+        4329604
+      ],
+      "value": 14,
+      "action": "move p3-3 p3-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-2",
+            4329604
+          ],
+          "value": 13
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        8456
+      ],
+      "value": 9,
+      "action": "move p3-4 p3-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-3",
+            8456
+          ],
+          "value": 8
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        16912
+      ],
+      "value": 9,
+      "action": "move p3-4 p3-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-3",
+            16912
+          ],
+          "value": 8
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        32768
+      ],
+      "value": 3,
+      "action": "move p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-4",
+            32768
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        65536
+      ],
+      "value": 3,
+      "action": "move p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-4",
+            65536
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        131072
+      ],
+      "value": 3,
+      "action": "move p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-4",
+            131072
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        262144
+      ],
+      "value": 3,
+      "action": "move p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-4",
+            262144
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        524288
+      ],
+      "value": 3,
+      "action": "move p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-4",
+            524288
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        541200
+      ],
+      "value": 10,
+      "action": "sense-door p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-4",
+            524288
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-4",
+            16912
+          ],
+          "value": 9
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        1048576
+      ],
+      "value": 5,
+      "action": "move p3-4 p3-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-5",
+            1048576
+          ],
+          "value": 4
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        1081344
+      ],
+      "value": 6,
+      "action": "sense-door p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-4",
+            32768
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-4",
+            1048576
+          ],
+          "value": 5
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        2097152
+      ],
+      "value": 5,
+      "action": "move p3-4 p3-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-5",
+            2097152
+          ],
+          "value": 4
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        2162688
+      ],
+      "value": 6,
+      "action": "sense-door p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-4",
+            65536
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-4",
+            2097152
+          ],
+          "value": 5
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        4194304
+      ],
+      "value": 5,
+      "action": "move p3-4 p3-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-5",
+            4194304
+          ],
+          "value": 4
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        4325376
+      ],
+      "value": 6,
+      "action": "sense-door p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-4",
+            131072
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-4",
+            4194304
+          ],
+          "value": 5
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        8397064
+      ],
+      "value": 12,
+      "action": "move p3-4 p3-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-5",
+            8397064
+          ],
+          "value": 11
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-4",
+        8659208
+      ],
+      "value": 13,
+      "action": "sense-door p3-4 p4-4",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-4",
+            262144
+          ],
+          "value": 3
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-4",
+            8397064
+          ],
+          "value": 12
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        8456
+      ],
+      "value": 10,
+      "action": "move p3-5 p3-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-4",
+            8456
+          ],
+          "value": 9
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        541200
+      ],
+      "value": 11,
+      "action": "move p3-5 p3-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p3-4",
+            541200
+          ],
+          "value": 10
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        1048576
+      ],
+      "value": 4,
+      "action": "move p3-5 p4-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-5",
+            1048576
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        2097152
+      ],
+      "value": 4,
+      "action": "move p3-5 p4-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-5",
+            2097152
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        4194304
+      ],
+      "value": 4,
+      "action": "move p3-5 p4-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-5",
+            4194304
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        8388608
+      ],
+      "value": 4,
+      "action": "move p3-5 p4-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-5",
+            8388608
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        8397064
+      ],
+      "value": 11,
+      "action": "sense-door p3-5 p4-5",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-5",
+            8388608
+          ],
+          "value": 4
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-5",
+            8456
+          ],
+          "value": 10
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        16777216
+      ],
+      "value": 4,
+      "action": "move p3-5 p4-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p4-5",
+            16777216
+          ],
+          "value": 3
+        }
+      ]
+    },
+    {
+      "state": [
+        "p3-5",
+        17318416
+      ],
+      "value": 12,
+      "action": "sense-door p3-5 p4-5",
+      "branches": [
+        {
+          "observation": [
+            true
+          ],
+          "state": [
+            "p3-5",
+            16777216
+          ],
+          "value": 4
+        },
+        {
+          "observation": [
+            false
+          ],
+          "state": [
+            "p3-5",
+            541200
+          ],
+          "value": 11
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-1",
+        1
+      ],
+      "value": 3,
+      "action": "move p4-1 p5-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-1",
+            1
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-1",
+        2
+      ],
+      "value": 3,
+      "action": "move p4-1 p5-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-1",
+            2
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-1",
+        4
+      ],
+      "value": 3,
+      "action": "move p4-1 p5-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-1",
+            4
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-1",
+        8
+      ],
+      "value": 3,
+      "action": "move p4-1 p5-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-1",
+            8
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-1",
+        16
+      ],
+      "value": 3,
+      "action": "move p4-1 p5-1",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-1",
+            16
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-2",
+        32
+      ],
+      "value": 2,
+      "action": "move p4-2 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            32
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-2",
+        64
+      ],
+      "value": 2,
+      "action": "move p4-2 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            64
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-2",
+        128
+      ],
+      "value": 2,
+      "action": "move p4-2 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            128
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-2",
+        256
+      ],
+      "value": 2,
+      "action": "move p4-2 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            256
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-2",
+        512
+      ],
+      "value": 2,
+      "action": "move p4-2 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            512
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-3",
+        1024
+      ],
+      "value": 1,
+      "action": "move p4-3 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            1024
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-3",
+        2048
+      ],
+      "value": 1,
+      "action": "move p4-3 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            2048
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-3",
+        4096
+      ],
+      "value": 1,
+      "action": "move p4-3 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            4096
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-3",
+        8192
+      ],
+      "value": 1,
+      "action": "move p4-3 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            8192
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-3",
+        16384
+      ],
+      "value": 1,
+      "action": "move p4-3 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            16384
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-4",
+        32768
+      ],
+      "value": 2,
+      "action": "move p4-4 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            32768
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-4",
+        65536
+      ],
+      "value": 2,
+      "action": "move p4-4 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            65536
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-4",
+        131072
+      ],
+      "value": 2,
+      "action": "move p4-4 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            131072
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-4",
+        262144
+      ],
+      "value": 2,
+      "action": "move p4-4 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            262144
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-4",
+        524288
+      ],
+      "value": 2,
+      "action": "move p4-4 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            524288
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-5",
+        1048576
+      ],
+      "value": 3,
+      "action": "move p4-5 p5-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-5",
+            1048576
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-5",
+        2097152
+      ],
+      "value": 3,
+      "action": "move p4-5 p5-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-5",
+            2097152
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-5",
+        4194304
+      ],
+      "value": 3,
+      "action": "move p4-5 p5-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-5",
+            4194304
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-5",
+        8388608
+      ],
+      "value": 3,
+      "action": "move p4-5 p5-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-5",
+            8388608
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p4-5",
+        16777216
+      ],
+      "value": 3,
+      "action": "move p4-5 p5-5",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-5",
+            16777216
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-1",
+        1
+      ],
+      "value": 2,
+      "action": "move p5-1 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            1
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-1",
+        2
+      ],
+      "value": 2,
+      "action": "move p5-1 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            2
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-1",
+        4
+      ],
+      "value": 2,
+      "action": "move p5-1 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            4
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-1",
+        8
+      ],
+      "value": 2,
+      "action": "move p5-1 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            8
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-1",
+        16
+      ],
+      "value": 2,
+      "action": "move p5-1 p5-2",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-2",
+            16
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        1
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            1
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        2
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            2
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        4
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            4
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        8
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            8
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        16
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            16
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        32
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            32
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        64
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            64
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        128
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            128
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        256
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            256
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-2",
+        512
+      ],
+      "value": 1,
+      "action": "move p5-2 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            512
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        32768
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            32768
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        65536
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            65536
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        131072
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            131072
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        262144
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            262144
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        524288
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            524288
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        1048576
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            1048576
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        2097152
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            2097152
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        4194304
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            4194304
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        8388608
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            8388608
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-4",
+        16777216
+      ],
+      "value": 1,
+      "action": "move p5-4 p5-3",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-3",
+            16777216
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-5",
+        1048576
+      ],
+      "value": 2,
+      "action": "move p5-5 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            1048576
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-5",
+        2097152
+      ],
+      "value": 2,
+      "action": "move p5-5 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            2097152
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-5",
+        4194304
+      ],
+      "value": 2,
+      "action": "move p5-5 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            4194304
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-5",
+        8388608
+      ],
+      "value": 2,
+      "action": "move p5-5 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            8388608
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "state": [
+        "p5-5",
+        16777216
+      ],
+      "value": 2,
+      "action": "move p5-5 p5-4",
+      "branches": [
+        {
+          "observation": [],
+          "state": [
+            "p5-4",
+            16777216
+          ],
+          "value": 1
+        }
+      ]
+    }
+  ]
+}

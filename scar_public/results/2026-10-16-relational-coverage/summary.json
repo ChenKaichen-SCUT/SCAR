@@ -1,0 +1,111 @@
+{
+  "primary": [
+    {
+      "mode": "counts",
+      "statuses": {
+        "PLAN_FOUND": 15,
+        "UNKNOWN_TIMEOUT": 14,
+        "NO_STRONG_POLICY_WITHIN_H": 5
+      },
+      "completed": 20,
+      "original_completed": 14,
+      "resource_completed": 6,
+      "relation_budget_exhausted": 0,
+      "peak_rss_kib_max": 328380
+    },
+    {
+      "mode": "lineage",
+      "statuses": {
+        "PLAN_FOUND": 15,
+        "UNKNOWN_TIMEOUT": 14,
+        "NO_STRONG_POLICY_WITHIN_H": 5
+      },
+      "completed": 20,
+      "original_completed": 14,
+      "resource_completed": 6,
+      "relation_budget_exhausted": 11,
+      "peak_rss_kib_max": 329500
+    },
+    {
+      "mode": "matching",
+      "statuses": {
+        "PLAN_FOUND": 15,
+        "NO_STRONG_POLICY_WITHIN_H": 5,
+        "UNKNOWN_TIMEOUT": 14
+      },
+      "completed": 20,
+      "original_completed": 14,
+      "resource_completed": 6,
+      "relation_budget_exhausted": 11,
+      "peak_rss_kib_max": 328916
+    }
+  ],
+  "stages": [
+    {
+      "mode": "counts",
+      "completed": 0,
+      "total": 8,
+      "statuses": {
+        "UNKNOWN_TIMEOUT": 8
+      }
+    },
+    {
+      "mode": "matching",
+      "completed": 0,
+      "total": 8,
+      "statuses": {
+        "UNKNOWN_TIMEOUT": 8
+      }
+    }
+  ],
+  "cross_result_checks": 172,
+  "api_calls": 0,
+  "external_baseline_reruns": 0,
+  "strict_root_improvements": [
+    {
+      "id": "doors_5_sNone",
+      "counts": 12,
+      "matching": 23
+    }
+  ],
+  "paired_completed_timing": {
+    "cases": 20,
+    "median_matching_over_counts": 1.007774556952973,
+    "min": 0.9821850520196205,
+    "max": 1.0437626604131038,
+    "scope": "One timing each, descriptive only; timeouts excluded explicitly."
+  },
+  "sibling_deduplication_activity": [
+    {
+      "id": "medical_pfile003_sNone",
+      "mode": "matching",
+      "deduplications": 1
+    },
+    {
+      "id": "medical_pfile005_sNone",
+      "mode": "matching",
+      "deduplications": 4
+    },
+    {
+      "id": "medical_pfile005_s4",
+      "mode": "matching",
+      "deduplications": 29
+    }
+  ],
+  "doors_reference": {
+    "optimal_worst_case_depth": 24,
+    "policy_verified": true,
+    "explicit_belief_states": 1925,
+    "hyperedges": 3913,
+    "settled_states": 1925,
+    "policy_nodes": 148,
+    "build_seconds": 0.6258610000368208,
+    "total_seconds": 0.6292267999961041,
+    "scope": "Domain-specific explicit reference, separate from generic planner timing and heuristics.",
+    "initial": [
+      "p1-3",
+      33554431
+    ]
+  },
+  "interpretation": "Candidate identity improves one navigation root bound from 12 to 23 (independent optimum 24), but no primary completion increase. Sibling matching has local effects, no additional completed tasks. Stage projection diagnostic is negative; broad low-cost navigation/operation search benefit is not established."
+}
