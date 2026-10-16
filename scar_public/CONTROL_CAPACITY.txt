@@ -1,0 +1,212 @@
+Control-state refinement of resource-indexed policy coverage
+Research checkpoint: 2026-10-16. Finite-model result; no novelty claim.
+
+1. Concrete change and scope
+
+The old abstraction retained only resources r and erased all symbolic state.
+The new abstraction retains alpha(x)=(r,z), where z is an explicitly selected
+tuple of symbolic fields. It does not receive a model ID, an oracle answer, a
+future successful plan, or a goal distance. It retains publicly known location,
+observed craft-event flags, or known preparation progress, according to a fixed
+schema. Intermediate products and fuel are already in r; keeping them is not a
+new contribution. Elapsed action counters in the V8 domain are NOT included.
+
+The original planner, LP, six baseline variants, instance transitions and goals
+are unchanged. ControlInformationPlanner replaces only the coverage object in
+the same AND/OR search. This code is offline; no V6/V8 agent default is changed.
+
+Implemented:
+  - resource+control channel aggregation and memoized coverage recursion;
+  - checks of common current projection and observation-determined successors;
+  - lazy fallback to the original bound when the fine projection is unusable;
+  - location-only versus location+stage ablations;
+  - frozen-instance exact comparison, independent enumeration and policy replay.
+Not implemented:
+  - automatic selection/learning of which control fields to retain;
+  - a guarantee that LLM proposals cover the real mechanism;
+  - opportunity-exemption semantics, full game deployment or real workflows;
+  - a compact symbolic implementation avoiding explicit graph compilation.
+
+2. Assumptions and precise recurrence
+
+Finite fixed deterministic candidate models share an action alphabet. All costs
+are one, a finite action horizon H is used, and K(x) specifies allowed states.
+The compiled graph contains every transition usable by queries within H.
+The selected projection alpha(x)=(resources(x), selected_symbols(x)) is fixed
+before solving and does not depend on the hidden candidate model ID.
+
+For a query B of non-goal worlds, all worlds must agree on k=alpha(x). This means
+the projection is known under the current candidate belief; direct display of
+every field is not required if its value follows from the observable history.
+For each compiled (k,a,o), goal status must be unique. For non-goal outcomes,
+the successor projection k'(k,a,o) must also be unique. These are checked over
+the entire represented graph, not just an optimistic chosen trajectory.
+
+Across all allowed non-goal source states with projection k, define
+  G_alpha(k,a)   = model IDs with an allowed goal successor after action a;
+  N_alpha(k,a,o) = model IDs with an allowed non-goal successor emitting o.
+Discard forbidden transitions; leave unselected symbolic fields unconstrained.
+No requirement is imposed to identify the model if a common completion exists.
+
+  C_alpha(k,0) = 0
+  C_alpha(k,t) = min(|M|,
+      max_a [ |G_alpha(k,a)|
+              + SUM_o min(|N_alpha(k,a,o)|, C_alpha(k'(k,a,o),t-1)) ])
+
+An absent action channel contributes zero. C_alpha bounds the number of distinct
+models some depth-at-most-t observation policy can complete, allowing arbitrary
+non-goal source states within the projection. It is an optimistic coverage upper
+bound, not a policy, success probability, or count of eliminated hypotheses.
+
+  h_alpha(B,H) = min {t in 1..H : C_alpha(k,t) >= number_of_distinct_models(B)}
+  min(empty) = infinity
+  h_search = max(h_tail, h_alpha), where h_tail is the original LP or exact
+             maximum known-world completion cost.
+
+Completed queries return zero. A forbidden initial state returns infinity.
+If the projection's contract fails globally or the queried worlds do not share
+it, use the original resource-only h_C. That fallback is constructed lazily,
+and its construction/DP work is included in timing and reported counters.
+The original criterion can itself abstain and return zero. Unknown values are
+never replaced by favorable values, and unfinished computations are not proofs.
+
+3. Properties under those assumptions
+
+Theorem 1: C_alpha is a safe coverage upper bound, hence h_alpha is admissible.
+Proof. Induct on policy depth. At depth zero, no non-goal source completes.
+For first action a, every immediately completing model lies in G_alpha(k,a).
+Each remaining successfully completed model belongs to N_alpha(k,a,o) for its
+actual observation o. All worlds in that branch have common successor k' by
+the checked contract. The induction hypothesis bounds distinct completed model
+IDs there by C_alpha(k',t-1), and their number is at most |N_alpha(k,a,o)|.
+Add the branch bounds and immediate completions, maximize over the first action,
+and cap by |M|. Duplicate model IDs across relaxed branches only increase this
+upper bound. A strong policy must complete all live model IDs, so its depth
+cannot be smaller than the first t reaching that many IDs in C_alpha. QED.
+
+Theorem 2: Projection refinement tightens coverage, where both contracts hold.
+Let beta be a coarser projection and beta=q composed with alpha. Use the same
+models, transitions, observations, constraints and goal. If both abstractions
+have observation-determined successor projections, then for all k,t,
+  C_alpha(k,t) <= C_beta(q(k),t).
+Proof. At t=0 both are zero. Fine goal/observation model sets are subsets of
+the corresponding coarse sets. Fine observations form a subset of coarse
+observations, and every fine successor k' maps to the corresponding unique
+coarse successor. Apply the induction inequality to each continuation, then
+monotonicity of min, sums and max. The common |M| cap preserves the inequality.
+Consequently h_alpha >= h_beta for queries where both projections apply. QED.
+
+Corollary: The IMPLEMENTED refined criterion never weakens the original
+resource-only criterion. If both apply, use Theorem 2. If the fine projection
+fails, it returns the original result. If only the fine one applies, the
+original abstains with zero and admissibility still follows from Theorem 1.
+This does not assert that two different refined projections with different
+fallback behavior globally dominate one another. Nested fine projections are
+ordered only where both contracts and common-query requirements hold.
+
+Strict example (already present in the frozen transfer suite): 3 possible
+calibrations, 2 fabrication attempts' worth of two materials, no assay, a path
+of distance 2 to the workstation, horizon 5. Erasing location admits spurious
+observation channels; the old LP+coverage lower bound is 2. With location kept,
+no action before reaching the bench distinguishes calibrations; at the bench
+2 attempts cannot guarantee success across 3 models. The refined recurrence
+certifies infinity. This is also confirmed by exhaustive enumeration.
+
+Stage example (already present before the transfer study): 4 calibrations,
+one material, destructive wrong fabrication, a scan requiring 5 ordered steps,
+and horizon 6. The old capacity ignores scan progress and gives 2; preserving
+known progress gives 6, equal to the optimum. At horizon 5 it proves infeasible.
+This is a strict improvement over the old capacity, not over every pair bound
+or all published belief-space heuristics.
+
+4. Computational cost and pseudocode
+
+Let T be the number of represented transitions, K_alpha the number of projection
+keys, and E_alpha the total aggregate action/observation channels. Construction
+uses O(T) insertions plus tuple/set processing. Memoized recursion uses
+O(H*(E_alpha+K_alpha)) arithmetic operations and O(H*K_alpha) DP entries, with
+early termination at |M|. Projection tuples add their own representation costs.
+Once the table is cached, each lower-bound query additionally scans at most H
+depths and projects its current belief (O(|B| times projection width)). These
+query costs and the surrounding search are included in measured total time.
+Refinement can increase the number of keys and channels; a tighter lower bound
+therefore does NOT guarantee less total computation. A lazy fallback adds at
+most one construction of the original table and its DP work per planner.
+These are costs in the EXPLICIT finite graph. Compact-domain compilation can
+still be exponential, and no new asymptotic claim about that step is made.
+
+BuildChannels(models, projection):
+  for every allowed non-goal (model,state,action) transition:
+    skip a forbidden successor
+    key <- projection(state)
+    check goal status agrees for (key,action,observation)
+    if goal(successor): insert model in G[key,action]
+    else:
+      insert model in N[key,action,observation]
+      collect projection(successor)
+  require one successor key in every nonterminal observation bucket
+  if a check fails: mark fine table unavailable
+
+Coverage(key,t):
+  if t=0: return 0
+  if cached: return cached value
+  best <- 0
+  for each represented action at key:
+    value <- number of immediate-goal model IDs
+    for each nonterminal observation channel:
+      value += min(channel model count, Coverage(successor_key,t-1))
+    best <- max(best,min(total model count,value))
+    if best=total model count: break
+  cache and return best
+
+Lower(B,H):
+  handle goals and forbidden states
+  if fine table unavailable or B has no common key: return OriginalLower(B,H)
+  for t=1..H:
+    if Coverage(common_key,t)>=number of live model IDs: return t
+  return infinity
+
+Search(B,H):
+  use max(existing tail bound, Lower(B,H)) at each belief node
+  branch on actual observations using the unchanged exact AND/OR search
+  verify every finite returned policy in every initial candidate world
+
+5. Experiment protocol and limitations
+
+Primary evaluation: exactly the previous 36 transfer instances, unchanged.
+Stage diagnostic: exactly the 24 delayed-observation instances already in the
+earlier 66-instance suite. No new favorable task family is introduced. The stage
+diagnostic is reported separately from the primary 36-instance result.
+
+Projection choices are fixed from the schema:
+  production: location symbol 0; intermediate quantities remain in resources;
+  V8 recipe: location 0 plus craft-event flags 2 onward; exclude elapsed index 1;
+  delayed scan: progress symbol 0; there is no location field.
+Equivalent location/control variants explicitly share one measured result;
+they are not presented as independent runs or extra evidence.
+
+All six old baselines are re-timed locally for a contemporaneous comparison.
+Their lower bounds, optima and work counters must exactly match saved results.
+This uses no API and reruns no game baseline. Each timing uses a fresh planner,
+three repetitions and rotated method order. It includes construction, bound
+work and exact search. Shared environment compilation is recorded separately
+and added to end-to-end sums. Oracle enumeration and policy replay are excluded
+equally for all methods. Tiny timing differences are not significance claims.
+
+Tests cover hidden successor stages, uncertain current stages, weighted-cost
+fallback, hidden completion, common productive actions, and frozen counterexamples.
+The same 64 deterministic state machines from the previous audit check all
+reachable beliefs and their nonempty subsets against independent enumeration,
+plus the coverage refinement inequality on represented abstract states.
+
+The numerical results are stored separately in:
+  results/2026-10-16-control-capacity/analysis.json
+  results/2026-10-16-control-capacity/validation.json
+Finite-model correctness does not establish accurate goal translation, true
+model coverage, useful discrimination in real tasks, full game score gains,
+workflow transfer, general speedups, or novelty over existing abstractions.
+
+Reproduce:
+  python -m pytest scar_public/test_control_capacity.py -q
+  python -m scar_public.validate_control_capacity
+  python -m scar_public.study_control_capacity --repetitions 3
