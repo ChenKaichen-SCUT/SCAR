@@ -239,3 +239,33 @@ experiments. Thus the optional semantic interface did not become an active exper
 Specification errors, incomplete local search and missing action-order input remain; the
 coupled changes do not isolate their causal contributions to regression. No more paid tuning
 in this phase. All usage and validation records are in results/2026-10-15-specification.
+
+## Obligation-controller iteration (v6, explicitly requested continuation)
+
+Restore V3's exact chronological action/observation ledger. Replace free-form terminal lists
+with a conservative public-task grammar: explicit named crafting, holding and equipped
+relations only; unknown categories/relations remain unexpressed. Actual public completion
+is still separate. This avoids promoting recipe inputs to goal conditions, but does not
+claim a complete or semantically sound natural-language compiler.
+
+Use bounded weighted search across observed locations, numeric recipe dependencies, carried
+containers and material counts, with a maximum of 3500 search states / one second / 28 actions
+per proposal. Only the first proposed action is executed. Recipe yields, unit capacity and
+container accessibility remain model assumptions. Current adjacency overrides stale routes.
+Known recipes are separate from qualitative 'made of' hints; missing quantities are not guessed.
+
+Writes activate inspection and role-binding review before intervention. An accepted write to
+a freshly inspected nonempty document triggers post-inspection, with append vs replace
+predicting different full strings. Empty documents do not distinguish those hypotheses.
+Task-binding trials require two observed candidate strings and different conditional predictions;
+only public completion or a fresh pending-task report yields a Boolean outcome. Missing outcome
+stays unknown. Operation-semantic trials and task-binding trials are reported separately.
+
+First run 30-action continuations: v3/metropolis62 and178, v2/metropolis206, v5/mark138.
+Controls reuse their stored continuations; all baseline runs stay frozen. Validate actual
+operation trials, dependency execution and absence of invented ingredient terminal conditions.
+Only advance to full shared-initial 300-action runs if these diagnostics show task gain and
+real execution of the intended mechanisms. Retain negative runs and all costs. Correct only
+specific implementation/coverage failures with an explicit amendment before further paid runs;
+avoid unbounded prompt tuning. Full-run regressions remain visible, with no novelty/significance
+claim from this development phase. Never feed hidden engine state or scores to the policy.
