@@ -1,0 +1,191 @@
+Stronger controls, cost control, and a strict structural separation
+2026-10-16. The directory identifier 2026-10-17-information-gaps is a run label.
+
+Scope and existing work
+We retain finite deterministic actions, named initial states, fixed nonnegative
+resource consumption, Boolean observations, unit costs, and strong finite plans.
+Goal truth is not observed implicitly. An action must be legal in every current
+world. All terminal states must satisfy the goal; completed worlds are retained
+in real search. Only the optimistic coverage bound can absorb completed worlds.
+
+Small-belief projections are not our invention. Rintanen (2004), Distance
+Estimates for Planning in the Discrete Belief Space, formalizes n-distance
+relaxations. The present pair control computes completed one/two-world finite
+contingent policy costs in our semantics, not an official implementation of his
+planner. It is a meaningful stronger control against a singleton maximum.
+https://users.aalto.fi/~rintanj1/jussi/papers/Rintanen04heu.pdf
+
+Labels, cross-world relationships and overlap are likewise established in
+Bryce, Kambhampati and Smith, Planning Graph Heuristics for Belief Space Search
+(JAIR 2006; arXiv deposit 2011). We do not claim first use of model labels,
+cross-world constraints or overlapping-support reasoning.
+https://arxiv.org/abs/1103.1711
+
+Selective expensive heuristic evaluation has prior work in Lazy/Rational Lazy
+A* and IDA*. Our fixed credit rule is a transparent cost-control ablation; it
+does not reproduce their regret estimator and is not claimed as metareasoning
+theory or an optimal allocation policy.
+https://arxiv.org/abs/1305.5030
+https://arxiv.org/abs/1411.6593
+
+Sensing choices and productive plans between sensing steps also appear in
+Maliah, Brafman, Karpas and Shani (ICAPS 2014), Partially Observable Online
+Contingent Planning Using Landmark Heuristics. That method addresses online
+planning; it is not an admissible worst-case-cost baseline for the present task.
+https://ojs.aaai.org/index.php/ICAPS/article/view/13632
+
+Control 1: completed pair projections
+For exact B and horizon H, h_pair(B,H)=max over completed subsets S of size at
+most two of V_H(S), combined with the common inexpensive bound. Restricting a
+strong policy for B to S yields a strong policy for S, so V_H(S)<=V_H(B).
+Every maximand comes from a fully completed min/max recurrence. Interruptions
+omit the unfinished maximand, not cache its partial min. Previously completed
+values are still safe. The work budget is 150000 charges over the whole run;
+work charged includes new transitions and recursive expansions. This capped
+control may be weaker than the mathematical all-pair maximum; statistics report
+fallbacks. It must not be described as exact evaluation of all pairs when capped.
+
+Control 2: incompatible terminal histories and the observation-tree bound
+Build a graph G on initial model names. Add edge (i,j) only after a synchronous
+pair search proves that no common action sequence can finish both initial states.
+The pair search removes all resource restrictions and ignores observation
+values, but retains actual Boolean preconditions and effects (including any
+effects of sensing actions). It exhausts the finite reachable pair graph. If
+work is exhausted first, add NO edge. This is a generic procedure; it contains
+no Doors-specific predicate or move schema checks.
+
+Lemma. Every terminal history of a real policy contains an independent set of G.
+Proof. Models that reach the same terminal history execute the same action
+sequence, and both finish. That is a path in the relaxed synchronous pair graph;
+therefore they cannot be a certified edge. The claim also holds after any shared
+prefix, so initial conflict edges remain valid in every surviving belief. QED.
+
+Any clique K in the induced graph on the current candidate names needs at least
+|K| terminal histories. We use greedy construction of a clique, which is safe;
+we do NOT misuse a greedy coloring upper bound as a lower bound. With binary
+observations, depth s has at most 2^s leaves. Thus at least ceil(log2 |K|) sensing
+actions are required on some branch. For resource dimension i, let m_i be the
+minimum consumption by any sensing action. If m_i>0, at most floor(r_i/m_i)
+observations can occur along any branch. This yields a resource infeasibility
+test if |K| exceeds the permitted leaves. If no observation exists the leaf
+budget is one; zero-cost dimensions impose no additional cap.
+
+This is an elementary information-tree/control compatibility baseline, not a
+newly discovered universal lower bound. A conflict-free graph can still hide
+larger jointly incompatible sets, and permitted leaves can be unrealizable due
+to the positions, preconditions and outcomes of actual sensing actions.
+
+Strict separation family, coverage_separation.py
+For any n>=3, the hidden initial model is i in {0,...,n-1}. All actions consume
+one unit of a common resource; the initial budget is two. The goal is done.
+Retained control variables are start, phase_j and end; done is not retained.
+At start, prepare_j chooses an omitted model j, moves to phase_j and completes
+one selected different model j+1 (mod n). At phase_j, finish_j moves to end and
+completes every model except j, including the model already completed by prepare.
+At end, recover completes every model. Boolean sense_i observes the hidden model
+at any stage and consumes one unit. There is no uncharged sensing or stopping
+observation. The horizon is three, but only two charged actions are affordable.
+
+Proposition. Every proper subset S of model names has a <=2-action conformant
+plan, but no strong policy completes all n models with this budget.
+Proof. Choose an omitted j outside S, then prepare_j; finish_j. For all n,
+two productive actions complete only n-1 models. A sensing-first policy has at
+least one observation branch with >=2 remaining models and only one affordable
+action; at start one productive action can complete only one of them. Sensing
+after a preparation cannot itself complete the remaining models. Two sensing
+actions do not achieve the goal. Hence no strong completion exists. Giving one
+more resource unit permits prepare_j; finish_j; recover. QED.
+
+Consequences. For every fixed k<n, the complete k-model projection is feasible
+and has cost <=2. All pair terminal-compatibility graphs are empty even WITH
+resources, and resource-blind recovery also makes all models compatible. The
+clique/leaf control returns zero. The scalar capacity at depth two incorrectly
+allows 1+(n-1)=n successes, counting the first completed model again in finish.
+Candidate-identity propagation removes that name from the continuation, giving
+at most 1+(n-2)=n-1. With two units it correctly proves infeasibility for H=3.
+
+Tests exercise n=3,4,8,16 and confirm count lower=2, pair lower=2, leaf lower=0,
+identity lower=infinity. Independent exact search checks n<=8 and replays the
+3-resource recovery policies. This establishes strict non-dominance of these
+particular controls, not novelty against every prior higher-order abstraction,
+labelled planning graph, or arbitrarily large subset projection. The instances
+are deliberately constructed to expose the mechanism, not public holdout data.
+
+Cheap lower bounds and safe resource allocation
+The shared signed-literal h_max is a delete relaxation: initially one rail of
+each atom is available, effects may add either signed rail, and previously
+available rails persist. Conjunction takes max and disjunction min; negation is
+pushed through Boolean connectives. Positive oneof is relaxed to or; negated
+oneof to True. This can admit inconsistent witnesses, hence is optimistic.
+In a legal length-d execution, every required signed literal has relaxed level
+at most d by induction on the action sequence. The fixed point's goal level is
+therefore a lower bound. A partially computed fixed point is NOT used as a
+lower bound: unfinished relaxation returns zero. Nominal stop thresholds are
+50000 effect checks per query and 2000000 per run. The frozen implementation
+tests after incrementing the counter: an interrupted query can exceed the
+threshold by one, and later queries repeat that one check. Thus its reported
+run counter can exceed 2000000. This is a cost defect, not a stronger bound.
+
+Known-world BFS expands <=64 states/query, <=4096/run. It returns a shortest
+policy when found, bounded-infeasibility only after exhaustion to the requested
+depth, and otherwise just a completely searched layer lower bound. Search never
+waits for an unbounded singleton BFS. All variants receive the same change.
+
+Optional coverage can be interrupted only at explicit checkpoints. Completed
+channel tables and DP entries are retained; unfinished min/max results are not
+cached. On interruption, the planner retains the cheaper completed bound.
+Unconditional coverage: nominal <=3 seconds/run, <=1 second/query.
+Scheduled coverage: available credit=min(3s,0.25s+0.25*noncoverage elapsed),
+<=0.25s/query, skip single-model beliefs. Exhaustion skips new calls. Deadlines
+can overrun by one atomic SAT query (itself limited to 1 second), and whole
+workers have a separate 15-second timeout. These are not hard real-time bounds.
+Skipping an admissible estimate cannot compromise optimality of completed exact
+search. It can increase search effort; no expected-time guarantee is claimed.
+
+Independent evaluation protocol
+The new source suite is fixed before inspecting planner outcomes: 26 original
+public tasks from the pinned author CFF archive and pinned CPOR repository,
+eight explicit sensor-budget overlays, plus five separately labelled old failure
+diagnostics. Original scale sequences: Blocks 3/7/11/15, Unix 1/2/3/4, Logistics
+1/3/5/7, MedPKS 10/30/50/70, Grid 2/3/4/5. Additional CPOR examples include
+Doors15, Blocks2/3, Colorballs, Wumpus and noisy Localize. Syntax/ground/model
+limitations are retained as exclusions, not silently replaced or removed.
+https://fai.cs.uni-saarland.de/hoffmann/cff.html
+https://github.com/aiplan4eu/up-cpor/tree/4776479597e33610f68dcc20613850f414eb6688/Tests
+
+The public-instance horizon is 60 and each run uses 15 s/2 GiB; these are bounded
+feasibility/optimality claims. Single deterministic timing has no significance
+claim. A previously unpublished public instance is not a wholly unseen domain.
+Some domains share a lineage with development domains; cohorts are explicit.
+No hyperparameter changes after the holdout manifest is frozen. The synthetic
+separation was developed separately and does not count toward held-out success.
+
+Computational scope and post-holdout diagnostic
+For N candidate names, masks can have 2^N distinct values. With finite Q retained
+state/resource keys and horizon H, a generic relation cache can contain up to
+O(|Q| H 2^N) entries, with action/channel work at each entry. We make no generic
+polynomial-cost claim. In the constructed n=3,4,8,16 runs, the implementation
+visited 6n+3 relation entries; this is an observed family-specific pattern.
+
+The strict separation depends on repeated productive progress, not on a proof
+that our heuristic selects better sensing actions. It is evidence of additional
+joint-feasibility information, not a complete theory of optimal information
+acquisition or a separation from every resource-aware labelled abstraction.
+
+transition_budgeted_planner.py is a separately reported AFTER-holdout diagnostic.
+It caps singleton BFS transition lookups at 4096/query and 65536/run, stops new
+hmax allocation after the global effect counter is exhausted, and limits the
+scheduled method to 32 optional calls with at least 0.025 s of available credit.
+An exception inside a BFS layer retains the previously completed record only;
+it does not certify that partial layer. Forced zero-budget oracle tests verify
+that exact search and policy replay still agree when all BFS calls stop early.
+
+ERRATUM to the diagnostic manifest's timing description: its nominal 1-second
+allowance controls permission to continue BFS, using elapsed known-world time;
+it does NOT cap all known-world work at 1 second. hmax has a separate effect-work
+budget and continues after BFS is disabled; later cached calls also accumulate
+in that timer. Observed totals around 3.4--3.6 s on Rovers therefore do not obey
+the manifest's literal "singleton work <=1s" phrase. Treat transition counts,
+the 32-call cap and the worker timeout as the enforced limits, not that phrase.
+The original manifest and frozen source are retained to disclose this defect.
+None of these post-holdout results replace the independent main experiment.

@@ -1,0 +1,105 @@
+{
+  "cases": [
+    {
+      "id": "new_cff_unix_4",
+      "family": "unix",
+      "instance": "4",
+      "domain": "unix/domain.pddl",
+      "problem": "unix/unix-p4.pddl",
+      "source": "cff",
+      "horizon": 60,
+      "sensor_budget": null,
+      "actuation_budget": null,
+      "cohort": "new_public_original",
+      "projection_predicates": [
+        "is_cur_dir"
+      ]
+    },
+    {
+      "id": "rovers_pfile6_sNone",
+      "family": "rovers",
+      "instance": "pfile6",
+      "horizon": 32,
+      "sensor_budget": null,
+      "actuation_budget": null,
+      "cohort": "old_failure_diagnostic",
+      "projection_predicates": [
+        "at",
+        "calibrated",
+        "communicated_soil_data",
+        "communicated_rock_data",
+        "communicated_image_data"
+      ],
+      "source": "old"
+    },
+    {
+      "id": "rovers_pfile8_sNone",
+      "family": "rovers",
+      "instance": "pfile8",
+      "horizon": 32,
+      "sensor_budget": null,
+      "actuation_budget": null,
+      "cohort": "old_failure_diagnostic",
+      "projection_predicates": [
+        "at",
+        "calibrated",
+        "communicated_soil_data",
+        "communicated_rock_data",
+        "communicated_image_data"
+      ],
+      "source": "old"
+    },
+    {
+      "id": "doors_5_s4",
+      "family": "doors",
+      "instance": "5",
+      "horizon": 40,
+      "sensor_budget": 4,
+      "actuation_budget": 40,
+      "cohort": "old_failure_diagnostic",
+      "projection_predicates": [
+        "at"
+      ],
+      "source": "old"
+    },
+    {
+      "id": "localize_5_s2",
+      "family": "localize",
+      "instance": "5",
+      "horizon": 60,
+      "sensor_budget": 2,
+      "actuation_budget": 60,
+      "cohort": "old_failure_diagnostic",
+      "projection_predicates": [
+        "ok"
+      ],
+      "source": "old"
+    },
+    {
+      "id": "localize_5_s4",
+      "family": "localize",
+      "instance": "5",
+      "horizon": 60,
+      "sensor_budget": 4,
+      "actuation_budget": 60,
+      "cohort": "old_failure_diagnostic",
+      "projection_predicates": [
+        "ok"
+      ],
+      "source": "old"
+    }
+  ],
+  "modes": [
+    "leaf",
+    "leaf_lineage_scheduled"
+  ],
+  "limit_seconds": 15,
+  "memory_mib": 2048,
+  "source_hashes": {
+    "transition_budgeted_planner.py": "9c340a6643e01752c0db9a461579a15b8986aa69f40b9ef8f0681ee2ffcc318c",
+    "study_transition_budget.py": "e957be3df32b2bc59dc3b79ee4ff1f02e08c54f04e30b914237a20884d50705a",
+    "budgeted_planner.py": "6dcd94b8086d0b00f57453e1253e7e2e7ad038a7401e34630e07d01686b012d6"
+  },
+  "scope": "Exploratory post-holdout engineering diagnostic after inspecting frozen main outcomes. No claim of independent validation, no tuning of the frozen method, no external baseline reruns.",
+  "changes": "BFS transition lookups <=4096/query and <=65536/run; nominal singleton work <=0.05s/query and <=1s/run including hmax (one atomic operation may overrun). Stop new hmax allocation after global effect budget is exhausted; scheduled relation calls require >=0.025s credit and at most 32 attempts/run."
+}
