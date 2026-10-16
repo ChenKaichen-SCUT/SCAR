@@ -14,6 +14,21 @@ MODES = ['leaf','resource_tree','incremental_refinement','amortized_count','amor
 
 
 def planner(task,mode):
+    if mode in ('final_work','persistent_multistep'):
+        from scar_public.persistent_multistep_refinement import FinalWorkPlanner
+        return FinalWorkPlanner(task,multistep=mode=='persistent_multistep')
+    if mode=='cached_multistep':
+        from scar_public.cached_multistep_refinement import CachedMultistepPlanner
+        return CachedMultistepPlanner(task)
+    if mode in ('batched_work','batched_multistep'):
+        from scar_public.cached_multistep_refinement import BatchedWorkPlanner
+        return BatchedWorkPlanner(task,multistep=mode=='batched_multistep')
+    if mode=='multistep':
+        from scar_public.multistep_refinement import MultistepPlanner
+        return MultistepPlanner(task)
+    if mode in ('work_scheduled','multistep_scheduled'):
+        from scar_public.work_scheduled_refinement import WorkScheduledPlanner
+        return WorkScheduledPlanner(task, multistep=mode=='multistep_scheduled')
     if mode=='witness_amortized':
         from scar_public.witness_refinement import WitnessPlanner
         return WitnessPlanner(task)
