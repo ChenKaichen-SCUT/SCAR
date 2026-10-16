@@ -115,6 +115,13 @@ class ObligationAgent:
                 **memory.frame,'goal_quote':memory.frame.get('goal_quote',''),
                 'method':memory.frame.get('method',reason),'assessment':reason,
                 'expected':'Observe actual feedback; no completion inferred from command acceptance.'}}
+        controller = getattr(self,'resource_controller',None)
+        if controller:
+            continuation = controller.resume(obs['text'])
+            if continuation:
+                memory.update(continuation,obs['text'],step)
+                return continuation['action'],0,0,json.dumps(continuation,ensure_ascii=False)
+            prompt += memory.resource_feedback()
         parsed=None
         if memory.postwrite_document:
             name=memory.postwrite_document;memory.postwrite_document=None
@@ -207,6 +214,8 @@ class ObligationAgent:
                 parsed=query(prompt+'\nProposed action: '+parsed['action']+'\nObserved constraint/repetition: '+json.dumps({
                     'check':check,'same_observed_arrangement_repetitions':repeat,'last_plan':memory.last_plan})+
                     '\nOne bounded repair: revise the missing obligation or select an informative new observation. Repetition needs an actual changed condition.')
+        if controller:
+            parsed = controller.consider(parsed,obs['text'],step)
         # A write proposal activates the probe workflow; no optional experiment field.
         if parsed['action'].startswith('write ') and parsed.get('decision_source')!='semantic_intervention':
             payload,name=parsed['action'][6:].rsplit(' ',1)

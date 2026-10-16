@@ -1,0 +1,1985 @@
+{
+  "scope": "selected diagnostic checkpoints, not full-game evaluation",
+  "api_calls": 0,
+  "new_random_seeds": false,
+  "baseline_reruns": 0,
+  "cases": [
+    {
+      "game": "mark",
+      "next_step": 36,
+      "target": "oak_rod",
+      "horizon": 6,
+      "prefix_sha256": "01d9b680c8ac72b10549e26789685564f3ee6c21939d4f44e38700d6c520f648",
+      "selection": {
+        "fingerprint": "8570e0631ff7f0bfaa86333346f12478d44be6619c9b5e95e28117f5985a2174",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m1": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m0": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 129,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "2",
+        "baseline_upper": "2",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "2",
+            "upper": "2",
+            "all_leaves_verified": true,
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "3",
+                "upper": "3",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "5",
+            "upper": "5",
+            "all_leaves_verified": true,
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is a conservative previously demonstrated bound, not an exact inferred limit."
+        ],
+        "prefix_nodes": 2,
+        "prefix_search_exhausted": true,
+        "search_expansions": 9,
+        "lp_calls": 41,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "2",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                500,
+                0
+              ],
+              [
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "grounding": {
+          "locations": [
+            "Old Castle, hall"
+          ],
+          "routes": {},
+          "items": [
+            "oak_log",
+            "oak_rod"
+          ],
+          "recipes": [
+            {
+              "output": "oak_rod",
+              "needs": [
+                [
+                  "oak_log",
+                  500
+                ]
+              ],
+              "stations": [
+                "Old Castle, hall"
+              ],
+              "quantity_modes": [
+                "exact",
+                "ceil_batch",
+                "ceil_per_output"
+              ],
+              "access_modes": [
+                "hand",
+                "hand_bag",
+                "hand_ground",
+                "hand_bag_ground"
+              ],
+              "quantities": [
+                1
+              ]
+            }
+          ],
+          "start_location": "Old Castle, hall",
+          "holding": {
+            "oak_log": 1000
+          },
+          "ground": {
+            "Old Castle, hall": {}
+          },
+          "bag": {},
+          "bag_name": null,
+          "hand_capacity": 2000,
+          "bag_capacity": 0,
+          "hand_background": 0,
+          "bag_background": 0,
+          "target": "oak_rod",
+          "target_count": 1000,
+          "require_crafted": true,
+          "protected_totals": [],
+          "assumptions": [
+            "Candidate family coverage is unproved; observations may reject every model.",
+            "One recipe/current observed room only; no claim of global task infeasibility.",
+            "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+            "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+            "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+            "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+            "Consumption priority is hand, attached bag, then current floor.",
+            "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+            "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+            "Hand capacity is a conservative previously demonstrated bound, not an exact inferred limit."
+          ],
+          "source": {
+            "recipe": "I have acquired a new item: oak_log. It can be used to craft: workbench (4 oak_log, 4 stone), oak_rod (0.5 oak_log), oak_sword (1 oak_log, 1 oak_rod)",
+            "station": "Cannot craft oak_rod. Missing necessary workbench in the current area.",
+            "bag": null,
+            "public_prefix_length": 36,
+            "current_observation_sha256": "1eb3c898f5d91c2f94b0a81938a2eac601f566c6507f1c64b24b18739d95a2d8",
+            "equipment": {},
+            "hand_capacity_bounds": [
+              2.0,
+              null
+            ]
+          }
+        }
+      },
+      "planning_seconds": 0.288,
+      "checkpoint_sha256": "c956eef42eea61b53801840d9ca854ef00082d3abdb3484f4fc341dbfe93f3e0",
+      "real_trace": [
+        {
+          "action": "craft 1 oak_rod",
+          "observation": "\nCurrent Time: 0001-01-01 13:50:00\nCurrent Location: Old Castle, hall\n\nI entered hall.\n\nI am holding 1 oak_log.\nI have equipped no objects.\nI see 5 coin, 1 key, 1 small_pouch_0, 1 small_pouch_1, 1 paper_0, 1 pen, 2 berry, 1 workbench near me.\nI see scrap_goblin_1 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 5.\n\nNeighboring areas: armory, library.\n",
+          "next_observation": "\nCurrent Time: 0001-01-01 14:00:00\nCurrent Location: Old Castle, hall\n\nI successfully crafted 1 oak_rod. It is now on the ground.\n\nI am holding no objects.\nI have equipped no objects.\nI see 5 coin, 1 key, 1 small_pouch_0, 1 small_pouch_1, 1 paper_0, 1 pen, 2 berry, 1 workbench, 1 oak_rod near me.\nI see scrap_goblin_1 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 10.\n\nNeighboring areas: armory, library.\n",
+          "feedback": {
+            "action": "craft 1 oak_rod",
+            "observation_sha256": "cee7059add85ddbe70f1e69286f4a1a019a1e628762b3816804a009be7eaeee1",
+            "before_models": [
+              "m0",
+              "m1",
+              "m2",
+              "m3"
+            ],
+            "observed": [
+              "success",
+              "Old Castle, hall",
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "surviving_models": [
+              "m2",
+              "m3"
+            ],
+            "discriminated": true,
+            "status": "ACTIVE"
+          },
+          "environment_done": false
+        },
+        {
+          "action": "pick up oak_rod",
+          "observation": "\nCurrent Time: 0001-01-01 14:00:00\nCurrent Location: Old Castle, hall\n\nI successfully crafted 1 oak_rod. It is now on the ground.\n\nI am holding no objects.\nI have equipped no objects.\nI see 5 coin, 1 key, 1 small_pouch_0, 1 small_pouch_1, 1 paper_0, 1 pen, 2 berry, 1 workbench, 1 oak_rod near me.\nI see scrap_goblin_1 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 10.\n\nNeighboring areas: armory, library.\n",
+          "next_observation": "\nCurrent Time: 0001-01-01 14:10:00\nCurrent Location: Old Castle, hall\n\nI picked up oak_rod.\n\nStage completed. The oak rod is smooth and sturdy in your hand.\nA useful tool for crafting more advanced items.\nTalk to syl about what to do next.\n\nsyl enters the area.\nI have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), oak_sword (1 oak_log, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), pen (1 oak_rod, 0.5 ink_sap), oak_dagger (1 oak_rod, 1 resin_clump)\n\nI am holding 1 oak_rod.\nI have equipped no objects.\nI see 5 coin, 1 key, 1 small_pouch_0, 1 small_pouch_1, 1 paper_0, 1 pen, 2 berry, 1 workbench near me.\nI see scrap_goblin_1, syl nearby.\n\nMy level is 1.\nMy attack is at 13.\nMy defense is at 0.\nMy health is at 100.\nMy experience is at 30.\n\nNeighboring areas: armory, library.\n",
+          "feedback": {
+            "action": "pick up oak_rod",
+            "observation_sha256": "8fc567859c2141e4beadc7d00cdc20f620e15766815717e7d1b4bfaed2b83744",
+            "before_models": [
+              "m2",
+              "m3"
+            ],
+            "observed": [
+              "success",
+              "Old Castle, hall",
+              [
+                0,
+                1000
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "surviving_models": [
+              "m2",
+              "m3"
+            ],
+            "discriminated": false,
+            "status": "ACTIVE"
+          },
+          "environment_done": false
+        }
+      ],
+      "execution": {
+        "status": "LOCAL_MILESTONE_CONFIRMED",
+        "actions_used": 2,
+        "events": [
+          {
+            "action": "craft 1 oak_rod",
+            "observation_sha256": "cee7059add85ddbe70f1e69286f4a1a019a1e628762b3816804a009be7eaeee1",
+            "before_models": [
+              "m0",
+              "m1",
+              "m2",
+              "m3"
+            ],
+            "observed": [
+              "success",
+              "Old Castle, hall",
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "surviving_models": [
+              "m2",
+              "m3"
+            ],
+            "discriminated": true,
+            "status": "ACTIVE"
+          },
+          {
+            "action": "pick up oak_rod",
+            "observation_sha256": "8fc567859c2141e4beadc7d00cdc20f620e15766815717e7d1b4bfaed2b83744",
+            "before_models": [
+              "m2",
+              "m3"
+            ],
+            "observed": [
+              "success",
+              "Old Castle, hall",
+              [
+                0,
+                1000
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "surviving_models": [
+              "m2",
+              "m3"
+            ],
+            "discriminated": false,
+            "status": "ACTIVE"
+          }
+        ],
+        "surviving_models": [
+          "m2",
+          "m3"
+        ],
+        "full_task_completion_claimed": false,
+        "fingerprint": "8570e0631ff7f0bfaa86333346f12478d44be6619c9b5e95e28117f5985a2174"
+      }
+    },
+    {
+      "game": "metropolis",
+      "next_step": 86,
+      "target": "gavel_club",
+      "horizon": 6,
+      "prefix_sha256": "35e2b44c076a7d490d7edd7a9fde0ce205873df686029db16ba6e06ee5dbbd28",
+      "selection": {
+        "fingerprint": "ca1e8e9edc363daa3fad6383edb501260cc1a79c3742df3b8a777c678dc51c37",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m0": {
+            "lower": "inf",
+            "upper": "inf",
+            "success_exempt": true,
+            "reason": "proved individually infeasible within ORIGINAL horizon"
+          },
+          "m2": {
+            "lower": "4",
+            "upper": "4",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [
+          "m0"
+        ],
+        "hypotheses": {
+          "m0": {
+            "gavel_club": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "gavel_club": [
+              "exact",
+              "hand_bag"
+            ]
+          },
+          "m2": {
+            "gavel_club": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m3": {
+            "gavel_club": [
+              "exact",
+              "hand_bag_ground"
+            ]
+          }
+        },
+        "state_count": 343,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "gavel_club": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ]
+            ]
+          },
+          "m1": {
+            "gavel_club": [
+              [
+                "exact",
+                "hand_bag"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m2": {
+            "gavel_club": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ]
+            ]
+          },
+          "m3": {
+            "gavel_club": [
+              [
+                "exact",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "5",
+        "baseline_upper": "5",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 gavel_club"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Central Courthouse, lobby",
+                  [
+                    0,
+                    0,
+                    2000
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Central Courthouse, lobby",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "5",
+            "upper": "5",
+            "all_leaves_verified": true,
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop gavel_timber",
+              "craft 1 gavel_club"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 3,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Central Courthouse, lobby",
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1",
+                  "m2"
+                ],
+                "common_continuation_verified": false,
+                "lower": "inf",
+                "upper": "inf",
+                "status": "NO_CONTINUATION_IN_CANDIDATE_MODEL"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Central Courthouse, lobby",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "inf",
+            "upper": "inf",
+            "all_leaves_verified": false,
+            "decision": "REJECT_UNVERIFIED_CONTINUATION"
+          },
+          {
+            "prefix": [
+              "store 1 gavel_timber docket_satchel_0",
+              "craft 1 gavel_club"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Central Courthouse, lobby",
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": false,
+                "lower": "inf",
+                "upper": "inf",
+                "status": "NO_CONTINUATION_IN_CANDIDATE_MODEL"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Central Courthouse, lobby",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "inf",
+            "upper": "inf",
+            "all_leaves_verified": false,
+            "decision": "REJECT_UNVERIFIED_CONTINUATION"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 8,
+        "prefix_search_exhausted": true,
+        "search_expansions": 18,
+        "lp_calls": 91,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 gavel_club"
+        ],
+        "worst_total_actions": "5",
+        "selected_leaves": [
+          {
+            "observation": [
+              "failure",
+              "Central Courthouse, lobby",
+              [
+                0,
+                0,
+                2000
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                false
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m2"
+            ],
+            "common_continuation_verified": true,
+            "lower": "4",
+            "upper": "4",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Central Courthouse, lobby",
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1000,
+                0
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m1",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "grounding": {
+          "locations": [
+            "Central Courthouse, lobby"
+          ],
+          "routes": {},
+          "items": [
+            "binding_thread",
+            "gavel_club",
+            "gavel_timber"
+          ],
+          "recipes": [
+            {
+              "output": "gavel_club",
+              "needs": [
+                [
+                  "gavel_timber",
+                  2000
+                ],
+                [
+                  "binding_thread",
+                  1000
+                ]
+              ],
+              "stations": [
+                "Central Courthouse, lobby"
+              ],
+              "quantity_modes": [
+                "exact",
+                "ceil_batch",
+                "ceil_per_output"
+              ],
+              "access_modes": [
+                "hand",
+                "hand_bag",
+                "hand_ground",
+                "hand_bag_ground"
+              ],
+              "quantities": [
+                1
+              ]
+            }
+          ],
+          "start_location": "Central Courthouse, lobby",
+          "holding": {
+            "gavel_timber": 2000
+          },
+          "ground": {
+            "Central Courthouse, lobby": {}
+          },
+          "bag": {
+            "binding_thread": 1000
+          },
+          "bag_name": "docket_satchel_0",
+          "hand_capacity": 2000,
+          "bag_capacity": 20000,
+          "hand_background": 0,
+          "bag_background": 0,
+          "target": "gavel_club",
+          "target_count": 1000,
+          "require_crafted": true,
+          "protected_totals": [],
+          "assumptions": [
+            "Candidate family coverage is unproved; observations may reject every model.",
+            "One recipe/current observed room only; no claim of global task infeasibility.",
+            "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+            "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+            "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+            "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+            "Consumption priority is hand, attached bag, then current floor.",
+            "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+            "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+            "Hand capacity is an observed bound."
+          ],
+          "source": {
+            "recipe": "I have acquired a new item: binding_thread. It can be used to craft: docket_satchel (3 parchment_scrap, 1 binding_thread), binding_strap (1 binding_thread, 0.25 parchment_roll), casebook (5 legal_brief, 1 binding_thread), parchment_wrap (3 parchment_scrap, 1 binding_thread), clerks_robe (1 padded_lining, 1 binding_thread), marble_mace (1 marble_slab, 1 gavel_splint, 1 binding_thread), scale_bundle (6 iron_scale, 2 binding_thread), gavel_club (2 gavel_timber, 1 binding_thread), parchment_roll (2 parchment_scrap, 1 binding_thread)",
+            "station": "Cannot craft gavel_club. Missing necessary clerks_bench in the current area.",
+            "bag": "It contains: no objects (capacity: 0/20).",
+            "public_prefix_length": 86,
+            "current_observation_sha256": "64a315d4fc28d78aec002e6a22d9c5a62a8f39347de67905733b912b562e8844",
+            "equipment": {
+              "docket_satchel_0": 1000
+            },
+            "hand_capacity_bounds": [
+              2.0,
+              2.0
+            ]
+          }
+        }
+      },
+      "planning_seconds": 1.175,
+      "checkpoint_sha256": "373fd02009d074a32443dcc96fe2c4cd27f306e2a22ed5bd211697b6ab7d7994",
+      "real_trace": [
+        {
+          "action": "craft 1 gavel_club",
+          "observation": "\nCurrent Time: 0001-01-01 22:10:00\nCurrent Location: Central Courthouse, lobby\n\nI entered lobby.\n\nI am holding 2 gavel_timber.\nI have equipped 1 docket_satchel_0.\nI see 10 writ_token, 1 chamber_key, 1 legal_brief_0, 1 clerks_bench, 1 parchment_scrap near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 88.\nMy experience is at 70.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+          "next_observation": "\nCurrent Time: 0001-01-01 22:20:00\nCurrent Location: Central Courthouse, lobby\n\nI successfully crafted 1 gavel_club. It is now on the ground.\n\nI am holding no objects.\nI have equipped 1 docket_satchel_0.\nI see 10 writ_token, 1 chamber_key, 1 legal_brief_0, 1 clerks_bench, 1 parchment_scrap, 1 gavel_club near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 88.\nMy experience is at 75.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+          "feedback": {
+            "action": "craft 1 gavel_club",
+            "observation_sha256": "6941fac75a3b52d6dc203de2b808a4b3314b3c2be0c03aad7c7685881fe19edd",
+            "before_models": [
+              "m0",
+              "m1",
+              "m2",
+              "m3"
+            ],
+            "observed": [
+              "success",
+              "Central Courthouse, lobby",
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1000,
+                0
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "surviving_models": [
+              "m1",
+              "m3"
+            ],
+            "discriminated": true,
+            "status": "ACTIVE"
+          },
+          "environment_done": false
+        },
+        {
+          "action": "pick up gavel_club",
+          "observation": "\nCurrent Time: 0001-01-01 22:20:00\nCurrent Location: Central Courthouse, lobby\n\nI successfully crafted 1 gavel_club. It is now on the ground.\n\nI am holding no objects.\nI have equipped 1 docket_satchel_0.\nI see 10 writ_token, 1 chamber_key, 1 legal_brief_0, 1 clerks_bench, 1 parchment_scrap, 1 gavel_club near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 88.\nMy experience is at 75.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+          "next_observation": "\nCurrent Time: 0001-01-01 22:30:00\nCurrent Location: Central Courthouse, lobby\n\nI picked up gavel_club.\n\nStage completed: Obtain and equip a weapon before engaging enemies.\nYou feel the weight of justice in your hands. Time to put it to use.\nTalk to alex_smith about what to do next.\n\nI am holding 1 gavel_club.\nI have equipped 1 docket_satchel_0.\nI see 10 writ_token, 1 chamber_key, 1 legal_brief_0, 1 clerks_bench, 1 parchment_scrap near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 88.\nMy experience is at 95.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+          "feedback": {
+            "action": "pick up gavel_club",
+            "observation_sha256": "8e79d769d909f1288f9e055c627e371eb9d8fc682dc51baa64a0f42eb7c88f7d",
+            "before_models": [
+              "m1",
+              "m3"
+            ],
+            "observed": [
+              "success",
+              "Central Courthouse, lobby",
+              [
+                0,
+                1000,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "surviving_models": [
+              "m1",
+              "m3"
+            ],
+            "discriminated": false,
+            "status": "ACTIVE"
+          },
+          "environment_done": false
+        }
+      ],
+      "execution": {
+        "status": "LOCAL_MILESTONE_CONFIRMED",
+        "actions_used": 2,
+        "events": [
+          {
+            "action": "craft 1 gavel_club",
+            "observation_sha256": "6941fac75a3b52d6dc203de2b808a4b3314b3c2be0c03aad7c7685881fe19edd",
+            "before_models": [
+              "m0",
+              "m1",
+              "m2",
+              "m3"
+            ],
+            "observed": [
+              "success",
+              "Central Courthouse, lobby",
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1000,
+                0
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "surviving_models": [
+              "m1",
+              "m3"
+            ],
+            "discriminated": true,
+            "status": "ACTIVE"
+          },
+          {
+            "action": "pick up gavel_club",
+            "observation_sha256": "8e79d769d909f1288f9e055c627e371eb9d8fc682dc51baa64a0f42eb7c88f7d",
+            "before_models": [
+              "m1",
+              "m3"
+            ],
+            "observed": [
+              "success",
+              "Central Courthouse, lobby",
+              [
+                0,
+                1000,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "surviving_models": [
+              "m1",
+              "m3"
+            ],
+            "discriminated": false,
+            "status": "ACTIVE"
+          }
+        ],
+        "surviving_models": [
+          "m1",
+          "m3"
+        ],
+        "full_task_completion_claimed": false,
+        "fingerprint": "ca1e8e9edc363daa3fad6383edb501260cc1a79c3742df3b8a777c678dc51c37"
+      }
+    },
+    {
+      "game": "remnant",
+      "next_step": 174,
+      "target": "lockpick",
+      "horizon": 6,
+      "prefix_sha256": "fa8e9f46ba6dc2bc3df07d072a9acea293ae3dc57b2bc083834691f325cd6bf1",
+      "selection": {
+        "fingerprint": "eb30bf721ae59d7641cf0e5469d14e68c89095f89b456be9ca012c04c026409c",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m0": {
+            "lower": "inf",
+            "upper": "inf",
+            "success_exempt": true,
+            "reason": "proved individually infeasible within ORIGINAL horizon"
+          },
+          "m2": {
+            "lower": "6",
+            "upper": "6",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [
+          "m0"
+        ],
+        "hypotheses": {
+          "m0": {
+            "lockpick": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "lockpick": [
+              "exact",
+              "hand_bag"
+            ]
+          },
+          "m2": {
+            "lockpick": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m3": {
+            "lockpick": [
+              "exact",
+              "hand_bag_ground"
+            ]
+          }
+        },
+        "state_count": 1551,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "lockpick": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ]
+            ]
+          },
+          "m1": {
+            "lockpick": [
+              [
+                "exact",
+                "hand_bag"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m2": {
+            "lockpick": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ]
+            ]
+          },
+          "m3": {
+            "lockpick": [
+              [
+                "exact",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "inf",
+        "baseline_upper": "inf",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 lockpick"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    1000,
+                    1000
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": false,
+                "lower": "inf",
+                "upper": "inf",
+                "status": "NO_CONTINUATION_IN_CANDIDATE_MODEL"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    0,
+                    1000,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "inf",
+            "upper": "inf",
+            "all_leaves_verified": false,
+            "decision": "REJECT_UNVERIFIED_CONTINUATION"
+          },
+          {
+            "prefix": [
+              "drop thread",
+              "craft 1 lockpick"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 3,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1",
+                  "m2"
+                ],
+                "common_continuation_verified": false,
+                "lower": "inf",
+                "upper": "inf",
+                "status": "NO_CONTINUATION_IN_CANDIDATE_MODEL"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    0,
+                    1000,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "inf",
+            "upper": "inf",
+            "all_leaves_verified": false,
+            "decision": "REJECT_UNVERIFIED_CONTINUATION"
+          },
+          {
+            "prefix": [
+              "store 1 thread small_bag_0",
+              "craft 1 lockpick"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": false,
+                "lower": "inf",
+                "upper": "inf",
+                "status": "NO_CONTINUATION_IN_CANDIDATE_MODEL"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    0,
+                    1000,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "inf",
+            "upper": "inf",
+            "all_leaves_verified": false,
+            "decision": "REJECT_UNVERIFIED_CONTINUATION"
+          },
+          {
+            "prefix": [
+              "drop torch",
+              "craft 1 lockpick"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": false,
+                "lower": "inf",
+                "upper": "inf",
+                "status": "NO_CONTINUATION_IN_CANDIDATE_MODEL"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "inf",
+            "upper": "inf",
+            "all_leaves_verified": false,
+            "decision": "REJECT_UNVERIFIED_CONTINUATION"
+          },
+          {
+            "prefix": [
+              "store 1 torch small_bag_0",
+              "craft 1 lockpick"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": false,
+                "lower": "inf",
+                "upper": "inf",
+                "status": "NO_CONTINUATION_IN_CANDIDATE_MODEL"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "inf",
+            "upper": "inf",
+            "all_leaves_verified": false,
+            "decision": "REJECT_UNVERIFIED_CONTINUATION"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 20,
+        "prefix_search_exhausted": true,
+        "search_expansions": 37,
+        "lp_calls": 293,
+        "status": "NO_VERIFIED_SHARED_CONTINUATION",
+        "reason": "do not discard hard candidate worlds merely to approve a probe",
+        "grounding": {
+          "locations": [
+            "Old Castle, hall"
+          ],
+          "routes": {},
+          "items": [
+            "iron_bar",
+            "lockpick",
+            "rust_scrap",
+            "thread",
+            "torch"
+          ],
+          "recipes": [
+            {
+              "output": "lockpick",
+              "needs": [
+                [
+                  "rust_scrap",
+                  1000
+                ],
+                [
+                  "iron_bar",
+                  1000
+                ],
+                [
+                  "thread",
+                  1000
+                ]
+              ],
+              "stations": [
+                "Old Castle, hall"
+              ],
+              "quantity_modes": [
+                "exact",
+                "ceil_batch",
+                "ceil_per_output"
+              ],
+              "access_modes": [
+                "hand",
+                "hand_bag",
+                "hand_ground",
+                "hand_bag_ground"
+              ],
+              "quantities": [
+                1
+              ]
+            }
+          ],
+          "start_location": "Old Castle, hall",
+          "holding": {
+            "torch": 1000,
+            "thread": 1000
+          },
+          "ground": {
+            "Old Castle, hall": {}
+          },
+          "bag": {
+            "iron_bar": 1000,
+            "torch": 1000,
+            "rust_scrap": 1000
+          },
+          "bag_name": "small_bag_0",
+          "hand_capacity": 2000,
+          "bag_capacity": 10000,
+          "hand_background": 0,
+          "bag_background": 4000,
+          "target": "lockpick",
+          "target_count": 1000,
+          "require_crafted": true,
+          "protected_totals": [],
+          "assumptions": [
+            "Candidate family coverage is unproved; observations may reject every model.",
+            "One recipe/current observed room only; no claim of global task infeasibility.",
+            "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+            "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+            "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+            "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+            "Consumption priority is hand, attached bag, then current floor.",
+            "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+            "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+            "Hand capacity is an observed bound."
+          ],
+          "source": {
+            "recipe": "I have acquired a new item: rust_scrap. It can be used to craft: lockpick (1 rust_scrap, 1 iron_bar, 1 thread)",
+            "station": "Cannot craft lockpick. Missing necessary workbench in the current area.",
+            "bag": "It contains: 1 iron_bar, 1 wood_log, 1 torch, 1 wooden_dagger (capacity: 6/10).",
+            "public_prefix_length": 174,
+            "current_observation_sha256": "8c1589d9a6dc61d892326705cb0ccdf4209a2767d489a75e976be60d66603a4b",
+            "equipment": {
+              "small_bag_0": 1000
+            },
+            "hand_capacity_bounds": [
+              2.0,
+              2.0
+            ]
+          }
+        }
+      },
+      "planning_seconds": 6.733
+    }
+  ],
+  "validation": {
+    "server_tests_passed": 66,
+    "frozen_execution_audits": [
+      {
+        "game": "mark",
+        "prefix_hash_verified": true,
+        "selection_reproduced": true,
+        "actual_actions_and_feedback_replayed": 2
+      },
+      {
+        "game": "metropolis",
+        "prefix_hash_verified": true,
+        "selection_reproduced": true,
+        "actual_actions_and_feedback_replayed": 2
+      },
+      {
+        "game": "remnant",
+        "prefix_hash_verified": true,
+        "selection_reproduced": true,
+        "actual_actions_and_feedback_replayed": 0
+      }
+    ],
+    "source_sha256": {
+      "resource_competition.py": "af3ccc8d30dcb61eb5e1e3bc1d9f14b25630771bcd94519191c1311b435fc9e9",
+      "resource_trial.py": "24431565986cf1e1ec1aaa62a639e56ee482b4a4829852946483b74999fd83cf",
+      "resource_agent.py": "4ba4af12d5118999dcfe0e7d8249408b667dfc232fbd6bf9c0cbca917f72f1c9",
+      "diagnose_resources.py": "19ae9060d71d735779f362cf56f70bcf34440e48926aeeaa604c695b658c495c",
+      "test_resource_competition.py": "0f5a882b424beab2a2366606bb9856ee26be6bf81c1839feaee09bbfb3e537f2",
+      "test_resource_trial.py": "ebb6a8b00e26a81b27d30f3676c0ed6feae2ba82c66cf89891efd4dd801abaf0",
+      "RESOURCE_COMPETITION.txt": "ff3e29856e398d40e18d01295d8dd7d3e22f18824e1443b022993d01d7e65e2b",
+      "obligation_agent.py": "aa36d6fe2829fd678a45a4ca6ee5d01fe01d6b9fa344b7c637500cff70c55fad",
+      "run.py": "6b27c4cfdb4a1579cbd3131e66594b706cfb48bc658cded78b89c6abc3c24e4d"
+    },
+    "reference_planner_unchanged": true,
+    "visual_rendering": "not performed"
+  },
+  "summary": {
+    "approved_diagnostic_trials": 2,
+    "executed_environment_actions": 4,
+    "local_milestones_confirmed": 2,
+    "refused_cases": 1,
+    "api_calls": 0,
+    "full_game_performance_improvement_established": false
+  }
+}

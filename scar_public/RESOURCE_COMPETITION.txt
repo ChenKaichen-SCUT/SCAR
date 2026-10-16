@@ -1,0 +1,181 @@
+SCAR: competing resource semantics and opportunity-preserving experiments
+Implementation date: 2026-10-16. This is a research prototype, not a novelty claim.
+
+1. EXACT SCOPE
+
+The generic finite domain supports multiple recipes, finite observed locations,
+directed routes, hand/bag/floor resources, capacity constraints, protected resource
+totals, craft events and observation-contingent policies. The automatic V6 adapter
+currently grounds ONE observed recipe at the CURRENT observed station. It does
+not automatically ground upstream recipes or remote material acquisition. Those
+capabilities are tested in the generic domain, not established end to end in TTCL.
+
+The local goal is newly craft AND hold the chosen output. Ingredients are consumed
+preconditions, not goal conjuncts. The LLM/V6 chooses this METHOD milestone. It is
+not a replacement for the natural-language quest or proof of the quest translation.
+Default protected_totals is empty: unrelated future quests are not certified.
+
+2. FINITE COMPETING MODELS
+
+One unit is 1000 exact integer milli-units. For an ingredient coefficient c and
+integer batch q, candidates predict:
+  exact:           d(c,q) = c*q
+  ceil_batch:      d(c,q) = 1000*ceil(c*q/1000)
+  ceil_per_output: d(c,q) = 1000*q*ceil(c/1000)
+
+Accessibility alternatives are hand; hand+attached bag; hand+current floor;
+hand+attached bag+current floor. Sufficiency checks SUM the accessible quantities
+of EACH ingredient before any consumption. Fixed consumption priority is hand,
+bag, floor. This priority, fixed item loads, failure-without-consumption, output
+on floor, station sufficiency and absent ambient changes are DECLARED ASSUMPTIONS.
+They are not inferred truths and need not cover the real game. Independent recipes
+have independent parameter choices. Equivalent profiles are collapsed with aliases
+recorded: for example the two ceiling rules cannot be distinguished with q=1 only.
+
+State x consists of location, elapsed actions, craft-event bits, and all finite
+resource counts by store. Every action has cost 1, including failed craft and
+inspection. Preconditions/effects are explicit in ResourceDomain.transition.
+K(x) checks nonnegative counts, hand/bag capacities, and protected total minima.
+Goal G(x) checks the craft event and current output possession. Bag contents are
+hidden except during inspect BAG. Remote floor counts are not observations. Model
+IDs and success-exemption labels are NEVER observation fields.
+
+B is a set of pairs (m,x), all initially compatible with the grounded public prefix.
+For action a and observed o:
+  B[a,o] = {(m,T_m(x,a)) : (m,x) in B, O_m(x,a)=o}.
+Empty actual successor belief is MODEL_MISMATCH, not success or proof of no solution.
+
+3. TWO DIFFERENT GUARANTEES
+
+STRONG mode requires a single observable policy that reaches G in EVERY initial
+candidate world while satisfying K throughout. For example, a hand-only recipe
+requiring 3 items with capacity 2 makes this guarantee impossible.
+
+PRESERVE_OPPORTUNITY mode fixes the ORIGINAL belief B0 and horizon H0. Solve each
+world individually under K and H0. A world may be success-exempt only when its
+individual optimum is PROVED infinite by exact search or a validated infeasibility
+certificate. Budget exhaustion is UNKNOWN and NEVER earns an exemption. Let E0 be
+these proved-infeasible worlds and R0=B0\E0. E0 is frozen for the entire trial.
+It is never recomputed after consuming time or resources. Every model, including
+exempt models, stays in the belief and in every K check. If R0 is empty, no trial
+is selected: a vacuous success guarantee is not a reason to experiment.
+
+For every world in R0 a single observation-based policy must reach G by H0;
+for every world in B0 it must obey K. A branch containing only E0 may stop without
+G, explicitly reported as REMAINING_MODELS_ORIGINALLY_INFEASIBLE. This is NOT task
+completion, nor evidence those models are false. Infeasibility is relative to the
+bounded grounded fragment: it says nothing about unmodeled routes, other methods,
+larger budgets or the full game. Consequently this guarantee must not be described
+as unconditional real-world task safety or guaranteed quest completion.
+
+4. ADMISSIBILITY AND LOWER BOUND
+
+A finite prefix is informative when its public observation partitions the live
+models into at least two nonempty proper subsets. The implemented prefix search
+only considers nonbranching preparations up to the FIRST split. Each resulting
+branch must have ONE common observable continuation satisfying the frozen success
+obligations and all K constraints, within H0 minus every action already spent.
+The quantifiers are: for each OBSERVATION BRANCH, there exists one POLICY that works
+for all required WORLDS in that branch. Separate omniscient plans per world do not
+certify an experiment.
+
+Let L_m(x,h) be the existing certified LP relaxation for a goal-required world.
+For a current belief B and remaining horizon h:
+  L(B,h) = max {L_m(x,h) : (m,x) in B and m not in E0}, max(empty)=0.
+Any K violation is infeasible. If all non-exempt worlds already satisfy G, stop is
+allowed. Exempt worlds remain in all successor branches and constraint checks.
+
+Proof of the lower bound. A shared feasible policy induces a concrete goal-reaching
+trajectory for every required world. Its transition-count vector satisfies the
+existing LP resource/symbol-flow relaxation by telescoping actual changes; relaxing
+preconditions/order/integrality cannot raise the minimum above this trajectory's
+cost. Only exact-rational-validated dual/Farkas certificates supply nonzero lower
+bounds or infeasibility; floating primal values never prune. Hence L_m is at most
+that world's trajectory cost, so the maximum is at most the policy's worst cost.
+Dropping exempt-world goal bounds preserves this inequality. K may still invalidate
+an exempt-world trajectory. All needed reachable transitions up to H0 are compiled;
+if grounding exceeds its finite-state bound, compilation aborts with UNKNOWN.
+
+Proposition (conditional opportunity preservation). Assume the true world is in
+the fixed candidate family, all transition/observation/load/frame assumptions hold,
+and the original world has a K-respecting solution to the local goal within H0.
+If the selector approves a prefix and every branch continuation is replay-verified,
+executing the prefix and the continuation indexed by real observations preserves
+and realizes that local completion opportunity within H0.
+
+Proof. A genuinely initially feasible modeled world cannot be in E0, because only
+sound infeasibility proofs grant exemption. At each step its actual successor and
+observation occur in the predicted branch by model correctness. Induction keeps
+this world in the live belief. Prefix legality gives K before the split, and the
+verified branch policy gives K afterward and G at its stop for every required world,
+including this one. The explicit remaining horizon counts all prefix/continuation
+actions. Frozen E0 prevents a newly damaged feasible world being relabeled exempt.
+Composition proves the result. If observations reject every model, the assumptions
+have failed; the executor invalidates the policy and makes no guarantee.
+
+This is a conditional correctness statement for this implementation, not a theorem
+that LLM-generated world models cover reality, that translation is correct, that
+every safe experiment can be found, or that the procedure is a novel planning result.
+
+5. SEARCH PSEUDOCODE
+
+compile every reachable candidate transition through H0, else return UNKNOWN
+E0 := empty in strong mode; otherwise only proved initially infeasible worlds
+baseline := bounded AND/OR solve(B0,H0,E0)
+for bounded nonbranching prefix ending at its first public split:
+    reject if any intermediate world violates K
+    for every observation branch B_o:
+        continuation := bounded AND/OR solve(B_o,H0-prefix_cost,E0)
+        reject unless a finite policy is found and replayed in ALL worlds of B_o
+    total := prefix_cost + maximum verified continuation cost
+    reject if baseline has a verified policy and total exceeds its cost + allowance
+choose admissible prefix by (worst total cost, largest remaining model set,
+    excess target production, prefix length, deterministic lexical tie break)
+if none, use baseline verified direct policy if present; otherwise abstain
+execute one action; read fresh public feedback; retain only matching successors
+if missing observation, unexpected equipment/load/combat or zero survivors: invalidate
+otherwise follow the common policy's observable branch and repeat
+
+The cost allowance defaults to ZERO. It compares with a known verified baseline
+upper bound, not necessarily the optimal cost; bounded search cannot prove that
+all cheaper policies or all better experiments were considered. The ranking uses
+no invented probabilities or entropy prior. Information is secondary to feasibility
+and cost. An unnecessary inspection or redundant production can lose to direct work.
+
+6. IMPLEMENTATION AND VALIDATION
+
+resource_competition.py: quantity/access domain, finite compiler, opportunity mode,
+selector; reuses unmodified finite_planner.py and its certified LP/search.
+resource_trial.py: public grounding, strict fresh observation matching, branch execution.
+resource_agent.py: opt-in resource_competition_v8 on V6, target from V6/LLM; ongoing
+certified continuations need no extra LLM request. Public feedback and the initial
+problem persist; resume reconstructs/verifies the same policy. Six attempted local
+groundings per run, six-action horizon, 300-action global ceiling, no extra probe
+cost allowance. Gaps return to V6 with an audit, without a whole-agent safety claim.
+diagnose_resources.py: fixed public prefixes, optional isolated checkpoint execution.
+
+Diagnostics used pre-action public prefixes at mark/36, metropolis/86, remnant/174.
+Planning never received the stored future action/outcome, hidden engine state or
+reward. Environments were restored only afterward by a separate evaluator.
+mark: craft 1 oak_rod reduced 4 effective models to 2 (exact 0.5 rejected), then
+pick up oak_rod confirmed the local milestone. Access alternatives remain unresolved.
+metropolis: craft 1 gavel_club reduced 4 models to 2 (bag-inaccessible predictions
+rejected), then pickup confirmed the milestone; the environment also emitted a
+quest-stage completion message. Floor accessibility and resource priority are NOT
+identified by this success. The initially impossible hand-only model remained in
+the failure branch during certification; it was eliminated only by actual success.
+remnant: the floor-accessible world needs six actions even when its model is known.
+A failed craft probe would leave five, so its previously feasible opportunity is
+lost. This informative probe is rejected; no environment action was executed there.
+Two selected local trials, four actual environment actions, zero API calls. These
+are selected checkpoint diagnostics, not independent benchmark runs or evidence of
+improved 300-step total scores. No frozen baseline was rerun.
+
+Tests include rejecting a resource-destroying informative batch, hidden bag contents
+requiring a paid observation, declining unnecessary probing, fixed exemptions,
+UNKNOWN retention, independent minimax comparisons, upstream/cross-location generic
+planning, real-feedback rejection, resumed policy reconstruction and V6 integration.
+
+Next empirical question: after broadening automatic grounding with validated upstream
+effects, compare the active controller against V6 on held-out full runs under the
+same 300-step budget. Do not infer that result from these two local successes.
