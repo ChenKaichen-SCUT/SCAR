@@ -1,6 +1,6 @@
 import json
 
-from scar_public.obligations import ExecutionModel
+from scar_public.obligations import ExecutionModel, explicit_role_bindings
 from scar_public.obligation_agent import ObligationAgent, ObligationMemory
 
 
@@ -62,6 +62,23 @@ def test_current_adjacency_invalidates_historical_return_route():
     m.observe(obs(extra='I entered workshop.'),'enter workshop')
     m.observe(obs().replace('forge, workshop','cellar'))
     assert m.routes()['Home, workshop']=={}
+
+
+def test_failed_historical_route_is_temporarily_excluded_until_conditions_change():
+    m=ExecutionModel();m.observe(obs())
+    m.observe(obs('Home, forge',extra='I entered forge.'),'enter forge')
+    m.observe(obs(extra='I entered workshop.'),'enter workshop')
+    m.observe(obs(extra='Cannot enter forge, the door is locked.'),'enter forge')
+    assert 'forge' not in m.routes()['Home, workshop']
+    m.observe(obs(holding='1 key',extra='I picked up key.'),'pick up key')
+    assert m.routes()['Home, workshop']['forge']=='Home, forge'
+
+
+def test_role_binding_does_not_substitute_another_observed_phrase():
+    goal='Record the access code on a note.'
+    lines=['The access code is GATE-7.', 'The restoration clause is RESTORE-ALL.']
+    assert [b['value'] for b in explicit_role_bindings(goal,lines)]==['GATE-7']
+    assert explicit_role_bindings('Record the recovery code on a note.',lines)==[]
 
 
 def test_write_probe_predicts_different_full_results_and_records_actual_append():

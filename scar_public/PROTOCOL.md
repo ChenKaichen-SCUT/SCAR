@@ -269,3 +269,15 @@ real execution of the intended mechanisms. Retain negative runs and all costs. C
 specific implementation/coverage failures with an explicit amendment before further paid runs;
 avoid unbounded prompt tuning. Full-run regressions remain visible, with no novelty/significance
 claim from this development phase. Never feed hidden engine state or scores to the policy.
+
+First v6 diagnostics: cp62 8->9, cp178 9->9, cp206 10->12, mark138 1->1. Two concrete
+failures justify a bounded amendment: program-selected routes ignored actual locked-door
+feedback; a separate binding request still relabeled the explicitly observed phrase as an
+unrelated clause. Temporarily exclude a failed route for six observations under unchanged
+carried state (changed conditions permit retesting); use a narrow explicit role/literal binding
+when the task names that same role. Unsupported aliases/coreference stay unresolved.
+After writes, inspect actual full text and request fresh task feedback from an accessible
+observed task giver. Failed writes cannot refute a content hypothesis; nonempty documents can
+confound a binding test. A known append conflict may initiate production of a fresh document,
+whose actual contents must still be inspected. Repeat only cp62 and cp178, retaining the first
+four diagnostics and the successful cp206 mechanism result. Do not rerun baselines.

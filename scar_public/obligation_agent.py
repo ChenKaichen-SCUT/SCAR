@@ -2,7 +2,7 @@
 import json
 import re
 
-from scar_public.obligations import ExecutionModel, base_name
+from scar_public.obligations import ExecutionModel, base_name, explicit_role_bindings
 from scar_public.viability import ViabilityMemory, VIABILITY_INSTRUCTION
 from scar_public.evidence import EVIDENCE_INSTRUCTION
 
@@ -51,7 +51,10 @@ class ObligationMemory(ViabilityMemory):
         self.model = ExecutionModel()
         self.resource_target = ''
         self.resource_started = 0
+        self.resource_fresh = False
         self.pending_write = None
+        self.postwrite_document = None
+        self.task_query = None
         self.binding_trials = []
         self.binding_queries = 0
         self.last_plan = None
@@ -62,10 +65,15 @@ class ObligationMemory(ViabilityMemory):
         result = super().prompt(observation)
         for trial in self.binding_trials:
             if trial.get('status') != 'awaiting_goal_feedback':continue
+            if self.last_action==trial.get('write_action') and 'write_accepted' not in trial:
+                trial['write_accepted']='I wrote on '+trial['document']+':' in observation
+                if not trial['write_accepted']:
+                    trial['status']='blocked_execution'
+                    continue
             goal = trial['goal']
             if goal in self.model.completed:
                 trial.update(status='observed',observed=True)
-            elif goal in self.model.current.get('fresh_tasks',[]):
+            elif (goal in self.model.current.get('fresh_tasks',[]) and trial.get('write_accepted') and trial.get('before_text')==''):
                 trial.update(status='observed',observed=False)
         contract = self.model.goal_contract(self.frame.get('goal_quote',''))
         self.contracts.append(contract)
@@ -106,6 +114,10 @@ class ObligationAgent:
                 'method':memory.frame.get('method',reason),'assessment':reason,
                 'expected':'Observe actual feedback; no completion inferred from command acceptance.'}}
         parsed=None
+        if memory.postwrite_document:
+            name=memory.postwrite_document;memory.postwrite_document=None
+            if name in (model.current.get('holding') or {}) or name in (model.current.get('ground') or {}):
+                parsed=program('inspect '+name,'semantic_observation','Inspect the actual full text after writing; acceptance alone does not establish the requested final state.')
         # Inspect the outcome of a genuinely distinguishing accepted write.
         if model.write_probe:
             name=model.write_probe['document']
@@ -118,24 +130,39 @@ class ObligationAgent:
                 memory.pending_write=None
                 if name in model.append_documents and doc['text'] and doc['text']!=pending['payload']:
                     prompt+='\nThe pending write is blocked by observed APPEND semantics and existing full text. Obtain a suitable fresh document or an evidenced editing method; do not repeat this write.\n'+json.dumps(pending)
+                    if base_name(name) in model.recipes:
+                        memory.resource_target=base_name(name);memory.resource_fresh=True;memory.resource_started=step
                 elif doc['text']==pending['payload']:
                     prompt+='\nThe requested full text is already present. Check the actual task/object/location binding; do not rewrite it.\n'
                 else:
                     parsed=program(pending['action'],'semantic_intervention','Execute the selected task-bound write after a fresh inspection, then observe its actual effect.')
+                    memory.postwrite_document=name
                     if pending.get('trial'):
                         trial=pending['trial']
-                        trial.update(before_text=doc['text'],status='awaiting_goal_feedback',write_step=step,
+                        trial.update(before_text=doc['text'],status='awaiting_goal_feedback',write_step=step,write_action=pending['action'],
                             qualification='Conditional on correct object/tool and completeness of the task preconditions; nonempty text may confound the binding test.')
                         memory.binding_trials.append(trial)
+                        memory.task_query={'goal':trial['goal'],'giver':pending.get('giver'),'expires':step+6}
             else:
                 # A failed inspection is not permission to assume empty contents.
                 memory.pending_write=None
                 prompt+='\nPending write inspection did not reveal current text; its result is unknown. Re-establish accessibility before writing.\n'
         if 'Stage completed:' in obs['text']:
             memory.resource_target=''
+        if parsed is None and memory.task_query:
+            check=memory.task_query
+            if check['goal'] in model.completed or step>check['expires']:
+                memory.task_query=None
+            else:
+                nearby=re.findall(r'I see (.+) nearby\.',obs['text'])
+                if check.get('giver') and any(check['giver'] in [n.strip() for n in line.split(',')] for line in nearby):
+                    parsed=program('talk to '+check['giver'],'semantic_task_check','Request fresh task feedback to distinguish a completed binding test from a still-pending task.')
+                    memory.task_query=None
+                else:
+                    prompt+='\nThe last task-binding experiment has no decisive task feedback. Seek a fresh task report when accessible; do not infer success from writing.\n'
         if parsed is None and memory.resource_target and step-memory.resource_started<24:
-            plan=model.acquisition(memory.resource_target);memory.last_plan=plan
-            if plan.get('status')=='acquired':memory.resource_target=''
+            plan=model.acquisition(memory.resource_target,fresh=memory.resource_fresh);memory.last_plan=plan
+            if plan.get('status')=='acquired':memory.resource_target='';memory.resource_fresh=False
             elif plan.get('plan') and 'I was attacked' not in obs['text']:
                 parsed=program(plan['plan'][0],'resource_search','Execute one step of the observed dependency/location arrangement, then replan from real feedback.')
             else:
@@ -146,9 +173,9 @@ class ObligationAgent:
             target=parsed.get('resource_target','')
             if action.startswith('craft '):target=action.split()[-1]
             if target in model.recipes or target in model.qualitative_recipes:
-                if target!=memory.resource_target:memory.resource_started=step
+                if target!=memory.resource_target:memory.resource_started=step;memory.resource_fresh=False
                 memory.resource_target=target
-                plan=model.acquisition(target);memory.last_plan=plan
+                plan=model.acquisition(target,fresh=memory.resource_fresh);memory.last_plan=plan
                 if plan.get('plan') and 'I was attacked' not in obs['text']:
                     parsed.update(action=plan['plan'][0],decision_source='resource_search')
                     parsed.setdefault('frame',{})['expected']='Observe the first action of the candidate resource plan, not its imagined suffix.'
@@ -164,6 +191,8 @@ class ObligationAgent:
             write_goals=[t for t in model.tasks if re.search(r'\b(record|write|inscribe)\b',t,re.I)]
             goal=write_goals[0] if write_goals else parsed.get('frame',{}).get('goal_quote','')
             trial=None
+            direct=explicit_role_bindings(goal,model.source_lines)
+            choices=[]
             if memory.binding_queries<6:
                 resolution=query('My Current Observation:\n'+obs['text']+'\nExact public task: '+goal+
                     '\nProposed write: '+parsed['action']+'\nChronological public evidence:\n'+memory.ledger,BINDING_INSTRUCTION)
@@ -175,12 +204,24 @@ class ObligationAgent:
                 if proposed.startswith('write ') and proposed.rsplit(' ',1)[-1]==name:
                     selected=proposed[6:].rsplit(' ',1)[0]
                     if any(a['value']==selected for a in choices):payload=selected
-                predictions=[a.get('predicts_completion') for a in choices]
-                if len(choices)==2 and len({a['value'] for a in choices})==2 and all(type(p)is bool for p in predictions) and predictions[0]!=predictions[1]:
+            if len(direct)==1:
+                payload=direct[0]['value']
+                if not any(a['value']==payload for a in choices):
+                    choices=choices[:1]+[{**direct[0],'interpretation':'The exact requested task role is explicitly attached to this observed literal.'}]
+            if len(choices)==2 and len({a['value'] for a in choices})==2 and any(a['value']==payload for a in choices):
+                    # Under exclusive candidate bindings, selected text satisfies one
+                    # and not the other. Other task preconditions remain assumptions.
+                    predictions=[a['value']==payload for a in choices]
                     trial={'goal':goal,'selected':payload,'document':name,'alternatives':choices,'predictions':predictions,
-                           'designed_at':step,'status':'pending_inspection'}
-            pending={'action':'write '+payload+' '+name,'payload':payload,'document':name,'trial':trial}
+                           'explicit_role_support':direct,'designed_at':step,'status':'pending_inspection'}
+            giver=None
+            for old in reversed(memory.observations):
+                if goal and goal in old:
+                    speakers=re.findall(r'([\w-]+) says: Main goal:',old)
+                    if speakers:giver=speakers[-1];break
+            pending={'action':'write '+payload+' '+name,'payload':payload,'document':name,'trial':trial,'giver':giver}
             memory.pending_write=pending
+            memory.resource_target='';memory.resource_fresh=False
             parsed['action']='inspect '+name
             parsed['decision_source']='semantic_precondition_observation'
             parsed.setdefault('frame',{})['expected']='Fresh full document text before a proposed semantic intervention.'

@@ -22,6 +22,23 @@ def words(name):
     return base_name(name).replace("_", " ").lower()
 
 
+def explicit_role_bindings(goal, source_lines):
+    """Narrow lexical role binding; unsupported aliases/coreference remain unresolved."""
+    match=re.search(r'\b(?:record|write|inscribe|copy) (?:the |a |an )?(.+?) (?:on|onto|in|into)\b',goal,re.I)
+    if not match:return []
+    role=match[1].strip()
+    pattern=re.compile(r'\b'+re.escape(role)+r'\s*(?:is\s+|:\s*|=\s*)?[\'"`]?([A-Za-z0-9][\w-]{2,})',re.I)
+    found=[]
+    for line in source_lines:
+        for m in pattern.finditer(line):
+            value=m[1]
+            # This narrow branch binds literal identifiers, not natural-language clauses.
+            if not (value.isupper() or '-' in value or '_' in value or any(c.isdigit() for c in value)):continue
+            if not any(x['value']==value for x in found):
+                found.append({'value':value,'quote':line,'role':role,'binding':'explicit role followed by literal identifier'})
+    return found
+
+
 class ExecutionModel(PublicModel):
     def __init__(self):
         super().__init__()
@@ -31,6 +48,8 @@ class ExecutionModel(PublicModel):
         self.write_probe = None
         self.semantic_trials = []
         self.append_documents = {}
+        self.blocked_routes = []
+        self.new_outputs = []
 
     def observe(self, text, last_action=None):
         before = copy.deepcopy(self.current)
@@ -41,11 +60,22 @@ class ExecutionModel(PublicModel):
             self.qualitative_recipes[target] = ingredients.split(", ")
         if last_action and last_action.startswith("craft ") and "I successfully crafted " in text:
             self.crafted.append(last_action.split()[-1])
+            target=last_action.split()[-1]
+            for key in ('holding','ground'):
+                for name,count in (self.current.get(key) or {}).items():
+                    if base_name(name)==target and count>(before.get(key) or {}).get(name,0):
+                        self.new_outputs.append(name)
+        if (last_action and last_action.startswith('enter ') and before.get('location')==self.current.get('location') and
+                re.search(r'Cannot enter|door is locked',text)):
+            self.blocked_routes.append({'location':before.get('location'),'action':last_action[6:],
+                'holding':before.get('holding'),'equipped':before.get('equipped'),'step':len(self.history)-1,
+                'feedback':[l for l in text.splitlines() if 'Cannot enter' in l or 'door is locked' in l]})
         if last_action:
             self.transitions.append({"action":last_action,"before":before,"after":copy.deepcopy(self.current),
                 "feedback":[l for l in text.splitlines() if l.startswith(("Cannot ","I entered ","I successfully ","Stage completed:"))]})
         if last_action and last_action.startswith("write "):
             payload, document = last_action[6:].rsplit(" ",1)
+            self.new_outputs=[n for n in self.new_outputs if n!=document]
             old = before_docs.get(document)
             if old and old['observed_at'] == before_index and old['text'] and "I wrote on " in text:
                 self.write_probe = {"document":document,"before":old['text'],"payload":payload,
@@ -116,6 +146,11 @@ class ExecutionModel(PublicModel):
         current = self.current.get('location')
         if current in graph and self.current.get('neighbors'):
             graph[current] = {a:d for a,d in graph[current].items() if a in self.current['neighbors']}
+        for failure in self.blocked_routes:
+            # A short conditional exclusion, not a permanent impossibility claim.
+            if (len(self.history)-1-failure['step']<6 and failure['holding']==self.current.get('holding') and
+                    failure['equipped']==self.current.get('equipped')):
+                graph.get(failure['location'],{}).pop(failure['action'],None)
         return graph
 
     def dependency_view(self, target):
@@ -132,7 +167,7 @@ class ExecutionModel(PublicModel):
             return result
         return visit(target)
 
-    def acquisition(self, target, max_nodes=3500, seconds=1.0):
+    def acquisition(self, target, max_nodes=3500, seconds=1.0, fresh=False):
         """Bounded weighted search over known locations, recipes, storage and counts.
 
         Unknown recipe effects/station requirements remain conditional. A successful
@@ -143,7 +178,8 @@ class ExecutionModel(PublicModel):
         if not target or current.get('holding') is None or current.get('ground') is None:
             return {'status':'unknown','reason':'missing target or current visibility'}
         held, ground, equipped = current['holding'],current['ground'],current.get('equipped') or {}
-        aliases = [n for n in set(held)|set(ground) if base_name(n)==target]
+        aliases = [n for n in set(held)|set(ground) if base_name(n)==target and
+                   (not fresh or n in self.new_outputs or self.documents.get(n,{}).get('text')=='')]
         if any(held.get(n,0)>=1 for n in aliases): return {'status':'acquired','plan':[]}
         if self.hand_capacity is None: return {'status':'unknown','reason':'capacity not yet established'}
         cap = self.hand_capacity
