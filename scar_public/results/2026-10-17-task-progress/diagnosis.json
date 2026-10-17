@@ -1,0 +1,5059 @@
+{
+  "selected/mark/execute": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 3,
+        "kill": 3,
+        "craft": 7,
+        "exploration": 10,
+        "death": 3,
+        "trade": 1,
+        "quest": 16,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Defeat root_warden, the thing guarding the lair.",
+      "method": "Reacquire gear: retrieve lost inventory at farm or recraft copper_mail and a weapon, then return to farm to fight root_warden.",
+      "assessment": "Previous prediction failed: I died rather than healing enough; lost all equipment.",
+      "expected": "Pick up hide_scrap, gaining 1 hide_scrap in hand.",
+      "required_state": "Need copper_mail equipped and a weapon to survive root_warden's 24-damage hits.",
+      "feasibility": "unknown: lost small_pouch_0 contents are at farm; must retrieve or recraft."
+    },
+    "longest_identical_action_run": 2,
+    "most_common_actions": [
+      [
+        "enter stalls",
+        4
+      ],
+      [
+        "enter armory",
+        4
+      ],
+      [
+        "enter hall",
+        4
+      ],
+      [
+        "eat bread",
+        4
+      ],
+      [
+        "talk to syl",
+        4
+      ],
+      [
+        "enter backstreets",
+        3
+      ],
+      [
+        "pick up hide_scrap",
+        3
+      ],
+      [
+        "inspect small_pouch_0",
+        3
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 235,
+        "action": "inspect small_pouch_0"
+      },
+      {
+        "step": 242,
+        "action": "inspect small_pouch_0"
+      },
+      {
+        "step": 296,
+        "action": "inspect copper_mail"
+      },
+      {
+        "step": 297,
+        "action": "inspect copper_mail"
+      },
+      {
+        "step": 300,
+        "action": "inspect small_pouch_1"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 234,
+        "line": "I successfully crafted 1 leather_strip. It is now on the ground."
+      },
+      {
+        "step": 241,
+        "line": "I successfully crafted 1 thread. It is now on the ground."
+      },
+      {
+        "step": 252,
+        "line": "I have died."
+      },
+      {
+        "step": 258,
+        "line": "I successfully crafted 1 leather_strip. It is now on the ground."
+      },
+      {
+        "step": 273,
+        "line": "I successfully crafted 1 copper_mail. It is now on the ground."
+      },
+      {
+        "step": 274,
+        "line": "Stage completed. Straps tighten. Weight settles."
+      },
+      {
+        "step": 280,
+        "line": "Stage completed. Wind through the trees. You spot claw marks on the bark,"
+      },
+      {
+        "step": 289,
+        "line": "Stage completed. The air smells like crushed leaves and damp bark."
+      },
+      {
+        "step": 298,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "enter farm"
+      },
+      {
+        "step": 290,
+        "action": "talk to syl"
+      },
+      {
+        "step": 291,
+        "action": "attack root_warden"
+      },
+      {
+        "step": 292,
+        "action": "attack root_warden"
+      },
+      {
+        "step": 293,
+        "action": "equip copper_mail"
+      },
+      {
+        "step": 294,
+        "action": "attack root_warden"
+      },
+      {
+        "step": 295,
+        "action": "eat bread"
+      },
+      {
+        "step": 296,
+        "action": "inspect copper_mail"
+      },
+      {
+        "step": 297,
+        "action": "inspect copper_mail"
+      },
+      {
+        "step": 298,
+        "action": "eat bread"
+      },
+      {
+        "step": 299,
+        "action": "pick up hide_scrap"
+      },
+      {
+        "step": 300,
+        "action": "inspect small_pouch_1"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Old Castle, hall\n\nI inspected small_pouch_1: A small pouch for a few essentials.\nIt contains: no objects (capacity: 0/10).\n\nI am holding 1 hide_scrap.\nI have equipped no objects.\nI see 1 small_pouch_1, 1 workbench, 2 goblin_token, 2 cloth, 1 pen, 1 torch near me.\nI see scrap_goblin_20 nearby.\n\nMy level is 5.\nMy attack is at 30.\nMy defense is at 0.\nMy health is at 180.\nMy experience is at 30.\n\nNeighboring areas: armory, library.\n"
+  },
+  "selected/metropolis/execute": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 2,
+        "kill": 2,
+        "craft": 1,
+        "exploration": 4,
+        "death": 1,
+        "trade": 0,
+        "quest": 10,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Investigate the Statute District, neutralize the corrupt agents, and uncover the cipher needed to access the Nullification Vault.",
+      "method": "Wait for lock state to change since all lobby exits are locked; locks historically shift at day/night transitions.",
+      "required_state": "An unlocked exit from lobby to market_square or clerks_office/evidence_room.",
+      "feasibility": "unknown: all three exits locked repeatedly; lock states have changed across day/night cycles before.",
+      "assessment": "Previous prediction (clerks_office may be open) failed\u2014locked. All exits now locked; repeating entry attempts is unproductive.",
+      "expected": "Either a lock state change message at next transition or continued locked status, informing whether waiting is viable."
+    },
+    "longest_identical_action_run": 9,
+    "most_common_actions": [
+      [
+        "wait",
+        35
+      ],
+      [
+        "enter clerks_office",
+        24
+      ],
+      [
+        "enter market_square",
+        17
+      ],
+      [
+        "enter lobby",
+        14
+      ],
+      [
+        "enter evidence_room",
+        13
+      ],
+      [
+        "attack corrupt_bailiff_0",
+        10
+      ],
+      [
+        "enter courtroom",
+        8
+      ],
+      [
+        "talk to archivist_lune",
+        4
+      ]
+    ],
+    "outcome_probes": [],
+    "public_reports": [
+      {
+        "step": 156,
+        "line": "Stage completed: Defeat the corrupt bailiff guarding the district."
+      },
+      {
+        "step": 205,
+        "line": "I successfully crafted 1 gavel_club. It is now on the ground."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "wait"
+      },
+      {
+        "step": 290,
+        "action": "enter market_square"
+      },
+      {
+        "step": 291,
+        "action": "wait"
+      },
+      {
+        "step": 292,
+        "action": "enter market_square"
+      },
+      {
+        "step": 293,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 294,
+        "action": "enter market_square"
+      },
+      {
+        "step": 295,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 296,
+        "action": "enter market_square"
+      },
+      {
+        "step": 297,
+        "action": "wait"
+      },
+      {
+        "step": 298,
+        "action": "enter evidence_room"
+      },
+      {
+        "step": 299,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 300,
+        "action": "wait"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Central Courthouse, lobby\n\nI waited for a while.\n\nI am holding 1 gavel_club.\nI have equipped 1 docket_satchel_0.\nI see 10 writ_token, 1 clerks_bench near me.\nI see no one nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 13.\nMy experience is at 35.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n"
+  },
+  "selected/remnant/execute": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 2,
+        "exploration": 2,
+        "death": 3,
+        "trade": 0,
+        "quest": 2,
+        "side_quest": 1
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Search the named regions until the Cinder Shrine shows itself, then step close enough to draw its answer.",
+      "method": "Continue searching named/reachable regions for the Cinder Shrine; armory has not revealed it, so move to library.",
+      "required_state": "Be present in a named region and observe whether the Cinder Shrine is present.",
+      "feasibility": "jointly possible: library is reachable from armory; shrine location among named regions still unknown.",
+      "assessment": "Armory repeatedly searched without shrine appearing; crystal_chamber is locked. No shrine found yet.",
+      "expected": "Enter library and observe whether the shrine or a new route appears."
+    },
+    "longest_identical_action_run": 4,
+    "most_common_actions": [
+      [
+        "enter armory",
+        25
+      ],
+      [
+        "enter library",
+        20
+      ],
+      [
+        "enter crystal_chamber",
+        15
+      ],
+      [
+        "enter bog",
+        15
+      ],
+      [
+        "eat bread",
+        12
+      ],
+      [
+        "enter hall",
+        5
+      ],
+      [
+        "pick up torch",
+        5
+      ],
+      [
+        "inspect wooden_dagger",
+        4
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 188,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 189,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 190,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 191,
+        "action": "inspect wooden_dagger"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 186,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "enter bog"
+      },
+      {
+        "step": 290,
+        "action": "enter armory"
+      },
+      {
+        "step": 291,
+        "action": "enter crystal_chamber"
+      },
+      {
+        "step": 292,
+        "action": "inspect wood_plank"
+      },
+      {
+        "step": 293,
+        "action": "inspect star_metal_ore"
+      },
+      {
+        "step": 294,
+        "action": "enter library"
+      },
+      {
+        "step": 295,
+        "action": "enter armory"
+      },
+      {
+        "step": 296,
+        "action": "enter library"
+      },
+      {
+        "step": 297,
+        "action": "enter bog"
+      },
+      {
+        "step": 298,
+        "action": "enter armory"
+      },
+      {
+        "step": 299,
+        "action": "enter crystal_chamber"
+      },
+      {
+        "step": 300,
+        "action": "enter library"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Old Castle, library\n\nI entered library.\n\nI am holding 1 wooden_dagger, 1 torch.\nI have equipped no objects.\nI see 4 shadow_ink, 10 wood_log, 6 cloth, 1 paper_1, 8 bread, 4 coin, 1 paper_2, 1 torch near me.\nI see villager_4, chronicler_lyra, goblin_warrior_15, goblin_warrior_16, goblin_warrior_17, goblin_warrior_26, goblin_warrior_28, goblin_warrior_30 nearby.\n\nMy level is 1.\nMy attack is at 14.\nMy defense is at 0.\nMy health is at 48.\nMy experience is at 65.\n\nNeighboring areas: armory, bog.\n"
+  },
+  "selected/remnant/observe": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 2,
+        "exploration": 2,
+        "death": 4,
+        "trade": 0,
+        "quest": 2,
+        "side_quest": 1
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Search the named regions until the Cinder Shrine shows itself, then step close enough to draw its answer.",
+      "method": "Build HP buffer with bread, then traverse to named regions (armory first) to search for the Cinder Shrine.",
+      "required_state": "Enough HP to survive transit through hostile rooms.",
+      "feasibility": "unknown: Greenwood Forest route not observed; only armory reachable, bog locked.",
+      "assessment": "Last bread eat restored +18 HP as predicted; attackers still chip HP each turn.",
+      "expected": "Eating bread restores ~18 HP, raising health from 43 toward ~61."
+    },
+    "longest_identical_action_run": 7,
+    "most_common_actions": [
+      [
+        "enter armory",
+        27
+      ],
+      [
+        "enter library",
+        17
+      ],
+      [
+        "eat apple",
+        13
+      ],
+      [
+        "enter hall",
+        9
+      ],
+      [
+        "wait",
+        8
+      ],
+      [
+        "inspect torch",
+        8
+      ],
+      [
+        "pick up torch",
+        7
+      ],
+      [
+        "enter bog",
+        7
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 239,
+        "action": "inspect torch"
+      },
+      {
+        "step": 240,
+        "action": "inspect torch"
+      },
+      {
+        "step": 255,
+        "action": "inspect torch"
+      },
+      {
+        "step": 258,
+        "action": "inspect torch"
+      },
+      {
+        "step": 259,
+        "action": "inspect torch"
+      },
+      {
+        "step": 260,
+        "action": "inspect torch"
+      },
+      {
+        "step": 263,
+        "action": "inspect torch"
+      },
+      {
+        "step": 270,
+        "action": "inspect torch"
+      },
+      {
+        "step": 284,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 285,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 286,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 291,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 292,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 295,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 299,
+        "action": "inspect wooden_dagger"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 243,
+        "line": "I have died."
+      },
+      {
+        "step": 270,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "enter hall"
+      },
+      {
+        "step": 290,
+        "action": "enter armory"
+      },
+      {
+        "step": 291,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 292,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 293,
+        "action": "eat apple"
+      },
+      {
+        "step": 294,
+        "action": "defend"
+      },
+      {
+        "step": 295,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 296,
+        "action": "enter library"
+      },
+      {
+        "step": 297,
+        "action": "eat bread"
+      },
+      {
+        "step": 298,
+        "action": "eat bread"
+      },
+      {
+        "step": 299,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 300,
+        "action": "eat bread"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Old Castle, library\n\nI ate bread from ground and restored 18 HP (HP: 61/100).\nI was attacked by goblin_warrior_32 and lost 2 HP.\n\nI am holding 1 wooden_dagger, 1 torch.\nI have equipped no objects.\nI see 4 shadow_ink, 10 wood_log, 6 cloth, 1 paper_1, 16 bread, 4 coin, 1 paper_2 near me.\nI see villager_4, chronicler_lyra, goblin_warrior_15, goblin_warrior_16, goblin_warrior_17, goblin_warrior_22, goblin_warrior_29, goblin_warrior_32, goblin_warrior_36 nearby.\n\nMy level is 1.\nMy attack is at 14.\nMy defense is at 0.\nMy health is at 59.\nMy experience is at 65.\n\nNeighboring areas: armory, bog.\n"
+  },
+  "selected_v2/metropolis/execute": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 3,
+        "kill": 3,
+        "craft": 1,
+        "exploration": 5,
+        "death": 3,
+        "trade": 0,
+        "quest": 17,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Enter the Nullification Vault, defeat Chief Magistrate Vosk, and restore the original charter to undo the midnight rewrites forever.",
+      "method": "Escape evidence_room via a door, then pursue vault. Both exits currently locked.",
+      "required_state": "An unlocked exit from evidence_room.",
+      "feasibility": "unknown \u2014 both lobby and courtroom reported locked; repeated waits haven't changed it",
+      "assessment": "Lobby entry failed again as predicted; courtroom also consistently locked. Waiting has not restored access.",
+      "expected": "Time advances; door lock state may or may not change, giving info on whether locks are time-based."
+    },
+    "longest_identical_action_run": 4,
+    "most_common_actions": [
+      [
+        "wait",
+        18
+      ],
+      [
+        "enter courtroom",
+        17
+      ],
+      [
+        "enter lobby",
+        16
+      ],
+      [
+        "enter alley",
+        12
+      ],
+      [
+        "attack advocate_sentinel_0",
+        8
+      ],
+      [
+        "attack corrupt_bailiff_0",
+        8
+      ],
+      [
+        "defend",
+        7
+      ],
+      [
+        "enter market_square",
+        7
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 190,
+        "action": "inspect gavel_club"
+      },
+      {
+        "step": 191,
+        "action": "inspect gavel_club"
+      },
+      {
+        "step": 193,
+        "action": "inspect gavel_club"
+      },
+      {
+        "step": 195,
+        "action": "inspect gavel_club"
+      },
+      {
+        "step": 196,
+        "action": "inspect gavel_club"
+      },
+      {
+        "step": 197,
+        "action": "inspect gavel_club"
+      },
+      {
+        "step": 198,
+        "action": "inspect gavel_club"
+      },
+      {
+        "step": 202,
+        "action": "inspect docket_satchel_0"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 156,
+        "line": "I have died."
+      },
+      {
+        "step": 185,
+        "line": "I have died."
+      },
+      {
+        "step": 194,
+        "line": "Stage completed: Defeat the advocate sentinel silencing witnesses in the dist"
+      },
+      {
+        "step": 221,
+        "line": "Stage completed: Defeat the corrupt bailiff guarding the district."
+      },
+      {
+        "step": 226,
+        "line": "Stage completed: Locate witness_marron hiding in the Statute District and lea"
+      },
+      {
+        "step": 227,
+        "line": "Stage completed: Obtain two midnight cipher fragments to craft the codex over"
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "enter courtroom"
+      },
+      {
+        "step": 290,
+        "action": "wait"
+      },
+      {
+        "step": 291,
+        "action": "enter courtroom"
+      },
+      {
+        "step": 292,
+        "action": "wait"
+      },
+      {
+        "step": 293,
+        "action": "enter courtroom"
+      },
+      {
+        "step": 294,
+        "action": "wait"
+      },
+      {
+        "step": 295,
+        "action": "enter lobby"
+      },
+      {
+        "step": 296,
+        "action": "wait"
+      },
+      {
+        "step": 297,
+        "action": "enter lobby"
+      },
+      {
+        "step": 298,
+        "action": "wait"
+      },
+      {
+        "step": 299,
+        "action": "enter lobby"
+      },
+      {
+        "step": 300,
+        "action": "wait"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Central Courthouse, evidence_room\n\nI waited for a while.\n\nI am holding 1 iron_bar, 1 statute_shard.\nI have equipped 1 docket_satchel_0.\nI see 5 parchment_scrap, 10 marble_chunk, 9 iron_filings, 1 binding_thread, 1 bailiff_eye, 1 evidence_dossier_0, 1 wax_seal near me.\nI see no one nearby.\n\nMy level is 4.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 9.\nMy experience is at 85.\n\nNeighboring areas: lobby, courtroom.\n"
+  },
+  "full/mark/execute": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 2,
+        "kill": 2,
+        "craft": 7,
+        "exploration": 6,
+        "death": 2,
+        "trade": 1,
+        "quest": 14,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Craft any armor. You\u2019ll need something that can take a real hit.",
+      "method": "Armor done; travel backstreets \u2192 crystal_grotto \u2192 ridge toward Oakheart Woods.",
+      "required_state": "Be at crystal_grotto to attempt entering ridge.",
+      "feasibility": "jointly possible: backstreets\u2192crystal_grotto is a previously successful directed route; crystal_grotto lists ridge as neighbor.",
+      "assessment": "Entering backstreets succeeded as predicted; armor stage remains complete, no prerequisite lost.",
+      "expected": "Location changes to Glimmer Mines, crystal_grotto with ridge among neighbors."
+    },
+    "longest_identical_action_run": 8,
+    "most_common_actions": [
+      [
+        "pick up coin",
+        30
+      ],
+      [
+        "store 1 coin inventory",
+        22
+      ],
+      [
+        "enter hall",
+        18
+      ],
+      [
+        "talk to syl",
+        17
+      ],
+      [
+        "pick up fiber_bundle",
+        16
+      ],
+      [
+        "enter armory",
+        15
+      ],
+      [
+        "enter library",
+        11
+      ],
+      [
+        "enter stalls",
+        10
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 78,
+        "action": "inspect pen"
+      },
+      {
+        "step": 79,
+        "action": "inspect pen"
+      },
+      {
+        "step": 80,
+        "action": "inspect pen"
+      },
+      {
+        "step": 81,
+        "action": "inspect pen"
+      },
+      {
+        "step": 82,
+        "action": "inspect pen"
+      },
+      {
+        "step": 83,
+        "action": "inspect pen"
+      },
+      {
+        "step": 84,
+        "action": "inspect pen"
+      },
+      {
+        "step": 85,
+        "action": "inspect pen"
+      },
+      {
+        "step": 151,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 152,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 153,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 154,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 155,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 156,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 215,
+        "action": "inspect coin"
+      },
+      {
+        "step": 224,
+        "action": "inspect coin"
+      },
+      {
+        "step": 228,
+        "action": "inspect coin"
+      },
+      {
+        "step": 275,
+        "action": "inspect small_pouch_1"
+      },
+      {
+        "step": 284,
+        "action": "inspect small_pouch_1"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 39,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 47,
+        "line": "I successfully crafted 1 oak_rod. It is now on the ground."
+      },
+      {
+        "step": 48,
+        "line": "Stage completed. The oak rod is smooth and sturdy in your hand."
+      },
+      {
+        "step": 71,
+        "line": "I successfully crafted 1 copper_sword. It is now on the ground."
+      },
+      {
+        "step": 72,
+        "line": "Stage completed. The copper blade gleams faintly in the light."
+      },
+      {
+        "step": 74,
+        "line": "Stage completed. librarian_rowan shuts a book with a soft thud."
+      },
+      {
+        "step": 89,
+        "line": "Stage completed. You hold out the paper."
+      },
+      {
+        "step": 93,
+        "line": "Stage completed. Dust and old equipment. No sign of torn pages here."
+      },
+      {
+        "step": 101,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 102,
+        "line": "Stage completed. The key clicks together in your hand."
+      },
+      {
+        "step": 105,
+        "line": "Stage completed. Busy stalls and haggling merchants. A few people mention seeing"
+      },
+      {
+        "step": 111,
+        "line": "I successfully crafted 1 oak_rod. It is now on the ground."
+      },
+      {
+        "step": 113,
+        "line": "I successfully crafted 1 torch. It is now on the ground."
+      },
+      {
+        "step": 114,
+        "line": "Stage completed. The torch flickers to life."
+      },
+      {
+        "step": 118,
+        "line": "Stage completed. You find scraps of paper stuck to the ground like dead leaves."
+      },
+      {
+        "step": 127,
+        "line": "Stage completed. The chewing stops."
+      },
+      {
+        "step": 128,
+        "line": "I have died."
+      },
+      {
+        "step": 145,
+        "line": "Stage completed. broker_sera glances at the note in your hand and nods."
+      },
+      {
+        "step": 245,
+        "line": "Stage completed. The Tear of Forest is cold even through your palm."
+      },
+      {
+        "step": 248,
+        "line": "Stage completed. Dark tunnels and dripping stone. Nothing but echoes here."
+      },
+      {
+        "step": 256,
+        "line": "I successfully crafted 1 thread. It is now on the ground."
+      },
+      {
+        "step": 262,
+        "line": "I have died."
+      },
+      {
+        "step": 274,
+        "line": "I successfully crafted 1 thread. It is now on the ground."
+      },
+      {
+        "step": 282,
+        "line": "I successfully crafted 1 cloth. It is now on the ground."
+      },
+      {
+        "step": 291,
+        "line": "I successfully crafted 1 cloth. It is now on the ground."
+      },
+      {
+        "step": 294,
+        "line": "I successfully crafted 1 cloth_tunic. It is now on the ground."
+      },
+      {
+        "step": 295,
+        "line": "Stage completed. Straps tighten. Weight settles."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "pick up fiber_bundle"
+      },
+      {
+        "step": 290,
+        "action": "enter hall"
+      },
+      {
+        "step": 291,
+        "action": "craft 1 cloth"
+      },
+      {
+        "step": 292,
+        "action": "inspect small_pouch_1"
+      },
+      {
+        "step": 293,
+        "action": "pick up cloth"
+      },
+      {
+        "step": 294,
+        "action": "craft 1 cloth_tunic"
+      },
+      {
+        "step": 295,
+        "action": "pick up cloth_tunic"
+      },
+      {
+        "step": 296,
+        "action": "talk to syl"
+      },
+      {
+        "step": 297,
+        "action": "enter armory"
+      },
+      {
+        "step": 298,
+        "action": "enter stalls"
+      },
+      {
+        "step": 299,
+        "action": "enter backstreets"
+      },
+      {
+        "step": 300,
+        "action": "enter crystal_grotto"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Glimmer Mines, crystal_grotto\n\nI entered crystal_grotto.\nI was attacked by scrap_goblin_15 and lost 1 HP.\nIt is too dark to see anything here.\n\nMy level is 4.\nMy attack is at 25.\nMy defense is at 0.\nMy health is at 123.\nMy experience is at 65.\n\nNeighboring areas: ridge, gate, shafts, backstreets.\n"
+  },
+  "full/metropolis/execute": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 0,
+        "exploration": 6,
+        "death": 1,
+        "trade": 0,
+        "quest": 7,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Investigate the Statute District, neutralize the corrupt agents, and uncover the cipher needed to access the Nullification Vault.",
+      "method": "Reacquire a writing tool and weapon in the lobby, record cipher on legal_brief_0, then return to Statute District to fight corrupt agents.",
+      "assessment": "Prior prediction of arriving at lobby safely was confirmed; no hostiles and legal_brief_0 held. Writing tool absent, so method's next substantive step blocked.",
+      "expected": "Inspect parchment_scrap yields its description and whether it is writable, clarifying whether a stylus is needed or obtainable.",
+      "required_state": "A writing tool in hand plus legal_brief_0 at lobby; also a weapon for combat.",
+      "feasibility": "unknown: no writing tool or weapon currently visible in lobby; may need to explore or craft."
+    },
+    "longest_identical_action_run": 253,
+    "most_common_actions": [
+      [
+        "inspect legal_brief_0",
+        253
+      ],
+      [
+        "inspect evidence_dossier_0",
+        6
+      ],
+      [
+        "enter evidence_room",
+        5
+      ],
+      [
+        "talk to alex_smith",
+        4
+      ],
+      [
+        "enter lobby",
+        4
+      ],
+      [
+        "enter courtroom",
+        4
+      ],
+      [
+        "enter alley",
+        3
+      ],
+      [
+        "enter clerks_office",
+        2
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 48,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 49,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 50,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 51,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 52,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 53,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 54,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 55,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 56,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 57,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 58,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 59,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 60,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 61,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 62,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 63,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 64,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 65,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 66,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 67,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 68,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 69,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 70,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 71,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 72,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 73,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 74,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 75,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 76,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 77,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 78,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 79,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 80,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 81,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 82,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 83,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 84,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 85,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 86,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 87,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 88,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 89,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 90,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 91,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 92,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 93,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 94,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 95,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 96,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 97,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 98,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 99,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 100,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 101,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 102,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 103,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 104,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 105,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 106,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 107,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 108,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 109,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 110,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 111,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 112,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 113,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 114,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 115,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 116,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 117,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 118,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 119,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 120,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 121,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 122,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 123,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 124,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 125,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 126,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 127,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 128,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 129,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 130,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 131,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 132,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 133,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 134,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 135,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 136,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 137,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 138,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 139,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 140,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 141,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 142,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 143,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 144,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 145,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 146,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 147,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 148,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 149,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 150,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 151,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 152,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 153,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 154,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 155,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 156,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 157,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 158,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 159,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 160,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 161,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 162,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 163,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 164,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 165,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 166,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 167,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 168,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 169,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 170,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 171,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 172,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 173,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 174,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 175,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 176,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 177,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 178,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 179,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 180,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 181,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 182,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 183,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 184,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 185,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 186,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 187,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 188,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 189,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 190,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 191,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 192,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 193,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 194,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 195,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 196,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 197,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 198,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 199,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 200,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 201,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 202,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 203,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 204,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 205,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 206,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 207,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 208,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 209,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 210,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 211,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 212,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 213,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 214,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 215,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 216,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 217,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 218,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 219,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 220,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 221,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 222,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 223,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 224,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 225,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 226,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 227,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 228,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 229,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 230,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 231,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 232,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 233,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 234,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 235,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 236,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 237,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 238,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 239,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 240,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 241,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 242,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 243,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 244,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 245,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 246,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 247,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 248,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 249,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 250,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 251,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 252,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 253,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 254,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 255,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 256,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 257,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 258,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 259,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 260,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 261,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 262,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 263,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 264,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 265,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 266,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 267,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 268,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 269,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 270,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 271,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 272,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 273,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 274,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 275,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 276,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 277,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 278,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 279,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 280,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 281,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 282,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 283,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 284,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 285,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 286,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 287,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 288,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 289,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 290,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 291,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 292,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 293,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 294,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 295,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 296,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 297,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 298,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 299,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 300,
+        "action": "inspect legal_brief_0"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 2,
+        "line": "Stage completed: Find and pick up the evidence dossier somewhere in the court"
+      },
+      {
+        "step": 4,
+        "line": "Stage completed: Explore the Central Courthouse to get your bearings."
+      },
+      {
+        "step": 8,
+        "line": "Stage completed: Speak with archivist_lune to learn about the midnight anomal"
+      },
+      {
+        "step": 27,
+        "line": "Stage completed: Bring the evidence dossier to the evidence room to begin cat"
+      },
+      {
+        "step": 43,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 290,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 291,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 292,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 293,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 294,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 295,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 296,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 297,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 298,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 299,
+        "action": "inspect legal_brief_0"
+      },
+      {
+        "step": 300,
+        "action": "inspect legal_brief_0"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Central Courthouse, lobby\n\nI inspected legal_brief_0: A single sheet of court-grade parchment that holds written arguments.\nIt can be used to craft: None.\nIt has nothing written on it.\n\nI am holding 1 legal_brief_0.\nI have equipped no objects.\nI see 10 writ_token, 1 docket_satchel_0, 1 clerks_bench near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 120.\nMy experience is at 70.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n"
+  },
+  "full/remnant/execute": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 1,
+        "kill": 2,
+        "craft": 2,
+        "exploration": 4,
+        "death": 6,
+        "trade": 0,
+        "quest": 2,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Search the named regions until the Cinder Shrine shows itself, then step close enough to draw its answer.",
+      "method": "Traverse armory to reach library/bog and find Greenwood Forest; search named regions.",
+      "required_state": "Be able to pass through armory to reach library without dying.",
+      "feasibility": "unknown: armory is dark and hostile, but health 88 may allow a quick pass.",
+      "assessment": "Previous enter hall succeeded; now need to route toward Greenwood Forest via library.",
+      "expected": "Enter armory; may take some damage but gain access to library."
+    },
+    "longest_identical_action_run": 17,
+    "most_common_actions": [
+      [
+        "enter armory",
+        50
+      ],
+      [
+        "enter hall",
+        24
+      ],
+      [
+        "inspect torch",
+        21
+      ],
+      [
+        "enter library",
+        18
+      ],
+      [
+        "enter crystal_chamber",
+        14
+      ],
+      [
+        "pick up torch",
+        11
+      ],
+      [
+        "enter bog",
+        11
+      ],
+      [
+        "drop torch",
+        9
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 136,
+        "action": "inspect small_bag_0"
+      },
+      {
+        "step": 185,
+        "action": "inspect torch"
+      },
+      {
+        "step": 187,
+        "action": "inspect torch"
+      },
+      {
+        "step": 193,
+        "action": "inspect torch"
+      },
+      {
+        "step": 194,
+        "action": "inspect torch"
+      },
+      {
+        "step": 195,
+        "action": "inspect torch"
+      },
+      {
+        "step": 196,
+        "action": "inspect torch"
+      },
+      {
+        "step": 197,
+        "action": "inspect torch"
+      },
+      {
+        "step": 198,
+        "action": "inspect torch"
+      },
+      {
+        "step": 199,
+        "action": "inspect torch"
+      },
+      {
+        "step": 200,
+        "action": "inspect torch"
+      },
+      {
+        "step": 201,
+        "action": "inspect torch"
+      },
+      {
+        "step": 202,
+        "action": "inspect torch"
+      },
+      {
+        "step": 203,
+        "action": "inspect torch"
+      },
+      {
+        "step": 204,
+        "action": "inspect torch"
+      },
+      {
+        "step": 205,
+        "action": "inspect torch"
+      },
+      {
+        "step": 206,
+        "action": "inspect torch"
+      },
+      {
+        "step": 207,
+        "action": "inspect torch"
+      },
+      {
+        "step": 208,
+        "action": "inspect torch"
+      },
+      {
+        "step": 209,
+        "action": "inspect torch"
+      },
+      {
+        "step": 282,
+        "action": "inspect torch"
+      },
+      {
+        "step": 283,
+        "action": "inspect torch"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 36,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 47,
+        "line": "Stage completed. chronicler_lyra looks past you, as if listening to something far away."
+      },
+      {
+        "step": 96,
+        "line": "I have died."
+      },
+      {
+        "step": 127,
+        "line": "I successfully crafted 1 wood_plank. It is now on the ground."
+      },
+      {
+        "step": 152,
+        "line": "I have died."
+      },
+      {
+        "step": 171,
+        "line": "I successfully crafted 1 wooden_dagger. It is now on the ground."
+      },
+      {
+        "step": 172,
+        "line": "Stage completed. The weight in your hand is steady."
+      },
+      {
+        "step": 234,
+        "line": "I have died."
+      },
+      {
+        "step": 251,
+        "line": "I have died."
+      },
+      {
+        "step": 277,
+        "line": "I have died."
+      },
+      {
+        "step": 288,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "enter armory"
+      },
+      {
+        "step": 290,
+        "action": "enter crystal_chamber"
+      },
+      {
+        "step": 291,
+        "action": "enter cave_entrance"
+      },
+      {
+        "step": 292,
+        "action": "enter cave_deep"
+      },
+      {
+        "step": 293,
+        "action": "enter summit"
+      },
+      {
+        "step": 294,
+        "action": "enter crystal_chamber"
+      },
+      {
+        "step": 295,
+        "action": "enter armory"
+      },
+      {
+        "step": 296,
+        "action": "enter library"
+      },
+      {
+        "step": 297,
+        "action": "enter bog"
+      },
+      {
+        "step": 298,
+        "action": "enter armory"
+      },
+      {
+        "step": 299,
+        "action": "enter hall"
+      },
+      {
+        "step": 300,
+        "action": "enter armory"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Old Castle, armory\n\nI entered armory.\nI was attacked by goblin_warrior_18 and lost 2 HP.\nI was attacked by goblin_warrior_21 and lost 2 HP.\nI was attacked by goblin_warrior_26 and lost 2 HP.\nI was attacked by goblin_warrior_27 and lost 2 HP.\nIt is too dark to see anything here.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 80.\nMy experience is at 80.\n\nNeighboring areas: hall, library, crystal_chamber.\n"
+  },
+  "ablation/mark/observe": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 2,
+        "kill": 2,
+        "craft": 4,
+        "exploration": 5,
+        "death": 2,
+        "trade": 0,
+        "quest": 11,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Trade with broker_sera and obtain the Tear of Forest.",
+      "method": "Keep torch for light, free a hand by storing copper_sword, gather 10 coins, buy tear_of_forest from broker_sera",
+      "assessment": "Torch retrieval restored visibility as predicted; now hand space blocks coin pickup",
+      "expected": "Copper_sword moves into small_pouch_1, leaving one free hand for coins",
+      "required_state": "Torch in hand for visibility, 10 coins in hand, broker_sera present",
+      "feasibility": "jointly possible: broker_sera and 12 coins visible; hand capacity 2 is the bottleneck"
+    },
+    "longest_identical_action_run": 8,
+    "most_common_actions": [
+      [
+        "pick up coin",
+        35
+      ],
+      [
+        "inspect copper_sword",
+        22
+      ],
+      [
+        "inspect torch",
+        17
+      ],
+      [
+        "enter hall",
+        15
+      ],
+      [
+        "talk to syl",
+        13
+      ],
+      [
+        "enter armory",
+        13
+      ],
+      [
+        "inspect paper_0",
+        11
+      ],
+      [
+        "store 1 coin small_pouch_1",
+        9
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 78,
+        "action": "inspect pen"
+      },
+      {
+        "step": 79,
+        "action": "inspect pen"
+      },
+      {
+        "step": 80,
+        "action": "inspect pen"
+      },
+      {
+        "step": 81,
+        "action": "inspect pen"
+      },
+      {
+        "step": 82,
+        "action": "inspect pen"
+      },
+      {
+        "step": 83,
+        "action": "inspect pen"
+      },
+      {
+        "step": 84,
+        "action": "inspect pen"
+      },
+      {
+        "step": 85,
+        "action": "inspect pen"
+      },
+      {
+        "step": 131,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 132,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 133,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 134,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 135,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 137,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 138,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 139,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 150,
+        "action": "inspect paper_0"
+      },
+      {
+        "step": 164,
+        "action": "inspect torch"
+      },
+      {
+        "step": 165,
+        "action": "inspect torch"
+      },
+      {
+        "step": 174,
+        "action": "inspect torch"
+      },
+      {
+        "step": 176,
+        "action": "inspect torch"
+      },
+      {
+        "step": 177,
+        "action": "inspect torch"
+      },
+      {
+        "step": 178,
+        "action": "inspect torch"
+      },
+      {
+        "step": 179,
+        "action": "inspect torch"
+      },
+      {
+        "step": 180,
+        "action": "inspect torch"
+      },
+      {
+        "step": 188,
+        "action": "inspect torch"
+      },
+      {
+        "step": 189,
+        "action": "inspect torch"
+      },
+      {
+        "step": 190,
+        "action": "inspect torch"
+      },
+      {
+        "step": 211,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 212,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 214,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 232,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 233,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 235,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 236,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 237,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 239,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 240,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 242,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 246,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 247,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 248,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 249,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 250,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 251,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 253,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 255,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 257,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 261,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 282,
+        "action": "inspect torch"
+      },
+      {
+        "step": 283,
+        "action": "inspect torch"
+      },
+      {
+        "step": 284,
+        "action": "inspect torch"
+      },
+      {
+        "step": 285,
+        "action": "inspect torch"
+      },
+      {
+        "step": 287,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 299,
+        "action": "inspect torch"
+      },
+      {
+        "step": 300,
+        "action": "inspect torch"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 39,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 47,
+        "line": "I successfully crafted 1 oak_rod. It is now on the ground."
+      },
+      {
+        "step": 48,
+        "line": "Stage completed. The oak rod is smooth and sturdy in your hand."
+      },
+      {
+        "step": 71,
+        "line": "I successfully crafted 1 copper_sword. It is now on the ground."
+      },
+      {
+        "step": 72,
+        "line": "Stage completed. The copper blade gleams faintly in the light."
+      },
+      {
+        "step": 74,
+        "line": "Stage completed. librarian_rowan shuts a book with a soft thud."
+      },
+      {
+        "step": 89,
+        "line": "Stage completed. You hold out the paper."
+      },
+      {
+        "step": 93,
+        "line": "Stage completed. Dust and old equipment. No sign of torn pages here."
+      },
+      {
+        "step": 101,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 102,
+        "line": "Stage completed. The key clicks together in your hand."
+      },
+      {
+        "step": 105,
+        "line": "Stage completed. Busy stalls and haggling merchants. A few people mention seeing"
+      },
+      {
+        "step": 111,
+        "line": "I successfully crafted 1 oak_rod. It is now on the ground."
+      },
+      {
+        "step": 113,
+        "line": "I successfully crafted 1 torch. It is now on the ground."
+      },
+      {
+        "step": 114,
+        "line": "Stage completed. The torch flickers to life."
+      },
+      {
+        "step": 118,
+        "line": "Stage completed. You find scraps of paper stuck to the ground like dead leaves."
+      },
+      {
+        "step": 127,
+        "line": "Stage completed. The chewing stops."
+      },
+      {
+        "step": 128,
+        "line": "I have died."
+      },
+      {
+        "step": 141,
+        "line": "Stage completed. broker_sera glances at the note in your hand and nods."
+      },
+      {
+        "step": 215,
+        "line": "I have died."
+      },
+      {
+        "step": 224,
+        "line": "I successfully crafted 1 oak_rod. It is now on the ground."
+      },
+      {
+        "step": 228,
+        "line": "I successfully crafted 1 copper_sword. It is now on the ground."
+      },
+      {
+        "step": 271,
+        "line": "I successfully crafted 1 oak_rod. It is now on the ground."
+      },
+      {
+        "step": 273,
+        "line": "I successfully crafted 1 torch. It is now on the ground."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "enter backstreets"
+      },
+      {
+        "step": 290,
+        "action": "store 1 torch small_pouch_1"
+      },
+      {
+        "step": 291,
+        "action": "pick up coin"
+      },
+      {
+        "step": 292,
+        "action": "pick up coin"
+      },
+      {
+        "step": 293,
+        "action": "store 1 coin small_pouch_1"
+      },
+      {
+        "step": 294,
+        "action": "enter crystal_grotto"
+      },
+      {
+        "step": 295,
+        "action": "take out torch small_pouch_1"
+      },
+      {
+        "step": 296,
+        "action": "store 1 torch small_pouch_1"
+      },
+      {
+        "step": 297,
+        "action": "take out torch small_pouch_1"
+      },
+      {
+        "step": 298,
+        "action": "store 1 copper_sword small_pouch_1"
+      },
+      {
+        "step": 299,
+        "action": "inspect torch"
+      },
+      {
+        "step": 300,
+        "action": "inspect torch"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Glimmer Mines, crystal_grotto\n\nI inspected torch: A simple torch for dark corridors and caves.\nIt can be used to craft: None.\nIt has nothing written on it.\nI was attacked by scrap_goblin_14 and lost 1 HP.\n\nI am holding 1 torch.\nI have equipped 1 small_pouch_1.\nI see 8 copper_ore, 7 quartz_chunk, 5 iron_ore, 7 stone, 8 cave_salt, 3 copper_bar, 12 coin near me.\nI see commoner_10, broker_sera, scrap_goblin_10, scrap_goblin_14, scrap_goblin_17, scrap_goblin_20 nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 18.\nMy experience is at 75.\n\nNeighboring areas: ridge, gate, shafts, backstreets.\n"
+  },
+  "ablation/metropolis/observe": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 0,
+        "exploration": 6,
+        "death": 1,
+        "trade": 0,
+        "quest": 8,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Investigate the Statute District, neutralize the corrupt agents, and uncover the cipher needed to access the Nullification Vault.",
+      "method": "Retrieve iron_bar from satchel using correct 'take out' format, then craft a weapon at a statute_forge (not in lobby).",
+      "assessment": "Previous 'take out' attempts failed only due to parameter format; the container holds iron_bar per stored actions.",
+      "expected": "iron_bar moves from satchel to hand, freeing satchel slot and giving me a held iron_bar.",
+      "required_state": "Free hand slot to hold iron_bar; satchel contains iron_bar.",
+      "feasibility": "jointly possible: hand has 1 free slot (satchel held), satchel has iron_bar stored."
+    },
+    "longest_identical_action_run": 188,
+    "most_common_actions": [
+      [
+        "inspect iron_bar",
+        195
+      ],
+      [
+        "enter market_square",
+        12
+      ],
+      [
+        "enter lobby",
+        10
+      ],
+      [
+        "enter evidence_room",
+        7
+      ],
+      [
+        "inspect evidence_dossier_0",
+        6
+      ],
+      [
+        "enter courtroom",
+        6
+      ],
+      [
+        "talk to alex_smith",
+        5
+      ],
+      [
+        "enter alley",
+        5
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 31,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 36,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 41,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 42,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 43,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 44,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 45,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 113,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 114,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 115,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 116,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 117,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 118,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 119,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 120,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 121,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 122,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 123,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 124,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 125,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 126,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 127,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 128,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 129,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 130,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 131,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 132,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 133,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 134,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 135,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 136,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 137,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 138,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 139,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 140,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 141,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 142,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 143,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 144,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 145,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 146,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 147,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 148,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 149,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 150,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 151,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 152,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 153,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 154,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 155,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 156,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 157,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 158,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 159,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 160,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 161,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 162,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 163,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 164,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 165,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 166,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 167,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 168,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 169,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 170,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 171,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 172,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 173,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 174,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 175,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 176,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 177,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 178,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 179,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 180,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 181,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 182,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 183,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 184,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 185,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 186,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 187,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 188,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 189,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 190,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 191,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 192,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 193,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 194,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 195,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 196,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 197,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 198,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 199,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 200,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 201,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 202,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 203,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 204,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 205,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 206,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 207,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 208,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 209,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 210,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 211,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 212,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 213,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 214,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 215,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 216,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 217,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 218,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 219,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 220,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 221,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 222,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 223,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 224,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 225,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 226,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 227,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 228,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 229,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 230,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 231,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 232,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 233,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 234,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 235,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 236,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 237,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 238,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 239,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 240,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 241,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 242,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 243,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 244,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 245,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 246,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 247,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 248,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 249,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 250,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 251,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 252,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 253,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 254,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 255,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 256,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 257,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 258,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 259,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 260,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 261,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 262,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 263,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 264,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 265,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 266,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 267,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 268,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 269,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 270,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 271,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 272,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 273,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 274,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 275,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 276,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 277,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 278,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 279,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 280,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 281,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 282,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 283,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 284,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 285,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 286,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 287,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 288,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 289,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 290,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 291,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 292,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 293,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 294,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 295,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 296,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 297,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 298,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 299,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 300,
+        "action": "inspect iron_bar"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 2,
+        "line": "Stage completed: Find and pick up the evidence dossier somewhere in the court"
+      },
+      {
+        "step": 4,
+        "line": "Stage completed: Explore the Central Courthouse to get your bearings."
+      },
+      {
+        "step": 8,
+        "line": "Stage completed: Speak with archivist_lune to learn about the midnight anomal"
+      },
+      {
+        "step": 27,
+        "line": "Stage completed: Bring the evidence dossier to the evidence room to begin cat"
+      },
+      {
+        "step": 57,
+        "line": "Stage completed: Record the cipher phrase on a legal brief so you don't forge"
+      },
+      {
+        "step": 62,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 290,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 291,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 292,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 293,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 294,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 295,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 296,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 297,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 298,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 299,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 300,
+        "action": "inspect iron_bar"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Central Courthouse, lobby\n\nI inspected iron_bar: A smelted bar of courthouse-grade iron, drawn from courtroom railings and melted gavel heads.\nIt can be used to craft: verdict_blade (made of iron_bar, verdict_essence, statute_shard), codex_override_key (made of midnight_cipher_fragment, iron_bar, statute_shard), gavel_head (made of iron_bar, gavel_splint), iron_sheet (made of iron_bar), seal_blank (made of iron_bar).\nIt has nothing written on it.\n\nI am holding 1 docket_satchel_0, 1 iron_bar.\nI have equipped no objects.\nI see 10 writ_token, 1 chamber_key, 1 clerks_bench, 1 binding_thread near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 44.\nMy experience is at 90.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n"
+  },
+  "ablation/remnant/observe": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 0,
+        "kill": 0,
+        "craft": 2,
+        "exploration": 2,
+        "death": 3,
+        "trade": 0,
+        "quest": 2,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Search the named regions until the Cinder Shrine shows itself, then step close enough to draw its answer.",
+      "method": "Hold torch and traverse named regions (Old Castle armory; Greenwood Forest plain/hills) until Cinder Shrine appears, then approach.",
+      "required_state": "Be in a named region with visibility and no Cinder Shrine present; move to next accessible region.",
+      "feasibility": "jointly possible for armory now; Greenwood Forest regions not yet observed as reachable from current map.",
+      "assessment": "Entering armory showed no shrine, so armory is ruled out as shrine location; torch is held and room visible.",
+      "expected": "Entering library; no shrine expected there but it may lead to other regions."
+    },
+    "longest_identical_action_run": 38,
+    "most_common_actions": [
+      [
+        "inspect torch",
+        111
+      ],
+      [
+        "enter armory",
+        26
+      ],
+      [
+        "enter hall",
+        14
+      ],
+      [
+        "pick up torch",
+        11
+      ],
+      [
+        "enter library",
+        11
+      ],
+      [
+        "drop torch",
+        8
+      ],
+      [
+        "eat apple",
+        8
+      ],
+      [
+        "pick up coin",
+        5
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 126,
+        "action": "inspect small_bag_0"
+      },
+      {
+        "step": 127,
+        "action": "inspect small_satchel_0"
+      },
+      {
+        "step": 146,
+        "action": "inspect torch"
+      },
+      {
+        "step": 147,
+        "action": "inspect torch"
+      },
+      {
+        "step": 148,
+        "action": "inspect torch"
+      },
+      {
+        "step": 150,
+        "action": "inspect torch"
+      },
+      {
+        "step": 152,
+        "action": "inspect torch"
+      },
+      {
+        "step": 153,
+        "action": "inspect torch"
+      },
+      {
+        "step": 155,
+        "action": "inspect torch"
+      },
+      {
+        "step": 159,
+        "action": "inspect torch"
+      },
+      {
+        "step": 160,
+        "action": "inspect torch"
+      },
+      {
+        "step": 162,
+        "action": "inspect torch"
+      },
+      {
+        "step": 163,
+        "action": "inspect torch"
+      },
+      {
+        "step": 164,
+        "action": "inspect torch"
+      },
+      {
+        "step": 165,
+        "action": "inspect torch"
+      },
+      {
+        "step": 168,
+        "action": "inspect torch"
+      },
+      {
+        "step": 169,
+        "action": "inspect torch"
+      },
+      {
+        "step": 170,
+        "action": "inspect torch"
+      },
+      {
+        "step": 171,
+        "action": "inspect torch"
+      },
+      {
+        "step": 172,
+        "action": "inspect torch"
+      },
+      {
+        "step": 173,
+        "action": "inspect torch"
+      },
+      {
+        "step": 174,
+        "action": "inspect torch"
+      },
+      {
+        "step": 175,
+        "action": "inspect torch"
+      },
+      {
+        "step": 176,
+        "action": "inspect torch"
+      },
+      {
+        "step": 177,
+        "action": "inspect torch"
+      },
+      {
+        "step": 178,
+        "action": "inspect torch"
+      },
+      {
+        "step": 179,
+        "action": "inspect torch"
+      },
+      {
+        "step": 180,
+        "action": "inspect torch"
+      },
+      {
+        "step": 181,
+        "action": "inspect torch"
+      },
+      {
+        "step": 182,
+        "action": "inspect torch"
+      },
+      {
+        "step": 183,
+        "action": "inspect torch"
+      },
+      {
+        "step": 184,
+        "action": "inspect torch"
+      },
+      {
+        "step": 185,
+        "action": "inspect torch"
+      },
+      {
+        "step": 186,
+        "action": "inspect torch"
+      },
+      {
+        "step": 187,
+        "action": "inspect torch"
+      },
+      {
+        "step": 188,
+        "action": "inspect torch"
+      },
+      {
+        "step": 189,
+        "action": "inspect torch"
+      },
+      {
+        "step": 190,
+        "action": "inspect torch"
+      },
+      {
+        "step": 191,
+        "action": "inspect torch"
+      },
+      {
+        "step": 192,
+        "action": "inspect torch"
+      },
+      {
+        "step": 193,
+        "action": "inspect torch"
+      },
+      {
+        "step": 194,
+        "action": "inspect torch"
+      },
+      {
+        "step": 195,
+        "action": "inspect torch"
+      },
+      {
+        "step": 196,
+        "action": "inspect torch"
+      },
+      {
+        "step": 197,
+        "action": "inspect torch"
+      },
+      {
+        "step": 198,
+        "action": "inspect torch"
+      },
+      {
+        "step": 199,
+        "action": "inspect torch"
+      },
+      {
+        "step": 200,
+        "action": "inspect torch"
+      },
+      {
+        "step": 201,
+        "action": "inspect torch"
+      },
+      {
+        "step": 202,
+        "action": "inspect torch"
+      },
+      {
+        "step": 203,
+        "action": "inspect torch"
+      },
+      {
+        "step": 204,
+        "action": "inspect torch"
+      },
+      {
+        "step": 205,
+        "action": "inspect torch"
+      },
+      {
+        "step": 215,
+        "action": "inspect torch"
+      },
+      {
+        "step": 217,
+        "action": "inspect torch"
+      },
+      {
+        "step": 218,
+        "action": "inspect torch"
+      },
+      {
+        "step": 219,
+        "action": "inspect torch"
+      },
+      {
+        "step": 220,
+        "action": "inspect torch"
+      },
+      {
+        "step": 221,
+        "action": "inspect torch"
+      },
+      {
+        "step": 222,
+        "action": "inspect torch"
+      },
+      {
+        "step": 223,
+        "action": "inspect torch"
+      },
+      {
+        "step": 224,
+        "action": "inspect torch"
+      },
+      {
+        "step": 225,
+        "action": "inspect torch"
+      },
+      {
+        "step": 226,
+        "action": "inspect torch"
+      },
+      {
+        "step": 227,
+        "action": "inspect torch"
+      },
+      {
+        "step": 228,
+        "action": "inspect torch"
+      },
+      {
+        "step": 229,
+        "action": "inspect torch"
+      },
+      {
+        "step": 230,
+        "action": "inspect torch"
+      },
+      {
+        "step": 231,
+        "action": "inspect torch"
+      },
+      {
+        "step": 232,
+        "action": "inspect torch"
+      },
+      {
+        "step": 233,
+        "action": "inspect torch"
+      },
+      {
+        "step": 234,
+        "action": "inspect torch"
+      },
+      {
+        "step": 235,
+        "action": "inspect torch"
+      },
+      {
+        "step": 236,
+        "action": "inspect torch"
+      },
+      {
+        "step": 237,
+        "action": "inspect torch"
+      },
+      {
+        "step": 238,
+        "action": "inspect torch"
+      },
+      {
+        "step": 239,
+        "action": "inspect torch"
+      },
+      {
+        "step": 240,
+        "action": "inspect torch"
+      },
+      {
+        "step": 242,
+        "action": "inspect torch"
+      },
+      {
+        "step": 245,
+        "action": "inspect small_satchel_0"
+      },
+      {
+        "step": 248,
+        "action": "inspect torch"
+      },
+      {
+        "step": 249,
+        "action": "inspect torch"
+      },
+      {
+        "step": 250,
+        "action": "inspect torch"
+      },
+      {
+        "step": 251,
+        "action": "inspect torch"
+      },
+      {
+        "step": 252,
+        "action": "inspect torch"
+      },
+      {
+        "step": 253,
+        "action": "inspect torch"
+      },
+      {
+        "step": 254,
+        "action": "inspect torch"
+      },
+      {
+        "step": 256,
+        "action": "inspect torch"
+      },
+      {
+        "step": 257,
+        "action": "inspect torch"
+      },
+      {
+        "step": 258,
+        "action": "inspect torch"
+      },
+      {
+        "step": 259,
+        "action": "inspect torch"
+      },
+      {
+        "step": 260,
+        "action": "inspect torch"
+      },
+      {
+        "step": 261,
+        "action": "inspect torch"
+      },
+      {
+        "step": 262,
+        "action": "inspect torch"
+      },
+      {
+        "step": 263,
+        "action": "inspect torch"
+      },
+      {
+        "step": 264,
+        "action": "inspect torch"
+      },
+      {
+        "step": 265,
+        "action": "inspect torch"
+      },
+      {
+        "step": 266,
+        "action": "inspect torch"
+      },
+      {
+        "step": 267,
+        "action": "inspect torch"
+      },
+      {
+        "step": 269,
+        "action": "inspect torch"
+      },
+      {
+        "step": 270,
+        "action": "inspect torch"
+      },
+      {
+        "step": 271,
+        "action": "inspect torch"
+      },
+      {
+        "step": 272,
+        "action": "inspect torch"
+      },
+      {
+        "step": 274,
+        "action": "inspect torch"
+      },
+      {
+        "step": 275,
+        "action": "inspect torch"
+      },
+      {
+        "step": 276,
+        "action": "inspect torch"
+      },
+      {
+        "step": 278,
+        "action": "inspect torch"
+      },
+      {
+        "step": 279,
+        "action": "inspect torch"
+      },
+      {
+        "step": 285,
+        "action": "inspect small_bag_0"
+      },
+      {
+        "step": 293,
+        "action": "inspect torch"
+      },
+      {
+        "step": 294,
+        "action": "inspect torch"
+      },
+      {
+        "step": 295,
+        "action": "inspect torch"
+      },
+      {
+        "step": 296,
+        "action": "inspect torch"
+      },
+      {
+        "step": 297,
+        "action": "inspect torch"
+      },
+      {
+        "step": 298,
+        "action": "inspect torch"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 36,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 47,
+        "line": "Stage completed. chronicler_lyra looks past you, as if listening to something far away."
+      },
+      {
+        "step": 96,
+        "line": "I have died."
+      },
+      {
+        "step": 124,
+        "line": "I successfully crafted 1 wood_plank. It is now on the ground."
+      },
+      {
+        "step": 138,
+        "line": "I successfully crafted 1 wooden_dagger. It is now on the ground."
+      },
+      {
+        "step": 139,
+        "line": "Stage completed. The weight in your hand is steady."
+      },
+      {
+        "step": 206,
+        "line": "I have died."
+      },
+      {
+        "step": 287,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "equip small_bag_0"
+      },
+      {
+        "step": 290,
+        "action": "enter armory"
+      },
+      {
+        "step": 291,
+        "action": "enter library"
+      },
+      {
+        "step": 292,
+        "action": "pick up torch"
+      },
+      {
+        "step": 293,
+        "action": "inspect torch"
+      },
+      {
+        "step": 294,
+        "action": "inspect torch"
+      },
+      {
+        "step": 295,
+        "action": "inspect torch"
+      },
+      {
+        "step": 296,
+        "action": "inspect torch"
+      },
+      {
+        "step": 297,
+        "action": "inspect torch"
+      },
+      {
+        "step": 298,
+        "action": "inspect torch"
+      },
+      {
+        "step": 299,
+        "action": "enter armory"
+      },
+      {
+        "step": 300,
+        "action": "enter library"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Old Castle, library\n\nI entered library.\n\nI am holding 1 torch.\nI have equipped 1 small_bag_0.\nI see 4 shadow_ink, 10 wood_log, 6 cloth, 1 paper_1, 26 bread, 3 coin, 1 paper_2, 1 torch, 1 small_satchel_0, 1 wooden_dagger near me.\nI see villager_4, chronicler_lyra, emily_frost, goblin_warrior_4 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 72.\nMy experience is at 60.\n\nNeighboring areas: armory, bog.\n"
+  },
+  "corrected/mark/observe": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 3,
+        "kill": 3,
+        "craft": 7,
+        "exploration": 10,
+        "death": 1,
+        "trade": 1,
+        "quest": 16,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Defeat root_warden, the thing guarding the lair.",
+      "method": "Equip leather_vest (done), heal with ground bread, then attack root_warden.",
+      "required_state": "Enough HP to survive trading blows with root_warden (~10 dmg/hit at 30 attack).",
+      "feasibility": "jointly possible; bread and vest present locally",
+      "assessment": "Defense equip worked (18\u219210 dmg). HP too low at 11; need healing first.",
+      "expected": "HP rises by ~12 minus root_warden's 10 attack, net small gain."
+    },
+    "longest_identical_action_run": 7,
+    "most_common_actions": [
+      [
+        "pick up coin",
+        18
+      ],
+      [
+        "talk to syl",
+        17
+      ],
+      [
+        "enter stalls",
+        17
+      ],
+      [
+        "enter armory",
+        16
+      ],
+      [
+        "enter backstreets",
+        16
+      ],
+      [
+        "eat bread",
+        16
+      ],
+      [
+        "enter hall",
+        13
+      ],
+      [
+        "store 1 coin small_pouch_0",
+        12
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 78,
+        "action": "inspect pen"
+      },
+      {
+        "step": 122,
+        "action": "inspect copper_sword"
+      },
+      {
+        "step": 154,
+        "action": "inspect torch"
+      },
+      {
+        "step": 225,
+        "action": "inspect small_pouch_0"
+      },
+      {
+        "step": 229,
+        "action": "inspect small_pouch_0"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 39,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 47,
+        "line": "I successfully crafted 1 oak_rod. It is now on the ground."
+      },
+      {
+        "step": 48,
+        "line": "Stage completed. The oak rod is smooth and sturdy in your hand."
+      },
+      {
+        "step": 71,
+        "line": "I successfully crafted 1 copper_sword. It is now on the ground."
+      },
+      {
+        "step": 72,
+        "line": "Stage completed. The copper blade gleams faintly in the light."
+      },
+      {
+        "step": 74,
+        "line": "Stage completed. librarian_rowan shuts a book with a soft thud."
+      },
+      {
+        "step": 82,
+        "line": "Stage completed. You hold out the paper."
+      },
+      {
+        "step": 85,
+        "line": "Stage completed. Dust and old equipment. No sign of torn pages here."
+      },
+      {
+        "step": 94,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 95,
+        "line": "Stage completed. The key clicks together in your hand."
+      },
+      {
+        "step": 97,
+        "line": "Stage completed. Busy stalls and haggling merchants. A few people mention seeing"
+      },
+      {
+        "step": 105,
+        "line": "I successfully crafted 1 oak_rod. It is now on the ground."
+      },
+      {
+        "step": 107,
+        "line": "I successfully crafted 1 torch. It is now on the ground."
+      },
+      {
+        "step": 108,
+        "line": "Stage completed. The torch flickers to life."
+      },
+      {
+        "step": 112,
+        "line": "Stage completed. You find scraps of paper stuck to the ground like dead leaves."
+      },
+      {
+        "step": 120,
+        "line": "I have died."
+      },
+      {
+        "step": 129,
+        "line": "Stage completed. The chewing stops."
+      },
+      {
+        "step": 147,
+        "line": "Stage completed. broker_sera glances at the note in your hand and nods."
+      },
+      {
+        "step": 198,
+        "line": "Stage completed. The Tear of Forest is cold even through your palm."
+      },
+      {
+        "step": 201,
+        "line": "Stage completed. Dark tunnels and dripping stone. Nothing but echoes here."
+      },
+      {
+        "step": 223,
+        "line": "I successfully crafted 1 leather_strip. It is now on the ground."
+      },
+      {
+        "step": 228,
+        "line": "I successfully crafted 1 thread. It is now on the ground."
+      },
+      {
+        "step": 273,
+        "line": "I successfully crafted 1 leather_strip. It is now on the ground."
+      },
+      {
+        "step": 278,
+        "line": "I successfully crafted 1 leather_strip. It is now on the ground."
+      },
+      {
+        "step": 283,
+        "line": "I successfully crafted 1 leather_vest. It is now on the ground."
+      },
+      {
+        "step": 284,
+        "line": "Stage completed. Straps tighten. Weight settles."
+      },
+      {
+        "step": 290,
+        "line": "Stage completed. Wind through the trees. You spot claw marks on the bark,"
+      },
+      {
+        "step": 295,
+        "line": "Stage completed. The air smells like crushed leaves and damp bark."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "enter crystal_grotto"
+      },
+      {
+        "step": 290,
+        "action": "enter ridge"
+      },
+      {
+        "step": 291,
+        "action": "talk to syl"
+      },
+      {
+        "step": 292,
+        "action": "enter glade"
+      },
+      {
+        "step": 293,
+        "action": "enter ridge"
+      },
+      {
+        "step": 294,
+        "action": "enter creek"
+      },
+      {
+        "step": 295,
+        "action": "enter farm"
+      },
+      {
+        "step": 296,
+        "action": "talk to syl"
+      },
+      {
+        "step": 297,
+        "action": "eat bread"
+      },
+      {
+        "step": 298,
+        "action": "eat bread"
+      },
+      {
+        "step": 299,
+        "action": "equip leather_vest"
+      },
+      {
+        "step": 300,
+        "action": "eat bread"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Copper Flats, farm\n\nI ate bread from ground and restored 12 HP (HP: 23/180).\n\nI am holding 1 torch.\nI have equipped 1 small_pouch_0, 1 leather_vest.\nI see 6 fiber_bundle, 12 grain, 20 bread, 11 coin, 1 paper_12 near me.\nI see maya_wells, commoner_6, ridge_kite_0, scrap_goblin_12, root_warden, syl nearby.\n\nMy level is 5.\nMy attack is at 30.\nMy defense is at 8.\nMy health is at 23.\nMy experience is at 30.\n\nNeighboring areas: creek, verge, copse.\n"
+  },
+  "corrected/metropolis/observe": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 1,
+        "kill": 1,
+        "craft": 1,
+        "exploration": 6,
+        "death": 4,
+        "trade": 0,
+        "quest": 11,
+        "side_quest": 1
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Investigate the Statute District, neutralize the corrupt agents, and uncover the cipher needed to access the Nullification Vault.",
+      "method": "Craft gavel_club needing 2 gavel_timber + 1 binding_thread; hand capacity 2 is the bottleneck. Plan: use docket_satchel (capacity 20) to hold one gavel_timber, freeing hand space for binding_thread, then craft if station draws from satchel.",
+      "required_state": "In clerks_office (has clerks_bench) with 2 gavel_timber and 1 binding_thread accessible via hand+satchel",
+      "feasibility": "unknown \u2014 need to test whether crafting draws from equipped satchel; capacity 2 hand is confirmed bottleneck",
+      "assessment": "Previous craft attempts failed due to insufficient ingredients; hand capacity 2 cannot hold all 3 inputs. Need to free hand space and use satchel.",
+      "expected": "Dropping gavel_timber frees one hand slot, allowing me to pick up binding_thread next"
+    },
+    "longest_identical_action_run": 6,
+    "most_common_actions": [
+      [
+        "enter lobby",
+        30
+      ],
+      [
+        "enter evidence_room",
+        25
+      ],
+      [
+        "enter clerks_office",
+        24
+      ],
+      [
+        "wait",
+        22
+      ],
+      [
+        "enter market_square",
+        20
+      ],
+      [
+        "pick up gavel_timber",
+        14
+      ],
+      [
+        "enter courtroom",
+        11
+      ],
+      [
+        "take out 1 iron_bar docket_satchel_0",
+        11
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 31,
+        "action": "inspect iron_bar"
+      },
+      {
+        "step": 147,
+        "action": "inspect gavel_club"
+      },
+      {
+        "step": 148,
+        "action": "inspect docket_satchel_0"
+      },
+      {
+        "step": 224,
+        "action": "inspect decree_stylus"
+      },
+      {
+        "step": 270,
+        "action": "inspect docket_satchel_0"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 2,
+        "line": "Stage completed: Find and pick up the evidence dossier somewhere in the court"
+      },
+      {
+        "step": 4,
+        "line": "Stage completed: Explore the Central Courthouse to get your bearings."
+      },
+      {
+        "step": 8,
+        "line": "Stage completed: Speak with archivist_lune to learn about the midnight anomal"
+      },
+      {
+        "step": 27,
+        "line": "Stage completed: Bring the evidence dossier to the evidence room to begin cat"
+      },
+      {
+        "step": 48,
+        "line": "I have died."
+      },
+      {
+        "step": 143,
+        "line": "I successfully crafted 1 gavel_club. It is now on the ground."
+      },
+      {
+        "step": 144,
+        "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+      },
+      {
+        "step": 183,
+        "line": "I have died."
+      },
+      {
+        "step": 220,
+        "line": "Stage completed: Record the cipher phrase on a legal brief so you don't forge"
+      },
+      {
+        "step": 233,
+        "line": "I have died."
+      },
+      {
+        "step": 258,
+        "line": "Stage completed: Locate witness_marron hiding in the Statute District and lea"
+      },
+      {
+        "step": 267,
+        "line": "I successfully crafted 1 gavel_club. It is now on the ground."
+      },
+      {
+        "step": 287,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "pick up gavel_timber"
+      },
+      {
+        "step": 290,
+        "action": "pick up binding_thread"
+      },
+      {
+        "step": 291,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 292,
+        "action": "drop binding_thread"
+      },
+      {
+        "step": 293,
+        "action": "inspect wax_seal"
+      },
+      {
+        "step": 294,
+        "action": "pick up gavel_timber"
+      },
+      {
+        "step": 295,
+        "action": "enter lobby"
+      },
+      {
+        "step": 296,
+        "action": "drop gavel_timber"
+      },
+      {
+        "step": 297,
+        "action": "pick up binding_thread"
+      },
+      {
+        "step": 298,
+        "action": "pick up gavel_timber"
+      },
+      {
+        "step": 299,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 300,
+        "action": "drop gavel_timber"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Central Courthouse, clerks_office\n\nI dropped gavel_timber.\n\nI am holding 1 gavel_timber.\nI have equipped no objects.\nI see 2 gavel_timber, 8 parchment_scrap, 8 wax_seal, 1 binding_thread near me.\nI see archivist_lune nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 140.\nMy experience is at 65.\n\nNeighboring areas: lobby, courtroom.\n"
+  },
+  "corrected/remnant/observe": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 2,
+        "kill": 2,
+        "craft": 2,
+        "exploration": 4,
+        "death": 3,
+        "trade": 0,
+        "quest": 2,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Search the named regions until the Cinder Shrine shows itself, then step close enough to draw its answer.",
+      "method": "Traverse named regions; armory searched without shrine, so test Greenwood Forest access via bog/hills.",
+      "required_state": "Be in or reach a named region (armory, Greenwood plain, or Greenwood hills).",
+      "feasibility": "unknown; hills door has been locked repeatedly, but shifting paths are observed.",
+      "assessment": "Bread healing worked; shrine not found in armory. Need to test bog->hills access again.",
+      "expected": "Enter Misty Swamp, bog; then can attempt hills."
+    },
+    "longest_identical_action_run": 4,
+    "most_common_actions": [
+      [
+        "enter armory",
+        69
+      ],
+      [
+        "enter hall",
+        46
+      ],
+      [
+        "enter library",
+        31
+      ],
+      [
+        "eat bread",
+        18
+      ],
+      [
+        "enter bog",
+        14
+      ],
+      [
+        "pick up torch",
+        9
+      ],
+      [
+        "enter hills",
+        8
+      ],
+      [
+        "drop torch",
+        7
+      ]
+    ],
+    "outcome_probes": [
+      {
+        "step": 91,
+        "action": "inspect wood_plank"
+      },
+      {
+        "step": 135,
+        "action": "inspect small_bag_0"
+      },
+      {
+        "step": 136,
+        "action": "inspect wooden_dagger"
+      },
+      {
+        "step": 211,
+        "action": "inspect torch"
+      }
+    ],
+    "public_reports": [
+      {
+        "step": 36,
+        "line": "I successfully crafted 1 key. It is now on the ground."
+      },
+      {
+        "step": 47,
+        "line": "Stage completed. chronicler_lyra looks past you, as if listening to something far away."
+      },
+      {
+        "step": 84,
+        "line": "I successfully crafted 1 wood_plank. It is now on the ground."
+      },
+      {
+        "step": 99,
+        "line": "I have died."
+      },
+      {
+        "step": 118,
+        "line": "I successfully crafted 1 wooden_dagger. It is now on the ground."
+      },
+      {
+        "step": 119,
+        "line": "Stage completed. The weight in your hand is steady."
+      },
+      {
+        "step": 136,
+        "line": "I have died."
+      },
+      {
+        "step": 186,
+        "line": "I have died."
+      }
+    ],
+    "last_actions": [
+      {
+        "step": 289,
+        "action": "enter library"
+      },
+      {
+        "step": 290,
+        "action": "enter bog"
+      },
+      {
+        "step": 291,
+        "action": "enter hills"
+      },
+      {
+        "step": 292,
+        "action": "enter sunken_ruins"
+      },
+      {
+        "step": 293,
+        "action": "enter library"
+      },
+      {
+        "step": 294,
+        "action": "enter bog"
+      },
+      {
+        "step": 295,
+        "action": "enter hills"
+      },
+      {
+        "step": 296,
+        "action": "enter library"
+      },
+      {
+        "step": 297,
+        "action": "eat bread"
+      },
+      {
+        "step": 298,
+        "action": "eat bread"
+      },
+      {
+        "step": 299,
+        "action": "talk to clara_moore"
+      },
+      {
+        "step": 300,
+        "action": "enter bog"
+      }
+    ],
+    "last_observation": "\nCurrent Time: 0001-01-03 10:00:00\nCurrent Location: Misty Swamp, bog\n\nI entered bog.\n\nI am holding 1 torch.\nI have equipped no objects.\nI see 8 swamp_reed, 10 murk_spore, 12 coin near me.\nI see clara_moore, old_mason, villager_8, goblin_warrior_8, swamp_raider_2 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 51.\nMy experience is at 80.\n\nNeighboring areas: sunken_ruins, hills, library.\n"
+  }
+}

@@ -1,0 +1,40 @@
+Public-state audit correction before full-game V16 runs
+
+The first selected-state implementation retired an explicitly labeled Main goal
+when an intermediate Stage completed report named the same next-contact speaker.
+That conflates stage completion with whole-goal completion. The Metropolis
+selected run consequently made no new intervention and reused all V15 requests.
+Keep that result and immutable source as a development audit, not a policy gain.
+
+Corrected implementation keeps Main goal and stage obligations separately.
+Replay task-registry history when migrating the earlier checkpoint schema.
+Repeat ONLY the affected Metropolis selected continuation, using its old API
+cache, and run the three full games from the corrected frozen source. Original
+Remnant/Mark selected runs may finish; validate final implementation by exact
+zero-API replay before using them as evidence. No stop condition or primary
+metric changes; all trajectories remain development tests.
+
+During selected-state testing, navigation repeatedly visited known approaches
+and retried locked exits without acquiring a new enabling condition; some
+trajectories incurred more deaths. Add a full-budget registry-only ablation in
+ALL THREE worlds, using the identical corrected source and prompts with
+progress_mode=observe. Reuse exact completed requests from the execute runs.
+This tests whether task persistence helps without the speculative exploration
+policy. Retain both variants and costs; do not choose one variant per game.
+The automatic program starts only after a move/wait proposal, but subsequent
+program steps may run before another actor call; its HP threshold is heuristic
+and does not prove that a skipped actor call would not have healed or fought.
+
+The complete Metropolis execute run exposed a V15 probe-cache defect: document
+observed_at enters the cache signature, so an unchanged inspection result can
+trigger an unbounded series of new inspections. Correct V16's probe signatures
+to contain object content rather than observation indices, and record the
+post-inspection content as answered. Recheck actual changed content normally.
+Do not silently modify V15 or the already-running frozen variants.
+
+Navigation is kept as an explicit experimental option, off in the recommended
+V16 configuration. Run the corrected task/evidence-persistence configuration
+from all three initial worlds (observe navigation mode, 300 total actions),
+reusing exact requests from the registry-only ablation. Keep earlier navigation
+and cache-defect trajectories as development diagnostics, never as final-code
+performance. This version distinction is not a per-game choice of winners.

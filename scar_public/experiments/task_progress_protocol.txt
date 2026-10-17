@@ -1,0 +1,32 @@
+V16 task persistence and bounded navigation development experiment, 2026-10-17
+
+Primary outcome: public main-quest pass within 300 total environment actions.
+Secondary: quest score, deaths, and model calls. More explored locations or fewer
+repeated actions alone do not establish a better task policy.
+
+Diagnosed implementation gap: a reminder from the task giver erased an active
+NPC instruction in V13/V15's one-line registry. Preserve reminders/exposition,
+capture multiline task instructions, and retire only explicitly superseded or
+appropriately attributed public stage reports. Historical task quotations do
+not automatically become current goals.
+
+Experimental mechanism: for an active search/explore/find/locate/investigate
+goal, compute a short observed route to an untraversed public neighboring exit.
+Only replace a proposed move or wait. Do not replace healing, combat, collection,
+dialogue or crafting. Every actual step must be observed; failed transitions
+invalidate the program. Low observed HP yields to the actor. Eight-action route
+envelope and health gates are heuristics, not safety or success guarantees.
+Unknown exits are hypotheses; previously visited places are not ruled out.
+
+Selected continuation tests use corrected V15 snapshots: remnant step177,
+mark step220, metropolis step145, all ending at total step300 or engine end.
+Remnant additionally has an observe arm with identical task persistence and
+prompts, but no navigation override, to separate the new policy from the task
+registry repair. Controls from previous V15 trajectories are reused, not rerun.
+No new seeds, no hidden map/rules/score access by the agent, no world edits.
+
+If these checks reveal no implementation defect, run V16 from all three existing
+initial snapshots to step300. Reuse previous V15 and V14 full-budget controls.
+Familiar single trajectories are development tests, not held-out validation or
+evidence of statistical superiority. Record all costs, including failed trials.
+Only exact same-step API request payloads may share responses.
