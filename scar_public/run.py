@@ -15,8 +15,8 @@ from scar_public.provider import Provider, usage_summary
 from scar_public.agent import PublicAgent
 
 GAMES = ("remnant", "mark", "metropolis")
-METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8")
-PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8")
+METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9")
+PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9")
 REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
 
 
@@ -67,6 +67,9 @@ def build_agent(method, env, provider):
         if method == "resource_competition_v8":
             from scar_public.resource_agent import ResourceCompetitionAgent
             return ResourceCompetitionAgent(provider, cfg.system_prompt)
+        if method == "persistent_resource_v9":
+            from scar_public.resource_agent import PersistentResourceAgent
+            return PersistentResourceAgent(provider, cfg.system_prompt)
         return PublicAgent(provider, cfg.system_prompt)
     base = type(env.agents[0])
     factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
@@ -178,7 +181,7 @@ def run(args):
         obs, reward, done, info = env.step({AGENT_ID: action})
         env.update_scores(reward)
         step += 1
-        if args.method in ("causal_shadow_v7","resource_competition_v8") and (done or step >= args.steps):
+        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9") and (done or step >= args.steps):
             agent.observe_terminal(obs[AGENT_ID])
         cp = directory / "checkpoints" / f"{step:04d}"
         cp.mkdir(parents=True, exist_ok=True)

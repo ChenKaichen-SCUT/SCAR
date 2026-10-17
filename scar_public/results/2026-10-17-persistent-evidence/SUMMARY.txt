@@ -1,0 +1,74 @@
+GUARDED PERSISTENT EVIDENCE: MECHANISM AND LIMITS (2026-10-17)
+
+Implemented persistent_resource_v9 as an opt-in extension of V8. Matched public
+transitions update a context/epoch ledger of raw JOINT quantity/access profiles.
+Subsequent queries filter these profiles before compiling/searching. Compiled
+model IDs are never reused as identities. All behavioral aliases are preserved;
+unit-batch evidence cannot silently decide a larger-batch rounding rule.
+Notebook checkpoints store the ledger and each active trial's frozen filter.
+Mismatch or incomplete feedback revokes the epoch and cancels continuation.
+
+Guard matching checks recipe/station evidence, location/routes, item vocabulary,
+equipment/bag attachment, capacities/background loads, declared assumptions,
+semantic version and universe. Counts and offered batches may change because
+the next state and its policy are rebuilt. Guard adequacy and within-guard
+stationarity remain assumptions; hidden time/level effects are not established.
+
+No LLM call was made for this audit. No full game or unchanged baseline was rerun.
+The evidence intervention adds no prompt section. Initial feedback text is the
+same; future prompts can naturally differ once plans/actions/history differ.
+
+CONTROLLED DECISION COMPARISON
+
+Two constructed instances: ore only in an attached bag, hand capacity one or two.
+A synthetic, explicitly modeled craft observation identifies bag accessibility.
+At the later matched query (with replenished bag contents), the original family
+needs take-out/craft/pick-up: three actions. The filtered family needs craft/pick-up:
+two actions. Thus the rule affects an actual planned action, not only model count.
+The acquisition experiment has worst cost four versus a three-action reference;
+it uses allowance one. The full-game configuration still uses allowance zero.
+This is NOT a demonstrated amortized saving across all candidate worlds.
+When ore is already held, both families require two actions: information alone
+does not imply a benefit. This no-benefit control is covered by the tests.
+
+CHRONOLOGICAL PUBLIC-GAME AUDIT
+
+Input: all 11 grounded local queries in results/2026-10-17-llm-bridge/results.json.
+For every query, use only earlier actual public action feedback in that game.
+Historical execution is replayed under the historical unfiltered policy. Filtered
+policies are offline queries; historical outcomes are never assigned to them.
+
+Queries: 11. Queries reusing a prior exclusion under matching guard: 0.
+Changed decisions: 0. New game-score improvement established: NONE.
+
+Repeated gavel queries before learning have no evidence yet. After the equipped
+bag trial, later gavel queries have no attached bag, so the guard differs.
+The oak-rod evidence is conservatively revoked after ambient combat; the
+copper-sword bonus rejects the entire modeled family. Other learned recipes do
+not recur in the grounded query list. These are applicability/coverage limits,
+not a reason to relax guards merely to manufacture a positive replay result.
+
+audit.json includes full ledger provenance and per-query compilation/search times.
+Timings are one local diagnostic measurement, not an independent scale benchmark.
+
+THEORY LINK
+
+paper/coverage_theory.tex now formalizes: admissible verification with one common
+suffix per observation; full prefix/suffix budget accounting; sound guarded raw-
+profile reuse and alias lifting; exact fixed-state decision-value monotonicity;
+and a sufficient future amortization inequality under explicit matched-query
+assumptions. The latter is not an implemented future-value predictor. The old
+coverage supplement is preserved in paper/archive/coverage_theory_2026-10-17.tex.
+
+NEXT EMPIRICAL GAP
+
+Find real repeated applicable situations and compare persistent vs local-only
+reasoning with matched prompts/states/budgets, including acquisition cost and
+negative cases. Validate guards before broader transfer across equipment/time.
+Full-game quest outcome remains the primary endpoint. This audit does not support
+a causal explanation of the earlier V8 game improvement.
+
+REPRODUCE (from repository root)
+
+python -m pytest scar_public/test_resource_evidence.py scar_public/test_resource_trial.py scar_public/test_resource_competition.py scar_public/test_causal_model.py -q
+python -m scar_public.experiments.audit_persistent_evidence scar_public/results/2026-10-17-llm-bridge/results.json scar_public/results/2026-10-17-persistent-evidence/audit.json

@@ -31,14 +31,19 @@ class ResourceMemory(ObligationMemory):
         return '\nResource competition audit (conditional local model, never full-task success):\n'+json.dumps(summaries,ensure_ascii=False)
 
 
-def restore_trial(saved):
-    data = dict(saved['problem'])
+def problem_from_data(raw):
+    data = dict(raw)
     data['recipes'] = tuple(Recipe(r['output'],tuple(tuple(n) for n in r['needs']),tuple(r['stations']),
         tuple(r['quantity_modes']),tuple(r['access_modes']),tuple(r['quantities'])) for r in data['recipes'])
     for name in ('locations','items','assumptions'): data[name] = tuple(data[name])
     data['protected_totals'] = tuple(tuple(t) for t in data['protected_totals'])
+    return ResourceProblem(**data)
+
+
+def restore_trial(saved):
     options = saved['options']
-    compiled = compile_resources(ResourceProblem(**data),horizon=options['horizon'],max_states=options['max_states'])
+    compiled = compile_resources(problem_from_data(saved['problem']),horizon=options['horizon'],
+        max_states=options['max_states'],allowed_profiles=saved.get('allowed_profiles'))
     report,witness,planner = select_experiment(compiled,**{k:v for k,v in options.items() if k not in ('horizon','max_states')})
     if witness is None or compiled.fingerprint != saved['fingerprint']:
         raise ResourceGap('checkpoint reconstruction has no matching certificate')
@@ -69,6 +74,18 @@ class ResourceController:
     def save_pending(self, action):
         self.memory.resource_trial_state['pending_action'] = action
 
+    def evidence_filter(self, problem):
+        return None,{}
+
+    def evidence_observed(self, event, saved):
+        pass
+
+    def evidence_invalidated(self, saved, reason):
+        pass
+
+    def attempt_signature(self, target):
+        return digest([target,self.memory.model.current,self.memory.model.containers])
+
     def resume(self, text):
         memory = self.memory; saved = memory.resource_trial_state
         if not saved: return None
@@ -77,7 +94,8 @@ class ResourceController:
             action = self.session.pending
             if action != memory.last_action:
                 raise ResourceGap('actual previous action differs from certified command')
-            self.session.observe(text)
+            event = self.session.observe(text)
+            self.evidence_observed(event,saved)
             saved['feedback'].append({'action':action,'text':text})
             following = self.session.action()
             if following:
@@ -86,6 +104,7 @@ class ResourceController:
             if self.session.status == 'LOCAL_MILESTONE_CONFIRMED':
                 memory.resource_target=''; memory.resource_fresh=False
         except ResourceGap as error:
+            self.evidence_invalidated(saved,str(error))
             memory.resource_trials.append({'status':'RESUME_INVALIDATED','reason':str(error)})
         self.session = None; memory.resource_trial_state = None
         return None
@@ -96,20 +115,24 @@ class ResourceController:
         if parsed['action'].startswith('craft '): target = parsed['action'].split()[-1]
         if not target or target not in memory.model.recipes or len(memory.resource_attempts) >= 6:
             return parsed
-        signature = digest([target,memory.model.current,memory.model.containers])
+        signature = self.attempt_signature(target)
         if signature in memory.resource_attempts or step+OPTIONS['horizon']>300: return parsed
         try:
             # Missing public evidence is an admission failure, not a search.
             # Do not exhaust the finite computation budget before a grounded
             # problem exists (or suppress it after new station evidence arrives).
-            from_public(memory.model,text,target)
+            problem = from_public(memory.model,text,target)
+            allowed,metadata = self.evidence_filter(problem)
             memory.resource_attempts.append(signature)
-            report,session = make_trial(memory.model,text,target,**OPTIONS)
+            report,session = make_trial(memory.model,text,target,**OPTIONS,allowed_profiles=allowed)
+            if metadata: report['persistent_evidence'] = metadata
             memory.resource_trials.append({'selection':report,'step':step})
             if session:
                 self.session=session; action=session.action()
                 memory.resource_trial_state={'problem':asdict(session.compiled.domain.problem),'options':dict(OPTIONS),
                     'fingerprint':session.compiled.fingerprint,'feedback':[],'pending_action':action}
+                if metadata:
+                    memory.resource_trial_state.update(allowed_profiles=allowed,evidence=metadata)
                 if action: return {**parsed,**self.program(action)}
         except ResourceGap as error:
             memory.resource_trials.append({'status':'GROUNDING_UNKNOWN','step':step,'reason':str(error)})
@@ -132,3 +155,36 @@ class ResourceCompetitionAgent(ObligationAgent):
                 self.notebook.resource_trials.append(report)
                 self.notebook.resource_trial_state = None
                 self.resource_controller.session = None
+
+
+class PersistentResourceMemory(ResourceMemory):
+    def __init__(self):
+        super().__init__()
+        from scar_public.resource_evidence import EvidenceBank
+        self.resource_evidence = EvidenceBank().state
+
+
+class PersistentResourceController(ResourceController):
+    def bank(self):
+        from scar_public.resource_evidence import EvidenceBank
+        # Notebook.load replaces this dictionary after construction.
+        return EvidenceBank(self.memory.resource_evidence)
+
+    def evidence_filter(self, problem):
+        return self.bank().query(problem)
+
+    def evidence_observed(self, event, saved):
+        self.bank().observe(self.session.compiled,event,saved['evidence']['epoch'])
+
+    def evidence_invalidated(self, saved, reason):
+        self.bank().invalidate(problem_from_data(saved['problem']),reason)
+
+    def attempt_signature(self, target):
+        return digest([super().attempt_signature(target),self.memory.resource_evidence['revision']])
+
+
+class PersistentResourceAgent(ResourceCompetitionAgent):
+    def __init__(self,llm,system_prompt):
+        super().__init__(llm,system_prompt)
+        self.notebook = PersistentResourceMemory()
+        self.resource_controller = PersistentResourceController(self.notebook)

@@ -1,5 +1,15 @@
 SCAR development notes — 2026-10-15
 
+Direction update, 2026-10-17: the user has selected LLM games as the primary
+experimental focus. Candidate coverage bounds improving game performance are
+not the paper's central claim. LLM_GAME_RESEARCH_SCOPE.txt records the revised
+problem, implementation gaps, conditional guarantees and required ablations.
+Guarded evidence persistence is now implemented as persistent_resource_v9.
+Controlled later plans improve from three actions to two; chronological replay
+of the 11 historical game queries has zero eligible reuse and zero changed
+decisions. The revised theory is conditional and does not attribute V8 scores
+to this new mechanism. See results/2026-10-17-persistent-evidence/SUMMARY.txt.
+
 Observed problems, rather than additional modules
 
 1. Provenance is not entailment. In PublicState v1, an actual NPC quote was used

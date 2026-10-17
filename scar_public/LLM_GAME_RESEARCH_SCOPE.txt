@@ -1,0 +1,123 @@
+Research direction agreed with the user, 2026-10-17
+
+PRIMARY SCOPE
+
+Put the experimental emphasis back on LLM game agents. Do not make candidate
+coverage bounds improving game performance the paper's claim. The completed
+bridge experiment supports further investigation, not a causal attribution or
+a held-out superiority claim. See results/2026-10-17-llm-bridge/SUMMARY.txt.
+
+The user subsequently requested revision around admissibility, budget value, and
+evidence reuse. paper/coverage_theory.tex now contains that aligned supplement;
+the earlier coverage source is preserved under paper/archive/. This specification
+remains a research status record, not a completed efficacy claim.
+
+PROPOSED CENTRAL QUESTION
+
+Under a finite environment-interaction budget, how should an LLM agent resolve
+uncertainty about task-relevant action semantics, use the resulting evidence in
+later decisions, and avoid spending resources on repeatedly invalid methods?
+
+The experimental objective is real quest progress/completion within the same
+action/API budget. A local planning goal proposed by the LLM is a method
+milestone, not automatically the true quest's completion condition. Neither an
+LLM quote nor a successful local policy proves that translation is correct.
+
+ALGORITHM THAT THE THEORY SHOULD DESCRIBE
+
+1. From public history, the LLM proposes a method milestone and plausible rules.
+   Keep observed outcomes, proposed explanations, and context assumptions distinct.
+2. Ground only the task fragment whose actions, observations and constraints can
+   be checked; record missing information instead of assuming a complete world.
+3. Solve for a shared continuation over the current candidate models. Choose
+   informative actions together with their contingent continuations, charging
+   both the test and the continuation to the remaining interaction budget.
+4. Compare fresh public feedback with predictions, update the surviving models,
+   and revoke the current certificate when its assumptions fail.
+5. Reuse exclusions/evidence in later decisions only under their valid context.
+   On model-family expansion or context changes, revalidate certificates rather
+   than resetting consumed interaction budget or retroactively claiming safety.
+
+Steps 1--4 exist only partially. The automatic adapter is one recipe at the current
+station with a six-action local horizon. The generic domain's upstream and route
+capabilities do not establish automatic full-game grounding. Step 5 is now
+implemented in persistent_resource_v9: context/epoch ledgers filter
+raw joint profiles before subsequent compilation. Controlled cases change a
+later plan from three actions to two. The chronological audit of 11 historical
+game queries contains no eligible later reuse and no changed decisions. See
+results/2026-10-17-persistent-evidence/SUMMARY.txt.
+
+THEORY ALIGNMENT AND STATUS
+
+A. Keep and formalize the existing conditional local opportunity guarantee.
+   Fix the original local belief, remaining horizon and success obligations.
+   Only proved initially infeasible worlds may be success-exempt; UNKNOWN does
+   not justify exemption. Exempt worlds still impose modeled safety constraints.
+   For each actual observation branch there must be one common continuation for
+   all required worlds in that branch, not a separate omniscient plan per world.
+   Under true-world inclusion and correct transition/observation/goal assumptions,
+   verified execution realizes the original feasible local completion opportunity.
+   This is implemented model-relative correctness, not global game safety or a
+   novelty claim. The proof sketch is in RESOURCE_COMPETITION.txt.
+
+B. Make the existing cost guard explicit.
+   cost(prefix) + max_o cost(verified continuation_o) <= C_ref + Delta.
+   C_ref is the cost of a known verified common policy, NOT necessarily optimum.
+   Delta is zero in current runs; when no reference policy exists, only the
+   declared local horizon applies. This bounds modeled environment actions,
+   not wall time, API usage or actual game cost when model assumptions fail.
+
+C. Context-guarded persistence and its conditional properties.
+   In a fixed finite realizable deterministic family with correct observations,
+   monotone elimination retains the true model and has at most N-1 strict
+   elimination events. This standard fact is not a total-failure, API-call or
+   sample-efficiency bound, and is not a standalone innovation. Model expansion,
+   noisy observations or changing rules invalidate those premises. The useful
+   algorithmic question is when a prior counterexample can constrain a new plan.
+   Persistent guarded reuse is now implemented and conditionally proved in the
+   revised supplement. Guard adequacy, true-family inclusion and actual game
+   benefit remain unestablished; an implemented guard is not proof of stationarity.
+
+D. Treat unexpected effects as a model/abstraction problem.
+   Current strict matching rejects beneficial extra floor output and ambient
+   combat alike. A future task-relative compatibility relation would need to
+   preserve action legality, capacity constraints, observations needed by the
+   policy, and the local goal under future transitions. One favorable observation
+   does not establish this simulation property. Do not assume that more resources
+   are always harmless: inventory capacity and other quests can change that.
+   This extension is proposed, not implemented or proved.
+   Detecting mismatch AFTER an action only prevents further use of that invalid
+   certificate; it cannot undo resource loss or prove the preceding action safe.
+
+E. Remove the later coverage-bound separations, matching certificates and sparse
+   candidate-progress search from this paper's central mechanism unless a future
+   game experiment actually calls and isolates them. Preserve them separately.
+   Do not introduce a new global optimality/regret guarantee merely to make the
+   narrative look theoretical. LLM model generation and quest translation remain
+   empirical responsibilities unless additional assumptions are justified.
+
+REQUIRED EXPERIMENTAL LINKS
+
+Use matched public checkpoints and remaining budgets to isolate controller
+effects before further full-game iterations. First separate feedback-only changes
+from actual planning under matched prompts. Then compare a single assumed model
+with competing models; compare informative choices with direct verified policies;
+and compare local-only vs guarded persistent evidence after confirming actual
+applicability opportunities. Avoid the full Cartesian product: test the mechanism currently changed.
+
+Primary endpoint stays full-game quest progress/completion. Mechanism endpoints
+include repeated contradicted actions, actual candidate elimination, local
+completion within the certificate budget, model-mismatch rate and computation.
+None substitutes for full-game benefit. Independent tasks/configurations and a
+validated LLM-plus-planner comparator are needed before a final paper claim.
+
+NOVELTY BOUNDARY
+
+LLM-plus-symbolic planning and safe action-model learning already have direct
+precedents. The proposed combination and conditional correctness proof alone do
+not establish novelty. A defensible claim would need a specific new rule for
+task-relevant model revision/reuse or experiment selection, with controlled gains.
+Primary starting points:
+https://arxiv.org/abs/2308.06391 (LLM-DP)
+https://arxiv.org/abs/2107.04169 (Safe Learning of Lifted Action Models)
+https://papers.nips.cc/paper_files/paper/2011/hash/4671aeaf49c792689533b00664a5c3ef-Abstract.html

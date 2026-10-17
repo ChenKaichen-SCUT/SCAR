@@ -12,849 +12,454 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
-\newcommand{\card}[1]{\lvert #1\rvert}
-\newcommand{\CL}{C_{\mathrm L}}
-\newcommand{\CM}{C_{\mathrm M}}
-\newcommand{\R}{\mathcal R}
-\newcommand{\N}{\mathcal N}
-\title{Resource-indexed Candidate Coverage for Conditional Planning\\
-\large Consolidated definitions, proofs, separation results, and limitations}
+\newcommand{\cost}{\operatorname{cost}}
+\newcommand{\supp}{\operatorname{supp}}
+\title{Budgeted Verification and Guarded Evidence Reuse\\
+\large Problem definition, conditional guarantees, and implementation boundaries}
 \author{SCAR research working supplement}
-\date{16 October 2026}
+\date{17 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-We formalize the successful-candidate coverage bounded by the implemented
-scalar, lineage, and matching recurrences. The supplement supplies a hereditary
-soundness proof, a separation from the conjunction of complete proper-subset
-tests and an explicit resource-aware information control, a Hall-deficiency
-characterization of matching rejection, safe partial-evaluation rules, and
-search and complexity guarantees. A concrete planning counterexample disproves
-unconditional strengthening under added projection predicates. A restricted
-simulation theorem and a conservative envelope replace that unsupported claim.
-These are mathematical results under explicit assumptions, not evidence of
-runtime improvement or priority over every labelled planning abstraction.
+An LLM game agent must decide which uncertain action rules to test, whether a
+test fits the remaining task budget, and when its outcome may constrain future
+plans. We formalize these three decisions using finite competing action models,
+observation-contingent local policies, and context-scoped evidence. The implemented
+mechanism lifts surviving compiled models back to joint semantic profiles and
+filters subsequent planning problems before search. We prove conditional local
+completion, action-budget accounting, and sound reuse under explicit realizability
+and stationarity assumptions. These are correctness statements for the mechanism,
+not a claim of global game safety, optimal game play, or novel hypothesis
+elimination. Controlled examples demonstrate a change in later actions; the
+chronological game audit has not yet demonstrated a reuse benefit. The earlier
+candidate-coverage supplement is archived separately and is not used to explain
+the reported game scores.
 \end{abstract}
 
-\section{Problem, implementation scope, and the quantity being bounded}
-Let $I$ be a finite set of $N$ named initial candidates. A name denotes one
-initial state, not a stochastic sample or a posterior probability. Determinism
-gives at most one current state $x_m$ per surviving name $m$ along an observation
-history. A state consists of Boolean facts and remaining resources
-$r\in\mathbb N^b$. Facts immutable under every action are fixed by the name.
-For every grounded action $a$, its Boolean precondition, deterministic simultaneous
-effects $T_a$, optional Boolean observation $O_a$ evaluated \emph{after} effects,
-and fixed consumption $c(a)\in\mathbb N^b$ are given. Applying an action requires
-its precondition and $r\geq c(a)$ componentwise; resources become $r-c(a)$.
-Actions have unit length. Resources occur only in affordability: there is no
-replenishment, numeric goal, or resource-dependent Boolean effect/observation.
-The legality convention on conflicting Boolean effects must be the same in
-the transition interpreter and channel formula (the current interpreter gives
-adds precedence over deletes).
+\section{Problem definition and the role of the LLM}
+A game exposes a public history $h_t=(o_0,a_0,o_1,\ldots,a_{t-1},o_t)$,
+a remaining environment-action budget $B_t$, and an external task success signal
+or task-progress measure. The experimental objective is progress or completion
+within this budget. It is not identification of every hidden game rule.
 
-A belief $B=\{(m,x_m):m\in M\}$ is exact. A strong policy chooses one legal
-action for every state in the current belief, branches on \emph{actual}
-observations, and stops only when every surviving state satisfies the goal.
-Its cost is its largest root-to-terminal action count. Write $V(B)$ for the
-minimum such cost, or $\infty$ if there is no finite strong policy. The bounded
-decision problem is $V(B)\leq d$. Goal truth is not implicitly observed;
-already-goal states remain in the exact belief and can constrain subsequent
-actions. A proof of $V(B)>H$ is not a proof of $V(B)=\infty$.
+From this history, the language-based agent proposes a method milestone $g$,
+such as \emph{newly craft and hold a sword}. Grounding produces a finite local
+problem only when the necessary public information is available. A milestone is
+not assumed equivalent to the natural-language quest: obtaining ingredients is
+a precondition, not an extra terminal requirement. The current implementation
+uses V6/LLM target proposals and a hand-specified family of quantity/access rules;
+it does not learn arbitrary action schemas from LLM text.
 
-Fix a set $P$ of retained dynamic atoms. Put $q=(r,z)$ where $z=x|_P$.
-The current implementation applies a coverage query only when all
-\emph{unfinished} worlds share $q$. Otherwise it skips the query. For name $m$,
-let $\mathcal X_m(q)$ be all non-goal Boolean states with its immutable facts,
-retained values $z$, and resources $r$. Forgotten dynamic facts are unrestricted;
-reachability and hidden invariants are not assumed. Thus this set includes the
-actual state whenever the query is applicable.
-
-\begin{definition}[Hereditary existential coverage]
-For $S\subseteq I$, define $\Gamma(q,S,d)$ as the maximum $\card T$ over subsets
-$T\subseteq S$ for which states $x_m\in\mathcal X_m(q)$, $m\in T$, and a
-depth-at-most-$d$ strong policy for those states exist. The empty subset is
-allowed and has value zero. State witnesses may be chosen separately per name.
+\begin{definition}[Local query]
+A grounded query is $Q=(X,A,\Theta,b_0,g,K,H)$, where $X$ is a finite state
+space, $A$ a finite command set, $\Theta$ a finite set of joint semantic profiles,
+$b_0=\{(\theta,x_\theta):\theta\in\Theta_0\}$ the current candidate belief,
+$g$ the local terminal predicate, $K$ the modeled state constraints, and
+$H\leq B_t$ the local action budget. A profile specifies deterministic transitions
+$T_\theta(x,a)$ and public observations $O_\theta(x,a,T_\theta(x,a))$.
+Each issued command costs one environment action, including a failed command.
 \end{definition}
-This definition is deliberately more permissive than the actual belief. It
-also avoids a gap in a proof stated only for policies that succeed on \emph{all}
-names of a recursive mask: a child mask can strictly contain the names actually
-entering that child. The proof below bounds every such successful subset.
+An unavailable command is represented by its modeled failure transition when the
+environment permits issuing it. A policy must therefore account for failures;
+syntactic command availability is not success. Resources can be consumed,
+produced, moved, and constrained by capacity. The old resource-only-decreasing
+coverage model is not imposed here.
 
-\section{Channels and three complete recurrences}
-For an affordable $a$, define the complete existential channel table
-\begin{align*}
-G_a(q)&=\{m:\exists x\in\mathcal X_m(q),\ a\text{ legal at }x,
-                                      \ T_a(x)\models g\},\\
-E_{aj}(q)&=\{m:\exists x\in\mathcal X_m(q),\ a\text{ legal at }x,
-               \ T_a(x)\not\models g,\ (O_a(x),T_a(x)|_P)=j\}.
-\end{align*}
-Here $j=(o,z')$ includes the post-effect observation; for a non-observing action
-$o$ is a single dummy symbol. Its successor key is $q_{aj}=(r-c(a),z')$.
-An individual name can belong to several $E_{aj}$, or both $G_a$ and an $E_{aj}$,
-because different forgotten-state witnesses can establish membership.
-Empty buckets can be removed. The bound grants knowledge of $z'$ in addition
-to $o$, whereas a real policy does not obtain that knowledge for free.
+In the implemented domain, $x$ records location, elapsed actions, craft-event
+bits, and integer milli-unit quantities in the hand, attached bag, and floor.
+$K$ checks nonnegative counts, hand/bag capacities and explicitly declared
+protected totals. The automatic adapter leaves protected totals empty: it does
+not certify resources needed by unrelated quests. $g$ checks the new craft event
+and current possession. Bag contents are observable only through the modeled
+inspection operation; model IDs never appear in observations.
 
-Set all depth-zero capacities to zero, and use zero for an empty action maximum.
-The global scalar recurrence is
-\begin{equation}\label{eq:scalar}
-C_0(q,d)=\min\left(N,\max_a\left[\card{G_a}+
-       \sum_j\min\{\card{E_{aj}},C_0(q_{aj},d-1)\}\right]\right).
+For ingredient coefficient $c$ and integer batch $q$, the quantity rules are
+\[
+ d_{\rm exact}(c,q)=cq,\quad
+ d_{\rm batch}(c,q)=1000\lceil cq/1000\rceil,\quad
+ d_{\rm output}(c,q)=1000q\lceil c/1000\rceil.
+\]
+Access rules permit hand, hand plus bag, hand plus floor, or all three. A profile
+is a \emph{pair} of quantity and access rules; retaining the two marginals would
+lose correlations established by an observation. Consumption priority, floor
+output, fixed loads, station sufficiency, material-preserving failure and absence
+of ambient effects remain assumptions of this family.
+
+For a fresh observation $o$, update by
+\begin{equation}\label{eq:update}
+ b[a,o]=\{(\theta,T_\theta(x,a)):(\theta,x)\in b,\
+ O_\theta(x,a,T_\theta(x,a))=o\}.
 \end{equation}
-For a mask $S$, put $F_a=S\cap G_a$, $R_a=S\setminus G_a$, and
-$S_{aj}=R_a\cap E_{aj}$. Define
-\begin{equation}\label{eq:lineage}
-\CL(q,S,d)=\min\left(\card S,\max_a\left[
-                   \card{F_a}+\sum_j\CL(q_{aj},S_{aj},d-1)\right]\right).
-\end{equation}
-The immediate absorption of \emph{all} $F_a$ is optimistic, even if their actual
-states would not finish. Once counted, their names do not recur below that
-action. This removes one source of repeated counting.
+An empty actual successor is model mismatch, not evidence of task impossibility.
+An incomplete observation is not filled in with a preferred model prediction.
 
-For matching, form a bipartite graph with unit-capacity model vertices $R_a$,
-bucket vertices $j$, edges $m\to j$ when $m\in S_{aj}$, and bucket capacities
-$c_j=\CM(q_{aj},S_{aj},d-1)$. Let $\nu_a(c)$ be its maximum integral matching
-cardinality with these bucket capacities. Define
-\begin{equation}\label{eq:matching}
-\CM(q,S,d)=\min\left(\card S,\max_a[\card{F_a}+\nu_a(c)]\right).
-\end{equation}
-Both relational capacities are zero for $S=\varnothing$. The older implementation
-also takes a minimum with $C_0$; the next result proves that ceiling redundant
-for complete, unlimited recurrences. A budget fallback is a different evaluation
-and must not be used to infer equality of partial execution traces.
+\section{Which verification actions are permitted?}
+\subsection{Freeze the original obligations}
+At query admission fix $b_0,H,g,K$. In strong mode all profiles must reach $g$.
+In opportunity mode let $E_0$ contain only profiles with a proved absence of a
+$K$-respecting goal trajectory within the \emph{original} horizon $H$. Let
+$R_0=\supp(b_0)\setminus E_0$. An unresolved individual search remains in $R_0$.
+Both sets are frozen throughout this trial. No new exemption is granted after
+an action has consumed material or time. Exempt worlds still constrain $K$ and
+observations. If $R_0$ is empty, the controller does not select a verification
+trial on the basis of a vacuous completion requirement.
 
-\begin{lemma}[Ordering and the redundant ceiling]\label{lem:order}
-At the same channels and depth,
-$0\leq\CM(q,S,d)\leq\CL(q,S,d)\leq\min\{\card S,C_0(q,d)\}$.
-\end{lemma}
-\begin{proof}
-Induct on $d$, with zero base values. By induction each lineage child is at
-most $\min\{\card{S_{aj}},C_0(q_{aj},d-1)\}$, hence at most the corresponding
-scalar child contribution. Also $\card{F_a}\leq\card{G_a}$ and $\card S\leq N$.
-Taking the action maximum and cap proves the lineage inequality. Matching is
-monotone in bucket capacities, since increasing a capacity preserves every
-feasible allocation. Its value is at most the sum of bucket capacities.
-Inductively replacing matching child values by lineage child values therefore
-bounds each matching action by its lineage action. The cap preserves the result.
-\end{proof}
+An exemption is relative to this fragment and horizon. Unmodeled upstream
+recipes, remote resources, or another method may still solve the full game.
+Exemption is neither falsification of a profile nor global infeasibility.
 
-\begin{lemma}[Monotonicity in the quantities that are actually ordered]
-For either relational recurrence, $S\subseteq S'$ implies
-$C(q,S,d)\leq C(q,S',d)$. Capacities are nondecreasing in $d$ and componentwise
-in $r$ when all other data are fixed. This statement does not order projections.
-\end{lemma}
-\begin{proof}
-Induct on depth. Enlarging $S$ enlarges $F_a$, $R_a$, and each child mask;
-child capacities do not decrease by induction. An old matching embeds into
-the enlarged network. Both the action maximum and its cardinality cap are
-nondecreasing. For depth, use the zero base and apply induction to each child.
-For resources, the templates $G_a,E_{aj},z'$ do not depend on $r$; larger $r$
-permits every old action and leaves larger child resources. Induction again
-orders child values and action contributions. Scalar monotonicity follows in
-the same way. No claim of marginal subadditivity in the mask is required.
-\end{proof}
-
-\begin{theorem}[Hereditary soundness]\label{thm:sound}
-$\Gamma(q,S,d)\leq\CM(q,S,d)\leq\CL(q,S,d)\leq C_0(q,d)$.
-\end{theorem}
-\begin{proof}
-The assertion is trivial at depth zero because all chosen states are unfinished.
-Assume it at $d-1$. Take any successful subset $T\subseteq S$, its state
-witnesses, and a policy of depth at most $d$. Its first action $a$ is affordable.
-Credit every name in $F_a$, even those absent from $T$. For each successful
-name in $T\setminus G_a$, its actual successor is non-goal; otherwise it would
-belong to $G_a$. Its successor and observation establish membership in exactly
-one actual bucket $j$ and in $S_{aj}$.
-
-Let $T_j$ be these successful names in bucket $j$. The actual continuation,
-restricted to them, is a strong policy of depth at most $d-1$; granting the
-additional projected observation cannot invalidate it. Its states are witnesses
-for $\Gamma(q_{aj},S_{aj},d-1)$ because $T_j\subseteq S_{aj}$.
-Thus $\card{T_j}\leq\CM(q_{aj},S_{aj},d-1)$ by induction. The actual assignments
-of these distinct names to buckets form an integral feasible matching. Hence
-$\card T\leq\card{F_a}+\nu_a\leq\max_{a'}(\card{F_{a'}}+\nu_{a'})$.
-Also $\card T\leq\card S$. Maximize over the choices defining $\Gamma$ and
-apply Lemma~\ref{lem:order}. This proof does not require a policy to succeed on
-the entire child eligibility mask, nor does it identify a child capacity with
-an arbitrary feasible subset of that cardinality.
-\end{proof}
-
-\begin{corollary}[Admissible bounded decisions]\label{cor:searchbound}
-Let $S$ be the unfinished names of an exact belief with common $q$. A certified
-upper bound $U$ on any capacity in Theorem~\ref{thm:sound} satisfying
-$U<\card S$ proves $V(B)>d$. If the belief is already a goal its value is zero.
-The first saturating depth of a complete recurrence is an admissible cost lower
-bound; no saturation through $H$ proves only $V(B)>H$.
-\end{corollary}
-\begin{proof}
-A strong policy for $B$ restricts to a successful policy on its unfinished
-names. Therefore $V(B)\leq d$ would imply $\Gamma(q,S,d)=\card S$, contradicting
-the certified upper bound. Already-goal names are removed only in this argument,
-not from the actual search. The claim for the first saturating depth follows
-by applying this implication at every smaller depth.
-\end{proof}
-
-\section{Hall deficiency: what sibling matching can certify}
-Fix one action, put $R=R_a$, and let $\N(X)=\{j:E_{aj}\cap X\neq\varnothing\}$.
-Use complete child matching capacities $c_j$ for the following exact identity.
-\begin{theorem}[Deficiency characterization]\label{thm:hall}
-\begin{align}
-\nu_a&=\min_{X\subseteq R}\left(\card{R\setminus X}+
-                                      \sum_{j\in\N(X)}c_j\right),\label{eq:cut}\\
-\delta_a&=\card R-\nu_a
-       =\max_{X\subseteq R}\left(\card X-\sum_{j\in\N(X)}c_j\right).\label{eq:deficit}
-\end{align}
-For a nonempty affordable action set,
-$\CM(q,S,d)=\card S-\min_a\delta_a$.
-Thus matching rejects exactly when every affordable action has a positive
-Hall deficiency. If there is no affordable action, the capacity is zero.
-\end{theorem}
-\begin{proof}
-Use source-to-name edges of capacity one, name-to-eligible-bucket edges of
-capacity greater than $\card R$, and bucket-to-sink edges of capacity $c_j$.
-The cut separating all names has capacity $\card R$, so a minimum cut does
-not cut a name-to-bucket edge. If its source-side names are $X$, it must put
-all adjacent buckets on the source side. Adding any other bucket cannot reduce
-the cut. The resulting capacity is the expression in~\eqref{eq:cut}.
-Conversely every $X$ defines such a cut. Integral max-flow/min-cut gives the
-identity; subtract it from $\card R$ to get~\eqref{eq:deficit}. Since
-$\card{F_a}+\card{R_a}=\card S$, the action maximum yields the last assertion.
-The empty witness makes every deficiency maximum nonnegative.
-\end{proof}
-
-\begin{corollary}[Partial, locally checkable rejection]
-Replace $c_j$ by any certified upper bounds $u_j\geq c_j$ and select any
-$X_a\subseteq R_a$ for each affordable action. Then
-\begin{equation}\label{eq:partialcut}
-U=\min\left(\card S,\max_a\left[
- \card{F_a}+\card{R_a\setminus X_a}+
- \sum_{j\in\N(X_a)}u_j\right]\right)
-\end{equation}
-is an upper bound on $\CM$. If $U<\card S$, it is a sound rejection even if
-some children remain unresolved and use the trivial $u_j=\card{S_{aj}}$.
-\end{corollary}
-\begin{proof}
-Every feasible matching assigns at most $\card{R_a\setminus X_a}$ names
-outside $X_a$ and at most the summed capacities of adjacent buckets from
-inside $X_a$. Increasing capacities preserves this upper bound. Apply the
-same argument to every affordable action, then take the maximum and cap.
-\end{proof}
-This is a use of a standard capacitated Hall/min-cut theorem, not a claim to
-invent matching. A witness can be checked using intersections and sums in
-$O(K\lceil N/w\rceil)$ word operations for $K$ buckets. A depth-decreasing DAG
-of such bounds is checked in topological order, conditional on complete and
-correct channel tables. Certifying those tables from symbolic formulas requires
-separate SAT/enumeration evidence. No polynomial-size certificate in the compact
-planning input is promised. The reference checker discovers cuts by exhaustive
-enumeration only for tests; production matching already uses augmenting paths.
-
-For example, buckets $\{0\},\{0\},\{1,2\}$ with capacities $1,1,1$ have
-lineage sum three but matching value two. The witness $X=\{1,2\}$ has only
-one adjacent bucket of capacity one. Proving that third capacity is enough;
-the first two can retain their trivial unit upper bounds. This is a channel
-example, not a newly solved public planning benchmark.
-
-\section{Separation from complete subset and resource-information controls}
-For an exact belief let $h_k(B)=\max_{\varnothing\neq T\subseteq B,\card T\leq k}
-V(T)$, with the same resources and policy semantics. It is admissible because
-a policy for $B$ restricts to every subset. This is an exact subset control,
-not a claim to reproduce a published planner.
-
-The second control constructs a graph with an edge between two worlds exactly
-when no common legal action sequence of length at most $d$ reaches goals for
-both under their resources. Observations are ignored in this synchronous test.
-For each world $m$, let $K_m$ be the maximum number of observing actions in any
-legal goal-reaching sequence of length at most $d$ with its resources; $K_m=-1$
-if there is no such sequence. For every graph clique $Q$ require
-\begin{equation}\label{eq:kraft}
-\sum_{m\in Q}2^{-K_m}\leq1.
-\end{equation}
-This is the explicitly implemented resource-aware information comparator.
-
-\begin{lemma}[Validity of the comparator]
-Every feasible policy satisfies~\eqref{eq:kraft}, and has no $K_m=-1$.
-\end{lemma}
-\begin{proof}
-Two endpoints of a conflict edge cannot share a terminal history: that history
-would supply the prohibited common legal sequence. Clique members therefore
-occupy distinct leaves. After contracting non-observing actions, their binary
-observation words are prefix-free: a deterministic controller cannot both stop
-and continue at the same history. If their actual observation depths are
-$\ell_m$, Kraft's inequality gives $\sum 2^{-\ell_m}\leq1$. Their actual
-goal-reaching paths satisfy $\ell_m\leq K_m$, which proves the inequality.
-Single-child observations only weaken the test. Allowing already-goal states
-to continue in the computation of $K_m$ avoids underestimating their paths.
-\end{proof}
-
-\begin{theorem}[Separation from the conjunction of complete controls]\label{thm:separate}
-For every fixed $k\geq1$, there is an explicitly represented task with
-$n>k$, $n\geq3$, candidates, one resource with budget two, and horizon two,
-such that all the following hold:
+\begin{definition}[Admissible verification prefix]\label{def:admit}
+Let $p$ be a command prefix whose public observations first split the surviving
+profiles at its last action, and let $k=|p|$. It is admissible when:
 \begin{enumerate}[label=(\roman*)]
-\item Every nonempty proper candidate subset has a conformant plan of cost at
-most two, so even testing all $2^n-2$ such subsets cannot reject this budget.
-\item The complete resource-conflict graph is empty and every exact $K_m=1$.
-Consequently every clique inequality passes.
-\item On the same retained projection, $C_0=n$ and $\CL=\CM=n-1$.
-The full task has no feasible strong policy with budget two.
+\item every intermediate state along every modeled prefix execution satisfies $K$;
+\item for each resulting observation leaf $o$, there is a \emph{single}
+observation-based suffix policy $\pi_o$ that satisfies $K$ in every world in
+$b_o$, and reaches $g$ for every surviving profile in $R_0$;
+\item $k+\max_o\cost(\pi_o,b_o)\leq H$.
 \end{enumerate}
-Thus the relation rejects a task passing the conjunction of the complete
-$k$-subset, scalar, and defined resource-information controls.
+The cost of a policy is the maximum path length over all its candidate worlds,
+including exempt worlds. A leaf with only exempt worlds may stop without $g$,
+and must be reported as such.
+\end{definition}
+The central quantifiers are $\forall o\ \exists\pi_o\ \forall\theta\in b_o$.
+The weaker $\forall\theta\ \exists\pi_\theta$ permits an omniscient choice and
+does not certify a usable experiment. The implementation searches bounded
+nonbranching preparations up to the first split; it does not enumerate all
+possible experimental policies.
+
+\begin{theorem}[Conditional local completion]\label{thm:local}
+Assume (a) the true grounded world belongs to $b_0$; (b) its transitions and
+observations agree with its candidate throughout execution; (c) the grounded
+state, $g$, and $K$ have their declared meanings; and (d) the certified commands
+are executed without unmodeled interventions. Executing an admissible prefix
+and its observed suffix maintains $K$ and terminates within $H$. If the true
+profile belongs to $R_0$, termination satisfies $g$.
 \end{theorem}
 \begin{proof}
-Use hidden immutable identity $i\in\{0,\ldots,n-1\}$, initially true control
-atom $start$, false atoms $p_0,\ldots,p_{n-1},end,done$, and goal $done$.
-Retain $start,p_0,\ldots,p_{n-1},end$, but not $done$.
-Every action costs one resource unit. Action $prepare_j$ requires $start$,
-deletes it, sets $p_j$, and sets $done$ only for identity $j+1\pmod n$.
-Action $finish_j$ requires $p_j$, deletes it, sets $end$, and sets $done$ for
-every identity except $j$. The goal is otherwise preserved. Action $recover$
-requires $end$ and sets $done$. Action $sense_i$ observes whether the identity
-is $i$, has no physical effect, and is available at every stage.
-
-For a proper subset choose an omitted $j$ and use $prepare_j;finish_j$.
-For the full set a preparation followed by a finish leaves $j$ unfinished;
-a preparation followed by sensing does not finish the remaining candidates.
-Sensing first leaves a branch of at least two candidates and only one remaining
-action, while one productive action at $start$ can finish only one identity.
-Two senses achieve no goal; other first productive actions are inapplicable.
-This exhausts all first actions and proves infeasibility, although an extra
-unit permits $prepare_j;finish_j;recover$.
-
-Every pair is a proper subset and has a common two-action goal sequence, so
-the conflict graph is empty. A single world can sense and then choose its
-successful preparation, giving $K_m\geq1$; it cannot achieve the goal with
-two senses, giving $K_m=1$. Every nonempty clique is a singleton of weight
-$1/2$, hence passes.
-
-At $p_j$, the scalar immediate finish mask contains $n-1$ identities, including
-the one already credited by preparation. Thus at the root scalar counting
-gives $\min(n,1+(n-1))=n$. Lineage removes that first identity, so preparation
-followed by finishing contributes $1+(n-2)=n-1$. At the root a sensing action
-has two disjoint branches; with one remaining action each branch has capacity
-one, so its contribution is two, at most $n-1$. These are all possible root
-contributions. Hence $\CL=n-1$. Buckets in this construction are disjoint by
-immutable identity, so matching has the same values. Taking
-$n\geq\max\{3,k+1\}$ proves the claim for any fixed $k$.
+Initially the true pair belongs to $b_0$. By (b) and (d), each issued command
+produces its modeled successor and observation. Equation~\eqref{eq:update}
+therefore retains that pair, inductively. Condition (i) covers the prefix;
+condition (ii) covers all suffix states and its required terminal goal. The
+observed leaf determines one common policy, so no hidden identity is needed.
+Condition (iii) bounds the entire path. An exempt true profile is covered by the
+constraint and cost argument, but not by the goal conclusion.
 \end{proof}
+The theorem is deliberately local and conditional. In the actual game,
+\texttt{MODEL\_MISMATCH} and \texttt{OBSERVATION\_GAP} stop further certificate
+use. Detection after an action cannot undo that action or prove it was safe.
+The fallback LLM policy does not inherit this local theorem.
 
-Given the explicit channel table for this family, only $O(n)$ relational
-nodes at positive depths are reached: the root, the $n$ preparation successors,
-and at most $2n$ sensing successor masks at $start$. Each scans $O(n)$ actions
-with at most two buckets. Thus the combinatorial DP uses
-$O(n^2\lceil n/w\rceil)$ word work, excluding construction and representation
-of the channels. This does not bound general SAT construction time, and is not
-an exponential runtime comparison against a well-implemented fixed-$k$ test.
-Its point is the high-order infeasibility missed by \emph{every} proper subset.
+\section{Why spend the action budget on verification?}
+\subsection{An implemented budget guard, not a value-of-information claim}
+Let $\pi_{\rm ref}$ be a replay-verified common policy for the same query and
+frozen obligations, with worst path cost $C_{\rm ref}$. A proposed experiment
+with certified suffixes has
+\begin{equation}\label{eq:cost}
+ U(p)=|p|+\max_o\cost(\pi_o,b_o).
+\end{equation}
+The current selector requires
+\begin{equation}\label{eq:allowance}
+ U(p)\leq H,\qquad U(p)\leq C_{\rm ref}+\Delta
+\end{equation}
+when a reference has been found. $\Delta=0$ in the game runs. When no reference
+has been found, only the horizon and admissibility tests apply. Failure to find
+a reference within a computation budget is not proof that none exists.
 
-\section{Projection refinement: a counterexample and qualified guarantees}
-\begin{proposition}[More retained predicates can weaken the bound]\label{prop:counter}
-There is a deterministic two-candidate task with no observations where both
-relational capacities increase from one to two when one initially common
-dynamic predicate is added to the projection, although the task is infeasible.
+\begin{proposition}[Budget accounting]\label{prop:budget}
+Under Theorem~\ref{thm:local}'s assumptions, an admitted experiment consumes at
+most $U(p)$ environment actions. If a reference exists, its worst-cost overhead
+is at most the declared allowance in the sense of~\eqref{eq:allowance}.
 \end{proposition}
 \begin{proof}
-Let hidden immutable $h$ be true in one candidate and false in the other.
-Initially $start$ is true and $stage,b,done$ are false. The only initial action
-$prepare$ deletes $start$, sets $stage$, and sets $b$ exactly when $h$ is true.
-There are two finishing actions, both requiring and deleting $stage$; one sets
-$done$ when $h$ is true, the other when $h$ is false. There are no observations
-or other actions. Each singleton has a two-step plan, but a policy cannot choose
-different finishes for the indistinguishable candidates, and cannot finish twice.
-
-For $P=\{start,stage\}$, preparation has one non-goal bucket containing both
-names. The child has maximum immediate capacity one, so $\CL=\CM=1$ at depth
-two. For $P'=P\cup\{b\}$, the initially common value is still false, but
-preparation creates two different projected successors. The relaxation grants
-their distinction, producing two singleton buckets each of capacity one.
-Consequently both capacities are two. This is a counterexample in the actual
-Boolean action language, not only in an arbitrary abstract table.
+Every execution consists of the $|p|$ charged prefix commands and one verified
+suffix path. The latter is no longer than its leaf's verified maximum. Maximizing
+proves~\eqref{eq:cost}; the selector explicitly checks~\eqref{eq:allowance}.
 \end{proof}
-In particular, neither relation universally dominates an exact two-world
-control. In this refined example the relation passes, the singletons are
-feasible, and the exact pair rejects. Together with
-Theorem~\ref{thm:separate}, this rules out a universal dominance claim over
-complete fixed-$k$ controls ($k\geq2$). The scalar/lineage/matching ordering
-holds only when the projection and channels being compared are the same.
+$C_{\rm ref}$ is an upper bound from an existing witness, not an optimal cost or
+a lower bound. This proposition does not establish pointwise dominance over
+$\pi_{\rm ref}$, improvement in expected game score, wall time, or API cost.
+The selector ranks admissible experiments by worst total cost, remaining model
+count, excess production, and prefix length. The information tie-break is a
+heuristic: cardinality alone is not the benefit being optimized in the game.
 
-\begin{theorem}[A sufficient channel simulation]\label{thm:simulation}
-Consider a fine and a coarse channel system on the same candidate names, and
-a successor-compatible map $f$ from fine keys to coarse keys. Assume for each
-fine key and action: (a) that action exists at its coarse image;
-(b) the immediate goal masks are equal; and (c) there is an injective map
-$\eta$ from its fine buckets to coarse buckets such that
-$E'_j\subseteq E_{\eta(j)}$ and $f(q'_j)=q_{\eta(j)}$.
-If the conditions hold recursively, then for $C=\CL$ or $\CM$,
-$C'(q',S,d)\leq C(f(q'),S,d)$.
-\end{theorem}
-\begin{proof}
-Induct on depth. Equal goal masks give equal immediate credit and the same
-remaining mask. A fine child mask is a subset of its mapped coarse mask.
-The induction hypothesis, followed by mask monotonicity, bounds its capacity
-by the mapped coarse child. Injectivity lets us compare the lineage sums
-without using a coarse contribution twice. For matching, send each fine
-allocation to its mapped coarse bucket; its eligible edges and capacities are
-available, and injectivity avoids merging two allocated child loads into one
-capacity. Every fine action contribution is thus bounded by the corresponding
-coarse one. Extra coarse actions, the maximum, and the equal mask caps preserve
-the inequality.
-\end{proof}
-This is sufficient, not necessary, and deliberately stronger than syntactic
-predicate inclusion. A refined observation split violates injectivity. Changing
-existential goal masks also falls outside the theorem; it must not be silently
-treated as satisfying the hypothesis. No production projection selector currently
-checks this entire simulation condition.
+\subsection{When information can change a later decision}
+For a \emph{fixed} query state, horizon and frozen obligations, let $V_R(b)$ be
+the optimal worst action cost of a common policy satisfying those obligations,
+or infinity if none exists. Restricting the belief also restricts required
+profiles to $R\cap\supp(b)$; it never creates a new exemption for a retained one.
 
-\begin{corollary}[Safe envelope without a simulation assumption]
-For the same exact belief and depth, take the minimum of any valid completed
-capacity upper bounds from applicable projections. The result remains a sound
-upper bound on the number of actual successful unfinished names and cannot
-increase as more bounds are added. Equivalently, maximize their admissible
-cost lower bounds. A stale certificate is reusable only for the same exact
-belief/task/depth, not merely the same set of predicate identities.
-\end{corollary}
-\begin{proof}
-Each applicable projection separately upper-bounds the actual successful
-coverage by Theorem~\ref{thm:sound}. Their minimum therefore does too. Adding
-another number to a minimum cannot increase it. The corresponding statement
-about exact-belief lower-bound records follows directly.
-\end{proof}
-
-\begin{proposition}[What a multistep refinement core proves]
-Let $F_\tau$ describe independently witnessed steps of a fixed candidate path.
-For each forgotten predicate $p$, let $L_p$ equate its first value to the actual
-initial value and each subsequent pre-value to the preceding post-effect value.
-If $F_\tau\land\bigwedge_{p\in U}L_p$ is UNSAT, retaining and propagating
-\emph{all} predicates in $U$ excludes that particular path pattern.
+\begin{proposition}[Decision value under sound elimination]\label{prop:monotone}
+If $b'\subseteq b$ consists of the same retained profile--state pairs, then
+$V_R(b')\leq V_R(b)$. The inequality need not be strict. This statement does not
+compare the state before a resource-consuming experiment with the state after it.
 \end{proposition}
 \begin{proof}
-A refined path realizing the same action, observation, coarse-projection and
-termination pattern supplies witnesses satisfying $F_\tau$. Propagation of all
-retained $U$ supplies every $L_p$, contradicting UNSAT. An incomplete deletion
-procedure may still produce a sufficient core, but not a minimum-cardinality
-one. Choosing just one member of the core need not exclude the path.
+Any feasible policy for $b$ can be restricted to observation paths reachable from
+$b'$. Its constraints and terminal obligations continue to hold and its maximum
+path length cannot increase. Taking minima proves the result, including the
+case $V_R(b)=\infty$. A costly experiment changes states and remaining horizon,
+so the subset premise does not hold for that comparison.
 \end{proof}
-Excluding a path is not a proof that all relaxed paths disappear, that coverage
-decreases, or that a real contingent policy is impossible. A fresh sound
-capacity certificate is required before pruning.
+A finite search budget may return a worse witness despite a smaller exact
+optimum; the proposition is about $V_R$, not every bounded solver run.
 
-\section{Partial computation and exact-search integration}
-Let $v=(q,S,d)$ denote a DP node with interval $[L_v,U_v]$, initially
-$[0,\card S]$ at positive depth and $[0,0]$ at depth zero or an empty mask.
-An action with an unfinished channel table has interval $[0,\card S]$.
-Once its full table is available, compute its lineage interval by substituting
-child $L$ and $U$ into~\eqref{eq:lineage}; for matching use the two capacitated
-networks, or any certified cut upper bound from~\eqref{eq:partialcut}.
-Take the maximum of the action endpoints and apply the mask cap. Intersect
-with the previous node interval, so $L$ only increases and $U$ only decreases.
+\begin{example}[A decision-relevant and a decision-irrelevant distinction]
+A blade needs one unit of ore, available only in an attached bag. The rules are
+hand-only and hand-plus-bag. Without distinguishing them, the common policy is
+\emph{take out ore; craft; pick up blade}, costing three actions. Sound prior
+evidence for hand-plus-bag permits \emph{craft; pick up}, costing two, in the
+same later state. If the ore is already in hand, both rules permit the same
+two-action policy: identifying access gives no action saving there.
 
-\begin{theorem}[Safe interruption and decisive intervals]\label{thm:interval}
-These updates enclose the complete recurrence under any sequence of pauses,
-resumptions, and shared completed-cache hits. $U_v<\card S$ rejects the original
-bounded task. $L_v=\card S$ proves only that this relaxation cannot reject it.
-An action with upper endpoint at most the node's current lower endpoint can
-be skipped when computing that node's exact maximum.
-\end{theorem}
-\begin{proof}
-All action functions are monotone in child capacities. Replacing them by lower
-and upper endpoints therefore encloses the true action value; maxima and
-cardinality caps are also monotone. Unfinished tables retain the universal
-interval, so unseen actions, goal memberships or outcomes cannot be omitted
-from a rejection. Intersecting two valid intervals preserves validity.
-Depth decreases on dependency edges, giving an inductive proof on the DAG
-independent of evaluation order. A skipped action cannot exceed the already
-established lower bound on the maximum. Rejection follows from
-Corollary~\ref{cor:searchbound}; a saturated lower endpoint only establishes a
-large optimistic capacity. A partial action maximum below $\card S$ is a lower
-endpoint and has no rejection meaning.
-\end{proof}
-The current resumable lineage engine usually leaves $U_v=\card S$ until closing
-the node. Its saved-child ceilings and dominated-action skipping are special
-cases of this theorem. The stronger intermediate upper propagation and cut-DAG
-rules above are proved and reference-tested, but are \emph{not} integrated into
-the production scheduler. SAT UNKNOWN or incomplete outcome enumeration cannot
-be treated as an empty bucket table.
+Testing \emph{craft} in the bag-only state succeeds under one rule, but under
+hand-only it fails and still requires the three-action policy. Its worst cost
+is four, so a zero-allowance guard rejects this test against a three-action
+reference. Information is not automatically worth its acquisition cost.
+\end{example}
 
-\begin{theorem}[Sound and complete bounded search]
-An exact depth-bounded AND/OR search remains sound and complete when it prunes
-only with the above certified rejections or other admissible bounds, keeps
-exact belief/resource keys, and uses only verified policies as upper bounds.
-This holds under arbitrary query selection, provided optional computation is
-bounded or fairly yields to search. Increasing thresholds finds the optimal
-finite policy whenever the unrestricted search reaches its cost threshold.
-\end{theorem}
-\begin{proof}
-Induct on remaining depth. Goal beliefs terminate correctly; a non-goal belief
-at depth zero fails. A certified rejection excludes only infeasible bounded
-subproblems. Otherwise enumerate actions legal in every world. An action
-succeeds exactly when every nonempty actual observation child succeeds at one
-less depth; induction gives soundness and completeness of this test.
-If every action fails the bounded problem is infeasible. The action set and
-depth are finite, so fair finite optional work cannot prevent termination.
-Memoized lower records store $V(B)>d$ as a finite lower bound $d+1$, not global
-infinity. Verified policies give genuine upper records. Neither needs heuristic
-consistency for this depth-decreasing recurrence. An ancestor-targeted rejection
-may unwind descendant frames, but may update only the certified belief; it
-does not prove those descendants infeasible. Finally, exhaustive increasing
-thresholds cannot skip an optimal solution using an admissible lower bound.
-\end{proof}
+\subsection{A sufficient amortization condition, with explicit limits}
+The following is a proposed analysis tool, not a deployed test-selection rule.
+It states what must be estimated before justifying a positive allowance by
+future reuse. Suppose a finite sequence of future query states and budgets is
+specified. For each true profile, both strategies reach the \emph{same} next
+query state, or any additional routing/replenishment cost is included explicitly.
+All guards remain valid; policies and their path costs can be replayed for every
+profile. These assumptions are not established for arbitrary game progression.
 
-\noindent A proof-oriented search interface is:
-\begin{verbatim}
-Decide(B, d):
-    if all worlds in B satisfy goal: return a stop policy
-    if d == 0: return NO
-    if a verified policy for B has depth <= d: return it
-    if a certified lower record for B is > d: return NO
-    choose any applicable projection; optionally resume a finite query
-    if its certified U < number of unfinished names:
-        lower[B] = max(lower[B], d + 1); return NO
-    for every action legal in every world of B:
-        split exact successors only by actual observations
-        solve every nonempty child at d - 1
-        if all children have policies: return their joined policy
-    lower[B] = max(lower[B], d + 1); return NO
-
-Interrupting optional inference: retain its valid interval/cache,
-then continue exact search. Interrupting exact search: return UNKNOWN.
-\end{verbatim}
-The pseudocode is bounded decision search, not a claim that scheduling by a
-learned probability is optimal or that UNKNOWN is NO.
-
-\section{Finite-resource keys and actual complexity}
-\begin{proposition}[Exact finite-horizon resource normalization]
-Let $c_i^{\max}=\max_a c_i(a)$. At remaining depth $d$, replacing
-$r_i$ by $\min(r_i,d c_i^{\max})$ leaves all three complete capacities unchanged.
-\end{proposition}
-\begin{proof}
-At depth zero all values are zero. For $d\geq1$, normalization preserves
-affordability because $c_i(a)\leq c_i^{\max}\leq d c_i^{\max}$. For an
-affordable action, clipping its normalized successor to the $(d-1)$ threshold
-gives the same value as clipping its original successor. If $r_i\leq
-d c_i^{\max}$ this is immediate. Otherwise both successors are at least
-$(d-1)c_i^{\max}$. Boolean channel templates are independent of resources.
-Induction on the normalized successor keys proves equality. The proof fails
-if resource values affect goals, observations, effects, or replenishment.
-\end{proof}
-
-Let $A$ be the number of grounded actions, $p=\card P$, $K$ the maximum number
-of non-goal buckets per action, $W=\lceil N/w\rceil$ bitset words, and $D$ the
-number of relational nodes actually visited. Given complete cached channel
-tables, lineage evaluation has conservative work
-$O(D A K(W+b+1))$, including mask work and child-key/resource assembly.
-Matching adds at most $O(D A N^2K)$ for the current simple augmenting-path
-implementation. Channel construction, SAT, grounding, and formula manipulation
-are additional costs; write them separately as $T_{\mathrm{channels}}$ and
-$T_{\mathrm{front}}$. These expressions assume unit-cost bounded-size integer
-and hash operations; bit complexity of large counters and dictionary behavior
-can add further factors.
-
-For an initial resource vector $r^0$ and depth limit $H$, a coarse bound on
-the number of scalar keys is
+For profile $\theta$, let $C_{0}^{\rm test}(\theta)$ and
+$C_{0}^{\rm ref}(\theta)$ be acquisition-episode costs including completion, and
+$C_j^{\rm reuse}(\theta),C_j^{\rm ref}(\theta)$ later episode costs.
+Set
 \[
-Q_H\leq\sum_{d=0}^{H}2^p\prod_{i=1}^{b}
-             \bigl(1+\min\{r_i^0,d c_i^{\max}\}\bigr),
-\qquad D\leq 2^N Q_H.
+ e=\max_{\theta}\bigl(C_0^{\rm test}(\theta)-C_0^{\rm ref}(\theta)\bigr),
+ \qquad
+ s_j=\min_{\theta}\bigl(C_j^{\rm ref}(\theta)-C_j^{\rm reuse}(\theta)\bigr).
 \]
-Resource normalization can save repeated work but does not remove the
-exponential candidate-mask factor. Boolean observations give
-$K\leq2^{p+1}$. Sparse reachable masks and lazy channels may be much smaller;
-these are empirical benefits, not polynomial guarantees for a lifted input.
-Grounding can itself be exponential in schema arity, and a node budget alone
-does not bound SAT construction time.
+These are pathwise comparisons with verified \emph{specified policies}, not
+differences of unrelated upper and lower bounds.
+\begin{proposition}[Sufficient amortization]\label{prop:amortize}
+Under the stated matched-query assumptions, if $e\leq\sum_{j=1}^k s_j$, the
+test-and-reuse strategy costs no more than the reference strategy for any
+candidate profile across these episodes. Each episode must separately satisfy
+its actual remaining budget and constraints.
+\end{proposition}
+\begin{proof}
+For each $\theta$, subtract total reference cost from total test-and-reuse cost.
+The acquisition difference is at most $e$ and each later difference is at most
+$-s_j$. Their sum is at most $e-\sum_j s_j\leq0$. Matching boundary states (or
+charging all differing boundary costs) makes this sum describe the two actual
+strategies. A total-cost inequality alone does not ensure an intermediate
+budget or resource constraint, which is why these require separate checks.
+\end{proof}
+The condition may fail: the hand-only branch in the example saves nothing in
+later episodes. Without a justified distribution or guaranteed revisits, a
+successful-branch saving cannot pay for a failed-branch loss. Current software
+therefore uses the explicit local allowance, not a claimed estimate of future
+information value. A future empirical estimator must report prediction error
+and acquisition costs rather than treating every elimination as a benefit.
 
-For a completed proof DAG with $E_D$ explicit child incidences, stored channel
-data take $O(E_{\mathrm{channels}}W)$ words and DP entries/continuations take
-$O(D(W+p/w+b)+E_D)$ words up to implementation overheads. A hot template hit
-removes construction but not its $K$ bucket visits, intersections, resource
-subtractions, and child-key lookups. Consequently counting only new cache
-entries is not a bound on total computation. Time slices checked between SAT
-calls can overrun by an atomic call; no hard real-time guarantee follows.
+\section{When may learned evidence be reused?}
+\subsection{Context-scoped raw profiles}
+A context guard $\kappa(Q)$ describes the assumptions under which semantic
+parameters are treated as stationary. The implemented guard includes recipe
+identity and quantities, station evidence, location/routes, item vocabulary,
+equipment and bag identity, capacities/background loads, semantics version and
+raw profile universe. It excludes current inventory quantities, public-history
+length and offered batch sizes. These excluded fields are re-grounded for each
+new query; they are not copied from an old state. Changes to included fields
+prevent cross-context filtering.
 
-\section{Relation to prior work and exact claim boundaries}
-Rintanen's $n$-distance framework~\cite{rintanen} establishes the importance of
-small joint world sets. Its conformant distance must not be used unchanged as
-an admissible contingent distance when sensing can help; the paper explicitly
-discusses that restriction. Our comparator uses exact contingent subset costs.
-Theorem~\ref{thm:separate} concerns that fully defined comparator, not all
-algorithms in the earlier framework.
+Equality of these recorded fields does \emph{not} prove guard adequacy. Time,
+level, buffs or other unmodeled variables may affect a craft. In particular an
+observed evening bonus in Mark falls outside the current family. A valid reuse
+theorem requires that any excluded variable either is modeled as state or does
+not change the shared semantic parameters. The current game system has not
+established that assumption generally.
 
-The LUG/POND work~\cite{bryce} already reasons with labels, overlapping support,
-and cross-world interactions. The candidate contribution here is the particular
-resource-indexed successful-name capacity and its certified integration into
-bounded search; neither labels, max-flow, Kraft counting, nor choosing expensive
-heuristics is claimed new by itself. The following comparison concerns a
-specified reachability test, not all computations possible with labelled graphs.
+\begin{definition}[Evidence ledger]
+For a context $\kappa$ and validity epoch $e$, let $\Theta_\kappa$ be its raw
+joint profile universe and $S_{\kappa,e}$ its current survivors, initially
+$\Theta_\kappa$. A matched public transition $i$ defines compatible raw profiles
+$C_i$ by replay against the pre-observation belief. Update
+\begin{equation}\label{eq:ledger}
+ S_{\kappa,e}\leftarrow S_{\kappa,e}\cap C_i.
+\end{equation}
+Each update stores the action, observation digest, local compilation fingerprint,
+context/epoch, and eliminated joint profiles. Search infeasibility and unresolved
+search are not transition evidence and cannot enter this update.
+\end{definition}
+A new query with the same context compiles only its profiles in $S_{\kappa,e}$.
+Thus evidence changes available future policy branches and the selected action,
+not merely a textual memory entry. The implementation supports one recipe per
+persistent query; it does not independently factor multi-recipe correlations.
 
-\subsection{A concrete cross-world labelled abstraction}
-Restrict this comparison to conformant tasks with conjunctive Boolean goals.
-Encode bounded non-replenishing resources with finite-domain level facts and
-legal transitions, without adding observations. This encoding preserves legal
-action sequences and their lengths. Define $L_X(B,d)$ to be the goal test of a
-labelled uncertainty graph at layer $d$, using all world labels, same-world and
-cross-world literal mutexes, with interference, competing needs, inconsistent
-support and induced-effect mutex propagation as in Appendix B of~\cite{bryce}.
-The goal must be labelled reachable in every world and its literal pairs must
-be non-mutex for every relevant pair of world labels. Use ordinary parallel
-layers, or the sound serial strengthening forbidding distinct real actions
-in one layer. Do not perform backward plan extraction or higher-order nogood
-learning in this test. This defines the comparison independently of a particular
-POND search configuration or relaxed-plan extraction heuristic.
+\subsection{Aliases must survive changing action sets}
+The compiler may collapse profiles with identical behavior in a query. For
+example, the two rounding rules coincide when only batches of size one are
+available. Names such as \texttt{m0} are local to that compilation, not stable
+semantic identities. Let $\alpha_Q(m)$ be all raw aliases represented by model
+$m$. For surviving compiled models $M_i$, use
+\[
+ C_i=\bigcup_{m\in M_i}\alpha_Q(m)
+\]
+before applying~\eqref{eq:ledger}. Filter raw profiles \emph{before} quotienting
+the next query; its different batch set may split an old equivalence class.
 
-\begin{lemma}[Exact pair control bounds this labelled goal test]\label{lem:lugpair}
-Suppose every singleton and pair of initial worlds has a resource-legal
-conformant plan of length at most $d$. Then $L_X(B,d)$ passes. Consequently a
-completed exact resource-aware pair infeasibility test is at least as
-discriminating as this labelled goal test on the stated conformant fragment.
+\begin{lemma}[Alias lifting]\label{lem:alias}
+Suppose a compiled class represents exactly the same transitions and observations
+as all its raw aliases on every action/state reachable within the current
+query's horizon. Retaining the union of aliases of matched classes does not
+eliminate a raw profile consistent with that query's actual observations.
 \end{lemma}
 \begin{proof}
-Fix a pair of worlds and its actual common plan. Follow the plan through the
-graph. Initially each true literal has its world label. At an action layer the
-actual preconditions and triggered guards have supports, so each actual effect
-and persistent literal receives its world label at the next layer. Two actual
-co-achieved literals cannot be declared mutex by a sound interference,
-competing-needs, induced-effect or inconsistent-support rule: their common
-execution supplies a compatible pair of supporting effects, recursively down
-to the initial layer. The same real action is used across the two worlds at
-each step, so the serial strengthening does not remove this witness. Pad short
-plans with persistence. At layer $d$ every goal literal is therefore reachable
-and every goal-literal pair for these two labels is non-mutex. Apply the argument
-separately to all pairs, including coincident labels. The definition of $L_X$
-tests exactly these conditions; it does not require the different pair
-witnesses to be the same plan. Taking the contrapositive proves the comparison.
+Any consistent raw profile belongs to a class making the same predictions along
+the actual path. That class survives every matching observation. Its entire
+alias set is retained, including the profile. No choice of a single canonical
+representative is transferred to a later, possibly finer query.
 \end{proof}
+For no attached bag, bag-inclusive and bag-exclusive access modes may collapse;
+the aliases still preserve their unresolved distinction. For an integer-unit
+recipe all quantity rules coincide; for noninteger coefficients and unit batches,
+only the two ceiling rules coincide. These are the compiler's declared reductions.
 
-\begin{theorem}[Incomparability with the specified labelled test]\label{thm:lug}
-Neither the complete lineage-capacity rejection test with an arbitrary fixed
-projection nor $L_X$ dominates the other, even on deterministic conformant tasks
-with a single resource. The same statement holds for matching capacity.
+\begin{theorem}[Guarded reuse]\label{thm:reuse}
+Assume a fixed epoch has a true raw profile $\theta^*\in\Theta_\kappa$; all
+recorded transitions are faithfully observed and modeled under that profile;
+the guard is adequate to keep these semantic parameters valid in every query
+using the epoch; and the compiler satisfies Lemma~\ref{lem:alias}. Then
+$\theta^*\in S_{\kappa,e}$ after every valid update. Filtering a later matching
+query by $S_{\kappa,e}$ therefore does not remove its true profile. With fresh
+correct grounding, Theorem~\ref{thm:local} applies to a newly verified policy in
+that filtered query.
 \end{theorem}
 \begin{proof}
-For the first direction remove sensing actions from the family in
-Theorem~\ref{thm:separate}. Every proper subset still has its two-action common
-plan, so Lemma~\ref{lem:lugpair} makes $L_X(B,2)$ pass, including when resource
-levels are encoded. The scalar value remains $n$ and both relational capacities
-remain $n-1$: the removed sensing contribution was only two and never exceeded
-the preparation contribution. Thus capacity rejects the full task.
-
-For the other direction take two worlds differing only in an irrelevant
-immutable atom. In both, dynamic atoms $p$ and $done$ are initially false and
-the goal is $done$. There are only two actions: $sustain$ requires $p$ and adds
-$p$; $finish$ requires $p$ and adds $done$. Each consumes one unit; the budget
-and horizon are one. No real action is applicable. In every labelled graph
-$p$ has no initial support, and no first supported producer, so $done$ never
-becomes labelled reachable. Hence $L_X$ rejects. With an empty retained dynamic
-projection, $p$ is a forgotten dynamic atom and can be true in an existential
-channel witness. Action $finish$ therefore has both names in its immediate-goal
-mask, yielding $\CL=\CM=2$. Both capacities pass. This example is deliberately
-simple: the shared singleton reachability bound in the actual planner already
-catches it. It establishes an abstraction boundary, not a regression of the
-combined planner.
+The initial survivor set includes $\theta^*$. At each matched observation,
+correct transitions and observations keep its compiled class alive. Alias
+lifting places $\theta^*$ in $C_i$; intersection preserves it. Induction proves
+the first statement. Guard adequacy transfers the same parameter interpretation
+to a new query, whose states and constraints are re-grounded. Filtering happens
+before recompilation, so the true profile remains represented even if the new
+quotient differs. The new certificate, not the old action sequence, supplies
+its own completion and budget argument.
 \end{proof}
+Observations may repeatedly fail to distinguish surviving profiles. The theorem
+does not imply identification, fewer LLM calls, or a bound on total game failures.
+For a fixed finite nonempty universe, there are at most $|\Theta_\kappa|-1$
+strict eliminations in a realizable epoch. This elementary finite-elimination
+fact is not a sample-complexity or novelty claim. Changing contexts, expanding
+the family and opening new epochs void any across-run version of that count.
 
-The separation is not a claim of a newly discovered limitation of pairwise
-mutex reasoning. Its specific content is that the implemented coverage
-recurrence detects a high-order resource obstruction while retaining only the
-stated progress projection. It gives no superiority over labelled relaxed-plan
-extraction, higher-order mutexes, a complete labelled search, or arbitrary
-resource-aware abstractions. On tasks with sensing, a conformant cross-world
-mutex can prohibit actions that a conditional policy chooses on different
-branches; it must not be used unchanged for safe contingent pruning. Our
-implemented pair control instead solves the actual contingent two-world problem.
-Incomplete pair queries contribute only completed lower bounds, never a claimed
-pass or failure. Neither implementation is labelled a reproduction of POND.
+\subsection{Invalidation and recovery}
+All-model mismatch, incomplete modeled feedback, or incompatible checkpoint
+execution revokes the epoch's exclusions; the controller cancels its current
+continuation. The ledger keeps the audit, restores the unfiltered family for a
+fresh epoch, and makes no claim that the family is now correct. Different
+contexts use separate ledgers. Model-family expansion changes the universe and
+requires new validation. Restoring a checkpoint preserves the frozen filter,
+epoch, spent actions, original exemptions and feedback replay; it must reproduce
+the policy fingerprint before continuing.
 
-\subsection{An exact limit on the usefulness of identity computation}
-\begin{proposition}[Collapse of homogeneous labels]\label{prop:collapse}
-Suppose every reachable channel has an immediate-goal mask and each eligible
-mask equal to either $I$ or the empty set. For every subset $S$ and depth $d$,
-\[
- \CL(q,S,d)=\CM(q,S,d)=\min\{\card S,C_0(q,d)\}.
-\]
-In particular, the implemented existential construction has this property when
-all names have the same immutable valuation. Adding common retained dynamic
-predicates cannot by itself remove this equality.
-\end{proposition}
-\begin{proof}
-Induct on depth. All three capacities are zero at depth zero. If an action's
-goal mask is $I$, it contributes the full candidate ceiling. Otherwise it
-credits no immediate success and every nonempty child retains all of $S$.
-By induction, its lineage contribution is
-$\min\{\card S,\sum_j\min(\card S,C_0(q_j,d-1))\}$, which equals
-$\min\{\card S,\sum_j C_0(q_j,d-1)\}$. The scalar recurrence has the same
-expression with ceiling $N$; clipping it to $\card S$ gives the former value.
-For matching, every surviving candidate is adjacent to every child bucket,
-so the maximum matching size is exactly the smaller of $\card S$ and the sum
-of child capacities. Taking the maximum over actions commutes with clipping
-to the common ceiling. This proves the induction. With one immutable valuation,
-the SAT query for any fixed common projected value is identical for every name,
-so its masks are necessarily homogeneous, for any retained common projection.
-\end{proof}
+Revocation is conservative: combat can revoke evidence even when the quantity
+rule did not actually change. Conversely a hidden change that continues matching
+some false profiles can remain undetected. Neither clearing a ledger nor a
+successful subsequent action repairs a missing true model. The present mechanism
+is exact elimination under assumptions, not probabilistic belief revision.
 
-This proposition justifies the already implemented one-static-class skip in
-\texttt{amortized\_refinement.py}. It also identifies a representational
-limitation: faster scheduling cannot create a strict relational improvement
-when all labels have collapsed. Preserving initial names without a constraint
-linking them to reachable dynamic facts is insufficient. A stronger construction
-would need such a link, with a separate simulation/soundness proof; it is not
-silently assumed in the present experiments.
+\section{Algorithm and correspondence with implementation}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item Read public history and the remaining global budget. V6/LLM proposes the
+method milestone; ground its supported fragment. On missing evidence, return
+\texttt{GROUNDING\_UNKNOWN} without pretending that a trial was certified.
+\item Compute the context and read its current raw-profile survivors. Compile
+fresh quantities, resource constraints and observations using the surviving
+\emph{joint} profiles; retain all behavioral aliases. Abort on compilation limits.
+\item Fix the original goal-required profiles. Find and replay a common reference
+policy if possible. Enumerate bounded first-split prefixes; require one verified
+common continuation per leaf and the horizon/allowance tests.
+\item Execute the selected command; charge its action immediately. Match fresh
+public feedback to predicted branches. On mismatch/gap, revoke the epoch and
+cancel continuation. Do not reinterpret these events as task completion.
+\item On a matched transition, lift surviving aliases and update the ledger
+immediately, before the whole local trial completes. Follow its certified
+observation branch without a new LLM call when possible.
+\item At later queries, apply this ledger before search. Re-ground state and
+re-verify a new policy. Never transplant an old plan solely because its evidence
+context matches. Preserve global action expenditure across all queries.
+\end{enumerate}
 
-\section{Frozen public scaling study: gains and their attribution}
-We selected 21 previously unexecuted source pairs from the benchmark archive
-published with the LUG work~\cite{lugdomains}: Ring sizes 2--6; CubeCenter
-sizes 3, 5, 7, 9; BT and BTC sizes 4, 6, 8, 20; and MedicalPKS sizes 4, 6, 8, 12.
-Each has an original-structure configuration and a declared extension with
-16 actuation units and one sensing unit. The 42 configurations and all solver
-source hashes were frozen before inspecting solver outcomes. These related
-instances and their overlays are not independent statistical samples, and
-three families overlap in topic with earlier development domains.
+\paragraph{Implemented.}
+\texttt{resource\_competition.py} defines the finite semantics, constraints,
+paired-profile filter and bounded experiment selector.
+\texttt{resource\_trial.py} grounds one recipe at the current observed station
+and follows actual feedback.
+\texttt{resource\_evidence.py} implements guard/epoch ledgers and alias lifting.
+\texttt{resource\_agent.py} adds the opt-in
+\texttt{persistent\_resource\_v9} agent with checkpointed evidence; V8 remains
+available. The persistence intervention adds no new LLM call or evidence prompt
+section; it directly changes compiled candidates. Later history can of course
+diverge after actions change. Existing limits are six grounded searches per run,
+a six-action local horizon and a 300-action global development budget.
 
-\paragraph{Source quality and experimental protocol.}
-The archive contains inconsistent domain references in BT and MedicalPKS.
-The frontend interprets the explicitly supplied domain/problem pair; those
-16 configurations are therefore reported as paired-file interpretations, not
-unmodified strict-PDDL originals. An after-run audit separates the 24
-configurations with coherent domain names. This check is not a full PDDL
-conformance certification. Ring-3 has an extra closing parenthesis and is
-rejected; Ring-6 exceeds the 2048-model limit and is rejected without sampling.
-Thus 38 configurations are supported in the full interpreted cohort and 22 in
-the coherent-name cohort. All exclusions and raw outcomes remain in the record.
-No identical raw domain/problem pair was found among 65 pairs recorded in
-earlier manifests; byte inequality is not a proof of semantic independence.
+\paragraph{Conditional properties.}
+Theorems~\ref{thm:local} and~\ref{thm:reuse} require realizability, faithful
+observations and adequate guards. Proposition~\ref{prop:budget} applies to
+modeled action counts. Proposition~\ref{prop:monotone} concerns an exact optimum,
+not bounded-search wall time. Proposition~\ref{prop:amortize} requires specified
+future matched queries and pathwise costs; it is not an implemented scheduler.
 
-Five variants share the same indexed exact threshold-search engine, singleton
-bounds, and leaf-information baseline. Optional additions are the resource-aware
-pair control, the resource-aware observation-tree/Kraft control, scalar coverage
-$C_0$, and lineage coverage $\CL$. The latter two use the same projection
-selection and channel construction. Optional pair work is capped at 300,000
-charges, three seconds per run and 0.25 seconds per query; interrupted work is
-not interpreted as a completed feasibility test. This is a practical bounded
-implementation of the control, not evaluation of an unlimited pair oracle.
-The existing coverage and resource-tree budgets are unchanged and recorded in
-the manifest. Each run has horizon 60, a 30-second process limit and 2 GiB memory.
-Eight independent processes occupy eight physical cores. Parsing, exact model
-enumeration, grounding, initialization, and optional inference are included in
-reported time; process startup/imports are recorded separately. Every returned
-policy is replayed on every initial candidate. All jointly completed values agree.
+\paragraph{Not implemented or not established.}
+Automatic upstream/cross-location grounding, automatic guard discovery,
+time-dependent rule inference, multi-recipe persistent correlations, full-quest
+safety/completion, a learned estimate of future reuse value, and independent
+full-game benefit of persistent evidence remain open. Generic route/upstream
+support in the finite domain does not establish their automatic game grounding.
+LLM-plus-planner composition and safe action-model learning have prior
+precedents~\cite{dagan2023,juba2021,mehta2011}; the above correctness results do
+not establish independent originality.
 
-An initial 210-run pilot briefly overlapped a legacy-planner build. Its times
-are not used below. A second, unchanged 210-run batch ran in isolation after
-all builds and native diagnostics finished. Both solver/input manifests match
-exactly. This repeat validates timing under isolation; it does not create a new
-holdout cohort. The table uses one isolated observation per configuration, so
-small timing differences have no statistical significance claim.
+\section{Validation and current evidential limits}
+The new tests check correlated-pair filtering, alias lifting when batch sizes
+change, count changes versus guarded context changes, mismatch revocation,
+rejection of search results as evidence, checkpoint replay, and integration with
+matched prompts. Existing tests cover destructive probes, paid hidden-container
+observations, frozen exemptions, UNKNOWN retention and exact small-model oracles.
 
-\begin{center}
-\begin{tabular}{lrrr}
-\hline
-Method & Completed / 38 & Completed / 22 & PAR2 (22) \\
-\hline
-Leaf information & 26 & 12 & 28.17 \\
-Resource-aware pairs & 28 & 14 & 23.36 \\
-Resource-aware tree/Kraft & 29 & 15 & 20.60 \\
-Scalar coverage $C_0$ & 30 & 14 & 22.69 \\
-Lineage coverage $\CL$ & 30 & 14 & 22.69 \\
-\hline
-\end{tabular}
-\end{center}
-The first column includes the explicitly interpreted file pairs. The last two
-columns use only supported coherent-name configurations. ``Completed'' includes
-a verified optimal policy or certified infeasibility within the declared
-horizon/resources. PAR2 is mean elapsed time with each supported unfinished case
-charged 60 seconds; unsupported inputs are counted separately. The two coverage
-variants each return 24 policies and six bounded infeasibility results in the
-full cohort, and 13 policies and one bounded infeasibility result in the
-coherent-name cohort. Across all five variants, 119 returned policies pass replay.
+The zero-API audit in \texttt{audit\_persistent\_evidence.py} separates two kinds
+of evidence. Two constructed bag-access instances (hand capacities one and two)
+produce a verified three-action later plan without reuse and a two-action later
+plan with correctly acquired accessible-bag evidence. The acquisition experiment
+has worst cost four and explicitly uses allowance one; that extra allowance is
+not enabled in the full-game configuration. These are mechanism examples with
+modeled observations, not independent game episodes or an amortization result.
 
-\paragraph{Actual search savings.}
-On the coherent-name BTC-20 original, $C_0$ finishes in 0.274 seconds and $\CL$
-in 0.289 seconds, each with 39 search expansions and verified optimal depth 39.
-All three information controls time out at 30 seconds. This establishes a
-greater-than-100-fold observed speed advantage on this instance, including
-coverage construction, not merely fewer expansions. On BTC-8 with the a16s1
-extension, $\CL$ uses 0.125 seconds and 15 expansions, versus 1.223 seconds and
-13,751 expansions for the leaf baseline. Conversely, Ring-4 with that extension
-takes $\CL$ 11.354 seconds and 2602 expansions, versus 4.452 seconds and 11
-expansions for the resource-tree control. The resource-tree method additionally
-solves both Ring-5 configurations and CubeCenter-5 original where coverage times
-out. There is no across-family dominance.
+The chronological replay of all 11 grounded queries from the completed V8 game
+runs feeds only earlier actual public feedback into each ledger. It produces
+\textbf{zero reused later queries and zero changed decisions}. Subsequent
+same-recipe contexts differ in attachment/equipment, other recipes are not
+repeated, and some evidence is revoked after feedback gaps. Filtered-policy
+outputs are offline counterfactual queries; historical outcomes are never claimed
+to result from their actions. This negative result rules out attributing those
+completed game scores to persistent evidence.
 
-\paragraph{The independent relational contribution remains unverified.}
-Both coverage variants make 433 scalar rejections in the full batch. Lineage
-also completes 202 relation checks, all passing; it supplies zero additional
-relational rejections and solves exactly the same configurations as $C_0$.
-Across these runs, optional coverage work totals 2.654 seconds for $C_0$ and
-2.698 seconds for $\CL$. These figures do not justify attributing the BTC
-speedups to preserving identities. On the 26 cases jointly completed with the
-leaf baseline, the geometric mean speedup of $\CL$ is approximately 1.000;
-the advantage is concentrated in escaping the larger BT/BTC failures.
-After the source-quality stratification, the resource-tree control solves one
-more coherent-name configuration and has lower PAR2 than coverage.
-Theoretical separation, practical scalar gains, and independent relational
-gains are therefore three different claims; only the first two have support
-in this study. Proposition~\ref{prop:collapse} explains why common-projection
-refinement or scheduling alone cannot repair homogeneous-label cases.
-
-\paragraph{External implementation status.}
-POND SVN revision 313 was compiled with documented portability repairs.
-The older benchmark dialect is not accepted directly by that later parser.
-A separate conformant grounding adapter preserves a small Boolean task under
-roundtrip checks, but the native binary still fails a solvable two-world,
-two-action conformance test: an assertion or crash under the tested A*/LUG
-configurations, and an invalid empty policy under EHC. These are reproduction
-failures, not evidence that the LUG algorithm is weak. No native POND runtime
-or success count enters the table, and the regular \texttt{-mutex} option is
-not represented as the Appendix-B cross-world implementation. A validated
-external implementation and independent public cases with actual relational
-search savings remain necessary before claiming a completed empirical case
-for the relational planner.
-
-\section{Proof-to-code map and verification status}
-\begin{description}[style=nextline]
-\item[Implemented before this supplement.]
-\texttt{symbolic\_coverage.py} constructs existential channels and $C_0$;
-\texttt{relational\_coverage.py} implements both relations;
-\texttt{bounded\_resource\_coverage.py} normalizes resources;
-\texttt{resumable\_capacity.py} and \texttt{catalog\_capacity.py} resume lineage
-computation; \texttt{threshold\_search.py} uses exact beliefs and finite lower
-records; \texttt{resource\_information.py} implements the defined comparator;
-\texttt{coverage\_separation.py} generates the separation family.
-\item[New reference checks, not a production algorithm change.]
-\texttt{coverage\_certificates.py} checks local lineage/Hall upper steps assuming
-certified children and complete channels. \texttt{test\_theory\_strengthening.py}
-checks the cut formula against independent assignments, the stronger separation,
-mask/depth monotonicity, and the concrete refinement counterexample. It tests
-8,539 matching networks and 66,102 cut bounds; all 238 nonempty proper subsets
-of the $n=3,\ldots,7$ families; 55 completed resource-aware pair checks; and
-3,456 mask-monotonicity comparisons. These finite checks can find mistakes but
-are not machine-checked mathematical proofs or held-out performance evidence.
-\item[Proved here but not integrated as a new production mechanism.]
-General intermediate upper propagation, Hall-cut proof DAGs, and the sufficient
-channel-simulation checker. Exact-belief maximum lower records already preserve
-previous certificates; the implementation does not enumerate a portfolio of
-all projections. No runtime improvement is inferred from these proofs.
-\item[Still unproved or unsupported.]
-Universal dominance over labelled planning heuristics or resource-aware bounds;
-monotone strengthening from arbitrary added predicates; polynomial total
-complexity; calibrated scheduling probabilities; independent net runtime gains
-from the relation on held-out public benchmarks; guarantees for stochastic
-dynamics, replenishment, numeric goals,
-or an inaccurate LLM-supplied action model. None is needed as an assumption
-hidden inside the theorems above.
-\end{description}
+The earlier V8 run scores were 2, 17 and 17 for Remnant, Mark and Metropolis;
+Mark completed the environment. The frozen V6 scores were 3, 17 and 9. Those
+runs motivate further game evaluation but have prompt/sampling differences and
+are not a causal ablation of the new mechanism. No unchanged baseline was rerun.
+The next efficacy test needs repeated applicable opportunities, matched initial
+states and prompts, charged acquisition costs, and real quest outcomes. A smaller
+candidate set, a cheaper local witness and improved full-game completion are
+three distinct endpoints.
 
 \begin{thebibliography}{9}
-\bibitem{rintanen} Jussi Rintanen. Distance Estimates for Planning in the Discrete
-Belief Space. AAAI, 2004.
-\url{https://users.aalto.fi/~rintanj1/jussi/papers/Rintanen04heu.pdf}.
-\bibitem{bryce} Daniel Bryce, Subbarao Kambhampati, and David E. Smith.
-Planning Graph Heuristics for Belief Space Search. Journal of Artificial
-Intelligence Research 26:35--99, 2006.
-\url{https://doi.org/10.1613/jair.1869}.
-\bibitem{lugdomains} Daniel Bryce and collaborators. Benchmark archive accompanying
-the LUG planning-graph experiments.
-\url{https://rakaposhi.eas.asu.edu/belief-search/BKS_jair_domains.tgz}.
-SHA-256: \texttt{3b6db211b4eaedab6dc86a5811039f8f4}\\
-\texttt{40f285283ae6e7ccefccc0ed4bee12d}.
+\bibitem{dagan2023} G. Dagan, F. Keller, and A. Lascarides.
+\emph{Dynamic Planning with a LLM}. 2023.
+\url{https://arxiv.org/abs/2308.06391}.
+\bibitem{juba2021} B. Juba, H. S. Le, and R. Stern.
+\emph{Safe Learning of Lifted Action Models}. 2021.
+\url{https://arxiv.org/abs/2107.04169}.
+\bibitem{mehta2011} N. Mehta, P. Tadepalli, and A. Fern.
+\emph{Autonomous Learning of Action Models for Planning}. NeurIPS, 2011.
+\url{https://papers.nips.cc/paper_files/paper/2011/hash/4671aeaf49c792689533b00664a5c3ef-Abstract.html}.
 \end{thebibliography}
 \end{document}

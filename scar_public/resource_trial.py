@@ -176,9 +176,10 @@ class TrialSession:
 
 
 def make_trial(model, text, target, horizon=6, mode='preserve_opportunity', max_states=12000,
-               expansion_budget=600, prefix_depth=2, max_prefixes=40, max_extra_actions=0):
+               expansion_budget=600, prefix_depth=2, max_prefixes=40, max_extra_actions=0,
+               allowed_profiles=None):
     p = from_public(model,text,target)
-    compiled = compile_resources(p,horizon=horizon,max_states=max_states)
+    compiled = compile_resources(p,horizon=horizon,max_states=max_states,allowed_profiles=allowed_profiles)
     report,witness,planner = select_experiment(compiled,mode=mode,expansion_budget=expansion_budget,
         prefix_depth=prefix_depth,max_prefixes=max_prefixes,max_extra_actions=max_extra_actions)
     report['grounding'] = asdict(p)

@@ -279,7 +279,7 @@ def opportunity_planner(compiled, budget):
     return OpportunityPlanner(compiled,exempt),proofs
 
 
-def compile_resources(problem, horizon=8, max_states=30000, max_models=32):
+def compile_resources(problem, horizon=8, max_states=30000, max_models=32, allowed_profiles=None):
     """Enumerate EVERY reachable transition up to H, or abort with UNKNOWN.
 
     Elapsed time is part of the finite state. Frontier rows are charged self-loops
@@ -290,10 +290,18 @@ def compile_resources(problem, horizon=8, max_states=30000, max_models=32):
     if type(horizon) is not int or not 1 <= horizon <= 30:
         raise ResourceGap('finite horizon must be 1..30')
     domain = ResourceDomain(problem)
+    if allowed_profiles is not None and set(allowed_profiles) - set(domain.recipe_order):
+        raise ResourceGap('evidence names an unknown recipe')
     options = []
     for recipe in problem.recipes:
         groups = {}
+        allowed = None if allowed_profiles is None or recipe.output not in allowed_profiles else {
+            tuple(pair) for pair in allowed_profiles[recipe.output]}
+        universe = set(product(recipe.quantity_modes,recipe.access_modes))
+        if allowed is not None and (not allowed or not allowed <= universe):
+            raise ResourceGap('empty or out-of-family evidence; revalidation required')
         for quantity,access in product(recipe.quantity_modes,recipe.access_modes):
+            if allowed is not None and (quantity,access) not in allowed: continue
             canonical_q = ('exact' if all(n % UNIT == 0 for _,n in recipe.needs) else
                            'ceil_batch' if quantity == 'ceil_per_output' and recipe.quantities == (1,) else quantity)
             canonical_a = access if problem.bag_name else access.replace('_bag','')
@@ -333,8 +341,11 @@ def compile_resources(problem, horizon=8, max_states=30000, max_models=32):
         total += len(seen)
         upper = tuple(max(s.resources[i] for s in seen) for i in range(domain.size))
         models.append(Model(name,domains,upper,dict.fromkeys(domain.actions,1),tuple(cases),lookup))
+    identity = {'problem':asdict(problem),'horizon':horizon}
+    if allowed_profiles is not None:
+        identity['allowed_profiles'] = {k:sorted(set(map(tuple,v))) for k,v in sorted(allowed_profiles.items())}
     return CompiledResources(domain,models,candidates,frozenset((m.name,domain.start) for m in models),
-                             horizon,digest({'problem':asdict(problem),'horizon':horizon}),total,aliases)
+                             horizon,digest(identity),total,aliases)
 
 
 def physical_belief_key(belief):
