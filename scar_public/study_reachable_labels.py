@@ -44,6 +44,12 @@ def load(cache, c):
 
 
 def planner(task, mode):
+    if mode.startswith('factored_'):
+        from scar_public.factored_progress import FactoredPlanner
+        return FactoredPlanner(task, mode)
+    if mode.startswith('compact_'):
+        from scar_public.compact_progress import CompactPlanner
+        return CompactPlanner(task, mode)
     if mode.startswith('amortized_'):
         return AmortizedPlanner(task, mode)
     if mode.startswith('carrier_'):
@@ -67,10 +73,17 @@ def main():
     p.add_argument('--modes', nargs='+', default=MODES)
     a = p.parse_args()
     provenance = None
-    if a.suite == 'holdout':
+    if a.suite == 'compact_scale':
+        from scar_public.compact_scale_suite import configurations as scale_cases, load as scale_load, provenance as scale_provenance
+        configs, loader = scale_cases(), scale_load
+        if not a.worker:
+            provenance = {c['id']: scale_provenance(a.cache, c) for c in configs}
+    elif a.suite in ('holdout', 'reused_author'):
         from scar_public.reachable_holdout import configurations as heldout_cases, load as heldout_load
         from scar_public.reachable_holdout import provenance as source_provenance
         configs, loader = heldout_cases(), heldout_load
+        if a.suite == 'reused_author':
+            configs = [dict(c, cohort='reused_validation_now_development') for c in configs]
         if not a.worker:
             provenance = {c['id']: source_provenance(a.cache, c) for c in configs}
     else:
@@ -84,7 +97,9 @@ def main():
     spec = dict(cases=configs, modes=modes, seconds=a.seconds, memory_mib=2048,
         repetitions=1, api_calls=0, sources=sources, suite=a.suite, provenance=provenance,
         protocol='Identical exact search and common projection. Auxiliary reachability patterns add no observations. '
-        'Both capacity variants have identical channel definitions. Optional work has soft budgets of 3s/run, .25s/query; an atomic SAT call can overrun. '
+        'Both capacity variants have identical channel definitions. Optional work has a soft 3s/run budget. '
+        'Default queries have .25s; *_continue modes may extend a completed-scalar, deficient-witness relation query '
+        'to the remaining run budget. An atomic SAT call can overrun. '
         'All preprocessing included; unfinished pattern discarded; completed patterns reported. '
         'Compare relation-specific gains only when completed pattern sets agree. All finite policies replayed. '
         'Development inputs have been inspected previously; no independence claim. '
