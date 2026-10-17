@@ -1,0 +1,4417 @@
+{
+  "versions": {
+    "pairs": {
+      "metropolis": {
+        "manifest": {
+          "game": "metropolis",
+          "checkpoint": "/root/scar_evidence_repair_20261017/runtime/attributes_structured/evidence_repair_v11/metropolis/checkpoints/0093",
+          "start_step": 93,
+          "max_steps": 300,
+          "context_scope": "attributes",
+          "checkpoint_sha256": "bb834e3d34573ebaed5beb507c1743b64c7cee54b687e0337ac354f7d7235549",
+          "agent_sha256": "ba97347c3f6c7547695ef0d9931c124a35b1266d844bbd5add803fab98922ebf",
+          "source_manifest_sha256": "89d5fd4d9be92e0c6614f3f7da9f4ae07ba57a5dff2589ff4705d0cd8d6a4aa0",
+          "stopping_public_report": "Stage completed: Obtain and equip a weapon before engaging enemies.",
+          "design": "Same prompt, parser, planner, step-specific provider draw; only execution of the compiled condition-repair program differs",
+          "qualification": "Selected development checkpoint; stochastic after intervention, not independent validation"
+        },
+        "arms": {
+          "observe": {
+            "status": {
+              "steps": 134,
+              "checkpoint": "0134",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 4,
+                "death": 1,
+                "trade": 0,
+                "quest": 8,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 41,
+            "llm_calls": 32,
+            "newly_charged_requests": 38,
+            "newly_charged_usd": 0.118976496,
+            "actor_seconds": 123.500041814008,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [
+              {
+                "step": 114,
+                "target": "gavel_club",
+                "task": "Obtain and equip a weapon before engaging enemies.",
+                "evidence": {
+                  "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+                  "action": "craft 1 gavel_club",
+                  "evidence": {
+                    "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+                    "epoch": 0,
+                    "reused": true,
+                    "raw_profiles_before": 12,
+                    "raw_profiles_after": 6,
+                    "supporting_observations": 1,
+                    "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+                  },
+                  "expected_failure_cost": 1,
+                  "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+                  "enabling_conditions": {
+                    "target": "gavel_club",
+                    "action": "craft 1 gavel_club",
+                    "unit": "milli-unit",
+                    "profiles": [
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      }
+                    ],
+                    "all_profiles_obstructed": true,
+                    "capacity_is_exact": true,
+                    "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+                  },
+                  "fallback_inspection": "inspect clerks_bench",
+                  "original_task": "Obtain and equip a weapon before engaging enemies."
+                },
+                "candidates": [],
+                "gap": null,
+                "chosen": null
+              }
+            ],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 134,
+                "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 94,
+                "action": "inspect clerks_bench",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 95,
+                "action": "enter clerks_office",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 96,
+                "action": "inspect wax_seal",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 97,
+                "action": "drop binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 98,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 99,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 100,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 101,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 102,
+                "action": "pick up binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 103,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 104,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 105,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 106,
+                "action": "pick up gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 107,
+                "action": "drop binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 108,
+                "action": "drop gavel_splint",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 109,
+                "action": "inspect gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 110,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 111,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 112,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 113,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 114,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 115,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 116,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 117,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 118,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 119,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 120,
+                "action": "enter evidence_room",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 121,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 122,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 123,
+                "action": "enter market_square",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 124,
+                "action": "enter alley",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 125,
+                "action": "pick up docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 126,
+                "action": "inspect docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 127,
+                "action": "enter market_square",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 128,
+                "action": "equip docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 129,
+                "action": "pick up gavel_timber",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 130,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 131,
+                "action": "store 1 gavel_timber docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 132,
+                "action": "pick up binding_thread",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 133,
+                "action": "craft 1 gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 134,
+                "action": "pick up gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          },
+          "execute": {
+            "status": {
+              "steps": 134,
+              "checkpoint": "0134",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 4,
+                "death": 1,
+                "trade": 0,
+                "quest": 8,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 41,
+            "llm_calls": 32,
+            "newly_charged_requests": 0,
+            "newly_charged_usd": 0.0,
+            "actor_seconds": 0.4035652830134495,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [
+              {
+                "step": 114,
+                "target": "gavel_club",
+                "task": "Obtain and equip a weapon before engaging enemies.",
+                "evidence": {
+                  "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+                  "action": "craft 1 gavel_club",
+                  "evidence": {
+                    "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+                    "epoch": 0,
+                    "reused": true,
+                    "raw_profiles_before": 12,
+                    "raw_profiles_after": 6,
+                    "supporting_observations": 1,
+                    "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+                  },
+                  "expected_failure_cost": 1,
+                  "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+                  "enabling_conditions": {
+                    "target": "gavel_club",
+                    "action": "craft 1 gavel_club",
+                    "unit": "milli-unit",
+                    "profiles": [
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      }
+                    ],
+                    "all_profiles_obstructed": true,
+                    "capacity_is_exact": true,
+                    "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+                  },
+                  "fallback_inspection": "inspect clerks_bench",
+                  "original_task": "Obtain and equip a weapon before engaging enemies."
+                },
+                "candidates": [],
+                "gap": null,
+                "chosen": null
+              }
+            ],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 134,
+                "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 94,
+                "action": "inspect clerks_bench",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 95,
+                "action": "enter clerks_office",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 96,
+                "action": "inspect wax_seal",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 97,
+                "action": "drop binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 98,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 99,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 100,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 101,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 102,
+                "action": "pick up binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 103,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 104,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 105,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 106,
+                "action": "pick up gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 107,
+                "action": "drop binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 108,
+                "action": "drop gavel_splint",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 109,
+                "action": "inspect gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 110,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 111,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 112,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 113,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 114,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 115,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 116,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 117,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 118,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 119,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 120,
+                "action": "enter evidence_room",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 121,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 122,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 123,
+                "action": "enter market_square",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 124,
+                "action": "enter alley",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 125,
+                "action": "pick up docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 126,
+                "action": "inspect docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 127,
+                "action": "enter market_square",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 128,
+                "action": "equip docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 129,
+                "action": "pick up gavel_timber",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 130,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 131,
+                "action": "store 1 gavel_timber docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 132,
+                "action": "pick up binding_thread",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 133,
+                "action": "craft 1 gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 134,
+                "action": "pick up gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          }
+        },
+        "same_start_digest": true,
+        "first_action_divergence": null,
+        "comparisons": [
+          {
+            "step": 94,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 95,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 96,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 97,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 98,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 99,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 100,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 101,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 102,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 103,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 104,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 105,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 106,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 107,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 108,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 109,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 110,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 111,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 112,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 113,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 114,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 115,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 116,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 117,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 118,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 119,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 120,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 121,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 122,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 123,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 124,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 125,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 126,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 127,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 128,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 129,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 130,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 131,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 132,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 133,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 134,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          }
+        ],
+        "total_paid": {
+          "requests": 38,
+          "successful_responses": 38,
+          "peak_usd_estimate": 0.118976496,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 1310644,
+          "completion_tokens": 19920,
+          "cache_hit_tokens": 1014016,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 122.90237498283386
+        },
+        "qualification": "Selected development continuation; one trajectory per arm, not independent validation. Post-intervention RNG consumption and LLM prompts can diverge. Shared-cache wall times are not a fair speed comparison."
+      },
+      "remnant": {
+        "manifest": {
+          "game": "remnant",
+          "checkpoint": "/root/scar_method_repair_20261017/runtime/full_clock/method_repair_v12/remnant/checkpoints/0090",
+          "start_step": 90,
+          "max_steps": 300,
+          "context_scope": "clock",
+          "checkpoint_sha256": "891821ea0b8693b46eebbca74a130a68fa863516ab9da811d2b3a79c1fbc8819",
+          "agent_sha256": "88da63e484d98ad0ad9560e4c913640a70cc1c747630142bcac7ed39ff5be906",
+          "source_manifest_sha256": "89d5fd4d9be92e0c6614f3f7da9f4ae07ba57a5dff2589ff4705d0cd8d6a4aa0",
+          "stopping_public_report": "Stage completed. The weight in your hand is steady.",
+          "design": "Same prompt, parser, planner, step-specific provider draw; only execution of the compiled condition-repair program differs",
+          "qualification": "Selected development checkpoint; stochastic after intervention, not independent validation"
+        },
+        "arms": {
+          "observe": {
+            "status": {
+              "steps": 92,
+              "checkpoint": "0092",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 1,
+                "death": 0,
+                "trade": 0,
+                "quest": 2,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 2,
+            "llm_calls": 1,
+            "newly_charged_requests": 1,
+            "newly_charged_usd": 0.00046724399999999996,
+            "actor_seconds": 1.739941034000367,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 92,
+                "line": "Stage completed. The weight in your hand is steady."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 91,
+                "action": "craft 1 wooden_dagger",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 92,
+                "action": "pick up wooden_dagger",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          },
+          "execute": {
+            "status": {
+              "steps": 92,
+              "checkpoint": "0092",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 1,
+                "death": 0,
+                "trade": 0,
+                "quest": 2,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 2,
+            "llm_calls": 1,
+            "newly_charged_requests": 0,
+            "newly_charged_usd": 0.0,
+            "actor_seconds": 0.00669288199787843,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 92,
+                "line": "Stage completed. The weight in your hand is steady."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 91,
+                "action": "craft 1 wooden_dagger",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 92,
+                "action": "pick up wooden_dagger",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          }
+        },
+        "same_start_digest": true,
+        "first_action_divergence": null,
+        "comparisons": [
+          {
+            "step": 91,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 92,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          }
+        ],
+        "total_paid": {
+          "requests": 1,
+          "successful_responses": 1,
+          "peak_usd_estimate": 0.00046724399999999996,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 23585,
+          "completion_tokens": 232,
+          "cache_hit_tokens": 23424,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 1.7283647060394287
+        },
+        "qualification": "Selected development continuation; one trajectory per arm, not independent validation. Post-intervention RNG consumption and LLM prompts can diverge. Shared-cache wall times are not a fair speed comparison."
+      }
+    },
+    "pairs_v2": {
+      "metropolis": {
+        "manifest": {
+          "game": "metropolis",
+          "checkpoint": "/root/scar_evidence_repair_20261017/runtime/attributes_structured/evidence_repair_v11/metropolis/checkpoints/0093",
+          "start_step": 93,
+          "max_steps": 300,
+          "context_scope": "attributes",
+          "checkpoint_sha256": "bb834e3d34573ebaed5beb507c1743b64c7cee54b687e0337ac354f7d7235549",
+          "agent_sha256": "ba97347c3f6c7547695ef0d9931c124a35b1266d844bbd5add803fab98922ebf",
+          "source_manifest_sha256": "8273232814067552610d09ffc5268681e83f77dde0003cb03f0583a803cce439",
+          "stopping_public_report": "Stage completed: Obtain and equip a weapon before engaging enemies.",
+          "reuse_api": "/root/scar_action_repair_20261017/pairs/metropolis/api",
+          "design": "Same prompt, parser, planner, step-specific provider draw; only execution of the compiled condition-repair program differs",
+          "qualification": "Selected development checkpoint; stochastic after intervention, not independent validation"
+        },
+        "arms": {
+          "observe": {
+            "status": {
+              "steps": 134,
+              "checkpoint": "0134",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 4,
+                "death": 1,
+                "trade": 0,
+                "quest": 8,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 41,
+            "llm_calls": 32,
+            "newly_charged_requests": 0,
+            "newly_charged_usd": 0,
+            "actor_seconds": 0.40615842500847066,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [
+              {
+                "step": 114,
+                "target": "gavel_club",
+                "task": "Obtain and equip a weapon before engaging enemies.",
+                "evidence": {
+                  "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+                  "action": "craft 1 gavel_club",
+                  "evidence": {
+                    "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+                    "epoch": 0,
+                    "reused": true,
+                    "raw_profiles_before": 12,
+                    "raw_profiles_after": 6,
+                    "supporting_observations": 1,
+                    "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+                  },
+                  "expected_failure_cost": 1,
+                  "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+                  "enabling_conditions": {
+                    "target": "gavel_club",
+                    "action": "craft 1 gavel_club",
+                    "unit": "milli-unit",
+                    "profiles": [
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      }
+                    ],
+                    "all_profiles_obstructed": true,
+                    "capacity_is_exact": true,
+                    "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+                  },
+                  "fallback_inspection": "inspect clerks_bench",
+                  "original_task": "Obtain and equip a weapon before engaging enemies."
+                },
+                "candidates": [],
+                "gap": null,
+                "chosen": null
+              }
+            ],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 134,
+                "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 94,
+                "action": "inspect clerks_bench",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 95,
+                "action": "enter clerks_office",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 96,
+                "action": "inspect wax_seal",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 97,
+                "action": "drop binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 98,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 99,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 100,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 101,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 102,
+                "action": "pick up binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 103,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 104,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 105,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 106,
+                "action": "pick up gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 107,
+                "action": "drop binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 108,
+                "action": "drop gavel_splint",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 109,
+                "action": "inspect gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 110,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 111,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 112,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 113,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 114,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 115,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 116,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 117,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 118,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 119,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 120,
+                "action": "enter evidence_room",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 121,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 122,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 123,
+                "action": "enter market_square",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 124,
+                "action": "enter alley",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 125,
+                "action": "pick up docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 126,
+                "action": "inspect docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 127,
+                "action": "enter market_square",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 128,
+                "action": "equip docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 129,
+                "action": "pick up gavel_timber",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 130,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 131,
+                "action": "store 1 gavel_timber docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 132,
+                "action": "pick up binding_thread",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 133,
+                "action": "craft 1 gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 134,
+                "action": "pick up gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          },
+          "execute": {
+            "status": {
+              "steps": 134,
+              "checkpoint": "0134",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 4,
+                "death": 1,
+                "trade": 0,
+                "quest": 8,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 41,
+            "llm_calls": 32,
+            "newly_charged_requests": 0,
+            "newly_charged_usd": 0,
+            "actor_seconds": 0.41713432499818737,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [
+              {
+                "step": 114,
+                "target": "gavel_club",
+                "task": "Obtain and equip a weapon before engaging enemies.",
+                "evidence": {
+                  "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+                  "action": "craft 1 gavel_club",
+                  "evidence": {
+                    "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+                    "epoch": 0,
+                    "reused": true,
+                    "raw_profiles_before": 12,
+                    "raw_profiles_after": 6,
+                    "supporting_observations": 1,
+                    "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+                  },
+                  "expected_failure_cost": 1,
+                  "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+                  "enabling_conditions": {
+                    "target": "gavel_club",
+                    "action": "craft 1 gavel_club",
+                    "unit": "milli-unit",
+                    "profiles": [
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 1000
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      }
+                    ],
+                    "all_profiles_obstructed": true,
+                    "capacity_is_exact": true,
+                    "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+                  },
+                  "fallback_inspection": "inspect clerks_bench",
+                  "original_task": "Obtain and equip a weapon before engaging enemies."
+                },
+                "candidates": [],
+                "gap": null,
+                "chosen": null
+              }
+            ],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 134,
+                "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 94,
+                "action": "inspect clerks_bench",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 95,
+                "action": "enter clerks_office",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 96,
+                "action": "inspect wax_seal",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 97,
+                "action": "drop binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 98,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 99,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 100,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 101,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 102,
+                "action": "pick up binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 103,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 104,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 105,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 106,
+                "action": "pick up gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 107,
+                "action": "drop binding_thread",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 108,
+                "action": "drop gavel_splint",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 109,
+                "action": "inspect gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 110,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 111,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 112,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 113,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 114,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 115,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 116,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 117,
+                "action": "drop gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 118,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 119,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 120,
+                "action": "enter evidence_room",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 121,
+                "action": "enter lobby",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 122,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 123,
+                "action": "enter market_square",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 124,
+                "action": "enter alley",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 125,
+                "action": "pick up docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 126,
+                "action": "inspect docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 127,
+                "action": "enter market_square",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 128,
+                "action": "equip docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 129,
+                "action": "pick up gavel_timber",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 130,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 131,
+                "action": "store 1 gavel_timber docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 132,
+                "action": "pick up binding_thread",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 133,
+                "action": "craft 1 gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 134,
+                "action": "pick up gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          }
+        },
+        "same_start_digest": true,
+        "first_action_divergence": null,
+        "comparisons": [
+          {
+            "step": 94,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 95,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 96,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 97,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 98,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 99,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 100,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 101,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 102,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 103,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 104,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 105,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 106,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 107,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 108,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 109,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 110,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 111,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 112,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 113,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 114,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 115,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 116,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 117,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 118,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 119,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 120,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 121,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 122,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 123,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 124,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 125,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 126,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 127,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 128,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 129,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 130,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 131,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 132,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 133,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 134,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          }
+        ],
+        "total_paid": {
+          "requests": 0,
+          "successful_responses": 0,
+          "peak_usd_estimate": 0,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "cache_hit_tokens": 0,
+          "actual_models": [],
+          "summed_request_seconds": 0
+        },
+        "qualification": "Selected development continuation; one trajectory per arm, not independent validation. Post-intervention RNG consumption and LLM prompts can diverge. Shared-cache wall times are not a fair speed comparison."
+      },
+      "remnant": {
+        "manifest": {
+          "game": "remnant",
+          "checkpoint": "/root/scar_method_repair_20261017/runtime/full_clock/method_repair_v12/remnant/checkpoints/0090",
+          "start_step": 90,
+          "max_steps": 300,
+          "context_scope": "clock",
+          "checkpoint_sha256": "891821ea0b8693b46eebbca74a130a68fa863516ab9da811d2b3a79c1fbc8819",
+          "agent_sha256": "88da63e484d98ad0ad9560e4c913640a70cc1c747630142bcac7ed39ff5be906",
+          "source_manifest_sha256": "8273232814067552610d09ffc5268681e83f77dde0003cb03f0583a803cce439",
+          "stopping_public_report": "Stage completed. The weight in your hand is steady.",
+          "reuse_api": "/root/scar_action_repair_20261017/pairs/remnant/api",
+          "design": "Same prompt, parser, planner, step-specific provider draw; only execution of the compiled condition-repair program differs",
+          "qualification": "Selected development checkpoint; stochastic after intervention, not independent validation"
+        },
+        "arms": {
+          "observe": {
+            "status": {
+              "steps": 92,
+              "checkpoint": "0092",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 1,
+                "death": 0,
+                "trade": 0,
+                "quest": 2,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 2,
+            "llm_calls": 1,
+            "newly_charged_requests": 0,
+            "newly_charged_usd": 0,
+            "actor_seconds": 0.008162092002748977,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 92,
+                "line": "Stage completed. The weight in your hand is steady."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 91,
+                "action": "craft 1 wooden_dagger",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 92,
+                "action": "pick up wooden_dagger",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          },
+          "execute": {
+            "status": {
+              "steps": 92,
+              "checkpoint": "0092",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 1,
+                "death": 0,
+                "trade": 0,
+                "quest": 2,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 2,
+            "llm_calls": 1,
+            "newly_charged_requests": 0,
+            "newly_charged_usd": 0,
+            "actor_seconds": 0.006968835998122813,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 92,
+                "line": "Stage completed. The weight in your hand is steady."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 91,
+                "action": "craft 1 wooden_dagger",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 92,
+                "action": "pick up wooden_dagger",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          }
+        },
+        "same_start_digest": true,
+        "first_action_divergence": null,
+        "comparisons": [
+          {
+            "step": 91,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 92,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          }
+        ],
+        "total_paid": {
+          "requests": 0,
+          "successful_responses": 0,
+          "peak_usd_estimate": 0,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "cache_hit_tokens": 0,
+          "actual_models": [],
+          "summed_request_seconds": 0
+        },
+        "qualification": "Selected development continuation; one trajectory per arm, not independent validation. Post-intervention RNG consumption and LLM prompts can diverge. Shared-cache wall times are not a fair speed comparison."
+      }
+    },
+    "pairs_v3": {
+      "metropolis": {
+        "manifest": {
+          "game": "metropolis",
+          "checkpoint": "/root/scar_evidence_repair_20261017/runtime/attributes_structured/evidence_repair_v11/metropolis/checkpoints/0093",
+          "start_step": 93,
+          "max_steps": 300,
+          "context_scope": "attributes",
+          "checkpoint_sha256": "bb834e3d34573ebaed5beb507c1743b64c7cee54b687e0337ac354f7d7235549",
+          "agent_sha256": "ba97347c3f6c7547695ef0d9931c124a35b1266d844bbd5add803fab98922ebf",
+          "source_manifest_sha256": "59aff9b5bf481bb06b8272d4b55390acc0d85d9a0a9da962b0056184a85fa6f1",
+          "stopping_public_report": "Stage completed: Obtain and equip a weapon before engaging enemies.",
+          "reuse_api": "/root/scar_action_repair_20261017/pairs_v2/metropolis/api",
+          "design": "Same prompt, parser, planner, step-specific provider draw; only execution of the compiled condition-repair program differs",
+          "qualification": "Selected development checkpoint; stochastic after intervention, not independent validation"
+        },
+        "arms": {
+          "observe": {
+            "status": {
+              "steps": 160,
+              "checkpoint": "0160",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 4,
+                "death": 1,
+                "trade": 0,
+                "quest": 8,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 67,
+            "llm_calls": 21,
+            "newly_charged_requests": 20,
+            "newly_charged_usd": 0.06116005199999999,
+            "actor_seconds": 55.92402062000838,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [
+              {
+                "step": 93,
+                "target": "gavel_club",
+                "task": "Obtain and equip a weapon before engaging enemies.",
+                "evidence": {
+                  "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+                  "action": "craft 1 gavel_club",
+                  "evidence": {
+                    "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+                    "epoch": 0,
+                    "reused": true,
+                    "raw_profiles_before": 12,
+                    "raw_profiles_after": 6,
+                    "supporting_observations": 1,
+                    "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+                  },
+                  "expected_failure_cost": 1,
+                  "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+                  "enabling_conditions": {
+                    "target": "gavel_club",
+                    "action": "craft 1 gavel_club",
+                    "unit": "milli-unit",
+                    "profiles": [
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      }
+                    ],
+                    "all_profiles_obstructed": true,
+                    "capacity_is_exact": true,
+                    "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+                  },
+                  "fallback_inspection": "inspect clerks_bench",
+                  "original_task": "Obtain and equip a weapon before engaging enemies."
+                },
+                "candidates": [
+                  {
+                    "action": "drop binding_thread",
+                    "container": "docket_satchel_0",
+                    "location": "Statute District, alley",
+                    "route": [
+                      "enter market_square",
+                      "enter alley"
+                    ],
+                    "conditional_retrieval_actions": 5,
+                    "minimum_remaining_actions": 8,
+                    "required_input_total": 3.0,
+                    "optimistic_joint_capacity": 21.0,
+                    "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                    "signature": "04bb2c0f74544926449615f556299b8e7814be105ddd6f1086e60540a5a822e5",
+                    "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                    "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                  }
+                ],
+                "gap": null,
+                "chosen": {
+                  "action": "drop binding_thread",
+                  "container": "docket_satchel_0",
+                  "location": "Statute District, alley",
+                  "route": [
+                    "enter market_square",
+                    "enter alley"
+                  ],
+                  "conditional_retrieval_actions": 5,
+                  "minimum_remaining_actions": 8,
+                  "required_input_total": 3.0,
+                  "optimistic_joint_capacity": 21.0,
+                  "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                  "signature": "04bb2c0f74544926449615f556299b8e7814be105ddd6f1086e60540a5a822e5",
+                  "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                  "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                }
+              },
+              {
+                "step": 93,
+                "target": "gavel_club",
+                "task": "Obtain and equip a weapon before engaging enemies.",
+                "evidence": {
+                  "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+                  "action": "craft 1 gavel_club",
+                  "evidence": {
+                    "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+                    "epoch": 0,
+                    "reused": true,
+                    "raw_profiles_before": 12,
+                    "raw_profiles_after": 6,
+                    "supporting_observations": 1,
+                    "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+                  },
+                  "expected_failure_cost": 1,
+                  "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+                  "enabling_conditions": {
+                    "target": "gavel_club",
+                    "action": "craft 1 gavel_club",
+                    "unit": "milli-unit",
+                    "profiles": [
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      }
+                    ],
+                    "all_profiles_obstructed": true,
+                    "capacity_is_exact": true,
+                    "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+                  },
+                  "fallback_inspection": "inspect clerks_bench",
+                  "original_task": "Obtain and equip a weapon before engaging enemies."
+                },
+                "candidates": [
+                  {
+                    "action": "drop binding_thread",
+                    "container": "docket_satchel_0",
+                    "location": "Statute District, alley",
+                    "route": [
+                      "enter market_square",
+                      "enter alley"
+                    ],
+                    "conditional_retrieval_actions": 5,
+                    "minimum_remaining_actions": 8,
+                    "required_input_total": 3.0,
+                    "optimistic_joint_capacity": 21.0,
+                    "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                    "signature": "04bb2c0f74544926449615f556299b8e7814be105ddd6f1086e60540a5a822e5",
+                    "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                    "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                  }
+                ],
+                "gap": null,
+                "chosen": {
+                  "action": "drop binding_thread",
+                  "container": "docket_satchel_0",
+                  "location": "Statute District, alley",
+                  "route": [
+                    "enter market_square",
+                    "enter alley"
+                  ],
+                  "conditional_retrieval_actions": 5,
+                  "minimum_remaining_actions": 8,
+                  "required_input_total": 3.0,
+                  "optimistic_joint_capacity": 21.0,
+                  "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                  "signature": "04bb2c0f74544926449615f556299b8e7814be105ddd6f1086e60540a5a822e5",
+                  "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                  "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                }
+              }
+            ],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 160,
+                "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 94,
+                "action": "drop binding_thread",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 95,
+                "action": "inspect clerks_bench",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 96,
+                "action": "craft 1 gavel_splint",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 97,
+                "action": "pick up gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 98,
+                "action": "enter market_square",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 99,
+                "action": "enter alley",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 100,
+                "action": "pick up iron_bar",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 101,
+                "action": "pick up docket_satchel_0",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 102,
+                "action": "drop gavel_splint",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 103,
+                "action": "pick up docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 104,
+                "action": "equip docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 105,
+                "action": "store 1 iron_bar docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 106,
+                "action": "inspect docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 107,
+                "action": "pick up gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 108,
+                "action": "pick up iron_bar",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 109,
+                "action": "craft 1 gavel_head",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 110,
+                "action": "craft 1 gavel_head",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 111,
+                "action": "enter market_square",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 112,
+                "action": "craft 1 gavel_head",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 113,
+                "action": "craft 1 gavel_head",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 114,
+                "action": "enter alley",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 115,
+                "action": "enter market_square",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 116,
+                "action": "enter alley",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 117,
+                "action": "enter market_square",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 118,
+                "action": "enter alley",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 119,
+                "action": "enter market_square",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 120,
+                "action": "enter alley",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 121,
+                "action": "enter market_square",
+                "llm_calls": 2,
+                "decision_source": null
+              },
+              {
+                "step": 122,
+                "action": "enter alley",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 123,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 124,
+                "action": "craft 1 gavel_head",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 125,
+                "action": "store 1 gavel_splint docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 126,
+                "action": "store 1 iron_bar docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 127,
+                "action": "pick up gavel_timber",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 128,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 129,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 130,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 131,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 132,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 133,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 134,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 135,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 136,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 137,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 138,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 139,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 140,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 141,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 142,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 143,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 144,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 145,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 146,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 147,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 148,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 149,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 150,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 151,
+                "action": "take out 1 gavel_splint docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 152,
+                "action": "take out gavel_splint docket_satchel_0",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 153,
+                "action": "enter clerks_office",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 154,
+                "action": "drop gavel_splint",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 155,
+                "action": "pick up binding_thread",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 156,
+                "action": "store 1 binding_thread docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 157,
+                "action": "pick up gavel_timber",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 158,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 159,
+                "action": "craft 1 gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 160,
+                "action": "pick up gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              }
+            ]
+          },
+          "execute": {
+            "status": {
+              "steps": 106,
+              "checkpoint": "0106",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 1,
+                "exploration": 4,
+                "death": 1,
+                "trade": 0,
+                "quest": 8,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 13,
+            "llm_calls": 1,
+            "newly_charged_requests": 1,
+            "newly_charged_usd": 0.002539368,
+            "actor_seconds": 3.5364906909962883,
+            "actual_program_actions": 11,
+            "actual_program_phases": {
+              "capacity_retrieval": 5,
+              "paid_contents_observation": 1,
+              "same_endpoint_acquisition": 5
+            },
+            "final_program_source_actions": 10,
+            "compiled_actions_recertified_by_base_controller": 1,
+            "program_execution": [
+              {
+                "event": {
+                  "step": 93,
+                  "action": "drop binding_thread",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "capacity_retrieval",
+                  "certificate": {
+                    "action": "drop binding_thread",
+                    "container": "docket_satchel_0",
+                    "location": "Statute District, alley",
+                    "route": [
+                      "enter market_square",
+                      "enter alley"
+                    ],
+                    "conditional_retrieval_actions": 5,
+                    "minimum_remaining_actions": 8,
+                    "required_input_total": 3.0,
+                    "optimistic_joint_capacity": 21.0,
+                    "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                    "signature": "04bb2c0f74544926449615f556299b8e7814be105ddd6f1086e60540a5a822e5",
+                    "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                    "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "drop binding_thread",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 94,
+                  "action": "enter market_square",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "capacity_retrieval",
+                  "certificate": {
+                    "action": "enter market_square",
+                    "container": "docket_satchel_0",
+                    "location": "Statute District, alley",
+                    "route": [
+                      "enter market_square",
+                      "enter alley"
+                    ],
+                    "conditional_retrieval_actions": 4,
+                    "minimum_remaining_actions": 7,
+                    "required_input_total": 3.0,
+                    "optimistic_joint_capacity": 21.0,
+                    "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                    "signature": "2ac49959d7b1a928d785d1d0fdaef53d0db6070ee728595d997f2c4a9b9ba9fd",
+                    "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                    "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "enter market_square",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 95,
+                  "action": "enter alley",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "capacity_retrieval",
+                  "certificate": {
+                    "action": "enter alley",
+                    "container": "docket_satchel_0",
+                    "location": "Statute District, alley",
+                    "route": [
+                      "enter alley"
+                    ],
+                    "conditional_retrieval_actions": 3,
+                    "minimum_remaining_actions": 6,
+                    "required_input_total": 3.0,
+                    "optimistic_joint_capacity": 21.0,
+                    "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                    "signature": "c628d0b722627819dd5c5aa838a54565d1f916c5a119db9a339771c4c8d8569e",
+                    "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                    "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "enter alley",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 96,
+                  "action": "pick up docket_satchel_0",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "capacity_retrieval",
+                  "certificate": {
+                    "action": "pick up docket_satchel_0",
+                    "container": "docket_satchel_0",
+                    "location": "Statute District, alley",
+                    "route": [],
+                    "conditional_retrieval_actions": 2,
+                    "minimum_remaining_actions": 5,
+                    "required_input_total": 3.0,
+                    "optimistic_joint_capacity": 21.0,
+                    "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                    "signature": "feef418d5618c7663d695666219a81c76774f07b717d3c2dc2023896507f5a2b",
+                    "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                    "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "pick up docket_satchel_0",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 97,
+                  "action": "equip docket_satchel_0",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "capacity_retrieval",
+                  "certificate": {
+                    "action": "equip docket_satchel_0",
+                    "container": "docket_satchel_0",
+                    "location": "Statute District, alley",
+                    "route": [],
+                    "conditional_retrieval_actions": 1,
+                    "minimum_remaining_actions": 4,
+                    "required_input_total": 3.0,
+                    "optimistic_joint_capacity": 21.0,
+                    "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                    "signature": "48ae4adbc5b2b59ff6aff079a781da5d33928374c1a43ff70378ab9ae11f32e1",
+                    "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                    "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "equip docket_satchel_0",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 99,
+                  "action": "inspect docket_satchel_0",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "paid_contents_observation",
+                  "certificate": {
+                    "container": "docket_satchel_0"
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "inspect docket_satchel_0",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 100,
+                  "action": "enter lobby",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "same_endpoint_acquisition",
+                  "certificate": {
+                    "status": "candidate",
+                    "plan": [
+                      "enter lobby",
+                      "pick up binding_thread",
+                      "store 1 binding_thread docket_satchel_0",
+                      "pick up gavel_timber",
+                      "craft 1 gavel_club",
+                      "pick up gavel_club"
+                    ],
+                    "target": "gavel_club",
+                    "search_nodes": 44,
+                    "assumptions": [
+                      "observed routes remain open",
+                      "unit capacity model",
+                      "recipe yields one output on ground",
+                      "carried container inputs are accessible; unknown stations may block craft"
+                    ]
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "enter lobby",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 101,
+                  "action": "pick up binding_thread",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "same_endpoint_acquisition",
+                  "certificate": {
+                    "status": "candidate",
+                    "plan": [
+                      "pick up binding_thread",
+                      "store 1 binding_thread docket_satchel_0",
+                      "pick up gavel_timber",
+                      "craft 1 gavel_club",
+                      "pick up gavel_club"
+                    ],
+                    "target": "gavel_club",
+                    "search_nodes": 40,
+                    "assumptions": [
+                      "observed routes remain open",
+                      "unit capacity model",
+                      "recipe yields one output on ground",
+                      "carried container inputs are accessible; unknown stations may block craft"
+                    ]
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "pick up binding_thread",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 102,
+                  "action": "store 1 binding_thread docket_satchel_0",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "same_endpoint_acquisition",
+                  "certificate": {
+                    "status": "candidate",
+                    "plan": [
+                      "store 1 binding_thread docket_satchel_0",
+                      "pick up gavel_timber",
+                      "craft 1 gavel_club",
+                      "pick up gavel_club"
+                    ],
+                    "target": "gavel_club",
+                    "search_nodes": 30,
+                    "assumptions": [
+                      "observed routes remain open",
+                      "unit capacity model",
+                      "recipe yields one output on ground",
+                      "carried container inputs are accessible; unknown stations may block craft"
+                    ]
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "store 1 binding_thread docket_satchel_0",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 103,
+                  "action": "pick up gavel_timber",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "same_endpoint_acquisition",
+                  "certificate": {
+                    "status": "candidate",
+                    "plan": [
+                      "pick up gavel_timber",
+                      "craft 1 gavel_club",
+                      "pick up gavel_club"
+                    ],
+                    "target": "gavel_club",
+                    "search_nodes": 17,
+                    "assumptions": [
+                      "observed routes remain open",
+                      "unit capacity model",
+                      "recipe yields one output on ground",
+                      "carried container inputs are accessible; unknown stations may block craft"
+                    ]
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "pick up gavel_timber",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "evidence_action_program"
+              },
+              {
+                "event": {
+                  "step": 104,
+                  "action": "craft 1 gavel_club",
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "phase": "same_endpoint_acquisition",
+                  "certificate": {
+                    "status": "candidate",
+                    "plan": [
+                      "craft 1 gavel_club",
+                      "pick up gavel_club"
+                    ],
+                    "target": "gavel_club",
+                    "search_nodes": 11,
+                    "assumptions": [
+                      "observed routes remain open",
+                      "unit capacity model",
+                      "recipe yields one output on ground",
+                      "carried container inputs are accessible; unknown stations may block craft"
+                    ]
+                  },
+                  "extra_llm_calls": 0
+                },
+                "executed_action": "craft 1 gavel_club",
+                "confirmed_by_final_acknowledgment": true,
+                "final_decision_source": "resource_competition"
+              }
+            ],
+            "overridden_program_actions": [],
+            "program_outcomes": [
+              {
+                "step": 98,
+                "reason": "PAUSED_FOR_COMBAT",
+                "target": "gavel_club"
+              }
+            ],
+            "compilation_events": [
+              {
+                "step": 93,
+                "target": "gavel_club",
+                "task": "Obtain and equip a weapon before engaging enemies.",
+                "evidence": {
+                  "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+                  "action": "craft 1 gavel_club",
+                  "evidence": {
+                    "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+                    "epoch": 0,
+                    "reused": true,
+                    "raw_profiles_before": 12,
+                    "raw_profiles_after": 6,
+                    "supporting_observations": 1,
+                    "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+                  },
+                  "expected_failure_cost": 1,
+                  "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+                  "enabling_conditions": {
+                    "target": "gavel_club",
+                    "action": "craft 1 gavel_club",
+                    "unit": "milli-unit",
+                    "profiles": [
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_batch",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "ceil_per_output",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      },
+                      {
+                        "profile": [
+                          "exact",
+                          "hand_bag"
+                        ],
+                        "required": {
+                          "gavel_timber": 2000,
+                          "binding_thread": 1000
+                        },
+                        "accessible_deficit": {
+                          "gavel_timber": 1000,
+                          "binding_thread": 0
+                        },
+                        "total_material_deficit": {
+                          "gavel_timber": 0,
+                          "binding_thread": 0
+                        },
+                        "accessible_capacity": 2000,
+                        "capacity_shortfall": 1000,
+                        "arrangement_obstructed": true
+                      }
+                    ],
+                    "all_profiles_obstructed": true,
+                    "capacity_is_exact": true,
+                    "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+                  },
+                  "fallback_inspection": "inspect clerks_bench",
+                  "original_task": "Obtain and equip a weapon before engaging enemies."
+                },
+                "candidates": [
+                  {
+                    "action": "drop binding_thread",
+                    "container": "docket_satchel_0",
+                    "location": "Statute District, alley",
+                    "route": [
+                      "enter market_square",
+                      "enter alley"
+                    ],
+                    "conditional_retrieval_actions": 5,
+                    "minimum_remaining_actions": 8,
+                    "required_input_total": 3.0,
+                    "optimistic_joint_capacity": 21.0,
+                    "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                    "signature": "04bb2c0f74544926449615f556299b8e7814be105ddd6f1086e60540a5a822e5",
+                    "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                    "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                  }
+                ],
+                "gap": null,
+                "chosen": {
+                  "action": "drop binding_thread",
+                  "container": "docket_satchel_0",
+                  "location": "Statute District, alley",
+                  "route": [
+                    "enter market_square",
+                    "enter alley"
+                  ],
+                  "conditional_retrieval_actions": 5,
+                  "minimum_remaining_actions": 8,
+                  "required_input_total": 3.0,
+                  "optimistic_joint_capacity": 21.0,
+                  "capability_quote": "I equipped docket_satchel_0 as inventory.",
+                  "signature": "04bb2c0f74544926449615f556299b8e7814be105ddd6f1086e60540a5a822e5",
+                  "resource_effect": "No modeled material consumption; dropped material remains at its observed location",
+                  "qualification": "Conditional retrieval; remembered location, navigation, survival and remaining craft semantics are not guaranteed"
+                }
+              }
+            ],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 106,
+                "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 94,
+                "action": "drop binding_thread",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 95,
+                "action": "enter market_square",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 96,
+                "action": "enter alley",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 97,
+                "action": "pick up docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 98,
+                "action": "equip docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 99,
+                "action": "enter market_square",
+                "llm_calls": 1,
+                "decision_source": null
+              },
+              {
+                "step": 100,
+                "action": "inspect docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 101,
+                "action": "enter lobby",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 102,
+                "action": "pick up binding_thread",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 103,
+                "action": "store 1 binding_thread docket_satchel_0",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 104,
+                "action": "pick up gavel_timber",
+                "llm_calls": 0,
+                "decision_source": "evidence_action_program"
+              },
+              {
+                "step": 105,
+                "action": "craft 1 gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              },
+              {
+                "step": 106,
+                "action": "pick up gavel_club",
+                "llm_calls": 0,
+                "decision_source": "resource_competition"
+              }
+            ]
+          }
+        },
+        "same_start_digest": true,
+        "first_action_divergence": 95,
+        "comparisons": [
+          {
+            "step": 94,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 95,
+            "same_before": true,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 96,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 97,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 98,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 99,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 100,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 101,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 102,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 103,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 104,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 105,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          },
+          {
+            "step": 106,
+            "same_before": false,
+            "same_action": false,
+            "same_after": false
+          }
+        ],
+        "total_paid": {
+          "requests": 21,
+          "successful_responses": 21,
+          "peak_usd_estimate": 0.06369941999999999,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 728425,
+          "completion_tokens": 8647,
+          "cache_hit_tokens": 561920,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 56.50503969192505
+        },
+        "qualification": "Selected development continuation; one trajectory per arm, not independent validation. Post-intervention RNG consumption and LLM prompts can diverge. Shared-cache wall times are not a fair speed comparison."
+      },
+      "remnant": {
+        "manifest": {
+          "game": "remnant",
+          "checkpoint": "/root/scar_method_repair_20261017/runtime/full_clock/method_repair_v12/remnant/checkpoints/0090",
+          "start_step": 90,
+          "max_steps": 300,
+          "context_scope": "clock",
+          "checkpoint_sha256": "891821ea0b8693b46eebbca74a130a68fa863516ab9da811d2b3a79c1fbc8819",
+          "agent_sha256": "88da63e484d98ad0ad9560e4c913640a70cc1c747630142bcac7ed39ff5be906",
+          "source_manifest_sha256": "59aff9b5bf481bb06b8272d4b55390acc0d85d9a0a9da962b0056184a85fa6f1",
+          "stopping_public_report": "Stage completed. The weight in your hand is steady.",
+          "reuse_api": "/root/scar_action_repair_20261017/pairs_v2/remnant/api",
+          "design": "Same prompt, parser, planner, step-specific provider draw; only execution of the compiled condition-repair program differs",
+          "qualification": "Selected development checkpoint; stochastic after intervention, not independent validation"
+        },
+        "arms": {
+          "observe": {
+            "status": {
+              "steps": 92,
+              "checkpoint": "0092",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 1,
+                "death": 0,
+                "trade": 0,
+                "quest": 2,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 2,
+            "llm_calls": 1,
+            "newly_charged_requests": 0,
+            "newly_charged_usd": 0,
+            "actor_seconds": 0.007532698004069971,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 92,
+                "line": "Stage completed. The weight in your hand is steady."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 91,
+                "action": "craft 1 wooden_dagger",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 92,
+                "action": "pick up wooden_dagger",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          },
+          "execute": {
+            "status": {
+              "steps": 92,
+              "checkpoint": "0092",
+              "complete": true,
+              "scores": {
+                "unique_kill": 0,
+                "kill": 0,
+                "craft": 2,
+                "exploration": 1,
+                "death": 0,
+                "trade": 0,
+                "quest": 2,
+                "side_quest": 0
+              },
+              "target_public_report": true,
+              "termination": "target_public_report"
+            },
+            "actions": 2,
+            "llm_calls": 1,
+            "newly_charged_requests": 0,
+            "newly_charged_usd": 0,
+            "actor_seconds": 0.006947334000869887,
+            "actual_program_actions": 0,
+            "actual_program_phases": {},
+            "final_program_source_actions": 0,
+            "compiled_actions_recertified_by_base_controller": 0,
+            "program_execution": [],
+            "overridden_program_actions": [],
+            "program_outcomes": [],
+            "compilation_events": [],
+            "extra_llm_review_events": 0,
+            "completion_reports": [
+              {
+                "step": 92,
+                "line": "Stage completed. The weight in your hand is steady."
+              }
+            ],
+            "action_sequence": [
+              {
+                "step": 91,
+                "action": "craft 1 wooden_dagger",
+                "llm_calls": 1,
+                "decision_source": "resource_search"
+              },
+              {
+                "step": 92,
+                "action": "pick up wooden_dagger",
+                "llm_calls": 0,
+                "decision_source": "resource_search"
+              }
+            ]
+          }
+        },
+        "same_start_digest": true,
+        "first_action_divergence": null,
+        "comparisons": [
+          {
+            "step": 91,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          },
+          {
+            "step": 92,
+            "same_before": true,
+            "same_action": true,
+            "same_after": true
+          }
+        ],
+        "total_paid": {
+          "requests": 0,
+          "successful_responses": 0,
+          "peak_usd_estimate": 0,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "cache_hit_tokens": 0,
+          "actual_models": [],
+          "summed_request_seconds": 0
+        },
+        "qualification": "Selected development continuation; one trajectory per arm, not independent validation. Post-intervention RNG consumption and LLM prompts can diverge. Shared-cache wall times are not a fair speed comparison."
+      }
+    }
+  },
+  "requests": 60,
+  "estimated_usd": 0.18314316,
+  "unknown_charge_attempts": 0,
+  "primary_version": "pairs_v3",
+  "development_failures": [
+    "pairs: broad actor goal did not bind to a public task; no mechanism exposure",
+    "pairs_v2: resumed run omitted ancestor public prefix; no mechanism exposure",
+    "native: initial combat handling aborted the program after five actions"
+  ],
+  "cost_scope": "All paid attempts in all three versions; copied completed cache responses are not charged again; native and final replay use zero API calls"
+}
