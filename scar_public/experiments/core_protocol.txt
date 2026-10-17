@@ -1,0 +1,60 @@
+Frozen SCAR core evaluation protocol, 2026-10-17
+
+Before evaluation: finish integration smoke on an OLD Mark snapshot; freeze
+source manifest and this protocol. Do not tune on the subsequent new draws.
+
+Nine independent blocks: remnant, mark, metropolis x 3 fresh resets. No
+user-selected world seeds; record the environment's actual random seed/state.
+Each block shares one new initial snapshot across four arms:
+  prompt: SCAR public notebook and identical candidate/evidence packet, LLM authority;
+  checked: SAME actor, packet and revision call, with explicit final execution gate;
+  sentry: prompt actor plus author Sentry code at revision
+    1d91bca14fa6a4e17908856cc787eb8e8354395f, empty playbook per episode;
+  v16: frozen pre-consolidation SCAR, structured evidence/attributes context,
+    execute action mode and observe-only speculative navigation.
+These are fresh instances within familiar families, not unseen game domains.
+
+All runs have 300 environment actions or engine termination; no best-of selection.
+DeepSeek-flash, actor temperature .7/top_p .8/max_tokens1536, no thinking.
+Sentry author detection/retrieval/verification/update code and default W=5,H=10,
+top_k=5,label_cap=2; auxiliary model same DeepSeek, temperature0,max_tokens4096.
+Actor decoding is shared across methods; differs from Sentry's paper actor token
+limit384. Sentry gets public action/observation only, never reward. Integration
+uses JSON action outputs, accepted_by_environment=None for well-formed semantic
+game failures. Report this adaptation, not an original benchmark reproduction.
+
+All arms in a block run alternately in ONE process. Block hash seed is randomly
+drawn once and logged for resumability; this controls hash ordering, not the
+environment RNG. Restore each arm's world/Python/NumPy state immediately before
+step(), after agent calls. Identical input-state/action transitions MUST have
+identical output hashes and public observations, or stop and invalidate the
+block. Same-step exact provider requests share cached responses within a block;
+different blocks have separate caches. Rotate arm order by repetition index.
+
+Goals and decision criteria (fixed before seeing new outcomes):
+  Desired primary outcome: public main-quest completion in300.
+  Primary discriminating score if completions are tied: raw main-quest reward,
+    averaged equally over all9 blocks (equivalently equal three-game means).
+  Report all per-block/per-game values, paired checked-minus-prompt and
+    checked-minus-sentry differences, and V16 comparison. Exact two-sided paired
+    sign-flip randomization tests over9 differences (512 flips); Holm adjustment
+    across the two main comparisons. Also report paired mean intervals using
+    stratified-within-game bootstrap, explicitly exploratory with only3 per game.
+  Call 'stable improvement in this test' only if checked has higher mean reward
+    than BOTH main controls, adjusted p<.05 for both, positive mean differences
+    in at least2/3 families and no negative family mean, and no observed loss of
+    completed episodes. This is no universal guarantee or proof of new-domain
+    generalization. If the threshold fails, report 'not established'.
+  Report deaths, repeated actions, semantic failures, inspect count, override
+    count, API attempts (including failures/retries), tokens, USD estimate and
+    planner latency. These cannot replace task performance.
+
+Budget: four arms x9 blocks x300=10800 maximum evaluation actions. No unchanged
+STM/LongContext/ReflAct reruns; their familiar development results stay separate.
+Only smoke/integration defects may change the implementation before freezing.
+After freeze, fix an evaluator defect only by recording an amendment, preserving
+all old outputs and labeling the affected batch invalid. No algorithm changes
+or optional stopping based on good/bad scores. Analyze all9 completed blocks.
+
+The three official TTCL game families are used with our DeepSeek/300-step
+research protocol; these are not official Qwen/500-step challenge rankings.

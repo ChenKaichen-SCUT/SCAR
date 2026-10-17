@@ -36,10 +36,14 @@ class Provider:
         self.step = 0
         self.last = None
 
-    def request(self, messages, repair=0):
+    def request(self, messages, repair=0, options=None):
         payload = {"model": self.model, "messages": messages, "temperature": .7,
                    "top_p": .8, "presence_penalty": 0, "max_tokens": 1536,
                    "thinking": {"type": "disabled"}, "response_format": {"type": "json_object"}}
+        if options:
+            if set(options) - {'temperature', 'top_p', 'max_tokens', 'response_format'}:
+                raise ValueError('Unsupported audited decoding option')
+            payload.update(options)
         encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True).encode()
         digest = hashlib.sha256(encoded).hexdigest()
         # Step-specific: identical prompts at two different steps remain independent draws.
@@ -47,7 +51,8 @@ class Provider:
         cache = prefix.with_suffix(".response.json")
         if cache.exists():
             result = json.loads(cache.read_text())
-            append_jsonl(self.directory / "reuse.jsonl", {"step": self.step, "request_hash": digest})
+            append_jsonl(self.directory / "reuse.jsonl", {"step": self.step, "request_hash": digest,
+                                                        "arm": getattr(self, 'arm', None)})
             return result
         with gzip.open(prefix.with_suffix(".request.json.gz"), "wb") as f:
             f.write(encoded)
@@ -57,6 +62,7 @@ class Provider:
             start = time.time()
             record = {"id": uid, "step": self.step, "repair": repair, "attempt": attempt,
                       "request_hash": digest, "started_utc": start, "requested_model": self.model}
+            record['arm'] = getattr(self, 'arm', None)
             append_jsonl(self.directory / "attempts.jsonl", {**record, "event": "started"})
             try:
                 response = self.session.post(self.base + "/chat/completions", json=payload,

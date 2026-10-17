@@ -1,0 +1,142 @@
+SCAR core decision rule and conditional properties, frozen study specification
+2026-10-17. Research record, not a replacement manuscript.
+
+1. Objective and observable inputs
+Maximize probability of public main-task completion within B=300 environment
+actions. Main-quest reward measures partial progress; API and search cost are
+secondary. These priorities are evaluation objectives, not quantities estimated
+by the current selector. No optimal-success-probability claim is made.
+
+At t, H_t is the actual public action-observation history, G_t is the current
+public task registry, R_t is the observed resource state, b_t=B-t. A method
+endpoint e is distinct from G_t. P(G_t) is a PARTIAL task projection: supported
+unit output/possession/equipment predicates. Ingredients do not become terminal
+requirements. Arbitrary semantic goals, multiplicities and survival are not
+fully represented. Public stage/quest reports remain the success authority.
+
+Each evidence entry has (guard k, epoch z, finite joint family M, actual observed
+transitions D). Quantity and accessibility parameters are kept jointly. A model
+that disagrees with a matched actual transition is removed; bounded-search
+failure is never a transition observation. Inconsistent intersections revoke
+the epoch and restore the unfiltered family. Changed guards use separate entries.
+
+2. A single execution interface
+core_planner.py replaces the inherited V6--V16 act() cascade for the new arms.
+It reuses the public parser, V16 task persistence, finite-family evidence update,
+V15 candidate generation, task-role and remaining-material checks. It does NOT
+silently inherit legacy automatic write programs, speculative navigation or
+other override entrances. Frozen V16 is separately evaluated to detect regression.
+
+Pseudocode (all emitted environment actions cost one step):
+  observe the actual last action outcome; update H, G, R and guarded evidence
+  obtain one LLM proposal a using the shared public notebook
+  on a copy of the notebook, construct a decision packet C:
+      evaluate a against current constraints and retained joint models
+      bind an observed task and endpoint; generate bounded endpoint plans
+      label each plan's task-role support, material witness and budget
+      admit automatic candidates only when role support is present,
+        remaining-material status is KNOWN, and first action is not contradicted
+      order admitted candidates by task support, reserve status and plan cost
+  if C contains a plan or contradiction: show C to the actor for ONE revision a'
+  prompt arm: execute a'
+  checked arm: if C is still fresh, no observed combat is present, and a' is in
+      the resource-intervention scope, execute the first admitted plan action;
+      otherwise execute a'
+  register evidence-pending state only for the action actually executed
+  repeat from new public feedback; never record a simulated plan as evidence
+
+This is an authority ablation: packet computation and disclosure are identical.
+After different actions, histories/evidence naturally diverge; we do not assert
+that complete trajectories contain identical evidence. The LLM remains the task
+and method proposer and handles unknown cases. No extra reward or state access
+is supplied to any actor. A failed certificate is UNKNOWN, not a global ban.
+
+Automatic admission implemented in decision_packet() and gate():
+  task-role support != UNKNOWN or explicit contradiction;
+  reserve status in {NO_OTHER_EXPLICIT_OUTPUTS, JOINT_WITNESS_RETAINED};
+  candidate length plus one feedback allowance <= remaining action budget;
+  first action check != contradicted; fresh packet guard;
+  no observed combat; proposed final action in the declared resource scope.
+The task-role and resource tests establish a supported FRAGMENT, not a strong
+full-task policy. Non-consuming commands can still trigger ambient hazards.
+The finite iteration limits and ordering are heuristics. Core copied acquisition
+uses the1500-node bound without a wall-clock cutoff so CPU scheduling cannot
+change same-input decision packets. Frozen V16 retains its historical cutoffs.
+
+3. Conditional evidence retention (implemented)
+Assume (A1) the true joint rule m* belongs to the original finite family;
+(A2) the guard contains every variable that can change these rules, and rules
+are stationary within an epoch; (A3) observation parsing and transition models
+are faithful, with no omitted concurrent effects during admitted observations.
+Then every accepted evidence update retains m*.
+Proof: initially m* is included. An actual transition has exactly the prediction
+of m* by A2--A3, so intersection with consistent profiles retains it. Induction
+gives the result. Recompilation uses complete parameter aliases rather than
+local model IDs, so alias changes do not alter this argument. Revocation restores
+the original family; it cannot justify retaining an already eliminated epoch.
+Code: resource_evidence.EvidenceBank, evidence_repair.RepairController.resume.
+Limits: current game guards do not establish A2 for hidden time-dependent rules.
+Tests verify update logic and mismatch revocation, not truth of all assumptions.
+
+4. Sound local redundancy label (implemented)
+Under A1--A3, if review_action(a) reports EVIDENCE_REJECTED_REDUNDANT_FAILURE,
+then a produces the same modeled failure observation and no modeled physical
+progress in every retained model, including m*. It cannot distinguish retained
+models. Proof: the code enumerates the complete retained joint family and checks
+failure, invariant physical components, and a singleton observation image.
+This is not a statement that the task is impossible or that every replacement
+improves expected reward. To delete a redundant action from an otherwise fixed
+policy without harming success additionally requires time-insensitive dynamics,
+no unmodeled exogenous effects, and a valid continuation. The game policy has
+no blanket success-nondegradation theorem.
+
+5. Conditional task-fragment/resource preservation (implemented, narrower)
+Let Q be the supported unit-output projection of the OTHER active obligations.
+Let x be the known local material vector. For a candidate plan p, reserve_check
+subtracts the componentwise maximum consumption across represented recipe modes
+and adds represented output, yielding conservative x_minus. A returned joint
+witness supplies a recipe derivation for Q union {endpoint} from x_minus.
+Assume (B1) quantities/effects are faithful and represented production is common
+to all retained modes; (B2) the projected resource system is monotone (surplus
+materials never disable a derivation); (B3) each primitive craft has its required
+resources, and the plan executes as modeled; (B4) the task-role bridge is valid.
+Then completion of p retains a material derivation for Q and establishes the
+supported endpoint role. Proof: actual post-plan resources dominate x_minus by
+the maximum-consumption construction and B1/B3. Replay the witness from the
+dominating vector; monotonicity preserves each recipe precondition by induction.
+B4 links the endpoint to the specified task fragment. No method ingredients are
+added to Q, so normal ingredient consumption is not forbidden as a goal loss.
+
+The game checks a material RELAXATION. B2 can fail once capacity is included;
+accessibility, location, equipment exclusivity and survival are not proved by
+this witness. NO_OTHER_EXPLICIT_OUTPUTS makes Q empty; it is not evidence that
+the full task has no other requirements. If P(G) is incomplete, the theorem
+applies only to P(G), not G. Whole-task substitution would additionally require
+a complete faithful task bridge and feasible continuations at every reachable
+observation leaf within b_t. The current automatic gate does not check those
+conditions and does not claim that stronger theorem.
+
+6. Revocation/freshness boundary (implemented)
+Candidate generation operates on a copied notebook. Packet identity excludes
+wall-clock computation timing. Before overriding, gate() compares the current
+guard with the packet guard; a mismatch returns authority to the actor. Actual
+actions alone enter the evidence learner. This prevents an unexecuted plan from
+creating its own supporting evidence. Long-lived semantic evidence still needs
+A2, and guard equality cannot prove absence of hidden changes.
+
+7. Information acquisition and value (not established)
+No expected information-value oracle or proof of positive net test value is
+implemented. Ordinary inspect actions and inspection prerequisites are charged
+to the same B. We report actual observation actions, reward, completions, deaths,
+tokens, requests and computation time. The study tests net policy benefit; it
+does not attribute all inspection to active disambiguation or prove amortized
+value of a particular experiment. No old coverage-bound theorem explains this
+new game policy.
+
+8. Falsification and study decision
+New core can be worse than V16 or prompt-only evidence. Retain all outcomes.
+Stable advantage requires predeclared positive task-reward paired evidence,
+per-family consistency, and no observed completion regression; superiority on
+calls or repetitions alone is insufficient. Negative findings identify the gap
+between conditional local checks and whole-task utility; they do not license
+post-hoc changes to the frozen evaluation or claims of independent validation.

@@ -191,6 +191,7 @@ class ExecutionModel(PublicModel):
         observed edge is not a promise that the route will remain open. Every action
         is followed by real observation; no simulated state is accepted as evidence.
         """
+        if getattr(self, 'node_budget_only', False): seconds = float('inf')
         if prune_impossible is None:prune_impossible=getattr(self,'acquisition_pruning',False)
         self.last_acquisition_pruning={'enabled':prune_impossible,'capacity_removed':[],
                                        'target_unreachable_in_relaxation':False}
