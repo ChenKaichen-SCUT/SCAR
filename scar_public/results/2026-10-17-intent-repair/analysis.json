@@ -1,0 +1,1312 @@
+{
+  "runs": [
+    {
+      "game": "metropolis",
+      "manifest": {
+        "game": "metropolis",
+        "checkpoint": "/root/scar_method_repair_20261017/runtime/full_clock/method_repair_v12/metropolis/checkpoints/0061",
+        "start_step": 61,
+        "max_steps": 300,
+        "checkpoint_sha256": "426895503fc115854022f50ffeaba49ee11e488a438f6511633ae10063d4f4e4",
+        "agent_sha256": "789cae91cb01c91fc194d856d43ac6fb471c2462371540376d75739d5fce297d",
+        "source_manifest_sha256": "607648a7264811c1d9e5e81bd6c2eb70272f413d9f3f80f0c1f70564c016ab77",
+        "stopping_public_report": "Stage completed: Obtain and equip a weapon before engaging enemies.",
+        "design": "Same prompt, parser, planner, step-specific provider draw; only bounded review enforcement differs",
+        "qualification": "Selected development checkpoint; stochastic after intervention, not independent validation"
+      },
+      "arms": {
+        "observe": {
+          "status": {
+            "steps": 120,
+            "checkpoint": "0120",
+            "complete": true,
+            "scores": {
+              "unique_kill": 1,
+              "kill": 1,
+              "craft": 1,
+              "exploration": 5,
+              "death": 1,
+              "trade": 0,
+              "quest": 10,
+              "side_quest": 0
+            },
+            "target_public_report": true,
+            "termination": "target_public_report"
+          },
+          "actions": 59,
+          "calls": 46,
+          "charged_requests": 47,
+          "actual_paid_usd": 0.07369834799999996,
+          "actor_seconds": 109.62162245899526,
+          "review_count": 0,
+          "changed_final_actions": 0,
+          "interventions": [],
+          "audit_counts": {
+            "PREPARATION_NOT_CONSUMPTION": 56,
+            "UNSUPPORTED_ENDPOINT_SWITCH": 7,
+            "AMBIGUOUS_ENDPOINT": 12
+          },
+          "review_compute_median_ms": 0.26843500018003397,
+          "review_compute_total_ms": 24.055828995187767,
+          "completion_reports": [
+            {
+              "step": 83,
+              "line": "Stage completed: Defeat the advocate sentinel silencing witnesses in the dist"
+            },
+            {
+              "step": 120,
+              "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+            }
+          ]
+        },
+        "enforce": {
+          "status": {
+            "steps": 121,
+            "checkpoint": "0121",
+            "complete": true,
+            "scores": {
+              "unique_kill": 0,
+              "kill": 0,
+              "craft": 1,
+              "exploration": 5,
+              "death": 2,
+              "trade": 0,
+              "quest": 9,
+              "side_quest": 0
+            },
+            "target_public_report": true,
+            "termination": "target_public_report"
+          },
+          "actions": 60,
+          "calls": 53,
+          "charged_requests": 52,
+          "actual_paid_usd": 0.09214369200000004,
+          "actor_seconds": 120.33699781999894,
+          "review_count": 2,
+          "changed_final_actions": 0,
+          "interventions": [
+            {
+              "step": 64,
+              "review": {
+                "step": 64,
+                "phase": "before_acquisition",
+                "action": "craft 1 gavel_splint",
+                "intent": {
+                  "target": "gavel_splint",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "endpoint": "gavel_splint",
+                  "status": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "previous": {
+                  "endpoint": "verdict_blade",
+                  "step": 44,
+                  "source": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "status": "UNSUPPORTED_ENDPOINT_SWITCH",
+                "would_intervene": true,
+                "details": {
+                  "task_support": {
+                    "status": "UNKNOWN",
+                    "task": "Obtain and equip a weapon before engaging enemies.",
+                    "output": "gavel_splint",
+                    "reason": "Recipe existence and suggestive names do not establish the task role"
+                  },
+                  "material_options": {
+                    "status": "UNKNOWN",
+                    "unknown": []
+                  },
+                  "joint_material_witnesses": [
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_splint",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_splint",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_splint",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    }
+                  ]
+                },
+                "qualification": "Review request, not a proof of task failure. The previous endpoint is also provisional.",
+                "review_id": "847c39e530d57f95d73cc07f4ff06473096ff037f159508b9eece2a6d878bbf7",
+                "compute_and_assembly_ms": 0.922168001125101
+              },
+              "revision_review": {
+                "step": 64,
+                "phase": "bounded_revision",
+                "action": "craft 1 gavel_splint",
+                "intent": {
+                  "target": "gavel_splint",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "endpoint": "gavel_splint",
+                  "status": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "previous": {
+                  "endpoint": "verdict_blade",
+                  "step": 44,
+                  "source": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "status": "UNSUPPORTED_ENDPOINT_SWITCH",
+                "would_intervene": true,
+                "details": {
+                  "task_support": {
+                    "status": "UNKNOWN",
+                    "task": "Obtain and equip a weapon before engaging enemies.",
+                    "output": "gavel_splint",
+                    "reason": "Recipe existence and suggestive names do not establish the task role"
+                  },
+                  "material_options": {
+                    "status": "UNKNOWN",
+                    "unknown": []
+                  },
+                  "joint_material_witnesses": [
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_splint",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_splint",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_splint",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    }
+                  ]
+                },
+                "qualification": "Review request, not a proof of task failure. The previous endpoint is also provisional.",
+                "review_id": "e221e23d6e179b2f2fee9dfb62231201c6bcd9af2797676baf546fa7a3698971",
+                "compute_and_assembly_ms": 0.9237289996235631
+              },
+              "proposed": "craft 1 gavel_splint",
+              "executed": "craft 1 gavel_splint",
+              "action_changed": false,
+              "extra_revision_calls": 1,
+              "final_executed": "craft 1 gavel_splint",
+              "final_action_changed": false
+            },
+            {
+              "step": 119,
+              "review": {
+                "step": 119,
+                "phase": "before_acquisition",
+                "action": "craft 1 gavel_club",
+                "intent": {
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "endpoint": "gavel_club",
+                  "status": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "previous": {
+                  "endpoint": "verdict_blade",
+                  "step": 44,
+                  "source": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "status": "UNSUPPORTED_ENDPOINT_SWITCH",
+                "would_intervene": true,
+                "details": {
+                  "task_support": {
+                    "status": "UNKNOWN",
+                    "task": "Obtain and equip a weapon before engaging enemies.",
+                    "output": "gavel_club",
+                    "reason": "Recipe existence and suggestive names do not establish the task role"
+                  },
+                  "material_options": {
+                    "status": "UNKNOWN",
+                    "unknown": []
+                  },
+                  "joint_material_witnesses": [
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_club",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_club",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_club",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    }
+                  ]
+                },
+                "qualification": "Review request, not a proof of task failure. The previous endpoint is also provisional.",
+                "review_id": "75b0ecb1f3ed928542654e2e00d57a888464fda57e90557232691916ca9297bd",
+                "compute_and_assembly_ms": 0.9072490029211622
+              },
+              "revision_review": {
+                "step": 119,
+                "phase": "bounded_revision",
+                "action": "craft 1 gavel_club",
+                "intent": {
+                  "target": "gavel_club",
+                  "task": "Obtain and equip a weapon before engaging enemies.",
+                  "endpoint": "gavel_club",
+                  "status": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "previous": {
+                  "endpoint": "verdict_blade",
+                  "step": 44,
+                  "source": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "status": "UNSUPPORTED_ENDPOINT_SWITCH",
+                "would_intervene": true,
+                "details": {
+                  "task_support": {
+                    "status": "UNKNOWN",
+                    "task": "Obtain and equip a weapon before engaging enemies.",
+                    "output": "gavel_club",
+                    "reason": "Recipe existence and suggestive names do not establish the task role"
+                  },
+                  "material_options": {
+                    "status": "UNKNOWN",
+                    "unknown": []
+                  },
+                  "joint_material_witnesses": [
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_club",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_club",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "gavel_club",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    }
+                  ]
+                },
+                "qualification": "Review request, not a proof of task failure. The previous endpoint is also provisional.",
+                "review_id": "1eb0b76fd22eab425023b8771007b69e4d1c6b592006dc42c4e4dccb94eeb3b0",
+                "compute_and_assembly_ms": 0.9025289982673712
+              },
+              "proposed": "craft 1 gavel_club",
+              "executed": "craft 1 gavel_club",
+              "action_changed": false,
+              "extra_revision_calls": 1,
+              "final_executed": "craft 1 gavel_club",
+              "final_action_changed": false
+            }
+          ],
+          "audit_counts": {
+            "PREPARATION_NOT_CONSUMPTION": 37,
+            "UNSUPPORTED_ENDPOINT_SWITCH": 8,
+            "AMBIGUOUS_ENDPOINT": 3
+          },
+          "review_compute_median_ms": 0.3225170003133826,
+          "review_compute_total_ms": 18.495684991648886,
+          "completion_reports": [
+            {
+              "step": 121,
+              "line": "Stage completed: Obtain and equip a weapon before engaging enemies."
+            }
+          ]
+        }
+      },
+      "comparisons": [
+        {
+          "step": 62,
+          "same_before": true,
+          "same_action": true,
+          "same_after": true,
+          "same_first_llm_draw": true,
+          "both_programmatic": false
+        },
+        {
+          "step": 63,
+          "same_before": true,
+          "same_action": true,
+          "same_after": true,
+          "same_first_llm_draw": true,
+          "both_programmatic": false
+        },
+        {
+          "step": 64,
+          "same_before": true,
+          "same_action": true,
+          "same_after": true,
+          "same_first_llm_draw": true,
+          "both_programmatic": false
+        },
+        {
+          "step": 65,
+          "same_before": true,
+          "same_action": true,
+          "same_after": true,
+          "same_first_llm_draw": true,
+          "both_programmatic": false
+        },
+        {
+          "step": 66,
+          "same_before": true,
+          "same_action": true,
+          "same_after": true,
+          "same_first_llm_draw": false,
+          "both_programmatic": true
+        },
+        {
+          "step": 67,
+          "same_before": true,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 68,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 69,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 70,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 71,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 72,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 73,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 74,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 75,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 76,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 77,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 78,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 79,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 80,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 81,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 82,
+          "same_before": false,
+          "same_action": true,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 83,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 84,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 85,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 86,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 87,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 88,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 89,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 90,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 91,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 92,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 93,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 94,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 95,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 96,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": true
+        },
+        {
+          "step": 97,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 98,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": true
+        },
+        {
+          "step": 99,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 100,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": true
+        },
+        {
+          "step": 101,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 102,
+          "same_before": false,
+          "same_action": true,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": true
+        },
+        {
+          "step": 103,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 104,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 105,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 106,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 107,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 108,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 109,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 110,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 111,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 112,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 113,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 114,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 115,
+          "same_before": false,
+          "same_action": true,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 116,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 117,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 118,
+          "same_before": false,
+          "same_action": true,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 119,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        },
+        {
+          "step": 120,
+          "same_before": false,
+          "same_action": false,
+          "same_after": false,
+          "same_first_llm_draw": false,
+          "both_programmatic": false
+        }
+      ],
+      "first_review_step": 65,
+      "first_action_divergence": 67,
+      "verified_common_draws_before_first_review": true,
+      "total_paid": {
+        "requests": 99,
+        "successful_responses": 99,
+        "peak_usd_estimate": 0.16584204,
+        "unknown_charge_attempts": 0,
+        "prompt_tokens": 2292542,
+        "completion_tokens": 32487,
+        "cache_hit_tokens": 1907840,
+        "actual_models": [
+          "deepseek-flash"
+        ],
+        "summed_request_seconds": 224.04135060310364
+      },
+      "qualification": "Selected paired development continuation; review can change frame/target even when the immediate command stays the same. Post-fork stochastic outcomes are not replicated causal effects. Shared-cache wall times are NOT a fair end-to-end runtime comparison."
+    },
+    {
+      "game": "remnant",
+      "manifest": {
+        "game": "remnant",
+        "checkpoint": "/root/scar_method_repair_20261017/runtime/full_clock/method_repair_v12/remnant/checkpoints/0090",
+        "start_step": 90,
+        "max_steps": 300,
+        "checkpoint_sha256": "891821ea0b8693b46eebbca74a130a68fa863516ab9da811d2b3a79c1fbc8819",
+        "agent_sha256": "88da63e484d98ad0ad9560e4c913640a70cc1c747630142bcac7ed39ff5be906",
+        "source_manifest_sha256": "607648a7264811c1d9e5e81bd6c2eb70272f413d9f3f80f0c1f70564c016ab77",
+        "stopping_public_report": "Stage completed. The weight in your hand is steady.",
+        "design": "Same prompt, parser, planner, step-specific provider draw; only bounded review enforcement differs",
+        "qualification": "Selected development checkpoint; stochastic after intervention, not independent validation"
+      },
+      "arms": {
+        "observe": {
+          "status": {
+            "steps": 92,
+            "checkpoint": "0092",
+            "complete": true,
+            "scores": {
+              "unique_kill": 0,
+              "kill": 0,
+              "craft": 2,
+              "exploration": 1,
+              "death": 0,
+              "trade": 0,
+              "quest": 2,
+              "side_quest": 0
+            },
+            "target_public_report": true,
+            "termination": "target_public_report"
+          },
+          "actions": 2,
+          "calls": 1,
+          "charged_requests": 1,
+          "actual_paid_usd": 0.007050444,
+          "actor_seconds": 2.1759151389996987,
+          "review_count": 0,
+          "changed_final_actions": 0,
+          "interventions": [],
+          "audit_counts": {
+            "UNSUPPORTED_ENDPOINT_SWITCH": 3
+          },
+          "review_compute_median_ms": 0.49498000225867145,
+          "review_compute_total_ms": 1.7245449998881668,
+          "completion_reports": [
+            {
+              "step": 92,
+              "line": "Stage completed. The weight in your hand is steady."
+            }
+          ]
+        },
+        "enforce": {
+          "status": {
+            "steps": 92,
+            "checkpoint": "0092",
+            "complete": true,
+            "scores": {
+              "unique_kill": 0,
+              "kill": 0,
+              "craft": 2,
+              "exploration": 1,
+              "death": 0,
+              "trade": 0,
+              "quest": 2,
+              "side_quest": 0
+            },
+            "target_public_report": true,
+            "termination": "target_public_report"
+          },
+          "actions": 2,
+          "calls": 2,
+          "charged_requests": 1,
+          "actual_paid_usd": 0.0006813119999999999,
+          "actor_seconds": 1.5421368930001336,
+          "review_count": 1,
+          "changed_final_actions": 0,
+          "interventions": [
+            {
+              "step": 90,
+              "review": {
+                "step": 90,
+                "phase": "before_acquisition",
+                "action": "craft 1 wooden_dagger",
+                "intent": {
+                  "target": "wooden_dagger",
+                  "task": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+                  "endpoint": "wooden_dagger",
+                  "status": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "previous": {
+                  "endpoint": "wooden_sword",
+                  "step": 58,
+                  "source": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "status": "UNSUPPORTED_ENDPOINT_SWITCH",
+                "would_intervene": true,
+                "details": {
+                  "task_support": {
+                    "status": "UNKNOWN",
+                    "task": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+                    "output": "wooden_dagger",
+                    "reason": "Recipe existence and suggestive names do not establish the task role"
+                  },
+                  "material_options": {
+                    "status": "NO_MATERIAL_PRESERVATION_CERTIFICATE",
+                    "stocked_routes": [],
+                    "before_deficits": {
+                      "wooden_sword": {
+                        "wood_plank": 0,
+                        "wood_strip": 1.0,
+                        "thread": 0
+                      }
+                    },
+                    "profiles": [
+                      {
+                        "mode": "exact",
+                        "craft_materials_present": true,
+                        "retained_routes": [],
+                        "after_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "wood_strip": 1.0,
+                            "thread": 1.0
+                          }
+                        },
+                        "increased_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "thread": 1.0
+                          }
+                        }
+                      },
+                      {
+                        "mode": "ceil_batch",
+                        "craft_materials_present": true,
+                        "retained_routes": [],
+                        "after_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "wood_strip": 1.0,
+                            "thread": 1.0
+                          }
+                        },
+                        "increased_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "thread": 1.0
+                          }
+                        }
+                      },
+                      {
+                        "mode": "ceil_per_output",
+                        "craft_materials_present": true,
+                        "retained_routes": [],
+                        "after_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "wood_strip": 1.0,
+                            "thread": 1.0
+                          }
+                        },
+                        "increased_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "thread": 1.0
+                          }
+                        }
+                      }
+                    ],
+                    "displaced": false,
+                    "qualification": "Material availability only; routes may still fail capacity, location, task-role or budget checks"
+                  },
+                  "joint_material_witnesses": [
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "wooden_dagger",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "wooden_dagger",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "wooden_dagger",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    }
+                  ]
+                },
+                "qualification": "Review request, not a proof of task failure. The previous endpoint is also provisional.",
+                "review_id": "297cf2b30a7edac6707b69763e6f2f25c9902d832ad5904d7c58bdfd9662f4c3",
+                "compute_and_assembly_ms": 0.5100500020489562
+              },
+              "revision_review": {
+                "step": 90,
+                "phase": "bounded_revision",
+                "action": "craft 1 wooden_dagger",
+                "intent": {
+                  "target": "wooden_dagger",
+                  "task": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+                  "endpoint": "wooden_dagger",
+                  "status": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "previous": {
+                  "endpoint": "wooden_sword",
+                  "step": 58,
+                  "source": "UNIQUE_METHOD_ENDPOINT"
+                },
+                "status": "UNSUPPORTED_ENDPOINT_SWITCH",
+                "would_intervene": true,
+                "details": {
+                  "task_support": {
+                    "status": "UNKNOWN",
+                    "task": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+                    "output": "wooden_dagger",
+                    "reason": "Recipe existence and suggestive names do not establish the task role"
+                  },
+                  "material_options": {
+                    "status": "NO_MATERIAL_PRESERVATION_CERTIFICATE",
+                    "stocked_routes": [],
+                    "before_deficits": {
+                      "wooden_sword": {
+                        "wood_plank": 0,
+                        "wood_strip": 1.0,
+                        "thread": 0
+                      }
+                    },
+                    "profiles": [
+                      {
+                        "mode": "exact",
+                        "craft_materials_present": true,
+                        "retained_routes": [],
+                        "after_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "wood_strip": 1.0,
+                            "thread": 1.0
+                          }
+                        },
+                        "increased_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "thread": 1.0
+                          }
+                        }
+                      },
+                      {
+                        "mode": "ceil_batch",
+                        "craft_materials_present": true,
+                        "retained_routes": [],
+                        "after_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "wood_strip": 1.0,
+                            "thread": 1.0
+                          }
+                        },
+                        "increased_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "thread": 1.0
+                          }
+                        }
+                      },
+                      {
+                        "mode": "ceil_per_output",
+                        "craft_materials_present": true,
+                        "retained_routes": [],
+                        "after_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "wood_strip": 1.0,
+                            "thread": 1.0
+                          }
+                        },
+                        "increased_deficits": {
+                          "wooden_sword": {
+                            "wood_plank": 1.0,
+                            "thread": 1.0
+                          }
+                        }
+                      }
+                    ],
+                    "displaced": false,
+                    "qualification": "Material availability only; routes may still fail capacity, location, task-role or budget checks"
+                  },
+                  "joint_material_witnesses": [
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "wooden_dagger",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "wooden_dagger",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    },
+                    {
+                      "status": "JOINT_MATERIAL_WITNESS",
+                      "endpoints": [
+                        [
+                          "wooden_dagger",
+                          1
+                        ]
+                      ],
+                      "schedule": [],
+                      "missing": {},
+                      "qualification": "Constructive material relaxation only, conditional on observed recipe effects; no accessibility or action-budget guarantee"
+                    }
+                  ]
+                },
+                "qualification": "Review request, not a proof of task failure. The previous endpoint is also provisional.",
+                "review_id": "11fc735e3c12ae9cf14553d785ab4369b8450371488ea0e37bb707a3b58bcad9",
+                "compute_and_assembly_ms": 0.587002003157977
+              },
+              "proposed": "craft 1 wooden_dagger",
+              "executed": "craft 1 wooden_dagger",
+              "action_changed": false,
+              "extra_revision_calls": 1,
+              "final_executed": "craft 1 wooden_dagger",
+              "final_action_changed": false
+            }
+          ],
+          "audit_counts": {
+            "UNSUPPORTED_ENDPOINT_SWITCH": 4
+          },
+          "review_compute_median_ms": 0.4884945010417141,
+          "review_compute_total_ms": 2.0065100034116767,
+          "completion_reports": [
+            {
+              "step": 92,
+              "line": "Stage completed. The weight in your hand is steady."
+            }
+          ]
+        }
+      },
+      "comparisons": [
+        {
+          "step": 91,
+          "same_before": true,
+          "same_action": true,
+          "same_after": true,
+          "same_first_llm_draw": true,
+          "both_programmatic": false
+        },
+        {
+          "step": 92,
+          "same_before": true,
+          "same_action": true,
+          "same_after": true,
+          "same_first_llm_draw": false,
+          "both_programmatic": true
+        }
+      ],
+      "first_review_step": 91,
+      "first_action_divergence": null,
+      "verified_common_draws_before_first_review": true,
+      "total_paid": {
+        "requests": 2,
+        "successful_responses": 2,
+        "peak_usd_estimate": 0.007731756,
+        "unknown_charge_attempts": 0,
+        "prompt_tokens": 48117,
+        "completion_tokens": 435,
+        "cache_hit_tokens": 24576,
+        "actual_models": [
+          "deepseek-flash"
+        ],
+        "summed_request_seconds": 3.6953742504119873
+      },
+      "qualification": "Selected paired development continuation; review can change frame/target even when the immediate command stays the same. Post-fork stochastic outcomes are not replicated causal effects. Shared-cache wall times are NOT a fair end-to-end runtime comparison."
+    }
+  ],
+  "requests": 101,
+  "estimated_usd": 0.173573796,
+  "unknown_charge_attempts": 0
+}

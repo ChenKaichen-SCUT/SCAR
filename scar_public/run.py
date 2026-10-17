@@ -17,8 +17,8 @@ from scar_public.agent import PublicAgent
 GAMES = ("remnant", "mark", "metropolis")
 METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9", "evidence_decision_v10")
 PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9", "evidence_decision_v10")
-METHODS += ("evidence_repair_v11", "method_repair_v12")
-PUBLIC_METHODS += ("evidence_repair_v11", "method_repair_v12")
+METHODS += ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13")
+PUBLIC_METHODS += ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13")
 REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
 
 
@@ -81,6 +81,9 @@ def build_agent(method, env, provider):
         if method == "method_repair_v12":
             from scar_public.method_repair import MethodRepairAgent
             return MethodRepairAgent(provider, cfg.system_prompt)
+        if method == "intent_repair_v13":
+            from scar_public.intent_repair import IntentRepairAgent
+            return IntentRepairAgent(provider, cfg.system_prompt)
         return PublicAgent(provider, cfg.system_prompt)
     base = type(env.agents[0])
     factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
@@ -143,9 +146,10 @@ def run(args):
         manifest["evidence_reuse"] = not args.disable_evidence_reuse
     elif args.disable_evidence_reuse:
         raise ValueError("Evidence-reuse ablation is supported only for evidence_decision_v10")
-    if args.method in ("evidence_repair_v11", "method_repair_v12"):
+    if args.method in ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13"):
         manifest['evidence_mode']=args.evidence_mode
         manifest['evidence_context_scope']=args.evidence_context_scope
+    if args.method=='intent_repair_v13':manifest['intent_mode']=args.intent_mode
     fork = Path(args.fork_checkpoint).resolve() if args.fork_checkpoint else None
     if fork:
         source_manifest = json.loads((fork.parent.parent / "manifest.json").read_text())
@@ -190,9 +194,10 @@ def run(args):
     agent = build_agent(args.method, env, provider)
     if args.method == "evidence_decision_v10":
         agent.resource_controller.reuse_enabled = not args.disable_evidence_reuse
-    if args.method in ("evidence_repair_v11", "method_repair_v12"):
+    if args.method in ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13"):
         agent.resource_controller.mode=args.evidence_mode
         agent.resource_controller.context_scope=args.evidence_context_scope
+    if args.method=='intent_repair_v13':agent.resource_controller.intervention_mode=args.intent_mode
     if saved_agent is not None:
         load_agent_state(agent, args.method, saved_agent)
     while step < args.steps:
@@ -204,7 +209,7 @@ def run(args):
         obs, reward, done, info = env.step({AGENT_ID: action})
         env.update_scores(reward)
         step += 1
-        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9", "evidence_decision_v10", "evidence_repair_v11", "method_repair_v12") and (done or step >= args.steps):
+        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9", "evidence_decision_v10", "evidence_repair_v11", "method_repair_v12", "intent_repair_v13") and (done or step >= args.steps):
             agent.observe_terminal(obs[AGENT_ID])
         cp = directory / "checkpoints" / f"{step:04d}"
         cp.mkdir(parents=True, exist_ok=True)
@@ -241,6 +246,7 @@ def main():
     p.add_argument("--transport-revision", default=None)
     p.add_argument("--disable-evidence-reuse", action="store_true", help="Matched V10 local-only control")
     p.add_argument('--evidence-mode',choices=('none','prompt','cache','structured'),default='structured')
+    p.add_argument('--intent-mode',choices=('observe','enforce'),default='observe')
     p.add_argument('--evidence-context-scope',choices=('clock','attributes'),default='clock')
     p.add_argument("--fork-checkpoint", default=None,
                    help="Diagnostic continuation only; --steps is the absolute final step")

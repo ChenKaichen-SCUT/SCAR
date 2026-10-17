@@ -184,13 +184,16 @@ class ExecutionModel(PublicModel):
             return result
         return visit(target)
 
-    def acquisition(self, target, max_nodes=3500, seconds=1.0, fresh=False):
+    def acquisition(self, target, max_nodes=3500, seconds=1.0, fresh=False, prune_impossible=None):
         """Bounded weighted search over known locations, recipes, storage and counts.
 
         Unknown recipe effects/station requirements remain conditional. A successful
         observed edge is not a promise that the route will remain open. Every action
         is followed by real observation; no simulated state is accepted as evidence.
         """
+        if prune_impossible is None:prune_impossible=getattr(self,'acquisition_pruning',False)
+        self.last_acquisition_pruning={'enabled':prune_impossible,'capacity_removed':[],
+                                       'target_unreachable_in_relaxation':False}
         current = self.current
         if not target or current.get('holding') is None or current.get('ground') is None:
             return {'status':'unknown','reason':'missing target or current visibility'}
@@ -228,6 +231,45 @@ class ExecutionModel(PublicModel):
         bags = [(n,b) for n,b in self.containers.items() if not b.get('uncertain_after_craft') and
                 (held.get(n) or equipped.get(n) or ground.get(n))]
         bagname, bag = bags[0] if bags else (None,{'items':{},'capacity':0,'used':0})
+        if prune_impossible:
+            # Necessary condition in THIS finite acquisition model, not a claim
+            # about the real game: crafts draw from hand plus this one bag. This
+            # optimistic bound even grants the full hand and bag capacities,
+            # ignoring attachment/background costs. A recipe exceeding it cannot
+            # occur in any searched state. Other unknown containers remain a
+            # paid discovery option through arrange() below.
+            total_capacity=max(cap,sum(held.values()))+max(bag['capacity'],sum(bag['items'].values()))
+            removed=[n for n,r in recipes.items() if sum(round(v*1000) for v in r.values())>total_capacity*1000]
+            self.last_acquisition_pruning.update(capacity_removed=removed,optimistic_accessible_capacity=total_capacity)
+            recipes={n:r for n,r in recipes.items() if n not in removed}
+            reachable={start_loc};todo=[start_loc]
+            while todo:
+                loc=todo.pop()
+                for dest in graph.get(loc,{}).values():
+                    if dest in locations and dest not in reachable:reachable.add(dest);todo.append(dest)
+            # Delete-relaxed type reachability deliberately ignores finite stock,
+            # ordering, capacity needed to carry the bag, and recipe competition.
+            # Absence even here certifies absence from the concrete search graph.
+            possible={n for n,v in held.items() if v>0}|{n for n,v in bag['items'].items() if v>0}
+            for loc in reachable:possible.update(n for n,v in self.locations[loc]['objects'].items() if v>0)
+            changed=True
+            while changed:
+                changed=False
+                for output,needs in recipes.items():
+                    station=self.stations.get(output,{}).get('name')
+                    required={n for n,v in needs.items() if round(v*1000)>0}
+                    if output not in possible and required<=possible and (not station or any(self.locations[l]['objects'].get(station) for l in reachable)):
+                        possible.add(output);changed=True
+            if target not in possible:
+                self.last_acquisition_pruning.update(target_unreachable_in_relaxation=True,
+                    reachable_locations=sorted(reachable),relaxed_types=sorted(possible))
+                local=self.arrange(target)
+                if local.get('plan') and local.get('status')=='capacity_discovery':
+                    return {**local,'target':target,'search_nodes':0}
+                return {'status':'unknown','reason':'no plan within observed dependency/location model and bounds',
+                        'search_nodes':0,'dependency':self.dependency_view(target),
+                        'automatic_recipe_models_suspended_pending_new_evidence':sorted(unresolved),
+                        'counterexamples':self.recipe_counterexamples[-4:]}
         names = sorted(closure | set(held) | ({bagname} if bagname else set()))
         ni = {n:i for i,n in enumerate(names)}; li = {l:i for i,l in enumerate(locations)}
         # Observed quantities use decimal fractions; 1/1000 is an explicit adapter bound.

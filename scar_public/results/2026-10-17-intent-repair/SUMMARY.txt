@@ -1,0 +1,91 @@
+2026-10-17: connect implementation cost and decisions to explicit mechanisms
+
+Release decision
+The V13 public-task/method audit stays enabled, but paid LLM method-review
+enforcement is OFF by default (intent-mode=observe). The paired diagnostic did
+not justify paying for it. Explicit enforce remains available for research.
+The subsequent capacity/reachability pre-pruning is enabled in V13; older
+methods remain unchanged. No full-manuscript claim or LaTeX change is made.
+
+1. Early intent review and causal controls
+Read public NPC imperatives as tentative current instructions. Replacing one
+instruction does not prove completion. Separate terminal endpoint from upstream
+production via observed numeric/qualitative dependency paths. Check raw proposals
+before acquisition and check actual consuming commands after acquisition. Do not
+review navigation/gathering merely because a resource_target was present.
+Log raw proposal, revision, final command, task evidence and reserve calculation.
+At most one extra review call per action, no repeated payment for an unchanged
+review key, and no forced inspect/look loop when uncertainty remains unresolved.
+Neither a category description nor material feasibility proves task completion.
+
+Paired paid diagnostic, frozen source.tgz (259 files):
+Both arms use identical prompt, parser, V11 executor and observation history.
+Identical step-specific API requests share one model draw. The shared prefix
+was verified by request/response hashes and restored world/RNG state digests.
+Review can alter frame/target even if the immediate command is unchanged;
+thus later action divergence is not necessarily a direct command override.
+
+Selected public task continuations, stop at explicit target report or step 300:
+                  observe           enforce
+Metropolis cp61   59 actions         60 actions
+                  finish step120    finish step121
+                  quest10           quest9
+                  46 logical calls  53 logical calls
+Remnant cp90      2 actions          2 actions
+                  finish step92     finish step92
+                  1 logical call    2 logical calls
+
+Enforce made 2 reviews in Metropolis and 1 in Remnant. NONE changed the immediate
+final command. Metropolis first review at step65, first action divergence step67;
+both arms eventually got public weapon completion. The later sampling/history
+divergence cannot establish a replicated causal score effect. Remnant's valid
+dagger alternative completed in both arms but the extra review wasted one call.
+These are selected, previously inspected development checkpoints, not held-out
+games, full episodes, or repeated success-rate estimates. Shared cached responses
+also make direct wall-clock comparison between these arms unfair.
+
+101 new actual API requests in total, estimated USD 0.173573796, including retries;
+0 unknown-charge attempts. Baselines from earlier versions were not rerun.
+All new workers have finished. See analysis.json and public_evidence.tgz.
+
+2. Constraint-based search acceleration (after the paid diagnostic)
+Before acquisition search, eliminate recipes exceeding an optimistic bound on
+joint hand/container input capacity; then compute a relaxed closure of item
+types at reachable known locations with known stations. If the target is absent
+even in this relaxation, bypass acquisition expansion, preserving the existing
+paid capacity-discovery fallback. Recompute on each query as public state changes.
+This is a conditional impossibility result for this finite observed search model,
+NOT an assertion that the real task is impossible. Proof and exact assumptions:
+scar_public/experiments/acquisition_pruning_notes.txt.
+
+No-API paired benchmark on every craft/resource-target query in the recorded V12
+full_clock trajectories, 131 queries total. Both arms receive separate clones.
+Seven CPU timing repetitions; these are NOT repeated game experiments.
+Time includes cloning, compilation, relaxation and fallback, not just expansions.
+
+game        queries  base nodes  pruned nodes  base median s  pruned median s
+Mark            32         772           196       0.053778         0.049408
+Metropolis      74       80016          4550       0.790797         0.260218
+Remnant         25         150           141       0.063976         0.064327
+
+Metropolis query batch: 3.04x faster, 94.31% fewer search states; about 0.53 seconds
+absolute savings. Mark small improvement, Remnant essentially neutral/slightly
+slower. This is NOT a 3x LLM-game speedup: provider latency dominates end-to-end.
+All 131 semantic query outputs (excluding diagnostic search_nodes) and discovery
+side effects agree; all 58 candidate plans are preserved. No claim that altered
+search-count metadata cannot affect a future LLM sample. Independent unseen
+worlds and final accelerated end-to-end game performance remain untested.
+
+The proof connects the implemented precheck to safe pruning in its modeled
+search graph. It does not establish a new general planning theorem or novelty
+over established delete-relaxed reachability. Its contribution here is making
+the existing joint-capacity reasoning actually save measured search work.
+
+Artifacts
+source.tgz: immutable source used for paid comparisons (no pre-pruning).
+final_source.tgz: final code with default observe mode and enabled V13 pre-pruning.
+public_evidence.tgz: public traces, calls, sanitized charge ledger, manifests.
+pruning_*.json: one complete per-query paired timing/plan record per game.
+pruning_timing.json: seven timing repetitions and median summary.
+tests.txt: final targeted regression suite, 91 passed.
+No API key, credentials, or pickled world checkpoints are included.

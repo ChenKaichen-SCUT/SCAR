@@ -106,10 +106,14 @@ class ObligationAgent:
     def act(self,obs):
         memory=self.notebook; prompt=memory.prompt(obs['text']); model=memory.model; step=self.llm.step
         tokens=[0,0]
-        def query(p,s=None):
+        def raw_query(p,s=None):
             r=self.llm.generate(p,s or self.system_prompt)
             tokens[0]+=r['num_input_tokens'];tokens[1]+=r['num_output_tokens']
             return json.loads(r['response'])
+        def query(p,s=None):
+            parsed=raw_query(p,s)
+            select=getattr(controller,'select_proposal',None) if controller and s is None else None
+            return select(parsed,obs['text'],step,raw_query,p) if select else parsed
         def program(action,source,reason):
             return {'reasoning':reason,'action':action,'decision_source':source,'frame':{
                 **memory.frame,'goal_quote':memory.frame.get('goal_quote',''),
@@ -239,7 +243,7 @@ class ObligationAgent:
         finalize=getattr(controller,'finalize_decision',None) if controller else None
         if finalize:
             proposed_action=parsed['action']
-            parsed=finalize(parsed,obs['text'],step,query,prompt)
+            parsed=finalize(parsed,obs['text'],step,raw_query,prompt)
             if parsed['action']!=proposed_action:
                 # A vetoed action never starts a trial or produces its feedback.
                 memory.resource_trial_state=None

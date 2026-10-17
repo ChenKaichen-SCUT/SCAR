@@ -1,0 +1,46 @@
+Conditional correctness of acquisition pre-pruning (implementation note)
+
+Scope: the finite observed acquisition model in ExecutionModel.acquisition,
+with its current graph, rounded recipe effects, one fixed selected container,
+known station requirements and carried-input crafting. This is NOT a claim of
+real-game infeasibility, optimality, complete domain learning, or novel planning
+theory. The relaxation is a conventional necessary reachability test with the
+specific accessible-capacity restriction used by this implementation.
+
+Let H=max(observed hand capacity, initial held quantity),
+B=max(selected container capacity, initial known contained quantity), in the
+same unit as the search. Craft r needs sum_i round(1000*q_ri) input units.
+Search movement/storage/crafting never raises the hand total above max(H, its
+initial value), or relevant container total above B. Ground production does not
+increase either total. Thus an r with input sum>1000*(H+B) cannot execute in any
+reachable state. Removing it preserves every concrete searched solution. The
+initial over-capacity case matters; using capacity alone would be unsound.
+
+Next retain all locations reachable from the current location in the search's
+observed navigation graph. Initialize types T with every positive held/contained
+item and item observed on the floor of these locations. Repeatedly add the output
+of each remaining recipe whose positive rounded input types are in T and whose
+station is absent from its requirements or exists at a reachable location.
+Ignore finite quantities, competition, attachment/background capacity and order.
+
+Induction on a concrete searched action sequence: movement remains in the
+reachable location set; pickups/storage introduce no new type; any executable
+craft was not capacity-pruned, has input types already in T, and its station is
+present in the reachable set, so the fixed point contains its output. Therefore,
+if the target is absent from T, no sequence in this concrete model can acquire
+it. If target is present, no feasibility is asserted. Missing rules, dynamic
+doors, container-access rules and unseen locations remain model limitations.
+
+The existing capacity-discovery fallback is still called, so rejecting this
+model does not prohibit paid inspection for an unknown affordance. Diagnostic
+search_nodes=0 means no acquisition state expansion, NOT zero compilation or
+fallback work. Benchmark time includes cloning, compilation, closure and fallback.
+
+Complexity: graph reachability O(L+E); the straightforward fixed-point scan at
+most |types| passes over the retained recipe incidences. It can be slower on easy
+queries; compare total measured query costs, not expansion counts alone.
+
+The algorithm is enabled only for the V13 notebook by default. Explicit
+prune_impossible=False keeps the reference planner. Older agents retain their
+default behavior. Frozen paid V13 source predates this acceleration; report its
+outcomes separately from the subsequent no-API query benchmarks.
