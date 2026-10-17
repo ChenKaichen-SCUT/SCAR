@@ -44,6 +44,9 @@ def load(cache, c):
 
 
 def planner(task, mode):
+    if mode.startswith('sparse_'):
+        from scar_public.sparse_policy import SparsePolicyPlanner
+        return SparsePolicyPlanner(task, mode)
     if mode.startswith('factored_'):
         from scar_public.factored_progress import FactoredPlanner
         return FactoredPlanner(task, mode)
@@ -73,9 +76,11 @@ def main():
     p.add_argument('--modes', nargs='+', default=MODES)
     a = p.parse_args()
     provenance = None
-    if a.suite == 'compact_scale':
+    if a.suite in ('compact_scale', 'reused_scale'):
         from scar_public.compact_scale_suite import configurations as scale_cases, load as scale_load, provenance as scale_provenance
         configs, loader = scale_cases(), scale_load
+        if a.suite == 'reused_scale':
+            configs = [dict(c, cohort='reused_scale_development') for c in configs]
         if not a.worker:
             provenance = {c['id']: scale_provenance(a.cache, c) for c in configs}
     elif a.suite in ('holdout', 'reused_author'):
