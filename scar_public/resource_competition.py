@@ -352,8 +352,30 @@ def physical_belief_key(belief):
     return tuple(sorted((name,(state.symbols[0],)+state.symbols[2:],state.resources) for name,state in belief))
 
 
+def policy_profile_costs(planner, belief, policy):
+    """Costs of an already verified policy; retain candidate identities."""
+    costs = {}
+    for name, state in belief:
+        node = policy; used = 0
+        while not node.get('stop'):
+            action = node['action']
+            state, obs = planner.models[name].step(state, action)
+            used += planner.costs[action]; node = node['branches'][obs]
+        costs[name] = used
+    return costs
+
+
+def profile_advantage(reference, proposed):
+    if not reference or set(reference) != set(proposed):
+        return dict(status='UNKNOWN', reason='a verified common reference is unavailable')
+    savings = {name: reference[name]-proposed[name] for name in reference}
+    return dict(status='NONDEGRADING' if min(savings.values()) >= 0 else 'PROFILE_REGRET',
+                minimum_saving=min(savings.values()), savings=savings,
+                scope='relative to this verified reference, not the optimal policy')
+
+
 def select_experiment(compiled, prefix_depth=3, max_prefixes=120, expansion_budget=2500, max_extra_actions=0,
-                      mode='strong'):
+                      mode='strong', require_profile_nondegradation=False):
     """Choose an informative prefix only with a VERIFIED common suffix per leaf.
 
     Prefix search stops at its first observation split. It is deliberately bounded,
@@ -369,6 +391,7 @@ def select_experiment(compiled, prefix_depth=3, max_prefixes=120, expansion_budg
     baseline = planner.solve(belief,horizon,expansion_budget)
     if isfinite(baseline.upper):
         assert planner.verify(belief,horizon,baseline.policy) == baseline.upper
+    reference_costs = policy_profile_costs(planner,belief,baseline.policy) if isfinite(baseline.upper) else None
     result = {'fingerprint':compiled.fingerprint, 'scope':'conditional finite local task',
               'guarantee_mode':mode,'initial_individual_feasibility':proofs,
               'success_exempt_models':sorted(planner.exempt) if mode == 'preserve_opportunity' else [],
@@ -418,10 +441,18 @@ def select_experiment(compiled, prefix_depth=3, max_prefixes=120, expansion_budg
                     'status': 'VERIFIED' if safe else 'NO_CONTINUATION_IN_CANDIDATE_MODEL'
                     if checked.lower == inf else 'SEARCH_BUDGET_UNKNOWN'})
             candidate.update(lower=str(lower),upper=str(upper),all_leaves_verified=valid)
+            proposed_costs = {}
+            if valid:
+                for obs, worlds in branches.items():
+                    proposed_costs.update({name: used+cost for name,cost in
+                        policy_profile_costs(planner,worlds,suffixes[obs]).items()})
+            candidate['profile_value'] = profile_advantage(reference_costs, proposed_costs)
             if not valid:
                 candidate['decision'] = 'REJECT_UNVERIFIED_CONTINUATION'
             elif isfinite(baseline.upper) and upper > baseline.upper+max_extra_actions:
                 candidate['decision'] = 'REJECT_EXTRA_COST'
+            elif require_profile_nondegradation and candidate['profile_value']['status'] == 'PROFILE_REGRET':
+                candidate['decision'] = 'REJECT_PROFILE_REGRET'
             else:
                 candidate['decision'] = 'ADMISSIBLE'
                 rank = (upper,candidate['worst_remaining_models'],candidate['excess_target_production'],len(actions),actions)
@@ -434,7 +465,8 @@ def select_experiment(compiled, prefix_depth=3, max_prefixes=120, expansion_budg
     if selected:
         candidate,suffixes = selected
         result.update(status='CONDITIONAL_EXPERIMENT',prefix=candidate['prefix'],
-                      worst_total_actions=candidate['upper'],selected_leaves=candidate['leaves'])
+                      worst_total_actions=candidate['upper'],selected_leaves=candidate['leaves'],
+                      prospective_value=candidate['profile_value'])
         return result, {'prefix':candidate['prefix'],'suffixes':suffixes}, planner
     if isfinite(baseline.upper):
         result.update(status='DIRECT_POLICY',reason='no verified informative prefix within cost/bounds',

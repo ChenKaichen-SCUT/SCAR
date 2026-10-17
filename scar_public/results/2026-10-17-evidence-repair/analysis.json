@@ -1,0 +1,3731 @@
+{
+  "scope": "Prospective single runs on three existing templates; not cross-domain or repeated validation",
+  "all_complete": true,
+  "runs": [
+    {
+      "arm": "cache",
+      "game": "mark",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "mark",
+        "max_steps": 300,
+        "stage": "cache",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "2933a3818b84f6be249cdb331a73916cd617fa353f72896860bf7364815b047b",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "cache"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 2,
+          "kill": 2,
+          "craft": 4,
+          "exploration": 8,
+          "death": 3,
+          "trade": 1,
+          "quest": 13,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 318,
+          "successful_responses": 318,
+          "peak_usd_estimate": 0.508117176,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 11155706,
+          "completion_tokens": 88644,
+          "cache_hit_tokens": 10016896,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 650.2363369464874
+        },
+        "updated_utc": 1792224975.2148383
+      },
+      "score": 13,
+      "environment_complete": false,
+      "craft_actions": 11,
+      "craft_failures": 3,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 21,
+        "OBSERVATION_GAP": 3
+      },
+      "selections": [
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m2": 0,
+              "m0": 0,
+              "m3": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "e252605a518593d8a3e3a023b447950be5bee8800c55a37c4ff734a84e1e8c2e",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "d69d472cac1a7425523e1971eabb5722e3f9fb83e6fc5a4bd83de55151be4a14",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m3": 0,
+              "m2": 0,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "ff10a9af7bf5848285915dbe9495ef0e617b4a42181e65fa852d9c848f9406df",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m3": 0,
+              "m2": 0,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "f446612ac30c9f6416fa6e167789e13b266dbe58fad3569b0b0869b2198f6668",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 3,
+        "REJECT_EXTRA_COST": 3,
+        "REJECT_PROFILE_REGRET": 2
+      },
+      "exclusion_events": 2,
+      "revocations": {
+        "OBSERVATION_GAP": 3
+      },
+      "passive_observations": [],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "01755ae07f93123114625dee2dc7e851f5d7958f5ac1436cd4f3bf81809b4d29",
+      "request_span_seconds": 662.3031976222992,
+      "quest_events": [
+        {
+          "step": 37,
+          "score": 1,
+          "action": "pick up oak_rod"
+        },
+        {
+          "step": 61,
+          "score": 2,
+          "action": "pick up copper_sword"
+        },
+        {
+          "step": 64,
+          "score": 3,
+          "action": "enter library"
+        },
+        {
+          "step": 121,
+          "score": 4,
+          "action": "write \"kindness\" paper_0"
+        },
+        {
+          "step": 126,
+          "score": 5,
+          "action": "enter armory"
+        },
+        {
+          "step": 134,
+          "score": 6,
+          "action": "pick up key"
+        },
+        {
+          "step": 137,
+          "score": 7,
+          "action": "enter stalls"
+        },
+        {
+          "step": 146,
+          "score": 8,
+          "action": "pick up torch"
+        },
+        {
+          "step": 150,
+          "score": 9,
+          "action": "enter backstreets"
+        },
+        {
+          "step": 169,
+          "score": 10,
+          "action": "attack page_gnawer"
+        },
+        {
+          "step": 182,
+          "score": 11,
+          "action": "enter crystal_grotto"
+        },
+        {
+          "step": 245,
+          "score": 12,
+          "action": "buy 1 tear_of_forest broker_sera"
+        },
+        {
+          "step": 248,
+          "score": 13,
+          "action": "enter shafts"
+        }
+      ],
+      "final_actions": [
+        "talk to maya_wells",
+        "talk to commoner_8",
+        "enter backstreets",
+        "enter crystal_grotto",
+        "enter backstreets",
+        "enter stalls",
+        "talk to maya_wells",
+        "talk to commoner_8",
+        "enter armory",
+        "enter stalls",
+        "pick up fiber_bundle",
+        "craft 1 thread"
+      ]
+    },
+    {
+      "arm": "cache",
+      "game": "metropolis",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "metropolis",
+        "max_steps": 300,
+        "stage": "cache",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "ae3513abede3db9f4cbad22220f72296d0b000a6bf19584ef7cdf6448e3a29ee",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "cache"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 3,
+          "kill": 3,
+          "craft": 3,
+          "exploration": 6,
+          "death": 4,
+          "trade": 0,
+          "quest": 10,
+          "side_quest": 1
+        },
+        "usage": {
+          "requests": 287,
+          "successful_responses": 287,
+          "peak_usd_estimate": 0.6712345439999999,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 11267864,
+          "completion_tokens": 95431,
+          "cache_hit_tokens": 9604224,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 679.0075986385345
+        },
+        "updated_utc": 1792225008.303359
+      },
+      "score": 10,
+      "environment_complete": false,
+      "craft_actions": 11,
+      "craft_failures": 6,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 10,
+        "OBSERVATION_GAP": 3,
+        "REMAINING_MODELS_ORIGINALLY_INFEASIBLE": 2
+      },
+      "selections": [
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m0": 0,
+              "m3": 1,
+              "m2": 1
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "4e6e0f6177ddad7f000a14bace870e5f6a017fae0f15ba1ee441f5e25d974510",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m0": 0,
+              "m3": 0,
+              "m2": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "4a110f36f562f0c86f7d2c7fa923a269d956f53847aa95f5850bad14ddad8f85",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "bf371619570c822448a5079c8dadec166c7242a12873a51ba746406e750cc5f6",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "bf371619570c822448a5079c8dadec166c7242a12873a51ba746406e750cc5f6",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "bf371619570c822448a5079c8dadec166c7242a12873a51ba746406e750cc5f6",
+            "epoch": 0,
+            "reused": true,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 6,
+            "supporting_observations": 1,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "5974a436c5a4794202c4043abe537edb3159f9812d7f0c9b0336ed2a005bf9e8",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 6,
+        "REJECT_UNVERIFIED_CONTINUATION": 4,
+        "REJECT_EXTRA_COST": 5
+      },
+      "exclusion_events": 5,
+      "revocations": {
+        "OBSERVATION_GAP": 3
+      },
+      "passive_observations": [
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "f73f7fdc58e4549e8ec8a1f3917c49ecb4f584a04283d9c064a800d2ea4d7a28",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "481acaeb6891e5764dce0b07e0080051a5fb69e63345c0f7b1f2537eae37b7ef",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 126
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "94230d57b50ba41ed81279dd94d67f9129c0eef777e5eb5710dde4047fa80036",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "9e47f4a0248b1955e4cd253ff856377d2ae4b8ea2a1dd5f1e3eac76a1de21b8e",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 237
+        }
+      ],
+      "applicable_prior_queries": 1,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "91a03d5880408fab28c6f1379cb73b6fddaf4493ab2844c55fb68a404e97c4c4",
+      "request_span_seconds": 694.9507899284363,
+      "quest_events": [
+        {
+          "step": 2,
+          "score": 1,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 7,
+          "score": 2,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 12,
+          "score": 4,
+          "action": "talk to archivist_lune"
+        },
+        {
+          "step": 45,
+          "score": 7,
+          "action": "drop evidence_dossier_0"
+        },
+        {
+          "step": 86,
+          "score": 8,
+          "action": "pick up gavel_club"
+        },
+        {
+          "step": 160,
+          "score": 9,
+          "action": "write AURUM-NOCTIS legal_brief_8"
+        },
+        {
+          "step": 271,
+          "score": 10,
+          "action": "attack corrupt_bailiff_0"
+        }
+      ],
+      "final_actions": [
+        "pick up binding_thread",
+        "enter lobby",
+        "enter market_square",
+        "enter evidence_room",
+        "drop binding_thread",
+        "enter market_square",
+        "pick up binding_thread",
+        "drop gavel_timber",
+        "enter market_square",
+        "pick up gavel_timber",
+        "enter market_square",
+        "enter evidence_room"
+      ]
+    },
+    {
+      "arm": "cache",
+      "game": "remnant",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "remnant",
+        "max_steps": 300,
+        "stage": "cache",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "955d2364f10529726f3ea9c5801cd4239f9334622f436b85dd393bba2133dffd",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "cache"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 1,
+          "kill": 1,
+          "craft": 3,
+          "exploration": 2,
+          "death": 3,
+          "trade": 0,
+          "quest": 2,
+          "side_quest": 1
+        },
+        "usage": {
+          "requests": 320,
+          "successful_responses": 320,
+          "peak_usd_estimate": 0.51932892,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 11585878,
+          "completion_tokens": 88695,
+          "cache_hit_tokens": 10417920,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 684.5945041179657
+        },
+        "updated_utc": 1792225014.6178143
+      },
+      "score": 2,
+      "environment_complete": false,
+      "craft_actions": 9,
+      "craft_failures": 3,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 14,
+        "LOCAL_MILESTONE_CONFIRMED": 1
+      },
+      "selections": [
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "058235ce20ff4caf796c3faed04e7f19c0d24051e140898a0886ed703784ad50",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_VERIFIED_SHARED_CONTINUATION",
+          "value": null,
+          "reuse": {
+            "context": "d548b6c96f3992a4ffb995f980462cd654fcb1ad710bd02143d068500ab7a7ef",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "0625097eed26eec14a3ba0be79a0df5c14420dcf9e4f6fa4990de4f767baedf1",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "REJECT_EXTRA_COST": 1,
+        "REJECT_UNVERIFIED_CONTINUATION": 5
+      },
+      "exclusion_events": 0,
+      "revocations": {
+        "missing outcome or ambient combat": 1
+      },
+      "passive_observations": [
+        {
+          "kind": "INVALIDATED",
+          "reason": "missing outcome or ambient combat",
+          "action": "craft 1 lockpick"
+        }
+      ],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "e9ba17c3d9309a4ab2c7ac948b3100c76b6e3099328f2f2886c2a676c96b04e6",
+      "request_span_seconds": 701.7803812026978,
+      "quest_events": [
+        {
+          "step": 38,
+          "score": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 90,
+          "score": 2,
+          "action": "pick up wooden_dagger"
+        }
+      ],
+      "final_actions": [
+        "eat bread",
+        "eat bread",
+        "enter armory",
+        "enter library",
+        "enter hall",
+        "talk to james_taylor",
+        "enter hills",
+        "enter library",
+        "enter armory",
+        "enter library",
+        "enter hall",
+        "enter library"
+      ]
+    },
+    {
+      "arm": "none",
+      "game": "mark",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "mark",
+        "max_steps": 300,
+        "stage": "none",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "2933a3818b84f6be249cdb331a73916cd617fa353f72896860bf7364815b047b",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "none"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 2,
+          "kill": 2,
+          "craft": 6,
+          "exploration": 11,
+          "death": 3,
+          "trade": 1,
+          "quest": 13,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 289,
+          "successful_responses": 289,
+          "peak_usd_estimate": 0.5655705839999999,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 10931506,
+          "completion_tokens": 81432,
+          "cache_hit_tokens": 9563264,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 606.8252799510956
+        },
+        "updated_utc": 1792224932.3810155
+      },
+      "score": 13,
+      "environment_complete": false,
+      "craft_actions": 15,
+      "craft_failures": 7,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 15,
+        "OBSERVATION_GAP": 3,
+        "LOCAL_MILESTONE_CONFIRMED": 1,
+        "MODEL_MISMATCH": 2
+      },
+      "selections": [
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m2": 0,
+              "m3": 0,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "fd6fd0ece17878ace72a98d0b05406e96a97e1a68fa1896f005b3a7d6fc94a7f",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "e5c6c21d04d03c542b6700aeaab49ad3d42db8d26da9d391498335740287e8e7",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "065c86bcff7f54e56fd7d608d8045c859b5edd4048a7bb7945ec10fdc8d1f74a",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m2": 0,
+              "m3": 0,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "e400f95597772286c4705a5c14565123664293ff7486379e3364d82bad57dfdb",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "8a7db52f80f09519a3d48cd162201c2a57dce04b290bced302b29ed975b7615e",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "7ef932b7e127d2896b1813bb60fe25987a62463456f4c8781e3f84313b08ff8e",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 2,
+        "REJECT_EXTRA_COST": 7,
+        "REJECT_PROFILE_REGRET": 1
+      },
+      "exclusion_events": 2,
+      "revocations": {
+        "OBSERVATION_GAP": 3,
+        "MODEL_MISMATCH": 2
+      },
+      "passive_observations": [],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "01755ae07f93123114625dee2dc7e851f5d7958f5ac1436cd4f3bf81809b4d29",
+      "request_span_seconds": 619.4512295722961,
+      "quest_events": [
+        {
+          "step": 48,
+          "score": 1,
+          "action": "pick up oak_rod"
+        },
+        {
+          "step": 70,
+          "score": 2,
+          "action": "pick up copper_sword"
+        },
+        {
+          "step": 72,
+          "score": 3,
+          "action": "enter library"
+        },
+        {
+          "step": 78,
+          "score": 4,
+          "action": "write \"kindness\" paper_0"
+        },
+        {
+          "step": 81,
+          "score": 5,
+          "action": "enter armory"
+        },
+        {
+          "step": 94,
+          "score": 6,
+          "action": "pick up key"
+        },
+        {
+          "step": 97,
+          "score": 7,
+          "action": "enter stalls"
+        },
+        {
+          "step": 106,
+          "score": 8,
+          "action": "pick up torch"
+        },
+        {
+          "step": 109,
+          "score": 9,
+          "action": "enter backstreets"
+        },
+        {
+          "step": 126,
+          "score": 10,
+          "action": "attack page_gnawer"
+        },
+        {
+          "step": 164,
+          "score": 11,
+          "action": "enter crystal_grotto"
+        },
+        {
+          "step": 196,
+          "score": 12,
+          "action": "buy 1 tear_of_forest broker_sera"
+        },
+        {
+          "step": 199,
+          "score": 13,
+          "action": "enter shafts"
+        }
+      ],
+      "final_actions": [
+        "inspect hide_scrap",
+        "pick up hide_scrap",
+        "craft 1 leather_strip",
+        "pick up leather_strip",
+        "pick up thread",
+        "discard 1 leather_strip small_pouch_1",
+        "store 1 thread small_pouch_1",
+        "enter armory",
+        "enter hall",
+        "store 1 leather_strip small_pouch_1",
+        "enter library",
+        "enter hall"
+      ]
+    },
+    {
+      "arm": "none",
+      "game": "metropolis",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "metropolis",
+        "max_steps": 300,
+        "stage": "none",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "ae3513abede3db9f4cbad22220f72296d0b000a6bf19584ef7cdf6448e3a29ee",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "none"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 1,
+          "kill": 1,
+          "craft": 1,
+          "exploration": 7,
+          "death": 2,
+          "trade": 0,
+          "quest": 11,
+          "side_quest": 2
+        },
+        "usage": {
+          "requests": 353,
+          "successful_responses": 353,
+          "peak_usd_estimate": 0.682462608,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 13461584,
+          "completion_tokens": 119991,
+          "cache_hit_tokens": 11904768,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 901.8393132686615
+        },
+        "updated_utc": 1792225225.9742126
+      },
+      "score": 11,
+      "environment_complete": false,
+      "craft_actions": 6,
+      "craft_failures": 5,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 7,
+        "OBSERVATION_GAP": 1
+      },
+      "selections": [
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "5a2be91094ff964b93ecdcd7a12273c7d78899fc74d419b79c32ec0ad18d8aa4",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m0": 0,
+              "m1": 0,
+              "m3": 0,
+              "m2": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "4a110f36f562f0c86f7d2c7fa923a269d956f53847aa95f5850bad14ddad8f85",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "fff876d5864d95c9fc66d17257bab741569839ec5a5601779e2ff01ee7163193",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "fff876d5864d95c9fc66d17257bab741569839ec5a5601779e2ff01ee7163193",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 1,
+        "REJECT_UNVERIFIED_CONTINUATION": 2
+      },
+      "exclusion_events": 1,
+      "revocations": {
+        "OBSERVATION_GAP": 1,
+        "public semantic context changed": 1
+      },
+      "passive_observations": [
+        {
+          "kind": "INVALIDATED",
+          "reason": "public semantic context changed",
+          "action": "craft 1 gavel_club"
+        }
+      ],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "91a03d5880408fab28c6f1379cb73b6fddaf4493ab2844c55fb68a404e97c4c4",
+      "request_span_seconds": 912.754536151886,
+      "quest_events": [
+        {
+          "step": 2,
+          "score": 1,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 4,
+          "score": 2,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 15,
+          "score": 4,
+          "action": "drop evidence_dossier_0"
+        },
+        {
+          "step": 19,
+          "score": 7,
+          "action": "talk to archivist_lune"
+        },
+        {
+          "step": 86,
+          "score": 8,
+          "action": "pick up gavel_club"
+        },
+        {
+          "step": 100,
+          "score": 9,
+          "action": "talk to witness_marron"
+        },
+        {
+          "step": 114,
+          "score": 11,
+          "action": "write AURUM-NOCTIS legal_brief_4"
+        }
+      ],
+      "final_actions": [
+        "pick up gavel_timber",
+        "pick up binding_thread",
+        "drop binding_thread",
+        "pick up binding_thread",
+        "drop binding_thread",
+        "pick up gavel_timber",
+        "enter clerks_office",
+        "pick up gavel_timber",
+        "enter lobby",
+        "drop gavel_timber",
+        "pick up gavel_timber",
+        "craft 1 gavel_club"
+      ]
+    },
+    {
+      "arm": "none",
+      "game": "remnant",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "remnant",
+        "max_steps": 300,
+        "stage": "none",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "955d2364f10529726f3ea9c5801cd4239f9334622f436b85dd393bba2133dffd",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "none"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 1,
+          "kill": 1,
+          "craft": 2,
+          "exploration": 2,
+          "death": 3,
+          "trade": 0,
+          "quest": 2,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 321,
+          "successful_responses": 321,
+          "peak_usd_estimate": 0.51659568,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 11129024,
+          "completion_tokens": 89930,
+          "cache_hit_tokens": 9966080,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 702.4238982200623
+        },
+        "updated_utc": 1792225025.8769665
+      },
+      "score": 2,
+      "environment_complete": false,
+      "craft_actions": 9,
+      "craft_failures": 1,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 12,
+        "OBSERVATION_GAP": 1,
+        "LOCAL_MILESTONE_CONFIRMED": 1
+      },
+      "selections": [
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "99dda6b4a76b07d6465f0ff14ef400c701283ef3adbe7f68493d263cbc6126a1",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "53e4137ed20b75495e6059ed71dd62bcdf6436583e48e95d3707396c9e89fe59",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "REJECT_EXTRA_COST": 2
+      },
+      "exclusion_events": 0,
+      "revocations": {
+        "OBSERVATION_GAP": 1
+      },
+      "passive_observations": [],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "e9ba17c3d9309a4ab2c7ac948b3100c76b6e3099328f2f2886c2a676c96b04e6",
+      "request_span_seconds": 712.7888739109039,
+      "quest_events": [
+        {
+          "step": 41,
+          "score": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 71,
+          "score": 2,
+          "action": "pick up wooden_dagger"
+        }
+      ],
+      "final_actions": [
+        "enter library",
+        "enter hall",
+        "enter library",
+        "pick up wood_log",
+        "enter hall",
+        "enter hills",
+        "craft 1 wood_plank",
+        "pick up wood_plank",
+        "enter library",
+        "enter hall",
+        "enter library",
+        "enter hall"
+      ]
+    },
+    {
+      "arm": "prompt",
+      "game": "mark",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "mark",
+        "max_steps": 300,
+        "stage": "prompt",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "2933a3818b84f6be249cdb331a73916cd617fa353f72896860bf7364815b047b",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "prompt"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 3,
+          "kill": 3,
+          "craft": 7,
+          "exploration": 10,
+          "death": 4,
+          "trade": 1,
+          "quest": 16,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 296,
+          "successful_responses": 296,
+          "peak_usd_estimate": 0.505654908,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 11147725,
+          "completion_tokens": 76012,
+          "cache_hit_tokens": 9965568,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 575.3340375423431
+        },
+        "updated_utc": 1792224900.72046
+      },
+      "score": 16,
+      "environment_complete": false,
+      "craft_actions": 13,
+      "craft_failures": 3,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 16,
+        "OBSERVATION_GAP": 5
+      },
+      "selections": [
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m3": 0,
+              "m2": 0,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "611728a0e09c9ecf36075c834f138e766c23a103f463de090616e5876e5e5ed0",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "a4b7656c6ece0017f219cf87aa2afdb0778319a0fd8b1a39fef25d72bf7776ec",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m3": 0,
+              "m2": 0,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "2a29ed8ef927e2ef010f8308d930620fc7aeeb27b75f4027799a92d363e7f8fd",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "4ea512b91d188ce1f9f7fa4c3cadd909ab973e01edfa151f14de75ef0059e885",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m3": 0,
+              "m2": 0,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "60866fe7eb91854e3c668571e54d02a94441dc5d25a49565dd83877bb6487f48",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 3,
+        "REJECT_EXTRA_COST": 7
+      },
+      "exclusion_events": 2,
+      "revocations": {
+        "OBSERVATION_GAP": 5
+      },
+      "passive_observations": [],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "01755ae07f93123114625dee2dc7e851f5d7958f5ac1436cd4f3bf81809b4d29",
+      "request_span_seconds": 587.5033638477325,
+      "quest_events": [
+        {
+          "step": 43,
+          "score": 1,
+          "action": "pick up oak_rod"
+        },
+        {
+          "step": 55,
+          "score": 2,
+          "action": "pick up copper_sword"
+        },
+        {
+          "step": 58,
+          "score": 3,
+          "action": "enter library"
+        },
+        {
+          "step": 65,
+          "score": 4,
+          "action": "write \"kindness\" paper_0"
+        },
+        {
+          "step": 70,
+          "score": 5,
+          "action": "enter armory"
+        },
+        {
+          "step": 79,
+          "score": 6,
+          "action": "pick up key"
+        },
+        {
+          "step": 82,
+          "score": 7,
+          "action": "enter stalls"
+        },
+        {
+          "step": 94,
+          "score": 8,
+          "action": "pick up torch"
+        },
+        {
+          "step": 98,
+          "score": 9,
+          "action": "enter backstreets"
+        },
+        {
+          "step": 119,
+          "score": 10,
+          "action": "attack page_gnawer"
+        },
+        {
+          "step": 134,
+          "score": 11,
+          "action": "enter crystal_grotto"
+        },
+        {
+          "step": 191,
+          "score": 12,
+          "action": "buy 1 tear_of_forest broker_sera"
+        },
+        {
+          "step": 194,
+          "score": 13,
+          "action": "enter shafts"
+        },
+        {
+          "step": 233,
+          "score": 14,
+          "action": "pick up cloth_tunic"
+        },
+        {
+          "step": 256,
+          "score": 15,
+          "action": "enter ridge"
+        },
+        {
+          "step": 261,
+          "score": 16,
+          "action": "enter farm"
+        }
+      ],
+      "final_actions": [
+        "attack root_warden",
+        "attack root_warden",
+        "eat bread",
+        "eat bread",
+        "attack root_warden",
+        "eat bread",
+        "eat bread",
+        "pick up goblin_token",
+        "enter armory",
+        "pick up oak_log",
+        "drop goblin_token",
+        "enter hall"
+      ]
+    },
+    {
+      "arm": "prompt",
+      "game": "metropolis",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "metropolis",
+        "max_steps": 300,
+        "stage": "prompt",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "ae3513abede3db9f4cbad22220f72296d0b000a6bf19584ef7cdf6448e3a29ee",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "prompt"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 1,
+          "kill": 1,
+          "craft": 3,
+          "exploration": 7,
+          "death": 1,
+          "trade": 0,
+          "quest": 11,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 350,
+          "successful_responses": 350,
+          "peak_usd_estimate": 0.7825591199999999,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 13693376,
+          "completion_tokens": 130843,
+          "cache_hit_tokens": 11845120,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 917.2610673904419
+        },
+        "updated_utc": 1792225246.7904842
+      },
+      "score": 11,
+      "environment_complete": false,
+      "craft_actions": 17,
+      "craft_failures": 13,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 15,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 10,
+        "OBSERVATION_GAP": 3,
+        "LOCAL_MILESTONE_CONFIRMED": 1,
+        "REMAINING_MODELS_ORIGINALLY_INFEASIBLE": 1
+      },
+      "selections": [
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m3": 0,
+              "m2": 0,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "1402fc1c672d2e3abe76854ae41369fa0f0705550f920d592cf1ea7f4ab56f30",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "6c5f993a3d60d42b7a7296589439ea0b82720090362978c802fcfc60f9c24a37",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "7324f6b0bd11f93f08959b5ca08f16ec8b991c219f1388c20c90890db935d2ec",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "7324f6b0bd11f93f08959b5ca08f16ec8b991c219f1388c20c90890db935d2ec",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "eba96e96c7547a9e30e6f10e377a9632ca7f94df980de2a4d777d5d956d361ef",
+            "epoch": 0,
+            "reused": true,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 6,
+            "supporting_observations": 1,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "db7672f9192d2fcbc193f30a080e5145b570ea19413981a40887dbab4a11b224",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 4,
+        "REJECT_UNVERIFIED_CONTINUATION": 2,
+        "REJECT_EXTRA_COST": 8
+      },
+      "exclusion_events": 6,
+      "revocations": {
+        "OBSERVATION_GAP": 3,
+        "public semantic context changed": 3
+      },
+      "passive_observations": [
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "eba96e96c7547a9e30e6f10e377a9632ca7f94df980de2a4d777d5d956d361ef",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "a1c6af4a5d39bb0245b032b889b240cf77bd04d2319a58e08452beaa1c1e16bc",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 206
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "db7672f9192d2fcbc193f30a080e5145b570ea19413981a40887dbab4a11b224",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "a622af63e36066c7f4d4aa40aca2fc401d8f4ff55d56782c02635976d2aa26ef",
+          "before": 6,
+          "after": 6,
+          "eliminated": [],
+          "step": 214
+        },
+        {
+          "kind": "INVALIDATED",
+          "reason": "public semantic context changed",
+          "action": "craft 1 gavel_splint"
+        },
+        {
+          "kind": "INVALIDATED",
+          "reason": "public semantic context changed",
+          "action": "craft 1 gavel_club"
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "9c48d6f5a0aac30dc9edf2692c4f11d17d0ea4ceaff9584bc1a9b72b6becb276",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "03aee55437b2bd096e2a5635182eb75e302393d110b4e302c4d734aa34612f07",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 236
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "eee4565cce5fb01ab940e330b14661061b6a48cc8ae3f53f54376bbba81133aa",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "279f7e7f79f2795771cbcfa16fd55f42f76a01ee3eb9f4bfb44fb7b717250e82",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 253
+        },
+        {
+          "kind": "INVALIDATED",
+          "reason": "public semantic context changed",
+          "action": "craft 1 gavel_club"
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "1df6753fcbdaf9ee7efbc6ca6a9adca87712e09add0b89bdca5ddd7246804ddb",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "b90bacf2672b92380a3f750854dff7824970cdd18647c265d11a98e2c90bd56a",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 274
+        }
+      ],
+      "applicable_prior_queries": 1,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "91a03d5880408fab28c6f1379cb73b6fddaf4493ab2844c55fb68a404e97c4c4",
+      "request_span_seconds": 933.5917899608612,
+      "quest_events": [
+        {
+          "step": 2,
+          "score": 1,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 3,
+          "score": 2,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 8,
+          "score": 4,
+          "action": "talk to archivist_lune"
+        },
+        {
+          "step": 26,
+          "score": 7,
+          "action": "drop evidence_dossier_0"
+        },
+        {
+          "step": 71,
+          "score": 8,
+          "action": "pick up gavel_club"
+        },
+        {
+          "step": 107,
+          "score": 9,
+          "action": "write AURUM-NOCTIS legal_brief_8"
+        },
+        {
+          "step": 284,
+          "score": 11,
+          "action": "talk to witness_marron"
+        }
+      ],
+      "final_actions": [
+        "enter clerks_office",
+        "drop gavel_timber",
+        "pick up binding_thread",
+        "drop gavel_timber",
+        "enter courtroom",
+        "drop binding_thread",
+        "pick up original_charter",
+        "pick up decree_stylus",
+        "enter antechamber",
+        "enter courtroom",
+        "enter clerks_office",
+        "wait"
+      ]
+    },
+    {
+      "arm": "prompt",
+      "game": "remnant",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "remnant",
+        "max_steps": 300,
+        "stage": "prompt",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "955d2364f10529726f3ea9c5801cd4239f9334622f436b85dd393bba2133dffd",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "prompt"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 0,
+          "kill": 0,
+          "craft": 3,
+          "exploration": 2,
+          "death": 2,
+          "trade": 0,
+          "quest": 2,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 319,
+          "successful_responses": 319,
+          "peak_usd_estimate": 0.54767064,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 11270212,
+          "completion_tokens": 88996,
+          "cache_hit_tokens": 10000640,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 672.8621730804443
+        },
+        "updated_utc": 1792224996.2247753
+      },
+      "score": 2,
+      "environment_complete": false,
+      "craft_actions": 6,
+      "craft_failures": 1,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "LOCAL_MILESTONE_CONFIRMED": 1,
+        "GROUNDING_UNKNOWN": 7,
+        "OBSERVATION_GAP": 1
+      },
+      "selections": [
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "5211ed7b5c6f5a28a0e8eed129aed87dc5cc418a51d7db8cc0067b2ec7442b1d",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "db2768c05059de5b7571b4dd28e4869edb06e2f49e5e2adf9a66d735e8a8a759",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "db2768c05059de5b7571b4dd28e4869edb06e2f49e5e2adf9a66d735e8a8a759",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "REJECT_EXTRA_COST": 2
+      },
+      "exclusion_events": 0,
+      "revocations": {
+        "OBSERVATION_GAP": 1
+      },
+      "passive_observations": [],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "e9ba17c3d9309a4ab2c7ac948b3100c76b6e3099328f2f2886c2a676c96b04e6",
+      "request_span_seconds": 683.2720823287964,
+      "quest_events": [
+        {
+          "step": 44,
+          "score": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 130,
+          "score": 2,
+          "action": "pick up wooden_sword"
+        }
+      ],
+      "final_actions": [
+        "enter hall",
+        "enter library",
+        "enter hall",
+        "enter hills",
+        "enter armory",
+        "enter library",
+        "enter hall",
+        "enter hills",
+        "enter library",
+        "enter hall",
+        "talk to james_taylor",
+        "enter library"
+      ]
+    },
+    {
+      "arm": "structured",
+      "game": "mark",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "mark",
+        "max_steps": 300,
+        "stage": "structured",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "2933a3818b84f6be249cdb331a73916cd617fa353f72896860bf7364815b047b",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "structured"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 2,
+          "kill": 2,
+          "craft": 5,
+          "exploration": 6,
+          "death": 2,
+          "trade": 1,
+          "quest": 13,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 284,
+          "successful_responses": 284,
+          "peak_usd_estimate": 0.501530748,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 10095957,
+          "completion_tokens": 80090,
+          "cache_hit_tokens": 8923008,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 584.6016805171967
+        },
+        "updated_utc": 1792224915.9496765
+      },
+      "score": 13,
+      "environment_complete": false,
+      "craft_actions": 16,
+      "craft_failures": 8,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 2,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 18,
+        "OBSERVATION_GAP": 6
+      },
+      "selections": [
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m2": 0,
+              "m3": 0,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "fd6fd0ece17878ace72a98d0b05406e96a97e1a68fa1896f005b3a7d6fc94a7f",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "08e1481e5880eeb32baa79d015786c949736ac49b3bd27cfd6d0e8d6d8fa5a52",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m3": 0,
+              "m0": 0,
+              "m2": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "4998a273488a838eb7de64f37227cb7202e9e152e27583174210b831b78e2447",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "f89d60613fdff6946f7cc44daa4144d8bbb4b48314b19b3ab7c0e5155be3ee16",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "DIRECT_POLICY",
+          "value": null,
+          "reuse": {
+            "context": "c62ff2e3e72733d29e0a24d22401b66c7d2ee430670a5ba549f314d97714aa96",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m2": 0,
+              "m3": 0,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "5ca9d48aa4aa11b7f67c929b5c9de656b8b574e0071a61971bd7bf0df2dbcdfe",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 3,
+        "REJECT_EXTRA_COST": 14,
+        "REJECT_PROFILE_REGRET": 1,
+        "REJECT_UNVERIFIED_CONTINUATION": 2
+      },
+      "exclusion_events": 3,
+      "revocations": {
+        "OBSERVATION_GAP": 6,
+        "public semantic context changed": 1
+      },
+      "passive_observations": [
+        {
+          "kind": "INVALIDATED",
+          "reason": "public semantic context changed",
+          "action": "craft 1 cloth_tunic"
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "3f3ecd7f494f9b448f5668374dbe700ea26418c350951d798a8ea8a0c93fe265",
+          "action": "craft 1 cloth_tunic",
+          "observation_sha256": "4a3dca4519a1da67b973ff331d9b2c382b349d922765772e692d44a828a4eda2",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag"
+            ],
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_bag"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ]
+          ],
+          "step": 255
+        }
+      ],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "01755ae07f93123114625dee2dc7e851f5d7958f5ac1436cd4f3bf81809b4d29",
+      "request_span_seconds": 602.7797191143036,
+      "quest_events": [
+        {
+          "step": 46,
+          "score": 1,
+          "action": "pick up oak_rod"
+        },
+        {
+          "step": 76,
+          "score": 2,
+          "action": "pick up copper_sword"
+        },
+        {
+          "step": 78,
+          "score": 3,
+          "action": "enter library"
+        },
+        {
+          "step": 91,
+          "score": 4,
+          "action": "write \"kindness\" paper_0"
+        },
+        {
+          "step": 96,
+          "score": 5,
+          "action": "enter armory"
+        },
+        {
+          "step": 104,
+          "score": 6,
+          "action": "pick up key"
+        },
+        {
+          "step": 107,
+          "score": 7,
+          "action": "enter stalls"
+        },
+        {
+          "step": 116,
+          "score": 8,
+          "action": "pick up torch"
+        },
+        {
+          "step": 120,
+          "score": 9,
+          "action": "enter backstreets"
+        },
+        {
+          "step": 131,
+          "score": 10,
+          "action": "attack page_gnawer"
+        },
+        {
+          "step": 146,
+          "score": 11,
+          "action": "enter crystal_grotto"
+        },
+        {
+          "step": 195,
+          "score": 12,
+          "action": "buy 1 tear_of_forest broker_sera"
+        },
+        {
+          "step": 198,
+          "score": 13,
+          "action": "enter shafts"
+        }
+      ],
+      "final_actions": [
+        "take out cloth small_pouch_0",
+        "drop fiber_bundle",
+        "take out cloth small_pouch_0",
+        "take out fiber_bundle small_pouch_0",
+        "drop fiber_bundle",
+        "pick up fiber_bundle",
+        "drop fiber_bundle",
+        "store 1 cloth small_pouch_0",
+        "eat berry",
+        "eat berry",
+        "pick up cloth",
+        "take out cloth small_pouch_0"
+      ]
+    },
+    {
+      "arm": "structured",
+      "game": "metropolis",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "metropolis",
+        "max_steps": 300,
+        "stage": "structured",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "ae3513abede3db9f4cbad22220f72296d0b000a6bf19584ef7cdf6448e3a29ee",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "structured"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 2,
+          "kill": 2,
+          "craft": 1,
+          "exploration": 5,
+          "death": 4,
+          "trade": 0,
+          "quest": 10,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 307,
+          "successful_responses": 307,
+          "peak_usd_estimate": 0.771973608,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 12548402,
+          "completion_tokens": 114767,
+          "cache_hit_tokens": 10647168,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 814.684074640274
+        },
+        "updated_utc": 1792225142.9791355
+      },
+      "score": 10,
+      "environment_complete": false,
+      "craft_actions": 10,
+      "craft_failures": 9,
+      "rejection_count": 1,
+      "reviews": [
+        {
+          "step": 156,
+          "review": {
+            "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+            "action": "craft 1 gavel_club",
+            "evidence": {
+              "context": "6d59b3ac7ec0e212eeffa8175eacf4556ec12198a9d254b3a98a7a134dbf56cc",
+              "epoch": 0,
+              "reused": true,
+              "raw_profiles_before": 12,
+              "raw_profiles_after": 6,
+              "supporting_observations": 1,
+              "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+            },
+            "expected_failure_cost": 1,
+            "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+            "enabling_conditions": {
+              "target": "gavel_club",
+              "action": "craft 1 gavel_club",
+              "unit": "milli-unit",
+              "profiles": [
+                {
+                  "profile": [
+                    "ceil_batch",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_batch",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_per_output",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_per_output",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "exact",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "exact",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                }
+              ],
+              "all_profiles_obstructed": true,
+              "capacity_is_exact": true,
+              "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+            },
+            "fallback_inspection": "inspect clerks_bench"
+          },
+          "executed": "enter market_square"
+        }
+      ],
+      "requests_with_applicable_evidence": 14,
+      "repairs": [
+        {
+          "status": "ENABLING_CONDITION_REQUIRED",
+          "step": 155,
+          "review": {
+            "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+            "action": "craft 1 gavel_club",
+            "evidence": {
+              "context": "6d59b3ac7ec0e212eeffa8175eacf4556ec12198a9d254b3a98a7a134dbf56cc",
+              "epoch": 0,
+              "reused": true,
+              "raw_profiles_before": 12,
+              "raw_profiles_after": 6,
+              "supporting_observations": 1,
+              "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+            },
+            "expected_failure_cost": 1,
+            "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+            "enabling_conditions": {
+              "target": "gavel_club",
+              "action": "craft 1 gavel_club",
+              "unit": "milli-unit",
+              "profiles": [
+                {
+                  "profile": [
+                    "ceil_batch",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_batch",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_per_output",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_per_output",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "exact",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "exact",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                }
+              ],
+              "all_profiles_obstructed": true,
+              "capacity_is_exact": true,
+              "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+            },
+            "fallback_inspection": "inspect clerks_bench"
+          }
+        }
+      ],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 13,
+        "REMAINING_MODELS_ORIGINALLY_INFEASIBLE": 3,
+        "OBSERVATION_GAP": 1
+      },
+      "selections": [
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "b95ac57170f06a9db6f0e97ac3289ace778475471f7b532aef61a6332be5b9ae",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "188566341a086808737911537a22233ffbdf2893f7f60037ff0c18395fa4ea29",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "b35782ea85489f68ae4dddb632a8ace7d54c3294cb96ebfd6bfff81f40926f9d",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m3": 0,
+              "m2": 0,
+              "m1": 0,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "853646251227aab1911c4bb7dbb8ab910eea910fe1cae84c871742d4f86e16ce",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "93052f4585a29f4b37cdfa77dc04ccc06b70d6dc60ff903b5ef3b607f7b08f90",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m1": 0,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "29ea3403635930b87d1b80a838961ef64d770761415fa342c75c359279c312c9",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 4,
+        "REJECT_EXTRA_COST": 6
+      },
+      "exclusion_events": 7,
+      "revocations": {
+        "OBSERVATION_GAP": 1
+      },
+      "passive_observations": [
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "303fdf47b6bf44383c58c589b9e3db3b698987d461f017a0f9966f4c64666b93",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "400f8c12f97bfb1894d4f0ff1f0da73ec78e892aa84c298415aa3c33fed61f4e",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 82
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "19b521aa97d204041bda5d1b741cf82207dfa5bbe91a7c6fbf109cee45630c96",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "45fdc650e2fa229c91607e00a8c20c249024070998203b925b26f5453dc1c8a2",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 145
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "6d59b3ac7ec0e212eeffa8175eacf4556ec12198a9d254b3a98a7a134dbf56cc",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "a190380a0e5d49a825edcc5ed916928072e752b98aba33755187c886738f15e3",
+          "before": 12,
+          "after": 6,
+          "eliminated": [
+            [
+              "ceil_batch",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_batch",
+              "hand_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_bag_ground"
+            ],
+            [
+              "ceil_per_output",
+              "hand_ground"
+            ],
+            [
+              "exact",
+              "hand_bag_ground"
+            ],
+            [
+              "exact",
+              "hand_ground"
+            ]
+          ],
+          "step": 151
+        },
+        {
+          "kind": "PASSIVE_MATCHED_TRANSITION",
+          "context": "5d1a0e2ecf39948057b21130c47fab4899e779ddd726977b427ecbdc949fec40",
+          "action": "craft 1 gavel_club",
+          "observation_sha256": "6de3a28acb002c6642c304596c1da3716785651594721a31ebd777d9f2de45b4",
+          "before": 12,
+          "after": 12,
+          "eliminated": [],
+          "step": 172
+        }
+      ],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "91a03d5880408fab28c6f1379cb73b6fddaf4493ab2844c55fb68a404e97c4c4",
+      "request_span_seconds": 829.7732479572296,
+      "quest_events": [
+        {
+          "step": 2,
+          "score": 1,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 3,
+          "score": 2,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 9,
+          "score": 4,
+          "action": "talk to archivist_lune"
+        },
+        {
+          "step": 28,
+          "score": 7,
+          "action": "drop evidence_dossier_0"
+        },
+        {
+          "step": 106,
+          "score": 8,
+          "action": "pick up gavel_club"
+        },
+        {
+          "step": 117,
+          "score": 9,
+          "action": "write AURUM-NOCTIS legal_brief_8"
+        },
+        {
+          "step": 215,
+          "score": 10,
+          "action": "attack corrupt_bailiff_0"
+        }
+      ],
+      "final_actions": [
+        "enter market_square",
+        "drop statute_shard",
+        "pick up binding_thread",
+        "drop binding_thread",
+        "enter lobby",
+        "enter alley",
+        "enter market_square",
+        "enter lobby",
+        "enter alley",
+        "enter market_square",
+        "enter lobby",
+        "wait"
+      ]
+    },
+    {
+      "arm": "structured",
+      "game": "remnant",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "remnant",
+        "max_steps": 300,
+        "stage": "structured",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:1b3e2ed9539cc4bf4d09284d30ab65ff63105b4bdc38eea9f68468bdb4f9e608",
+        "initial_snapshot_sha256": "955d2364f10529726f3ea9c5801cd4239f9334622f436b85dd393bba2133dffd",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "structured"
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 0,
+          "kill": 0,
+          "craft": 3,
+          "exploration": 2,
+          "death": 0,
+          "trade": 0,
+          "quest": 2,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 320,
+          "successful_responses": 320,
+          "peak_usd_estimate": 0.45283074,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 10352819,
+          "completion_tokens": 87215,
+          "cache_hit_tokens": 9379840,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 663.3730895519257
+        },
+        "updated_utc": 1792224986.4036937
+      },
+      "score": 2,
+      "environment_complete": false,
+      "craft_actions": 5,
+      "craft_failures": 1,
+      "rejection_count": 0,
+      "reviews": [],
+      "requests_with_applicable_evidence": 0,
+      "repairs": [],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 12
+      },
+      "selections": [],
+      "candidate_decisions": {},
+      "exclusion_events": 0,
+      "revocations": {},
+      "passive_observations": [],
+      "applicable_prior_queries": 0,
+      "strict_filtered_queries": 0,
+      "first_request_hash": "e9ba17c3d9309a4ab2c7ac948b3100c76b6e3099328f2f2886c2a676c96b04e6",
+      "request_span_seconds": 673.1999614238739,
+      "quest_events": [
+        {
+          "step": 43,
+          "score": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 185,
+          "score": 2,
+          "action": "pick up wooden_dagger"
+        }
+      ],
+      "final_actions": [
+        "drop rust_scrap",
+        "pick up wooden_dagger",
+        "talk to james_taylor",
+        "enter hills",
+        "enter library",
+        "enter armory",
+        "take out torch small_bag_0",
+        "drop wooden_dagger",
+        "enter library",
+        "eat bread",
+        "eat bread",
+        "eat bread"
+      ]
+    }
+  ],
+  "followups": [
+    {
+      "arm": "structured",
+      "game": "metropolis",
+      "manifest": {
+        "method": "evidence_repair_v11",
+        "game": "metropolis",
+        "max_steps": 300,
+        "stage": "attributes_structured",
+        "requested_model": "deepseek-flash",
+        "source_revision": "source-manifest-sha256:2598e6790ec1f451473df0b06574cb5137d9c930098f04f3d4de77d2dd6566d7",
+        "initial_snapshot_sha256": "ae3513abede3db9f4cbad22220f72296d0b000a6bf19584ef7cdf6448e3a29ee",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "presence_penalty": 0,
+        "max_tokens": 1536,
+        "thinking": "disabled",
+        "enable_obs_valid_actions": false,
+        "evidence_mode": "structured",
+        "evidence_context_scope": "attributes",
+        "diagnostic_fork": {
+          "path": "/root/scar_evidence_repair_20261017/runtime/structured/evidence_repair_v11/metropolis/checkpoints/0075",
+          "start_step": 75,
+          "environment_sha256": "c611c92161a5610833c82a5ed58f80bf9347ece352a9cb83db15bb4db495f217",
+          "agent_sha256": "f1632f2f6d832a5abc250763bd54c6288b079cc690675f08b016de0a905bfc9a",
+          "source_method": "evidence_repair_v11"
+        }
+      },
+      "current": {
+        "steps": 300,
+        "checkpoint": "0300",
+        "complete": true,
+        "termination": "step_limit",
+        "scores": {
+          "unique_kill": 2,
+          "kill": 2,
+          "craft": 2,
+          "exploration": 6,
+          "death": 6,
+          "trade": 0,
+          "quest": 10,
+          "side_quest": 0
+        },
+        "usage": {
+          "requests": 290,
+          "successful_responses": 290,
+          "peak_usd_estimate": 0.792049212,
+          "unknown_charge_attempts": 0,
+          "prompt_tokens": 14878693,
+          "completion_tokens": 103306,
+          "cache_hit_tokens": 12909952,
+          "actual_models": [
+            "deepseek-flash"
+          ],
+          "summed_request_seconds": 746.9058516025543
+        },
+        "updated_utc": 1792225653.9101787
+      },
+      "score": 10,
+      "environment_complete": false,
+      "craft_actions": 4,
+      "craft_failures": 2,
+      "rejection_count": 1,
+      "reviews": [
+        {
+          "step": 94,
+          "review": {
+            "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+            "action": "craft 1 gavel_club",
+            "evidence": {
+              "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+              "epoch": 0,
+              "reused": true,
+              "raw_profiles_before": 12,
+              "raw_profiles_after": 6,
+              "supporting_observations": 1,
+              "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+            },
+            "expected_failure_cost": 1,
+            "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+            "enabling_conditions": {
+              "target": "gavel_club",
+              "action": "craft 1 gavel_club",
+              "unit": "milli-unit",
+              "profiles": [
+                {
+                  "profile": [
+                    "ceil_batch",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_batch",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_per_output",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_per_output",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "exact",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "exact",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                }
+              ],
+              "all_profiles_obstructed": true,
+              "capacity_is_exact": true,
+              "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+            },
+            "fallback_inspection": "inspect clerks_bench"
+          },
+          "executed": "craft 1 gavel_splint"
+        }
+      ],
+      "requests_with_applicable_evidence": 20,
+      "repairs": [
+        {
+          "status": "ENABLING_CONDITION_REQUIRED",
+          "step": 93,
+          "review": {
+            "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+            "action": "craft 1 gavel_club",
+            "evidence": {
+              "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+              "epoch": 0,
+              "reused": true,
+              "raw_profiles_before": 12,
+              "raw_profiles_after": 6,
+              "supporting_observations": 1,
+              "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+            },
+            "expected_failure_cost": 1,
+            "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+            "enabling_conditions": {
+              "target": "gavel_club",
+              "action": "craft 1 gavel_club",
+              "unit": "milli-unit",
+              "profiles": [
+                {
+                  "profile": [
+                    "ceil_batch",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_batch",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_per_output",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "ceil_per_output",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "exact",
+                    "hand"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                },
+                {
+                  "profile": [
+                    "exact",
+                    "hand_bag"
+                  ],
+                  "required": {
+                    "gavel_timber": 2000,
+                    "binding_thread": 1000
+                  },
+                  "accessible_deficit": {
+                    "gavel_timber": 1000,
+                    "binding_thread": 0
+                  },
+                  "total_material_deficit": {
+                    "gavel_timber": 0,
+                    "binding_thread": 0
+                  },
+                  "accessible_capacity": 2000,
+                  "capacity_shortfall": 1000,
+                  "arrangement_obstructed": true
+                }
+              ],
+              "all_profiles_obstructed": true,
+              "capacity_is_exact": true,
+              "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+            },
+            "fallback_inspection": "inspect clerks_bench"
+          }
+        }
+      ],
+      "local_results": {
+        "GROUNDING_UNKNOWN": 9,
+        "REMAINING_MODELS_ORIGINALLY_INFEASIBLE": 1,
+        "OBSERVATION_GAP": 1
+      },
+      "selections": [
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "b95ac57170f06a9db6f0e97ac3289ace778475471f7b532aef61a6332be5b9ae",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+            "epoch": 0,
+            "reused": true,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 6,
+            "supporting_observations": 1,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "CONDITIONAL_EXPERIMENT",
+          "value": {
+            "status": "NONDEGRADING",
+            "minimum_saving": 0,
+            "savings": {
+              "m2": 0,
+              "m0": 0,
+              "m1": 1,
+              "m3": 1
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "reuse": {
+            "context": "8130857447025e4eefdd6af0b54c4db78734fd7010b4b8468cd95d59be442164",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "9407e0119df1556a47f2fd8ef0bb49d5a333e4e69aabe832213259dee0267cbb",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        },
+        {
+          "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+          "value": null,
+          "reuse": {
+            "context": "871778d4f9756015fc7461e93eead977cdb934dcd5b0981ab9ade73fc870d123",
+            "epoch": 0,
+            "reused": false,
+            "raw_profiles_before": 12,
+            "raw_profiles_after": 12,
+            "supporting_observations": 0,
+            "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+          }
+        }
+      ],
+      "candidate_decisions": {
+        "ADMISSIBLE": 4,
+        "REJECT_EXTRA_COST": 2,
+        "REJECT_UNVERIFIED_CONTINUATION": 2
+      },
+      "exclusion_events": 2,
+      "revocations": {
+        "OBSERVATION_GAP": 1
+      },
+      "passive_observations": [],
+      "applicable_prior_queries": 1,
+      "strict_filtered_queries": 1,
+      "first_request_hash": "1e1a37da20deaa496688a13f191fefa3bd042ba6b2a4829ed9ddaf4058eff417",
+      "request_span_seconds": 758.4015052318573,
+      "quest_events": [
+        {
+          "step": 76,
+          "score": 7,
+          "action": "craft 1 gavel_club"
+        },
+        {
+          "step": 114,
+          "score": 8,
+          "action": "pick up gavel_club"
+        },
+        {
+          "step": 144,
+          "score": 9,
+          "action": "write AURUM-NOCTIS legal_brief_8"
+        },
+        {
+          "step": 281,
+          "score": 10,
+          "action": "attack corrupt_bailiff_0"
+        }
+      ],
+      "final_actions": [
+        "drop gavel_timber",
+        "pick up midnight_cipher_fragment",
+        "drop gavel_timber",
+        "pick up midnight_cipher_fragment",
+        "drop midnight_cipher_fragment",
+        "pick up docket_satchel_0",
+        "store 1 midnight_cipher_fragment docket_satchel_0",
+        "inspect docket_satchel_0",
+        "pick up midnight_cipher_fragment",
+        "store 1 midnight_cipher_fragment docket_satchel_0",
+        "enter antechamber",
+        "enter market_square"
+      ]
+    }
+  ],
+  "requests": 4054,
+  "estimated_usd": 7.817578488,
+  "unknown_charge_attempts": 0
+}

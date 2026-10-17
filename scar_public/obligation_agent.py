@@ -122,6 +122,8 @@ class ObligationAgent:
                 memory.update(continuation,obs['text'],step)
                 return continuation['action'],0,0,json.dumps(continuation,ensure_ascii=False)
             prompt += memory.resource_feedback()
+            prepare=getattr(controller,'prepare_decision',None)
+            if prepare: prompt += prepare(obs['text'],step)
         parsed=None
         if memory.postwrite_document:
             name=memory.postwrite_document;memory.postwrite_document=None
@@ -220,7 +222,9 @@ class ObligationAgent:
             review=review_fn(parsed,obs['text']) if review_fn else None
             if review:
                 controller.record_rejection(review,step)
-                parsed=query(prompt+'\nGuarded evidence rejects this proposal:\n'+json.dumps(review)+
+                repair_fn=getattr(controller,'certified_repair',None)
+                repaired=repair_fn(review,obs['text'],step) if repair_fn else None
+                parsed=repaired if repaired else query(prompt+'\nGuarded evidence rejects this proposal:\n'+json.dumps(review)+
                     '\nUse one bounded revision: change the method or obtain missing conditions. '
                     'Do not treat local infeasibility as failure of the full task. Return one action.')
                 repeated=review_fn(parsed,obs['text'])
@@ -274,5 +278,7 @@ class ObligationAgent:
         parsed['resource_plan']=memory.last_plan
         parsed['operation_experiments']=model.semantic_trials[-2:]
         parsed['binding_experiments']=memory.binding_trials[-2:]
+        after=getattr(controller,'after_decision',None) if controller else None
+        if after: after(parsed,obs['text'],step)
         memory.update(parsed,obs['text'],step)
         return parsed['action'].strip(),tokens[0],tokens[1],json.dumps(parsed,ensure_ascii=False)

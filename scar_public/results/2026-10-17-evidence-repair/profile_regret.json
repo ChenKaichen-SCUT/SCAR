@@ -1,0 +1,6683 @@
+{
+  "scope": "Post-hoc replay of actual grounded queries; no new LLM or game outcomes",
+  "cases": [
+    {
+      "stage": "cache",
+      "game": "mark",
+      "step": 142,
+      "newly_rejected": [
+        {
+          "prefix": [
+            "drop coal_chunk",
+            "craft 1 oak_rod"
+          ],
+          "observable_branches": 2,
+          "worst_remaining_models": 2,
+          "leaves": [
+            {
+              "observation": [
+                "success",
+                "Old Castle, hall",
+                [
+                  0,
+                  500,
+                  0
+                ],
+                [
+                  1000,
+                  0,
+                  1000
+                ],
+                [
+                  true
+                ],
+                null
+              ],
+              "models": [
+                "m0",
+                "m1"
+              ],
+              "common_continuation_verified": true,
+              "lower": "1",
+              "upper": "1",
+              "status": "VERIFIED"
+            },
+            {
+              "observation": [
+                "success",
+                "Old Castle, hall",
+                [
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1000,
+                  0,
+                  1000
+                ],
+                [
+                  true
+                ],
+                null
+              ],
+              "models": [
+                "m2",
+                "m3"
+              ],
+              "common_continuation_verified": true,
+              "lower": "1",
+              "upper": "1",
+              "status": "VERIFIED"
+            }
+          ],
+          "excess_target_production": 0,
+          "lower": "3",
+          "upper": "3",
+          "all_leaves_verified": true,
+          "profile_value": {
+            "status": "PROFILE_REGRET",
+            "minimum_saving": -1,
+            "savings": {
+              "m3": -1,
+              "m2": -1,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "decision": "REJECT_PROFILE_REGRET"
+        }
+      ],
+      "changed_selection": false,
+      "original": {
+        "fingerprint": "383a1bb86d9fdb24bb536ed355218927d58b63c1519531f6c622c75caefd6131",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m3": 0,
+                "m2": 0,
+                "m0": 0,
+                "m1": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m3": -1,
+                "m2": -1,
+                "m0": 0,
+                "m1": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_PROFILE_REGRET"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m3": -1,
+                "m2": -3,
+                "m0": -3,
+                "m1": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m3": 0,
+            "m2": 0,
+            "m0": 0,
+            "m1": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        },
+        "grounding": {
+          "locations": [
+            "Old Castle, hall"
+          ],
+          "routes": {},
+          "items": [
+            "coal_chunk",
+            "oak_log",
+            "oak_rod"
+          ],
+          "recipes": [
+            {
+              "output": "oak_rod",
+              "needs": [
+                [
+                  "oak_log",
+                  500
+                ]
+              ],
+              "stations": [
+                "Old Castle, hall"
+              ],
+              "quantity_modes": [
+                "exact",
+                "ceil_batch",
+                "ceil_per_output"
+              ],
+              "access_modes": [
+                "hand",
+                "hand_bag",
+                "hand_ground",
+                "hand_bag_ground"
+              ],
+              "quantities": [
+                1
+              ]
+            }
+          ],
+          "start_location": "Old Castle, hall",
+          "holding": {
+            "oak_log": 1000,
+            "coal_chunk": 1000
+          },
+          "ground": {
+            "Old Castle, hall": {}
+          },
+          "bag": {},
+          "bag_name": null,
+          "hand_capacity": 2000,
+          "bag_capacity": 0,
+          "hand_background": 0,
+          "bag_background": 0,
+          "target": "oak_rod",
+          "target_count": 1000,
+          "require_crafted": true,
+          "protected_totals": [],
+          "assumptions": [
+            "Candidate family coverage is unproved; observations may reject every model.",
+            "One recipe/current observed room only; no claim of global task infeasibility.",
+            "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+            "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+            "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+            "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+            "Consumption priority is hand, attached bag, then current floor.",
+            "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+            "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+            "Hand capacity is an observed bound."
+          ],
+          "source": {
+            "recipe": "I have acquired a new item: oak_log. It can be used to craft: oak_rod (0.5 oak_log), oak_sword (1 oak_log, 1 oak_rod), workbench (4 oak_log, 4 stone)",
+            "station": "Cannot craft oak_rod. Missing necessary workbench in the current area.",
+            "bag": null,
+            "public_prefix_length": 143,
+            "current_observation_sha256": "647f5db9d3ad64a2d703347275d50ad3496cfd5c255bee30405e053fa3d8f537",
+            "equipment": {},
+            "hand_capacity_bounds": [
+              2.0,
+              2.0
+            ],
+            "semantic_context": {
+              "clock_cell": "0001-01-02 07",
+              "attributes": [
+                "My attack is at 15.",
+                "My defense is at 0.",
+                "My level is 2."
+              ],
+              "explicit_modifiers": []
+            }
+          }
+        },
+        "persistent_evidence": {
+          "context": "ff10a9af7bf5848285915dbe9495ef0e617b4a42181e65fa852d9c848f9406df",
+          "epoch": 0,
+          "reused": false,
+          "raw_profiles_before": 12,
+          "raw_profiles_after": 12,
+          "supporting_observations": 0,
+          "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+        }
+      },
+      "gate_off": {
+        "fingerprint": "383a1bb86d9fdb24bb536ed355218927d58b63c1519531f6c622c75caefd6131",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": 0,
+                "m3": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": -1,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m0": -3,
+                "m1": 0,
+                "m2": -3,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m0": 0,
+            "m1": 0,
+            "m2": 0,
+            "m3": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        }
+      },
+      "gate_on": {
+        "fingerprint": "383a1bb86d9fdb24bb536ed355218927d58b63c1519531f6c622c75caefd6131",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": 0,
+                "m3": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": -1,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_PROFILE_REGRET"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m0": -3,
+                "m1": 0,
+                "m2": -3,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m0": 0,
+            "m1": 0,
+            "m2": 0,
+            "m3": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        }
+      }
+    },
+    {
+      "stage": "cache",
+      "game": "mark",
+      "step": 276,
+      "newly_rejected": [
+        {
+          "prefix": [
+            "drop copper_bar",
+            "craft 1 oak_rod"
+          ],
+          "observable_branches": 2,
+          "worst_remaining_models": 2,
+          "leaves": [
+            {
+              "observation": [
+                "success",
+                "Old Castle, hall",
+                [
+                  0,
+                  500,
+                  0
+                ],
+                [
+                  1000,
+                  0,
+                  1000
+                ],
+                [
+                  true
+                ],
+                null
+              ],
+              "models": [
+                "m0",
+                "m1"
+              ],
+              "common_continuation_verified": true,
+              "lower": "1",
+              "upper": "1",
+              "status": "VERIFIED"
+            },
+            {
+              "observation": [
+                "success",
+                "Old Castle, hall",
+                [
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1000,
+                  0,
+                  1000
+                ],
+                [
+                  true
+                ],
+                null
+              ],
+              "models": [
+                "m2",
+                "m3"
+              ],
+              "common_continuation_verified": true,
+              "lower": "1",
+              "upper": "1",
+              "status": "VERIFIED"
+            }
+          ],
+          "excess_target_production": 0,
+          "lower": "3",
+          "upper": "3",
+          "all_leaves_verified": true,
+          "profile_value": {
+            "status": "PROFILE_REGRET",
+            "minimum_saving": -1,
+            "savings": {
+              "m3": -1,
+              "m2": -1,
+              "m0": 0,
+              "m1": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "decision": "REJECT_PROFILE_REGRET"
+        }
+      ],
+      "changed_selection": false,
+      "original": {
+        "fingerprint": "bc10c968ec3dc8aa519f10bce60cb9640c2b3969235402860334fc260a446a12",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m3": 0,
+                "m2": 0,
+                "m0": 0,
+                "m1": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop copper_bar",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m3": -1,
+                "m2": -1,
+                "m0": 0,
+                "m1": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_PROFILE_REGRET"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m3": -1,
+                "m2": -3,
+                "m0": -3,
+                "m1": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m3": 0,
+            "m2": 0,
+            "m0": 0,
+            "m1": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        },
+        "grounding": {
+          "locations": [
+            "Old Castle, hall"
+          ],
+          "routes": {},
+          "items": [
+            "copper_bar",
+            "oak_log",
+            "oak_rod"
+          ],
+          "recipes": [
+            {
+              "output": "oak_rod",
+              "needs": [
+                [
+                  "oak_log",
+                  500
+                ]
+              ],
+              "stations": [
+                "Old Castle, hall"
+              ],
+              "quantity_modes": [
+                "exact",
+                "ceil_batch",
+                "ceil_per_output"
+              ],
+              "access_modes": [
+                "hand",
+                "hand_bag",
+                "hand_ground",
+                "hand_bag_ground"
+              ],
+              "quantities": [
+                1
+              ]
+            }
+          ],
+          "start_location": "Old Castle, hall",
+          "holding": {
+            "copper_bar": 1000,
+            "oak_log": 1000
+          },
+          "ground": {
+            "Old Castle, hall": {}
+          },
+          "bag": {},
+          "bag_name": null,
+          "hand_capacity": 2000,
+          "bag_capacity": 0,
+          "hand_background": 0,
+          "bag_background": 0,
+          "target": "oak_rod",
+          "target_count": 1000,
+          "require_crafted": true,
+          "protected_totals": [],
+          "assumptions": [
+            "Candidate family coverage is unproved; observations may reject every model.",
+            "One recipe/current observed room only; no claim of global task infeasibility.",
+            "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+            "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+            "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+            "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+            "Consumption priority is hand, attached bag, then current floor.",
+            "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+            "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+            "Hand capacity is an observed bound."
+          ],
+          "source": {
+            "recipe": "I have acquired a new item: oak_log. It can be used to craft: oak_rod (0.5 oak_log), oak_sword (1 oak_log, 1 oak_rod), workbench (4 oak_log, 4 stone)",
+            "station": "Cannot craft oak_rod. Missing necessary workbench in the current area.",
+            "bag": null,
+            "public_prefix_length": 277,
+            "current_observation_sha256": "863183a947fb9aabc76d15a9b54d6eb239d10929345dd2949fb0c7da579c227c",
+            "equipment": {},
+            "hand_capacity_bounds": [
+              2.0,
+              2.0
+            ],
+            "semantic_context": {
+              "clock_cell": "0001-01-03 06",
+              "attributes": [
+                "My attack is at 25.",
+                "My defense is at 0.",
+                "My level is 4."
+              ],
+              "explicit_modifiers": []
+            }
+          }
+        },
+        "persistent_evidence": {
+          "context": "f446612ac30c9f6416fa6e167789e13b266dbe58fad3569b0b0869b2198f6668",
+          "epoch": 0,
+          "reused": false,
+          "raw_profiles_before": 12,
+          "raw_profiles_after": 12,
+          "supporting_observations": 0,
+          "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+        }
+      },
+      "gate_off": {
+        "fingerprint": "bc10c968ec3dc8aa519f10bce60cb9640c2b3969235402860334fc260a446a12",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": 0,
+                "m3": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop copper_bar",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": -1,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m0": -3,
+                "m1": 0,
+                "m2": -3,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m0": 0,
+            "m1": 0,
+            "m2": 0,
+            "m3": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        }
+      },
+      "gate_on": {
+        "fingerprint": "bc10c968ec3dc8aa519f10bce60cb9640c2b3969235402860334fc260a446a12",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": 0,
+                "m3": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop copper_bar",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": -1,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_PROFILE_REGRET"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m0": -3,
+                "m1": 0,
+                "m2": -3,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m0": 0,
+            "m1": 0,
+            "m2": 0,
+            "m3": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        }
+      }
+    },
+    {
+      "stage": "none",
+      "game": "mark",
+      "step": 102,
+      "newly_rejected": [
+        {
+          "prefix": [
+            "drop coal_chunk",
+            "craft 1 oak_rod"
+          ],
+          "observable_branches": 2,
+          "worst_remaining_models": 2,
+          "leaves": [
+            {
+              "observation": [
+                "success",
+                "Old Castle, hall",
+                [
+                  0,
+                  500,
+                  0
+                ],
+                [
+                  1000,
+                  0,
+                  1000
+                ],
+                [
+                  true
+                ],
+                null
+              ],
+              "models": [
+                "m0",
+                "m1"
+              ],
+              "common_continuation_verified": true,
+              "lower": "1",
+              "upper": "1",
+              "status": "VERIFIED"
+            },
+            {
+              "observation": [
+                "success",
+                "Old Castle, hall",
+                [
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1000,
+                  0,
+                  1000
+                ],
+                [
+                  true
+                ],
+                null
+              ],
+              "models": [
+                "m2",
+                "m3"
+              ],
+              "common_continuation_verified": true,
+              "lower": "1",
+              "upper": "1",
+              "status": "VERIFIED"
+            }
+          ],
+          "excess_target_production": 0,
+          "lower": "3",
+          "upper": "3",
+          "all_leaves_verified": true,
+          "profile_value": {
+            "status": "PROFILE_REGRET",
+            "minimum_saving": -1,
+            "savings": {
+              "m1": 0,
+              "m2": -1,
+              "m3": -1,
+              "m0": 0
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "decision": "REJECT_PROFILE_REGRET"
+        }
+      ],
+      "changed_selection": false,
+      "original": {
+        "fingerprint": "09646b8865c47fb149fbaff4448d7cff73ec340df2d70fc3d656e4379fdafdf0",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m1": 0,
+                "m2": 0,
+                "m3": 0,
+                "m0": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m1": 0,
+                "m2": -1,
+                "m3": -1,
+                "m0": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_PROFILE_REGRET"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m1": 0,
+                "m2": -3,
+                "m3": -1,
+                "m0": -3
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m1": 0,
+            "m2": 0,
+            "m3": 0,
+            "m0": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        },
+        "grounding": {
+          "locations": [
+            "Old Castle, hall"
+          ],
+          "routes": {},
+          "items": [
+            "coal_chunk",
+            "oak_log",
+            "oak_rod"
+          ],
+          "recipes": [
+            {
+              "output": "oak_rod",
+              "needs": [
+                [
+                  "oak_log",
+                  500
+                ]
+              ],
+              "stations": [
+                "Old Castle, hall"
+              ],
+              "quantity_modes": [
+                "exact",
+                "ceil_batch",
+                "ceil_per_output"
+              ],
+              "access_modes": [
+                "hand",
+                "hand_bag",
+                "hand_ground",
+                "hand_bag_ground"
+              ],
+              "quantities": [
+                1
+              ]
+            }
+          ],
+          "start_location": "Old Castle, hall",
+          "holding": {
+            "oak_log": 1000,
+            "coal_chunk": 1000
+          },
+          "ground": {
+            "Old Castle, hall": {}
+          },
+          "bag": {},
+          "bag_name": null,
+          "hand_capacity": 2000,
+          "bag_capacity": 0,
+          "hand_background": 0,
+          "bag_background": 0,
+          "target": "oak_rod",
+          "target_count": 1000,
+          "require_crafted": true,
+          "protected_totals": [],
+          "assumptions": [
+            "Candidate family coverage is unproved; observations may reject every model.",
+            "One recipe/current observed room only; no claim of global task infeasibility.",
+            "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+            "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+            "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+            "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+            "Consumption priority is hand, attached bag, then current floor.",
+            "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+            "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+            "Hand capacity is an observed bound."
+          ],
+          "source": {
+            "recipe": "I have acquired a new item: oak_log. It can be used to craft: oak_rod (0.5 oak_log), oak_sword (1 oak_log, 1 oak_rod), workbench (4 oak_log, 4 stone)",
+            "station": "Cannot craft oak_rod. Missing necessary workbench in the current area.",
+            "bag": null,
+            "public_prefix_length": 103,
+            "current_observation_sha256": "265c31a19e5c720a675317194acf279887af35dbaa5dfa0b222ea02a2a07809d",
+            "equipment": {
+              "small_pouch_0": 1000
+            },
+            "hand_capacity_bounds": [
+              2.0,
+              2.0
+            ],
+            "semantic_context": {
+              "clock_cell": "0001-01-02 01",
+              "attributes": [
+                "My attack is at 15.",
+                "My defense is at 0.",
+                "My level is 2."
+              ],
+              "explicit_modifiers": []
+            }
+          }
+        },
+        "persistent_evidence": {
+          "context": "e400f95597772286c4705a5c14565123664293ff7486379e3364d82bad57dfdb",
+          "epoch": 0,
+          "reused": false,
+          "raw_profiles_before": 12,
+          "raw_profiles_after": 12,
+          "supporting_observations": 0,
+          "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+        }
+      },
+      "gate_off": {
+        "fingerprint": "09646b8865c47fb149fbaff4448d7cff73ec340df2d70fc3d656e4379fdafdf0",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": 0,
+                "m3": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": -1,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m0": -3,
+                "m1": 0,
+                "m2": -3,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m0": 0,
+            "m1": 0,
+            "m2": 0,
+            "m3": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        }
+      },
+      "gate_on": {
+        "fingerprint": "09646b8865c47fb149fbaff4448d7cff73ec340df2d70fc3d656e4379fdafdf0",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": 0,
+                "m3": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": -1,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_PROFILE_REGRET"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m0": -3,
+                "m1": 0,
+                "m2": -3,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m0": 0,
+            "m1": 0,
+            "m2": 0,
+            "m3": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        }
+      }
+    },
+    {
+      "stage": "structured",
+      "game": "mark",
+      "step": 112,
+      "newly_rejected": [
+        {
+          "prefix": [
+            "drop coal_chunk",
+            "craft 1 oak_rod"
+          ],
+          "observable_branches": 2,
+          "worst_remaining_models": 2,
+          "leaves": [
+            {
+              "observation": [
+                "success",
+                "Old Castle, hall",
+                [
+                  0,
+                  500,
+                  0
+                ],
+                [
+                  1000,
+                  0,
+                  1000
+                ],
+                [
+                  true
+                ],
+                null
+              ],
+              "models": [
+                "m0",
+                "m1"
+              ],
+              "common_continuation_verified": true,
+              "lower": "1",
+              "upper": "1",
+              "status": "VERIFIED"
+            },
+            {
+              "observation": [
+                "success",
+                "Old Castle, hall",
+                [
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  1000,
+                  0,
+                  1000
+                ],
+                [
+                  true
+                ],
+                null
+              ],
+              "models": [
+                "m2",
+                "m3"
+              ],
+              "common_continuation_verified": true,
+              "lower": "1",
+              "upper": "1",
+              "status": "VERIFIED"
+            }
+          ],
+          "excess_target_production": 0,
+          "lower": "3",
+          "upper": "3",
+          "all_leaves_verified": true,
+          "profile_value": {
+            "status": "PROFILE_REGRET",
+            "minimum_saving": -1,
+            "savings": {
+              "m1": 0,
+              "m3": -1,
+              "m0": 0,
+              "m2": -1
+            },
+            "scope": "relative to this verified reference, not the optimal policy"
+          },
+          "decision": "REJECT_PROFILE_REGRET"
+        }
+      ],
+      "changed_selection": false,
+      "original": {
+        "fingerprint": "d59d95689cb6dc3f117c206fbb72b1bf6f72be6ab7b866f3a0358fda3e6e3bc5",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m1": 0,
+                "m3": 0,
+                "m0": 0,
+                "m2": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m1": 0,
+                "m3": -1,
+                "m0": 0,
+                "m2": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_PROFILE_REGRET"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m1": 0,
+                "m3": -1,
+                "m0": -3,
+                "m2": -3
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m1": 0,
+            "m3": 0,
+            "m0": 0,
+            "m2": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        },
+        "grounding": {
+          "locations": [
+            "Old Castle, hall"
+          ],
+          "routes": {},
+          "items": [
+            "coal_chunk",
+            "oak_log",
+            "oak_rod"
+          ],
+          "recipes": [
+            {
+              "output": "oak_rod",
+              "needs": [
+                [
+                  "oak_log",
+                  500
+                ]
+              ],
+              "stations": [
+                "Old Castle, hall"
+              ],
+              "quantity_modes": [
+                "exact",
+                "ceil_batch",
+                "ceil_per_output"
+              ],
+              "access_modes": [
+                "hand",
+                "hand_bag",
+                "hand_ground",
+                "hand_bag_ground"
+              ],
+              "quantities": [
+                1
+              ]
+            }
+          ],
+          "start_location": "Old Castle, hall",
+          "holding": {
+            "coal_chunk": 1000,
+            "oak_log": 1000
+          },
+          "ground": {
+            "Old Castle, hall": {}
+          },
+          "bag": {},
+          "bag_name": null,
+          "hand_capacity": 2000,
+          "bag_capacity": 0,
+          "hand_background": 0,
+          "bag_background": 0,
+          "target": "oak_rod",
+          "target_count": 1000,
+          "require_crafted": true,
+          "protected_totals": [],
+          "assumptions": [
+            "Candidate family coverage is unproved; observations may reject every model.",
+            "One recipe/current observed room only; no claim of global task infeasibility.",
+            "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+            "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+            "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+            "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+            "Consumption priority is hand, attached bag, then current floor.",
+            "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+            "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+            "Hand capacity is an observed bound."
+          ],
+          "source": {
+            "recipe": "I have acquired a new item: oak_log. It can be used to craft: oak_rod (0.5 oak_log), oak_sword (1 oak_log, 1 oak_rod), workbench (4 oak_log, 4 stone)",
+            "station": "Cannot craft oak_rod. Missing necessary workbench in the current area.",
+            "bag": null,
+            "public_prefix_length": 113,
+            "current_observation_sha256": "f7538c4f1768a1dba9a2ba92a3d4ee7da627202b2954696920b669e0283932e7",
+            "equipment": {},
+            "hand_capacity_bounds": [
+              2.0,
+              2.0
+            ],
+            "semantic_context": {
+              "clock_cell": "0001-01-02 02",
+              "attributes": [
+                "My attack is at 15.",
+                "My defense is at 0.",
+                "My level is 2."
+              ],
+              "explicit_modifiers": []
+            }
+          }
+        },
+        "persistent_evidence": {
+          "context": "4998a273488a838eb7de64f37227cb7202e9e152e27583174210b831b78e2447",
+          "epoch": 0,
+          "reused": false,
+          "raw_profiles_before": 12,
+          "raw_profiles_after": 12,
+          "supporting_observations": 0,
+          "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+        }
+      },
+      "gate_off": {
+        "fingerprint": "d59d95689cb6dc3f117c206fbb72b1bf6f72be6ab7b866f3a0358fda3e6e3bc5",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": 0,
+                "m3": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": -1,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m0": -3,
+                "m1": 0,
+                "m2": -3,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m0": 0,
+            "m1": 0,
+            "m2": 0,
+            "m3": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        }
+      },
+      "gate_on": {
+        "fingerprint": "d59d95689cb6dc3f117c206fbb72b1bf6f72be6ab7b866f3a0358fda3e6e3bc5",
+        "scope": "conditional finite local task",
+        "guarantee_mode": "preserve_opportunity",
+        "initial_individual_feasibility": {
+          "m0": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m1": {
+            "lower": "3",
+            "upper": "3",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m2": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          },
+          "m3": {
+            "lower": "2",
+            "upper": "2",
+            "success_exempt": false,
+            "reason": "verified initially feasible"
+          }
+        },
+        "success_exempt_models": [],
+        "hypotheses": {
+          "m0": {
+            "oak_rod": [
+              "exact",
+              "hand"
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              "exact",
+              "hand_ground"
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand"
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              "ceil_batch",
+              "hand_ground"
+            ]
+          }
+        },
+        "state_count": 218,
+        "behaviorally_equivalent_parameter_aliases": {
+          "m0": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand"
+              ],
+              [
+                "exact",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m1": {
+            "oak_rod": [
+              [
+                "exact",
+                "hand_ground"
+              ],
+              [
+                "exact",
+                "hand_bag_ground"
+              ]
+            ]
+          },
+          "m2": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              [
+                "ceil_per_output",
+                "hand"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag"
+              ]
+            ]
+          },
+          "m3": {
+            "oak_rod": [
+              [
+                "ceil_batch",
+                "hand_ground"
+              ],
+              [
+                "ceil_batch",
+                "hand_bag_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_ground"
+              ],
+              [
+                "ceil_per_output",
+                "hand_bag_ground"
+              ]
+            ]
+          }
+        },
+        "baseline_lower": "3",
+        "baseline_upper": "3",
+        "max_extra_actions": 0,
+        "candidates": [
+          {
+            "prefix": [
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    500,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "2",
+                "upper": "2",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "NONDEGRADING",
+              "minimum_saving": 0,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": 0,
+                "m3": 0
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "ADMISSIBLE"
+          },
+          {
+            "prefix": [
+              "drop coal_chunk",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 2,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    500,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1000,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m2",
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "3",
+            "upper": "3",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -1,
+              "savings": {
+                "m0": 0,
+                "m1": 0,
+                "m2": -1,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_PROFILE_REGRET"
+          },
+          {
+            "prefix": [
+              "drop oak_log",
+              "craft 1 oak_rod"
+            ],
+            "observable_branches": 3,
+            "worst_remaining_models": 2,
+            "leaves": [
+              {
+                "observation": [
+                  "failure",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1000,
+                    0
+                  ],
+                  [
+                    false
+                  ],
+                  null
+                ],
+                "models": [
+                  "m0",
+                  "m2"
+                ],
+                "common_continuation_verified": true,
+                "lower": "4",
+                "upper": "4",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    500,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m1"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              },
+              {
+                "observation": [
+                  "success",
+                  "Old Castle, hall",
+                  [
+                    1000,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    1000
+                  ],
+                  [
+                    true
+                  ],
+                  null
+                ],
+                "models": [
+                  "m3"
+                ],
+                "common_continuation_verified": true,
+                "lower": "1",
+                "upper": "1",
+                "status": "VERIFIED"
+              }
+            ],
+            "excess_target_production": 0,
+            "lower": "6",
+            "upper": "6",
+            "all_leaves_verified": true,
+            "profile_value": {
+              "status": "PROFILE_REGRET",
+              "minimum_saving": -3,
+              "savings": {
+                "m0": -3,
+                "m1": 0,
+                "m2": -3,
+                "m3": -1
+              },
+              "scope": "relative to this verified reference, not the optimal policy"
+            },
+            "decision": "REJECT_EXTRA_COST"
+          }
+        ],
+        "action_override": false,
+        "true_model_coverage": "unestablished",
+        "assumptions": [
+          "Candidate family coverage is unproved; observations may reject every model.",
+          "One recipe/current observed room only; no claim of global task infeasibility.",
+          "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+          "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+          "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+          "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+          "Consumption priority is hand, attached bag, then current floor.",
+          "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+          "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+          "Hand capacity is an observed bound."
+        ],
+        "prefix_nodes": 4,
+        "prefix_search_exhausted": true,
+        "search_expansions": 13,
+        "lp_calls": 66,
+        "status": "CONDITIONAL_EXPERIMENT",
+        "prefix": [
+          "craft 1 oak_rod"
+        ],
+        "worst_total_actions": "3",
+        "selected_leaves": [
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                500,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m0",
+              "m1"
+            ],
+            "common_continuation_verified": true,
+            "lower": "2",
+            "upper": "2",
+            "status": "VERIFIED"
+          },
+          {
+            "observation": [
+              "success",
+              "Old Castle, hall",
+              [
+                1000,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1000
+              ],
+              [
+                true
+              ],
+              null
+            ],
+            "models": [
+              "m2",
+              "m3"
+            ],
+            "common_continuation_verified": true,
+            "lower": "1",
+            "upper": "1",
+            "status": "VERIFIED"
+          }
+        ],
+        "prospective_value": {
+          "status": "NONDEGRADING",
+          "minimum_saving": 0,
+          "savings": {
+            "m0": 0,
+            "m1": 0,
+            "m2": 0,
+            "m3": 0
+          },
+          "scope": "relative to this verified reference, not the optimal policy"
+        }
+      }
+    }
+  ],
+  "queries": 4,
+  "additional_rejected_candidates": 4,
+  "changed_selected_policies": 0,
+  "api_calls": 0
+}

@@ -1,0 +1,461 @@
+{
+  "scope": "Selected local real-engine mechanism check, not an independent full-game result",
+  "api_calls": 0,
+  "admissions": [
+    {
+      "step": 78,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 80,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 82,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 83,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 84,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 85,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 87,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 88,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 90,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 91,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 93,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 100,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 101,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 102,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 103,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 104,
+      "gap": "station absent; automatic current-room grounding does not assert a route"
+    },
+    {
+      "step": 105,
+      "gap": "attached container contents stale; inspect before planning"
+    }
+  ],
+  "trace": [
+    {
+      "action": "inspect docket_satchel_0",
+      "feedback": "\nCurrent Time: 0001-01-02 01:30:00\nCurrent Location: Central Courthouse, lobby\n\nI inspected docket_satchel_0: A canvas satchel embossed with the scales of justice, suitable for carrying legal materials and small goods.\nIt contains: 1 statute_shard, 1 binding_thread (capacity: 2/20).\n\nI am holding 1 docket_satchel_0.\nI have equipped no objects.\nI see 10 writ_token, 2 chamber_key, 1 legal_brief_8, 1 clerks_bench, 1 decree_stylus, 1 gavel_timber, 1 gavel_splint near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 97.\nMy experience is at 65.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+      "event": {
+        "status": "PAID_GROUNDING_OBSERVATION"
+      }
+    }
+  ],
+  "selected": true,
+  "step": 105,
+  "problem": {
+    "locations": [
+      "Central Courthouse, lobby"
+    ],
+    "routes": {},
+    "items": [
+      "binding_thread",
+      "gavel_club",
+      "gavel_timber"
+    ],
+    "recipes": [
+      {
+        "output": "gavel_club",
+        "needs": [
+          [
+            "gavel_timber",
+            2000
+          ],
+          [
+            "binding_thread",
+            1000
+          ]
+        ],
+        "stations": [
+          "Central Courthouse, lobby"
+        ],
+        "quantity_modes": [
+          "exact",
+          "ceil_batch",
+          "ceil_per_output"
+        ],
+        "access_modes": [
+          "hand",
+          "hand_bag",
+          "hand_ground",
+          "hand_bag_ground"
+        ],
+        "quantities": [
+          1
+        ]
+      }
+    ],
+    "start_location": "Central Courthouse, lobby",
+    "holding": {},
+    "ground": {
+      "Central Courthouse, lobby": {
+        "gavel_timber": 1000
+      }
+    },
+    "bag": {
+      "binding_thread": 1000
+    },
+    "bag_name": "docket_satchel_0",
+    "hand_capacity": 2000,
+    "bag_capacity": 20000,
+    "hand_background": 1000,
+    "bag_background": 1000,
+    "target": "gavel_club",
+    "target_count": 1000,
+    "require_crafted": true,
+    "protected_totals": [],
+    "assumptions": [
+      "Candidate family coverage is unproved; observations may reject every model.",
+      "One recipe/current observed room only; no claim of global task infeasibility.",
+      "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+      "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+      "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+      "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+      "Consumption priority is hand, attached bag, then current floor.",
+      "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+      "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+      "Hand capacity is an observed bound."
+    ],
+    "source": {
+      "recipe": "I have acquired a new item: binding_thread. It can be used to craft: marble_mace (1 marble_slab, 1 gavel_splint, 1 binding_thread), parchment_wrap (3 parchment_scrap, 1 binding_thread), casebook (5 legal_brief, 1 binding_thread), clerks_robe (1 padded_lining, 1 binding_thread), gavel_club (2 gavel_timber, 1 binding_thread), scale_bundle (6 iron_scale, 2 binding_thread), docket_satchel (3 parchment_scrap, 1 binding_thread), parchment_roll (2 parchment_scrap, 1 binding_thread), binding_strap (1 binding_thread, 0.25 parchment_roll)",
+      "station": "Cannot craft gavel_club. Missing necessary clerks_bench in the current area.",
+      "bag": "It contains: 1 statute_shard, 1 binding_thread (capacity: 2/20).",
+      "public_prefix_length": 106,
+      "current_observation_sha256": "61fd6749a15b17b823e7bdaa4f4fb5f70a193fac5e1616e92d98dc247c912fb0",
+      "equipment": {},
+      "hand_capacity_bounds": [
+        2.0,
+        2.0
+      ],
+      "fixed_carried_container": {
+        "name": "docket_satchel_0",
+        "relation": "holding",
+        "count": 1000
+      },
+      "semantic_context": {
+        "attributes": [
+          "My attack is at 15.",
+          "My defense is at 0.",
+          "My level is 2."
+        ],
+        "explicit_modifiers": []
+      }
+    }
+  },
+  "certificate": {
+    "fingerprint": "c4086400b379a19f282ee67d450e55137f46b5c1f25645382732aac888e6089b",
+    "scope": "conditional finite local task",
+    "guarantee_mode": "preserve_opportunity",
+    "initial_individual_feasibility": {
+      "m3": {
+        "lower": "inf",
+        "upper": "inf",
+        "success_exempt": true,
+        "reason": "proved individually infeasible within ORIGINAL horizon"
+      },
+      "m1": {
+        "lower": "inf",
+        "upper": "inf",
+        "success_exempt": true,
+        "reason": "proved individually infeasible within ORIGINAL horizon"
+      },
+      "m0": {
+        "lower": "inf",
+        "upper": "inf",
+        "success_exempt": true,
+        "reason": "proved individually infeasible within ORIGINAL horizon"
+      },
+      "m2": {
+        "lower": "inf",
+        "upper": "inf",
+        "success_exempt": true,
+        "reason": "proved individually infeasible within ORIGINAL horizon"
+      }
+    },
+    "success_exempt_models": [
+      "m0",
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "hypotheses": {
+      "m0": {
+        "gavel_club": [
+          "exact",
+          "hand"
+        ]
+      },
+      "m1": {
+        "gavel_club": [
+          "exact",
+          "hand_bag"
+        ]
+      },
+      "m2": {
+        "gavel_club": [
+          "exact",
+          "hand_ground"
+        ]
+      },
+      "m3": {
+        "gavel_club": [
+          "exact",
+          "hand_bag_ground"
+        ]
+      }
+    },
+    "state_count": 128,
+    "behaviorally_equivalent_parameter_aliases": {
+      "m0": {
+        "gavel_club": [
+          [
+            "exact",
+            "hand"
+          ],
+          [
+            "ceil_batch",
+            "hand"
+          ],
+          [
+            "ceil_per_output",
+            "hand"
+          ]
+        ]
+      },
+      "m1": {
+        "gavel_club": [
+          [
+            "exact",
+            "hand_bag"
+          ],
+          [
+            "ceil_batch",
+            "hand_bag"
+          ],
+          [
+            "ceil_per_output",
+            "hand_bag"
+          ]
+        ]
+      },
+      "m2": {
+        "gavel_club": [
+          [
+            "exact",
+            "hand_ground"
+          ],
+          [
+            "ceil_batch",
+            "hand_ground"
+          ],
+          [
+            "ceil_per_output",
+            "hand_ground"
+          ]
+        ]
+      },
+      "m3": {
+        "gavel_club": [
+          [
+            "exact",
+            "hand_bag_ground"
+          ],
+          [
+            "ceil_batch",
+            "hand_bag_ground"
+          ],
+          [
+            "ceil_per_output",
+            "hand_bag_ground"
+          ]
+        ]
+      }
+    },
+    "baseline_lower": "0",
+    "baseline_upper": "0",
+    "max_extra_actions": 0,
+    "candidates": [],
+    "action_override": false,
+    "true_model_coverage": "unestablished",
+    "assumptions": [
+      "Candidate family coverage is unproved; observations may reject every model.",
+      "One recipe/current observed room only; no claim of global task infeasibility.",
+      "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+      "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+      "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+      "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+      "Consumption priority is hand, attached bag, then current floor.",
+      "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+      "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+      "Hand capacity is an observed bound."
+    ],
+    "status": "NO_INITIALLY_VIABLE_CANDIDATE",
+    "reason": "no opportunity has been established; no probe selected",
+    "grounding": {
+      "locations": [
+        "Central Courthouse, lobby"
+      ],
+      "routes": {},
+      "items": [
+        "binding_thread",
+        "gavel_club",
+        "gavel_timber"
+      ],
+      "recipes": [
+        {
+          "output": "gavel_club",
+          "needs": [
+            [
+              "gavel_timber",
+              2000
+            ],
+            [
+              "binding_thread",
+              1000
+            ]
+          ],
+          "stations": [
+            "Central Courthouse, lobby"
+          ],
+          "quantity_modes": [
+            "exact",
+            "ceil_batch",
+            "ceil_per_output"
+          ],
+          "access_modes": [
+            "hand",
+            "hand_bag",
+            "hand_ground",
+            "hand_bag_ground"
+          ],
+          "quantities": [
+            1
+          ]
+        }
+      ],
+      "start_location": "Central Courthouse, lobby",
+      "holding": {},
+      "ground": {
+        "Central Courthouse, lobby": {
+          "gavel_timber": 1000
+        }
+      },
+      "bag": {
+        "binding_thread": 1000
+      },
+      "bag_name": "docket_satchel_0",
+      "hand_capacity": 2000,
+      "bag_capacity": 20000,
+      "hand_background": 1000,
+      "bag_background": 1000,
+      "target": "gavel_club",
+      "target_count": 1000,
+      "require_crafted": true,
+      "protected_totals": [],
+      "assumptions": [
+        "Candidate family coverage is unproved; observations may reject every model.",
+        "One recipe/current observed room only; no claim of global task infeasibility.",
+        "Goal is newly craft and hold this output; ingredients are not terminal requirements.",
+        "Public recipe/station evidence may omit conditions; station presence is assumed sufficient.",
+        "Unit load for modeled items, fixed equipment/capacity, fixed background bag load.",
+        "Craft output is on the current floor; failure preserves materials; transfer moves one unit.",
+        "Consumption priority is hand, attached bag, then current floor.",
+        "No ambient item changes; attack feedback invalidates the resource-only execution certificate.",
+        "Bag contents persist between inspected/explicit transfer events until uncertain crafting.",
+        "Hand capacity is an observed bound."
+      ],
+      "source": {
+        "recipe": "I have acquired a new item: binding_thread. It can be used to craft: marble_mace (1 marble_slab, 1 gavel_splint, 1 binding_thread), parchment_wrap (3 parchment_scrap, 1 binding_thread), casebook (5 legal_brief, 1 binding_thread), clerks_robe (1 padded_lining, 1 binding_thread), gavel_club (2 gavel_timber, 1 binding_thread), scale_bundle (6 iron_scale, 2 binding_thread), docket_satchel (3 parchment_scrap, 1 binding_thread), parchment_roll (2 parchment_scrap, 1 binding_thread), binding_strap (1 binding_thread, 0.25 parchment_roll)",
+        "station": "Cannot craft gavel_club. Missing necessary clerks_bench in the current area.",
+        "bag": "It contains: 1 statute_shard, 1 binding_thread (capacity: 2/20).",
+        "public_prefix_length": 106,
+        "current_observation_sha256": "61fd6749a15b17b823e7bdaa4f4fb5f70a193fac5e1616e92d98dc247c912fb0",
+        "equipment": {},
+        "hand_capacity_bounds": [
+          2.0,
+          2.0
+        ],
+        "fixed_carried_container": {
+          "name": "docket_satchel_0",
+          "relation": "holding",
+          "count": 1000
+        },
+        "semantic_context": {
+          "attributes": [
+            "My attack is at 15.",
+            "My defense is at 0.",
+            "My level is 2."
+          ],
+          "explicit_modifiers": []
+        }
+      }
+    }
+  },
+  "initial_scores": {
+    "agent_adam_davis": {
+      "unique_kill": 0,
+      "kill": 0,
+      "craft": 1,
+      "exploration": 4,
+      "death": 1,
+      "trade": 0,
+      "quest": 7,
+      "side_quest": 0
+    }
+  },
+  "outcome": {
+    "status": "NO_VERIFIED_CONTINUATION"
+  },
+  "final_scores": {
+    "agent_adam_davis": {
+      "unique_kill": 0,
+      "kill": 0,
+      "craft": 1,
+      "exploration": 4,
+      "death": 1,
+      "trade": 0,
+      "quest": 7,
+      "side_quest": 0
+    }
+  },
+  "actions": 1
+}

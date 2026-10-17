@@ -35,7 +35,7 @@ def fresh(text):
     return answer
 
 
-def from_public(model, text, target):
+def from_public(model, text, target, allow_carried=False):
     current = fresh(text); loc = current['location']
     recipe = model.recipes.get(target); station = model.stations.get(target)
     if not recipe or not station:
@@ -48,13 +48,23 @@ def from_public(model, text, target):
     # as accessible after allowing that same bag to be dropped.
     equipped = [(n,b) for n,b in model.containers.items() if current['equipped'].get(n)]
     carried = [n for n in model.containers if current['holding'].get(n)]
-    if len(equipped)>1 or carried:
+    if len(equipped)>1 or carried and (not allow_carried or len(carried)>1 or equipped):
         raise ResourceGap('requires exactly modeled attachment; held/multiple containers unsupported')
-    name,bag = equipped[0] if equipped else (None,{'items':{},'used':0,'capacity':0})
+    attachment=None
+    if carried:
+        name=carried[0];bag=model.containers[name]
+        attachment=dict(name=name,relation='holding',count=current['holding'][name])
+    else:
+        name,bag = equipped[0] if equipped else (None,{'items':{},'used':0,'capacity':0})
     if bag.get('uncertain_after_craft'):
         raise ResourceGap('attached container contents stale; inspect before planning')
     needs = {n:milli(q) for n,q in recipe['needs'].items()}
+    if attachment and (name in needs or name==target):
+        raise ResourceGap('fixed held container cannot be a craft operand or target')
     items = tuple(sorted(set(needs)|{target}|set(current['holding'])))
+    if attachment:items=tuple(n for n in items if n!=name)
+    holding={n:q for n,q in current['holding'].items() if n in items}
+    hand_background=attachment['count'] if attachment else 0
     contents = {n:milli(q) for n,q in bag['items'].items() if n in items}
     background = milli(bag['used'])-sum(contents.values())
     if background < 0: raise ResourceGap('unit-load abstraction conflicts with observed bag use')
@@ -75,12 +85,13 @@ def from_public(model, text, target):
     )
     return ResourceProblem(locations=(loc,),routes={},items=items,
         recipes=(Recipe(target,tuple(needs.items()),(loc,)),),start_location=loc,
-        holding=current['holding'],ground={loc:{n:q for n,q in current['ground'].items() if n in items}},
+        holding=holding,ground={loc:{n:q for n,q in current['ground'].items() if n in items}},
         bag=contents,bag_name=name,hand_capacity=milli(capacity),bag_capacity=milli(bag['capacity']),
-        hand_background=0,bag_background=background,target=target,assumptions=assumptions,
+        hand_background=hand_background,bag_background=background,target=target,assumptions=assumptions,
         source={'recipe':recipe['quote'],'station':station['quote'],'bag':bag.get('quote'),
                 'public_prefix_length':len(model.history),'current_observation_sha256':digest(text),
-                'equipment':current['equipped'],'hand_capacity_bounds':[model.capacity_lower,model.capacity_upper]})
+                'equipment':current['equipped'],'hand_capacity_bounds':[model.capacity_lower,model.capacity_upper],
+                **({'fixed_carried_container':attachment} if attachment else {})})
 
 
 def public_outcome(text, action):
@@ -133,9 +144,16 @@ class TrialSession:
             obs = fresh(text); status = public_outcome(text,action)
             if not status: raise ResourceGap('operation success/failure is not observed')
             if 'I was attacked' in text: raise ResourceGap('ambient combat outside resource model')
+            if p.source and 'semantic_context' in p.source:
+                from scar_public.evidence_repair import context_matches
+                if not context_matches(text,p.source['semantic_context']):
+                    raise ResourceGap('public clock cell or semantic attributes changed')
             if p.source and obs['equipped'] != p.source.get('equipment'):
                 raise ResourceGap('equipment changed outside modeled action effects')
-            if set(obs['holding'])-set(p.items):
+            carried=(p.source or {}).get('fixed_carried_container')
+            if carried and obs['holding'].get(carried['name'],0)!=carried['count']:
+                raise ResourceGap('fixed carried container detached or count changed')
+            if set(obs['holding'])-set(p.items)-({carried['name']} if carried else set()):
                 raise ResourceGap('unexpected held item changes modeled capacity background')
             if action.startswith('craft ') and status == 'success': self.crafted.add(action.split()[-1])
             vector = lambda values: tuple(values.get(n,0) for n in p.items)
@@ -177,10 +195,11 @@ class TrialSession:
 
 def make_trial(model, text, target, horizon=6, mode='preserve_opportunity', max_states=12000,
                expansion_budget=600, prefix_depth=2, max_prefixes=40, max_extra_actions=0,
-               allowed_profiles=None):
-    p = from_public(model,text,target)
+               allowed_profiles=None, require_profile_nondegradation=False, problem=None):
+    p = problem if problem is not None else from_public(model,text,target)
     compiled = compile_resources(p,horizon=horizon,max_states=max_states,allowed_profiles=allowed_profiles)
     report,witness,planner = select_experiment(compiled,mode=mode,expansion_budget=expansion_budget,
-        prefix_depth=prefix_depth,max_prefixes=max_prefixes,max_extra_actions=max_extra_actions)
+        prefix_depth=prefix_depth,max_prefixes=max_prefixes,max_extra_actions=max_extra_actions,
+        require_profile_nondegradation=require_profile_nondegradation)
     report['grounding'] = asdict(p)
     return report, TrialSession(compiled,report,witness,planner) if witness else None

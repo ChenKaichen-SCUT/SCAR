@@ -44,7 +44,14 @@ def restore_trial(saved):
     options = saved['options']
     compiled = compile_resources(problem_from_data(saved['problem']),horizon=options['horizon'],
         max_states=options['max_states'],allowed_profiles=saved.get('allowed_profiles'))
-    report,witness,planner = select_experiment(compiled,**{k:v for k,v in options.items() if k not in ('horizon','max_states')})
+    if saved.get('repair_direct'):
+        planner=compiled.planner()
+        solved=planner.solve(compiled.belief,options['horizon'],options['expansion_budget'])
+        witness=solved.policy
+        report=dict(guarantee_mode='strong',status='VERIFIED_STRONG_LOCAL_REPAIR',success_exempt_models=[])
+        if witness: planner.verify(compiled.belief,options['horizon'],witness)
+    else:
+        report,witness,planner = select_experiment(compiled,**{k:v for k,v in options.items() if k not in ('horizon','max_states')})
     if witness is None or compiled.fingerprint != saved['fingerprint']:
         raise ResourceGap('checkpoint reconstruction has no matching certificate')
     session = TrialSession(compiled,report,witness,planner)
@@ -58,6 +65,7 @@ def restore_trial(saved):
 
 
 class ResourceController:
+    options = OPTIONS
     def __init__(self, memory):
         self.memory = memory; self.session = None
 
@@ -76,6 +84,9 @@ class ResourceController:
 
     def evidence_filter(self, problem):
         return None,{}
+
+    def ground(self, text, target):
+        return from_public(self.memory.model,text,target)
 
     def evidence_observed(self, event, saved):
         pass
@@ -116,20 +127,20 @@ class ResourceController:
         if not target or target not in memory.model.recipes or len(memory.resource_attempts) >= 6:
             return parsed
         signature = self.attempt_signature(target)
-        if signature in memory.resource_attempts or step+OPTIONS['horizon']>300: return parsed
+        if signature in memory.resource_attempts or step+self.options['horizon']>300: return parsed
         try:
             # Missing public evidence is an admission failure, not a search.
             # Do not exhaust the finite computation budget before a grounded
             # problem exists (or suppress it after new station evidence arrives).
-            problem = from_public(memory.model,text,target)
+            problem = self.ground(text,target)
             allowed,metadata = self.evidence_filter(problem)
             memory.resource_attempts.append(signature)
-            report,session = make_trial(memory.model,text,target,**OPTIONS,allowed_profiles=allowed)
+            report,session = make_trial(memory.model,text,target,**self.options,allowed_profiles=allowed,problem=problem)
             if metadata: report['persistent_evidence'] = metadata
             memory.resource_trials.append({'selection':report,'step':step})
             if session:
                 self.session=session; action=session.action()
-                memory.resource_trial_state={'problem':asdict(session.compiled.domain.problem),'options':dict(OPTIONS),
+                memory.resource_trial_state={'problem':asdict(session.compiled.domain.problem),'options':dict(self.options),
                     'fingerprint':session.compiled.fingerprint,'feedback':[],'pending_action':action}
                 if metadata:
                     memory.resource_trial_state.update(allowed_profiles=allowed,evidence=metadata)

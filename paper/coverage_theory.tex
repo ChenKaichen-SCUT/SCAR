@@ -25,13 +25,16 @@ An LLM game agent must decide which uncertain action rules to test, whether a
 test fits the remaining task budget, and when its outcome may constrain future
 plans. We formalize these three decisions using finite competing action models,
 observation-contingent local policies, and context-scoped evidence. The implemented
-mechanism lifts surviving compiled models back to joint semantic profiles and
-filters subsequent planning problems before search. We prove conditional local
+mechanism lifts surviving compiled models back to joint semantic profiles,
+filters later planning problems, and turns contradicted proposals into explicit
+enabling conditions. We prove conditional local
 completion, action-budget accounting, and sound reuse under explicit realizability
 and stationarity assumptions. These are correctness statements for the mechanism,
 not a claim of global game safety, optimal game play, or novel hypothesis
-elimination. Controlled examples demonstrate a change in later actions; the
-chronological game audit has not yet demonstrated a reuse benefit. The earlier
+elimination. A selected real-game replay demonstrates three avoided failures
+after one acquisition action; a single matched-budget LLM continuation improves
+the score by one without completing the game. These are development results,
+not broad superiority. The earlier
 candidate-coverage supplement is archived separately and is not used to explain
 the reported game scores.
 \end{abstract}
@@ -218,6 +221,44 @@ is four, so a zero-allowance guard rejects this test against a three-action
 reference. Information is not automatically worth its acquisition cost.
 \end{example}
 
+\subsection{A computable prospective comparison with a fixed reference}
+Let $\pi_0$ be a verified reference policy and $\pi_p$ a verified test-prefix
+and continuation policy, starting from the same query with the same frozen
+success obligations. Replay both under every profile, including success-exempt
+profiles, and define
+\[
+ d_\theta(p)=C_{\pi_0}(\theta)-C_{\pi_p}(\theta),\qquad
+ L(p)=\min_{\theta\in\Theta_0}d_\theta(p).
+\]
+All prefix, failure, inspection and continuation actions enter these costs.
+This comparison is computed before executing the proposed test.
+\begin{proposition}[Reference-relative nondegradation]\label{prop:profilevalue}
+Under faithful local semantics and true-profile inclusion, $L(p)\geq0$ implies
+that $\pi_p$ costs no more actions than $\pi_0$ under the true profile.
+If $L(p)>0$, it saves at least $L(p)$ under every candidate. Both statements
+retain the original conditional scope of the policies' success obligations.
+\end{proposition}
+\begin{proof}
+For the true profile $\theta^*$, $d_{\theta^*}(p)\geq L(p)$ by definition.
+The complete replay costs start at the same state, so their difference is a
+pathwise comparison. Policy verification separately establishes obligations,
+constraints and budget. No optimality of $\pi_0$ is assumed or concluded.
+\end{proof}
+For $N$ profiles and depth at most $H$, the additional replay costs $O(NH)$
+transition lookups per comparison, after policy construction. This does not
+bound grounding or search. Behavioral aliases have identical costs in this
+compilation and may share a replay without losing profile correlations.
+
+Worst-case costs alone are insufficient: vectors $(1,4)$ and $(3,4)$ have the
+same maximum but the second loses two actions under the first profile. This is
+an arithmetic counterexample, not itself a game instance. V11 rejects a test
+with $L(p)<0$ when a verified reference exists. Without such a reference it
+reports \texttt{UNKNOWN} value and may use the original horizon/opportunity
+certificate, without claiming nondegradation. Zero does not establish strictly
+positive information value. The reference can itself use observations; this
+is not globally optimal value-of-information estimation. The conservative gate
+may reject a test whose future reuse would justify a present loss.
+
 \subsection{A sufficient amortization condition, with explicit limits}
 The following is a proposed analysis tool, not a deployed test-selection rule.
 It states what must be estimated before justifying a positive allowance by
@@ -366,6 +407,96 @@ some false profiles can remain undetected. Neither clearing a ledger nor a
 successful subsequent action repairs a missing true model. The present mechanism
 is exact elimination under assumptions, not probabilistic belief revision.
 
+\section{From evidence to persistent method revision}
+\subsection{What a cheap rejection actually establishes}
+For a guarded query, let $S$ be surviving joint profiles and $\Theta$ the
+unfiltered universe. V10/V11 review a craft without new planning search when
+(i) some profile in $\Theta$ predicts success, (ii) every profile in $S$
+predicts failure with unchanged resources, location and craft bits, and
+(iii) all profiles in $S$ predict the same observation. Prior evidence, rather
+than search failure or shortage shared by the full family, causes rejection.
+\begin{proposition}[Model-relative rejected action]\label{prop:reject}
+Under true-profile inclusion and faithful transitions and observations, a
+command satisfying (ii)--(iii) makes no modeled physical progress and does not
+narrow $S$. It still costs one action. This alone does not establish that
+deleting the command preserves the real game's future outcomes.
+\end{proposition}
+\begin{proof}
+The true profile is quantified in (ii), so its physical projection is unchanged.
+The same observation occurs for every survivor, so Equation~\ref{eq:update}
+removes none. Elapsed time and remaining budget nevertheless change.
+\end{proof}
+\begin{proposition}[Conditional deletion with temporal assumptions]\label{prop:delete}
+Additionally suppose the physical projection is a sufficient Markov state for
+future projected transitions, observations, constraints and goal truth, all
+independent of elapsed time. A policy starting with the rejected command and
+having a verified suffix can omit that command and reach the same projected
+endpoints under every profile using one fewer action.
+\end{proposition}
+\begin{proof}
+The first command has one predicted observation and leaves the sufficient state
+unchanged. Execute its unique suffix immediately. Induction over that suffix
+gives identical subsequent projected states and observations under each profile.
+Sufficiency preserves constraints and goal truth; deleting the unit cost enlarges
+the available horizon by one.
+\end{proof}
+These temporal premises are not established for the games. A failed command can
+advance time into a useful bonus or unlock. V11 adds calendar/hour cells, public
+level/attack/defense and explicit modifier lines to the guard. This prevents
+some transfers but proves neither invariance within an hour nor universal
+safety. Game rejection is a model-relative decision rule evaluated by separate
+shadow checks, not a certified full-game dominance rule.
+
+\subsection{Necessary enabling conditions without fictitious completion}
+For each surviving profile $\theta$, let $d_{i\theta}$ be the required amount
+of ingredient $i$, $a_{i\theta}$ its accessible amount, $t_i$ its total in the
+fragment, and $c_\theta$ the accessible storage capacity after fixed background
+loads. Define
+\[
+ \delta_{i\theta}=\max(0,d_{i\theta}-a_{i\theta}),\quad
+ \mu_{i\theta}=\max(0,d_{i\theta}-t_i),\quad
+ \gamma_\theta=\max(0,\textstyle\sum_i d_{i\theta}-c_\theta).
+\]
+Set $c_\theta=\infty$ when the floor is accessible. Retain joint quantity/access
+profiles: marginal minima must not be combined into a nonexistent favorable rule.
+\begin{proposition}[Arrangement obstruction]\label{prop:obstruction}
+In the fixed-recipe fragment without upstream production, outside supply,
+attachment change or capacity change, assume exact unit-load capacities.
+If for every $\theta\in S$ either some $\mu_{i\theta}>0$ or
+$\gamma_\theta>0$, no rearrangement enables this craft in any survivor.
+\end{proposition}
+\begin{proof}
+Rearrangement conserves each $t_i$, so it cannot repair a missing total.
+Immediately before crafting all inputs must occupy accessible stores, and their
+summed load cannot exceed those stores' capacity. One necessary condition fails
+for each profile separately. These conditions need not be sufficient when they
+hold: placement, transfer granularity and other preconditions can still block.
+\end{proof}
+A demonstrated lower capacity bound cannot justify the capacity obstruction.
+Implementation requires matching observed bounds for that part of the test.
+Supply obstruction concerns only this fragment. An obstruction asks the LLM to
+seek an evidenced enabling change or another method; it is neither global
+impossibility nor a new success exemption.
+
+When rearrangement is not ruled out, V11 may run bounded repair search with
+\emph{strong} success required for every survivor. A verified policy follows
+actual feedback and is checkpointed; no exemptions are introduced. If none is
+verified, explicit missing conditions accompany one bounded LLM revision;
+search exhaustion remains unknown. Local-policy correctness follows the replay
+argument of Theorem~\ref{thm:local} with no exemptions. No result here guarantees
+that an arbitrary LLM replacement advances the whole quest.
+
+\paragraph{Carried containers and observation prerequisites.}
+A later implementation revision admits one fixed carried container. Its own
+load is charged to the hand background; the container is excluded from movable
+items and may not be a recipe operand or target. Actual feedback must preserve
+its held count, or the certificate is revoked. This extends the supported
+fragment without pretending that a dropped bag remains attached. Stale contents
+require a charged inspection before grounding. That prerequisite is not labeled
+a certified value-positive experiment: the needed query does not yet exist.
+The revision was made after the full-game runs, and is not credited with their
+scores.
+
 \section{Algorithm and correspondence with implementation}
 \begin{enumerate}[label=\arabic*.,leftmargin=*]
 \item Read public history and the remaining global budget. V6/LLM proposes the
@@ -377,6 +508,8 @@ fresh quantities, resource constraints and observations using the surviving
 \item Fix the original goal-required profiles. Find and replay a common reference
 policy if possible. Enumerate bounded first-split prefixes; require one verified
 common continuation per leaf and the horizon/allowance tests.
+V11 additionally rejects profile regret against a verified reference and
+records whether reference-relative value is certified or unknown.
 \item Execute the selected command; charge its action immediately. Match fresh
 public feedback to predicted branches. On mismatch/gap, revoke the epoch and
 cancel continuation. Do not reinterpret these events as task completion.
@@ -386,6 +519,10 @@ observation branch without a new LLM call when possible.
 \item At later queries, apply this ledger before search. Re-ground state and
 re-verify a new policy. Never transplant an old plan solely because its evidence
 context matches. Preserve global action expenditure across all queries.
+\item Review later craft proposals even after the main search quota expires.
+Use applicable evidence to expose enabling conditions. On a rejected proposal,
+try a bounded strong local repair if not obstructed; otherwise request one LLM
+revision. Charge every executed replacement and check its real outcome.
 \end{enumerate}
 
 \paragraph{Implemented.}
@@ -394,11 +531,14 @@ paired-profile filter and bounded experiment selector.
 \texttt{resource\_trial.py} grounds one recipe at the current observed station
 and follows actual feedback.
 \texttt{resource\_evidence.py} implements guard/epoch ledgers and alias lifting.
-\texttt{resource\_agent.py} adds the opt-in
-\texttt{persistent\_resource\_v9} agent with checkpointed evidence; V8 remains
-available. The persistence intervention adds no new LLM call or evidence prompt
-section; it directly changes compiled candidates. Later history can of course
-diverge after actions change. Existing limits are six grounded searches per run,
+\texttt{resource\_agent.py} retains V8, checkpointed V9 persistence and V10
+cheap action review. V9 adds no evidence prompt; V10 adds bounded LLM revision.
+\texttt{evidence\_repair.py} implements V11 passive craft observation, narrower
+public context guards, necessary enabling conditions and strong local repair.
+Its four evidence-use modes are none, prompt-only, exact contextual failure
+cache and structured repair. They share the prospective gate and observation
+collection; naturally diverging trajectories need not acquire identical facts.
+Limits are six initial searches, at most six additional repair attempts,
 a six-action local horizon and a 300-action global development budget.
 
 \paragraph{Conditional properties.}
@@ -407,6 +547,9 @@ observations and adequate guards. Proposition~\ref{prop:budget} applies to
 modeled action counts. Proposition~\ref{prop:monotone} concerns an exact optimum,
 not bounded-search wall time. Proposition~\ref{prop:amortize} requires specified
 future matched queries and pathwise costs; it is not an implemented scheduler.
+Propositions~\ref{prop:profilevalue}, \ref{prop:reject} and
+\ref{prop:obstruction} correspond to V11 checks. Proposition~\ref{prop:delete}
+requires temporal sufficiency not established for the games.
 
 \paragraph{Not implemented or not established.}
 Automatic upstream/cross-location grounding, automatic guard discovery,
@@ -417,6 +560,25 @@ support in the finite domain does not establish their automatic game grounding.
 LLM-plus-planner composition and safe action-model learning have prior
 precedents~\cite{dagan2023,juba2021,mehta2011}; the above correctness results do
 not establish independent originality.
+
+\section{Relationship to existing mechanisms}
+Feedback-based revision is already central to AdaPlanner~\cite{adaplanner};
+Reflexion~\cite{reflexion} stores verbal feedback in episodic memory, and
+Voyager~\cite{voyager} combines iterative feedback with reusable executable
+skills. Consequently, remembering failures, revising plans or reusing experience
+is not our independent novelty claim. Safe lifted action-model
+learning~\cite{juba2021} already establishes correctness under formal action-model
+assumptions. Our present finite-family elimination is not a replacement for its
+lifted-learning guarantees.
+
+The narrower proposed contribution is a checked interface from uncertain joint
+resource rules to budgeted local tests, scoped exclusion and explicit enabling
+conditions in LLM execution. Establishing its importance requires advantages
+over prompt-only evidence and contextual failure caching, not only an ablation
+against forgetting. The four V11 arms are internal mechanism controls, not
+faithful reproductions of Reflexion, AdaPlanner or Voyager. The elementary
+correctness propositions do not by themselves establish an original planning
+algorithm or empirical superiority over these systems.
 
 \section{Validation and current evidential limits}
 The new tests check correlated-pair filtering, alias lifting when batch sizes
@@ -442,6 +604,75 @@ outputs are offline counterfactual queries; historical outcomes are never claime
 to result from their actions. This negative result rules out attributing those
 completed game scores to persistent evidence.
 
+A later audit included actor proposals after the six-search quota, finding a
+recurring Metropolis gavel context missed by that earlier selected-query audit.
+A real-engine frozen-proposal replay spends one acquisition action in both arms
+and then prevents three failures: 67 versus 64 actions, with equal final visible
+inventory/location/equipment and quest score. Clock time differs, so hidden
+state or future-outcome equivalence is not claimed. A separate V10 continuation
+from after the shared acquisition reaches score 17 versus 16 at absolute step
+300; neither completes the game. Repeated gavel failures fall from 11 to one;
+all nine rejected proposals fail in separate real-engine shadow checks. Full
+budget API requests rise from 139 to 161. One selected development scenario
+and one sample per arm do not establish stable superiority or optimal test
+selection. These data demonstrate persistent use of evidence, not the uniform
+matched-query assumptions of Proposition~\ref{prop:amortize}.
+
+The frozen V11 protocol evaluates four arms on fresh unseeded initial draws of
+the three existing game templates. These are prospective trajectories, not new
+independent game domains or formal repeated trials. Primary endpoints are quest
+score and environment completion at the common action budget. Empty opportunity
+sets, negative effects, model gaps, all acquisition costs, API use and latency
+must be reported. Results are recorded separately from the source definitions;
+no broad efficacy claim follows merely from implementing the four arms.
+
+All twelve prospective runs reached the 300-action limit without environment
+completion. Their primary quest scores were:
+\begin{center}
+\begin{tabular}{lrrrr}
+Game & No explicit reuse & Prompt evidence & Failure cache & Structured repair\\
+\hline
+Remnant & 2 & 2 & 2 & 2\\
+Mark & 13 & 16 & 13 & 13\\
+Metropolis & 11 & 11 & 10 & 10
+\end{tabular}
+\end{center}
+The structured arm does not outperform these controls. It issued one
+evidence rejection across the three games and no strong local repair
+certificate; limited applicability prevents attributing most score differences
+to the proposed mechanism. A chronological diagnostic found that clock cells
+discarded useful cross-hour exclusions. A separately frozen, selected
+Metropolis continuation tests attribute scoping without importing old
+clock-scoped facts. It is exploratory development, not a second independent
+validation set. Broader temporal scope remains an assumption to evaluate.
+The continuation also ended at score 10: removing the clock cell did not improve
+the primary score. It did produce an instructive counterexample. An LLM repair
+crafted a gavel splint successfully, but the next equip attempt failed because
+the object was not equippable. The craft had consumed timber. Successful action
+execution therefore did not validate the proposed alternative method.
+
+The carried-container revision was checked from the first eligible recorded
+context without editing environment resources. One paid real inspection exposed
+the current contents; the modeled fragment then lacked one required timber and
+no verified continuation was returned. There was no new LLM call. This is a
+useful abstention and a grounded diagnosis, not a positive task-completion result.
+Tests separately verify the supported craft-and-hold policy and invalidate
+container detachment. Constructive repair outside the fragment, and alignment
+of alternative outputs with the original task, remain unresolved.
+
+An exact thirty-configuration local matrix has zero grounding failures and
+zero changed selected policies from the new profile-regret gate. Thus this
+round establishes implementation and a stronger check, not extra selection
+benefit in those configurations. Both gate settings compute the cost vectors,
+so their measured times do not isolate overhead against legacy V10.
+Four actual Mark queries do expose a strict distinction between the checks:
+prefixes such as \emph{drop coal chunk; craft oak rod} have the same worst
+cost three as the reference but lose one action under two retained profiles.
+The pathwise gate rejects them. Replaying each query with the gate disabled
+nevertheless selects the same final policy, because another candidate already
+ranks ahead. Thus we have real-query evidence of a stronger rejection test,
+but still no observed policy-selection or game benefit attributable to it.
+
 The earlier V8 run scores were 2, 17 and 17 for Remnant, Mark and Metropolis;
 Mark completed the environment. The frozen V6 scores were 3, 17 and 9. Those
 runs motivate further game evaluation but have prompt/sampling differences and
@@ -452,6 +683,15 @@ candidate set, a cheaper local witness and improved full-game completion are
 three distinct endpoints.
 
 \begin{thebibliography}{9}
+\bibitem{reflexion} N. Shinn et al.
+\emph{Reflexion: Language Agents with Verbal Reinforcement Learning}. 2023.
+\url{https://arxiv.org/abs/2303.11366}.
+\bibitem{adaplanner} H. Sun et al.
+\emph{AdaPlanner: Adaptive Planning from Feedback with Language Models}. 2023.
+\url{https://arxiv.org/abs/2305.16653}.
+\bibitem{voyager} G. Wang et al.
+\emph{Voyager: An Open-Ended Embodied Agent with Large Language Models}. 2023.
+\url{https://arxiv.org/abs/2305.16291}.
 \bibitem{dagan2023} G. Dagan, F. Keller, and A. Lascarides.
 \emph{Dynamic Planning with a LLM}. 2023.
 \url{https://arxiv.org/abs/2308.06391}.

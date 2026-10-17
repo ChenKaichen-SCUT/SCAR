@@ -25,6 +25,10 @@ def evidence_context(problem):
         equipment=source.get('equipment'), recipe_evidence=source.get('recipe'),
         station_evidence=source.get('station'), assumptions=sorted(problem.assumptions),
         universe=sorted(product(recipe.quantity_modes,recipe.access_modes)))
+    if 'semantic_context' in source:
+        guard['semantic_context'] = source['semantic_context']
+    if 'fixed_carried_container' in source:
+        guard['fixed_carried_container'] = source['fixed_carried_container']
     # Counts, elapsed public history, and offered craft batch sizes vary between
     # queries. All other semantics above must match. Time-dependent bonuses are
     # NOT covered: within-guard stationarity remains an unestablished assumption.

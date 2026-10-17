@@ -1,0 +1,338 @@
+{
+  "validation_actions": 2,
+  "agent_received_validation": false,
+  "checks": [
+    {
+      "stage": "attributes_structured",
+      "game": "metropolis",
+      "step": 94,
+      "rejected": "craft 1 gavel_club",
+      "executed": "craft 1 gavel_splint",
+      "actual_status": "failure",
+      "same_visible_physical_state": true,
+      "same_scores": true,
+      "observation": "\nCurrent Time: 0001-01-01 23:30:00\nCurrent Location: Central Courthouse, lobby\n\nI entered lobby.\n\nI am holding 1 binding_thread, 1 gavel_timber.\nI have equipped no objects.\nI see 10 writ_token, 2 chamber_key, 1 legal_brief_8, 1 clerks_bench, 1 decree_stylus, 1 gavel_timber near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 114.\nMy experience is at 60.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+      "shadow_observation": "\nCurrent Time: 0001-01-01 23:40:00\nCurrent Location: Central Courthouse, lobby\n\nCannot craft a single gavel_club. Do not have sufficient amount of necessary ingredients.\n\nI am holding 1 binding_thread, 1 gavel_timber.\nI have equipped no objects.\nI see 10 writ_token, 2 chamber_key, 1 legal_brief_8, 1 clerks_bench, 1 decree_stylus, 1 gavel_timber near me.\nI see no one nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 114.\nMy experience is at 60.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+      "review": {
+        "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+        "action": "craft 1 gavel_club",
+        "evidence": {
+          "context": "863ab43dbb3fb0cd411bec7fc83ba0e1bb20d0ffd07a7397dab312ac495d6cd7",
+          "epoch": 0,
+          "reused": true,
+          "raw_profiles_before": 12,
+          "raw_profiles_after": 6,
+          "supporting_observations": 1,
+          "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+        },
+        "expected_failure_cost": 1,
+        "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+        "enabling_conditions": {
+          "target": "gavel_club",
+          "action": "craft 1 gavel_club",
+          "unit": "milli-unit",
+          "profiles": [
+            {
+              "profile": [
+                "ceil_batch",
+                "hand"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "ceil_per_output",
+                "hand"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "ceil_per_output",
+                "hand_bag"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "exact",
+                "hand"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "exact",
+                "hand_bag"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            }
+          ],
+          "all_profiles_obstructed": true,
+          "capacity_is_exact": true,
+          "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+        },
+        "fallback_inspection": "inspect clerks_bench",
+        "step": 93
+      }
+    },
+    {
+      "stage": "structured",
+      "game": "metropolis",
+      "step": 156,
+      "rejected": "craft 1 gavel_club",
+      "executed": "enter market_square",
+      "actual_status": "failure",
+      "same_visible_physical_state": true,
+      "same_scores": true,
+      "observation": "\nCurrent Time: 0001-01-02 09:50:00\nCurrent Location: Central Courthouse, lobby\n\nI entered lobby.\n\nI am holding 1 gavel_timber, 1 binding_thread.\nI have equipped no objects.\nI see 10 writ_token, 2 chamber_key, 1 clerks_bench, 1 gavel_timber, 1 wax_seal near me.\nI see no one nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 113.\nMy experience is at 15.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+      "shadow_observation": "\nCurrent Time: 0001-01-02 10:00:00\nCurrent Location: Central Courthouse, lobby\n\nCannot craft a single gavel_club. Do not have sufficient amount of necessary ingredients.\n\nI am holding 1 gavel_timber, 1 binding_thread.\nI have equipped no objects.\nI see 10 writ_token, 2 chamber_key, 1 clerks_bench, 1 gavel_timber, 1 wax_seal near me.\nI see no one nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 113.\nMy experience is at 15.\n\nNeighboring areas: clerks_office, evidence_room, market_square.\n",
+      "review": {
+        "status": "EVIDENCE_REJECTED_REDUNDANT_FAILURE",
+        "action": "craft 1 gavel_club",
+        "evidence": {
+          "context": "6d59b3ac7ec0e212eeffa8175eacf4556ec12198a9d254b3a98a7a134dbf56cc",
+          "epoch": 0,
+          "reused": true,
+          "raw_profiles_before": 12,
+          "raw_profiles_after": 6,
+          "supporting_observations": 1,
+          "stationarity": "assumed within guard; hidden modifiers are not ruled out"
+        },
+        "expected_failure_cost": 1,
+        "reason": "Every retained profile predicts the same failure without physical progress. The unfiltered family still predicts success in some profiles; earlier real feedback excluded those profiles. Change the method, attachment or material arrangement, or seek a missing condition. This is not global task infeasibility.",
+        "enabling_conditions": {
+          "target": "gavel_club",
+          "action": "craft 1 gavel_club",
+          "unit": "milli-unit",
+          "profiles": [
+            {
+              "profile": [
+                "ceil_batch",
+                "hand"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "ceil_batch",
+                "hand_bag"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "ceil_per_output",
+                "hand"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "ceil_per_output",
+                "hand_bag"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "exact",
+                "hand"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            },
+            {
+              "profile": [
+                "exact",
+                "hand_bag"
+              ],
+              "required": {
+                "gavel_timber": 2000,
+                "binding_thread": 1000
+              },
+              "accessible_deficit": {
+                "gavel_timber": 1000,
+                "binding_thread": 0
+              },
+              "total_material_deficit": {
+                "gavel_timber": 0,
+                "binding_thread": 0
+              },
+              "accessible_capacity": 2000,
+              "capacity_shortfall": 1000,
+              "arrangement_obstructed": true
+            }
+          ],
+          "all_profiles_obstructed": true,
+          "capacity_is_exact": true,
+          "next_obligation": "For each surviving rule, obtain the missing material and enough accessible capacity. If all rules have an obstruction, rearranging these same local materials cannot solve it: seek an evidenced capacity/access change, upstream material, another method or another task. Reconsider after the condition changes; never declare the entire quest impossible."
+        },
+        "fallback_inspection": "inspect clerks_bench",
+        "step": 155
+      }
+    }
+  ],
+  "repairs": [],
+  "all_rejections_failed_without_visible_progress": true
+}
