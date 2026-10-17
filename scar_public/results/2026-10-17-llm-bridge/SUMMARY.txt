@@ -1,0 +1,99 @@
+LLM GAME BRIDGE: COMPLETED DEVELOPMENT COMPARISON (2026-10-17)
+
+All three newly authorized runs finished. One run per method/game, same frozen
+initial worlds, DeepSeek deepseek-flash, 300-action ceiling. Mark terminated via
+the environment at action 266; Remnant and Metropolis reached the action limit.
+Reused STM, LongContext, ReflAct adaptation and V6 results; no baseline reruns.
+
+Final main-quest score       Remnant   Mark   Metropolis   Mean
+STM                            1      10        8        6.333
+LongContext                    0      13        4        5.667
+ReflAct (prompt adaptation)     1      13        9        7.667
+V6                             3      17        9        9.667
+V6 + resource controller       2      17       17       12.000
+
+The treatment gains 8 points in Metropolis, loses 1 in Remnant, and matches Mark's
+17-point completion in 266 rather than 282 actions. Metropolis's 17 points do NOT
+mean full completion: its final charter/Vault objective remains unfinished.
+
+Treatment change: existing resource_competition_v8 plus the admission correction
+in resource_agent.py. Missing grounding evidence no longer spends the six-search
+budget. V6 core modules and provider are unchanged; obligation_agent.py differs
+from frozen V6 only by the resource-controller hooks. The hook adds feedback text
+to prompts, including before the first intervention; this is not a prompt-matched
+causal ablation. LLM samples and run dates also differ. The service reports the
+same alias, not an immutable backend version. These games were used in design.
+No statistical, held-out, or state-of-the-art superiority claim is supported.
+
+MECHANISM AND COST
+
+866 actual environment actions; the resource controller chose 13 (1.50%).
+11 grounded local searches: 5 conditional experiments, 3 direct policies, and
+3 cases with no initially viable candidate under the local model/horizon.
+8 executed local sessions: 4 confirmed local milestones, 2 stopped with only
+originally infeasible models, 1 observation gap, and 1 complete model mismatch.
+5 actual feedback events distinguished candidate models. This is now nonzero
+end-to-end model discrimination, but it is not a proof of useful global learning.
+
+Representative limitations:
+- Mark's copper-sword craft produced TWO swords because of an observed evening
+  bonus. All candidates predicted one, so the executor correctly invalidated.
+- Picking up Mark's oak rod achieved a quest stage but coincided with an attack;
+  the local model refused to certify because combat is outside its assumptions.
+- Remnant still looped around visibility, equipment and navigation prerequisites.
+- The adapter grounds one recipe at the current station, not the full upstream
+  dependency/navigation task; candidate eliminations are local to a trial.
+
+All 11 selected problem reports reproduce exactly from saved public groundings
+without an LLM or environment access. One offline timing per problem: compilation
+0.758 seconds total, search 5.731 seconds total; 0.012 to 2.713 seconds per query.
+These are offline diagnostic timings, NOT instrumented online planning latency.
+
+857 new API requests, all completed with usage; zero unknown-charge attempts.
+Peak-price estimate: USD 1.661099, not an invoice. The documented off-peak price
+is half the peak price. The frozen estimator is preserved for comparability.
+Price source checked 2026-10-17:
+https://api-docs.deepseek.com/quick_start/pricing/
+No key or environment pickle is included in public evidence.
+
+THEORY-EXPERIMENT BOUNDARY
+
+This treatment uses the earlier finite resource-semantic planner and certified
+LP relaxation. It does NOT call sparse_policy.py, symbolic_coverage.py, or the
+later candidate-coverage relation routines. Hence none of this score gain is
+evidence of the later coverage bound's independent practical contribution.
+
+The coverage theory proves sound rejection under its fixed finite task model,
+specified separations from defined weaker controls, and preservation of exact
+search guarantees. It does not prove correct natural-language goal extraction,
+coverage of actual game dynamics, frequent extra pruning, or net runtime gain.
+Its fixed nonnegative resource-consumption assumptions do not directly describe
+the automatic crafting adapter with production and unknown effects.
+
+Decision: pursue a controlled LLM-game hypothesis test, but do not present this
+as a completed theory-backed game paper. Next isolate planning from prompt/model
+feedback on matched public states. To connect the new coverage theory, first
+build a validated encoding of real game-derived subproblems; compare scalar and
+relational pruning under identical models, goals, budgets and search. Only an
+additional verified rejection or net search benefit can support that claim.
+If the benefit is instead from model revision or goal control, center the paper
+on that mechanism and retain only theory that actually supports it.
+
+VALIDATION AND FILES
+
+36 relevant server tests passed. 203 frozen source files match their manifest;
+all 27 audited frozen baseline files remain unchanged. Shared initial snapshot
+hashes agree across every method/game. Original manuscript was not edited.
+results.json: scores, manifests, local trials, actual actions, quest transitions.
+applicability.json: zero-API audit of 882 old V6 decisions, 43 groundable decisions
+out of 210 known-recipe targets (1 Remnant, 4 Mark, 38 Metropolis).
+profile.json: offline reproduction timings for all 11 selected local problems.
+public_evidence.tar.gz: all 866 new public traces, usage audits and supporting
+records; its hash and size are in evidence_receipt.json.
+runtime_source.tar.gz: exact code files executed, including original line endings.
+experiments/LLM_BRIDGE_PROTOCOL.txt: protocol frozen before paid runs.
+
+ReflAct is the already documented paper-derived AgentOdyssey prompt adaptation,
+not an author-released AgentOdyssey implementation. This is also not an official
+TTCL challenge result: the official current setup mandates other backbones and
+500 steps. https://ttcl-agents.github.io/

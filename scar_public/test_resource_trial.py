@@ -110,3 +110,18 @@ def test_v6_llm_selects_target_then_certified_continuation_uses_no_new_call():
     assert json.loads(raw)['decision_source']=='resource_competition'
     restored.observe_terminal({'text':HELD})
     assert restored.notebook.resource_trials[-1]['status']=='LOCAL_MILESTONE_CONFIRMED'
+
+
+def test_missing_station_evidence_does_not_spend_search_budget():
+    from scar_public.resource_agent import ResourceController, ResourceMemory
+    memory=ResourceMemory(); memory.model=model()
+    stations=dict(memory.model.stations); memory.model.stations.clear()
+    controller=ResourceController(memory)
+    proposal={'action':'craft 1 oak_rod','resource_target':'oak_rod','frame':{}}
+    for step in range(8):
+        assert controller.consider(proposal,START,step)==proposal
+    assert memory.resource_attempts==[]
+    memory.model.stations.update(stations)
+    selected=controller.consider(proposal,START,8)
+    assert selected['decision_source']=='resource_competition'
+    assert len(memory.resource_attempts)==1

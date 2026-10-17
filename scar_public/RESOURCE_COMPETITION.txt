@@ -149,8 +149,9 @@ selector; reuses unmodified finite_planner.py and its certified LP/search.
 resource_trial.py: public grounding, strict fresh observation matching, branch execution.
 resource_agent.py: opt-in resource_competition_v8 on V6, target from V6/LLM; ongoing
 certified continuations need no extra LLM request. Public feedback and the initial
-problem persist; resume reconstructs/verifies the same policy. Six attempted local
-groundings per run, six-action horizon, 300-action global ceiling, no extra probe
+problem persist; resume reconstructs/verifies the same policy. Six grounded local
+search attempts per run (missing-evidence admission failures do not spend this
+budget, corrected 2026-10-17), six-action horizon, 300-action global ceiling, no extra probe
 cost allowance. Gaps return to V6 with an audit, without a whole-agent safety claim.
 diagnose_resources.py: fixed public prefixes, optional isolated checkpoint execution.
 

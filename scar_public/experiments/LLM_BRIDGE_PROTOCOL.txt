@@ -1,0 +1,36 @@
+Frozen before bridge1 paid runs, 2026-10-17.
+
+Question: does the existing resource-semantic conditional planner improve V6's
+actual 300-step LLM game performance, and how often is its local model usable?
+This does NOT test the later fixed-resource sparse coverage implementation.
+
+Treatment: resource_competition_v8, V6 plus resource controller, with a single
+admission fix: missing public grounding evidence does not spend the six-search
+budget. H=6, 12000 compiled states, 600 expansions, prefix depth=2, 40 prefixes,
+zero extra probe cost. Only LLM/V6-selected resource targets; no game-specific
+rules are added. Original model assumptions and feedback invalidation remain.
+
+Three games, one new full run each, 300 actions maximum. Restore exactly the
+shared initial worlds from the frozen V6/STM/LongContext/ReflAct runs. Do not set
+new seeds or rerun unchanged baselines. Model and decoding parameters unchanged:
+DeepSeek deepseek-flash, thinking disabled, temperature .7, top_p .8, max_tokens
+1536. Record service-reported model and all requests, retries and unknown charges.
+Parallelism is three independent trajectories (below the authorized ceiling 64).
+
+Primary endpoint: each game's final main-quest score and unweighted mean.
+Also report environment completion, consumed actions, invalidated local models,
+number of actual controller actions and confirmed LOCAL milestones, grounding
+rejection reasons, planning CPU/wall time where available, tokens and estimated
+cost. Do not equate a local milestone or model discrimination with task success.
+
+Comparator: frozen obligation_v6; also show frozen STM/LongContext/ReflAct.
+These are development games already used during design; different LLM samples
+and runs on different dates prevent causal/statistical superiority claims.
+An improvement would justify fresh paired runs and an ablation of planning vs.
+feedback-only changes, not establish final superiority. A flat or negative score
+must be retained, with mechanism/coverage failures reported. No switching to the
+game-paper narrative solely on selected checkpoint successes or positive means.
+
+Official challenge uses different mandated models and 500 steps (website checked
+2026-10-17); this is the user's authorized DeepSeek/300-step development protocol,
+not an official challenge submission or ranking comparison.

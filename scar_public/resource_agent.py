@@ -9,7 +9,7 @@ import json
 from scar_public.causal_model import digest
 from scar_public.obligation_agent import ObligationAgent, ObligationMemory
 from scar_public.resource_competition import Recipe, ResourceProblem, ResourceGap, compile_resources, select_experiment
-from scar_public.resource_trial import TrialSession, make_trial
+from scar_public.resource_trial import TrialSession, from_public, make_trial
 
 OPTIONS = dict(horizon=6,mode='preserve_opportunity',max_states=12000,
                expansion_budget=600,prefix_depth=2,max_prefixes=40,max_extra_actions=0)
@@ -98,8 +98,12 @@ class ResourceController:
             return parsed
         signature = digest([target,memory.model.current,memory.model.containers])
         if signature in memory.resource_attempts or step+OPTIONS['horizon']>300: return parsed
-        memory.resource_attempts.append(signature)
         try:
+            # Missing public evidence is an admission failure, not a search.
+            # Do not exhaust the finite computation budget before a grounded
+            # problem exists (or suppress it after new station evidence arrives).
+            from_public(memory.model,text,target)
+            memory.resource_attempts.append(signature)
             report,session = make_trial(memory.model,text,target,**OPTIONS)
             memory.resource_trials.append({'selection':report,'step':step})
             if session:
