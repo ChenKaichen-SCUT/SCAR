@@ -188,3 +188,62 @@ class PersistentResourceAgent(ResourceCompetitionAgent):
         super().__init__(llm,system_prompt)
         self.notebook = PersistentResourceMemory()
         self.resource_controller = PersistentResourceController(self.notebook)
+
+
+class EvidenceDecisionMemory(PersistentResourceMemory):
+    def __init__(self):
+        super().__init__()
+        self.resource_decision_rejections=[]
+
+    def resource_feedback(self):
+        return super().resource_feedback()+'\nGuarded action reviews:\n'+json.dumps(
+            self.resource_decision_rejections[-2:],ensure_ascii=False)
+
+
+class EvidenceDecisionController(PersistentResourceController):
+    reuse_enabled=True
+
+    def evidence_filter(self, problem):
+        return super().evidence_filter(problem) if self.reuse_enabled else (None,{})
+
+    def evidence_observed(self, event, saved):
+        if self.reuse_enabled:
+            if 'evidence' not in saved:
+                # An inherited V8 trial has not consumed the pending feedback.
+                # Upgrade only from an unfiltered ledger, without changing its
+                # original policy, budget, or success exemptions.
+                allowed,metadata=self.bank().query(self.session.compiled.domain.problem)
+                if allowed is not None:
+                    raise ResourceGap('legacy trial cannot import an already-filtered epoch')
+                saved.update(evidence=metadata,allowed_profiles=None)
+            super().evidence_observed(event,saved)
+
+    def evidence_invalidated(self, saved, reason):
+        if self.reuse_enabled: super().evidence_invalidated(saved,reason)
+
+    def attempt_signature(self, target):
+        return (super().attempt_signature(target) if self.reuse_enabled else
+                ResourceController.attempt_signature(self,target))
+
+    def review_proposal(self, parsed, text):
+        # This check survives the six-search quota; it performs no search.
+        if not self.reuse_enabled or not parsed['action'].startswith('craft '): return None
+        target=parsed['action'].split()[-1]
+        try:
+            p=from_public(self.memory.model,text,target)
+            review=self.bank().review_action(p,parsed['action'])
+            if review:
+                review['fallback_inspection']='inspect '+self.memory.model.stations[target]['name']
+            return review
+        except ResourceGap: return None
+
+    def record_rejection(self, review, step):
+        self.memory.resource_decision_rejections.append(dict(review,step=step))
+        self.memory.resource_target=''; self.memory.resource_fresh=False
+
+
+class EvidenceDecisionAgent(PersistentResourceAgent):
+    def __init__(self,llm,system_prompt):
+        super().__init__(llm,system_prompt)
+        self.notebook=EvidenceDecisionMemory()
+        self.resource_controller=EvidenceDecisionController(self.notebook)

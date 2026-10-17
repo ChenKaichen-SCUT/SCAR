@@ -1,0 +1,80 @@
+{
+  "primary_endpoint": "Score at the absolute 300-action budget; one sample per arm",
+  "secondary_threshold": "Post-hoc descriptive highest common score, not a preregistered endpoint",
+  "initial_requests_identical": true,
+  "llm_comparison": [
+    {
+      "arm": "control",
+      "final_score": 16,
+      "full_task_completed": false,
+      "actions_with_acquisition": 117,
+      "gavel_failed_attempts": 11,
+      "guarded_repairs": 0,
+      "api_requests": 139,
+      "peak_usd_estimate": 0.407838072,
+      "summed_request_seconds": 394.60086369514465,
+      "common_score": 16,
+      "first_reached_step": 296,
+      "actions_to_common_score_with_acquisition": 113,
+      "requests_to_common_score": 135,
+      "peak_usd_to_common_score": 0.39329154,
+      "request_seconds_to_common_score": 383.3981156349182
+    },
+    {
+      "arm": "reuse",
+      "final_score": 17,
+      "full_task_completed": false,
+      "actions_with_acquisition": 117,
+      "gavel_failed_attempts": 1,
+      "guarded_repairs": 9,
+      "api_requests": 161,
+      "peak_usd_estimate": 0.449607372,
+      "summed_request_seconds": 468.6405038833618,
+      "common_score": 16,
+      "first_reached_step": 252,
+      "actions_to_common_score_with_acquisition": 69,
+      "requests_to_common_score": 95,
+      "peak_usd_to_common_score": 0.255723288,
+      "request_seconds_to_common_score": 278.5889596939087
+    }
+  ],
+  "frozen_stream": {
+    "checkpoint_sha256": "0e133ea8bd9ef6ee7180337622f0e06ce8a1e7e6d1ae4ce09d3601084287f5e3",
+    "public_input_sha256": "388f245ba41743ca8766feea03c256e03205788b16c26b10b9ff907a221c8a80",
+    "seconds": 0.43057726100232685,
+    "control_actions": 67,
+    "reuse_actions": 64,
+    "acquisition_actions": 1,
+    "saved_actions": 3,
+    "savings_minus_entire_acquisition_charge": 2,
+    "veto_steps": [
+      189,
+      207,
+      216
+    ],
+    "all_vetoes_really_failed": true,
+    "same_final_visible_state": true,
+    "same_scores": true,
+    "control_done": false,
+    "reuse_done": false,
+    "evaluator_validation_actions": 3,
+    "api_calls": 0,
+    "warnings": [
+      "Acquisition occurs in both arms; subtracting it again is a conservative separate accounting.",
+      "Equal final observed state does not establish hidden-state equality.",
+      "A shorter unsuccessful trajectory is not successful game completion."
+    ]
+  },
+  "vetoes_validated": 9,
+  "all_llm_vetoes_validated": true,
+  "total_api_requests": 300,
+  "unknown_charge_attempts": 0,
+  "configured_peak_usd_estimate": 0.857445444,
+  "previously_billed_shared_acquisition": {
+    "scope": "Previously billed shared V8 acquisition decision; reused, not newly called",
+    "completed_requests": 1,
+    "peak_usd_estimate": 0.002931168,
+    "new_additional_requests": 0
+  },
+  "api_table_scope": "New calls after checkpoint 0184; shared historical prefix is not billed again"
+}

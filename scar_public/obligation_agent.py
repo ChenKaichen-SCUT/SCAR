@@ -216,6 +216,20 @@ class ObligationAgent:
                     '\nOne bounded repair: revise the missing obligation or select an informative new observation. Repetition needs an actual changed condition.')
         if controller:
             parsed = controller.consider(parsed,obs['text'],step)
+            review_fn=getattr(controller,'review_proposal',None)
+            review=review_fn(parsed,obs['text']) if review_fn else None
+            if review:
+                controller.record_rejection(review,step)
+                parsed=query(prompt+'\nGuarded evidence rejects this proposal:\n'+json.dumps(review)+
+                    '\nUse one bounded revision: change the method or obtain missing conditions. '
+                    'Do not treat local infeasibility as failure of the full task. Return one action.')
+                repeated=review_fn(parsed,obs['text'])
+                if repeated:
+                    controller.record_rejection(repeated,step)
+                    parsed=program(review['fallback_inspection'],'evidence_review_fallback',
+                        'The revised proposal repeats the same model-relative inert failure; '
+                        'inspect the observed station. This action is charged and does not prove progress.')
+                parsed['guarded_evidence_review']=review
         # A write proposal activates the probe workflow; no optional experiment field.
         if parsed['action'].startswith('write ') and parsed.get('decision_source')!='semantic_intervention':
             payload,name=parsed['action'][6:].rsplit(' ',1)

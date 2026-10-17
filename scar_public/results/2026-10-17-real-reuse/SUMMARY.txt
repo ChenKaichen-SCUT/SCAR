@@ -1,0 +1,173 @@
+REAL GAME EVIDENCE REUSE AND ACQUISITION COST (2026-10-17)
+
+RESULT AND SCOPE
+
+Found a naturally recurring Metropolis craft context. In a real-engine replay
+with a fixed actor proposal stream, one charged acquisition action prevents
+three later failures; the two arms reach the same visible inventory/location/
+equipment and quest score using 67 versus 64 actual environment actions. In a
+separate free-running LLM continuation, persistent evidence reaches score 17
+versus control 16 at the same absolute 300-action limit. Neither completes the
+full task. This is one selected development scenario and one sample per LLM arm,
+not independent benchmark superiority or a statistical causal-effect estimate.
+
+DISCOVERY AND WHY THE PREVIOUS AUDIT MISSED IT
+
+Public V6/V8 prefixes contain 67 craft proposals, 22 groundable. Matching the
+existing guard without relaxing it finds one recurring recipe/context family:
+Metropolis gavel_club. V8 steps 174,184,189,207,216,240,250 share the guard; V6
+steps 163,173 also share it but do not provide an informative acquisition.
+The prior audit covered only 11 selected planner queries. The agent's six-search
+quota meant that later LLM craft proposals could bypass planning and continue
+executing a contradicted method even though the evidence ledger existed.
+
+The shared real acquisition at step 184 attempts craft 1 gavel_club at the
+observed clerks_bench with two timber in hand and binding thread on the floor.
+Failure excludes floor-accessible profiles, conditional on the declared family.
+The hand limit is two while the recipe needs three total input units. Remaining
+profiles were originally success-exempt for this local fragment; the failed
+trial is not a claim of local milestone or global task completion. Equipment
+changes and new family conditions still prevent reuse. No material is inserted
+into the environment and no new random seed is chosen.
+
+MINIMAL IMPLEMENTATION CHANGE
+
+evidence_decision_v10 reviews actual proposed crafts even after expensive search
+is exhausted. It asks for one bounded LLM revision only when all retained
+profiles predict the same physically inert failure, while some unfiltered
+profiles still predict success. Thus the prior real observation, rather than a
+search failure or an already-obvious shortage, changes the decision. Review
+uses the existing paired profiles and guards, not a new LLM classifier or planner.
+A repeated invalid repair falls back to a charged station inspection; no such
+fallback occurred in this LLM run. Exclusions are still model-relative, not a
+global prohibition or proof of quest impossibility. Time advances on failures;
+unmodeled temporal effects remain a limitation.
+
+FROZEN PROPOSAL STREAM: ACTION ACCOUNTING
+
+Real checkpoint: V8 Metropolis 0183; original proposals 184 through 250.
+Both arms execute the same first acquisition. Control executes all proposals;
+reuse skips only evidence-rejected redundant failures. Every other command,
+including travel, material handling, inspections and failed actions, is charged.
+
+                                    Control        Reuse
+Environment actions                    67            64
+Initial acquisition actions             1             1
+Subsequent prevented failures           0             3
+Initial / final quest score          10 / 12       10 / 12
+Full task complete                     no            no
+
+Prevented proposals: 189,207,216. Each was actually tried in an isolated clone
+of the treatment's then-current real environment and failed without changing
+visible physical state or score. The same three commands were also validated
+at their original historical checkpoints. Final game time differs by 30 minutes;
+visible equality does not prove equality of hidden state or future outcomes.
+
+Actual between-arm saving is 3 actions, already including acquisition in both.
+If the ENTIRE one-step acquisition is conservatively charged separately against
+the three later avoided failures, net benefit is 2 actions. This second number
+is separate amortization accounting, not an additional between-arm saving.
+This test uses a frozen proposal stream, not autonomous LLM choices.
+
+FREE-RUNNING LLM CONTINUATION
+
+Both arms resume the same real checkpoint 0184 and the same V8 notebook after
+the shared acquisition. The pending feedback is processed on resume. The reuse
+arm persists exclusions; the local-only control discards them across queries.
+Same V10 code, prompt structure, DeepSeek deepseek-flash, decoding settings and
+116 remaining actions. The first complete API request hashes match exactly;
+later LLM samples are independent and trajectories diverge. No whole-game STM,
+LongContext, ReflAct or V6 baseline was rerun. The new control is frozen for reuse.
+
+                                    Control        Reuse
+Final absolute step                    300           300
+Actions including shared acquisition   117           117
+Final quest score                       16            17
+Full task complete                     no            no
+Later failed gavel craft attempts       11             1
+Evidence-triggered LLM repairs           0             9
+Fallback station inspections            0             0
+New API requests                       139           161
+Configured peak USD estimate       0.407838      0.449607
+Summed request seconds              394.601       468.641
+
+Every one of the nine vetoed proposals was subsequently executed in an isolated
+copy of its exact real pre-action checkpoint. All nine failed with unchanged
+visible physical state and scores. These evaluator actions are not agent-policy
+inputs or free observations; they are separate validation work. The replacement
+actions were accepted, but several were inspections or rearrangements that did
+not immediately advance the task. Preventing a failed craft does not by itself
+construct a successful alternative method.
+
+POST-HOC COMMON-PROGRESS DESCRIPTION
+
+The highest score reached by both arms is 16. This threshold is a descriptive
+post-hoc comparison, not the preregistered primary endpoint.
+
+                                    Control        Reuse
+First absolute step reaching 16         296           252
+Actions from before acquisition         113            69
+New API requests to that transition     135            95
+Configured peak USD estimate       0.393292      0.255723
+Summed request seconds              383.398       278.589
+
+This run reaches the common progress level 44 actions earlier with reuse, with
+the initial acquisition already included. The primary fixed-budget endpoint
+is only a one-point advantage. Full-budget reuse incurs 22 more API requests and
+about 74 more summed request seconds. Those additional requests include the
+nine evidence revisions plus differences in other trajectory-dependent calls;
+do not attribute all 22 to the review hook or claim overall API/time savings.
+
+TOTAL COST, VALIDATION, AND REPRODUCTION
+
+300 API requests in the two paid continuations, all 300 successful with usage
+records; zero unknown-charge attempts. Sum under the provider's configured
+peak-price formula: USD 0.857445444. This is an estimate, not a billing receipt.
+Acquisition reused the historical public target and used one environment action;
+its replay needed no new LLM call. The earlier V8 target decision had one API
+request (configured estimate USD 0.002931168), already billed in the earlier run.
+The table excludes that shared historical prefix cost. Allocating this old
+request to both arms adds one request and the same amount to each and leaves
+differences unchanged; it must not be charged again as a new request. See
+shared_acquisition_api.json. There were 15
+separate retained evaluator validation actions (3 treatment shadows, 3 historical
+checks, 9 LLM veto checks), which are outside the measured agent trajectories.
+
+63 server tests passed, including real-environment protocol tests. A local test
+attempt had 61 passes and one missing-cloudpickle environment failure; the full
+server environment resolved that dependency and passed all 63 after adding a
+legacy-checkpoint test. Offline review timing, including guard checks, was about
+0.09 ms median for the three relevant proposals, versus no extra planner search.
+These are local microtimings, not a scaling result or in-run wall-time savings.
+
+An evaluator logging bug initially held a mutable reference to the start score.
+It was corrected to copy scores, and the zero-API frozen-stream experiment was
+replayed. Action savings and final scores were unchanged; published records use
+the corrected measurements. Paid continuations were not rerun or altered.
+
+discovery.json: all public-prefix candidates and grounding failures.
+frozen_*.json: corrected real-engine trajectories and cost comparison.
+historical_checks.json / llm_veto_checks.json: independent actual-engine checks.
+llm_results.json / comparison.json: complete outcomes, usage and milestone table.
+public_evidence.tgz: all 232 continuation traces, API attempt audits, manifests,
+                    corrected frozen traces, validation records and test output.
+llm_runtime_source.tgz / source_manifest.json: exact executed LLM source.
+evidence_receipt.json: archive and member hashes. No key or checkpoint is included.
+
+Reproduce tables from public records:
+python -m scar_public.experiments.summarize_real_reuse scar_public/results/2026-10-17-real-reuse
+
+Real-engine reproduction additionally requires the named trusted original
+checkpoints and upstream environment. The frozen protocol and scripts are under
+scar_public/experiments/. Serialized physical checkpoints remain on the server.
+
+REMAINING CLAIM BOUNDARY
+
+This supports a narrow real-game case of useful persistent evidence and a
+promising matched-budget LLM result. It does not establish broad task coverage,
+guard adequacy across hidden rule changes, robust advantage across independent
+instances, global optimality, or final task completion. The next gap is whether
+evidence reliably selects productive replacement methods rather than converting
+craft loops into movement/inspection loops. The old candidate-coverage bound is
+not the mechanism tested here. The existing LaTeX document was not revised in
+this experiment turn.

@@ -121,3 +121,15 @@ Primary starting points:
 https://arxiv.org/abs/2308.06391 (LLM-DP)
 https://arxiv.org/abs/2107.04169 (Safe Learning of Lifted Action Models)
 https://papers.nips.cc/paper_files/paper/2011/hash/4671aeaf49c792689533b00664a5c3ef-Abstract.html
+
+ACTUAL-GAME REUSE FOLLOW-UP (2026-10-17)
+
+The zero-reuse result above concerned 11 selected planning queries. Discovery
+over all 67 historical craft proposals finds repeated applicable Metropolis
+requests after the search quota. evidence_decision_v10 consults prior guarded
+evidence even then, using a cheap model-relative action review and one bounded
+LLM repair. No guard was relaxed. Real-engine fixed-proposal comparison saves
+three actions after one acquisition; the free LLM continuation scores 17 vs 16
+at the same total limit, with 161 vs 139 API requests. Both remain incomplete.
+The primary endpoint and the post-hoc common-score costs are reported separately
+in results/2026-10-17-real-reuse/SUMMARY.txt. Broader generality remains open.

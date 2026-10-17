@@ -8,7 +8,7 @@ never evidence about the environment. No evidence changes the LLM prompt here.
 from itertools import product
 
 from scar_public.causal_model import digest
-from scar_public.resource_competition import ResourceGap
+from scar_public.resource_competition import ResourceGap, ResourceDomain
 
 
 def evidence_context(problem):
@@ -86,3 +86,31 @@ class EvidenceBank:
             eliminated=sorted(before-after))
         self.state['audit'].append(record)
         return record
+
+    def review_action(self, problem, action):
+        """Cheap, model-relative rejection; no search and no global action ban.
+
+        Reject only if prior exclusions change a possibly successful proposal
+        into a universally failing, physically inert, uninformative command.
+        Callers must obtain another proposal and charge any actual replacement.
+        """
+        allowed,metadata = self.query(problem)
+        if not allowed: return None
+        domain=ResourceDomain(problem)
+        if action not in domain.actions or domain.actions[action][0]!='craft': return None
+        recipe=problem.recipes[0]
+        remaining=set(map(tuple,allowed[recipe.output]))
+        outcomes={pair:domain.transition({recipe.output:pair},domain.start,action)
+                  for pair in product(recipe.quantity_modes,recipe.access_modes)}
+        if not any(obs[0]=='success' for state,obs in outcomes.values()): return None
+        kept=[outcomes[pair] for pair in remaining]
+        if not all(obs[0]=='failure' and state.resources==domain.start.resources
+                   and state.symbols[0]==domain.start.symbols[0]
+                   and state.symbols[2:]==domain.start.symbols[2:] for state,obs in kept): return None
+        if len({obs for state,obs in kept})!=1: return None
+        return dict(status='EVIDENCE_REJECTED_REDUNDANT_FAILURE',action=action,
+            evidence=metadata,expected_failure_cost=1,
+            reason='Every retained profile predicts the same failure without physical progress. '
+                   'The unfiltered family still predicts success in some profiles; earlier real '
+                   'feedback excluded those profiles. Change the method, attachment or material '
+                   'arrangement, or seek a missing condition. This is not global task infeasibility.')

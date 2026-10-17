@@ -15,8 +15,8 @@ from scar_public.provider import Provider, usage_summary
 from scar_public.agent import PublicAgent
 
 GAMES = ("remnant", "mark", "metropolis")
-METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9")
-PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9")
+METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9", "evidence_decision_v10")
+PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9", "evidence_decision_v10")
 REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
 
 
@@ -70,6 +70,9 @@ def build_agent(method, env, provider):
         if method == "persistent_resource_v9":
             from scar_public.resource_agent import PersistentResourceAgent
             return PersistentResourceAgent(provider, cfg.system_prompt)
+        if method == "evidence_decision_v10":
+            from scar_public.resource_agent import EvidenceDecisionAgent
+            return EvidenceDecisionAgent(provider, cfg.system_prompt)
         return PublicAgent(provider, cfg.system_prompt)
     base = type(env.agents[0])
     factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
@@ -128,6 +131,10 @@ def run(args):
         "source_revision": args.revision, "initial_snapshot_sha256": hashlib.sha256(initial.read_bytes()).hexdigest(),
         "temperature": .7, "top_p": .8, "presence_penalty": 0, "max_tokens": 1536,
         "thinking": "disabled", "enable_obs_valid_actions": False}
+    if args.method == "evidence_decision_v10":
+        manifest["evidence_reuse"] = not args.disable_evidence_reuse
+    elif args.disable_evidence_reuse:
+        raise ValueError("Evidence-reuse ablation is supported only for evidence_decision_v10")
     fork = Path(args.fork_checkpoint).resolve() if args.fork_checkpoint else None
     if fork:
         source_manifest = json.loads((fork.parent.parent / "manifest.json").read_text())
@@ -170,6 +177,8 @@ def run(args):
     provider = Provider(directory / "api", args.key, model=args.model)
     # Logical agent is intentionally detached from physical evaluator state.
     agent = build_agent(args.method, env, provider)
+    if args.method == "evidence_decision_v10":
+        agent.resource_controller.reuse_enabled = not args.disable_evidence_reuse
     if saved_agent is not None:
         load_agent_state(agent, args.method, saved_agent)
     while step < args.steps:
@@ -181,7 +190,7 @@ def run(args):
         obs, reward, done, info = env.step({AGENT_ID: action})
         env.update_scores(reward)
         step += 1
-        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9") and (done or step >= args.steps):
+        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9", "evidence_decision_v10") and (done or step >= args.steps):
             agent.observe_terminal(obs[AGENT_ID])
         cp = directory / "checkpoints" / f"{step:04d}"
         cp.mkdir(parents=True, exist_ok=True)
@@ -216,6 +225,7 @@ def main():
     p.add_argument("--model", default="deepseek-flash")
     p.add_argument("--revision", default="uncommitted")
     p.add_argument("--transport-revision", default=None)
+    p.add_argument("--disable-evidence-reuse", action="store_true", help="Matched V10 local-only control")
     p.add_argument("--fork-checkpoint", default=None,
                    help="Diagnostic continuation only; --steps is the absolute final step")
     args = p.parse_args()
