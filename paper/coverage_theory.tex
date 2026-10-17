@@ -1,0 +1,633 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newcommand{\card}[1]{\lvert #1\rvert}
+\newcommand{\CL}{C_{\mathrm L}}
+\newcommand{\CM}{C_{\mathrm M}}
+\newcommand{\R}{\mathcal R}
+\newcommand{\N}{\mathcal N}
+\title{Resource-indexed Candidate Coverage for Conditional Planning\\
+\large Consolidated definitions, proofs, separation results, and limitations}
+\author{SCAR research working supplement}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We formalize the successful-candidate coverage bounded by the implemented
+scalar, lineage, and matching recurrences. The supplement supplies a hereditary
+soundness proof, a separation from the conjunction of complete proper-subset
+tests and an explicit resource-aware information control, a Hall-deficiency
+characterization of matching rejection, safe partial-evaluation rules, and
+search and complexity guarantees. A concrete planning counterexample disproves
+unconditional strengthening under added projection predicates. A restricted
+simulation theorem and a conservative envelope replace that unsupported claim.
+These are mathematical results under explicit assumptions, not evidence of
+runtime improvement or priority over every labelled planning abstraction.
+\end{abstract}
+
+\section{Problem, implementation scope, and the quantity being bounded}
+Let $I$ be a finite set of $N$ named initial candidates. A name denotes one
+initial state, not a stochastic sample or a posterior probability. Determinism
+gives at most one current state $x_m$ per surviving name $m$ along an observation
+history. A state consists of Boolean facts and remaining resources
+$r\in\mathbb N^b$. Facts immutable under every action are fixed by the name.
+For every grounded action $a$, its Boolean precondition, deterministic simultaneous
+effects $T_a$, optional Boolean observation $O_a$ evaluated \emph{after} effects,
+and fixed consumption $c(a)\in\mathbb N^b$ are given. Applying an action requires
+its precondition and $r\geq c(a)$ componentwise; resources become $r-c(a)$.
+Actions have unit length. Resources occur only in affordability: there is no
+replenishment, numeric goal, or resource-dependent Boolean effect/observation.
+The legality convention on conflicting Boolean effects must be the same in
+the transition interpreter and channel formula (the current interpreter gives
+adds precedence over deletes).
+
+A belief $B=\{(m,x_m):m\in M\}$ is exact. A strong policy chooses one legal
+action for every state in the current belief, branches on \emph{actual}
+observations, and stops only when every surviving state satisfies the goal.
+Its cost is its largest root-to-terminal action count. Write $V(B)$ for the
+minimum such cost, or $\infty$ if there is no finite strong policy. The bounded
+decision problem is $V(B)\leq d$. Goal truth is not implicitly observed;
+already-goal states remain in the exact belief and can constrain subsequent
+actions. A proof of $V(B)>H$ is not a proof of $V(B)=\infty$.
+
+Fix a set $P$ of retained dynamic atoms. Put $q=(r,z)$ where $z=x|_P$.
+The current implementation applies a coverage query only when all
+\emph{unfinished} worlds share $q$. Otherwise it skips the query. For name $m$,
+let $\mathcal X_m(q)$ be all non-goal Boolean states with its immutable facts,
+retained values $z$, and resources $r$. Forgotten dynamic facts are unrestricted;
+reachability and hidden invariants are not assumed. Thus this set includes the
+actual state whenever the query is applicable.
+
+\begin{definition}[Hereditary existential coverage]
+For $S\subseteq I$, define $\Gamma(q,S,d)$ as the maximum $\card T$ over subsets
+$T\subseteq S$ for which states $x_m\in\mathcal X_m(q)$, $m\in T$, and a
+depth-at-most-$d$ strong policy for those states exist. The empty subset is
+allowed and has value zero. State witnesses may be chosen separately per name.
+\end{definition}
+This definition is deliberately more permissive than the actual belief. It
+also avoids a gap in a proof stated only for policies that succeed on \emph{all}
+names of a recursive mask: a child mask can strictly contain the names actually
+entering that child. The proof below bounds every such successful subset.
+
+\section{Channels and three complete recurrences}
+For an affordable $a$, define the complete existential channel table
+\begin{align*}
+G_a(q)&=\{m:\exists x\in\mathcal X_m(q),\ a\text{ legal at }x,
+                                      \ T_a(x)\models g\},\\
+E_{aj}(q)&=\{m:\exists x\in\mathcal X_m(q),\ a\text{ legal at }x,
+               \ T_a(x)\not\models g,\ (O_a(x),T_a(x)|_P)=j\}.
+\end{align*}
+Here $j=(o,z')$ includes the post-effect observation; for a non-observing action
+$o$ is a single dummy symbol. Its successor key is $q_{aj}=(r-c(a),z')$.
+An individual name can belong to several $E_{aj}$, or both $G_a$ and an $E_{aj}$,
+because different forgotten-state witnesses can establish membership.
+Empty buckets can be removed. The bound grants knowledge of $z'$ in addition
+to $o$, whereas a real policy does not obtain that knowledge for free.
+
+Set all depth-zero capacities to zero, and use zero for an empty action maximum.
+The global scalar recurrence is
+\begin{equation}\label{eq:scalar}
+C_0(q,d)=\min\left(N,\max_a\left[\card{G_a}+
+       \sum_j\min\{\card{E_{aj}},C_0(q_{aj},d-1)\}\right]\right).
+\end{equation}
+For a mask $S$, put $F_a=S\cap G_a$, $R_a=S\setminus G_a$, and
+$S_{aj}=R_a\cap E_{aj}$. Define
+\begin{equation}\label{eq:lineage}
+\CL(q,S,d)=\min\left(\card S,\max_a\left[
+                   \card{F_a}+\sum_j\CL(q_{aj},S_{aj},d-1)\right]\right).
+\end{equation}
+The immediate absorption of \emph{all} $F_a$ is optimistic, even if their actual
+states would not finish. Once counted, their names do not recur below that
+action. This removes one source of repeated counting.
+
+For matching, form a bipartite graph with unit-capacity model vertices $R_a$,
+bucket vertices $j$, edges $m\to j$ when $m\in S_{aj}$, and bucket capacities
+$c_j=\CM(q_{aj},S_{aj},d-1)$. Let $\nu_a(c)$ be its maximum integral matching
+cardinality with these bucket capacities. Define
+\begin{equation}\label{eq:matching}
+\CM(q,S,d)=\min\left(\card S,\max_a[\card{F_a}+\nu_a(c)]\right).
+\end{equation}
+Both relational capacities are zero for $S=\varnothing$. The older implementation
+also takes a minimum with $C_0$; the next result proves that ceiling redundant
+for complete, unlimited recurrences. A budget fallback is a different evaluation
+and must not be used to infer equality of partial execution traces.
+
+\begin{lemma}[Ordering and the redundant ceiling]\label{lem:order}
+At the same channels and depth,
+$0\leq\CM(q,S,d)\leq\CL(q,S,d)\leq\min\{\card S,C_0(q,d)\}$.
+\end{lemma}
+\begin{proof}
+Induct on $d$, with zero base values. By induction each lineage child is at
+most $\min\{\card{S_{aj}},C_0(q_{aj},d-1)\}$, hence at most the corresponding
+scalar child contribution. Also $\card{F_a}\leq\card{G_a}$ and $\card S\leq N$.
+Taking the action maximum and cap proves the lineage inequality. Matching is
+monotone in bucket capacities, since increasing a capacity preserves every
+feasible allocation. Its value is at most the sum of bucket capacities.
+Inductively replacing matching child values by lineage child values therefore
+bounds each matching action by its lineage action. The cap preserves the result.
+\end{proof}
+
+\begin{lemma}[Monotonicity in the quantities that are actually ordered]
+For either relational recurrence, $S\subseteq S'$ implies
+$C(q,S,d)\leq C(q,S',d)$. Capacities are nondecreasing in $d$ and componentwise
+in $r$ when all other data are fixed. This statement does not order projections.
+\end{lemma}
+\begin{proof}
+Induct on depth. Enlarging $S$ enlarges $F_a$, $R_a$, and each child mask;
+child capacities do not decrease by induction. An old matching embeds into
+the enlarged network. Both the action maximum and its cardinality cap are
+nondecreasing. For depth, use the zero base and apply induction to each child.
+For resources, the templates $G_a,E_{aj},z'$ do not depend on $r$; larger $r$
+permits every old action and leaves larger child resources. Induction again
+orders child values and action contributions. Scalar monotonicity follows in
+the same way. No claim of marginal subadditivity in the mask is required.
+\end{proof}
+
+\begin{theorem}[Hereditary soundness]\label{thm:sound}
+$\Gamma(q,S,d)\leq\CM(q,S,d)\leq\CL(q,S,d)\leq C_0(q,d)$.
+\end{theorem}
+\begin{proof}
+The assertion is trivial at depth zero because all chosen states are unfinished.
+Assume it at $d-1$. Take any successful subset $T\subseteq S$, its state
+witnesses, and a policy of depth at most $d$. Its first action $a$ is affordable.
+Credit every name in $F_a$, even those absent from $T$. For each successful
+name in $T\setminus G_a$, its actual successor is non-goal; otherwise it would
+belong to $G_a$. Its successor and observation establish membership in exactly
+one actual bucket $j$ and in $S_{aj}$.
+
+Let $T_j$ be these successful names in bucket $j$. The actual continuation,
+restricted to them, is a strong policy of depth at most $d-1$; granting the
+additional projected observation cannot invalidate it. Its states are witnesses
+for $\Gamma(q_{aj},S_{aj},d-1)$ because $T_j\subseteq S_{aj}$.
+Thus $\card{T_j}\leq\CM(q_{aj},S_{aj},d-1)$ by induction. The actual assignments
+of these distinct names to buckets form an integral feasible matching. Hence
+$\card T\leq\card{F_a}+\nu_a\leq\max_{a'}(\card{F_{a'}}+\nu_{a'})$.
+Also $\card T\leq\card S$. Maximize over the choices defining $\Gamma$ and
+apply Lemma~\ref{lem:order}. This proof does not require a policy to succeed on
+the entire child eligibility mask, nor does it identify a child capacity with
+an arbitrary feasible subset of that cardinality.
+\end{proof}
+
+\begin{corollary}[Admissible bounded decisions]\label{cor:searchbound}
+Let $S$ be the unfinished names of an exact belief with common $q$. A certified
+upper bound $U$ on any capacity in Theorem~\ref{thm:sound} satisfying
+$U<\card S$ proves $V(B)>d$. If the belief is already a goal its value is zero.
+The first saturating depth of a complete recurrence is an admissible cost lower
+bound; no saturation through $H$ proves only $V(B)>H$.
+\end{corollary}
+\begin{proof}
+A strong policy for $B$ restricts to a successful policy on its unfinished
+names. Therefore $V(B)\leq d$ would imply $\Gamma(q,S,d)=\card S$, contradicting
+the certified upper bound. Already-goal names are removed only in this argument,
+not from the actual search. The claim for the first saturating depth follows
+by applying this implication at every smaller depth.
+\end{proof}
+
+\section{Hall deficiency: what sibling matching can certify}
+Fix one action, put $R=R_a$, and let $\N(X)=\{j:E_{aj}\cap X\neq\varnothing\}$.
+Use complete child matching capacities $c_j$ for the following exact identity.
+\begin{theorem}[Deficiency characterization]\label{thm:hall}
+\begin{align}
+\nu_a&=\min_{X\subseteq R}\left(\card{R\setminus X}+
+                                      \sum_{j\in\N(X)}c_j\right),\label{eq:cut}\\
+\delta_a&=\card R-\nu_a
+       =\max_{X\subseteq R}\left(\card X-\sum_{j\in\N(X)}c_j\right).\label{eq:deficit}
+\end{align}
+For a nonempty affordable action set,
+$\CM(q,S,d)=\card S-\min_a\delta_a$.
+Thus matching rejects exactly when every affordable action has a positive
+Hall deficiency. If there is no affordable action, the capacity is zero.
+\end{theorem}
+\begin{proof}
+Use source-to-name edges of capacity one, name-to-eligible-bucket edges of
+capacity greater than $\card R$, and bucket-to-sink edges of capacity $c_j$.
+The cut separating all names has capacity $\card R$, so a minimum cut does
+not cut a name-to-bucket edge. If its source-side names are $X$, it must put
+all adjacent buckets on the source side. Adding any other bucket cannot reduce
+the cut. The resulting capacity is the expression in~\eqref{eq:cut}.
+Conversely every $X$ defines such a cut. Integral max-flow/min-cut gives the
+identity; subtract it from $\card R$ to get~\eqref{eq:deficit}. Since
+$\card{F_a}+\card{R_a}=\card S$, the action maximum yields the last assertion.
+The empty witness makes every deficiency maximum nonnegative.
+\end{proof}
+
+\begin{corollary}[Partial, locally checkable rejection]
+Replace $c_j$ by any certified upper bounds $u_j\geq c_j$ and select any
+$X_a\subseteq R_a$ for each affordable action. Then
+\begin{equation}\label{eq:partialcut}
+U=\min\left(\card S,\max_a\left[
+ \card{F_a}+\card{R_a\setminus X_a}+
+ \sum_{j\in\N(X_a)}u_j\right]\right)
+\end{equation}
+is an upper bound on $\CM$. If $U<\card S$, it is a sound rejection even if
+some children remain unresolved and use the trivial $u_j=\card{S_{aj}}$.
+\end{corollary}
+\begin{proof}
+Every feasible matching assigns at most $\card{R_a\setminus X_a}$ names
+outside $X_a$ and at most the summed capacities of adjacent buckets from
+inside $X_a$. Increasing capacities preserves this upper bound. Apply the
+same argument to every affordable action, then take the maximum and cap.
+\end{proof}
+This is a use of a standard capacitated Hall/min-cut theorem, not a claim to
+invent matching. A witness can be checked using intersections and sums in
+$O(K\lceil N/w\rceil)$ word operations for $K$ buckets. A depth-decreasing DAG
+of such bounds is checked in topological order, conditional on complete and
+correct channel tables. Certifying those tables from symbolic formulas requires
+separate SAT/enumeration evidence. No polynomial-size certificate in the compact
+planning input is promised. The reference checker discovers cuts by exhaustive
+enumeration only for tests; production matching already uses augmenting paths.
+
+For example, buckets $\{0\},\{0\},\{1,2\}$ with capacities $1,1,1$ have
+lineage sum three but matching value two. The witness $X=\{1,2\}$ has only
+one adjacent bucket of capacity one. Proving that third capacity is enough;
+the first two can retain their trivial unit upper bounds. This is a channel
+example, not a newly solved public planning benchmark.
+
+\section{Separation from complete subset and resource-information controls}
+For an exact belief let $h_k(B)=\max_{\varnothing\neq T\subseteq B,\card T\leq k}
+V(T)$, with the same resources and policy semantics. It is admissible because
+a policy for $B$ restricts to every subset. This is an exact subset control,
+not a claim to reproduce a published planner.
+
+The second control constructs a graph with an edge between two worlds exactly
+when no common legal action sequence of length at most $d$ reaches goals for
+both under their resources. Observations are ignored in this synchronous test.
+For each world $m$, let $K_m$ be the maximum number of observing actions in any
+legal goal-reaching sequence of length at most $d$ with its resources; $K_m=-1$
+if there is no such sequence. For every graph clique $Q$ require
+\begin{equation}\label{eq:kraft}
+\sum_{m\in Q}2^{-K_m}\leq1.
+\end{equation}
+This is the explicitly implemented resource-aware information comparator.
+
+\begin{lemma}[Validity of the comparator]
+Every feasible policy satisfies~\eqref{eq:kraft}, and has no $K_m=-1$.
+\end{lemma}
+\begin{proof}
+Two endpoints of a conflict edge cannot share a terminal history: that history
+would supply the prohibited common legal sequence. Clique members therefore
+occupy distinct leaves. After contracting non-observing actions, their binary
+observation words are prefix-free: a deterministic controller cannot both stop
+and continue at the same history. If their actual observation depths are
+$\ell_m$, Kraft's inequality gives $\sum 2^{-\ell_m}\leq1$. Their actual
+goal-reaching paths satisfy $\ell_m\leq K_m$, which proves the inequality.
+Single-child observations only weaken the test. Allowing already-goal states
+to continue in the computation of $K_m$ avoids underestimating their paths.
+\end{proof}
+
+\begin{theorem}[Separation from the conjunction of complete controls]\label{thm:separate}
+For every fixed $k\geq1$, there is an explicitly represented task with
+$n>k$, $n\geq3$, candidates, one resource with budget two, and horizon two,
+such that all the following hold:
+\begin{enumerate}[label=(\roman*)]
+\item Every nonempty proper candidate subset has a conformant plan of cost at
+most two, so even testing all $2^n-2$ such subsets cannot reject this budget.
+\item The complete resource-conflict graph is empty and every exact $K_m=1$.
+Consequently every clique inequality passes.
+\item On the same retained projection, $C_0=n$ and $\CL=\CM=n-1$.
+The full task has no feasible strong policy with budget two.
+\end{enumerate}
+Thus the relation rejects a task passing the conjunction of the complete
+$k$-subset, scalar, and defined resource-information controls.
+\end{theorem}
+\begin{proof}
+Use hidden immutable identity $i\in\{0,\ldots,n-1\}$, initially true control
+atom $start$, false atoms $p_0,\ldots,p_{n-1},end,done$, and goal $done$.
+Retain $start,p_0,\ldots,p_{n-1},end$, but not $done$.
+Every action costs one resource unit. Action $prepare_j$ requires $start$,
+deletes it, sets $p_j$, and sets $done$ only for identity $j+1\pmod n$.
+Action $finish_j$ requires $p_j$, deletes it, sets $end$, and sets $done$ for
+every identity except $j$. The goal is otherwise preserved. Action $recover$
+requires $end$ and sets $done$. Action $sense_i$ observes whether the identity
+is $i$, has no physical effect, and is available at every stage.
+
+For a proper subset choose an omitted $j$ and use $prepare_j;finish_j$.
+For the full set a preparation followed by a finish leaves $j$ unfinished;
+a preparation followed by sensing does not finish the remaining candidates.
+Sensing first leaves a branch of at least two candidates and only one remaining
+action, while one productive action at $start$ can finish only one identity.
+Two senses achieve no goal; other first productive actions are inapplicable.
+This exhausts all first actions and proves infeasibility, although an extra
+unit permits $prepare_j;finish_j;recover$.
+
+Every pair is a proper subset and has a common two-action goal sequence, so
+the conflict graph is empty. A single world can sense and then choose its
+successful preparation, giving $K_m\geq1$; it cannot achieve the goal with
+two senses, giving $K_m=1$. Every nonempty clique is a singleton of weight
+$1/2$, hence passes.
+
+At $p_j$, the scalar immediate finish mask contains $n-1$ identities, including
+the one already credited by preparation. Thus at the root scalar counting
+gives $\min(n,1+(n-1))=n$. Lineage removes that first identity, so preparation
+followed by finishing contributes $1+(n-2)=n-1$. At the root a sensing action
+has two disjoint branches; with one remaining action each branch has capacity
+one, so its contribution is two, at most $n-1$. These are all possible root
+contributions. Hence $\CL=n-1$. Buckets in this construction are disjoint by
+immutable identity, so matching has the same values. Taking
+$n\geq\max\{3,k+1\}$ proves the claim for any fixed $k$.
+\end{proof}
+
+Given the explicit channel table for this family, only $O(n)$ relational
+nodes at positive depths are reached: the root, the $n$ preparation successors,
+and at most $2n$ sensing successor masks at $start$. Each scans $O(n)$ actions
+with at most two buckets. Thus the combinatorial DP uses
+$O(n^2\lceil n/w\rceil)$ word work, excluding construction and representation
+of the channels. This does not bound general SAT construction time, and is not
+an exponential runtime comparison against a well-implemented fixed-$k$ test.
+Its point is the high-order infeasibility missed by \emph{every} proper subset.
+
+\section{Projection refinement: a counterexample and qualified guarantees}
+\begin{proposition}[More retained predicates can weaken the bound]\label{prop:counter}
+There is a deterministic two-candidate task with no observations where both
+relational capacities increase from one to two when one initially common
+dynamic predicate is added to the projection, although the task is infeasible.
+\end{proposition}
+\begin{proof}
+Let hidden immutable $h$ be true in one candidate and false in the other.
+Initially $start$ is true and $stage,b,done$ are false. The only initial action
+$prepare$ deletes $start$, sets $stage$, and sets $b$ exactly when $h$ is true.
+There are two finishing actions, both requiring and deleting $stage$; one sets
+$done$ when $h$ is true, the other when $h$ is false. There are no observations
+or other actions. Each singleton has a two-step plan, but a policy cannot choose
+different finishes for the indistinguishable candidates, and cannot finish twice.
+
+For $P=\{start,stage\}$, preparation has one non-goal bucket containing both
+names. The child has maximum immediate capacity one, so $\CL=\CM=1$ at depth
+two. For $P'=P\cup\{b\}$, the initially common value is still false, but
+preparation creates two different projected successors. The relaxation grants
+their distinction, producing two singleton buckets each of capacity one.
+Consequently both capacities are two. This is a counterexample in the actual
+Boolean action language, not only in an arbitrary abstract table.
+\end{proof}
+In particular, neither relation universally dominates an exact two-world
+control. In this refined example the relation passes, the singletons are
+feasible, and the exact pair rejects. Together with
+Theorem~\ref{thm:separate}, this rules out a universal dominance claim over
+complete fixed-$k$ controls ($k\geq2$). The scalar/lineage/matching ordering
+holds only when the projection and channels being compared are the same.
+
+\begin{theorem}[A sufficient channel simulation]\label{thm:simulation}
+Consider a fine and a coarse channel system on the same candidate names, and
+a successor-compatible map $f$ from fine keys to coarse keys. Assume for each
+fine key and action: (a) that action exists at its coarse image;
+(b) the immediate goal masks are equal; and (c) there is an injective map
+$\eta$ from its fine buckets to coarse buckets such that
+$E'_j\subseteq E_{\eta(j)}$ and $f(q'_j)=q_{\eta(j)}$.
+If the conditions hold recursively, then for $C=\CL$ or $\CM$,
+$C'(q',S,d)\leq C(f(q'),S,d)$.
+\end{theorem}
+\begin{proof}
+Induct on depth. Equal goal masks give equal immediate credit and the same
+remaining mask. A fine child mask is a subset of its mapped coarse mask.
+The induction hypothesis, followed by mask monotonicity, bounds its capacity
+by the mapped coarse child. Injectivity lets us compare the lineage sums
+without using a coarse contribution twice. For matching, send each fine
+allocation to its mapped coarse bucket; its eligible edges and capacities are
+available, and injectivity avoids merging two allocated child loads into one
+capacity. Every fine action contribution is thus bounded by the corresponding
+coarse one. Extra coarse actions, the maximum, and the equal mask caps preserve
+the inequality.
+\end{proof}
+This is sufficient, not necessary, and deliberately stronger than syntactic
+predicate inclusion. A refined observation split violates injectivity. Changing
+existential goal masks also falls outside the theorem; it must not be silently
+treated as satisfying the hypothesis. No production projection selector currently
+checks this entire simulation condition.
+
+\begin{corollary}[Safe envelope without a simulation assumption]
+For the same exact belief and depth, take the minimum of any valid completed
+capacity upper bounds from applicable projections. The result remains a sound
+upper bound on the number of actual successful unfinished names and cannot
+increase as more bounds are added. Equivalently, maximize their admissible
+cost lower bounds. A stale certificate is reusable only for the same exact
+belief/task/depth, not merely the same set of predicate identities.
+\end{corollary}
+\begin{proof}
+Each applicable projection separately upper-bounds the actual successful
+coverage by Theorem~\ref{thm:sound}. Their minimum therefore does too. Adding
+another number to a minimum cannot increase it. The corresponding statement
+about exact-belief lower-bound records follows directly.
+\end{proof}
+
+\begin{proposition}[What a multistep refinement core proves]
+Let $F_\tau$ describe independently witnessed steps of a fixed candidate path.
+For each forgotten predicate $p$, let $L_p$ equate its first value to the actual
+initial value and each subsequent pre-value to the preceding post-effect value.
+If $F_\tau\land\bigwedge_{p\in U}L_p$ is UNSAT, retaining and propagating
+\emph{all} predicates in $U$ excludes that particular path pattern.
+\end{proposition}
+\begin{proof}
+A refined path realizing the same action, observation, coarse-projection and
+termination pattern supplies witnesses satisfying $F_\tau$. Propagation of all
+retained $U$ supplies every $L_p$, contradicting UNSAT. An incomplete deletion
+procedure may still produce a sufficient core, but not a minimum-cardinality
+one. Choosing just one member of the core need not exclude the path.
+\end{proof}
+Excluding a path is not a proof that all relaxed paths disappear, that coverage
+decreases, or that a real contingent policy is impossible. A fresh sound
+capacity certificate is required before pruning.
+
+\section{Partial computation and exact-search integration}
+Let $v=(q,S,d)$ denote a DP node with interval $[L_v,U_v]$, initially
+$[0,\card S]$ at positive depth and $[0,0]$ at depth zero or an empty mask.
+An action with an unfinished channel table has interval $[0,\card S]$.
+Once its full table is available, compute its lineage interval by substituting
+child $L$ and $U$ into~\eqref{eq:lineage}; for matching use the two capacitated
+networks, or any certified cut upper bound from~\eqref{eq:partialcut}.
+Take the maximum of the action endpoints and apply the mask cap. Intersect
+with the previous node interval, so $L$ only increases and $U$ only decreases.
+
+\begin{theorem}[Safe interruption and decisive intervals]\label{thm:interval}
+These updates enclose the complete recurrence under any sequence of pauses,
+resumptions, and shared completed-cache hits. $U_v<\card S$ rejects the original
+bounded task. $L_v=\card S$ proves only that this relaxation cannot reject it.
+An action with upper endpoint at most the node's current lower endpoint can
+be skipped when computing that node's exact maximum.
+\end{theorem}
+\begin{proof}
+All action functions are monotone in child capacities. Replacing them by lower
+and upper endpoints therefore encloses the true action value; maxima and
+cardinality caps are also monotone. Unfinished tables retain the universal
+interval, so unseen actions, goal memberships or outcomes cannot be omitted
+from a rejection. Intersecting two valid intervals preserves validity.
+Depth decreases on dependency edges, giving an inductive proof on the DAG
+independent of evaluation order. A skipped action cannot exceed the already
+established lower bound on the maximum. Rejection follows from
+Corollary~\ref{cor:searchbound}; a saturated lower endpoint only establishes a
+large optimistic capacity. A partial action maximum below $\card S$ is a lower
+endpoint and has no rejection meaning.
+\end{proof}
+The current resumable lineage engine usually leaves $U_v=\card S$ until closing
+the node. Its saved-child ceilings and dominated-action skipping are special
+cases of this theorem. The stronger intermediate upper propagation and cut-DAG
+rules above are proved and reference-tested, but are \emph{not} integrated into
+the production scheduler. SAT UNKNOWN or incomplete outcome enumeration cannot
+be treated as an empty bucket table.
+
+\begin{theorem}[Sound and complete bounded search]
+An exact depth-bounded AND/OR search remains sound and complete when it prunes
+only with the above certified rejections or other admissible bounds, keeps
+exact belief/resource keys, and uses only verified policies as upper bounds.
+This holds under arbitrary query selection, provided optional computation is
+bounded or fairly yields to search. Increasing thresholds finds the optimal
+finite policy whenever the unrestricted search reaches its cost threshold.
+\end{theorem}
+\begin{proof}
+Induct on remaining depth. Goal beliefs terminate correctly; a non-goal belief
+at depth zero fails. A certified rejection excludes only infeasible bounded
+subproblems. Otherwise enumerate actions legal in every world. An action
+succeeds exactly when every nonempty actual observation child succeeds at one
+less depth; induction gives soundness and completeness of this test.
+If every action fails the bounded problem is infeasible. The action set and
+depth are finite, so fair finite optional work cannot prevent termination.
+Memoized lower records store $V(B)>d$ as a finite lower bound $d+1$, not global
+infinity. Verified policies give genuine upper records. Neither needs heuristic
+consistency for this depth-decreasing recurrence. An ancestor-targeted rejection
+may unwind descendant frames, but may update only the certified belief; it
+does not prove those descendants infeasible. Finally, exhaustive increasing
+thresholds cannot skip an optimal solution using an admissible lower bound.
+\end{proof}
+
+\noindent A proof-oriented search interface is:
+\begin{verbatim}
+Decide(B, d):
+    if all worlds in B satisfy goal: return a stop policy
+    if d == 0: return NO
+    if a verified policy for B has depth <= d: return it
+    if a certified lower record for B is > d: return NO
+    choose any applicable projection; optionally resume a finite query
+    if its certified U < number of unfinished names:
+        lower[B] = max(lower[B], d + 1); return NO
+    for every action legal in every world of B:
+        split exact successors only by actual observations
+        solve every nonempty child at d - 1
+        if all children have policies: return their joined policy
+    lower[B] = max(lower[B], d + 1); return NO
+
+Interrupting optional inference: retain its valid interval/cache,
+then continue exact search. Interrupting exact search: return UNKNOWN.
+\end{verbatim}
+The pseudocode is bounded decision search, not a claim that scheduling by a
+learned probability is optimal or that UNKNOWN is NO.
+
+\section{Finite-resource keys and actual complexity}
+\begin{proposition}[Exact finite-horizon resource normalization]
+Let $c_i^{\max}=\max_a c_i(a)$. At remaining depth $d$, replacing
+$r_i$ by $\min(r_i,d c_i^{\max})$ leaves all three complete capacities unchanged.
+\end{proposition}
+\begin{proof}
+At depth zero all values are zero. For $d\geq1$, normalization preserves
+affordability because $c_i(a)\leq c_i^{\max}\leq d c_i^{\max}$. For an
+affordable action, clipping its normalized successor to the $(d-1)$ threshold
+gives the same value as clipping its original successor. If $r_i\leq
+d c_i^{\max}$ this is immediate. Otherwise both successors are at least
+$(d-1)c_i^{\max}$. Boolean channel templates are independent of resources.
+Induction on the normalized successor keys proves equality. The proof fails
+if resource values affect goals, observations, effects, or replenishment.
+\end{proof}
+
+Let $A$ be the number of grounded actions, $p=\card P$, $K$ the maximum number
+of non-goal buckets per action, $W=\lceil N/w\rceil$ bitset words, and $D$ the
+number of relational nodes actually visited. Given complete cached channel
+tables, lineage evaluation has conservative work
+$O(D A K(W+b+1))$, including mask work and child-key/resource assembly.
+Matching adds at most $O(D A N^2K)$ for the current simple augmenting-path
+implementation. Channel construction, SAT, grounding, and formula manipulation
+are additional costs; write them separately as $T_{\mathrm{channels}}$ and
+$T_{\mathrm{front}}$. These expressions assume unit-cost bounded-size integer
+and hash operations; bit complexity of large counters and dictionary behavior
+can add further factors.
+
+For an initial resource vector $r^0$ and depth limit $H$, a coarse bound on
+the number of scalar keys is
+\[
+Q_H\leq\sum_{d=0}^{H}2^p\prod_{i=1}^{b}
+             \bigl(1+\min\{r_i^0,d c_i^{\max}\}\bigr),
+\qquad D\leq 2^N Q_H.
+\]
+Resource normalization can save repeated work but does not remove the
+exponential candidate-mask factor. Boolean observations give
+$K\leq2^{p+1}$. Sparse reachable masks and lazy channels may be much smaller;
+these are empirical benefits, not polynomial guarantees for a lifted input.
+Grounding can itself be exponential in schema arity, and a node budget alone
+does not bound SAT construction time.
+
+For a completed proof DAG with $E_D$ explicit child incidences, stored channel
+data take $O(E_{\mathrm{channels}}W)$ words and DP entries/continuations take
+$O(D(W+p/w+b)+E_D)$ words up to implementation overheads. A hot template hit
+removes construction but not its $K$ bucket visits, intersections, resource
+subtractions, and child-key lookups. Consequently counting only new cache
+entries is not a bound on total computation. Time slices checked between SAT
+calls can overrun by an atomic call; no hard real-time guarantee follows.
+
+\section{Relation to prior work and exact claim boundaries}
+Rintanen's $n$-distance framework~\cite{rintanen} establishes the importance of
+small joint world sets. Its conformant distance must not be used unchanged as
+an admissible contingent distance when sensing can help; the paper explicitly
+discusses that restriction. Our comparator uses exact contingent subset costs.
+Theorem~\ref{thm:separate} concerns that fully defined comparator, not all
+algorithms in the earlier framework.
+
+The LUG/POND work~\cite{bryce} already reasons with labels, overlapping support,
+and cross-world interactions. Our proof does not establish dominance over its
+full machinery. The candidate contribution is the particular resource-indexed
+successful-name capacity and its certified integration into bounded search;
+neither labels, max-flow, Kraft counting, nor choosing expensive heuristics is
+claimed new by itself. A detailed equivalence/separation analysis against a
+precisely instantiated labelled abstraction remains open. The present supplement
+does not replace that comparison with a novelty assertion.
+
+\section{Proof-to-code map and verification status}
+\begin{description}[style=nextline]
+\item[Implemented before this supplement.]
+\texttt{symbolic\_coverage.py} constructs existential channels and $C_0$;
+\texttt{relational\_coverage.py} implements both relations;
+\texttt{bounded\_resource\_coverage.py} normalizes resources;
+\texttt{resumable\_capacity.py} and \texttt{catalog\_capacity.py} resume lineage
+computation; \texttt{threshold\_search.py} uses exact beliefs and finite lower
+records; \texttt{resource\_information.py} implements the defined comparator;
+\texttt{coverage\_separation.py} generates the separation family.
+\item[New reference checks, not a production algorithm change.]
+\texttt{coverage\_certificates.py} checks local lineage/Hall upper steps assuming
+certified children and complete channels. \texttt{test\_theory\_strengthening.py}
+checks the cut formula against independent assignments, the stronger separation,
+mask/depth monotonicity, and the concrete refinement counterexample. It tests
+8,539 matching networks and 66,102 cut bounds; all 238 nonempty proper subsets
+of the $n=3,\ldots,7$ families; 55 completed resource-aware pair checks; and
+3,456 mask-monotonicity comparisons. These finite checks can find mistakes but
+are not machine-checked mathematical proofs or held-out performance evidence.
+\item[Proved here but not integrated as a new production mechanism.]
+General intermediate upper propagation, Hall-cut proof DAGs, and the sufficient
+channel-simulation checker. Exact-belief maximum lower records already preserve
+previous certificates; the implementation does not enumerate a portfolio of
+all projections. No runtime improvement is inferred from these proofs.
+\item[Still unproved or unsupported.]
+Universal dominance over labelled planning heuristics or resource-aware bounds;
+monotone strengthening from arbitrary added predicates; polynomial total
+complexity; calibrated scheduling probabilities; net runtime gains on held-out
+benchmarks; guarantees for stochastic dynamics, replenishment, numeric goals,
+or an inaccurate LLM-supplied action model. None is needed as an assumption
+hidden inside the theorems above.
+\end{description}
+
+\begin{thebibliography}{9}
+\bibitem{rintanen} Jussi Rintanen. Distance Estimates for Planning in the Discrete
+Belief Space. AAAI, 2004.
+\url{https://users.aalto.fi/~rintanj1/jussi/papers/Rintanen04heu.pdf}.
+\bibitem{bryce} Daniel Bryce, Subbarao Kambhampati, and David E. Smith.
+Planning Graph Heuristics for Belief Space Search. Journal of Artificial
+Intelligence Research 26:35--99, 2006.
+\url{https://doi.org/10.1613/jair.1869}.
+\end{thebibliography}
+\end{document}
