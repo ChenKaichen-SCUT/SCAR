@@ -497,6 +497,135 @@ a certified value-positive experiment: the needed query does not yet exist.
 The revision was made after the full-game runs, and is not credited with their
 scores.
 
+\section{Task-anchored substitution and preservation of material options}
+\label{sec:substitution}
+The original public task $G$ must remain distinct from the output $y$ of a
+proposed method. A recipe is evidence for a production relation, not for
+$\operatorname{has}(y)\Rightarrow G$. In particular, a game task may say
+``equip a weapon'' while its public completion signal occurs on picking up a
+weapon; the command \texttt{equip} can still reject that same object. Neither a
+successful craft nor a failed equip command alone determines the task binding.
+
+\begin{definition}[Task bridge and provisional route]
+A task bridge is a stated implication $g_j(x)\Rightarrow G(x)$ under an explicit
+assumption set $\Gamma_j$. The assumptions include the correctness of the task
+interpretation and all unexpressed task conditions. A provisional route is a
+publicly observed recipe or dependency chain with an intended endpoint $g_j$;
+it is not a task bridge and need not be executable. An observed category
+description supports a role hypothesis, not the entire bridge. An actual public
+completion report establishes completion of that particular encounter; reuse
+of its interpretation requires a separate invariance assumption.
+\end{definition}
+
+The implemented V12 gate selects an exact pending task quotation, checks narrow
+explicit output literals or public category descriptions, and follows bounded
+numeric recipe dependencies. Unsupported interpretations remain unknown.
+It does not infer an object's type from a suggestive name. An upstream ingredient
+is relevant only via an evidenced dependency to a supported endpoint. This is
+a necessary-role check, not a general natural-language entailment solver.
+
+\begin{definition}[Material-option certificate]
+Let $z\in\mathbb{R}_{\geq0}^d$ be the observed same-site material vector. Let
+$\mathcal R=\{r_j\}_{j\in J}$ contain material requirement vectors for provisional
+routes to the same task. Define
+\[
+ P(z)=\{j\in J:r_j\leq z\},\qquad
+ z'_\theta=z-c_\theta(a)+p_\theta(a).
+\]
+Here inequalities are componentwise; $c_\theta$ and $p_\theta$ are consumption
+and production under one retained effect profile. A conservative preservation
+check requires $P(z)\ne\varnothing$, nonnegative intermediate material totals,
+and
+\[
+ \forall\theta\in\Theta:\quad P(z)\cap P(z'_\theta)\ne\varnothing.       \tag{MO}
+\]
+New task-linked routes can replace the old portfolio, but their remaining
+requirements must be checked jointly with other retained task commitments.
+They are not justified merely by passing (MO).
+\end{definition}
+
+\begin{proposition}[What the reserve check certifies]
+\label{prop:material-options}
+Suppose $z$ and the listed effects are faithful, and the real effect profile
+belongs to $\Theta$. If (MO) holds, at least one previously stocked route
+remains stocked after $a$. Checking (MO) costs $O(|\Theta||J|d)$ and requires
+neither full game-state enumeration nor a sum of all alternative routes'
+ingredient demands.
+\end{proposition}
+\begin{proof}
+Apply (MO) to the actual profile $\theta^*$. A member of
+$P(z)\cap P(z'_{\theta^*})$ has its complete listed requirement vector available
+both before and after the action. Enumerating the profiles, routes and vector
+components gives the stated running time. Requiring the sum of all $r_j$ would
+incorrectly demand simultaneous construction of mutually substitutable methods.
+\end{proof}
+
+This result is only about material availability. The quantifier order
+$\forall\theta\exists j$ does not give an observation-based policy that knows
+which $j$ to use. Capacity, attachment, navigation, observation costs and task
+semantics may still prevent completion. If $P(z)$ was empty, an increased deficit
+is a warning about the provisional route, not proof that a feasible task was
+destroyed. Remote remembered stock and stale container contents do not enter
+the implemented same-site certificate.
+
+For multiple retained tasks, V12 also constructs a bounded relaxed production
+schedule. It subtracts inputs from one shared material ledger, uses the largest
+supported rounded ingredient requirement, and recursively obtains prerequisites
+before appending the corresponding production operation. Cycles, missing leaves
+and the expansion limit return no witness. Each distinct endpoint is reserved
+once in this explicitly listed commitment set; the adapter does not claim to
+extract every commitment from arbitrary task language.
+
+\begin{proposition}[Joint material witness]
+If the recursive construction returns a schedule with no missing leaf, then
+that schedule supplies the listed endpoints in the material relaxation, under
+each supported consumption rule, provided the observed recipes and their
+production quantities are faithful. An unsuccessful construction does not prove
+material infeasibility.
+\end{proposition}
+\begin{proof}
+Induct over the returned schedule. Before appending a production, recursive calls
+reserve its inputs from the shared ledger, expanding prerequisites if necessary.
+No input is spent twice. The maximum rounded requirement upper-bounds each
+supported rule, so executing any such rule leaves at least the reserved
+remainder. Subtracting already available outputs and accounting for newly
+produced outputs establishes the endpoint reservations. A cycle or expansion
+cutoff can miss a usable alternative order, hence failure is inconclusive.
+\end{proof}
+
+\begin{theorem}[Conditional task-preserving substitution]
+\label{thm:task-substitution}
+Let a verification or substitution prefix $\nu$ have observation leaves $\ell$.
+For every reachable leaf, suppose one common observation-based continuation
+$\pi_\ell$ has been verified for every surviving profile to establish an endpoint
+$g_{j(\ell)}$, preserve all modeled remaining obligations $K$, and use at most
+$B-\cost(\nu,\ell)$ further actions. If the corresponding task bridges hold,
+the actual model remains represented, and transitions and observations are
+faithful, then the concatenated policy completes $G$ within $B$ and preserves
+$K$ in the model.
+\end{theorem}
+\begin{proof}
+The actual prefix follows one represented observation leaf. At that leaf its
+model is included in the continuation's verification set. Applying the verified
+continuation establishes $g_{j(\ell)}$ and $K$; the task bridge then yields $G$.
+Adding the prefix and continuation action costs gives the budget claim. Different
+hidden profiles with the same observed leaf cannot select different uncertified
+continuations, which rules out an oracle-dependent choice of route.
+\end{proof}
+
+\paragraph{Implementation boundary.}
+Theorem~\ref{thm:task-substitution} states sufficient conditions, not a guarantee
+provided by every V12 repair. The implementation supplies the task-role audit,
+material check, explicit unknown states and charged feedback loop. Its inherited
+strong local planner verifies only its supported craft-and-hold fragment.
+Recovering a previously equipped container across rooms is an observed-route
+proposal, not a certified survival policy. An unsupported method substitution
+is blocked before consumption; an evidenced same-task alternative can release
+the old ingredients. A supported alternative with no joint material witness is
+not admitted by this gate. Every final task claim still requires public task
+feedback. This connects the new computation to the theory without pretending
+that a recipe ledger solves the whole quest.
+
 \section{Algorithm and correspondence with implementation}
 \begin{enumerate}[label=\arabic*.,leftmargin=*]
 \item Read public history and the remaining global budget. V6/LLM proposes the
@@ -646,10 +775,13 @@ Metropolis continuation tests attribute scoping without importing old
 clock-scoped facts. It is exploratory development, not a second independent
 validation set. Broader temporal scope remains an assumption to evaluate.
 The continuation also ended at score 10: removing the clock cell did not improve
-the primary score. It did produce an instructive counterexample. An LLM repair
-crafted a gavel splint successfully, but the next equip attempt failed because
-the object was not equippable. The craft had consumed timber. Successful action
-execution therefore did not validate the proposed alternative method.
+the primary score. An LLM repair crafted a gavel splint successfully and consumed
+timber, but picking it up did not complete the intended weapon task. Its equip
+attempt failed. This failure alone is not evidence that the item cannot serve
+the task: later, picking up a gavel club completed that same task even though
+the club's subsequent equip command also failed. The decisive issue is the
+task binding and its public completion feedback, not equippability as inferred
+from the natural-language task verb.
 
 The carried-container revision was checked from the first eligible recorded
 context without editing environment resources. One paid real inspection exposed
@@ -658,7 +790,66 @@ no verified continuation was returned. There was no new LLM call. This is a
 useful abstention and a grounded diagnosis, not a positive task-completion result.
 Tests separately verify the supported craft-and-hold policy and invalidate
 container detachment. Constructive repair outside the fragment, and alignment
-of alternative outputs with the original task, remain unresolved.
+of alternative outputs with the original task, were unresolved in that revision.
+
+The selected V12 repair starts before the previously observed unsupported
+substitution. Replaying that frozen LLM proposal through the new gate rejects
+the splint, retains timber, restores a previously observed inventory capability,
+and then uses the public dependency executor. The actual weapon task completes
+in 12 charged actions, versus 21 in the recorded V11 trajectory, with no new
+LLM call in this native mechanism check. This is a selected development case.
+The follow-on gate ablation uses the same continuation executor in every arm:
+no gate takes 13 actions; the task-only, resource-only and joint gates each take
+12. Thus most of the nine-action difference from the original trajectory is
+attributable to the continuation executor. This case establishes only one
+additional saved action from admission checking, with no incremental benefit
+of the joint gate over either check alone. Unit counterexamples establish that
+the checks are logically complementary; they do not establish empirical synergy.
+
+On this public prefix, 100 repetitions of the review including task binding,
+evidence scanning, dependency checks, quantity effects, joint material accounting
+and JSON audit assembly have median time 0.731 ms and 95th percentile 0.780 ms
+on the experiment server; the first call takes 1.720 ms. These measurements
+exclude history reconstruction, acquisition search, engine actions and API
+latency. They show low marginal check cost on this query, not a game speedup.
+The final implementation also restricts historical loss-location inference:
+a death following navigation cannot locate dropped objects at the departure
+point. The final native replay still takes 12 actions, and 87 tests pass.
+
+The live LLM continuation from step 93 completes the weapon task at step 108
+instead of 114: 15 versus 21 actions from the common checkpoint, with 13 versus
+21 new API requests up to that milestone. Both continuations finish at quest
+score 10 at step 300. The new continuation uses 250 requests versus 263, but its
+summed request latency is 701.8 versus 653.5 seconds; it is not an end-to-end
+time improvement. It executes eight condition-restoration actions. The new
+substitution gate itself is never invoked by an unsupported craft in this free
+continuation; its gate-specific benefit is established only in the frozen
+proposal check and the controlled continuation ablation.
+
+Three further full-start V12 runs use the previously shared initial worlds and
+clock scope, with the unchanged structured V11 runs as frozen controls:
+\begin{center}
+\begin{tabular}{lrr}
+Game & Frozen structured V11 & V12\\
+\hline
+Remnant & 2 & 3\\
+Mark & 13 & 11\\
+Metropolis & 10 & 11
+\end{tabular}
+\end{center}
+All six stop at the 300-action limit. The score sum is unchanged, and there is
+no consistent dominance. Crucially, none of the three V12 full runs invokes the
+new substitution gate or its condition-restoration controller. Global prompt
+changes, sampling and the previously native-only container support are
+confounds; these score differences cannot validate the proposed gate. A late
+trigger tied to a grounded failed craft has insufficient natural coverage.
+The next mechanism question is maintaining the task binding at the point of
+method selection, while distinguishing a valid upstream ingredient from an
+unsupported goal substitution. Simply rerunning these baselines will not resolve
+that question. This development round uses 1,181 new API requests with estimated
+peak-price cost USD 2.43145 and no unknown-charge attempts. No unchanged baseline
+is rerun. Paid trajectories retain their frozen source archive; the narrower
+loss-location fix is tested separately with 87 tests and a native replay.
 
 An exact thirty-configuration local matrix has zero grounding failures and
 zero changed selected policies from the new profile-regret gate. Thus this

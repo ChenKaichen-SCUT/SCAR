@@ -17,8 +17,8 @@ from scar_public.agent import PublicAgent
 GAMES = ("remnant", "mark", "metropolis")
 METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9", "evidence_decision_v10")
 PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9", "evidence_decision_v10")
-METHODS += ("evidence_repair_v11",)
-PUBLIC_METHODS += ("evidence_repair_v11",)
+METHODS += ("evidence_repair_v11", "method_repair_v12")
+PUBLIC_METHODS += ("evidence_repair_v11", "method_repair_v12")
 REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
 
 
@@ -78,6 +78,9 @@ def build_agent(method, env, provider):
         if method == "evidence_repair_v11":
             from scar_public.evidence_repair import EvidenceRepairAgent
             return EvidenceRepairAgent(provider, cfg.system_prompt)
+        if method == "method_repair_v12":
+            from scar_public.method_repair import MethodRepairAgent
+            return MethodRepairAgent(provider, cfg.system_prompt)
         return PublicAgent(provider, cfg.system_prompt)
     base = type(env.agents[0])
     factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
@@ -140,7 +143,7 @@ def run(args):
         manifest["evidence_reuse"] = not args.disable_evidence_reuse
     elif args.disable_evidence_reuse:
         raise ValueError("Evidence-reuse ablation is supported only for evidence_decision_v10")
-    if args.method == "evidence_repair_v11":
+    if args.method in ("evidence_repair_v11", "method_repair_v12"):
         manifest['evidence_mode']=args.evidence_mode
         manifest['evidence_context_scope']=args.evidence_context_scope
     fork = Path(args.fork_checkpoint).resolve() if args.fork_checkpoint else None
@@ -187,7 +190,7 @@ def run(args):
     agent = build_agent(args.method, env, provider)
     if args.method == "evidence_decision_v10":
         agent.resource_controller.reuse_enabled = not args.disable_evidence_reuse
-    if args.method == "evidence_repair_v11":
+    if args.method in ("evidence_repair_v11", "method_repair_v12"):
         agent.resource_controller.mode=args.evidence_mode
         agent.resource_controller.context_scope=args.evidence_context_scope
     if saved_agent is not None:
@@ -201,7 +204,7 @@ def run(args):
         obs, reward, done, info = env.step({AGENT_ID: action})
         env.update_scores(reward)
         step += 1
-        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9", "evidence_decision_v10", "evidence_repair_v11") and (done or step >= args.steps):
+        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9", "evidence_decision_v10", "evidence_repair_v11", "method_repair_v12") and (done or step >= args.steps):
             agent.observe_terminal(obs[AGENT_ID])
         cp = directory / "checkpoints" / f"{step:04d}"
         cp.mkdir(parents=True, exist_ok=True)

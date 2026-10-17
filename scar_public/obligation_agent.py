@@ -171,6 +171,8 @@ class ObligationAgent:
                     memory.task_query=None
                 else:
                     prompt+='\nThe last task-binding experiment has no decisive task feedback. Seek a fresh task report when accessible; do not infer success from writing.\n'
+        early=getattr(controller,'method_condition_step',None) if controller else None
+        if parsed is None and early:parsed=early(obs['text'],step)
         # Select an unresolved public writing obligation when its content role and
         # currently held operands are known. This is a controller decision, not an
         # optional model annotation. Prior operation evidence avoids redundant trials.
@@ -234,6 +236,14 @@ class ObligationAgent:
                         'The revised proposal repeats the same model-relative inert failure; '
                         'inspect the observed station. This action is charged and does not prove progress.')
                 parsed['guarded_evidence_review']=review
+        finalize=getattr(controller,'finalize_decision',None) if controller else None
+        if finalize:
+            proposed_action=parsed['action']
+            parsed=finalize(parsed,obs['text'],step,query,prompt)
+            if parsed['action']!=proposed_action:
+                # A vetoed action never starts a trial or produces its feedback.
+                memory.resource_trial_state=None
+                controller.session=None
         # A write proposal activates the probe workflow; no optional experiment field.
         if parsed['action'].startswith('write ') and parsed.get('decision_source')!='semantic_intervention':
             payload,name=parsed['action'][6:].rsplit(' ',1)
