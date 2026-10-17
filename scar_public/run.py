@@ -17,8 +17,8 @@ from scar_public.agent import PublicAgent
 GAMES = ("remnant", "mark", "metropolis")
 METHODS = ("stm", "longcontext", "reflact", "public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9", "evidence_decision_v10")
 PUBLIC_METHODS = ("public_v1", "evidence_v2", "viability_v3", "contract_v4", "spec_v5", "obligation_v6", "causal_shadow_v7", "resource_competition_v8", "persistent_resource_v9", "evidence_decision_v10")
-METHODS += ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14")
-PUBLIC_METHODS += ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14")
+METHODS += ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14", "task_outcome_v15")
+PUBLIC_METHODS += ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14", "task_outcome_v15")
 REFLACT = "You should first reflect on the agent’s state in relation to the task goal, and then output the action for this turn."
 
 
@@ -87,6 +87,9 @@ def build_agent(method, env, provider):
         if method == "action_repair_v14":
             from scar_public.action_repair import ActionRepairAgent
             return ActionRepairAgent(provider, cfg.system_prompt)
+        if method == "task_outcome_v15":
+            from scar_public.task_outcome import TaskOutcomeAgent
+            return TaskOutcomeAgent(provider, cfg.system_prompt)
         return PublicAgent(provider, cfg.system_prompt)
     base = type(env.agents[0])
     factory = create_short_term_memory_agent if method == "stm" else create_long_context_agent
@@ -149,11 +152,11 @@ def run(args):
         manifest["evidence_reuse"] = not args.disable_evidence_reuse
     elif args.disable_evidence_reuse:
         raise ValueError("Evidence-reuse ablation is supported only for evidence_decision_v10")
-    if args.method in ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14"):
+    if args.method in ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14", "task_outcome_v15"):
         manifest['evidence_mode']=args.evidence_mode
         manifest['evidence_context_scope']=args.evidence_context_scope
     if args.method=='intent_repair_v13':manifest['intent_mode']=args.intent_mode
-    if args.method=='action_repair_v14':manifest['action_mode']=args.action_mode
+    if args.method in ('action_repair_v14','task_outcome_v15'):manifest['action_mode']=args.action_mode
     fork = Path(args.fork_checkpoint).resolve() if args.fork_checkpoint else None
     if fork:
         source_manifest = json.loads((fork.parent.parent / "manifest.json").read_text())
@@ -198,13 +201,14 @@ def run(args):
     agent = build_agent(args.method, env, provider)
     if args.method == "evidence_decision_v10":
         agent.resource_controller.reuse_enabled = not args.disable_evidence_reuse
-    if args.method in ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14"):
+    if args.method in ("evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14", "task_outcome_v15"):
         agent.resource_controller.mode=args.evidence_mode
         agent.resource_controller.context_scope=args.evidence_context_scope
     if args.method=='intent_repair_v13':agent.resource_controller.intervention_mode=args.intent_mode
-    if args.method=='action_repair_v14':agent.resource_controller.action_mode=args.action_mode
+    if args.method in ('action_repair_v14','task_outcome_v15'):agent.resource_controller.action_mode=args.action_mode
+    if args.method=='task_outcome_v15':agent.resource_controller.max_steps=args.steps
     if saved_agent is not None:
-        if args.method=='action_repair_v14' and 'action_goal_bindings' not in saved_agent:
+        if args.method in ('action_repair_v14','task_outcome_v15') and 'action_goal_bindings' not in saved_agent:
             from scar_public.action_history import historical_intents
             saved_agent.update(historical_intents(cp if previous else fork))
         load_agent_state(agent, args.method, saved_agent)
@@ -217,7 +221,7 @@ def run(args):
         obs, reward, done, info = env.step({AGENT_ID: action})
         env.update_scores(reward)
         step += 1
-        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9", "evidence_decision_v10", "evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14") and (done or step >= args.steps):
+        if args.method in ("causal_shadow_v7","resource_competition_v8","persistent_resource_v9", "evidence_decision_v10", "evidence_repair_v11", "method_repair_v12", "intent_repair_v13", "action_repair_v14", "task_outcome_v15") and (done or step >= args.steps):
             agent.observe_terminal(obs[AGENT_ID])
         cp = directory / "checkpoints" / f"{step:04d}"
         cp.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,498 @@
+{
+  "remnant": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 1,
+        "kill": 1,
+        "craft": 2,
+        "exploration": 3,
+        "death": 2,
+        "trade": 0,
+        "quest": 2,
+        "side_quest": 1
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Search the named regions until the Cinder Shrine shows itself, then step close enough to draw its answer.",
+      "method": "Visit each named region and observe whether the Cinder Shrine appears.",
+      "assessment": "Previous library entry did not reveal shrine; library is not a named region, so returning to armory is the available named-region test.",
+      "expected": "Enter Old Castle, armory and observe whether the Cinder Shrine becomes visible or a search message appears.",
+      "required_state": "Standing in a named region (Old Castle armory; Greenwood Forest plain/hills).",
+      "feasibility": "unknown: armory reachable but shrine not yet seen; Greenwood routes unobserved."
+    },
+    "task_endpoint_pairs": [
+      {
+        "task": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+        "endpoint": "wood_plank",
+        "support": {
+          "status": "UNKNOWN",
+          "task": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+          "output": "wood_plank",
+          "reason": "Recipe existence and suggestive names do not establish the task role"
+        },
+        "first_step": 83,
+        "candidate_cost": 3,
+        "material_status": "NO_OTHER_EXPLICIT_OUTPUTS"
+      },
+      {
+        "task": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+        "endpoint": "wooden_dagger",
+        "support": {
+          "status": "UNKNOWN",
+          "task": "Arm yourself with a weapon before you follow the ash, because what waits at the shrine will not be polite.",
+          "output": "wooden_dagger",
+          "reason": "Recipe existence and suggestive names do not establish the task role"
+        },
+        "first_step": 100,
+        "candidate_cost": 5,
+        "material_status": "NO_OTHER_EXPLICIT_OUTPUTS"
+      }
+    ],
+    "observed_endpoint_descriptions": [],
+    "last_actions": [
+      {
+        "step": 281,
+        "action": "pick up key"
+      },
+      {
+        "step": 282,
+        "action": "enter armory"
+      },
+      {
+        "step": 283,
+        "action": "enter crystal_chamber"
+      },
+      {
+        "step": 284,
+        "action": "enter armory"
+      },
+      {
+        "step": 285,
+        "action": "eat apple"
+      },
+      {
+        "step": 286,
+        "action": "eat apple"
+      },
+      {
+        "step": 287,
+        "action": "eat apple"
+      },
+      {
+        "step": 288,
+        "action": "eat apple"
+      },
+      {
+        "step": 289,
+        "action": "eat apple"
+      },
+      {
+        "step": 290,
+        "action": "enter hall"
+      },
+      {
+        "step": 291,
+        "action": "enter armory"
+      },
+      {
+        "step": 292,
+        "action": "eat apple"
+      },
+      {
+        "step": 293,
+        "action": "eat apple"
+      },
+      {
+        "step": 294,
+        "action": "enter library"
+      },
+      {
+        "step": 295,
+        "action": "eat bread"
+      },
+      {
+        "step": 296,
+        "action": "eat bread"
+      },
+      {
+        "step": 297,
+        "action": "eat bread"
+      },
+      {
+        "step": 298,
+        "action": "enter armory"
+      },
+      {
+        "step": 299,
+        "action": "enter library"
+      },
+      {
+        "step": 300,
+        "action": "enter armory"
+      }
+    ],
+    "late_action_counts": {
+      "pick": 1,
+      "enter": 9,
+      "eat": 10
+    },
+    "late_failure_feedback": [
+      "I was attacked by goblin_warrior_23 and lost 2 HP.",
+      "I was attacked by swamp_raider_5 and lost 41 HP.",
+      "I was attacked by cave_stalker_2 and lost 9 HP.",
+      "I was attacked by goblin_warrior_22 and lost 2 HP.",
+      "I was attacked by goblin_warrior_19 and lost 2 HP.",
+      "I was attacked by goblin_warrior_3 and lost 9 HP.",
+      "I was attacked by goblin_warrior_28 and lost 1 HP.",
+      "I was attacked by goblin_warrior_17 and lost 2 HP.",
+      "I was attacked by goblin_warrior_15 and lost 2 HP.",
+      "I was attacked by goblin_warrior_20 and lost 2 HP.",
+      "I was attacked by goblin_warrior_24 and lost 2 HP.",
+      "I was attacked by goblin_warrior_26 and lost 2 HP."
+    ],
+    "latest_reports": []
+  },
+  "mark": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 2,
+        "kill": 2,
+        "craft": 6,
+        "exploration": 6,
+        "death": 2,
+        "trade": 1,
+        "quest": 13,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Craft any armor. You\u2019ll need something that can take a real hit.",
+      "method": "Craft leather_vest at hall workbench using hand_ground arrangement: hold 1 leather_strip + 1 thread, leave second leather_strip on ground.",
+      "assessment": "Hand-only craft failed repeatedly due to capacity (3 units > 2). Now switching to untested hand_ground arrangement; dropping one strip frees hand space.",
+      "expected": "leather_strip leaves hand and appears on ground, leaving hand with thread + 1 leather_strip.",
+      "required_state": "At Old Castle, hall with workbench present; hand holds thread + 1 leather_strip; ground holds another leather_strip.",
+      "feasibility": "jointly possible: workbench is on ground here, 2 leather_strips and 1 thread are known available locally; hand capacity 2 fits thread+1 strip."
+    },
+    "task_endpoint_pairs": [
+      {
+        "task": "Craft an oak rod.",
+        "endpoint": "oak_rod",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft an oak rod.",
+          "output": "oak_rod",
+          "quote": "Craft an oak rod.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "oak_rod",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "first_step": 44,
+        "candidate_cost": 3,
+        "material_status": "NO_OTHER_EXPLICIT_OUTPUTS"
+      },
+      {
+        "task": "Craft a copper sword and hold it in your hands.",
+        "endpoint": "copper_sword",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft a copper sword and hold it in your hands.",
+          "output": "copper_sword",
+          "quote": "Craft a copper sword and hold it in your hands.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "copper_sword",
+              "value": false
+            },
+            {
+              "kind": "held",
+              "item": "copper_sword",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "first_step": 61,
+        "candidate_cost": 4,
+        "material_status": "NO_OTHER_EXPLICIT_OUTPUTS"
+      }
+    ],
+    "observed_endpoint_descriptions": [],
+    "last_actions": [
+      {
+        "step": 281,
+        "action": "inspect small_pouch_1"
+      },
+      {
+        "step": 282,
+        "action": "inspect goblin_token"
+      },
+      {
+        "step": 283,
+        "action": "inspect cloth"
+      },
+      {
+        "step": 284,
+        "action": "inspect pen"
+      },
+      {
+        "step": 285,
+        "action": "inspect torch"
+      },
+      {
+        "step": 286,
+        "action": "take out leather_strip small_pouch_0"
+      },
+      {
+        "step": 287,
+        "action": "drop leather_strip"
+      },
+      {
+        "step": 288,
+        "action": "take out thread small_pouch_0"
+      },
+      {
+        "step": 289,
+        "action": "take out leather_strip small_pouch_0"
+      },
+      {
+        "step": 290,
+        "action": "pick up leather_strip"
+      },
+      {
+        "step": 291,
+        "action": "store 1 thread small_pouch_0"
+      },
+      {
+        "step": 292,
+        "action": "take out thread small_pouch_0"
+      },
+      {
+        "step": 293,
+        "action": "drop leather_strip"
+      },
+      {
+        "step": 294,
+        "action": "pick up leather_strip"
+      },
+      {
+        "step": 295,
+        "action": "drop leather_strip"
+      },
+      {
+        "step": 296,
+        "action": "take out leather_strip small_pouch_0"
+      },
+      {
+        "step": 297,
+        "action": "take out leather_strip small_pouch_0"
+      },
+      {
+        "step": 298,
+        "action": "inspect small_pouch_0"
+      },
+      {
+        "step": 299,
+        "action": "pick up leather_strip"
+      },
+      {
+        "step": 300,
+        "action": "drop leather_strip"
+      }
+    ],
+    "late_action_counts": {
+      "inspect": 6,
+      "take": 6,
+      "drop": 4,
+      "pick": 3,
+      "store": 1
+    },
+    "late_failure_feedback": [
+      "Cannot take out leather_strip, not found in small_pouch_0.",
+      "I was attacked by scrap_goblin_27 and lost 1 HP.",
+      "I was attacked by scrap_goblin_0 and lost 8 HP."
+    ],
+    "latest_reports": []
+  },
+  "metropolis": {
+    "status": {
+      "steps": 300,
+      "checkpoint": "0300",
+      "complete": true,
+      "scores": {
+        "unique_kill": 2,
+        "kill": 2,
+        "craft": 1,
+        "exploration": 4,
+        "death": 1,
+        "trade": 0,
+        "quest": 10,
+        "side_quest": 0
+      },
+      "main_quest_passed": false,
+      "termination": "step_limit"
+    },
+    "last_frame": {
+      "goal_quote": "Investigate the Statute District, neutralize the corrupt agents, and uncover the cipher needed to access the Nullification Vault.",
+      "method": "Wait for lock state to change since all lobby exits are locked; locks historically shift at day/night transitions.",
+      "assessment": "Previous prediction (clerks_office may be open) failed\u2014locked. All exits now locked; repeating entry attempts is unproductive.",
+      "expected": "Either a lock state change message at next transition or continued locked status, informing whether waiting is viable.",
+      "required_state": "An unlocked exit from lobby to market_square or clerks_office/evidence_room.",
+      "feasibility": "unknown: all three exits locked repeatedly; lock states have changed across day/night cycles before."
+    },
+    "task_endpoint_pairs": [
+      {
+        "task": "Obtain and equip a weapon before engaging enemies.",
+        "endpoint": "iron_bar",
+        "support": {
+          "status": "UNKNOWN",
+          "task": "Obtain and equip a weapon before engaging enemies.",
+          "output": "iron_bar",
+          "reason": "Recipe existence and suggestive names do not establish the task role"
+        },
+        "first_step": 73,
+        "candidate_cost": 3,
+        "material_status": "NO_OTHER_EXPLICIT_OUTPUTS"
+      },
+      {
+        "task": "Obtain and equip a weapon before engaging enemies.",
+        "endpoint": "clerks_bench",
+        "support": {
+          "status": "UNKNOWN",
+          "task": "Obtain and equip a weapon before engaging enemies.",
+          "output": "clerks_bench",
+          "reason": "Recipe existence and suggestive names do not establish the task role"
+        },
+        "first_step": 97,
+        "candidate_cost": 3,
+        "material_status": "NO_OTHER_EXPLICIT_OUTPUTS"
+      },
+      {
+        "task": "Obtain and equip a weapon before engaging enemies.",
+        "endpoint": "gavel_club",
+        "support": {
+          "status": "UNKNOWN",
+          "task": "Obtain and equip a weapon before engaging enemies.",
+          "output": "gavel_club",
+          "reason": "Recipe existence and suggestive names do not establish the task role"
+        },
+        "first_step": 105,
+        "candidate_cost": 12,
+        "material_status": "NO_OTHER_EXPLICIT_OUTPUTS"
+      }
+    ],
+    "observed_endpoint_descriptions": [
+      "I inspected clerks_bench: A sturdy clerk's workbench covered in tool marks and statute residue, used for assembling and crafting."
+    ],
+    "last_actions": [
+      {
+        "step": 281,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 282,
+        "action": "inspect clerks_bench"
+      },
+      {
+        "step": 283,
+        "action": "drop clerks_bench"
+      },
+      {
+        "step": 284,
+        "action": "enter evidence_room"
+      },
+      {
+        "step": 285,
+        "action": "enter market_square"
+      },
+      {
+        "step": 286,
+        "action": "wait"
+      },
+      {
+        "step": 287,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 288,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 289,
+        "action": "wait"
+      },
+      {
+        "step": 290,
+        "action": "enter market_square"
+      },
+      {
+        "step": 291,
+        "action": "wait"
+      },
+      {
+        "step": 292,
+        "action": "enter market_square"
+      },
+      {
+        "step": 293,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 294,
+        "action": "enter market_square"
+      },
+      {
+        "step": 295,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 296,
+        "action": "enter market_square"
+      },
+      {
+        "step": 297,
+        "action": "wait"
+      },
+      {
+        "step": 298,
+        "action": "enter evidence_room"
+      },
+      {
+        "step": 299,
+        "action": "enter clerks_office"
+      },
+      {
+        "step": 300,
+        "action": "wait"
+      }
+    ],
+    "late_action_counts": {
+      "enter": 13,
+      "inspect": 1,
+      "drop": 1,
+      "wait": 5
+    },
+    "late_failure_feedback": [
+      "Cannot enter clerks_office, the door is locked.",
+      "Cannot drop clerks_bench, not found in hand.",
+      "Cannot enter evidence_room, the door is locked.",
+      "Cannot enter market_square, the door is locked."
+    ],
+    "latest_reports": []
+  }
+}
