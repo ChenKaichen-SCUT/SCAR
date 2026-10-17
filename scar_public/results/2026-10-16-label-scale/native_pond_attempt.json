@@ -1,0 +1,56 @@
+{
+  "svn_url": "https://svn.code.sf.net/p/pond/code",
+  "revision": 313,
+  "binary_sha256": "59e5cd3c40a119930dc8c49d8b2088e22f7320b177ae8b6e427664f1eff7fed3",
+  "build": [
+    {
+      "command": [
+        "autoreconf",
+        "-fi"
+      ],
+      "returncode": 0,
+      "seconds": 3.019118388999914
+    },
+    {
+      "command": [
+        "./configure",
+        "CXXFLAGS=-O2 -std=gnu++98 -fpermissive"
+      ],
+      "returncode": 0,
+      "seconds": 2.3178621229999408
+    },
+    {
+      "command": [
+        "make",
+        "clean"
+      ],
+      "returncode": 0,
+      "seconds": 0.11389759899998353
+    },
+    {
+      "command": [
+        "make",
+        "-j8",
+        "CPPFLAGS=-I/root/scar_planning_20261016/sources/cudd-vendor/seahorn-ldd-4329f41/cudd-2.4.2/include -I/root/scar_planning_20261016/sources/cudd-vendor/seahorn-ldd-4329f41/cudd-2.4.2/cudd -I/root/scar_planning_20261016/sources/cudd-vendor/seahorn-ldd-4329f41/cudd-2.4.2/util -I/root/scar_planning_20261016/sources/cudd-vendor/seahorn-ldd-4329f41/cudd-2.4.2/mtr -I/root/scar_planning_20261016/sources/cudd-vendor/seahorn-ldd-4329f41/cudd-2.4.2/st -I/root/scar_planning_20261016/sources/cudd-vendor/seahorn-ldd-4329f41/cudd-2.4.2/epd -I/root/scar_planning_20261016/sources/cudd-vendor/seahorn-ldd-4329f41/cudd-2.4.2/dddmp"
+      ],
+      "returncode": 0,
+      "seconds": 12.236901939000063
+    }
+  ],
+  "native_attempts": 42,
+  "native_parse_errors": 42,
+  "verified_policies": 0,
+  "excluded_from_performance_comparison": true,
+  "smoke": {
+    "actions": 2,
+    "worlds": 2,
+    "known_valid_sequence": [
+      "a0",
+      "a1"
+    ],
+    "lugrp_astar": "Assertion child != NULL failed; no verified policy",
+    "luglevel_mutex": "Segmentation fault",
+    "lugrp_ehc": "Prints No Solution then a done-only plan, which fails the goal"
+  },
+  "note": "Smoke diagnostics observed in execution transcript; no claim of LUG algorithm weakness. Native archive dialect mismatches this later parser. Roundtrip adapter does not certify native semantic conformance."
+}

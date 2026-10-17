@@ -580,13 +580,234 @@ Theorem~\ref{thm:separate} concerns that fully defined comparator, not all
 algorithms in the earlier framework.
 
 The LUG/POND work~\cite{bryce} already reasons with labels, overlapping support,
-and cross-world interactions. Our proof does not establish dominance over its
-full machinery. The candidate contribution is the particular resource-indexed
-successful-name capacity and its certified integration into bounded search;
-neither labels, max-flow, Kraft counting, nor choosing expensive heuristics is
-claimed new by itself. A detailed equivalence/separation analysis against a
-precisely instantiated labelled abstraction remains open. The present supplement
-does not replace that comparison with a novelty assertion.
+and cross-world interactions. The candidate contribution here is the particular
+resource-indexed successful-name capacity and its certified integration into
+bounded search; neither labels, max-flow, Kraft counting, nor choosing expensive
+heuristics is claimed new by itself. The following comparison concerns a
+specified reachability test, not all computations possible with labelled graphs.
+
+\subsection{A concrete cross-world labelled abstraction}
+Restrict this comparison to conformant tasks with conjunctive Boolean goals.
+Encode bounded non-replenishing resources with finite-domain level facts and
+legal transitions, without adding observations. This encoding preserves legal
+action sequences and their lengths. Define $L_X(B,d)$ to be the goal test of a
+labelled uncertainty graph at layer $d$, using all world labels, same-world and
+cross-world literal mutexes, with interference, competing needs, inconsistent
+support and induced-effect mutex propagation as in Appendix B of~\cite{bryce}.
+The goal must be labelled reachable in every world and its literal pairs must
+be non-mutex for every relevant pair of world labels. Use ordinary parallel
+layers, or the sound serial strengthening forbidding distinct real actions
+in one layer. Do not perform backward plan extraction or higher-order nogood
+learning in this test. This defines the comparison independently of a particular
+POND search configuration or relaxed-plan extraction heuristic.
+
+\begin{lemma}[Exact pair control bounds this labelled goal test]\label{lem:lugpair}
+Suppose every singleton and pair of initial worlds has a resource-legal
+conformant plan of length at most $d$. Then $L_X(B,d)$ passes. Consequently a
+completed exact resource-aware pair infeasibility test is at least as
+discriminating as this labelled goal test on the stated conformant fragment.
+\end{lemma}
+\begin{proof}
+Fix a pair of worlds and its actual common plan. Follow the plan through the
+graph. Initially each true literal has its world label. At an action layer the
+actual preconditions and triggered guards have supports, so each actual effect
+and persistent literal receives its world label at the next layer. Two actual
+co-achieved literals cannot be declared mutex by a sound interference,
+competing-needs, induced-effect or inconsistent-support rule: their common
+execution supplies a compatible pair of supporting effects, recursively down
+to the initial layer. The same real action is used across the two worlds at
+each step, so the serial strengthening does not remove this witness. Pad short
+plans with persistence. At layer $d$ every goal literal is therefore reachable
+and every goal-literal pair for these two labels is non-mutex. Apply the argument
+separately to all pairs, including coincident labels. The definition of $L_X$
+tests exactly these conditions; it does not require the different pair
+witnesses to be the same plan. Taking the contrapositive proves the comparison.
+\end{proof}
+
+\begin{theorem}[Incomparability with the specified labelled test]\label{thm:lug}
+Neither the complete lineage-capacity rejection test with an arbitrary fixed
+projection nor $L_X$ dominates the other, even on deterministic conformant tasks
+with a single resource. The same statement holds for matching capacity.
+\end{theorem}
+\begin{proof}
+For the first direction remove sensing actions from the family in
+Theorem~\ref{thm:separate}. Every proper subset still has its two-action common
+plan, so Lemma~\ref{lem:lugpair} makes $L_X(B,2)$ pass, including when resource
+levels are encoded. The scalar value remains $n$ and both relational capacities
+remain $n-1$: the removed sensing contribution was only two and never exceeded
+the preparation contribution. Thus capacity rejects the full task.
+
+For the other direction take two worlds differing only in an irrelevant
+immutable atom. In both, dynamic atoms $p$ and $done$ are initially false and
+the goal is $done$. There are only two actions: $sustain$ requires $p$ and adds
+$p$; $finish$ requires $p$ and adds $done$. Each consumes one unit; the budget
+and horizon are one. No real action is applicable. In every labelled graph
+$p$ has no initial support, and no first supported producer, so $done$ never
+becomes labelled reachable. Hence $L_X$ rejects. With an empty retained dynamic
+projection, $p$ is a forgotten dynamic atom and can be true in an existential
+channel witness. Action $finish$ therefore has both names in its immediate-goal
+mask, yielding $\CL=\CM=2$. Both capacities pass. This example is deliberately
+simple: the shared singleton reachability bound in the actual planner already
+catches it. It establishes an abstraction boundary, not a regression of the
+combined planner.
+\end{proof}
+
+The separation is not a claim of a newly discovered limitation of pairwise
+mutex reasoning. Its specific content is that the implemented coverage
+recurrence detects a high-order resource obstruction while retaining only the
+stated progress projection. It gives no superiority over labelled relaxed-plan
+extraction, higher-order mutexes, a complete labelled search, or arbitrary
+resource-aware abstractions. On tasks with sensing, a conformant cross-world
+mutex can prohibit actions that a conditional policy chooses on different
+branches; it must not be used unchanged for safe contingent pruning. Our
+implemented pair control instead solves the actual contingent two-world problem.
+Incomplete pair queries contribute only completed lower bounds, never a claimed
+pass or failure. Neither implementation is labelled a reproduction of POND.
+
+\subsection{An exact limit on the usefulness of identity computation}
+\begin{proposition}[Collapse of homogeneous labels]\label{prop:collapse}
+Suppose every reachable channel has an immediate-goal mask and each eligible
+mask equal to either $I$ or the empty set. For every subset $S$ and depth $d$,
+\[
+ \CL(q,S,d)=\CM(q,S,d)=\min\{\card S,C_0(q,d)\}.
+\]
+In particular, the implemented existential construction has this property when
+all names have the same immutable valuation. Adding common retained dynamic
+predicates cannot by itself remove this equality.
+\end{proposition}
+\begin{proof}
+Induct on depth. All three capacities are zero at depth zero. If an action's
+goal mask is $I$, it contributes the full candidate ceiling. Otherwise it
+credits no immediate success and every nonempty child retains all of $S$.
+By induction, its lineage contribution is
+$\min\{\card S,\sum_j\min(\card S,C_0(q_j,d-1))\}$, which equals
+$\min\{\card S,\sum_j C_0(q_j,d-1)\}$. The scalar recurrence has the same
+expression with ceiling $N$; clipping it to $\card S$ gives the former value.
+For matching, every surviving candidate is adjacent to every child bucket,
+so the maximum matching size is exactly the smaller of $\card S$ and the sum
+of child capacities. Taking the maximum over actions commutes with clipping
+to the common ceiling. This proves the induction. With one immutable valuation,
+the SAT query for any fixed common projected value is identical for every name,
+so its masks are necessarily homogeneous, for any retained common projection.
+\end{proof}
+
+This proposition justifies the already implemented one-static-class skip in
+\texttt{amortized\_refinement.py}. It also identifies a representational
+limitation: faster scheduling cannot create a strict relational improvement
+when all labels have collapsed. Preserving initial names without a constraint
+linking them to reachable dynamic facts is insufficient. A stronger construction
+would need such a link, with a separate simulation/soundness proof; it is not
+silently assumed in the present experiments.
+
+\section{Frozen public scaling study: gains and their attribution}
+We selected 21 previously unexecuted source pairs from the benchmark archive
+published with the LUG work~\cite{lugdomains}: Ring sizes 2--6; CubeCenter
+sizes 3, 5, 7, 9; BT and BTC sizes 4, 6, 8, 20; and MedicalPKS sizes 4, 6, 8, 12.
+Each has an original-structure configuration and a declared extension with
+16 actuation units and one sensing unit. The 42 configurations and all solver
+source hashes were frozen before inspecting solver outcomes. These related
+instances and their overlays are not independent statistical samples, and
+three families overlap in topic with earlier development domains.
+
+\paragraph{Source quality and experimental protocol.}
+The archive contains inconsistent domain references in BT and MedicalPKS.
+The frontend interprets the explicitly supplied domain/problem pair; those
+16 configurations are therefore reported as paired-file interpretations, not
+unmodified strict-PDDL originals. An after-run audit separates the 24
+configurations with coherent domain names. This check is not a full PDDL
+conformance certification. Ring-3 has an extra closing parenthesis and is
+rejected; Ring-6 exceeds the 2048-model limit and is rejected without sampling.
+Thus 38 configurations are supported in the full interpreted cohort and 22 in
+the coherent-name cohort. All exclusions and raw outcomes remain in the record.
+No identical raw domain/problem pair was found among 65 pairs recorded in
+earlier manifests; byte inequality is not a proof of semantic independence.
+
+Five variants share the same indexed exact threshold-search engine, singleton
+bounds, and leaf-information baseline. Optional additions are the resource-aware
+pair control, the resource-aware observation-tree/Kraft control, scalar coverage
+$C_0$, and lineage coverage $\CL$. The latter two use the same projection
+selection and channel construction. Optional pair work is capped at 300,000
+charges, three seconds per run and 0.25 seconds per query; interrupted work is
+not interpreted as a completed feasibility test. This is a practical bounded
+implementation of the control, not evaluation of an unlimited pair oracle.
+The existing coverage and resource-tree budgets are unchanged and recorded in
+the manifest. Each run has horizon 60, a 30-second process limit and 2 GiB memory.
+Eight independent processes occupy eight physical cores. Parsing, exact model
+enumeration, grounding, initialization, and optional inference are included in
+reported time; process startup/imports are recorded separately. Every returned
+policy is replayed on every initial candidate. All jointly completed values agree.
+
+An initial 210-run pilot briefly overlapped a legacy-planner build. Its times
+are not used below. A second, unchanged 210-run batch ran in isolation after
+all builds and native diagnostics finished. Both solver/input manifests match
+exactly. This repeat validates timing under isolation; it does not create a new
+holdout cohort. The table uses one isolated observation per configuration, so
+small timing differences have no statistical significance claim.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\hline
+Method & Completed / 38 & Completed / 22 & PAR2 (22) \\
+\hline
+Leaf information & 26 & 12 & 28.17 \\
+Resource-aware pairs & 28 & 14 & 23.36 \\
+Resource-aware tree/Kraft & 29 & 15 & 20.60 \\
+Scalar coverage $C_0$ & 30 & 14 & 22.69 \\
+Lineage coverage $\CL$ & 30 & 14 & 22.69 \\
+\hline
+\end{tabular}
+\end{center}
+The first column includes the explicitly interpreted file pairs. The last two
+columns use only supported coherent-name configurations. ``Completed'' includes
+a verified optimal policy or certified infeasibility within the declared
+horizon/resources. PAR2 is mean elapsed time with each supported unfinished case
+charged 60 seconds; unsupported inputs are counted separately. The two coverage
+variants each return 24 policies and six bounded infeasibility results in the
+full cohort, and 13 policies and one bounded infeasibility result in the
+coherent-name cohort. Across all five variants, 119 returned policies pass replay.
+
+\paragraph{Actual search savings.}
+On the coherent-name BTC-20 original, $C_0$ finishes in 0.274 seconds and $\CL$
+in 0.289 seconds, each with 39 search expansions and verified optimal depth 39.
+All three information controls time out at 30 seconds. This establishes a
+greater-than-100-fold observed speed advantage on this instance, including
+coverage construction, not merely fewer expansions. On BTC-8 with the a16s1
+extension, $\CL$ uses 0.125 seconds and 15 expansions, versus 1.223 seconds and
+13,751 expansions for the leaf baseline. Conversely, Ring-4 with that extension
+takes $\CL$ 11.354 seconds and 2602 expansions, versus 4.452 seconds and 11
+expansions for the resource-tree control. The resource-tree method additionally
+solves both Ring-5 configurations and CubeCenter-5 original where coverage times
+out. There is no across-family dominance.
+
+\paragraph{The independent relational contribution remains unverified.}
+Both coverage variants make 433 scalar rejections in the full batch. Lineage
+also completes 202 relation checks, all passing; it supplies zero additional
+relational rejections and solves exactly the same configurations as $C_0$.
+Across these runs, optional coverage work totals 2.654 seconds for $C_0$ and
+2.698 seconds for $\CL$. These figures do not justify attributing the BTC
+speedups to preserving identities. On the 26 cases jointly completed with the
+leaf baseline, the geometric mean speedup of $\CL$ is approximately 1.000;
+the advantage is concentrated in escaping the larger BT/BTC failures.
+After the source-quality stratification, the resource-tree control solves one
+more coherent-name configuration and has lower PAR2 than coverage.
+Theoretical separation, practical scalar gains, and independent relational
+gains are therefore three different claims; only the first two have support
+in this study. Proposition~\ref{prop:collapse} explains why common-projection
+refinement or scheduling alone cannot repair homogeneous-label cases.
+
+\paragraph{External implementation status.}
+POND SVN revision 313 was compiled with documented portability repairs.
+The older benchmark dialect is not accepted directly by that later parser.
+A separate conformant grounding adapter preserves a small Boolean task under
+roundtrip checks, but the native binary still fails a solvable two-world,
+two-action conformance test: an assertion or crash under the tested A*/LUG
+configurations, and an invalid empty policy under EHC. These are reproduction
+failures, not evidence that the LUG algorithm is weak. No native POND runtime
+or success count enters the table, and the regular \texttt{-mutex} option is
+not represented as the Appendix-B cross-world implementation. A validated
+external implementation and independent public cases with actual relational
+search savings remain necessary before claiming a completed empirical case
+for the relational planner.
 
 \section{Proof-to-code map and verification status}
 \begin{description}[style=nextline]
@@ -615,8 +836,9 @@ all projections. No runtime improvement is inferred from these proofs.
 \item[Still unproved or unsupported.]
 Universal dominance over labelled planning heuristics or resource-aware bounds;
 monotone strengthening from arbitrary added predicates; polynomial total
-complexity; calibrated scheduling probabilities; net runtime gains on held-out
-benchmarks; guarantees for stochastic dynamics, replenishment, numeric goals,
+complexity; calibrated scheduling probabilities; independent net runtime gains
+from the relation on held-out public benchmarks; guarantees for stochastic
+dynamics, replenishment, numeric goals,
 or an inaccurate LLM-supplied action model. None is needed as an assumption
 hidden inside the theorems above.
 \end{description}
@@ -629,5 +851,10 @@ Belief Space. AAAI, 2004.
 Planning Graph Heuristics for Belief Space Search. Journal of Artificial
 Intelligence Research 26:35--99, 2006.
 \url{https://doi.org/10.1613/jair.1869}.
+\bibitem{lugdomains} Daniel Bryce and collaborators. Benchmark archive accompanying
+the LUG planning-graph experiments.
+\url{https://rakaposhi.eas.asu.edu/belief-search/BKS_jair_domains.tgz}.
+SHA-256: \texttt{3b6db211b4eaedab6dc86a5811039f8f4}\\
+\texttt{40f285283ae6e7ccefccc0ed4bee12d}.
 \end{thebibliography}
 \end{document}
