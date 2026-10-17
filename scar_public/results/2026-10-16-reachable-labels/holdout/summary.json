@@ -1,0 +1,81 @@
+{
+  "runs": 30,
+  "cases": 6,
+  "raw_sha256": "bc672b080d15caafbe3848fc3b4880bde120091299b36c9af4f9d953d0e135f5",
+  "verified_policies": 20,
+  "methods": {
+    "amortized_count": {
+      "statuses": {
+        "PLAN_FOUND": 4,
+        "UNKNOWN_TIMEOUT": 2
+      },
+      "completed": 4,
+      "capacity_seconds": 1.1080762660067194,
+      "scalar_prunes": 9,
+      "relation_prunes": 0
+    },
+    "amortized_relation": {
+      "statuses": {
+        "PLAN_FOUND": 4,
+        "UNKNOWN_TIMEOUT": 2
+      },
+      "completed": 4,
+      "capacity_seconds": 1.1945331479973902,
+      "scalar_prunes": 1,
+      "relation_prunes": 25
+    },
+    "resource_tree": {
+      "statuses": {
+        "PLAN_FOUND": 4,
+        "UNKNOWN_TIMEOUT": 2
+      },
+      "completed": 4,
+      "capacity_seconds": 6.184752360002676,
+      "scalar_prunes": 0,
+      "relation_prunes": 0
+    },
+    "carrier_count": {
+      "statuses": {
+        "PLAN_FOUND": 4,
+        "UNKNOWN_TIMEOUT": 2
+      },
+      "completed": 4,
+      "capacity_seconds": 7.548488031998659,
+      "scalar_prunes": 34,
+      "relation_prunes": 0
+    },
+    "carrier_relation": {
+      "statuses": {
+        "PLAN_FOUND": 4,
+        "UNKNOWN_TIMEOUT": 2
+      },
+      "completed": 4,
+      "capacity_seconds": 7.552602346001095,
+      "scalar_prunes": 34,
+      "relation_prunes": 0
+    }
+  },
+  "comparisons": {
+    "carrier_count__carrier_relation": {
+      "joint_completed": 4,
+      "geomean_speedup_second": 1.000451161663226,
+      "new_completed": [],
+      "lost_completed": []
+    },
+    "amortized_count__amortized_relation": {
+      "joint_completed": 4,
+      "geomean_speedup_second": 0.993711732936437,
+      "new_completed": [],
+      "lost_completed": []
+    },
+    "amortized_relation__carrier_relation": {
+      "joint_completed": 4,
+      "geomean_speedup_second": 0.34093866148072444,
+      "new_completed": [],
+      "lost_completed": []
+    }
+  },
+  "validation": "All completed methods agree on bounded optimum; all returned policies replayed.",
+  "timing": "One run, soft inference budgets, 30s hard subprocess limit; no significance claim.",
+  "api_calls": 0
+}
