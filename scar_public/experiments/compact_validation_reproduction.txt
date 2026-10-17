@@ -1,0 +1,49 @@
+Compact independent-instance screen: reproduction
+
+Frozen source manifest SHA256:
+ec2101d532802b69ba29cc8ad331f8014e1ad00e95e41b883866aded856a1c9b
+Public source/protocol commit:05666b22726b2c9ec3345cc944e15ba4f71e7f2c.
+The plan/hash existed before new draws; the public push occurred during execution.
+
+See compact_validation_protocol.txt for all arms, task-score outcome and the
+fixed timing-control rule. See compact_regression_audit.txt for the pre-freeze
+development audit. No game-specific policy patches were made after that audit.
+
+On the configured server with AgentOdyssey/Sentry/dependencies on PYTHONPATH,
+from a frozen directory containing source_manifest.json:
+  python -m scar_public.experiments.compact_validation --root NEW_ROOT --key PRIVATE_KEY_FILE
+This command refuses to overwrite a plan. It creates3 fresh shared initial
+snapshots and12 episodes, then replays recorded actions. New runs cost API;
+retain existing caches/snapshots to reproduce rather than launching unnecessarily.
+
+The originally frozen OFFLINE auditor had an initial-empty-score read error.
+All12 policy runs completed, but post-run replay initially failed before its
+first transition. Use the corrected audit_compact_validation.py in this commit,
+not the frozen original, for replay. Preserve the historical source manifest.
+Set the block's recorded PYTHONHASHSEED before the Python process starts:
+  python -m scar_public.experiments.audit_compact_validation --block ROOT/evaluation/GAME
+This uses no API. See compact_audit_amendment.txt and audit_recovery.json.
+The unchanged result-file hashes and both original/corrected audit sources/logs
+are retained. No actor source, result, seed or selection rule changed.
+
+After all completed blocks and audits are recorded:
+  python -m scar_public.experiments.analyze_compact_validation --root ROOT
+  python -m scar_public.experiments.audit_compact_mechanism --root ROOT
+  python -m scar_public.experiments.diagnose_compact_screen --root ROOT
+The latter two are post-freeze descriptive audits; they are not new endpoints
+or evidence of full-trajectory causal effects. Query count excludes formatting
+retries; every paid attempt is retained in the total usage audit.
+
+Public evidence archive SHA256:
+f3c2402d1ed182dce740375efef4b15b4f4f5a75c5d921c0c49439e548d0bf25
+It includes9226 verified files plus its manifest: public trajectories, request
+payloads/responses, frozen source, post-freeze audit source and correction logs.
+Hidden initial snapshots remain on the experiment server; public receipts carry
+their hashes and actual seeds. Exact private snapshot replay is stronger than
+assuming a seed alone recreates ordering/RNG behavior across versions.
+The large archive is separate from Git, with an exact key/password scan receipt.
+
+Report all3 paired rows. Do not call these unseen game families, independent
+arm draws, a successful significance test, or an official TTCL leaderboard run.
+Sentry is the pinned author-code adaptation documented by core_reproduction.txt.
+The original V16 CLI default and the manuscript were not changed.

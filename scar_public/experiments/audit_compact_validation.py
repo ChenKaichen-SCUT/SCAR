@@ -26,7 +26,9 @@ def audit(block):
             for path in sorted((root/arm/'trace').glob('*.json')):
                 r=json.loads(path.read_text());response=json.loads(r['response'])
                 with contextlib.redirect_stdout(sys.stderr):
-                    env=restore(state,private);scores=dict(env.scores[AGENT_ID])
+                    # The engine initializes its per-agent score entry on the
+                    # first transition, not necessarily in the reset snapshot.
+                    env=restore(state,private);scores=dict(env.scores.get(AGENT_ID,{}))
                     assert state_digest(env)==r['before_digest']
                     assert env.obs[AGENT_ID]['text']==r['observation']
                     obs,reward,done,_=env.step({AGENT_ID:r['action']});env.update_scores(reward)
@@ -42,10 +44,10 @@ def audit(block):
                             original=event['original'],executed=r['action'],trigger=event['trigger']['kind'],
                             original_failures=feedback_lines(ao[AGENT_ID]['text']),
                             executed_failures=feedback_lines(r['next_observation']),
-                            original_quest_delta=alt.scores[AGENT_ID]['quest']-scores['quest'],
-                            executed_quest_delta=r['scores']['quest']-scores['quest'],
-                            original_death_delta=alt.scores[AGENT_ID]['death']-scores['death'],
-                            executed_death_delta=r['scores']['death']-scores['death']))
+                            original_quest_delta=alt.scores[AGENT_ID]['quest']-scores.get('quest',0),
+                            executed_quest_delta=r['scores']['quest']-scores.get('quest',0),
+                            original_death_delta=alt.scores[AGENT_ID]['death']-scores.get('death',0),
+                            executed_death_delta=r['scores']['death']-scores.get('death',0)))
                     state=actual
                 key=(lineage,r['action']);value=(r['before_digest'],r['after_digest'],r['next_observation'])
                 if key in shared:

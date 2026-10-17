@@ -1,0 +1,19 @@
+Offline audit correction, after all12 episodes completed, 2026-10-17
+
+All actor runs completed at300 actions, with live exact-prefix pairing checks.
+The post-run audit process failed before replaying its first transition:
+the reset environment's scores dictionary has no agent_adam_davis entry until
+the first step. Reading env.scores[AGENT_ID] unconditionally raised KeyError.
+This affects offline audit completion, not actor inputs/actions, live pairing,
+rewards, API requests, sampling, comparison rules or the frozen mechanism.
+
+Preserve all original traces, API caches, pipeline logs and the frozen auditor.
+Run a corrected auditor outside the frozen source: read the absent initial
+score as an empty mapping and subtract zero for initially absent quest/death
+fields. Do not mutate the environment score dictionary. Replay all3600 recorded
+actions and redo every same-state diagnostic without any model invocation.
+Mark pipeline/audit completion only after all corrected audits succeed.
+The original incomplete audits are not validation evidence; no game is rerun.
+Verify all320 originally frozen source files remain unchanged and retain the
+corrected auditor SHA256 separately. The live recorded results are unaffected;
+the prior claim that first-two offline replays had completed was premature.
