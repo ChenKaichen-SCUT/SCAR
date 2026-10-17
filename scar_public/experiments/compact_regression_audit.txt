@@ -1,0 +1,45 @@
+Pre-freeze audit of the two historical compact regressions, 2026-10-17
+
+Source: continuation public_evidence.tgz, SHA256
+019129e664c6259d7144546ed3b731b839972eb4dff6353ad6c61bc0ed67eae0.
+Historical checked traces plus generic_control branches and environment_audit.
+This note uses ONE-BASED environment-action indices. Historical branch JSON
+uses zero-based step, so each branch index is incremented here.
+
+Mark r0, checked16 -> compact15:
+There is only one actual compact override, action58: enter library -> talk to
+elio, triggered by repeated movement without observed progress. Both actions
+succeed in same-state one-step replay; neither immediately scores. Dialogue
+only repeats the copper-sword task, so its information value was not established.
+It is NOT a hard prohibition of necessary transit. The other3 compact repair
+queries keep the original action. Both arms first reach quest score2 at action65.
+Subsequent compact progression lags: score10 at150 vs124, score11 at159 vs132,
+score12 at244 vs213, score15 at296 vs256. Checked reaches16 at261; compact stops
+at15 when the300-action budget expires. One altered action changes later prompts
+and stochastic choices; this single paired trajectory does not prove the local
+override caused every downstream delay. Failure of non-regression is observed;
+systematic overblocking or stale-evidence failure is not established here.
+
+Metropolis r1, checked10 -> compact9:
+14 repair queries,12 changed actions. Two changes have only a soft repetition
+trigger; both original and replacement succeed. Ten replace explicitly failed
+movement; ALL ten original commands still fail in exact same-state replay.
+Eight of those replacements avoid the immediate failure, while two try another
+locked route and fail too. No changed action has an immediate quest/death delta.
+Several replacements merely inspect objects. At actions222 and241 the same
+clerks_bench is inspected; avoiding a failed door does not demonstrate task value.
+In particular, the action241 midnight-related rejection does not suppress a
+successful route in same-state replay: the proposed evidence_room door is locked.
+This does not prove the six-step context/expiry rule handles all timed dynamics.
+Compact reaches score8 at75 (checked also75), then obtains score9 from the bailiff
+at267. Checked additionally gets the weapon subgoal at178 and bailiff at282.
+The concrete missing stage is weapon acquisition; continuation substitutions do
+not solve the upstream crafting/resource bottleneck. Candidate-menu membership
+certifies access syntax only, not task progress or a valid replacement method.
+
+Decision: freeze the existing compact policy. No game-, NPC-, item- or stage-
+specific fix; no new heuristic inferred from these two outcomes. The audit
+supports testing whether evidence-timed reconsideration generalizes, not a claim
+that false triggers or regressive trajectories have been eliminated. Off-policy
+one-step replay cannot identify the full long-horizon causal effect. Independent
+new-instance evaluation and a compute-matched timing control follow this note.

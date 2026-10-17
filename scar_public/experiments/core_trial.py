@@ -40,7 +40,12 @@ def build_system(env, model):
     return cfg.system_prompt
 
 
-def build_trial_agent(arm, provider, system):
+def build_trial_agent(arm, provider, system, repair_quota=None, max_steps=300):
+    if arm=='continuation_scheduled':
+        from scar_public.experiments.scheduled_continuation import ScheduledContinuationAgent
+        if repair_quota is None:
+            raise ValueError('Scheduled control requires a declared repair quota')
+        return ScheduledContinuationAgent(provider,system,repair_quota,max_steps)
     if arm in ('continuation', 'continuation_advice', 'continuation_generic'):
         from scar_public.continuation import ContinuationAgent
         if arm=='continuation_generic':
@@ -68,6 +73,9 @@ def main():
     p.add_argument('--model',default='deepseek-flash')
     p.add_argument('--initial',type=Path)
     p.add_argument('--arms',nargs='+',default=['prompt','checked','sentry','v16'])
+    p.add_argument('--repair-quota',type=int)
+    p.add_argument('--initial-kind',choices=['existing-development-snapshot','paired-independent-snapshot'],
+                   default='existing-development-snapshot')
     a=p.parse_args(); a.root.mkdir(parents=True,exist_ok=True)
     import fcntl
     lock=(a.root/'worker.lock').open('w'); fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -76,8 +84,9 @@ def main():
         sentry_revision=SENTRY_REVISION,model=a.model,hash_seed=os.environ.get('PYTHONHASHSEED'),
         world_seed_requested=None,actor_temperature=.7,actor_top_p=.8,
         actor_max_tokens=1536,sentry_temperature=0,sentry_max_tokens=4096,
-        initial_source='existing-development-snapshot' if a.initial else 'fresh-post-freeze-draw',
+        initial_source=a.initial_kind if a.initial else 'fresh-post-freeze-draw',
         qualification='Independent stochastic draws of three familiar game families; not unseen-domain validation')
+    if a.repair_quota is not None:manifest['scheduled_repair_quota']=a.repair_quota
     if (a.root/'manifest.json').exists():
         assert json.loads((a.root/'manifest.json').read_text())==manifest
     atomic_json(a.root/'manifest.json',manifest)
@@ -94,13 +103,13 @@ def main():
         sha256=hashlib.sha256(initial.read_bytes()).hexdigest(),state_digest=state_digest(env)))
     provider=TrialProvider(a.root/'api',a.key,a.model)
     system=build_system(env,a.model)
-    agents={arm:build_trial_agent(arm,provider,system) for arm in a.arms}
+    agents={arm:build_trial_agent(arm,provider,system,a.repair_quota,a.steps) for arm in a.arms}
     for agent in agents.values(): agent.max_steps=a.steps
     external={arm:SentryAdapter(agents[arm],provider,system,a.root/f'{arm}_events.jsonl')
               for arm in a.arms if arm=='sentry'}
     states={arm:initial.read_bytes() for arm in a.arms}
     lineage={arm:hashlib.sha256(initial.read_bytes()).hexdigest() for arm in a.arms}
-    matched_prefix=True
+    matched_prefix=True; continuation_matched_prefix=True
     stopped=set(); transition_cache={}; coupling=[]; results={}; total_tokens={arm:[0,0] for arm in a.arms}
     order=a.arms[a.repeat%len(a.arms):]+a.arms[:a.repeat%len(a.arms)]
     for step in range(a.steps):
@@ -173,6 +182,16 @@ def main():
             else:
                 assert y['core_gate']['changed'], 'Action divergence outside the gate'
                 matched_prefix=False
+        if continuation_matched_prefix and 'continuation_generic' in round_rows and 'checked' in round_rows:
+            left,x=round_rows['checked'];right,y=round_rows['continuation_generic']
+            assert left['before_digest']==right['before_digest']
+            assert x['core_initial_proposal']==y['core_initial_proposal']
+            assert x['core_packet']==y['core_packet']
+            if left['action']==right['action']:
+                assert agents['checked'].notebook.state()==agents['continuation_generic'].notebook.state()
+            else:
+                assert y['continuation']['changed'], 'Unexplained compact divergence'
+                continuation_matched_prefix=False
         if (step+1)%10==0 or len(stopped)==len(a.arms):
             atomic_json(a.root/'usage.json',usage_summary(provider.directory))
             atomic_json(a.root/'coupling.json',coupling)

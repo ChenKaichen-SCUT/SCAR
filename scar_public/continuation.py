@@ -237,10 +237,14 @@ class ContinuationAgent(CorePlannerAgent):
         self.continuation.observe(obs['text'], self.llm.step)
         return super().act(obs)
 
+    def repair_trigger(self, action, task):
+        """Default evidence trigger; scheduling controls override only this hook."""
+        return self.continuation.assess(action, task)
+
     def finalize_decision(self, executed, obs, step, prompt, query):
         evidence = self.continuation
         task = task_key(self.notebook)
-        trigger = evidence.assess(executed['action'], task)
+        trigger = self.repair_trigger(executed['action'], task)
         event = dict(step=step, original=executed['action'], trigger=trigger, changed=False)
         if trigger and self.repair_mode != 'off' and not evidence.offered(trigger):
             # A quote rejected by the persistent task parser may still be an
