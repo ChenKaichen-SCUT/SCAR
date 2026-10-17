@@ -48,10 +48,13 @@ def gate(packet, proposed, mode, current_guard):
             resource_action = proposed['action'].startswith(
                 ('craft ', 'pick up ', 'take out ', 'store ', 'drop ', 'equip ', 'enter ', 'inspect ', 'wait'))
             if resource_action:
-                chosen = {**proposed, 'action': candidate['plan'][0],
-                          'resource_target': candidate['endpoint'],
-                          'frame': {**proposed.get('frame', {}), 'goal_quote': candidate['task'],
-                                    'method': 'Acquire ' + candidate['endpoint'] + ' for the quoted task'}}
+                if candidate['plan'][0] != proposed['action']:
+                    chosen = {**proposed, 'action': candidate['plan'][0],
+                              'resource_target': candidate['endpoint'],
+                              'frame': {**proposed.get('frame', {}), 'goal_quote': candidate['task'],
+                                        'method': 'Acquire ' + candidate['endpoint'] + ' for the quoted task'}}
+                # Agreement is not an intervention: rewriting a frame or target
+                # here would change future prompts despite an unchanged action.
                 reason = 'CHECKED_SUPPORTED_FRAGMENT'
             else:
                 reason = 'OUTSIDE_RESOURCE_INTERVENTION_SCOPE'

@@ -88,9 +88,12 @@ def main():
     external={arm:SentryAdapter(agents[arm],provider,system,a.root/f'{arm}_events.jsonl')
               for arm in a.arms if arm=='sentry'}
     states={arm:initial.read_bytes() for arm in a.arms}
+    lineage={arm:hashlib.sha256(initial.read_bytes()).hexdigest() for arm in a.arms}
+    matched_prefix=True
     stopped=set(); transition_cache={}; coupling=[]; results={}; total_tokens={arm:[0,0] for arm in a.arms}
     order=a.arms[a.repeat%len(a.arms):]+a.arms[:a.repeat%len(a.arms)]
     for step in range(a.steps):
+        round_rows={}
         for arm in order:
             if arm in stopped: continue
             out=a.root/arm; out.mkdir(exist_ok=True)
@@ -110,12 +113,15 @@ def main():
             after=state_digest(env); text=obs[AGENT_ID]['text']
             passed = 'completed the main quest and passed the game' in text
             states[arm]=snapshot(env)
-            key=(before,action)
+            # Complete shared action-prefix identity, not a possibly incomplete
+            # state abstraction, defines a counterfactual coupling check.
+            key=(lineage[arm],action)
             if key in transition_cache:
                 expected=transition_cache[key]
-                assert (after,text)==expected, f'PAIRING FAILURE at {a.game}/{step}/{arm}'
+                assert (before,after,text)==expected, f'PAIRING FAILURE at {a.game}/{step}/{arm}'
                 coupling.append(dict(step=step,arm=arm,matched=True))
-            else: transition_cache[key]=(after,text)
+            else: transition_cache[key]=(before,after,text)
+            lineage[arm]=hashlib.sha256((lineage[arm]+'\0'+action).encode()).hexdigest()
             terminal=bool(done or step+1>=a.steps)
             parsed=json.loads(response)
             intervention=external[arm].observe(step,parsed,text,terminal) if arm in external else False
@@ -127,6 +133,7 @@ def main():
                 before_digest=before,after_digest=after,actor_seconds=actor_seconds,
                 input_tokens=inp,output_tokens=outp,sentry_intervention=intervention)
             path=out/'trace'/f'{step+1:04d}.json'
+            round_rows[arm]=(row,parsed)
             if path.exists():
                 old=json.loads(path.read_text())
                 assert all(old[k]==row[k] for k in ('action','before_digest','after_digest','observation')), 'Nonexact resume'
@@ -140,6 +147,17 @@ def main():
                 (cp/'environment.pkl').write_bytes(states[arm])
                 atomic_json(cp/'agent.json',agents[arm].notebook.state())
                 atomic_json(cp/'core_events.json',getattr(agents[arm],'events',[]))
+        if matched_prefix and 'prompt' in round_rows and 'checked' in round_rows:
+            left,x=round_rows['prompt'];right,y=round_rows['checked']
+            assert left['before_digest']==right['before_digest'] and left['observation']==right['observation']
+            assert x['core_packet']==y['core_packet'], 'Same-history packet divergence'
+            assert x['core_initial_proposal']==y['core_initial_proposal'], 'Same-history proposal divergence'
+            assert x['core_gate']['proposed']==y['core_gate']['proposed'], 'Same-history revision divergence'
+            if left['action']==right['action']:
+                assert agents['prompt'].notebook.state()==agents['checked'].notebook.state(), 'Non-action intervention changed memory'
+            else:
+                assert y['core_gate']['changed'], 'Action divergence outside the gate'
+                matched_prefix=False
         if (step+1)%10==0 or len(stopped)==len(a.arms):
             atomic_json(a.root/'usage.json',usage_summary(provider.directory))
             atomic_json(a.root/'coupling.json',coupling)

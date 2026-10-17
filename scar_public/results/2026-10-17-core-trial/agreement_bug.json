@@ -1,0 +1,101 @@
+[
+  {
+    "step": 60,
+    "action_left": "craft 1 copper_sword",
+    "action_right": "craft 1 copper_sword",
+    "frame_left": {
+      "goal_quote": "Craft a copper sword and hold it in your hands.",
+      "method": "Craft copper_sword at workbench in hall with held copper_bar + oak_rod, then pick it up to hold it.",
+      "required_state": "Holding copper_bar + oak_rod at workbench in hall",
+      "feasibility": "jointly possible \u2014 both ingredients held, workbench present in hall",
+      "assessment": "Ingredients gained and relocated to workbench; setup not undone.",
+      "expected": "Copper_sword crafted onto ground; then pick up to hold it."
+    },
+    "frame_right": {
+      "goal_quote": "Craft a copper sword and hold it in your hands.",
+      "method": "Acquire copper_sword for the quoted task",
+      "required_state": "Holding copper_bar + oak_rod at workbench in hall",
+      "feasibility": "jointly possible \u2014 both ingredients held, workbench present in hall",
+      "assessment": "Ingredients gained and relocated to workbench; setup not undone.",
+      "expected": "Copper_sword crafted onto ground; then pick up to hold it."
+    },
+    "target_left": null,
+    "target_right": "copper_sword",
+    "gate": {
+      "reason": "CHECKED_SUPPORTED_FRAGMENT",
+      "changed": false,
+      "proposed": "craft 1 copper_sword",
+      "packet_id": "92b82b0aafbdb53e11871fb5c8662dfe67e1f8d0310ca6bbf6e30db53e3b02a1"
+    },
+    "same_initial_proposal": true
+  },
+  {
+    "step": 61,
+    "action_left": "pick up copper_sword",
+    "action_right": "pick up copper_sword",
+    "frame_left": {
+      "goal_quote": "Craft a copper sword and hold it in your hands.",
+      "method": "Pick up the crafted copper_sword from the ground to hold it.",
+      "required_state": "Empty hands at hall with copper_sword on ground",
+      "feasibility": "jointly possible \u2014 hands empty, copper_sword present",
+      "assessment": "Craft succeeded, copper_sword on ground; need to pick up to hold",
+      "expected": "Copper_sword moved to hand; holding copper_sword"
+    },
+    "frame_right": {
+      "goal_quote": "Craft a copper sword and hold it in your hands.",
+      "method": "Pick up the crafted copper_sword to hold it.",
+      "required_state": "Empty hands + copper_sword on ground in hall",
+      "feasibility": "jointly possible \u2014 hands empty, sword on ground",
+      "assessment": "Craft succeeded; sword on ground, not yet held.",
+      "expected": "I am holding 1 copper_sword."
+    },
+    "target_left": null,
+    "target_right": null,
+    "gate": {
+      "reason": "NO_ADMITTED_CONTINUATION",
+      "changed": false,
+      "proposed": "pick up copper_sword",
+      "packet_id": "27157ab8332e6e4b4620535c3c2e24c9f168e6c011a8934dfb452b8cd3c7d0a5"
+    },
+    "same_initial_proposal": false
+  },
+  {
+    "step": 62,
+    "action_left": "talk to lena",
+    "action_right": "talk to lena",
+    "frame_left": {
+      "goal_quote": "Craft a copper sword and hold it in your hands.",
+      "method": "Talk to lena to advance the quest now that copper_sword is held.",
+      "required_state": "Holding copper_sword, lena present in hall",
+      "feasibility": "jointly possible \u2014 copper_sword held, lena nearby",
+      "assessment": "Prediction confirmed: copper_sword picked up and held; stage completed message directs talking to lena.",
+      "expected": "Lena gives next task instruction."
+    },
+    "frame_right": {
+      "goal_quote": "Craft a copper sword and hold it in your hands.",
+      "method": "Sword crafted and held; now follow the prompt to talk to lena for next steps.",
+      "required_state": "Holding copper_sword, lena present",
+      "feasibility": "jointly possible \u2014 sword held, lena nearby",
+      "assessment": "Pick up succeeded: holding 1 copper_sword and stage completion message appeared.",
+      "expected": "lena gives next task/instruction."
+    },
+    "target_left": null,
+    "target_right": null,
+    "gate": {
+      "reason": "NO_ADMITTED_CONTINUATION",
+      "changed": false,
+      "proposed": "talk to lena",
+      "packet_id": "064f86339c0c207cb9d3921a1ad62c18c07d9d846a203ca74319a81340ef0cd2"
+    },
+    "same_initial_proposal": false
+  },
+  {
+    "first_prompt_difference_step": 61,
+    "left": [
+      "a212112a74194e2d1266bdc674888e7661b20e838a811e25522929f61befb369"
+    ],
+    "right": [
+      "3ac3430b384ec4c79f4106857d2845728ed869b2a22e62e04afd313aa2be98b4"
+    ]
+  }
+]

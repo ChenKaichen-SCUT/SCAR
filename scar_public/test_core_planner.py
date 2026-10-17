@@ -33,6 +33,15 @@ def test_unknown_is_not_a_global_ban_and_healing_is_not_overridden():
     assert gate(p, proposal, 'checked', 'g')['action'] == proposal['action']
 
 
+def test_agreement_preserves_every_actor_field_not_only_command():
+    p=packet();proposal=dict(action='pick up wood',reasoning='Collect material',
+                           frame=dict(goal_quote='Obtain a weapon.',method='My original method'))
+    a=gate(p,proposal,'prompt','g');b=gate(p,proposal,'checked','g')
+    assert not b['core_gate']['changed']
+    assert {k:v for k,v in a.items() if k!='core_gate'}=={k:v for k,v in b.items() if k!='core_gate'}
+    assert 'resource_target' not in b
+
+
 def fixture():
     old, _, task, text = scenario()
     agent = CorePlannerAgent(None, 'Return JSON.')
