@@ -40,6 +40,24 @@ def build_system(env, model):
     return cfg.system_prompt
 
 
+def build_trial_agent(arm, provider, system):
+    if arm in ('continuation', 'continuation_advice', 'continuation_generic'):
+        from scar_public.continuation import ContinuationAgent
+        if arm=='continuation_generic':
+            from scar_public.continuation_control import GenericContinuationAgent
+            return GenericContinuationAgent(provider,system,'repair')
+        return ContinuationAgent(provider,system,'advice' if arm=='continuation_advice' else 'repair')
+    if arm in ('prompt','checked','sentry'):
+        return CorePlannerAgent(provider,system,'checked' if arm=='checked' else 'prompt')
+    if arm=='v16':
+        from scar_public.task_progress import TaskProgressAgent
+        agent=TaskProgressAgent(provider,system)
+        agent.resource_controller.mode='structured';agent.resource_controller.context_scope='attributes'
+        agent.resource_controller.action_mode='execute';agent.notebook.progress_mode='observe'
+        return agent
+    raise ValueError('Unknown study arm: '+arm)
+
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('--root',type=Path,required=True)
@@ -76,14 +94,7 @@ def main():
         sha256=hashlib.sha256(initial.read_bytes()).hexdigest(),state_digest=state_digest(env)))
     provider=TrialProvider(a.root/'api',a.key,a.model)
     system=build_system(env,a.model)
-    agents={arm:CorePlannerAgent(provider,system,'checked' if arm=='checked' else 'prompt') for arm in a.arms if arm!='v16'}
-    if 'v16' in a.arms:
-        from scar_public.task_progress import TaskProgressAgent
-        agents['v16']=TaskProgressAgent(provider,system)
-        agents['v16'].resource_controller.mode='structured'
-        agents['v16'].resource_controller.context_scope='attributes'
-        agents['v16'].resource_controller.action_mode='execute'
-        agents['v16'].notebook.progress_mode='observe'
+    agents={arm:build_trial_agent(arm,provider,system) for arm in a.arms}
     for agent in agents.values(): agent.max_steps=a.steps
     external={arm:SentryAdapter(agents[arm],provider,system,a.root/f'{arm}_events.jsonl')
               for arm in a.arms if arm=='sentry'}
@@ -141,12 +152,16 @@ def main():
             status=dict(steps=step+1,complete=terminal,scores=env.scores[AGENT_ID],done=bool(done),
                         main_quest_passed=passed or results.get(arm,{}).get('main_quest_passed',False),
                         actor_tokens=total_tokens[arm],gate_overrides=sum(e['changed'] for e in getattr(agents[arm],'events',[])))
+            if hasattr(agents[arm],'continuation_events'):
+                status['continuation_overrides']=sum(e['changed'] for e in agents[arm].continuation_events)
             results[arm]=status;atomic_json(out/'current.json',status)
             if terminal or (step+1)%25==0:
                 cp=out/'checkpoints'/f'{step+1:04d}';cp.mkdir(parents=True,exist_ok=True)
                 (cp/'environment.pkl').write_bytes(states[arm])
                 atomic_json(cp/'agent.json',agents[arm].notebook.state())
                 atomic_json(cp/'core_events.json',getattr(agents[arm],'events',[]))
+                if hasattr(agents[arm],'continuation'):
+                    atomic_json(cp/'continuation.json',agents[arm].continuation.state())
         if matched_prefix and 'prompt' in round_rows and 'checked' in round_rows:
             left,x=round_rows['prompt'];right,y=round_rows['checked']
             assert left['before_digest']==right['before_digest'] and left['observation']==right['observation']

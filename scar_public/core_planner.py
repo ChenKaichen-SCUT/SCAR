@@ -84,6 +84,10 @@ class CorePlannerAgent(ObligationAgent):
                            evidence_revision=m.resource_evidence['revision'],
                            containers=m.model.containers, recipes=m.model.recipes))
 
+    def finalize_decision(self, executed, obs, step, prompt, query):
+        """Identity extension point; the frozen core's prompts/actions stay intact."""
+        return executed
+
     def decision_packet(self, proposal, text, step):
         started = perf_counter()
         m = self.notebook
@@ -166,6 +170,7 @@ class CorePlannerAgent(ObligationAgent):
         executed['core_packet'] = packet
         executed['core_compute_ms'] = compute_ms
         executed['core_initial_proposal'] = proposed
+        executed = self.finalize_decision(executed, obs, step, prompt, query)
         # Evidence learning is identical in both arms, and observes ACTUAL craft.
         RepairController.after_decision(c, executed, text, step)
         m.update(executed, text, step)

@@ -1,0 +1,35 @@
+Continuation repair development protocol, 2026-10-17
+
+Primary objective going forward: task score under a 300-action episode budget.
+This development experiment does not rewrite the historical frozen protocol.
+
+Scope: replay the 9 historical checked trajectories with prefix-only evidence;
+choose the first trigger in each episode, irrespective of subsequent outcome.
+There are 6 eligible episodes (Mark and Metropolis); Remnant has no trigger.
+For each eligible episode, fork the exact pre-action state for 40 actions, never
+past episode step 300. Compare original actor (off), the same repair evidence and
+LLM proposal with actor authority (advice), and checked candidate choice (repair).
+Prior actor/API decoding, task memory and resource planner are shared unchanged.
+Source is frozen before branch calls. Reuse exact historical baseline responses;
+an uncached baseline request is an error, not permission to rerun the baseline.
+Use recorded hash seed and complete environment/RNG snapshots for pairing.
+
+The actor sees public text and its own executed feedback only. Scores, hidden
+snapshots and future historical actions are evaluator-only. Report every branch,
+including negative and unchanged outcomes. No choosing best branch or retry.
+Diagnostics: action differences, valid interface/access checks, further explicit
+failures, task-score change, deaths, and paid usage. No immediate-action success
+is interpreted as full-policy success. These states already participated in
+development; neither branch gains nor same-family seeds establish generalization.
+
+Preservation: no trigger => identical actor prompts/action/frame/state; changing
+resource or information context, expiry, unseen state or urgent threats releases
+deferral. Repetition during productive operations is not by itself a trigger.
+Admitted repair actions are observed movement/dialogue/inspection interfaces;
+no deliberate inventory consumption is automatically substituted. These actions
+still spend time and can encounter danger. Quotes prove provenance, not meaning.
+
+Known limitations: thresholds 6/24 and candidate relevance are heuristics;
+unobserved changes may invalidate an apparent repetition. This mechanism has no
+guarantee of preserving every correct action, improving score, or solving combat.
+Current first-step checks do not certify an entire continuation plan.

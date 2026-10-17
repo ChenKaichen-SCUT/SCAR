@@ -1,0 +1,64 @@
+SCAR continuation repair: implementation, assumptions and limitations
+2026-10-17; development module, not a manuscript claim.
+
+Objective
+Improve task score within 300 environment actions, while retaining useful actor
+behavior. Actual feedback updates decisions; proposed search/LLM alternatives
+never become observations. There is no new task-success or optimality theorem.
+
+Single mechanism
+Observe the previous executed transition -> maintain scoped evidence -> assess
+the current actor proposal -> request bounded alternatives only on a trigger ->
+choose a currently accessible continuation -> observe its real outcome.
+
+Evidence types have different authority.
+(1) A previously rejected action, in the same observed context and within six
+actions, supports short deferral. Changed inventory/equipment, newly observed
+information, task context or expiry releases it. This is conditional empirical
+evidence, not a complete-state model or permanent impossibility proof.
+(2) Repeated movement/dialogue/inspection without intervening observed progress
+is a soft reconsideration signal. A repeated edge may be necessary transit.
+Only one repair query per action/context per 24 actions is offered; an actor can
+retain the original action. Productive repetition is not rejected just because
+the command repeats. Current combat and defensive/recovery actions are exempt.
+
+Decision checks
+The actor supplies an ordered set of at most four next actions. Automatic repair
+admits current public movement, dialogue and inspection interfaces. It checks
+freshness and short deferrals from actual failures. It does not execute automatic
+craft/drop/write substitutions or a speculative multi-action plan. Every step
+returns to real observation. Search failure and absent evidence mean unknown.
+
+The task QUOTE is inherited rather than regenerated for each alternative. This
+preserves the label, not the semantic sufficiency of the action. Candidate
+relevance, usefulness of an inspection, and movement's risk remain heuristics.
+Visible options establish interface/access support only; a quotation, or access
+to an object, does not prove that it meets the original task. Environmental time,
+danger and incidental consumption remain possible even for these interfaces.
+
+What is directly guaranteed by control flow
+With no trigger, the original actor's prompt calls, action, frame and notebook
+updates are unchanged; only separate audit metadata is added. If no alternative
+is admitted or the selected action agrees, every original actor field is kept.
+Copied candidate evaluation does not create observations. Exact epoch/context
+checks prevent executing a recommendation made before a tracked state change.
+These are implementation invariants, not a guarantee that every useful action is
+preserved when a trigger actually occurs.
+
+What is NOT established
+The observed context is not known to be sufficient for all game rules. The six-
+action expiry is a heuristic. Novel text is an imperfect information detector.
+No probability of success, value-of-information optimum, global nonregression,
+full task preservation or generalization theorem is asserted. Combat, consumptive
+method repair, implicit task transitions and stale natural-language goal anchors
+remain incomplete. The earlier conditional material/model properties retain
+their limited scope; they do not explain this heuristic's reward improvement.
+
+Validation
+Use same-state branches to detect action effects and harms, then complete every
+selected run to step 300 to avoid interpreting short-prefix gains as whole-game
+improvements. Report the failed first revision and the corrected revision.
+Compare off/advice/repair; if advice and repair remain equivalent, attribute any
+gain to triggered reconsideration, not to final explicit authority. Historical
+worlds used in these iterations are development data. A separately frozen unseen
+task-family evaluation is still required before claiming generalization.

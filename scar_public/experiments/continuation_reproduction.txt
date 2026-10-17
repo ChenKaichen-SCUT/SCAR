@@ -1,0 +1,35 @@
+Continuation repair reproduction
+
+For public-only unit/regression checks:
+  python -m pytest scar_public/test_continuation.py \
+    scar_public/test_continuation_control.py scar_public/test_core_planner.py
+
+Historical same-state development branches:
+  python -m scar_public.experiments.continuation_branch \
+    --block OLD_CORE_BLOCK --root NEW_BRANCH_DIRECTORY --start INDEX \
+    --horizon 300 --key PRIVATE_KEY_FILE
+Set PYTHONHASHSEED to the old block's manifest value before Python starts.
+Use --generic-evidence --arms repair for the structured-packet ablation.
+Prefix and off-arm requests must hit the historical exact-response cache;
+missing entries raise rather than silently consuming paid baseline requests.
+
+New independent worlds, when a separate evaluation is planned:
+  python -m scar_public.experiments.core_trial --root NEW_BLOCK --game GAME \
+    --repeat INDEX --steps 300 --key PRIVATE_KEY_FILE \
+    --arms checked continuation continuation_advice continuation_generic
+The default historical arm set is unchanged. 'checked' is the existing core,
+'continuation' uses structured evidence and checks, 'continuation_advice' uses
+the same structured evidence with actor authority, and 'continuation_generic'
+retains the trigger/checks but replaces the exposed packet with reconsideration.
+The current turn did not run new independent worlds with this command.
+
+Dependencies and pairing requirements match core_reproduction.txt. Build a
+source_manifest.json before launch; frozen source archives accompany the results.
+The trial runner resumes through cached full-history reconstruction and records
+continuation state in new checkpoints. The old scar_public.run CLI has not been
+silently switched from V16 to this experimental method.
+
+Run analyze_continuation, replay_continuation and analyze_continuation_control
+for complete-case analysis and evaluator-only replay. No evaluator reward or
+hidden snapshot is passed to the actor. Large evidence archives remain separate
+from source Git commits; public receipts record their SHA256 hashes.
