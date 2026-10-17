@@ -1,0 +1,870 @@
+{
+  "aggregate_by_arm": {
+    "prompt": {
+      "gate_reasons": {
+        "PROMPT_AUTHORITY": 2700
+      },
+      "reserve_statuses_of_recommendations": {
+        "NO_OTHER_EXPLICIT_OUTPUTS": 8
+      },
+      "candidate_rejections": {
+        "TASK_ROLE_UNRESOLVED": 28
+      },
+      "observed_action_checks": {
+        "unknown": 2613,
+        "contradicted": 87
+      },
+      "evidence_rejection_packets": 0,
+      "evidence_matched_transitions": 17,
+      "evidence_shrinking_transitions": 7,
+      "evidence_revocations": 5,
+      "evidence_contexts": 157,
+      "candidate_packets": 36,
+      "recommendations": 8,
+      "sentry_interventions": 0,
+      "planner_ms_per_step": 6.366309986244435
+    },
+    "checked": {
+      "gate_reasons": {
+        "NO_ADMITTED_CONTINUATION": 2131,
+        "UNMODELED_COMBAT_YIELD": 561,
+        "CHECKED_SUPPORTED_FRAGMENT": 8
+      },
+      "reserve_statuses_of_recommendations": {
+        "NO_OTHER_EXPLICIT_OUTPUTS": 8
+      },
+      "candidate_rejections": {
+        "TASK_ROLE_UNRESOLVED": 28
+      },
+      "observed_action_checks": {
+        "unknown": 2613,
+        "contradicted": 87
+      },
+      "evidence_rejection_packets": 0,
+      "evidence_matched_transitions": 17,
+      "evidence_shrinking_transitions": 7,
+      "evidence_revocations": 5,
+      "evidence_contexts": 157,
+      "candidate_packets": 36,
+      "recommendations": 8,
+      "sentry_interventions": 0,
+      "planner_ms_per_step": 6.060583707068064
+    },
+    "sentry": {
+      "gate_reasons": {
+        "PROMPT_AUTHORITY": 2599
+      },
+      "reserve_statuses_of_recommendations": {
+        "NO_OTHER_EXPLICIT_OUTPUTS": 5
+      },
+      "candidate_rejections": {
+        "TASK_ROLE_UNRESOLVED": 16,
+        "CANDIDATE_EXCEEDS_REMAINING_BUDGET": 2,
+        "STALE_CONTENTS": 7
+      },
+      "observed_action_checks": {
+        "unknown": 2555,
+        "contradicted": 44
+      },
+      "evidence_rejection_packets": 2,
+      "evidence_matched_transitions": 16,
+      "evidence_shrinking_transitions": 6,
+      "evidence_revocations": 6,
+      "evidence_contexts": 103,
+      "candidate_packets": 21,
+      "recommendations": 5,
+      "sentry_interventions": 218,
+      "planner_ms_per_step": 5.959317396668053
+    }
+  },
+  "checked_coverage": {
+    "steps": 2700,
+    "focus_present": 664,
+    "production_intent": 105,
+    "production_and_task_focus": 92,
+    "production_and_task_focus_without_combat": 83,
+    "candidate_packet": 36
+  },
+  "recommendations": [
+    {
+      "block": "mark_r0",
+      "step": 95,
+      "initial": "craft 1 oak_rod",
+      "final_llm": "craft 1 oak_rod",
+      "executed": "craft 1 oak_rod",
+      "recommendation": {
+        "endpoint": "torch",
+        "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+          "output": "torch",
+          "quote": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "torch",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "role_supported": true,
+        "reserve": {
+          "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+          "goals": []
+        },
+        "plan": [
+          "craft 1 oak_rod",
+          "craft 1 oak_rod",
+          "pick up oak_rod",
+          "craft 1 torch",
+          "pick up torch"
+        ],
+        "repair": null,
+        "cost": 6,
+        "key": "a477c62d909aca467897e730c6493873f37d79ee792d2716e5025b6844205d6c",
+        "qualification": "Conditional endpoint plan, not task-completion probability or certificate",
+        "gate_obligations": {
+          "role": {
+            "status": "TASK_NAMED_OUTPUT",
+            "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+            "output": "torch",
+            "quote": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+            "literals": [
+              {
+                "kind": "crafted",
+                "item": "torch",
+                "value": false
+              }
+            ],
+            "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+          },
+          "reserves": {
+            "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+            "goals": []
+          },
+          "first_action": {
+            "status": "unknown",
+            "reason": "no contradiction established; success is not guaranteed"
+          },
+          "remaining_budget": 206,
+          "plan_cost": 6,
+          "scope": "Supported task/material fragment under faithful modeling; no whole-game certificate"
+        }
+      }
+    },
+    {
+      "block": "mark_r0",
+      "step": 97,
+      "initial": "craft 1 torch",
+      "final_llm": "craft 1 torch",
+      "executed": "craft 1 torch",
+      "recommendation": {
+        "endpoint": "torch",
+        "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+          "output": "torch",
+          "quote": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "torch",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "role_supported": true,
+        "reserve": {
+          "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+          "goals": []
+        },
+        "plan": [
+          "craft 1 torch",
+          "pick up torch"
+        ],
+        "repair": null,
+        "cost": 3,
+        "key": "e2f6ce28ed999c6788afc57e2a74d621dcf49294bf21ff0ff4fff9bbeb78a205",
+        "qualification": "Conditional endpoint plan, not task-completion probability or certificate",
+        "gate_obligations": {
+          "role": {
+            "status": "TASK_NAMED_OUTPUT",
+            "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+            "output": "torch",
+            "quote": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+            "literals": [
+              {
+                "kind": "crafted",
+                "item": "torch",
+                "value": false
+              }
+            ],
+            "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+          },
+          "reserves": {
+            "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+            "goals": []
+          },
+          "first_action": {
+            "status": "unknown",
+            "reason": "no contradiction established; success is not guaranteed"
+          },
+          "remaining_budget": 204,
+          "plan_cost": 3,
+          "scope": "Supported task/material fragment under faithful modeling; no whole-game certificate"
+        }
+      }
+    },
+    {
+      "block": "mark_r1",
+      "step": 67,
+      "initial": "craft 1 copper_sword",
+      "final_llm": "craft 1 copper_sword",
+      "executed": "craft 1 copper_sword",
+      "recommendation": {
+        "endpoint": "copper_sword",
+        "task": "Craft a copper sword and hold it in your hands.",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft a copper sword and hold it in your hands.",
+          "output": "copper_sword",
+          "quote": "Craft a copper sword and hold it in your hands.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "copper_sword",
+              "value": false
+            },
+            {
+              "kind": "held",
+              "item": "copper_sword",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "role_supported": true,
+        "reserve": {
+          "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+          "goals": []
+        },
+        "plan": [
+          "craft 1 copper_sword",
+          "pick up copper_sword"
+        ],
+        "repair": null,
+        "cost": 3,
+        "key": "6b247cfcd53675ca11d8a6c2d55d1563ed2b822025c6d97280efb0e631d1eda9",
+        "qualification": "Conditional endpoint plan, not task-completion probability or certificate",
+        "gate_obligations": {
+          "role": {
+            "status": "TASK_NAMED_OUTPUT",
+            "task": "Craft a copper sword and hold it in your hands.",
+            "output": "copper_sword",
+            "quote": "Craft a copper sword and hold it in your hands.",
+            "literals": [
+              {
+                "kind": "crafted",
+                "item": "copper_sword",
+                "value": false
+              },
+              {
+                "kind": "held",
+                "item": "copper_sword",
+                "value": false
+              }
+            ],
+            "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+          },
+          "reserves": {
+            "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+            "goals": []
+          },
+          "first_action": {
+            "status": "unknown",
+            "reason": "no contradiction established; success is not guaranteed"
+          },
+          "remaining_budget": 234,
+          "plan_cost": 3,
+          "scope": "Supported task/material fragment under faithful modeling; no whole-game certificate"
+        }
+      }
+    },
+    {
+      "block": "mark_r2",
+      "step": 44,
+      "initial": "craft 1 oak_rod",
+      "final_llm": "craft 1 oak_rod",
+      "executed": "craft 1 oak_rod",
+      "recommendation": {
+        "endpoint": "oak_rod",
+        "task": "Craft an oak rod.",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft an oak rod.",
+          "output": "oak_rod",
+          "quote": "Craft an oak rod.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "oak_rod",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "role_supported": true,
+        "reserve": {
+          "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+          "goals": []
+        },
+        "plan": [
+          "craft 1 oak_rod",
+          "pick up oak_rod"
+        ],
+        "repair": null,
+        "cost": 3,
+        "key": "fe38606c7464fc11108a56e55d51e6cffb21715d79a910ad5b8ddaa4a49763d0",
+        "qualification": "Conditional endpoint plan, not task-completion probability or certificate",
+        "gate_obligations": {
+          "role": {
+            "status": "TASK_NAMED_OUTPUT",
+            "task": "Craft an oak rod.",
+            "output": "oak_rod",
+            "quote": "Craft an oak rod.",
+            "literals": [
+              {
+                "kind": "crafted",
+                "item": "oak_rod",
+                "value": false
+              }
+            ],
+            "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+          },
+          "reserves": {
+            "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+            "goals": []
+          },
+          "first_action": {
+            "status": "unknown",
+            "reason": "no contradiction established; success is not guaranteed"
+          },
+          "remaining_budget": 257,
+          "plan_cost": 3,
+          "scope": "Supported task/material fragment under faithful modeling; no whole-game certificate"
+        }
+      }
+    },
+    {
+      "block": "mark_r2",
+      "step": 46,
+      "initial": "craft 1 oak_rod",
+      "final_llm": "craft 1 oak_rod",
+      "executed": "craft 1 oak_rod",
+      "recommendation": {
+        "endpoint": "oak_rod",
+        "task": "Craft an oak rod.",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft an oak rod.",
+          "output": "oak_rod",
+          "quote": "Craft an oak rod.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "oak_rod",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "role_supported": true,
+        "reserve": {
+          "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+          "goals": []
+        },
+        "plan": [
+          "craft 1 oak_rod",
+          "pick up oak_rod"
+        ],
+        "repair": null,
+        "cost": 3,
+        "key": "a65e9fc8e8495d09cacd317d3b5440256afb4471765203438dd29b7dc71af95d",
+        "qualification": "Conditional endpoint plan, not task-completion probability or certificate",
+        "gate_obligations": {
+          "role": {
+            "status": "TASK_NAMED_OUTPUT",
+            "task": "Craft an oak rod.",
+            "output": "oak_rod",
+            "quote": "Craft an oak rod.",
+            "literals": [
+              {
+                "kind": "crafted",
+                "item": "oak_rod",
+                "value": false
+              }
+            ],
+            "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+          },
+          "reserves": {
+            "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+            "goals": []
+          },
+          "first_action": {
+            "status": "unknown",
+            "reason": "no contradiction established; success is not guaranteed"
+          },
+          "remaining_budget": 255,
+          "plan_cost": 3,
+          "scope": "Supported task/material fragment under faithful modeling; no whole-game certificate"
+        }
+      }
+    },
+    {
+      "block": "mark_r2",
+      "step": 79,
+      "initial": "craft 1 copper_sword",
+      "final_llm": "craft 1 copper_sword",
+      "executed": "craft 1 copper_sword",
+      "recommendation": {
+        "endpoint": "copper_sword",
+        "task": "Craft a copper sword and hold it in your hands.",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft a copper sword and hold it in your hands.",
+          "output": "copper_sword",
+          "quote": "Craft a copper sword and hold it in your hands.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "copper_sword",
+              "value": false
+            },
+            {
+              "kind": "held",
+              "item": "copper_sword",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "role_supported": true,
+        "reserve": {
+          "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+          "goals": []
+        },
+        "plan": [
+          "craft 1 copper_sword",
+          "pick up copper_sword"
+        ],
+        "repair": null,
+        "cost": 3,
+        "key": "ae1f794534f77799cbf9fe0a32c0e0209fff13207dc8092a80290664c88f88be",
+        "qualification": "Conditional endpoint plan, not task-completion probability or certificate",
+        "gate_obligations": {
+          "role": {
+            "status": "TASK_NAMED_OUTPUT",
+            "task": "Craft a copper sword and hold it in your hands.",
+            "output": "copper_sword",
+            "quote": "Craft a copper sword and hold it in your hands.",
+            "literals": [
+              {
+                "kind": "crafted",
+                "item": "copper_sword",
+                "value": false
+              },
+              {
+                "kind": "held",
+                "item": "copper_sword",
+                "value": false
+              }
+            ],
+            "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+          },
+          "reserves": {
+            "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+            "goals": []
+          },
+          "first_action": {
+            "status": "unknown",
+            "reason": "no contradiction established; success is not guaranteed"
+          },
+          "remaining_budget": 222,
+          "plan_cost": 3,
+          "scope": "Supported task/material fragment under faithful modeling; no whole-game certificate"
+        }
+      }
+    },
+    {
+      "block": "mark_r2",
+      "step": 110,
+      "initial": "craft 1 oak_rod",
+      "final_llm": "craft 1 oak_rod",
+      "executed": "craft 1 oak_rod",
+      "recommendation": {
+        "endpoint": "torch",
+        "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+          "output": "torch",
+          "quote": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "torch",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "role_supported": true,
+        "reserve": {
+          "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+          "goals": []
+        },
+        "plan": [
+          "craft 1 oak_rod",
+          "craft 1 oak_rod",
+          "pick up oak_rod",
+          "craft 1 torch",
+          "pick up torch"
+        ],
+        "repair": null,
+        "cost": 6,
+        "key": "4e1004ed5e620eda062c39522a83db96efc29bf87de6233b7463217cfc6d34fc",
+        "qualification": "Conditional endpoint plan, not task-completion probability or certificate",
+        "gate_obligations": {
+          "role": {
+            "status": "TASK_NAMED_OUTPUT",
+            "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+            "output": "torch",
+            "quote": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+            "literals": [
+              {
+                "kind": "crafted",
+                "item": "torch",
+                "value": false
+              }
+            ],
+            "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+          },
+          "reserves": {
+            "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+            "goals": []
+          },
+          "first_action": {
+            "status": "unknown",
+            "reason": "no contradiction established; success is not guaranteed"
+          },
+          "remaining_budget": 191,
+          "plan_cost": 6,
+          "scope": "Supported task/material fragment under faithful modeling; no whole-game certificate"
+        }
+      }
+    },
+    {
+      "block": "mark_r2",
+      "step": 112,
+      "initial": "craft 1 torch",
+      "final_llm": "craft 1 torch",
+      "executed": "craft 1 torch",
+      "recommendation": {
+        "endpoint": "torch",
+        "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+        "support": {
+          "status": "TASK_NAMED_OUTPUT",
+          "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+          "output": "torch",
+          "quote": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+          "literals": [
+            {
+              "kind": "crafted",
+              "item": "torch",
+              "value": false
+            }
+          ],
+          "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+        },
+        "role_supported": true,
+        "reserve": {
+          "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+          "goals": []
+        },
+        "plan": [
+          "craft 1 torch",
+          "pick up torch"
+        ],
+        "repair": null,
+        "cost": 3,
+        "key": "a858e48698b148bf5404a95758132915a69b500e4b58ace70e58585aa0560f99",
+        "qualification": "Conditional endpoint plan, not task-completion probability or certificate",
+        "gate_obligations": {
+          "role": {
+            "status": "TASK_NAMED_OUTPUT",
+            "task": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+            "output": "torch",
+            "quote": "Craft a torch using 1 oak_rod and 1 coal_chunk before heading in.",
+            "literals": [
+              {
+                "kind": "crafted",
+                "item": "torch",
+                "value": false
+              }
+            ],
+            "sufficiency": "Necessary role only; remaining task conditions require public feedback"
+          },
+          "reserves": {
+            "status": "NO_OTHER_EXPLICIT_OUTPUTS",
+            "goals": []
+          },
+          "first_action": {
+            "status": "unknown",
+            "reason": "no contradiction established; success is not guaranteed"
+          },
+          "remaining_budget": 189,
+          "plan_cost": 3,
+          "scope": "Supported task/material fragment under faithful modeling; no whole-game certificate"
+        }
+      }
+    }
+  ],
+  "diagnostic_cases": [
+    {
+      "block": "mark_r1",
+      "arm": "checked",
+      "tasks": {},
+      "last50_actions": {
+        "enter hall": 17,
+        "enter armory": 7,
+        "enter library": 10,
+        "talk to librarian_rowan": 8,
+        "eat bread": 6,
+        "talk to arlen": 1,
+        "pick up copper_bar": 1
+      },
+      "last6": [
+        {
+          "step": 295,
+          "action": "enter hall",
+          "feedback": [
+            "I entered hall.",
+            "I was attacked by scrap_goblin_12 and lost 1 HP."
+          ]
+        },
+        {
+          "step": 296,
+          "action": "enter armory",
+          "feedback": [
+            "I entered armory."
+          ]
+        },
+        {
+          "step": 297,
+          "action": "pick up copper_bar",
+          "feedback": [
+            "Cannot pick up copper_bar, not found in current area."
+          ]
+        },
+        {
+          "step": 298,
+          "action": "enter hall",
+          "feedback": [
+            "I entered hall."
+          ]
+        },
+        {
+          "step": 299,
+          "action": "enter library",
+          "feedback": [
+            "I entered library."
+          ]
+        },
+        {
+          "step": 300,
+          "action": "talk to librarian_rowan",
+          "feedback": [
+            "I talked to librarian_rowan.",
+            "librarian_rowan says: I'm A quiet librarian who watches hands more than faces. ",
+            "I was attacked by scrap_goblin_19 and lost 1 HP."
+          ]
+        }
+      ]
+    },
+    {
+      "block": "mark_r2",
+      "arm": "checked",
+      "tasks": {
+        "lena": "Defeat root_warden, the thing guarding the lair."
+      },
+      "last50_actions": {
+        "pick up small_pouch_1": 1,
+        "pick up cloth_tunic": 1,
+        "equip cloth_tunic": 1,
+        "pick up goblin_token": 1,
+        "enter library": 1,
+        "pick up oak_log": 1,
+        "enter hall": 1,
+        "craft 1 oak_rod": 1,
+        "pick up oak_rod": 2,
+        "drop oak_rod": 1,
+        "enter armory": 3,
+        "enter stalls": 3,
+        "enter backstreets": 3,
+        "enter crystal_grotto": 3,
+        "enter ridge": 2,
+        "enter creek": 2,
+        "enter farm": 2,
+        "attack root_warden": 16,
+        "eat bread": 4,
+        "pick up torch": 1
+      },
+      "last6": [
+        {
+          "step": 295,
+          "action": "eat bread",
+          "feedback": [
+            "I ate bread from ground and restored 12 HP (HP: 26/180).",
+            "I was attacked by root_warden and lost 36 HP.",
+            "I have been defeated by root_warden!",
+            "I have died.",
+            "I revived at the starting point with full health but lost all items in hand, equipped items, and inventory items at the place I died."
+          ]
+        },
+        {
+          "step": 296,
+          "action": "pick up torch",
+          "feedback": [
+            "I picked up torch."
+          ]
+        },
+        {
+          "step": 297,
+          "action": "enter armory",
+          "feedback": [
+            "I entered armory."
+          ]
+        },
+        {
+          "step": 298,
+          "action": "enter stalls",
+          "feedback": [
+            "I entered stalls.",
+            "I was attacked by scrap_goblin_7 and lost 6 HP."
+          ]
+        },
+        {
+          "step": 299,
+          "action": "enter backstreets",
+          "feedback": [
+            "I entered backstreets."
+          ]
+        },
+        {
+          "step": 300,
+          "action": "enter crystal_grotto",
+          "feedback": [
+            "I entered crystal_grotto."
+          ]
+        }
+      ]
+    },
+    {
+      "block": "mark_r2",
+      "arm": "sentry",
+      "tasks": {
+        "lena": "Defeat root_warden, the thing guarding the lair."
+      },
+      "last50_actions": {
+        "inspect hide_scrap": 1,
+        "pick up hide_scrap": 1,
+        "craft 1 leather_strip": 1,
+        "pick up leather_strip": 1,
+        "store 1 tear_of_forest small_pouch_0": 1,
+        "enter library": 2,
+        "pick up fiber_bundle": 3,
+        "enter hall": 3,
+        "craft 1 thread": 1,
+        "pick up thread": 1,
+        "store 1 leather_strip small_pouch_0": 1,
+        "pick up cloth": 2,
+        "store 1 thread small_pouch_0": 1,
+        "store 1 cloth small_pouch_0": 1,
+        "craft 1 cloth": 1,
+        "craft 1 cloth_tunic": 1,
+        "pick up cloth_tunic": 1,
+        "talk to lena": 3,
+        "enter armory": 3,
+        "enter stalls": 2,
+        "enter backstreets": 2,
+        "enter crystal_grotto": 2,
+        "enter ridge": 3,
+        "enter glade": 1,
+        "enter creek": 2,
+        "enter farm": 2,
+        "pick up copper_sword": 1,
+        "attack root_warden": 5,
+        "defend": 1
+      },
+      "last6": [
+        {
+          "step": 228,
+          "action": "attack root_warden",
+          "feedback": [
+            "I attacked root_warden for 42 damage. root_warden has 118 HP remaining."
+          ]
+        },
+        {
+          "step": 229,
+          "action": "attack root_warden",
+          "feedback": [
+            "I attacked root_warden for 42 damage. root_warden has 76 HP remaining.",
+            "I feel tired. My stamina is now at 80%.",
+            "I was attacked by root_warden and lost 36 HP."
+          ]
+        },
+        {
+          "step": 230,
+          "action": "attack root_warden",
+          "feedback": [
+            "I attacked root_warden for 33 damage. root_warden has 43 HP remaining.",
+            "I feel tired. My stamina is now at 60%.",
+            "I was attacked by root_warden and lost 36 HP."
+          ]
+        },
+        {
+          "step": 231,
+          "action": "attack root_warden",
+          "feedback": [
+            "I attacked root_warden for 25 damage. root_warden has 18 HP remaining.",
+            "I feel tired. My stamina is now at 40%.",
+            "I was attacked by root_warden and lost 36 HP."
+          ]
+        },
+        {
+          "step": 232,
+          "action": "defend",
+          "feedback": [
+            "I am defending. My stamina is now at 70%."
+          ]
+        },
+        {
+          "step": 233,
+          "action": "attack root_warden",
+          "feedback": [
+            "I attacked root_warden for 29 damage and defeated root_warden!",
+            "Stage completed. The lair goes still.",
+            "=== QUEST COMPLETE ===",
+            "I was attacked by ridge_kite_2 and lost 3 HP.",
+            "=== CONGRATULATIONS! You have completed the main quest and passed the game! ==="
+          ]
+        }
+      ]
+    }
+  ],
+  "qualification": "Post-study descriptive diagnosis. Sentry and checked excerpts are from different later histories, not same-state counterfactuals. Zero gate overrides prevents estimating the effect of an active intervention or claiming equivalence outside these trajectories."
+}

@@ -1,0 +1,95 @@
+SCAR core authority study: reproduction and interpretation
+2026-10-17. This record is separate from the manuscript.
+
+Frozen actor/evaluator source
+  Corrected source_manifest.json SHA256:
+  2a4e484524415e9c33551722b6cd757fc31f9a7efef94ff2de58d7ce7fa44d1d
+  Corrected freeze commit (GitHub):
+  4ff206bc5bcbc693e3a5ef8227438885189590de
+  Branch: research/ttcl-execution-memory
+  Audit/analysis additions after this commit do not change the frozen actors.
+  The evidence archive preserves the exact frozen source bytes. Match every
+  source file (excluding the parent_revision metadata entry) to the published
+  source_manifest.json. Git checkout can change Windows CRLF line endings; the
+  separate source_normalized_manifest.json records hashes after CRLF-to-LF
+  normalization for comparison with the Git source. No other normalization.
+
+Dependencies
+  AgentOdyssey source revision: 248430692a9d4a61d38c6c03ab2126287faaf450
+  Sentry author source revision: 1d91bca14fa6a4e17908856cc787eb8e8354395f
+  https://github.com/nuglifeleoji/Sentry
+  Python3.12; installed package versions accompany the environment receipt.
+  Add SCAR, AgentOdyssey and Sentry repository roots to PYTHONPATH.
+  Set AGENTODYSSEY_ROOT to the AgentOdyssey root. Limit BLAS/OpenMP threads to1.
+  The local PyYAML6.0.3 dependency is required by author Sentry.
+
+Initial conditions and action randomness
+  The nine evaluation_plan jobs were fixed before their worlds were drawn.
+  Environment reset requests seed=None; each initial_receipt records the actual
+  generated seed and initial snapshot/state hashes. No favorable-seed selection.
+  PYTHONHASHSEED is separately drawn once per block and recorded in its manifest.
+  It MUST be set before starting Python. Upstream rules construct RNG-choice
+  arrays from sets, so restoring only environment RNG is insufficient.
+  Each block runs all four arms in one process with separate world snapshots.
+  Same-step identical API requests share a response only inside that block.
+  This is common-random-number coupling, not independence between paired arms.
+  Independent blocks use different caches and fresh initial states.
+  Repetition index rotates arm order. Actor computation cannot modify world RNG:
+  the environment is restored immediately before each step.
+
+Invocation
+  Work in the frozen source directory containing source_manifest.json.
+  Supply the API key as a PRIVATE FILE path, never as a command argument value.
+  Run, with each recorded job's PYTHONHASHSEED in the process environment:
+    python -m scar_public.experiments.core_trial --root BLOCK_DIRECTORY \
+      --game GAME --repeat REPETITION --steps 300 --key PRIVATE_KEY_FILE
+  Default arms are prompt,checked,sentry,v16. See core_protocol.txt for decoding.
+  For an exact rerun, retain the PRIVATE initial.pkl and API cache in the block.
+  Existing result traces are checked for exact action/state-prefix equality.
+  Recreating a seed alone is not guaranteed to recreate the historical state
+  across Python/library versions. Raw environment snapshots are not actor input.
+
+Analysis and no-API replay
+  python -m scar_public.experiments.analyze_core_trial --root STUDY_DIRECTORY
+  This refuses incomplete blocks and reports all nine paired differences.
+  With a block's recorded PYTHONHASHSEED and the frozen source on PYTHONPATH:
+    python replay_core_environment.py --block BLOCK_DIRECTORY
+  Replay uses recorded commands, not model generation. It compares all public
+  observations, before/after state digests, score updates and terminal flags.
+  At checked overrides it also branches one step to the original LLM command
+  from the exact pre-action state. These offline diagnostics use no API calls
+  and are excluded from formal episode budgets. Immediate effects do not prove
+  the value of a full alternative trajectory or the whole intervention policy.
+  Runtime checks also require equal packets and LLM proposals before the first
+  prompt/checked action divergence, and equal notebook states when actions agree.
+
+Interpretation
+  The main authority contrast includes the SAME notebook, planning computation,
+  decision packet, LLM revision and decoding. Only the final action gate differs.
+  The Sentry arm is the SAME prompt actor plus author Sentry's detection,
+  retrieval, verification and playbook update. Empty playbook in every episode;
+  public observations only. It uses the supported host-guidance integration,
+  shared1536-token actor limit and default4096-token auxiliary limit, not the
+  paper's384-token repair actor. This is an adaptation, not its paper benchmark.
+  V16 is an internal prior SCAR reference, not a new external baseline.
+  This evaluates the consolidated SCAR pipeline, not task persistence alone.
+
+  Three new draws per familiar game family give a small independent evaluation.
+  These are not unseen domains. A higher raw quest score is partial progress,
+  not a higher main-task completion rate when every arm has zero completions.
+  Exact sign-flip p-values rely on exchangeability/symmetry of paired differences
+  under the null; the small within-family bootstrap interval is exploratory.
+  The protocol's joint criterion was fixed before results; do not weaken it
+  after observing outcomes or present its failure as proof of equivalence.
+
+Costs and exclusions
+  The first batch was invalidated for a non-action metadata intervention and
+  an overbroad coupling-cache key. See core_amendment_1.txt and agreement_bug.json.
+  All its API attempts remain in the cost audit, never in the effect estimate.
+  Include integration smoke, invalid batch and final evaluation costs separately.
+  Token-based USD values are estimates, not provider invoices. In-flight or
+  failed attempts without usage have unknown charges, not zero assumed cost.
+  Exact-response sharing makes paid cost allocation depend on arm order: report
+  total actual requests separately from per-arm logical token workload.
+  Public evidence exports exclude keys, passwords, initial.pkl and all other
+  hidden-world snapshots. Evaluator-only score fields are never sent to actors.
