@@ -1,0 +1,27 @@
+{
+  "game": "mark",
+  "prefix_transition_checks": 600,
+  "counterfactuals": 1,
+  "records": [
+    {
+      "mode": "execute",
+      "step": 156,
+      "observation": "\nCurrent Time: 0001-01-02 09:50:00\nCurrent Location: Old Castle, armory\n\nI dropped coin.\nI was attacked by cave_chitter_1 and lost 7 HP.\n\nI am holding 1 coin.\nI have equipped no objects.\nI see 5 coal_chunk, 6 iron_bar, 3 iron_ore, 2 oak_log, 3 fiber_bundle, 1 stone, 6 coin, 1 torch, 1 pen near me.\nI see cave_chitter_1, scrap_goblin_10, scrap_goblin_14 nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 25.\nMy experience is at 80.\n\nNeighboring areas: hall, stalls.\n",
+      "proposed": {
+        "reasoning": "My hands are full with a single coin stack, so I cannot pick up more coins directly. The small_pouch container is not in the armory, but it was last seen in the hall. I should go to the hall to retrieve a small_pouch and equip it as inventory, then store coins there so I can accumulate the 10 coins needed to buy the Tear of Forest from broker_sera.",
+        "action": "enter hall"
+      },
+      "executed": {
+        "reasoning": "Acquiring a container lets coins be stored rather than occupying hand slots, addressing the hand-capacity blocker for accumulating 10 coins. Expected: Either pouch is picked up (enabling storage) or a message indicates it is not here.",
+        "action": "pick up small_pouch_0"
+      },
+      "actual_observation": "\nCurrent Time: 0001-01-02 10:00:00\nCurrent Location: Old Castle, armory\n\nCannot pick up small_pouch_0, not found in current area.\nI was attacked by cave_chitter_1 and lost 7 HP.\nI was attacked by scrap_goblin_10 and lost 1 HP.\n\nI am holding 1 coin.\nI have equipped no objects.\nI see 5 coal_chunk, 6 iron_bar, 3 iron_ore, 2 oak_log, 3 fiber_bundle, 1 stone, 6 coin, 1 torch, 1 pen near me.\nI see cave_chitter_1, scrap_goblin_10, scrap_goblin_14 nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 17.\nMy experience is at 80.\n\nNeighboring areas: hall, stalls.\n",
+      "proposed_observation": "\nCurrent Time: 0001-01-02 10:00:00\nCurrent Location: Old Castle, hall\n\nI entered hall.\nNoise draws in an enemy scout (scrap_goblin_19)! You may hush the area through a note with \"quiet\" written on it.\nI was attacked by scrap_goblin_8 and lost 1 HP.\nI was attacked by scrap_goblin_11 and lost 1 HP.\n\nI am holding 1 coin.\nI have equipped no objects.\nI see 6 coin, 1 small_pouch_0, 1 small_pouch_1, 1 workbench, 3 hide_scrap, 2 cloth, 2 goblin_token, 2 torch near me.\nI see scrap_goblin_8, scrap_goblin_11, scrap_goblin_19 nearby.\n\nMy level is 3.\nMy attack is at 20.\nMy defense is at 0.\nMy health is at 23.\nMy experience is at 80.\n\nNeighboring areas: armory, library.\n",
+      "actual_feedback_error": true,
+      "proposed_feedback_error": false,
+      "actual_quest_gain": 0,
+      "proposed_quest_gain": 0
+    }
+  ],
+  "qualification": "All changed actions, paired same-state one-action replay. Feedback errors are heuristic; no long-horizon counterfactual claim. Evaluation-only, zero API calls."
+}

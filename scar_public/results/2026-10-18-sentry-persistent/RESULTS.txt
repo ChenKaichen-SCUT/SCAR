@@ -1,0 +1,186 @@
+Persistent outcome-conditioned Sentry repair: bounded development pilot
+2026-10-18
+
+Implemented mechanism
+The direct target is author Sentry, on the same clean AgentOdyssey ReAct plus
+LongContext actor as the foundation pilot. Original Sentry still detects,
+routes, verifies at H=10 and updates its successful-recovery playbook. Only a
+completed UNRESOLVED verification opens the extra continuation mechanism.
+Keep a case goal, blocker explanation, cited public observations, attempted
+operation and actual result. The repair model proposes one next operation to
+change the blocker or test alternatives, with predicted observations and
+different next plans. Each subsequent card receives the actual executed action
+and result, including when the ordinary actor ignored an advised operation.
+
+Structural checks enforce literal observation references, fixed goal text while
+a case remains open, supplied action-schema membership, distinct test branches,
+and next-cycle/current-observation identity before selecting an action. Closing
+a case requires a current observation reference. Six consecutive operations and
+30 extra model calls per game bound the mechanism. Quota suspension is not
+resolution. Same unresolved case can resume on another failed verification.
+
+These are structural checks around LLM hypotheses. They do NOT establish that
+a citation entails an explanation, preconditions are actually true, a test is
+safe or informative, or a selected operation advances the task. Resource and
+precondition fields are model judgments, not a sound symbolic checker. The
+implementation may preserve an obsolete goal, misinterpret a result, or follow
+a worse proposal. Do not claim a task-success guarantee or reliable semantics.
+
+Two variants
+advice: insert the structured card into the ordinary actor's history.
+execute: insert the SAME card and also select its next schema-valid operation
+when the immediately expected observation still matches. Both still call the
+ordinary actor; record the actual executed action in its history. Decisions
+before the first failed verification reproduce the original Sentry prefix.
+No old SCAR gate or task parser, no previous top-K historical retrieval change,
+and no game/entity-specific action rule is used. The repair model sees all
+public action/observation history; actor reasoning is not promoted to evidence.
+Implementation limitation: execute also writes the card's rationale into actor
+history when its action agrees with the ordinary proposal. Thus this comparison
+includes rationale replacement as well as action selection; later differences
+cannot be attributed solely to an action override. The same-action replacement
+counts are retained. A subsequent isolated selection ablation should preserve
+the ordinary rationale when no action is changed. This pilot is not that ablation.
+
+Protocol and limits
+Reuse the three original foundation worlds, plain baseline and author Sentry
+scores. No paid baseline reruns. These worlds were already inspected; this is
+a development experiment, not held-out validation or a statistical claim.
+At the first failed verification of each world, compare12 subsequent actions
+under advice/execute; check equal initial state, card and ordinary actor proposal.
+Continue the SAME runs from exact cached requests to300 actions, without choosing
+favorable restarts. All six arms are retained. Random playbook IDs are aligned
+to the old prefix only after checking identical public entry content, then
+derived from content/cycle after intervention. This prevents irrelevant IDs
+from breaking cache/prefix coupling; they carry no private task information.
+
+Whole-game main-quest scores
+remnant     plain= 2 Sentry= 2 advice= 1 execute= 2
+mark        plain=11 Sentry=16 advice=16 execute=16
+metropolis  plain= 8 Sentry= 8 advice= 7 execute= 9
+
+Per-game differences (no pooling of raw scales):
+[
+  {
+    "game": "remnant",
+    "execute_minus_sentry": 0,
+    "execute_minus_advice": 1
+  },
+  {
+    "game": "mark",
+    "execute_minus_sentry": 0,
+    "execute_minus_advice": 0
+  },
+  {
+    "game": "metropolis",
+    "execute_minus_sentry": 1,
+    "execute_minus_advice": 2
+  }
+]
+
+Detailed costs and mechanism counts
+remnant     advice  actions=300 pass=False side=0 repair_calls=30 eligible=28 overrides=0 rejected_cards=0 statuses={'act': 28, 'pause': 1} tokens=19968033/68952
+remnant     execute actions=300 pass=False side=2 repair_calls=30 eligible=29 overrides=11 rejected_cards=0 statuses={'act': 29} tokens=18823972/68268
+mark        advice  actions=300 pass=False side=0 repair_calls=19 eligible=18 overrides=0 rejected_cards=0 statuses={'act': 18} tokens=15708498/60188
+mark        execute actions=300 pass=False side=0 repair_calls=6 eligible=6 overrides=1 rejected_cards=0 statuses={'act': 6} tokens=14345337/53340
+metropolis  advice  actions=300 pass=False side=3 repair_calls=30 eligible=24 overrides=0 rejected_cards=1 statuses={'act': 24} tokens=21320933/72237
+metropolis  execute actions=300 pass=False side=2 repair_calls=30 eligible=30 overrides=4 rejected_cards=0 statuses={'act': 30} tokens=21038020/68241
+
+Interpretation constraints
+Observed endpoints: execute ties original Sentry on Remnant (2) and Mark (16),
+and exceeds it by1 on Metropolis (9 vs8). Against advice, differences are +1,0,+2.
+All six new games remain unpassed. This is a limited positive signal, not the
+substantial, stable gain sought for the paper. The same-state action audit is
+less favorable: among16 overrides,2 remove an immediate feedback error and4
+introduce one; no override improves the immediate quest increment. That does
+not rule out delayed benefit, but it does not support reliable error correction.
+There are48 additional same-action rationale replacements, a causal confound.
+No card closes a case as resolved in these real runs, so real-game case closure
+has not been validated. Four of six arms reach the30-call repair cap. The initial
+selected goal may remain stale; full-history access and literal citations have
+not solved semantic interpretation or justified forcing a proposed action.
+The next narrow design question is selective intervention: explicitly compare
+the ordinary proposal with the repair proposal, retain useful prerequisite
+actions, and replace only on a supported current-state or goal-related defect.
+An isolated test must preserve reasoning history when the action is unchanged.
+Read the complete per-game comparison before drawing conclusions. Earlier
+progress, fewer repeated commands or more Sentry-verified recoveries cannot
+substitute for endpoint task score. A favorable single trajectory is not stable
+improvement; an unfavorable result does not prove every persistent-repair
+algorithm ineffective. Formal experiments require a frozen successful design,
+new worlds and repeated runs. The present algorithm is not promoted as default.
+
+Mechanism probes and counterfactuals
+The three first-choice pairs share identical states, cards and ordinary actor
+proposals. At the12-action probe endpoint, Remnant execute scores1 versus0 for
+advice and original Sentry; Mark all score11; Metropolis all score4. This is a
+small selected diagnostic at each world's first failed verification, not an
+independent success-rate experiment. Remnant's first selected attack leaves the
+agent at5 HP, while advice's ordinary actor eats an apple and reaches15 HP;
+later task progress must not be portrayed as evidence of safe combat repair.
+Mark's first execute proposal tries to pick up a pouch before moving to its
+location, whereas advice's ordinary actor first enters the hall. These examples
+show both real action differences and risk to previously effective behavior.
+
+All actual overridden actions are additionally replayed against the ordinary
+proposal from exactly the same environment state, without API calls. Public
+feedback and immediate quest increments are retained. These are ONE-action
+counterfactuals; they do not show what the alternative full trajectory would
+have scored. Feedback-error counts use the existing feedback_lines heuristic,
+not human-labeled correctness. Results:
+{
+  "remnant": {
+    "counterfactuals": 11,
+    "replays": 600,
+    "removed_feedback_error": 2,
+    "introduced_feedback_error": 2,
+    "both_feedback_error": 1,
+    "immediate_score_better": 0,
+    "immediate_score_worse": 0
+  },
+  "mark": {
+    "counterfactuals": 1,
+    "replays": 600,
+    "removed_feedback_error": 0,
+    "introduced_feedback_error": 1,
+    "both_feedback_error": 0,
+    "immediate_score_better": 0,
+    "immediate_score_worse": 0
+  },
+  "metropolis": {
+    "counterfactuals": 4,
+    "replays": 600,
+    "removed_feedback_error": 0,
+    "introduced_feedback_error": 1,
+    "both_feedback_error": 0,
+    "immediate_score_better": 0,
+    "immediate_score_worse": 0
+  }
+}
+
+Code and execution validation
+19 tests pass (11 new,8 foundation). All 1800 full-run transitions replay
+exactly. Offline action audit reconstructs 1800 transitions
+and tests 16 unexecuted proposals. Three first-choice
+pairs match exactly. Frozen 428-file manifest:
+70f817485acac7641b3435d5ccf056fb0289c3eb1b1c13943fa1133614fd4045
+The first evaluator freeze failed before any API call because initial snapshots
+have no score record yet. Only that evaluation-only read was changed to default0;
+policy bytes are identical, failed source/logs retained, all six arms restarted
+in a separate v2 directory. No policy change after observing any outcome.
+
+Total newly paid attempts across probes and full cached continuations:
+1979; successful responses: 1979; unknown charge:
+0. Fixed historical-rate estimate USD 2.688418440
+(not a bill or current-price verification). Probe/full cache reuse avoids double
+charges. Logical per-arm token counts deduplicate exact requests across the
+cached prefix reconstruction; paid ownership of shared calls is not a method
+comparison. All new actor, Sentry and repair calls are included.
+
+Public evidence archive: 6266 files, 64832046 bytes, SHA256
+81f99e07e0de58ce2fbb5a941c55fcfa5262d5320de42284010a8312dbd9777c
+Original baseline archive SHA256:
+a04970c6c8370f407b2ed6c6c7e63616b7f96bbfde941ee3de33bab52284ab31
+Exact API-key and SSH-password scans passed. Private engine snapshots are
+excluded. Full raw requests/responses/traces remain server/local; compact
+results, cases, probes and validation are versioned. No manuscript was edited.

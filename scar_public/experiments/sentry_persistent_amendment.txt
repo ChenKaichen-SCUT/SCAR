@@ -1,0 +1,10 @@
+Evaluator-only startup correction, 2026-10-18
+
+Initial engine snapshots have no score record until the first action. All six
+workers stopped while reading that absent record, before actor/model calls.
+Change ONLY the evaluator's initial score read to default to0. This value is
+evaluation-only and never supplied to the policy. Preserve the original freeze
+(manifest abbe571c38e0c20738aece9eaa3ead7877b753cc4ea8ce9bb592f5ad228da8a2)
+and failed logs. Restart in a separately named v2 directory/new source manifest.
+The PersistentRepair policy, tests, worlds, decoding, quotas and comparisons
+are byte-identical. No result was observed and no model call was paid in v1.
