@@ -1,0 +1,1174 @@
+{
+  "name": "positive_source",
+  "qualification": "Matched diagnostic with evaluator-bound inherited trial; not an independent run.",
+  "prefix_replays": 59,
+  "initial_digest": "89ab1804590f73bf6c646305e9cfe9883c168ef9a9b39763aa76ef1ab0ab5c6e",
+  "source": "/root/scar_objective_v2_20261018/evaluation/mark_r0",
+  "requirement": {
+    "kind": "resource",
+    "target": "copper_bar",
+    "count": 1.0,
+    "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+    "depth": 1,
+    "id": "541b48a17b74"
+  },
+  "goal": "Craft a copper sword and hold it in your hands.",
+  "evaluator_binding": true,
+  "legacy_proposal_calls": 7,
+  "initial_counter": 7,
+  "budget_intervention": "None; inherited prior call count",
+  "results": {
+    "objective": {
+      "rows": [
+        {
+          "step": 60,
+          "observation": "\nCurrent Time: 0001-01-01 17:50:00\nCurrent Location: Old Castle, armory\n\nI used a key to unlock the path to armory. I entered armory.\n\nI am holding 1 oak_rod.\nI have equipped no objects.\nI see 8 iron_ore, 3 copper_bar, 3 fiber_bundle, 2 oak_log, 4 stone, 4 iron_bar, 3 coal_chunk near me.\nI see oliver_hart, scrap_goblin_0 nearby.\n\nMy level is 1.\nMy attack is at 13.\nMy defense is at 0.\nMy health is at 97.\nMy experience is at 45.\n\nNeighboring areas: hall, stalls.\n",
+          "action": "pick up copper_bar",
+          "response": {
+            "reasoning": "The armory contains copper_bar, which is one of two ingredients for copper_sword (copper_bar + oak_rod). I already hold an oak_rod. I need to pick up a copper_bar, then craft the sword. However, crafting requires a workbench, which is in the hall, not here. So the immediate step is to pick up the copper_bar, then return to the hall to craft.",
+            "action": "pick up copper_bar",
+            "frame": {
+              "goal_quote": "Craft a copper sword and hold it in your hands.",
+              "method": "Pick up copper_bar here, return to hall (workbench present), craft copper_sword, equip it.",
+              "required_state": "Holding copper_bar and oak_rod at a location with a workbench.",
+              "feasibility": "jointly possible: copper_bar present here, oak_rod held, workbench in hall.",
+              "assessment": "Armory entry succeeded with key; copper_bar is now visible on the ground.",
+              "expected": "I will be holding 1 copper_bar and 1 oak_rod; copper_bar removed from ground."
+            },
+            "core_gate": {
+              "reason": "NO_ADMITTED_CONTINUATION",
+              "changed": false,
+              "proposed": "pick up copper_bar",
+              "packet_id": "f7bcdc9d2a7ea4e93b5a519f2d4073ebbd098dd0f81e04f5b5b7b1e71e631dbe"
+            },
+            "decision_source": "scar_core_actor",
+            "core_packet": {
+              "guard": "07130b98e06cd7016fe263a9704377e025eac2f9c3c9b46cd7512d2eeead166a",
+              "proposal": "pick up copper_bar",
+              "focus": {
+                "task": "Craft a copper sword and hold it in your hands.",
+                "target": "copper_sword"
+              },
+              "observed_check": {
+                "status": "unknown",
+                "reason": "no contradiction established; success is not guaranteed"
+              },
+              "evidence_rejection": null,
+              "candidates": [],
+              "rejected": [],
+              "recommendation": null,
+              "combat": false,
+              "semantics": "UNKNOWN remains available to the LLM; automatic substitutions require all listed checks",
+              "id": "f7bcdc9d2a7ea4e93b5a519f2d4073ebbd098dd0f81e04f5b5b7b1e71e631dbe"
+            },
+            "core_compute_ms": 1.8135039990738733,
+            "core_initial_proposal": {
+              "reasoning": "The armory contains copper_bar, which is one of two ingredients for copper_sword (copper_bar + oak_rod). I already hold an oak_rod. I need to pick up a copper_bar, then craft the sword. However, crafting requires a workbench, which is in the hall, not here. So the immediate step is to pick up the copper_bar, then return to the hall to craft.",
+              "action": "pick up copper_bar",
+              "frame": {
+                "goal_quote": "Craft a copper sword and hold it in your hands.",
+                "method": "Pick up copper_bar here, return to hall (workbench present), craft copper_sword, equip it.",
+                "required_state": "Holding copper_bar and oak_rod at a location with a workbench.",
+                "feasibility": "jointly possible: copper_bar present here, oak_rod held, workbench in hall.",
+                "assessment": "Armory entry succeeded with key; copper_bar is now visible on the ground.",
+                "expected": "I will be holding 1 copper_bar and 1 oak_rod; copper_bar removed from ground."
+              }
+            },
+            "continuation": {
+              "step": 59,
+              "original": "pick up copper_bar",
+              "changed": false,
+              "trigger": null,
+              "previous_repair": {
+                "step": 59,
+                "contract": {
+                  "goal_quote": "Craft a copper sword and hold it in your hands.",
+                  "blocker": "copper_bar not found; armory locked",
+                  "hypothesis": "The key on the hall ground unlocks the armory, which contains copper_bar or crafting materials.",
+                  "task_link": "copper_bar is required for copper_sword; armory is the only unexplored locked area",
+                  "basis": [
+                    "I see 5 coin, 1 key, 1 small_pouch_0",
+                    "Cannot enter armory, the door is locked."
+                  ],
+                  "need_id": "541b48a17b74",
+                  "verification": {
+                    "mode": "source",
+                    "site": "Old Castle, armory"
+                  },
+                  "steps": [
+                    {
+                      "action": "pick up key",
+                      "test": {
+                        "kind": "held",
+                        "target": "key",
+                        "count": 1
+                      },
+                      "may_consume": {}
+                    },
+                    {
+                      "action": "enter armory",
+                      "test": {
+                        "kind": "at",
+                        "target": "armory"
+                      },
+                      "may_consume": {
+                        "key": 1
+                      }
+                    }
+                  ],
+                  "branches": null,
+                  "key": "f7cbb98b05b653ac82ab23ac8602ecda202f406c81b001f159c5717bf37fd0c0",
+                  "task": "2031e946257076014eec556d9702062b3b7a20b2883a7ffb8d94d92caab1e59d",
+                  "epoch": 40,
+                  "step": 57,
+                  "information": false,
+                  "checks": {
+                    "errors": [],
+                    "unknown": [
+                      {
+                        "index": 1,
+                        "kind": "NAVIGATION_EFFECTS_AND_SAFETY_UNVERIFIED"
+                      },
+                      {
+                        "index": 1,
+                        "kind": "CONSUMPTION_IS_A_HYPOTHESIS",
+                        "resources": {
+                          "key": 1
+                        }
+                      }
+                    ],
+                    "projected": {
+                      "holding": {
+                        "oak_rod": 1.0,
+                        "key": 0
+                      },
+                      "ground": null,
+                      "equipped": {},
+                      "location": null,
+                      "neighbors": [],
+                      "fresh_tasks": []
+                    }
+                  },
+                  "reserves": {
+                    "copper_sword": 1,
+                    "oak_rod": 1.0
+                  },
+                  "objective": {
+                    "mode": "source",
+                    "need": {
+                      "kind": "resource",
+                      "target": "copper_bar",
+                      "count": 1.0,
+                      "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                      "depth": 1,
+                      "id": "541b48a17b74"
+                    },
+                    "test": {
+                      "kind": "visible",
+                      "target": "copper_bar",
+                      "count": 1.0,
+                      "location": "Old Castle, armory"
+                    }
+                  }
+                },
+                "index": 1,
+                "execution_outcome": true,
+                "outcome": true,
+                "requirement_resolved": false,
+                "terminal": true,
+                "failures": [],
+                "admitted": true,
+                "decision_distinguishing": true,
+                "cancellation_reasons": [],
+                "source_location": "Old Castle, armory",
+                "observed_quantity": 3.0,
+                "required_ground_quantity": 1.0,
+                "acquisition_possible_under_known_checks": true,
+                "status": "SOURCE_OBSERVED",
+                "trial_id": 0,
+                "continuation_check": {
+                  "errors": [],
+                  "unknown": [],
+                  "projected": {
+                    "holding": {
+                      "oak_rod": 1.0,
+                      "copper_bar": 1
+                    },
+                    "ground": {
+                      "iron_ore": 8.0,
+                      "copper_bar": 2.0,
+                      "fiber_bundle": 3.0,
+                      "oak_log": 2.0,
+                      "stone": 4.0,
+                      "iron_bar": 4.0,
+                      "coal_chunk": 3.0
+                    },
+                    "equipped": {},
+                    "location": "Old Castle, armory",
+                    "neighbors": [
+                      "hall",
+                      "stalls"
+                    ],
+                    "fresh_tasks": []
+                  }
+                },
+                "proposed_continuation": "pick up copper_bar"
+              },
+              "reason": "VERIFIED_CONDITION_SELECTS_CONTINUATION",
+              "executed": "pick up copper_bar"
+            }
+          },
+          "next_observation": "\nCurrent Time: 0001-01-01 18:00:00\nCurrent Location: Old Castle, armory\n\nI picked up copper_bar.\nFriction recedes. Focus steadies, and intent becomes clear.\nI have acquired a new item: copper_bar. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), key (1 copper_bar, 1 fiber_bundle), lantern (1 copper_bar, 1 glass_shard, 1 thread), copper_mail (2 copper_bar, 2 leather_strip, 1 thread)\nI was attacked by scrap_goblin_0 and lost 6 HP.\n\nI am holding 1 oak_rod, 1 copper_bar.\nI have equipped no objects.\nI see 8 iron_ore, 2 copper_bar, 3 fiber_bundle, 2 oak_log, 4 stone, 4 iron_bar, 3 coal_chunk near me.\nI see oliver_hart, scrap_goblin_0 nearby.\n\nMy level is 1.\nMy attack is at 13.\nMy defense is at 0.\nMy health is at 91.\nMy experience is at 45.\n\nNeighboring areas: hall, stalls.\n",
+          "before_digest": "89ab1804590f73bf6c646305e9cfe9883c168ef9a9b39763aa76ef1ab0ab5c6e",
+          "after_digest": "c03b2c20a367f8d3636e60a28f3d314e4b8ab9578e2873863666474ce6ab50c7",
+          "scores": {
+            "unique_kill": 2,
+            "kill": 2,
+            "craft": 1,
+            "exploration": 2,
+            "death": 0,
+            "trade": 0,
+            "quest": 1,
+            "side_quest": 0
+          }
+        }
+      ],
+      "outcomes": [
+        {
+          "step": 58,
+          "contract": {
+            "goal_quote": "Craft a copper sword and hold it in your hands.",
+            "blocker": "copper_bar not found; armory locked",
+            "hypothesis": "The key on the hall ground unlocks the armory, which contains copper_bar or crafting materials.",
+            "task_link": "copper_bar is required for copper_sword; armory is the only unexplored locked area",
+            "basis": [
+              "I see 5 coin, 1 key, 1 small_pouch_0",
+              "Cannot enter armory, the door is locked."
+            ],
+            "need_id": "541b48a17b74",
+            "verification": {
+              "mode": "source",
+              "site": "Old Castle, armory"
+            },
+            "steps": [
+              {
+                "action": "pick up key",
+                "test": {
+                  "kind": "held",
+                  "target": "key",
+                  "count": 1
+                },
+                "may_consume": {}
+              },
+              {
+                "action": "enter armory",
+                "test": {
+                  "kind": "at",
+                  "target": "armory"
+                },
+                "may_consume": {
+                  "key": 1
+                }
+              }
+            ],
+            "branches": null,
+            "key": "f7cbb98b05b653ac82ab23ac8602ecda202f406c81b001f159c5717bf37fd0c0",
+            "task": "2031e946257076014eec556d9702062b3b7a20b2883a7ffb8d94d92caab1e59d",
+            "epoch": 40,
+            "step": 57,
+            "information": false,
+            "checks": {
+              "errors": [],
+              "unknown": [
+                {
+                  "index": 1,
+                  "kind": "NAVIGATION_EFFECTS_AND_SAFETY_UNVERIFIED"
+                },
+                {
+                  "index": 1,
+                  "kind": "CONSUMPTION_IS_A_HYPOTHESIS",
+                  "resources": {
+                    "key": 1
+                  }
+                }
+              ],
+              "projected": {
+                "holding": {
+                  "oak_rod": 1.0,
+                  "key": 0
+                },
+                "ground": null,
+                "equipped": {},
+                "location": null,
+                "neighbors": [],
+                "fresh_tasks": []
+              }
+            },
+            "reserves": {
+              "copper_sword": 1,
+              "oak_rod": 1.0
+            },
+            "objective": {
+              "mode": "source",
+              "need": {
+                "kind": "resource",
+                "target": "copper_bar",
+                "count": 1.0,
+                "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                "depth": 1,
+                "id": "541b48a17b74"
+              },
+              "test": {
+                "kind": "visible",
+                "target": "copper_bar",
+                "count": 1.0,
+                "location": "Old Castle, armory"
+              }
+            }
+          },
+          "index": 0,
+          "execution_outcome": true,
+          "outcome": null,
+          "requirement_resolved": null,
+          "terminal": false,
+          "failures": [],
+          "admitted": true,
+          "decision_distinguishing": false,
+          "cancellation_reasons": [],
+          "status": "EXECUTION_MILESTONE_ONLY",
+          "continuation_check": {
+            "errors": [],
+            "unknown": [
+              {
+                "index": 0,
+                "kind": "NAVIGATION_EFFECTS_AND_SAFETY_UNVERIFIED"
+              },
+              {
+                "index": 0,
+                "kind": "CONSUMPTION_IS_A_HYPOTHESIS",
+                "resources": {
+                  "key": 1
+                }
+              }
+            ],
+            "projected": {
+              "holding": {
+                "oak_rod": 1.0,
+                "key": 0
+              },
+              "ground": null,
+              "equipped": {},
+              "location": null,
+              "neighbors": [],
+              "fresh_tasks": []
+            }
+          },
+          "proposed_continuation": "enter armory"
+        },
+        {
+          "step": 59,
+          "contract": {
+            "goal_quote": "Craft a copper sword and hold it in your hands.",
+            "blocker": "copper_bar not found; armory locked",
+            "hypothesis": "The key on the hall ground unlocks the armory, which contains copper_bar or crafting materials.",
+            "task_link": "copper_bar is required for copper_sword; armory is the only unexplored locked area",
+            "basis": [
+              "I see 5 coin, 1 key, 1 small_pouch_0",
+              "Cannot enter armory, the door is locked."
+            ],
+            "need_id": "541b48a17b74",
+            "verification": {
+              "mode": "source",
+              "site": "Old Castle, armory"
+            },
+            "steps": [
+              {
+                "action": "pick up key",
+                "test": {
+                  "kind": "held",
+                  "target": "key",
+                  "count": 1
+                },
+                "may_consume": {}
+              },
+              {
+                "action": "enter armory",
+                "test": {
+                  "kind": "at",
+                  "target": "armory"
+                },
+                "may_consume": {
+                  "key": 1
+                }
+              }
+            ],
+            "branches": null,
+            "key": "f7cbb98b05b653ac82ab23ac8602ecda202f406c81b001f159c5717bf37fd0c0",
+            "task": "2031e946257076014eec556d9702062b3b7a20b2883a7ffb8d94d92caab1e59d",
+            "epoch": 40,
+            "step": 57,
+            "information": false,
+            "checks": {
+              "errors": [],
+              "unknown": [
+                {
+                  "index": 1,
+                  "kind": "NAVIGATION_EFFECTS_AND_SAFETY_UNVERIFIED"
+                },
+                {
+                  "index": 1,
+                  "kind": "CONSUMPTION_IS_A_HYPOTHESIS",
+                  "resources": {
+                    "key": 1
+                  }
+                }
+              ],
+              "projected": {
+                "holding": {
+                  "oak_rod": 1.0,
+                  "key": 0
+                },
+                "ground": null,
+                "equipped": {},
+                "location": null,
+                "neighbors": [],
+                "fresh_tasks": []
+              }
+            },
+            "reserves": {
+              "copper_sword": 1,
+              "oak_rod": 1.0
+            },
+            "objective": {
+              "mode": "source",
+              "need": {
+                "kind": "resource",
+                "target": "copper_bar",
+                "count": 1.0,
+                "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                "depth": 1,
+                "id": "541b48a17b74"
+              },
+              "test": {
+                "kind": "visible",
+                "target": "copper_bar",
+                "count": 1.0,
+                "location": "Old Castle, armory"
+              }
+            }
+          },
+          "index": 1,
+          "execution_outcome": true,
+          "outcome": true,
+          "requirement_resolved": false,
+          "terminal": true,
+          "failures": [],
+          "admitted": true,
+          "decision_distinguishing": true,
+          "cancellation_reasons": [],
+          "source_location": "Old Castle, armory",
+          "observed_quantity": 3.0,
+          "required_ground_quantity": 1.0,
+          "acquisition_possible_under_known_checks": true,
+          "status": "SOURCE_OBSERVED",
+          "trial_id": 0,
+          "continuation_check": {
+            "errors": [],
+            "unknown": [],
+            "projected": {
+              "holding": {
+                "oak_rod": 1.0,
+                "copper_bar": 1
+              },
+              "ground": {
+                "iron_ore": 8.0,
+                "copper_bar": 2.0,
+                "fiber_bundle": 3.0,
+                "oak_log": 2.0,
+                "stone": 4.0,
+                "iron_bar": 4.0,
+                "coal_chunk": 3.0
+              },
+              "equipped": {},
+              "location": "Old Castle, armory",
+              "neighbors": [
+                "hall",
+                "stalls"
+              ],
+              "fresh_tasks": []
+            }
+          },
+          "proposed_continuation": "pick up copper_bar"
+        },
+        {
+          "step": 60,
+          "contract": {
+            "goal_quote": "Craft a copper sword and hold it in your hands.",
+            "blocker": "copper_bar not found; armory locked",
+            "hypothesis": "The key on the hall ground unlocks the armory, which contains copper_bar or crafting materials.",
+            "task_link": "copper_bar is required for copper_sword; armory is the only unexplored locked area",
+            "basis": [
+              "I see 5 coin, 1 key, 1 small_pouch_0",
+              "Cannot enter armory, the door is locked."
+            ],
+            "need_id": "541b48a17b74",
+            "verification": {
+              "mode": "source",
+              "site": "Old Castle, armory"
+            },
+            "steps": [
+              {
+                "action": "pick up copper_bar",
+                "test": {
+                  "kind": "held",
+                  "target": "copper_bar",
+                  "count": 1
+                }
+              }
+            ],
+            "branches": null,
+            "key": "f7cbb98b05b653ac82ab23ac8602ecda202f406c81b001f159c5717bf37fd0c0",
+            "task": "2031e946257076014eec556d9702062b3b7a20b2883a7ffb8d94d92caab1e59d",
+            "epoch": 40,
+            "step": 57,
+            "information": false,
+            "checks": {
+              "errors": [],
+              "unknown": [
+                {
+                  "index": 1,
+                  "kind": "NAVIGATION_EFFECTS_AND_SAFETY_UNVERIFIED"
+                },
+                {
+                  "index": 1,
+                  "kind": "CONSUMPTION_IS_A_HYPOTHESIS",
+                  "resources": {
+                    "key": 1
+                  }
+                }
+              ],
+              "projected": {
+                "holding": {
+                  "oak_rod": 1.0,
+                  "key": 0
+                },
+                "ground": null,
+                "equipped": {},
+                "location": null,
+                "neighbors": [],
+                "fresh_tasks": []
+              }
+            },
+            "reserves": {
+              "copper_sword": 1,
+              "oak_rod": 1.0
+            },
+            "objective": {
+              "mode": "acquire",
+              "need": {
+                "kind": "resource",
+                "target": "copper_bar",
+                "count": 1.0,
+                "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                "depth": 1,
+                "id": "541b48a17b74"
+              },
+              "test": {
+                "kind": "held",
+                "target": "copper_bar",
+                "count": 1.0
+              }
+            }
+          },
+          "index": 0,
+          "execution_outcome": true,
+          "outcome": true,
+          "requirement_resolved": true,
+          "terminal": true,
+          "failures": [],
+          "admitted": false,
+          "decision_distinguishing": false,
+          "cancellation_reasons": [],
+          "status": "REQUIREMENT_MET",
+          "trial_id": 1
+        }
+      ],
+      "fulfilled": true,
+      "steps": 1,
+      "score_delta": 0,
+      "usage": {
+        "requests": 0,
+        "successful_responses": 0,
+        "peak_usd_estimate": 0,
+        "unknown_charge_attempts": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "cache_hit_tokens": 0,
+        "actual_models": [],
+        "summed_request_seconds": 0
+      },
+      "proposal_calls_after": 7
+    },
+    "plan": {
+      "rows": [
+        {
+          "step": 60,
+          "observation": "\nCurrent Time: 0001-01-01 17:50:00\nCurrent Location: Old Castle, armory\n\nI used a key to unlock the path to armory. I entered armory.\n\nI am holding 1 oak_rod.\nI have equipped no objects.\nI see 8 iron_ore, 3 copper_bar, 3 fiber_bundle, 2 oak_log, 4 stone, 4 iron_bar, 3 coal_chunk near me.\nI see oliver_hart, scrap_goblin_0 nearby.\n\nMy level is 1.\nMy attack is at 13.\nMy defense is at 0.\nMy health is at 97.\nMy experience is at 45.\n\nNeighboring areas: hall, stalls.\n",
+          "action": "pick up copper_bar",
+          "response": {
+            "reasoning": "The armory contains copper_bar, which is one of two ingredients for copper_sword (copper_bar + oak_rod). I already hold an oak_rod. I need to pick up a copper_bar, then craft the sword. However, crafting requires a workbench, which is in the hall, not here. So the immediate step is to pick up the copper_bar, then return to the hall to craft.",
+            "action": "pick up copper_bar",
+            "frame": {
+              "goal_quote": "Craft a copper sword and hold it in your hands.",
+              "method": "Pick up copper_bar here, return to hall (workbench present), craft copper_sword, equip it.",
+              "required_state": "Holding copper_bar and oak_rod at a location with a workbench.",
+              "feasibility": "jointly possible: copper_bar present here, oak_rod held, workbench in hall.",
+              "assessment": "Armory entry succeeded with key; copper_bar is now visible on the ground.",
+              "expected": "I will be holding 1 copper_bar and 1 oak_rod; copper_bar removed from ground."
+            },
+            "core_gate": {
+              "reason": "NO_ADMITTED_CONTINUATION",
+              "changed": false,
+              "proposed": "pick up copper_bar",
+              "packet_id": "f7bcdc9d2a7ea4e93b5a519f2d4073ebbd098dd0f81e04f5b5b7b1e71e631dbe"
+            },
+            "decision_source": "scar_core_actor",
+            "core_packet": {
+              "guard": "07130b98e06cd7016fe263a9704377e025eac2f9c3c9b46cd7512d2eeead166a",
+              "proposal": "pick up copper_bar",
+              "focus": {
+                "task": "Craft a copper sword and hold it in your hands.",
+                "target": "copper_sword"
+              },
+              "observed_check": {
+                "status": "unknown",
+                "reason": "no contradiction established; success is not guaranteed"
+              },
+              "evidence_rejection": null,
+              "candidates": [],
+              "rejected": [],
+              "recommendation": null,
+              "combat": false,
+              "semantics": "UNKNOWN remains available to the LLM; automatic substitutions require all listed checks",
+              "id": "f7bcdc9d2a7ea4e93b5a519f2d4073ebbd098dd0f81e04f5b5b7b1e71e631dbe"
+            },
+            "core_compute_ms": 1.8089740005962085,
+            "core_initial_proposal": {
+              "reasoning": "The armory contains copper_bar, which is one of two ingredients for copper_sword (copper_bar + oak_rod). I already hold an oak_rod. I need to pick up a copper_bar, then craft the sword. However, crafting requires a workbench, which is in the hall, not here. So the immediate step is to pick up the copper_bar, then return to the hall to craft.",
+              "action": "pick up copper_bar",
+              "frame": {
+                "goal_quote": "Craft a copper sword and hold it in your hands.",
+                "method": "Pick up copper_bar here, return to hall (workbench present), craft copper_sword, equip it.",
+                "required_state": "Holding copper_bar and oak_rod at a location with a workbench.",
+                "feasibility": "jointly possible: copper_bar present here, oak_rod held, workbench in hall.",
+                "assessment": "Armory entry succeeded with key; copper_bar is now visible on the ground.",
+                "expected": "I will be holding 1 copper_bar and 1 oak_rod; copper_bar removed from ground."
+              }
+            },
+            "continuation": {
+              "step": 59,
+              "original": "pick up copper_bar",
+              "changed": false,
+              "trigger": null,
+              "previous_repair": {
+                "step": 59,
+                "contract": {
+                  "action": "enter armory",
+                  "test": {
+                    "kind": "at",
+                    "target": "armory"
+                  },
+                  "stage": "route",
+                  "need": {
+                    "kind": "resource",
+                    "target": "copper_bar",
+                    "count": 1.0,
+                    "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                    "depth": 1,
+                    "id": "541b48a17b74"
+                  },
+                  "chain": [
+                    {
+                      "kind": "resource",
+                      "target": "copper_bar",
+                      "count": 1.0,
+                      "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                      "depth": 1,
+                      "id": "541b48a17b74"
+                    }
+                  ],
+                  "steps": [
+                    {
+                      "action": "pick up key",
+                      "test": {
+                        "kind": "held",
+                        "target": "key",
+                        "count": 1
+                      },
+                      "may_consume": {}
+                    },
+                    {
+                      "action": "enter armory",
+                      "test": {
+                        "kind": "at",
+                        "target": "armory"
+                      },
+                      "may_consume": {
+                        "key": 1
+                      }
+                    }
+                  ]
+                },
+                "index": 0,
+                "execution_outcome": true,
+                "outcome": true,
+                "requirement_resolved": false,
+                "status": "MILESTONE_OBSERVED",
+                "kind": "MILESTONE_OBSERVED",
+                "need": {
+                  "kind": "resource",
+                  "target": "copper_bar",
+                  "count": 1.0,
+                  "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                  "depth": 1,
+                  "id": "541b48a17b74"
+                },
+                "failures": [],
+                "admitted": false,
+                "decision_distinguishing": false,
+                "cancellation_reasons": [],
+                "next_frontier": {
+                  "status": "ready",
+                  "action": "pick up copper_bar",
+                  "test": {
+                    "kind": "held",
+                    "target": "copper_bar",
+                    "count": 1
+                  },
+                  "stage": "acquire",
+                  "need": {
+                    "kind": "resource",
+                    "target": "copper_bar",
+                    "count": 1.0,
+                    "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                    "depth": 1,
+                    "id": "541b48a17b74"
+                  },
+                  "chain": [
+                    {
+                      "kind": "resource",
+                      "target": "copper_bar",
+                      "count": 1.0,
+                      "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                      "depth": 1,
+                      "id": "541b48a17b74"
+                    }
+                  ],
+                  "site": "Old Castle, armory"
+                }
+              },
+              "reason": "COMPILED_REQUIREMENT_PLAN",
+              "contract": {
+                "status": "ready",
+                "action": "pick up copper_bar",
+                "test": {
+                  "kind": "held",
+                  "target": "copper_bar",
+                  "count": 1
+                },
+                "stage": "acquire",
+                "need": {
+                  "kind": "resource",
+                  "target": "copper_bar",
+                  "count": 1.0,
+                  "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                  "depth": 1,
+                  "id": "541b48a17b74"
+                },
+                "chain": [
+                  {
+                    "kind": "resource",
+                    "target": "copper_bar",
+                    "count": 1.0,
+                    "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                    "depth": 1,
+                    "id": "541b48a17b74"
+                  }
+                ],
+                "site": "Old Castle, armory"
+              },
+              "plan": {
+                "root_need": {
+                  "kind": "resource",
+                  "target": "copper_bar",
+                  "count": 1.0,
+                  "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                  "depth": 1,
+                  "id": "541b48a17b74"
+                },
+                "goal_quote": "Craft a copper sword and hold it in your hands.",
+                "bindings": {
+                  "4ea060fe6f79": {
+                    "kind": "source",
+                    "site_id": "d18454e92be7"
+                  }
+                },
+                "completed": [
+                  {
+                    "action": "enter armory",
+                    "test": {
+                      "kind": "at",
+                      "target": "armory"
+                    },
+                    "step": 59
+                  }
+                ]
+              },
+              "executed": "pick up copper_bar"
+            }
+          },
+          "next_observation": "\nCurrent Time: 0001-01-01 18:00:00\nCurrent Location: Old Castle, armory\n\nI picked up copper_bar.\nFriction recedes. Focus steadies, and intent becomes clear.\nI have acquired a new item: copper_bar. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), key (1 copper_bar, 1 fiber_bundle), lantern (1 copper_bar, 1 glass_shard, 1 thread), copper_mail (2 copper_bar, 2 leather_strip, 1 thread)\nI was attacked by scrap_goblin_0 and lost 6 HP.\n\nI am holding 1 oak_rod, 1 copper_bar.\nI have equipped no objects.\nI see 8 iron_ore, 2 copper_bar, 3 fiber_bundle, 2 oak_log, 4 stone, 4 iron_bar, 3 coal_chunk near me.\nI see oliver_hart, scrap_goblin_0 nearby.\n\nMy level is 1.\nMy attack is at 13.\nMy defense is at 0.\nMy health is at 91.\nMy experience is at 45.\n\nNeighboring areas: hall, stalls.\n",
+          "before_digest": "89ab1804590f73bf6c646305e9cfe9883c168ef9a9b39763aa76ef1ab0ab5c6e",
+          "after_digest": "c03b2c20a367f8d3636e60a28f3d314e4b8ab9578e2873863666474ce6ab50c7",
+          "scores": {
+            "unique_kill": 2,
+            "kill": 2,
+            "craft": 1,
+            "exploration": 2,
+            "death": 0,
+            "trade": 0,
+            "quest": 1,
+            "side_quest": 0
+          }
+        }
+      ],
+      "outcomes": [
+        {
+          "step": 58,
+          "contract": {
+            "goal_quote": "Craft a copper sword and hold it in your hands.",
+            "blocker": "copper_bar not found; armory locked",
+            "hypothesis": "The key on the hall ground unlocks the armory, which contains copper_bar or crafting materials.",
+            "task_link": "copper_bar is required for copper_sword; armory is the only unexplored locked area",
+            "basis": [
+              "I see 5 coin, 1 key, 1 small_pouch_0",
+              "Cannot enter armory, the door is locked."
+            ],
+            "need_id": "541b48a17b74",
+            "verification": {
+              "mode": "source",
+              "site": "Old Castle, armory"
+            },
+            "steps": [
+              {
+                "action": "pick up key",
+                "test": {
+                  "kind": "held",
+                  "target": "key",
+                  "count": 1
+                },
+                "may_consume": {}
+              },
+              {
+                "action": "enter armory",
+                "test": {
+                  "kind": "at",
+                  "target": "armory"
+                },
+                "may_consume": {
+                  "key": 1
+                }
+              }
+            ],
+            "branches": null,
+            "key": "f7cbb98b05b653ac82ab23ac8602ecda202f406c81b001f159c5717bf37fd0c0",
+            "task": "2031e946257076014eec556d9702062b3b7a20b2883a7ffb8d94d92caab1e59d",
+            "epoch": 40,
+            "step": 57,
+            "information": false,
+            "checks": {
+              "errors": [],
+              "unknown": [
+                {
+                  "index": 1,
+                  "kind": "NAVIGATION_EFFECTS_AND_SAFETY_UNVERIFIED"
+                },
+                {
+                  "index": 1,
+                  "kind": "CONSUMPTION_IS_A_HYPOTHESIS",
+                  "resources": {
+                    "key": 1
+                  }
+                }
+              ],
+              "projected": {
+                "holding": {
+                  "oak_rod": 1.0,
+                  "key": 0
+                },
+                "ground": null,
+                "equipped": {},
+                "location": null,
+                "neighbors": [],
+                "fresh_tasks": []
+              }
+            },
+            "reserves": {
+              "copper_sword": 1,
+              "oak_rod": 1.0
+            },
+            "objective": {
+              "mode": "source",
+              "need": {
+                "kind": "resource",
+                "target": "copper_bar",
+                "count": 1.0,
+                "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                "depth": 1,
+                "id": "541b48a17b74"
+              },
+              "test": {
+                "kind": "visible",
+                "target": "copper_bar",
+                "count": 1.0,
+                "location": "Old Castle, armory"
+              }
+            }
+          },
+          "index": 0,
+          "execution_outcome": true,
+          "outcome": null,
+          "requirement_resolved": null,
+          "terminal": false,
+          "failures": [],
+          "admitted": true,
+          "decision_distinguishing": false,
+          "cancellation_reasons": [],
+          "status": "EXECUTION_MILESTONE_ONLY",
+          "continuation_check": {
+            "errors": [],
+            "unknown": [
+              {
+                "index": 0,
+                "kind": "NAVIGATION_EFFECTS_AND_SAFETY_UNVERIFIED"
+              },
+              {
+                "index": 0,
+                "kind": "CONSUMPTION_IS_A_HYPOTHESIS",
+                "resources": {
+                  "key": 1
+                }
+              }
+            ],
+            "projected": {
+              "holding": {
+                "oak_rod": 1.0,
+                "key": 0
+              },
+              "ground": null,
+              "equipped": {},
+              "location": null,
+              "neighbors": [],
+              "fresh_tasks": []
+            }
+          },
+          "proposed_continuation": "enter armory"
+        },
+        {
+          "step": 59,
+          "contract": {
+            "action": "enter armory",
+            "test": {
+              "kind": "at",
+              "target": "armory"
+            },
+            "stage": "route",
+            "need": {
+              "kind": "resource",
+              "target": "copper_bar",
+              "count": 1.0,
+              "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+              "depth": 1,
+              "id": "541b48a17b74"
+            },
+            "chain": [
+              {
+                "kind": "resource",
+                "target": "copper_bar",
+                "count": 1.0,
+                "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                "depth": 1,
+                "id": "541b48a17b74"
+              }
+            ],
+            "steps": [
+              {
+                "action": "pick up key",
+                "test": {
+                  "kind": "held",
+                  "target": "key",
+                  "count": 1
+                },
+                "may_consume": {}
+              },
+              {
+                "action": "enter armory",
+                "test": {
+                  "kind": "at",
+                  "target": "armory"
+                },
+                "may_consume": {
+                  "key": 1
+                }
+              }
+            ]
+          },
+          "index": 0,
+          "execution_outcome": true,
+          "outcome": true,
+          "requirement_resolved": false,
+          "status": "MILESTONE_OBSERVED",
+          "kind": "MILESTONE_OBSERVED",
+          "need": {
+            "kind": "resource",
+            "target": "copper_bar",
+            "count": 1.0,
+            "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+            "depth": 1,
+            "id": "541b48a17b74"
+          },
+          "failures": [],
+          "admitted": false,
+          "decision_distinguishing": false,
+          "cancellation_reasons": [],
+          "next_frontier": {
+            "status": "ready",
+            "action": "pick up copper_bar",
+            "test": {
+              "kind": "held",
+              "target": "copper_bar",
+              "count": 1
+            },
+            "stage": "acquire",
+            "need": {
+              "kind": "resource",
+              "target": "copper_bar",
+              "count": 1.0,
+              "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+              "depth": 1,
+              "id": "541b48a17b74"
+            },
+            "chain": [
+              {
+                "kind": "resource",
+                "target": "copper_bar",
+                "count": 1.0,
+                "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                "depth": 1,
+                "id": "541b48a17b74"
+              }
+            ],
+            "site": "Old Castle, armory"
+          }
+        },
+        {
+          "step": 60,
+          "contract": {
+            "status": "ready",
+            "action": "pick up copper_bar",
+            "test": {
+              "kind": "held",
+              "target": "copper_bar",
+              "count": 1
+            },
+            "stage": "acquire",
+            "need": {
+              "kind": "resource",
+              "target": "copper_bar",
+              "count": 1.0,
+              "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+              "depth": 1,
+              "id": "541b48a17b74"
+            },
+            "chain": [
+              {
+                "kind": "resource",
+                "target": "copper_bar",
+                "count": 1.0,
+                "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                "depth": 1,
+                "id": "541b48a17b74"
+              }
+            ],
+            "site": "Old Castle, armory",
+            "steps": [
+              {
+                "action": "pick up copper_bar",
+                "test": {
+                  "kind": "held",
+                  "target": "copper_bar",
+                  "count": 1
+                }
+              }
+            ]
+          },
+          "index": 0,
+          "execution_outcome": true,
+          "outcome": true,
+          "requirement_resolved": true,
+          "status": "MILESTONE_OBSERVED",
+          "kind": "MILESTONE_OBSERVED",
+          "need": {
+            "kind": "resource",
+            "target": "copper_bar",
+            "count": 1.0,
+            "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+            "depth": 1,
+            "id": "541b48a17b74"
+          },
+          "failures": [],
+          "admitted": false,
+          "decision_distinguishing": false,
+          "cancellation_reasons": [],
+          "next_frontier": {
+            "status": "done",
+            "need": {
+              "kind": "resource",
+              "target": "copper_bar",
+              "count": 1.0,
+              "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+              "depth": 1,
+              "id": "541b48a17b74"
+            },
+            "chain": [
+              {
+                "kind": "resource",
+                "target": "copper_bar",
+                "count": 1.0,
+                "support": "I have acquired a new item: oak_rod. It can be used to craft: pen (1 oak_rod, 0.5 ink_sap), oak_sword (1 oak_log, 1 oak_rod), steel_sword (1 steel_ingot, 1 oak_rod), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_dagger (1 oak_rod, 1 resin_clump), copper_sword (1 copper_bar, 1 oak_rod), torch (1 oak_rod, 1 coal_chunk)",
+                "depth": 1,
+                "id": "541b48a17b74"
+              }
+            ]
+          }
+        }
+      ],
+      "fulfilled": true,
+      "steps": 1,
+      "score_delta": 0,
+      "usage": {
+        "requests": 0,
+        "successful_responses": 0,
+        "peak_usd_estimate": 0,
+        "unknown_charge_attempts": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "cache_hit_tokens": 0,
+        "actual_models": [],
+        "summed_request_seconds": 0
+      },
+      "proposal_calls_after": 7
+    }
+  },
+  "evaluator_sha256": "0fc5ebbc9e9b344c3f17ad2e4848afb8d5262c0eb812b246a6f38900684f10fa"
+}

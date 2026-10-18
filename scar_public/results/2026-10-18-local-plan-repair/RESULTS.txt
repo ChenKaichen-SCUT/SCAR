@@ -1,0 +1,143 @@
+Local requirement-plan repair: two frozen development iterations, 2026-10-18
+
+Conclusion
+The new opt-in arm keeps a requirement and changes its implementation after
+failure. An LLM proposes a high-level method; a compiler supplies public routes,
+recipe dependencies and one executable next action, then checks the actual
+outcome. A native failed-route -> acquire key -> unlock the intended destination
+chain now exists. But local recovery has not produced reliable whole-game
+improvement. The selected difficult material-source state remains unresolved.
+Do not promote this arm to the default or claim the second gap is solved.
+
+Full-game quest scores, maximum 300 actual actions
+world | checked | compact | Sentry | h2 | objective o3 | plan p1 | plan p2
+mark_r0 | 16 | 15 | 17 | 17 | 17 | 17 | 17
+mark_r1 | 5 | 17 | 5 | 5 | 5 | 16 | 5
+metropolis_r1 | 10 | 9 | 8 | 8 | 10 | 8 | 8
+metropolis_7537 | 13 | 10 | 10 | 13 | 13 | 10 | 13
+
+All four worlds are existing development worlds. Each policy freeze was run
+once. Exact prior API responses were reused when payload and step matched;
+frozen baseline APIs were not rerun. Sentry is the existing author-adapter
+comparison, not the full external paper evaluation. Shared initial states and
+common-prefix equality do not make later divergent trajectories identical.
+There is no held-out validation or statistical significance estimate here.
+Both iterations are retained; no best-per-world selection is reported.
+
+Implemented mechanism
+The LLM chooses among material sources, observed recipes, access hypotheses
+and accessible container checks using supplied evidence IDs. The compiler
+retains parent requirements while resolving missing ingredients, and handles
+observed source quantity, directed navigation, station access, known capacity
+and actual acquisition. It accepts partial plans and commits only one action.
+A successful move is a milestone, not proof of material acquisition. An
+unknown view is not absence; a crafted output is not presumed held. An
+unresolved source or ingredient can trigger a revision of the same requirement.
+Existing compiled steps can continue without a new method call. Urgent actor
+actions take priority. The bounded fallback is still the ordinary actor.
+The new plan policy contains no game/entity-specific rules. This is a structural design
+property and unit-test result, not proof of generalization to unseen games.
+
+Frozen iterations
+p1: method proposer plus public action compiler; 160 targeted tests passed.
+p2: after p1 exhibited access-route cycles, defer a recently failed directed
+edge for up to 16 actions under unchanged carried/equipped resources. Revoke
+on resource change or later successful crossing. Expose the same route checks
+to the method proposer before selection. No new action family or call budget.
+163 targeted/regression tests passed before p2. These are different policies,
+not independent repeated samples of one frozen algorithm. The finite access
+deferral can miss time/report-driven door changes and is explicitly heuristic.
+
+What worked in a native run
+p1 Metropolis-r1 decision 117 tries enter-alley on a planned route to the
+market; the environment says the door is locked. The same unresolved access
+requirement is retained. Decision 120 selects pickup-chamber_key, replacing
+the actor's enter-clerks_office. Decision 121 enters market_square. Actual
+feedback states that a key was used to unlock the path. The compiler records
+the original access requirement as resolved only after this observation.
+This is an actual failed method followed by an effective alternative, not
+just a changed proposal or successful first step. It still contributes no
+immediate quest point, and the final quest score is 8 versus objective o3's 10.
+The access requirement is a method subproblem; its global task value is not
+proved. p2 does not reproduce this same recovery chain.
+
+The p1 Mark-r1 score rises from objective o3's 5 to 16. Its only override is
+decision 49: acquire the visible key instead of retrying the locked armory.
+This initial intervention is not itself a failed-trial revision. Later actions
+and stochastic consequences diverge; attributing all eleven points to the
+new revision mechanism would be unjustified. p2 reverts to 5 in that world.
+Mark-r0 passes under both p1 and p2, at 286 and 264 actions respectively;
+objective o3 took 268 and h2 took 228. These runs do not establish a speedup.
+
+What failed or was merely preserved
+p1 Metropolis-7537 follows repeated access routes and scores 10 versus 13.
+p2 makes no overrides there and exactly follows checked for 300 actions,
+scoring 13. This restores the existing trajectory; it is not new planning
+progress. p2 Mark-r1 also has zero overrides and exactly follows checked.
+Native recipe backchaining and capacity recovery have not been demonstrated
+to improve these games. Their positive coverage is primarily synthetic tests.
+
+Selected-state diagnostics: retain the negative result
+Both freezes reconstruct the same h2 Mark-r1 prefix through action 188, then
+compare objective and plan policies for at most eight actions from identical
+private snapshots and public history. The pending requirement binding is
+evaluator-supplied. The legacy agent has already spent twelve proposal calls;
+both arms receive TWO supplemental calls by setting the inherited counter to
+ten. This diagnostic intervention is not a native whole-game result.
+The plan arm changes from the empty library to a reachable armory source,
+compiles hall -> armory and actually executes it. The armory also has no copper.
+Both policies, under both freezes, fail to acquire copper in the eight-action
+window, with zero score gain. With calls exhausted, the ordinary actor can
+continue looping. This does not prove the state is unsolvable.
+
+The positive control reconstructs objective-o2 Mark-r0 through action 59,
+where copper is actually visible. Both policies pick it up in one action;
+no supplemental calls or new API requests are needed. This shows preservation
+in that selected state only. p2 uses exact caches for the repeated control.
+
+Post-hoc proposal-versus-checker audit (zero new API calls)
+Reconstruct p2 Mark-r1 through the shared decision-49 state with exact cached
+requests and 48 verified environment transitions. Supply p1's recorded method
+proposal to the p2 compiler. It still accepts the key hypothesis and compiles
+pickup-key. Actual p2 instead proposed an unreachable tutorial source and an
+empty hall source; its correction omitted the method schema. Thus this case
+is a proposal/correction reliability failure, not the new gate forbidding a
+known effective key method. The supplied proposal is evaluator intervention,
+not autonomous recovery, a causal ablation, or evidence of game-score gain.
+
+Remaining gaps
+1. Evidence and compiler checks cannot ensure that the LLM generates a useful
+   method. Referencing a historical source is still easier than proposing an
+   operation that creates or releases the missing material. Schema failures
+   also consume the bounded correction opportunity.
+2. An attempted destination can remain the fixed access subproblem even when
+   a different destination would better serve the original task. The method
+   requirements are not a complete model of global task necessity or value.
+3. Requirement extraction remains incomplete, and fallback loops remain. The
+   selected exhausted-material state is still unsolved; simply returning to
+   another empty source does not change the blocking condition.
+4. Synthetic recipe/capacity tests and a real local unlock are not evidence
+   that the expanded method space improves complete-game score. Both positive
+   and negative same-state controls, independent worlds, and repeats will be
+   necessary after a useful policy is frozen. These results do not yet justify
+   that expensive validation stage.
+
+Validation and accounting
+163 targeted/regression tests passed. Both frozen source manifests remained
+unchanged; current local policy source matches p2 byte-for-byte.
+2350 full-game action transitions replayed exactly; 1186 common-prefix
+transitions also matched checked. Selected probes reconstructed 494 prefix
+transitions and replayed 36 branch transitions; the proposal audit reconstructed
+another 48. All recorded equality assertions passed.
+Across both new freezes, selected probes and audit: 1291 new API requests,
+1291 successful responses, 0 unknown-charge attempts. Existing frozen-rate
+estimate: USD 2.579263848; this is not a current billing invoice.
+Negative attempts and retries are included. No paid baseline reruns were made.
+Public evidence: 5791 files, 28065532 bytes, SHA256
+4e66a496a4a4cb1e4e011c74525291b4a6f6017bee16df409704c51e6e861269
+Exact API-key and SSH-password scans passed. Private environment snapshots
+are excluded. The local archive receipt, source manifests, raw selected-state
+diagnostics, compact native traces, evaluator scripts and analysis accompany
+this report. Complete public request/response logs remain in the archive.
+Review copies of evaluator scripts normalize trailing blank lines; byte-exact
+executed scripts and their recorded hashes are retained in the archive.

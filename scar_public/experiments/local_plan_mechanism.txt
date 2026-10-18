@@ -1,0 +1,76 @@
+SCAR local requirement-plan repair (experimental opt-in arm)
+
+Purpose
+When a trial fails, keep the requirement it was meant to satisfy and repair
+its method. A different command, a successful move, and a completed material
+requirement are different outcomes. This implementation makes that distinction
+executable; performance improvement must still be established experimentally.
+
+Entry points
+scar_public.plan_repair.PlanRepairAgent
+scar_public.experiments.core_trial.build_trial_agent('plan', ...)
+scar_public.experiments.obstacle_trial --agent plan --steps 300
+The ordinary actor and old default arms remain available. The experimental
+arm does not stack another paid selector after the old repair selector.
+
+Decision loop
+1. Read actual public observation into the existing public model and notebook.
+2. If a compiled action was pending, check its actual outcome. Retain observed
+   milestones, but resolve the root only with its own condition: material in
+   hand at the required quantity, or actual arrival for an access subproblem.
+3. Continue a bounded active plan if the next prerequisite has a supported
+   executable action. Yield to the ordinary actor's urgent actions.
+4. If a prerequisite is unresolved, ask about that same child requirement.
+   The LLM proposes at most two methods using supplied evidence and site IDs:
+   source, known recipe, access hypothesis, or container inspection/retrieval.
+   IDs establish provenance, not that a causal hypothesis is correct.
+5. Compile the next action from public directed routes, observed recipes and
+   actual inventory. Do not require the LLM to spell out navigation commands.
+   Missing recipe inputs preserve the parent recipe. No reverse edge, recipe
+   or successful remedy is invented to make a candidate executable.
+6. Execute one action and return to step 1. A failed source changes the source
+   method, not the required material. A capacity problem retains the source.
+   Darkness is unknown visibility, not evidence of absent material.
+
+Examples supported by the compiler
+- Obtain a missing ingredient, then craft, then pick up the actual output.
+- Acquire a publicly observed object hypothesized to enable a locked entrance.
+- Inspect an accessible container; retrieve a material only after contents are
+  observed. An uninformative inspection cannot establish absence or success.
+- Temporarily store an unrelated carried item in an already inspected attached
+  container with observed space, preserving parent ingredients and goal reserves.
+These are generic operator patterns; no game, location or item name appears in
+the policy. Synthetic unit coverage is distinct from native game evidence.
+
+Revocation and cost limits
+Source absence is scoped to material, quantity, location and task, expiring
+after 24 actions; changed observed quantity can revoke it. In p2 an actually
+failed directed entrance is deferred for at most 16 actions with the same
+carried/equipped resources. A changed resource state or later successful
+crossing revokes it. This restriction affects compiled repairs only. A world
+can change its doors over time or by report; the finite deferral is a heuristic
+and can temporarily miss such a change. It is not an infeasibility theorem.
+Each plan has four dependency levels, a 64-node route search and a 16-action
+window. Twelve method calls are allowed, including corrections; ordinary new
+repairs stop at ten, reserving two calls for an active unresolved plan. A repeat
+of the same query context is deferred for six steps. Existing valid actions
+can continue after the call budget. Otherwise the ordinary actor remains the
+fallback; its loops are not globally prevented.
+
+Scope limits
+Requirement extraction still uses the existing public fragment and is
+incomplete. An access destination can be a prerequisite of the attempted
+method without being necessary for the global task. The compiler cannot prove
+the usefulness of visiting it. Candidate ranking remains LLM order after
+checks, not a learned or proven estimate of task value. Unsupported dialogue,
+unseen recipes, unknown reverse routes and general capacity rearrangement
+remain unresolved. API-format mistakes can exhaust the single correction.
+There is no guarantee of whole-game success, preservation of all future
+options, optimality, or positive information value. Evaluate actual material
+acquisition, task score, and action/API costs; do not substitute admission or
+milestone counts for those outcomes.
+
+Validation
+See plan_protocol.txt and results/2026-10-18-local-plan-repair/RESULTS.txt.
+The development study retains both frozen iterations and all losses. It does
+not justify changing the default policy or claim independent generalization.

@@ -1,0 +1,219 @@
+{
+  "qualification": "Post-hoc supplied-proposal audit, not autonomous recovery or new evaluation.",
+  "world": "mark_r1",
+  "decision": 49,
+  "prefix_replays": 48,
+  "initial_digest": "c4d89439fba402d0f0d45473b80a4c2e56ca2678fa82e712049c819957a6d47e",
+  "identical_public_state": true,
+  "supplied_proposal_source": "p1 Mark-r1 decision 49",
+  "actual_p2_action": "enter armory",
+  "actual_p2_reason": "ACTOR_RETAINS_ORIGINAL",
+  "actual_p2_initial_rejections": [
+    {
+      "candidate": {
+        "need_id": "541b48a17b74",
+        "goal_quote": "arlen says: Craft a copper sword and hold it in your hands.",
+        "kind": "source",
+        "site_id": "908972be9ff8",
+        "hypothesis": "A copper_bar was observed in the Tutorial room; it may still be there as an alternate source since the armory is locked.",
+        "evidence_ids": [
+          "a8eb470944eb",
+          "1d837902a466",
+          "40b788ba12da"
+        ]
+      },
+      "reasons": [
+        "NO_OBSERVED_ROUTE"
+      ],
+      "frontier": {
+        "status": "frontier",
+        "kind": "NO_OBSERVED_ROUTE",
+        "need": {
+          "kind": "resource",
+          "target": "copper_bar",
+          "count": 1.0,
+          "support": "I have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), pen (1 oak_rod, 0.5 ink_sap), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), oak_dagger (1 oak_rod, 1 resin_clump), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_sword (1 oak_log, 1 oak_rod)",
+          "depth": 1,
+          "id": "541b48a17b74"
+        },
+        "chain": [
+          {
+            "kind": "resource",
+            "target": "copper_bar",
+            "count": 1.0,
+            "support": "I have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), pen (1 oak_rod, 0.5 ink_sap), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), oak_dagger (1 oak_rod, 1 resin_clump), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_sword (1 oak_log, 1 oak_rod)",
+            "depth": 1,
+            "id": "541b48a17b74"
+          }
+        ],
+        "site": {
+          "location": "Tutorial, room",
+          "name": "room",
+          "objects": {
+            "coin": 1.0,
+            "workbench": 1.0,
+            "copper_bar": 1.0,
+            "pen": 1.0,
+            "fiber_bundle": 1.0
+          },
+          "neighbors": [
+            "hall"
+          ],
+          "last_observed": true,
+          "evidence_id": "a8eb470944eb"
+        },
+        "blocked": []
+      }
+    },
+    {
+      "candidate": {
+        "need_id": "541b48a17b74",
+        "goal_quote": "arlen says: Craft a copper sword and hold it in your hands.",
+        "kind": "source",
+        "site_id": "1735fcff5ff8",
+        "hypothesis": "Copper_bar might be obtainable in the hall from the scrap_goblin or other nearby objects; unverified, but the hall is accessible.",
+        "evidence_ids": [
+          "1d837902a466",
+          "d239935d0016"
+        ]
+      },
+      "reasons": [
+        "SOURCE_ABSENT"
+      ],
+      "frontier": {
+        "status": "frontier",
+        "kind": "SOURCE_ABSENT",
+        "need": {
+          "kind": "resource",
+          "target": "copper_bar",
+          "count": 1.0,
+          "support": "I have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), pen (1 oak_rod, 0.5 ink_sap), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), oak_dagger (1 oak_rod, 1 resin_clump), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_sword (1 oak_log, 1 oak_rod)",
+          "depth": 1,
+          "id": "541b48a17b74"
+        },
+        "chain": [
+          {
+            "kind": "resource",
+            "target": "copper_bar",
+            "count": 1.0,
+            "support": "I have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), pen (1 oak_rod, 0.5 ink_sap), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), oak_dagger (1 oak_rod, 1 resin_clump), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_sword (1 oak_log, 1 oak_rod)",
+            "depth": 1,
+            "id": "541b48a17b74"
+          }
+        ],
+        "site": "Old Castle, hall",
+        "quantity": 0
+      }
+    }
+  ],
+  "actual_p2_final_rejections": [
+    {
+      "reasons": [
+        "METHOD_SCHEMA_REQUIRED"
+      ]
+    }
+  ],
+  "supplied_proposal": {
+    "reasoning": "The goal is to craft a copper sword and hold it. I have the oak_rod and a workbench is present in the hall, so the only missing ingredient is a copper_bar. The armory door is locked, so I cannot source copper_bar there yet. However, a copper_bar was previously observed in the Tutorial room (site 908972be9ff8), which is reachable via hall. That is a concrete alternative source for the copper_bar requirement, bypassing the locked armory. I should revise the method to go to the Tutorial room to pick up the copper_bar.",
+    "action": "talk to arlen",
+    "keep_original": false,
+    "methods": [
+      {
+        "need_id": "541b48a17b74",
+        "goal_quote": "arlen says: Craft a copper sword and hold it in your hands.",
+        "kind": "source",
+        "site_id": "908972be9ff8",
+        "hypothesis": "A copper_bar was previously observed on the ground in the Tutorial room; traveling there and picking it up provides the missing copper_bar without needing the locked armory.",
+        "evidence_ids": [
+          "a8eb470944eb",
+          "40b788ba12da",
+          "a7efaf209961"
+        ]
+      },
+      {
+        "need_id": "a96193c475c5",
+        "goal_quote": "arlen says: Craft a copper sword and hold it in your hands.",
+        "kind": "access",
+        "site_id": "d18454e92be7",
+        "via_item": "key",
+        "hypothesis": "The armory door is locked; a key was observed in the hall and may unlock the armory as a fallback source of copper_bar.",
+        "evidence_ids": [
+          "40b788ba12da",
+          "1d837902a466"
+        ]
+      }
+    ]
+  },
+  "p2_accepts_supplied_proposal": true,
+  "compiled_action": "pick up key",
+  "rejections": [
+    {
+      "candidate": {
+        "need_id": "541b48a17b74",
+        "goal_quote": "arlen says: Craft a copper sword and hold it in your hands.",
+        "kind": "source",
+        "site_id": "908972be9ff8",
+        "hypothesis": "A copper_bar was previously observed on the ground in the Tutorial room; traveling there and picking it up provides the missing copper_bar without needing the locked armory.",
+        "evidence_ids": [
+          "a8eb470944eb",
+          "40b788ba12da",
+          "a7efaf209961"
+        ]
+      },
+      "reasons": [
+        "NO_OBSERVED_ROUTE"
+      ],
+      "frontier": {
+        "status": "frontier",
+        "kind": "NO_OBSERVED_ROUTE",
+        "need": {
+          "kind": "resource",
+          "target": "copper_bar",
+          "count": 1.0,
+          "support": "I have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), pen (1 oak_rod, 0.5 ink_sap), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), oak_dagger (1 oak_rod, 1 resin_clump), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_sword (1 oak_log, 1 oak_rod)",
+          "depth": 1,
+          "id": "541b48a17b74"
+        },
+        "chain": [
+          {
+            "kind": "resource",
+            "target": "copper_bar",
+            "count": 1.0,
+            "support": "I have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), pen (1 oak_rod, 0.5 ink_sap), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), oak_dagger (1 oak_rod, 1 resin_clump), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_sword (1 oak_log, 1 oak_rod)",
+            "depth": 1,
+            "id": "541b48a17b74"
+          }
+        ],
+        "site": {
+          "location": "Tutorial, room",
+          "name": "room",
+          "objects": {
+            "coin": 1.0,
+            "workbench": 1.0,
+            "copper_bar": 1.0,
+            "pen": 1.0,
+            "fiber_bundle": 1.0
+          },
+          "neighbors": [
+            "hall"
+          ],
+          "last_observed": true,
+          "evidence_id": "a8eb470944eb"
+        },
+        "blocked": []
+      }
+    }
+  ],
+  "interpretation": "The p2 compiler still admits the prior key hypothesis at the identical state. Actual p2 did not generate this method and its correction omitted the required schema. This diagnoses proposal reliability; it does not estimate whole-game improvement or establish causality of the p2 changes.",
+  "usage": {
+    "requests": 0,
+    "successful_responses": 0,
+    "peak_usd_estimate": 0,
+    "unknown_charge_attempts": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cache_hit_tokens": 0,
+    "actual_models": [],
+    "summed_request_seconds": 0
+  }
+}
