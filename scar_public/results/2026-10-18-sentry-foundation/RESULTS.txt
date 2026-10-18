@@ -1,0 +1,145 @@
+Sentry on the same AgentOdyssey ReAct/LongContext actor, 2026-10-18
+
+Question and scope
+The direct improvement target is author Sentry. All three methods use the same
+clean AgentOdyssey ReAct/LongContext prompt, memory and audited model transport.
+The old SCAR actor and its notebooks, gates and repair pipeline are not used.
+The implemented change is ONLY bounded access to actual historical outcomes
+for the Sentry detector and verifier. It is NOT the proposed persistent-blocker
+mechanism, and this study cannot establish that larger mechanism's usefulness.
+
+Sentry already diagnoses failures, routes repair advice, verifies recovery
+after H=10 actions, and updates its playbook after verified soft recovery.
+Its verifier requires task-relevant, observation-grounded progress, not merely
+any executable action. The source detaches a soft event at H even when unresolved;
+only resolved episodes update the playbook. This motivates studying persistent
+unresolved cases, but does not prove that event retirement caused low scores.
+Its recent diagnosis window contains W=5 cycles. A historical claim can be
+misjudged when its supporting observation is older than that window.
+
+Pinned dependencies
+AgentOdyssey: 248430692a9d4a61d38c6c03ab2126287faaf450
+Sentry: 1d91bca14fa6a4e17908856cc787eb8e8354395f
+https://github.com/agentodyssey/agentodyssey
+https://github.com/nuglifeleoji/Sentry
+These are adapted DeepSeek-flash runs with common JSON repair and a 300-action
+budget, not a reproduction of published benchmark numbers. Author Sentry
+taxonomy, routing, W/H and update policy remain unchanged. Historical retrieval
+adds no model call by itself, but consumes input tokens and may change the
+number of subsequent judgments and trajectory. All such calls are retained.
+
+Frozen experiment
+One new environment draw per familiar game, shared by the three arms. No chosen
+world seed; record the drawn world and Python hash seeds. Run every arm to 300
+actions or game termination. Share only identical step-specific model requests
+to couple the common prefix and avoid duplicate charges. Identical actions from
+identical states are checked by snapshot replay. Subsequent different actions
+are different trajectories; this is not a matched-state causal effect estimate.
+No tuning or replacement world after seeing results. Per-world initial receipts
+are retained in the archive. No full-game failure or unfavorable outcome omitted.
+
+All endpoint results
+Primary column is the environment's main-quest score; side quests are separate.
+feedback_errors is the existing feedback_lines heuristic, not a human-labeled
+error rate. verified is Sentry's own resolved/complete-verification count, not
+independently measured recovery accuracy. Calls/tokens are LOGICAL per arm,
+including shared responses. Paid cache ownership depends on process scheduling
+and should not be used directly to compare method efficiency.
+remnant     base     quest= 2 side=1 passed=False actions=300 feedback_errors=26 verified=0/0 calls=300 input=12178367 output=30603 elapsed_s=403.8
+remnant     sentry   quest= 2 side=1 passed=False actions=300 feedback_errors=33 verified=12/23 calls=423 input=15231478 output=48734 elapsed_s=556.9
+remnant     evidence quest= 0 side=0 passed=False actions=300 feedback_errors=43 verified=5/26 calls=395 input=14487375 output=51792 elapsed_s=565.7
+mark        base     quest=11 side=0 passed=False actions=300 feedback_errors=21 verified=0/0 calls=302 input=11122412 output=24703 elapsed_s=381.2
+mark        sentry   quest=16 side=0 passed=False actions=300 feedback_errors=16 verified=14/17 calls=478 input=13646288 output=48305 elapsed_s=602.3
+mark        evidence quest=16 side=0 passed=False actions=300 feedback_errors=17 verified=17/18 calls=475 input=14330252 output=53862 elapsed_s=622.9
+metropolis  base     quest= 8 side=1 passed=False actions=300 feedback_errors=59 verified=0/0 calls=300 input=13134979 output=35736 elapsed_s=437.8
+metropolis  sentry   quest= 8 side=4 passed=False actions=300 feedback_errors=57 verified=9/27 calls=387 input=16204353 output=49583 elapsed_s=569.3
+metropolis  evidence quest= 4 side=1 passed=False actions=300 feedback_errors=56 verified=14/27 calls=391 input=16991875 output=50714 elapsed_s=586.4
+
+Interpretation
+At300 actions, evidence ties original Sentry on Mark (16 vs16), loses on Remnant
+(0 vs2), and loses on Metropolis (4 vs8). Mark reaches16 earlier (cycle235 vs254),
+but this local speed advantage does not establish an endpoint improvement.
+All9 runs remain unpassed. On Metropolis, evidence has MORE self-verified
+recoveries (14 vs9) yet LOWER quest score (4 vs8), illustrating why monitor
+judgments cannot substitute for task performance. These observations do not
+identify a population effect from single trajectories.
+Do not pool raw quest points across games with different scales. This is one
+draw per familiar game and no repetitions, so neither statistical significance
+nor stable improvement follows. Compare the per-game table directly; do not
+select the best variant separately in each game. The pilot does not justify
+promoting historical retrieval to the default or a paper performance claim.
+The algorithm remains frozen; new design work must identify a specific causal
+gap rather than tune this retrieval to the observed worlds.
+
+Historical diagnostic: important negative result
+All 53 original soft-rescue windows from two selected older development runs
+were judged with added historical evidence (26 Mark, 27 Metropolis). Their
+original responses were exact cache hits: no paid original-baseline reruns.
+These OLD traces used the previous SCAR-prompt actor, not the clean new actor;
+their judgments cannot be combined with the new full-game baseline scores.
+
+Mark's original cycle62 diagnosis calls earlier copper acquisition and sword
+crafting fabricated. Actual old cycles45/47 show those events. The same diagnosis
+also correctly detects a current storage failure; the entire intervention is
+not a false positive. The added packet selected cycles31,40,44,45,56,57 and missed
+the decisive craft at47. The new detector acknowledges copper acquisition but
+still calls crafting unsupported/fabricated. The key error therefore REMAINS.
+Ordinary top-K historical retrieval did not reliably supply the evidence needed
+to test this claim. We did not retune retrieval to force this one record in.
+Correctly detecting some other failures is not proof of successful repair.
+
+The selected original runs contain3/25 and7/26 Sentry-verified recoveries. These
+are its self-reports on development runs, not a general Sentry success rate.
+All 53 paired judgments and retrieved literal observations are saved, including
+changed allegations and failures; there is no fabricated aggregate accuracy.
+
+Concrete unresolved case on the new clean actor
+The post-hoc illustration case_metro_capacity.json preserves original Sentry's
+cycles226-236. Sentry correctly detects repeated dropping/picking among three
+marble_mace ingredients with only two hand slots. The actor changes its proposed
+recipe, travels, then cycles among iron_bar and gavel_splint for another recipe
+listing three input units, still manipulating two hand slots without attempting
+the craft in this window. This does NOT prove that all ingredients must be held:
+material accessibility is a hypothesis to check. Sentry's verifier correctly
+calls the continuing pickup/drop loop unresolved. Switching recipe changed the
+surface behavior without resolving or testing the suspected capacity obstacle.
+This is an example of the intended research target;
+it is not a causal proof that persistent case tracking will solve it. Sentry
+already gives relevant advice and detects the continuing loop in this example.
+
+Next mechanism to test, NOT implemented here
+Retain an unresolved case tied to the task condition, current explanation,
+attempted repair, expected distinguishing observation, actual result and the
+scope under which that result remains applicable. On a failed repair, revise
+the explanation or next operation; do not silently retire the unresolved case.
+Permit uncertain but grounded proposals. Lack of proof is not automatic rejection.
+Use the specific claim to locate its supporting/counterevidence, and preserve
+unknown when the evidence packet is incomplete. Close the case only on an
+observation that addresses the original condition, not just absence of another
+error. Preserve ordinary behavior when there is no supported blocker.
+The first comparison should isolate this unresolved-case state from original
+Sentry on the SAME actor. Further ablations should separate memory alone from
+outcome-dependent plan revision. These are hypotheses, not new guarantees.
+
+Validation and cost
+Eight targeted tests passed. Three scripted, no-API well-formed actor cycles
+match the pinned upstream prompt, system, action and memory. 2700
+actual environment transitions replay exactly; 258 common-prefix
+action comparisons pass. The 422-file frozen source manifest is unchanged:
+2af6980446eba60ce96df35ff6b81aa9366b76a577ed914cb9869e289571f3e8
+The only evaluator amendment changes two diagnostic temperature JSON numbers
+from0 to0.0 to match the original exact-request cache. Failed initial workers
+made no new paid calls; original source and logs remain archived. Policy and
+whole-game evaluator were not changed. The local diagnostic file is the amended
+version and its difference from frozen source was checked exactly.
+
+Total newly paid attempts: 3332; successful responses: 3332.
+Unknown-charge attempts: 0. Frozen historical-rate estimate:
+USD 2.450502360, not a billing invoice or a verified current price.
+This includes all9 games and53 diagnostics. Shared requests are charged only once.
+Archive files: 13197; bytes: 72505930; SHA256:
+a04970c6c8370f407b2ed6c6c7e63616b7f96bbfde941ee3de33bab52284ab31
+API-key and SSH-password scans passed. Private engine snapshots are excluded.
+Raw public prompts, responses, traces, events, initial receipts and exact executed
+source remain in the server/local evidence archive. Compact analysis and probes
+are versioned here. No paper document was edited in this batch.
