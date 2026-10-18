@@ -41,6 +41,10 @@ def build_system(env, model):
 
 
 def build_trial_agent(arm, provider, system, repair_quota=None, max_steps=300):
+    if arm == 'effect':
+        from scar_public.effect_repair import EffectRepairAgent
+        agent=EffectRepairAgent(provider, system);agent.max_steps=max_steps
+        return agent
     if arm == 'plan':
         from scar_public.plan_repair import PlanRepairAgent
         agent=PlanRepairAgent(provider, system);agent.max_steps=max_steps

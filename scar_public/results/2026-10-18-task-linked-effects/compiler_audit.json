@@ -1,0 +1,186 @@
+{
+  "qualification": "Cache-only, post-hoc compiler audits. Not independent policy evaluations.",
+  "prefix_replays": 99,
+  "usage": [
+    {
+      "requests": 0,
+      "successful_responses": 0,
+      "peak_usd_estimate": 0,
+      "unknown_charge_attempts": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cache_hit_tokens": 0,
+      "actual_models": [],
+      "summed_request_seconds": 0
+    },
+    {
+      "requests": 0,
+      "successful_responses": 0,
+      "peak_usd_estimate": 0,
+      "unknown_charge_attempts": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cache_hit_tokens": 0,
+      "actual_models": [],
+      "summed_request_seconds": 0
+    }
+  ],
+  "same_proposal": {
+    "decision": 49,
+    "digest": "c4d89439fba402d0f0d45473b80a4c2e56ca2678fa82e712049c819957a6d47e",
+    "supplied_response": {
+      "reasoning": "The task is to craft a copper sword, requiring a copper_bar and oak_rod. I hold an oak_rod but lack a copper_bar. The armory door is locked and I have a key on the ground. The prior methods failed due to requirement/access mismatches. The most direct supported path: copper_bar is a public object and the armory is the blocked site likely holding it. I should try the key to unlock the armory door, using the visible key as the access-enabling item. This is a bounded trial with unknown causation.",
+      "action": "pick up key",
+      "keep_original": false,
+      "methods": [
+        {
+          "kind": "access",
+          "site": "Old Castle, hall -> armory",
+          "via_item": "key",
+          "why": "The armory door is locked; a visible key on the ground may unlock it, granting access to the copper_bar source."
+        }
+      ]
+    },
+    "comparisons": {
+      "e1": {
+        "accepted": false,
+        "action": null,
+        "root": {
+          "kind": "resource",
+          "target": "copper_sword",
+          "count": 1,
+          "support": "arlen says: Craft a copper sword and hold it in your hands.",
+          "depth": 0,
+          "id": "d81065760ba7"
+        },
+        "unmet": {
+          "kind": "resource",
+          "target": "copper_bar",
+          "count": 1.0,
+          "support": "I have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), pen (1 oak_rod, 0.5 ink_sap), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), oak_dagger (1 oak_rod, 1 resin_clump), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_sword (1 oak_log, 1 oak_rod)",
+          "id": "4ea060fe6f79"
+        },
+        "rejections": [
+          {
+            "candidate": {
+              "kind": "access",
+              "need_id": "4ea060fe6f79",
+              "goal_quote": "arlen says: Craft a copper sword and hold it in your hands.",
+              "hypothesis": "The armory door is locked; a visible key on the ground may unlock it, granting access to the copper_bar source.",
+              "site_id": "d18454e92be7",
+              "via_item": "key",
+              "evidence_ids": [
+                "5abf3570cc69"
+              ]
+            },
+            "reasons": [
+              "METHOD_REQUIREMENT_MISMATCH",
+              "ACCESS_TARGET_MISMATCH"
+            ]
+          }
+        ]
+      },
+      "e3": {
+        "accepted": true,
+        "action": "pick up key",
+        "root": {
+          "kind": "resource",
+          "target": "copper_sword",
+          "count": 1,
+          "support": "arlen says: Craft a copper sword and hold it in your hands.",
+          "depth": 0,
+          "id": "d81065760ba7"
+        },
+        "unmet": {
+          "kind": "resource",
+          "target": "copper_bar",
+          "count": 1.0,
+          "support": "I have acquired a new item: oak_rod. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), pen (1 oak_rod, 0.5 ink_sap), torch (1 oak_rod, 1 coal_chunk), steel_sword (1 steel_ingot, 1 oak_rod), oak_dagger (1 oak_rod, 1 resin_clump), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), oak_sword (1 oak_log, 1 oak_rod)",
+          "id": "4ea060fe6f79"
+        },
+        "rejections": []
+      }
+    }
+  },
+  "task_alias": {
+    "decision": 52,
+    "digest": "fb6cfc9652b1e401383bb445d4f612a8888296dd1cfd08571d0f2f71af86bfae",
+    "public_task_registry": {
+      "arlen": {
+        "quote": "Craft a copper sword and hold it in your hands.",
+        "block": "Craft a copper sword and hold it in your hands.",
+        "aliases": [
+          "Craft a copper sword and hold it in your hands."
+        ],
+        "step": 48,
+        "source": "arlen says: Craft a copper sword and hold it in your hands."
+      }
+    },
+    "original_goals": [
+      "arlen says: Craft a copper sword and hold it in your hands.",
+      "Craft a copper sword and hold it in your hands."
+    ],
+    "distinct_goals": [
+      "arlen says: Craft a copper sword and hold it in your hands."
+    ],
+    "before": {
+      "status": "frontier",
+      "kind": "OTHER_TASK_RESOURCE",
+      "need": {
+        "kind": "resource",
+        "target": "copper_sword",
+        "count": 1,
+        "support": "arlen says: Craft a copper sword and hold it in your hands.",
+        "depth": 0,
+        "id": "d81065760ba7"
+      },
+      "chain": [
+        {
+          "kind": "resource",
+          "target": "copper_sword",
+          "count": 1,
+          "support": "arlen says: Craft a copper sword and hold it in your hands.",
+          "depth": 0,
+          "id": "d81065760ba7"
+        }
+      ],
+      "item": "copper_bar"
+    },
+    "after": {
+      "status": "ready",
+      "action": "craft 1 copper_sword",
+      "test": {
+        "kind": "craft_report",
+        "target": "copper_sword"
+      },
+      "stage": "craft",
+      "need": {
+        "kind": "resource",
+        "target": "copper_sword",
+        "count": 1,
+        "support": "arlen says: Craft a copper sword and hold it in your hands.",
+        "depth": 0,
+        "id": "d81065760ba7"
+      },
+      "chain": [
+        {
+          "kind": "resource",
+          "target": "copper_sword",
+          "count": 1,
+          "support": "arlen says: Craft a copper sword and hold it in your hands.",
+          "depth": 0,
+          "id": "d81065760ba7"
+        }
+      ],
+      "recipe": {
+        "needs": {
+          "copper_bar": 1.0,
+          "oak_rod": 1.0
+        },
+        "quote": "I have acquired a new item: copper_bar. It can be used to craft: copper_sword (1 copper_bar, 1 oak_rod), copper_mail (2 copper_bar, 2 leather_strip, 1 thread), lantern (1 copper_bar, 1 glass_shard, 1 thread), goblin_sword (1 copper_bar, 1 oak_rod, 1 goblin_token), key (1 copper_bar, 1 fiber_bundle)"
+      },
+      "unknown": "Public recipe; material accessibility and hidden prerequisites remain empirical"
+    },
+    "qualification": "Compilation only; the required crafting station is still empirically unknown. No new game score is inferred."
+  }
+}

@@ -1,0 +1,66 @@
+Task-linked compact method repair: experimental opt-in policy
+
+Entry points
+EffectRepairAgent in scar_public/effect_repair.py; build_trial_agent('effect',
+...); obstacle_trial --agent effect --steps 300. PlanRepairAgent is the previous
+frozen comparison, not another paid selector executed before this arm.
+
+One decision mechanism
+When the existing failure/cycle trigger fires, select a public task and an
+explicit missing output from the supported recipe fragment. Preserve that
+output as the root. Compile known recipe parents and already observed sources;
+ask the LLM only for a method for the first unresolved child. The compact
+request includes current observations, public sites and directed routes,
+historical target quantities, relevant past reports, and the retained chain.
+It omits the ordinary actor's long history prompt. The actor itself is unchanged.
+
+The method language has site, recipe and container. A site method has an exact
+public site or unique exit name, and an optional observed item hypothesized to
+enable access. The program supplies evidence IDs and binds the method to the
+fixed requirement. For a material requirement it means reach the source AND
+actually acquire the material; for an access fragment it means actual arrival
+at the specified destination. An LLM calling a method "access" cannot change
+the resource endpoint. No invented site, reverse edge, item, or recipe is added.
+Presence of an item or source is evidence for trying a method, not proof that
+the proposed causal relation is true. The old spellings source/access normalize
+to this same fixed meaning for compatibility.
+
+The methods list is the selection; empty means preserve the ordinary action.
+The transport action field is not used to decide whether a compiled method
+should run. The LLM need not predict the compiler's first prerequisite action.
+A separate keep-original flag would be redundant and can contradict the list.
+There is at most one bounded correction request, with the same method schema.
+
+The unchanged p2 compiler commits one step, checks its actual outcome, and
+recompiles. Acquisition resumes the parent recipe; only the output in hand
+resolves a held-output root. Failure exposes an unresolved prerequisite. Source
+absence, unknown visibility, capacity and an unsupported route remain distinct.
+The same limits apply: four dependency levels, 64 route nodes, a 16-action
+plan window, twelve method calls and a 300-action game cap. Urgent actions yield.
+
+Task identity and limits
+The exact public source quote, directive and registered aliases of ONE task
+share resource reservations. A speaker-prefixed copy does not create another
+task. Different tasks remain separate; there is no semantic paraphrase merge.
+An access-only plan can be initiated only for the actor's currently attempted
+failed entrance, not a stale failed destination while it chooses another action.
+This still does not prove that reaching that entrance is globally useful.
+Continuing such a plan also requires that the actor still chooses navigation.
+When it proposes a non-urgent object action instead, the access-only commitment yields
+and is cancelled. This preserves the ordinary actor's newly available behavior
+without claiming that every such behavior is useful. Material-rooted plans
+have a supported endpoint and retain their original continuation scope.
+
+The public task/recipe fragment is incomplete. Crafting-station requirements
+can be learned only after an actual failure when no prior station evidence
+exists. Resource exhaustion without a known productive operation remains
+unsolved. Ordinary fallback behavior can still loop. The finite failed-edge
+deferral is heuristic in worlds whose doors change over time. No global success,
+optimality, general safety or positive information-value guarantee is claimed.
+
+Evidence boundaries
+Tests and same-proposal compiler audits validate interface and identity rules.
+Actual same-state branch acquisition validates a short executed chain. Whole
+game scores, including regressions, are recorded separately. Cached replays
+do not establish repeatability or statistical significance. See effect_protocol
+and results/2026-10-18-task-linked-effects/RESULTS.txt for all iterations.
