@@ -41,6 +41,9 @@ def build_system(env, model):
 
 
 def build_trial_agent(arm, provider, system, repair_quota=None, max_steps=300):
+    if arm == 'obstacle':
+        from scar_public.obstacle_repair import ObstacleRepairAgent
+        return ObstacleRepairAgent(provider, system)
     if arm=='continuation_scheduled':
         from scar_public.experiments.scheduled_continuation import ScheduledContinuationAgent
         if repair_quota is None:

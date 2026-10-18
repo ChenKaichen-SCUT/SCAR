@@ -1,0 +1,64 @@
+Goal obstacle repair: completed development screen, 2026-10-17
+
+Result: no stable improvement over the previous compact mechanism. Keep this
+as an opt-in experimental arm; do not promote it to the default or expand paid
+evaluation based on these results. The policy made goal-related action changes,
+but we did not establish that acquired evidence improved later decisions.
+
+World                checked compact Sentry obstacle steps failures
+mark_r0               16  15  17  16 300  30
+mark_r1                5  17   5  17 294  11
+metropolis_r1         10   9   8   8 300  52
+metropolis_7537       13  10  10  10 300  68
+
+Budget300, terminate early on actual game completion. mark_r1 passed at294.
+The old compact policy passed that same world at265; scores tied at17.
+Against checked: 1 win /1 tie /2 losses. Against compact: 1 win /2 ties /1 loss.
+Against Sentry: 1 win /2 ties /1 loss. Raw scores have different scales across
+game families; their sums do not establish statistical significance.
+
+These four worlds were selected diagnostic development cases. metropolis7537
+previously belonged to an independent screen, but informed this change and is
+now development data. No new holdout or repeated-run claim is made.
+
+Two iterations
+- Quote-chain v1: 1200 actions,34 repair queries,0 action changes. All trajectories
+  exactly matched checked. Free-form citation matching was too restrictive and
+  did not provide a usable recovery policy.36 API requests include JSON repairs.
+- Public-program v2:1194 actions,7 repair queries,7 first-action changes. The
+  LLM selected bounded programs built from public recipes, observed object
+  locations/routes and task issuers, instead of inventing relation chains.
+
+Same-state diagnostics
+- Seven ACTUAL intervention states, selected by the new policy (not a random
+  sample): original6 explicit failures; replacements0 explicit failures.
+- Immediate task-score and death deltas were0 for both actions in all7 cases.
+- Five intermediate tests returned true, all location tests; two hint attempts
+  yielded UNKNOWN. None established task completion or useful new information.
+- One conditional continuation passed checks, but the actor already proposed
+  exactly that command. Conditional authority changed0 subsequent actions.
+- mark_r0 kept score16 but explicit failures rose8 ->30. Avoiding one failure
+  does not imply fewer failures or better outcomes over the whole trajectory.
+
+Preservation and integrity
+Three cache-only Remnant controls:900 actions,0 new API requests,0 differences;
+scores2/2/1. Total exact transition replays across v1,v2,controls: 3294,
+zero mismatches. In v2,424 actions matched the old checked prefix before the
+first intervention. Frozen source hashes were checked unchanged in both runs.
+155 targeted tests passed, covering inheritance and the new mechanism.
+
+Cost
+852 new API requests,all succeeded,unknown-charge attempts0.
+v1 estimate $0.081146808;v2 estimate $1.663047192;total $1.744194000.
+This uses the existing frozen accounting formula, not a current-price quote or
+invoice. It includes retries and whole-episode calls after divergence. Unchanged
+baseline episodes were not rerun through the API. Max4 concurrent paid jobs.
+
+Artifacts
+analysis.json: per-world scores, costs, cases, source checks and completion.
+mechanism_diagnostics.json: all seven changes and subsequent test outcomes.
+Public archive: 5750 files,20206878 bytes,
+SHA256 e5ab9fba37853f7b8d53259e360c4870db3b2fb6f263a21a96800a25ba65c8f7.
+Private environment snapshots and API keys are excluded. Archive is retained
+locally under work/obstacle_artifacts/public_evidence.tgz and on the experiment
+server. It contains both frozen implementations, API payloads and public traces.
