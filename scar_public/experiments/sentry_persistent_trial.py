@@ -18,6 +18,7 @@ from scar.io import atomic_json,append_jsonl
 from scar_public.provider import usage_summary
 from scar_public.sentry_evidence import LongContextActor,SentryEvidenceHost
 from scar_public.sentry_persistent import PersistentRepair,apply_choice
+from scar_public.sentry_selective import SelectiveRepair
 from scar_public.experiments.sentry_foundation_trial import SharedProvider,system_prompt
 
 
@@ -64,7 +65,7 @@ def align_playbook_identity(host,provider,prefix,old_events):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True)
-    p.add_argument('--old',type=Path,required=True);p.add_argument('--mode',choices=['advice','execute'],required=True)
+    p.add_argument('--old',type=Path,required=True);p.add_argument('--mode',choices=['advice','execute','selective'],required=True)
     p.add_argument('--key',required=True);p.add_argument('--stop-after-repair',type=int,default=0)
     a=p.parse_args();out=a.root/a.mode;out.mkdir(parents=True,exist_ok=True)
     import fcntl
@@ -78,7 +79,8 @@ def main():
     provider=TrialProvider(out/'api',a.key,shared=a.root/'shared_api');provider.arm=a.mode
     env=restore(initial);system=system_prompt(env,provider.model)
     actor=LongContextActor(provider,system);host=SentryEvidenceHost(provider,system)
-    control=PersistentRepair(provider,system,a.mode);control.seed(env.obs[AGENT_ID]['text'])
+    control=SelectiveRepair(provider,system) if a.mode=='selective' else PersistentRepair(provider,system,a.mode)
+    control.seed(env.obs[AGENT_ID]['text'])
     original_events=event_cycles(a.old/'sentry/sentry_events.jsonl');prefix=[True];identity_prefix=[True]
     align_playbook_identity(host,provider,identity_prefix,original_events)
     state=initial;first_trigger=None;matched=0;replays=0;first_choice=False
@@ -124,7 +126,7 @@ def main():
         if score>old_score:last_gain=step+1
         old_score=score
         current=dict(steps=step+1,scores=env.scores[AGENT_ID],passed='completed the main quest and passed the game' in following,
-            done=bool(done),repair_calls=control.calls,first_trigger_cycle=first_trigger,prefix_matches=matched,
+            done=bool(done),repair_calls=control.calls,comparison_calls=getattr(control,'comparisons',0),first_trigger_cycle=first_trigger,prefix_matches=matched,
             replays=replays,failures=failures,last_gain_step=last_gain)
         atomic_json(out/'current.json',current)
         if a.stop_after_repair and first_trigger is not None and step-first_trigger>=a.stop_after_repair:

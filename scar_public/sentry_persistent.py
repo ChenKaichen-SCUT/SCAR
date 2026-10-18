@@ -189,6 +189,9 @@ class PersistentRepair:
 def apply_choice(actor,step,observation,proposed,controller):
     """Keep the shared actor's conversation about actions actually executed."""
     chosen=controller.choose(step,observation,proposed)
+    # No-op means no change to the complete response OR conversation. In
+    # particular, equal commands must not introduce a new explanatory history.
+    if chosen['action']==proposed['action']:return proposed
     old='Reasoning: '+proposed['reasoning'].strip()+'\nAction: '+proposed['action'].strip()+'\n'
     assert actor.memory.endswith(old)
     actor.memory=actor.memory[:-len(old)]+'Reasoning: '+chosen['reasoning'].strip()+'\nAction: '+chosen['action'].strip()+'\n'

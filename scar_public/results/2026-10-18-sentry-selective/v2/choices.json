@@ -1,0 +1,1689 @@
+[
+  {
+    "game": "remnant",
+    "choices": [
+      {
+        "type": "persistent_choice",
+        "step": 43,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "eat apple",
+        "chosen": "eat apple",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Combat the blocking goblin_warrior_1 to clear the way out of armory toward the quest lead.",
+              "status": "blocked",
+              "defect_kind": "repeated_failure",
+              "condition": "Attacking goblin_warrior_1 already failed: it has 42 HP remaining and retaliates for 18 HP per hit while player has only 5 HP. Repeating the attack under unchanged conditions (same HP, same enemy) would kill the player before the enemy dies.",
+              "evidence": [
+                {
+                  "cycle": 41,
+                  "quote": "I attacked goblin_warrior_1 for 10 damage. goblin_warrior_1 has 42 HP remaining."
+                },
+                {
+                  "cycle": 42,
+                  "quote": "I was attacked by goblin_warrior_1 and lost 18 HP."
+                },
+                {
+                  "cycle": 42,
+                  "quote": "My health is at 5."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Restore health via eating an apple so the player can survive combat and continue the quest.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "An apple is present nearby and eating is an available action; restoring HP is an immediate enabling condition for surviving the ongoing attacks.",
+              "evidence": [
+                {
+                  "cycle": 42,
+                  "quote": "I see 8 iron_ore, 3 mountain_sulfur, 1 thread, 5 iron_bar, 4 stone, 3 rust_scrap, 2 wood_log, 2 apple near me."
+                },
+                {
+                  "cycle": 42,
+                  "quote": "My health is at 5."
+                }
+              ]
+            }
+          ],
+          "relations": [
+            {
+              "blocked": "A",
+              "alternative": "B",
+              "addresses_issue": true,
+              "how": "Eating an apple can raise HP, addressing the low-health condition that makes attacking goblin_warrior_1 fatal; after healing, combat or escape may become viable, though the enemy's 42 HP and continued attacks remain uncertain.",
+              "resources": "preserved",
+              "resource_reason": "Eating an apple consumes one of the two nearby apples but retains the torch and other items; no required resource is lost.",
+              "evidence": [
+                {
+                  "cycle": 42,
+                  "quote": "I see 8 iron_ore, 3 mountain_sulfur, 1 thread, 5 iron_bar, 4 stone, 3 rust_scrap, 2 wood_log, 2 apple near me."
+                },
+                {
+                  "cycle": 42,
+                  "quote": "My health is at 5."
+                }
+              ]
+            }
+          ]
+        },
+        "ordinary_id": "B",
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 44,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "eat apple",
+        "chosen": "eat apple",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 45,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "attack goblin_warrior_1",
+        "chosen": "attack goblin_warrior_1",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 53,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter armory",
+        "chosen": "enter armory",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 54,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter hall",
+        "chosen": "enter hall",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 55,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up torch",
+        "chosen": "pick up torch",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 56,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter armory",
+        "chosen": "enter armory",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 57,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "talk to villager_2",
+        "chosen": "talk to villager_2",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 58,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "talk to mason_reed",
+        "chosen": "talk to mason_reed",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 84,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter armory",
+        "chosen": "enter armory",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 85,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "eat apple",
+        "chosen": "eat apple",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Restore health to survive the hostile armory and continue the Cinder Trail quest",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Health is 52/100 and two apples are visible on the ground; eating is immediately available and directly improves survivability against swamp_raider_1.",
+              "evidence": [
+                {
+                  "cycle": 84,
+                  "quote": "I see 8 iron_ore, 3 mountain_sulfur, 1 thread, 5 iron_bar, 4 stone, 3 rust_scrap, 2 wood_log, 1 torch, 2 apple near me."
+                },
+                {
+                  "cycle": 84,
+                  "quote": "My health is at 52."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Acquire iron_bar as a crafting material",
+              "status": "unknown",
+              "defect_kind": "none",
+              "condition": "Iron_bar is visible on the ground and hands are free (holding only torch), so pickup appears possible; but no current quest step requires iron_bar, so its task relevance is unresolved.",
+              "evidence": [
+                {
+                  "cycle": 84,
+                  "quote": "I see 8 iron_ore, 3 mountain_sulfur, 1 thread, 5 iron_bar, 4 stone, 3 rust_scrap, 2 wood_log, 1 torch, 2 apple near me."
+                },
+                {
+                  "cycle": 84,
+                  "quote": "I am holding 1 torch."
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        "ordinary_id": "A",
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 86,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up iron_bar",
+        "chosen": "pick up iron_bar",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 87,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "craft 1 lockpick",
+        "chosen": "craft 1 lockpick",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 88,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter library",
+        "chosen": "enter library",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 89,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter foothills",
+        "chosen": "enter foothills",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 104,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter armory",
+        "chosen": "enter armory",
+        "changed": false,
+        "selection_reason": "unrelated_alternative",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Travel toward the Cinder Shrine search regions (armory is one of the named candidate regions) and toward mason_reed/villager NPCs who may know about cinder-smoke.",
+              "status": "blocked",
+              "defect_kind": "resource_conflict",
+              "condition": "Entering armory is possible, but the armory currently holds multiple hostile raiders/goblins and the player has only 18 HP with no equipped defense; prior entries there repeatedly drew attacks (lost 9, 24, 11 HP). Immediate survival is the binding constraint, not the destination itself.",
+              "evidence": [
+                {
+                  "cycle": 103,
+                  "quote": "I was attacked by swamp_raider_2 and lost 28 HP."
+                },
+                {
+                  "cycle": 103,
+                  "quote": "My health is at 18."
+                },
+                {
+                  "cycle": 99,
+                  "quote": "I was attacked by goblin_warrior_12 and lost 11 HP."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Equip the bag as inventory to enable storage/carrying capacity, a prerequisite for holding supplies and crafting materials.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "small_bag_0 is in hand and equippable; equipping it is an immediate, low-risk action that does not require leaving the area. It does not itself heal or remove the raider, so survival remains uncertain.",
+              "evidence": [
+                {
+                  "cycle": 103,
+                  "quote": "I am holding 1 rust_scrap, 1 small_bag_0."
+                },
+                {
+                  "cycle": 73,
+                  "quote": "I equipped small_bag_0 as inventory."
+                }
+              ]
+            }
+          ],
+          "relations": [
+            {
+              "blocked": "A",
+              "alternative": "B",
+              "addresses_issue": false,
+              "how": "Equipping the bag does not reduce the hostile raider threat or restore HP, so it does not change the resource conflict blocking entry to armory; it only prepares carrying capacity for later.",
+              "resources": "preserved",
+              "resource_reason": "Equipping consumes no consumables and retains the bag and rust_scrap; it does not resolve the HP deficit or the nearby swamp_raider_2.",
+              "evidence": [
+                {
+                  "cycle": 103,
+                  "quote": "I see swamp_raider_2 nearby."
+                },
+                {
+                  "cycle": 103,
+                  "quote": "My health is at 18."
+                }
+              ]
+            }
+          ]
+        },
+        "ordinary_id": "A",
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 105,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter library",
+        "chosen": "enter library",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 106,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter foothills",
+        "chosen": "enter foothills",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 107,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up crimson_lichen",
+        "chosen": "pick up crimson_lichen",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 108,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "equip small_bag_0",
+        "chosen": "equip small_bag_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 109,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up crimson_lichen",
+        "chosen": "pick up crimson_lichen",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 114,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter armory",
+        "chosen": "enter armory",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 115,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up small_satchel_0",
+        "chosen": "pick up small_satchel_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 116,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "equip small_satchel_0",
+        "chosen": "equip small_satchel_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 117,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter armory",
+        "chosen": "enter armory",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 118,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter library",
+        "chosen": "enter library",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Return to hall, the hub where mia_thompson and the workbench are, to continue the Cinder Trail lead and regain access to crafting/quest resources.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Hall is a listed neighboring area and was entered successfully many times; no lock or blocker is currently observed. Immediate movement is enabled.",
+              "evidence": [
+                {
+                  "cycle": 117,
+                  "quote": "Neighboring areas: hall, library."
+                },
+                {
+                  "cycle": 116,
+                  "quote": "Current Location: Old Castle, hall"
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Enter library, where chronicler_lyra gave the Cinder Shrine region hints and mia_thompson/olivia_grant are present.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Library is a listed neighboring area and was entered successfully at cycle 113; no current lock is observed. Immediate movement is enabled.",
+              "evidence": [
+                {
+                  "cycle": 117,
+                  "quote": "Neighboring areas: hall, library."
+                },
+                {
+                  "cycle": 113,
+                  "quote": "Current Location: Old Castle, library"
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        "ordinary_id": "B",
+        "comparison_errors": [],
+        "comparison_calls": 4
+      },
+      {
+        "type": "persistent_choice",
+        "step": 119,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter foothills",
+        "chosen": "enter foothills",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 4
+      },
+      {
+        "type": "persistent_choice",
+        "step": 148,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up coin",
+        "chosen": "pick up coin",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Travel toward the Cinder Shrine region candidates (armory is one of the listed possible shrine locations) and reach NPCs/merchants there.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Armory is a neighboring area and was entered successfully many times; current observation lists it as a neighboring area. It is dark and hostile NPCs are present, but entry itself is enabled.",
+              "evidence": [
+                {
+                  "cycle": 147,
+                  "quote": "Neighboring areas: armory."
+                },
+                {
+                  "cycle": 147,
+                  "quote": "I see swamp_raider_2, goblin_warrior_14 nearby."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Acquire currency for trading (e.g., buying gear/rations from mason_reed).",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Coins are visible nearby and hand is empty, so pickup is currently possible; no observed space failure this cycle.",
+              "evidence": [
+                {
+                  "cycle": 147,
+                  "quote": "I see 8 coin, 1 paper_19, 1 pen, 1 workbench near me."
+                },
+                {
+                  "cycle": 147,
+                  "quote": "I am holding no objects."
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        "ordinary_id": "B",
+        "comparison_errors": [],
+        "comparison_calls": 5
+      }
+    ]
+  },
+  {
+    "game": "mark",
+    "choices": [
+      {
+        "type": "persistent_choice",
+        "step": 155,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter hall",
+        "chosen": "enter hall",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Move toward the library/hall area to recover the dropped 'kindness' note and gather coins needed for the Tear of Forest purchase",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Hall is a neighboring area and was entered repeatedly without lock; moving there is currently enabled. It does not itself acquire coins or the note, but it is a useful prerequisite step toward both.",
+              "evidence": [
+                {
+                  "cycle": 154,
+                  "quote": "Neighboring areas: hall, stalls."
+                },
+                {
+                  "cycle": 144,
+                  "quote": "I dropped paper_0."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Acquire a container (small_pouch_0) to hold/store items, potentially freeing hand space for coins",
+              "status": "unknown",
+              "defect_kind": "none",
+              "condition": "small_pouch_0 is not visible in the current armory observation; it was last seen in hall at cycle 128. Its current location is unresolved, so pickup applicability here is unknown.",
+              "evidence": [
+                {
+                  "cycle": 154,
+                  "quote": "I see 5 coal_chunk, 6 iron_bar, 3 iron_ore, 2 oak_log, 3 fiber_bundle, 1 stone, 6 coin, 1 torch, 1 pen near me."
+                },
+                {
+                  "cycle": 128,
+                  "quote": "I see 6 coin, 1 small_pouch_0, 1 small_pouch_1, 2 berry, 1 workbench, 3 hide_scrap, 2 cloth, 2 goblin_token, 2 torch near me."
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        "ordinary_id": "A",
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 156,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up small_pouch_0",
+        "chosen": "pick up small_pouch_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 157,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "equip small_pouch_0",
+        "chosen": "equip small_pouch_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 158,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "store 1 coin inventory",
+        "chosen": "store 1 coin inventory",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 159,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up coin",
+        "chosen": "pick up coin",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 160,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "store 1 coin inventory",
+        "chosen": "store 1 coin inventory",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 237,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "craft 1 cloth_tunic",
+        "chosen": "craft 1 cloth_tunic",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 238,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up cloth",
+        "chosen": "pick up cloth",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Acquire a second cloth to enable crafting cloth_tunic (armor) as tess instructed",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "A cloth is visible on the ground and hand has room (holding 1 cloth); picking up is immediately enabled. Note: crafting cloth_tunic also needs 1 thread, currently stored in inventory, so this alone is a prerequisite, not the full craft.",
+              "evidence": [
+                {
+                  "cycle": 237,
+                  "quote": "I see 1 small_pouch_1, 1 workbench, 3 hide_scrap, 2 goblin_token, 2 torch, 1 coal_chunk, 1 iron_bar, 1 cloth near me."
+                },
+                {
+                  "cycle": 237,
+                  "quote": "I am holding 1 cloth."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Retrieve thread from inventory to supply the cloth_tunic recipe",
+              "status": "blocked",
+              "defect_kind": "failed_precondition",
+              "condition": "Hand is full (holding 1 cloth) and the immediately prior take-out of thread failed for lack of hand space; the same condition persists now.",
+              "evidence": [
+                {
+                  "cycle": 229,
+                  "quote": "Cannot take out thread, not enough space in hand."
+                },
+                {
+                  "cycle": 237,
+                  "quote": "I am holding 1 cloth."
+                }
+              ]
+            }
+          ],
+          "relations": [
+            {
+              "blocked": "B",
+              "alternative": "A",
+              "addresses_issue": true,
+              "how": "Picking up cloth does not free hand space, so it does not directly fix B's full-hand defect; however it is an enabled step toward the armor goal, and after acquiring the second cloth the player can drop/store a cloth to free a hand slot and then take out thread. Remaining uncertainty: whether cloth_tunic craft then succeeds and whether armor is sufficient for the lair.",
+              "resources": "preserved",
+              "resource_reason": "Picking up cloth consumes one hand slot but retains the cloth resource; thread remains stored in inventory, not consumed.",
+              "evidence": [
+                {
+                  "cycle": 237,
+                  "quote": "I see 1 small_pouch_1, 1 workbench, 3 hide_scrap, 2 goblin_token, 2 torch, 1 coal_chunk, 1 iron_bar, 1 cloth near me."
+                }
+              ]
+            }
+          ]
+        },
+        "ordinary_id": "A",
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 239,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "drop cloth",
+        "chosen": "drop cloth",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Free a hand slot by dropping a cloth, a preparatory step toward crafting cloth_tunic (armor) which tess requested.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Holding 2 cloth; dropping one is immediately possible and frees hand space. Note: crafting cloth_tunic previously failed for insufficient ingredients (needs 2 cloth + 1 thread), and thread is currently stored in inventory, so dropping cloth alone does not complete the armor.",
+              "evidence": [
+                {
+                  "cycle": 238,
+                  "quote": "I am holding 2 cloth."
+                },
+                {
+                  "cycle": 237,
+                  "quote": "Cannot craft a single cloth_tunic. Do not have sufficient amount of necessary ingredients."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Equip a second pouch as inventory to expand carrying capacity.",
+              "status": "unknown",
+              "defect_kind": "none",
+              "condition": "small_pouch_1 is visible nearby, but it is not held; equipping requires it in hand first. No observed failure yet, but immediate precondition (holding it) is unmet.",
+              "evidence": [
+                {
+                  "cycle": 238,
+                  "quote": "I see 1 small_pouch_1, 1 workbench, 3 hide_scrap, 2 goblin_token, 2 torch, 1 coal_chunk, 1 iron_bar near me."
+                },
+                {
+                  "cycle": 238,
+                  "quote": "I have equipped 1 small_pouch_0."
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        "ordinary_id": "A",
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 240,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "equip small_pouch_1",
+        "chosen": "equip small_pouch_1",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 241,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up small_pouch_1",
+        "chosen": "pick up small_pouch_1",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 242,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "equip small_pouch_1",
+        "chosen": "equip small_pouch_1",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 247,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "eat bread",
+        "chosen": "eat bread",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Craft armor (leather_vest) as tess instructed to withstand hits before the lair",
+              "status": "blocked",
+              "defect_kind": "failed_precondition",
+              "condition": "Requires leather_strip and thread; only hide_scrap (uncrafted) and thread in inventory; no leather_strip held, and crafting leather_strip needs hide_scrap in hand plus workbench. Immediate ingredients not present.",
+              "evidence": [
+                {
+                  "cycle": 243,
+                  "quote": "It can be used to craft: leather_strip (made of hide_scrap)."
+                },
+                {
+                  "cycle": 225,
+                  "quote": "steel_plate_armor (2 steel_ingot, 2 leather_strip, 2 thread), cloth_tunic (2 cloth, 1 thread), leather_vest (2 leather_strip, 1 thread)"
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Restore health to survive ongoing attacks and continue quest",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Bread is on the ground in current area and eating restores HP; health is low (24/160) with hostile fen_cutthroat_7 and scrap_goblin_9 nearby.",
+              "evidence": [
+                {
+                  "cycle": 246,
+                  "quote": "I ate bread from ground and restored 12 HP (HP: 31/160)."
+                },
+                {
+                  "cycle": 246,
+                  "quote": "I see 12 fiber_bundle, 6 resin_clump, 9 bread, 3 oak_log near me."
+                }
+              ]
+            }
+          ],
+          "relations": [
+            {
+              "blocked": "A",
+              "alternative": "B",
+              "addresses_issue": false,
+              "how": "Eating bread restores health but does not supply leather_strip or thread needed to craft leather_vest; it does not change A's missing-ingredient precondition.",
+              "resources": "preserved",
+              "resource_reason": "Eating consumes one bread from ground; cloth, thread, hide_scrap and other items retained.",
+              "evidence": [
+                {
+                  "cycle": 246,
+                  "quote": "I ate bread from ground and restored 12 HP (HP: 31/160)."
+                }
+              ]
+            }
+          ]
+        },
+        "ordinary_id": "B",
+        "comparison_errors": [],
+        "comparison_calls": 4
+      },
+      {
+        "type": "persistent_choice",
+        "step": 248,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter hall",
+        "chosen": "enter hall",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Craft armor (leather_vest) as tess instructed to survive the lair; a prerequisite for the main quest's combat readiness.",
+              "status": "blocked",
+              "defect_kind": "failed_precondition",
+              "condition": "Requires leather_strip (from hide_scrap) and thread; currently holding 1 cloth and 1 small_pouch_1, with thread stored in inventory and hide_scrap on the ground. No leather_strip exists yet, and hands are full, so ingredients are not assembled.",
+              "evidence": [
+                {
+                  "cycle": 243,
+                  "quote": "It can be used to craft: leather_strip (made of hide_scrap)."
+                },
+                {
+                  "cycle": 247,
+                  "quote": "I am holding 1 cloth, 1 small_pouch_1."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Move to hall, where the workbench and crafting materials (hide_scrap, thread, iron_bar, coal_chunk) are located, enabling armor crafting.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Hall is an adjacent area and was entered repeatedly without lock; it contains the workbench and hide_scrap needed for leather_strip/leather_vest. Movement itself is enabled.",
+              "evidence": [
+                {
+                  "cycle": 247,
+                  "quote": "Neighboring areas: hall."
+                },
+                {
+                  "cycle": 243,
+                  "quote": "I see 1 workbench, 3 hide_scrap, 2 goblin_token, 2 torch, 1 coal_chunk, 1 iron_bar, 1 cloth near me."
+                }
+              ]
+            }
+          ],
+          "relations": [
+            {
+              "blocked": "A",
+              "alternative": "B",
+              "addresses_issue": true,
+              "how": "Entering hall brings the character to the workbench and hide_scrap, an enabled upstream step toward producing leather_strip and then leather_vest; whether the full armor craft succeeds remains downstream uncertainty.",
+              "resources": "preserved",
+              "resource_reason": "Movement consumes no items; cloth, thread (in inventory), and hide_scrap remain available.",
+              "evidence": [
+                {
+                  "cycle": 243,
+                  "quote": "I see 1 workbench, 3 hide_scrap, 2 goblin_token, 2 torch, 1 coal_chunk, 1 iron_bar, 1 cloth near me."
+                }
+              ]
+            }
+          ]
+        },
+        "ordinary_id": "B",
+        "comparison_errors": [],
+        "comparison_calls": 5
+      },
+      {
+        "type": "persistent_choice",
+        "step": 249,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "store 1 small_pouch_1 inventory",
+        "chosen": "store 1 small_pouch_1 inventory",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Craft armor (leather_vest) as tess instructed to survive the lair; a prerequisite toward the main quest.",
+              "status": "blocked",
+              "defect_kind": "failed_precondition",
+              "condition": "Leather_vest requires leather_strip (from hide_scrap) and thread; hands currently hold cloth and small_pouch_1, and no leather_strip is held. Crafting armor is not immediately enabled.",
+              "evidence": [
+                {
+                  "cycle": 243,
+                  "quote": "It can be used to craft: leather_strip (made of hide_scrap)."
+                },
+                {
+                  "cycle": 225,
+                  "quote": "leather_vest (2 leather_strip, 1 thread)"
+                },
+                {
+                  "cycle": 248,
+                  "quote": "I am holding 1 cloth, 1 small_pouch_1."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Free a hand slot by storing the extra pouch, enabling pickup/crafting of needed materials.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "A small_pouch_1 is held and an inventory (small_pouch_0) is equipped, so storing it is immediately possible and frees hand space.",
+              "evidence": [
+                {
+                  "cycle": 248,
+                  "quote": "I am holding 1 cloth, 1 small_pouch_1."
+                },
+                {
+                  "cycle": 248,
+                  "quote": "I have equipped 1 small_pouch_0."
+                }
+              ]
+            }
+          ],
+          "relations": [
+            {
+              "blocked": "A",
+              "alternative": "B",
+              "addresses_issue": true,
+              "how": "Storing small_pouch_1 frees a hand slot, enabling pickup of hide_scrap/thread and subsequent crafting of leather_strip and leather_vest; downstream armor completion remains uncertain.",
+              "resources": "preserved",
+              "resource_reason": "Storing moves the pouch into equipped inventory rather than consuming it; cloth and other items retained.",
+              "evidence": [
+                {
+                  "cycle": 248,
+                  "quote": "I am holding 1 cloth, 1 small_pouch_1."
+                },
+                {
+                  "cycle": 248,
+                  "quote": "I have equipped 1 small_pouch_0."
+                }
+              ]
+            }
+          ]
+        },
+        "ordinary_id": "B",
+        "comparison_errors": [],
+        "comparison_calls": 6
+      },
+      {
+        "type": "persistent_choice",
+        "step": 250,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "drop small_pouch_1",
+        "chosen": "drop small_pouch_1",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 6
+      },
+      {
+        "type": "persistent_choice",
+        "step": 251,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up cloth",
+        "chosen": "pick up cloth",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 6
+      },
+      {
+        "type": "persistent_choice",
+        "step": 252,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "craft 1 cloth_tunic",
+        "chosen": "craft 1 cloth_tunic",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 6
+      }
+    ]
+  },
+  {
+    "game": "metropolis",
+    "choices": [
+      {
+        "type": "persistent_choice",
+        "step": 32,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "inspect evidence_dossier_0",
+        "chosen": "inspect evidence_dossier_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 33,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter lobby",
+        "chosen": "enter lobby",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 34,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "drop docket_satchel_0",
+        "chosen": "drop docket_satchel_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 35,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up decree_stylus",
+        "chosen": "pick up decree_stylus",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 36,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter evidence_room",
+        "chosen": "enter evidence_room",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 37,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "write AURUM-NOCTIS evidence_dossier_0",
+        "chosen": "write AURUM-NOCTIS evidence_dossier_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 42,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "inspect bailiff_eye",
+        "chosen": "inspect bailiff_eye",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 43,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "inspect writ_token",
+        "chosen": "inspect writ_token",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 44,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "attack rogue_advocate_0",
+        "chosen": "attack rogue_advocate_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 45,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "attack rogue_advocate_0",
+        "chosen": "attack rogue_advocate_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 46,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "write AURUM-NOCTIS evidence_dossier_0",
+        "chosen": "write AURUM-NOCTIS evidence_dossier_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 47,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter lobby",
+        "chosen": "enter lobby",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 72,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "take out evidence_dossier_0 docket_satchel_0",
+        "chosen": "take out evidence_dossier_0 docket_satchel_0",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 73,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter evidence_room",
+        "chosen": "enter evidence_room",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 0
+      },
+      {
+        "type": "persistent_choice",
+        "step": 74,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter lobby",
+        "chosen": "enter lobby",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Travel back to the lobby, likely to retrieve the dropped decree_stylus (writing tool) or consult alex_smith.",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "The lobby is a listed neighboring area and was entered successfully many times; no blocker is observed now. However, leaving the evidence room does not itself advance cataloguing and the dossier is currently held, not stored.",
+              "evidence": [
+                {
+                  "cycle": 73,
+                  "quote": "Neighboring areas: lobby, courtroom."
+                },
+                {
+                  "cycle": 73,
+                  "quote": "I am holding 1 docket_satchel_0, 1 evidence_dossier_0."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Write the cipher phrase AURUM-NOCTIS onto the evidence dossier to compile proof of tampering.",
+              "status": "blocked",
+              "defect_kind": "failed_precondition",
+              "condition": "Writing requires a writing tool held in hand; the decree_stylus was dropped in the lobby at cycle 65 and is not held now. The dossier is held, but no stylus is in inventory.",
+              "evidence": [
+                {
+                  "cycle": 7,
+                  "quote": "Cannot write on evidence_dossier_0. No writing tools held in hand."
+                },
+                {
+                  "cycle": 65,
+                  "quote": "I dropped decree_stylus."
+                },
+                {
+                  "cycle": 73,
+                  "quote": "I am holding 1 docket_satchel_0, 1 evidence_dossier_0."
+                }
+              ]
+            }
+          ],
+          "relations": [
+            {
+              "blocked": "B",
+              "alternative": "A",
+              "addresses_issue": true,
+              "how": "Entering the lobby returns to where the decree_stylus was dropped, enabling pickup of the writing tool needed before writing on the dossier. Remaining uncertainty: whether the stylus is still present and whether writing AURUM-NOCTIS satisfies the cataloguing task.",
+              "resources": "preserved",
+              "resource_reason": "Travel consumes no items; the dossier and satchel remain held, and the stylus is expected to remain in the lobby.",
+              "evidence": [
+                {
+                  "cycle": 65,
+                  "quote": "I see 10 writ_token, 2 chamber_key, 1 legal_brief_2, 1 clerks_bench, 1 docket_satchel_0, 1 decree_stylus near me."
+                },
+                {
+                  "cycle": 73,
+                  "quote": "Neighboring areas: lobby, courtroom."
+                }
+              ]
+            }
+          ]
+        },
+        "ordinary_id": "A",
+        "comparison_errors": [],
+        "comparison_calls": 1
+      },
+      {
+        "type": "persistent_choice",
+        "step": 75,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "drop docket_satchel_0",
+        "chosen": "drop docket_satchel_0",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Free hand space / manage inventory so the dossier can be carried and catalogued",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Hand currently holds docket_satchel_0 and evidence_dossier_0; dropping the satchel is permitted and frees a slot. No observed defect blocks dropping.",
+              "evidence": [
+                {
+                  "cycle": 74,
+                  "quote": "I am holding 1 docket_satchel_0, 1 evidence_dossier_0."
+                },
+                {
+                  "cycle": 34,
+                  "quote": "I dropped docket_satchel_0."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Acquire the writing tool needed to write on the dossier",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "decree_stylus is present in the lobby and was previously picked up successfully; however hand is full (2 items), so pickup may fail unless space is freed.",
+              "evidence": [
+                {
+                  "cycle": 74,
+                  "quote": "I see 10 writ_token, 2 chamber_key, 1 legal_brief_2, 1 clerks_bench, 1 decree_stylus near me."
+                },
+                {
+                  "cycle": 35,
+                  "quote": "I picked up decree_stylus."
+                },
+                {
+                  "cycle": 23,
+                  "quote": "Cannot pick up docket_satchel_0, not enough space in hand."
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        "ordinary_id": "A",
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 76,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up decree_stylus",
+        "chosen": "pick up decree_stylus",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 77,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter evidence_room",
+        "chosen": "enter evidence_room",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 133,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up binding_thread",
+        "chosen": "pick up binding_thread",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 134,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter lobby",
+        "chosen": "enter lobby",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 2
+      },
+      {
+        "type": "persistent_choice",
+        "step": 135,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "store 1 binding_thread docket_satchel_0",
+        "chosen": "store 1 binding_thread docket_satchel_0",
+        "changed": false,
+        "selection_reason": "ordinary_without_supported_defect",
+        "comparison": {
+          "candidates": [
+            {
+              "id": "A",
+              "purpose": "Craft a weapon (gavel_club) to satisfy the task 'Obtain and equip a weapon before engaging enemies'",
+              "status": "blocked",
+              "defect_kind": "failed_precondition",
+              "condition": "Crafting gavel_club requires 2 gavel_timber and 1 binding_thread at a clerks_bench. Player holds only 1 gavel_timber and 1 binding_thread, and prior attempts at the bench failed for insufficient ingredients; the missing second gavel_timber is not held.",
+              "evidence": [
+                {
+                  "cycle": 130,
+                  "quote": "Cannot craft a single gavel_club. Do not have sufficient amount of necessary ingredients."
+                },
+                {
+                  "cycle": 134,
+                  "quote": "I am holding 1 gavel_timber, 1 binding_thread."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "purpose": "Free hand space by storing binding_thread in the docket_satchel, enabling pickup of the second gavel_timber needed for crafting",
+              "status": "supported",
+              "defect_kind": "none",
+              "condition": "Player holds a docket_satchel_0 and binding_thread; storing is a valid inventory action. However, the satchel is not currently in hand (it was dropped earlier and is not listed among held items), so this may fail unless the satchel is picked up first.",
+              "evidence": [
+                {
+                  "cycle": 134,
+                  "quote": "I see 10 writ_token, 2 chamber_key, 1 legal_brief_2, 1 clerks_bench, 1 docket_satchel_0 near me."
+                },
+                {
+                  "cycle": 134,
+                  "quote": "I am holding 1 gavel_timber, 1 binding_thread."
+                }
+              ]
+            }
+          ],
+          "relations": [
+            {
+              "blocked": "A",
+              "alternative": "B",
+              "addresses_issue": true,
+              "how": "Storing binding_thread frees a hand slot so the player can pick up a second gavel_timber, which is the missing ingredient blocking gavel_club crafting. Remaining uncertainty: the docket_satchel must be in hand to store into it, and a second gavel_timber must still be available in the area.",
+              "resources": "preserved",
+              "resource_reason": "binding_thread is retained inside the satchel rather than consumed; gavel_timber remains held.",
+              "evidence": [
+                {
+                  "cycle": 130,
+                  "quote": "Cannot craft a single gavel_club. Do not have sufficient amount of necessary ingredients."
+                },
+                {
+                  "cycle": 134,
+                  "quote": "I am holding 1 gavel_timber, 1 binding_thread."
+                }
+              ]
+            }
+          ]
+        },
+        "ordinary_id": "B",
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 136,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter clerks_office",
+        "chosen": "enter clerks_office",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 137,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "pick up gavel_timber",
+        "chosen": "pick up gavel_timber",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      },
+      {
+        "type": "persistent_choice",
+        "step": 138,
+        "eligible": true,
+        "mode": "selective",
+        "proposed": "enter lobby",
+        "chosen": "enter lobby",
+        "changed": false,
+        "selection_reason": "same_action",
+        "comparison": null,
+        "ordinary_id": null,
+        "comparison_errors": [],
+        "comparison_calls": 3
+      }
+    ]
+  }
+]

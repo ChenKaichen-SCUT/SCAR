@@ -1,0 +1,36 @@
+Selective comparison development experiment, frozen before model calls.
+
+Keep the existing Sentry host, ordinary ReAct/LongContext actor, repair-card
+generation, triggers, 30 card-call budget and six-action bursts unchanged.
+Compare only disagreeing ordinary/repair commands in the immediately expected
+public observation. At most one comparison request per disagreement, at most
+30 per game. No retry for malformed comparison: keep original behavior.
+No entity-specific rules. Use the same model with temperature0 for comparison.
+
+Replacement requires a specific supported defect in the ordinary command,
+a repair addressing that defect, current applicability and preserved task
+resources. Protect reasonable prerequisites. Evidence strings are checked;
+semantic judgments remain fallible model outputs. Do not claim logical safety
+or whole-game guarantees. An uncertain hypothesis remains testable when the
+test's enabling conditions and resource compatibility are supported.
+
+Equal commands use no comparator call. Every kept command returns the original
+response object and leaves actor memory byte-for-byte unchanged. Do not insert
+the comparator's explanation into the actor when keeping the command.
+
+First diagnose ALL eligible choices from the prior execute trajectories, using
+their frozen ordinary candidates and repair cards and only preceding public
+history. Previously replayed one-action counterfactuals are evaluation-only.
+They never enter policy prompts. Include negative and unchanged decisions.
+These known states are development diagnostics, not an independent test set.
+
+Then run the selective variant for300 actions in ALL three existing development
+worlds, reusing exact foundation/persistent response caches and original Sentry
+and advice outcomes. No paid baseline reruns. Exact shared-prefix environment
+digests and replay every executed action. Offline same-state counterfactuals
+for all new replacements. Compare task score, error feedback, overrides, no-op
+rationale preservation, logical/paid request costs and quota exhaustion.
+Freeze before calls; no mid-batch policy edits based on outcomes. This isolates
+the new selective policy relative to advice; prior force-execute comparisons
+also differ in no-op rationale handling and must be described accordingly.
+One trajectory per familiar world does not establish stable improvement.
