@@ -1,0 +1,58 @@
+Requirement-bound trial verification and revision
+
+Entry point: ObjectiveRepairAgent, opt-in arm "objective". It replaces the
+hypothesis selector's finalize_decision hook, while reusing the ordinary actor,
+public notebook, and existing action/resource checks. It is not a default
+promotion or a new whole-game guarantee.
+
+Decision loop
+1. Before asking for a repair, compute a finite requirement catalog from the
+   public task/recipe fragment and actually failed entrances. The LLM chooses
+   one catalog identifier and a short method; it cannot choose a different
+   target/count as that method's success criterion.
+2. Compile the final test independently of step milestones. A source search
+   checks the required material at the proposed location; acquisition checks
+   material in hand; an access method checks the attempted destination.
+   Access/acquisition/source programs must structurally reach their claimed
+   endpoint under the existing partial projection. Unknown effects can still
+   be tested. Matching a dialogue report does not fulfill the task requirement.
+3. Execute one action and read the actual observation. Record separately:
+   execution milestone, proposed condition, and requirement fulfillment.
+   A visible adequate source may select a checked pickup. Finding a source
+   and acquiring its material are separate outcomes.
+4. A false or unknown trial schedules one bounded revision event for the SAME
+   unmet requirement. Provide the actual observation, failed plan and scoped
+   evidence. Do not wait for another repetition trigger. Urgent actions yield
+   first; a changed task cancels the old requirement.
+5. A recently observed inadequate source rejects the same source proposal even
+   if its wording/route changes. This is local evidence, not global impossibility.
+   Changed target quantity, sufficient held material, task change or 24-action
+   expiry revokes it. Unknown visibility is not absence; only an unchanged
+   experiment in the same represented state is deferred.
+6. Missing structured hypotheses and rejected plans receive at most one
+   correction. Ordinary proposals use at most 10 of the 12 shared calls; two
+   remain available for feedback-driven revision. If no admissible new plan
+   is generated, preserve the ordinary actor instead of inventing a remedy.
+
+Scope and limitations
+The catalog is an incomplete computable fragment of public task descriptions,
+not a verified semantic parse of arbitrary goals. Recipe inputs are method
+requirements, not simultaneous terminal obligations. Failed entrances define
+attempted subproblems, not globally necessary destinations: an alternative
+that bypasses the destination may be missed. Dialogue branch relevance remains
+heuristic. The gate checks represented conditions; quotes do not prove causal
+relations, and the checks do not prove eventual task benefit or survival.
+
+Negative-evidence reuse is revocable and heuristic in a changing world. Full
+observation of the listed ground inventory is assumed for source absence;
+unobserved replenishment before expiry can make that evidence stale.
+Ordinary actor actions outside triggered repair trials (including destructive
+craft/disassembly actions) are not globally supervised by this mechanism.
+Only pickup/navigation/inspection/dialogue programs are represented. No new
+entity-specific resource rule or irreversible-action veto is introduced.
+
+Tests cover renamed entities, false versus unknown observations, quantities,
+capacity, immediate revision, source-specific rejection and revocation,
+unrelated endpoints, schema correction, task/urgent-action preservation and
+the shared query budget. See experiments/objective_protocol.txt and
+results/2026-10-18-objective-revision/RESULTS.txt for measured behavior and limits.

@@ -1,0 +1,231 @@
+{
+  "qualification": "Selected public-history compiler/control-flow audit. Need binding supplied by evaluator. Revision callback is a stub, not evidence of LLM generation or game improvement.",
+  "replayed_environment_transitions": 188,
+  "replayed_actions": 188,
+  "new_api_requests": 0,
+  "before_digest": "cf5212d795d77ea663c0decdd9d97867e33117c4519d3892cb2103b184151384",
+  "after_digest": "eff4cd870d12a85e7079597bd1d4915f100214d8bafe37675b44564dc68d7d26",
+  "candidate": {
+    "goal_quote": "First, craft a key and pick it up.",
+    "blocker": "No copper_bar in hand or current area; key recipe needs copper_bar + fiber_bundle.",
+    "hypothesis": "A copper_bar may be on the ground in the library, similar to how materials appear in other areas.",
+    "task_link": "Obtaining copper_bar is the missing ingredient to craft the key.",
+    "basis": [
+      "I see 7 oak_log, 8 resin_clump, 5 fiber_bundle, 6 bread near me.",
+      "Cannot craft a single key. Do not have sufficient amount of necessary ingredients.",
+      "I see 4 iron_ore, 3 iron_bar, 6 coal_chunk, 1 fiber_bundle, 2 stone, 4 coin, 1 pen, 1 paper_0 near me."
+    ],
+    "steps": [
+      {
+        "action": "enter library",
+        "test": {
+          "kind": "at",
+          "target": "library"
+        },
+        "may_consume": {}
+      }
+    ],
+    "branches": null,
+    "need_id": "541b48a17b74",
+    "verification": {
+      "mode": "source",
+      "site": "library"
+    }
+  },
+  "requirement": {
+    "kind": "resource",
+    "target": "copper_bar",
+    "count": 1.0,
+    "support": "I have acquired a new item: fiber_bundle. It can be used to craft: cloth (2 fiber_bundle), key (1 copper_bar, 1 fiber_bundle), paper (1 fiber_bundle), thread (1 fiber_bundle)",
+    "depth": 1,
+    "id": "541b48a17b74"
+  },
+  "observation": "\nCurrent Time: 0001-01-02 15:20:00\nCurrent Location: Old Castle, library\n\nI entered library.\nYou notice some fresh food appearing around: 3 bread.\n\nI am holding 1 fiber_bundle.\nI have equipped no objects.\nI see 8 oak_log, 8 resin_clump, 5 fiber_bundle, 9 bread near me.\nI see commoner_1, librarian_rowan, scrap_goblin_11 nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 49.\nMy experience is at 40.\n\nNeighboring areas: hall.\n",
+  "old_execution_only_test": true,
+  "new_outcome": {
+    "step": 188,
+    "contract": {
+      "goal_quote": "First, craft a key and pick it up.",
+      "blocker": "No copper_bar in hand or current area; key recipe needs copper_bar + fiber_bundle.",
+      "hypothesis": "A copper_bar may be on the ground in the library, similar to how materials appear in other areas.",
+      "task_link": "Obtaining copper_bar is the missing ingredient to craft the key.",
+      "basis": [
+        "I see 7 oak_log, 8 resin_clump, 5 fiber_bundle, 6 bread near me.",
+        "Cannot craft a single key. Do not have sufficient amount of necessary ingredients.",
+        "I see 4 iron_ore, 3 iron_bar, 6 coal_chunk, 1 fiber_bundle, 2 stone, 4 coin, 1 pen, 1 paper_0 near me."
+      ],
+      "steps": [
+        {
+          "action": "enter library",
+          "test": {
+            "kind": "at",
+            "target": "library"
+          },
+          "may_consume": {}
+        }
+      ],
+      "branches": null,
+      "need_id": "541b48a17b74",
+      "verification": {
+        "mode": "source",
+        "site": "library"
+      },
+      "key": "4f0793e44e9c4b873cd4dd90b4edc4991d02dcad87a8233611668cd8fcc95206",
+      "task": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "epoch": 86,
+      "step": 187,
+      "information": false,
+      "checks": {
+        "errors": [],
+        "unknown": [
+          {
+            "index": 0,
+            "kind": "NAVIGATION_EFFECTS_AND_SAFETY_UNVERIFIED"
+          }
+        ],
+        "projected": {
+          "holding": {
+            "fiber_bundle": 1.0
+          },
+          "ground": {
+            "oak_log": 8.0,
+            "resin_clump": 8.0,
+            "fiber_bundle": 5.0,
+            "bread": 6.0
+          },
+          "equipped": {},
+          "location": "Old Castle, library",
+          "neighbors": [
+            "hall"
+          ],
+          "fresh_tasks": []
+        }
+      },
+      "reserves": {
+        "fiber_bundle": 1.0
+      },
+      "objective": {
+        "mode": "source",
+        "need": {
+          "kind": "resource",
+          "target": "copper_bar",
+          "count": 1.0,
+          "support": "I have acquired a new item: fiber_bundle. It can be used to craft: cloth (2 fiber_bundle), key (1 copper_bar, 1 fiber_bundle), paper (1 fiber_bundle), thread (1 fiber_bundle)",
+          "depth": 1,
+          "id": "541b48a17b74"
+        },
+        "test": {
+          "kind": "visible",
+          "target": "copper_bar",
+          "count": 1.0,
+          "location": "library"
+        }
+      }
+    },
+    "index": 0,
+    "execution_outcome": true,
+    "outcome": false,
+    "requirement_resolved": false,
+    "terminal": true,
+    "failures": [],
+    "admitted": false,
+    "decision_distinguishing": false,
+    "cancellation_reasons": [],
+    "source_location": "Old Castle, library",
+    "observed_quantity": 0,
+    "required_ground_quantity": 1.0,
+    "acquisition_possible_under_known_checks": false,
+    "status": "SOURCE_NOT_OBSERVED",
+    "trial_id": 0
+  },
+  "revision_callback_count": 1,
+  "revision_packet": {
+    "original": "enter hall",
+    "trigger": {
+      "kind": "UNRESOLVED_REPAIR_REQUIREMENT",
+      "trial_id": 0,
+      "status": "SOURCE_NOT_OBSERVED"
+    },
+    "goals": [
+      "First, craft a key and pick it up."
+    ],
+    "requirements": [
+      {
+        "kind": "resource",
+        "target": "copper_bar",
+        "count": 1.0,
+        "support": "I have acquired a new item: fiber_bundle. It can be used to craft: cloth (2 fiber_bundle), key (1 copper_bar, 1 fiber_bundle), paper (1 fiber_bundle), thread (1 fiber_bundle)",
+        "depth": 1,
+        "id": "541b48a17b74"
+      }
+    ],
+    "current": {
+      "holding": {
+        "fiber_bundle": 1.0
+      },
+      "ground": {
+        "oak_log": 8.0,
+        "resin_clump": 8.0,
+        "fiber_bundle": 5.0,
+        "bread": 9.0
+      },
+      "equipped": {},
+      "location": "Old Castle, library",
+      "neighbors": [
+        "hall"
+      ],
+      "fresh_tasks": []
+    },
+    "remaining_actions": 112,
+    "capacity_upper": 2.0,
+    "reserved_resources": {
+      "fiber_bundle": 1.0
+    },
+    "observed_uses": [],
+    "trial_evidence": [
+      {
+        "id": 0,
+        "step": 188,
+        "task": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "goal": "First, craft a key and pick it up.",
+        "need": {
+          "kind": "resource",
+          "target": "copper_bar",
+          "count": 1.0,
+          "support": "I have acquired a new item: fiber_bundle. It can be used to craft: cloth (2 fiber_bundle), key (1 copper_bar, 1 fiber_bundle), paper (1 fiber_bundle), thread (1 fiber_bundle)",
+          "depth": 1,
+          "id": "541b48a17b74"
+        },
+        "mode": "source",
+        "test": {
+          "kind": "visible",
+          "target": "copper_bar",
+          "count": 1.0,
+          "location": "library"
+        },
+        "plan": [
+          "enter library"
+        ],
+        "outcome": false,
+        "requirement_resolved": false,
+        "status": "SOURCE_NOT_OBSERVED",
+        "location": "Old Castle, library",
+        "holding": {
+          "fiber_bundle": 1.0
+        },
+        "equipped": {},
+        "ground_quantity": 0,
+        "observation": "\nCurrent Time: 0001-01-02 15:20:00\nCurrent Location: Old Castle, library\n\nI entered library.\nYou notice some fresh food appearing around: 3 bread.\n\nI am holding 1 fiber_bundle.\nI have equipped no objects.\nI see 8 oak_log, 8 resin_clump, 5 fiber_bundle, 9 bread near me.\nI see commoner_1, librarian_rowan, scrap_goblin_11 nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 49.\nMy experience is at 40.\n\nNeighboring areas: hall.\n",
+        "expiry": 212
+      }
+    ],
+    "revision_of": 0
+  },
+  "same_source_rejections": [
+    {
+      "reason": "SOURCE_RECENTLY_TESTED_ABSENT",
+      "trial_id": 0
+    }
+  ],
+  "evaluator_sha256": "89cfda9a2df2f794c8db1d5530c8d47d5f327a0dc484abce869bb93af3685ff7"
+}

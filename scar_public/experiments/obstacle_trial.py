@@ -26,7 +26,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--block', type=Path, required=True); p.add_argument('--root', type=Path, required=True)
     p.add_argument('--key', required=True); p.add_argument('--steps', type=int, default=300)
-    p.add_argument('--agent',choices=['obstacle','hypothesis'],default='obstacle')
+    p.add_argument('--agent',choices=['obstacle','hypothesis','objective'],default='obstacle')
     p.add_argument('--reuse-api',type=Path,action='append',default=[])
     a = p.parse_args(); a.root.mkdir(parents=True, exist_ok=True)
     import fcntl
@@ -42,6 +42,9 @@ def main():
     if a.agent=='hypothesis':
         from scar_public.hypothesis_repair import HypothesisRepairAgent
         agent_class=HypothesisRepairAgent
+    elif a.agent=='objective':
+        from scar_public.objective_repair import ObjectiveRepairAgent
+        agent_class=ObjectiveRepairAgent
     agent = agent_class(provider, build_system(env, provider.model))
     prefix = True; prefix_checks = 0; replays = 0; counterfactuals = []; events = []; failures = 0
     for step in range(a.steps):
@@ -86,6 +89,8 @@ def main():
         else:
             atomic_json(path, row)
         state = next_state
+        if a.agent=='objective' and (done or step+1==a.steps):
+            agent.observe_terminal(dict(text=following,step=step+1))
         result = dict(steps=step+1, scores=env.scores[AGENT_ID], done=bool(done),
             passed='completed the main quest and passed the game' in following,
             failures=failures, overrides=sum(e['changed'] for e in events),
