@@ -1,0 +1,59 @@
+Bounded obstacle hypotheses (experimental, opt-in)
+
+Why this exists
+The previous repair layer chose from a fixed menu derived from public observed
+recipes/routes and prior successful access. It could reject a bad route without
+constructing a new way to change the blocker. The ordinary LLM actor was never
+restricted to that menu. This revision replaces the menu inside the repair
+layer; it does not replace the ordinary actor or stack another selector on it.
+
+Decision loop
+1. Keep the existing repeated-failure/repetition trigger and urgent-action yield.
+2. Ask the LLM for at most two ranked hypotheses, each attached to a quoted task,
+   public source passages, a proposed causal relation, and 1-3 actions/tests.
+   Prior success is not required. The LLM ranks task benefit, evidence and cost;
+   this is a heuristic, not a calibrated probability or expected-value bound.
+3. Check interface, current/projected item availability, known adjacency,
+   capacity, declared/previously observed spending and task-resource reserves.
+   Project a pickup into the carried state when checking later failed edges.
+   A changed condition invalidates the applicability of an old scoped failure;
+   it does not prove the next action will succeed. Unknown future effects are
+   explicitly retained as unknown, not converted into observed world rules.
+4. If every supplied candidate fails explicit checks, provide one correction
+   opportunity with the exact reasons and actual public state. All calls count
+   toward the same maximum of 12 proposal calls per game. Explicitly retaining
+   the original with an empty hypothesis list costs no correction query.
+5. Execute the chosen candidate's first action, then evaluate its test on the
+   real next observation. Recheck each continuation against the new state.
+   Contradiction, unknown result, changed task or urgent survival interrupts it.
+   The actor can retain its original action. Failure to propose a repair does
+   not constitute proof that the original action is sound.
+6. Keep attempted programs and explicit local resource-use reports as evidence.
+   A use report plus an inventory decrease is an observed local association,
+   not a universal causal rule. Concurrent attack does not erase that report.
+
+Information versus attempted state change
+Acquiring an object and navigating under a hypothesis are attempted changes.
+They are not counted as useful information merely because an action returned
+an acknowledgment. An inspection/dialogue test must define two distinct,
+concrete subsequent commands. Explicit positive/negative observed reports
+select the branch. Silence, unparseable output and conflicting reports select
+neither. Two previously observed resource sources are no longer required.
+
+Scope
+The experimental repair programs support pickup, navigation, inspection and
+dialogue. Crafting, disassembly, trading, container manipulation and combat
+remain ordinary actor decisions. Thus this layer does not globally validate
+every potentially irreversible action. Its resource checks cover declared and
+observed consumption, not unknown resource effects, complete future task needs
+or all joint demands. Recipe reservations have bounded depth and are heuristic.
+Exact source quotations prove provenance only; task relevance and causal
+interpretation remain fallible LLM judgments. No whole-game success, safety,
+optimality or positive value-of-information theorem is claimed.
+
+Evaluation
+Use --agent hypothesis with scar_public.experiments.obstacle_trial, or the
+hypothesis arm in the core factory. The default arm is unchanged. See the two
+frozen protocols in experiments/hypothesis*_protocol.txt and the full result
+record under results/2026-10-18-obstacle-hypotheses. Public state is the only
+policy input; saved environment snapshots and counterfactuals are evaluator-only.

@@ -26,6 +26,8 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--block', type=Path, required=True); p.add_argument('--root', type=Path, required=True)
     p.add_argument('--key', required=True); p.add_argument('--steps', type=int, default=300)
+    p.add_argument('--agent',choices=['obstacle','hypothesis'],default='obstacle')
+    p.add_argument('--reuse-api',type=Path,action='append',default=[])
     a = p.parse_args(); a.root.mkdir(parents=True, exist_ok=True)
     import fcntl
     lock = (a.root/'worker.lock').open('w'); fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -33,10 +35,14 @@ def main():
     assert os.environ['PYTHONHASHSEED'] == manifest['hash_seed']
     atomic_json(a.root/'manifest.json', dict(source_block=str(a.block), max_steps=a.steps,
         source_sha256=hashlib.sha256(Path('source_manifest.json').read_bytes()).hexdigest(),
-        hash_seed=manifest['hash_seed'], qualification='Existing worlds: development, not independent validation'))
-    provider = ReusingProvider(a.root/'api', a.key, historical=a.block/'api'); provider.arm = 'obstacle'
+        hash_seed=manifest['hash_seed'], agent=a.agent, qualification='Existing worlds: development, not independent validation'))
+    provider = ReusingProvider(a.root/'api', a.key, historical=a.block/'api',additional_historical=a.reuse_api); provider.arm = a.agent
     state = (a.block/'initial.pkl').read_bytes(); env = restore(state)
-    agent = ObstacleRepairAgent(provider, build_system(env, provider.model))
+    agent_class=ObstacleRepairAgent
+    if a.agent=='hypothesis':
+        from scar_public.hypothesis_repair import HypothesisRepairAgent
+        agent_class=HypothesisRepairAgent
+    agent = agent_class(provider, build_system(env, provider.model))
     prefix = True; prefix_checks = 0; replays = 0; counterfactuals = []; events = []; failures = 0
     for step in range(a.steps):
         provider.step = step
@@ -83,7 +89,9 @@ def main():
         result = dict(steps=step+1, scores=env.scores[AGENT_ID], done=bool(done),
             passed='completed the main quest and passed the game' in following,
             failures=failures, overrides=sum(e['changed'] for e in events),
-            queries=sum('proposal' in e for e in events), replays=replays, prefix_checks=prefix_checks)
+            queries=sum('proposal' in e for e in events),
+            proposal_calls=sum(e.get('proposal_calls',int('proposal' in e)) for e in events),
+            replays=replays, prefix_checks=prefix_checks)
         atomic_json(a.root/'current.json', result)
         if (step+1)%10 == 0 or done or step+1 == a.steps:
             atomic_json(a.root/'events.json', events)

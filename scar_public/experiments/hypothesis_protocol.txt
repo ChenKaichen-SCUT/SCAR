@@ -1,0 +1,42 @@
+2026-10-18: bounded causal-hypothesis repair, development protocol
+
+Motivation: the fixed repair menu could omit plausible unseen remedies. A recent
+Mark state exposes a possible access resource but the menu proposes only dialogue.
+We test whether an LLM can propose a new relation as a hypothesis and whether
+public effect checks can turn it into a useful continuation.
+
+Policy: same base actor/core planner, same trigger. A repair query proposes at
+most two 1-3-action hypotheses; source quotes establish provenance, not causality.
+Actions supported by this trial layer: acquire, navigate, inspect, dialogue.
+Existing resource/crafting planning stays in the base actor. No game names,
+entity-specific rules, private state, score or counterfactual enters the policy.
+Candidate relations need not have succeeded previously. Reject known interface,
+capacity, reserved-resource and unchanged downstream failure contradictions.
+Project pickups through a whole short plan; other effects remain conditional.
+Recheck on actual public observations before every continuation. Expected effects
+that fail stop the program. Threats and task changes yield to the base actor.
+
+Information: distinct concrete actions for two explicit observed outcomes; no
+second known resource source required. Silence/unparseable/conflicting text is
+unknown. Navigation acknowledgments do not count as useful information. Explicit
+resource-use reports may be retained alongside concurrent combat; they remain
+local observed associations, not universal rules.
+
+Economy: up to 12 repair queries/game, six-action same-context query cooldown,
+24-action same-context program cooldown. Uncertain hypotheses are ranked by the
+LLM using task benefit, evidence and action cost; the gate is not a value oracle.
+Normal actor actions remain untouched without a repair trigger.
+
+Freeze policy before paid calls. First run mark_r1 to global 300, inspecting its
+first matched repair state at decision 49. If it issues an admitted hypothesis,
+run only the new arm on mark_r0, metropolis_r1 and metropolis_7537 to global 300.
+These four worlds are development data; no independent/significance claim.
+Reuse frozen checked requests until divergence; do not rerun baseline APIs.
+Record complete games, all proposals/rejections/outcomes, same-state one-action
+counterfactuals and exact environment transition replays. Counterfactuals remain
+evaluator-only. Initial world/hash seeds come from saved paired snapshots.
+
+Report both local condition repair and final task score, including regressions.
+Do not attribute a final-score change to a single causal inference from one run.
+No default-policy promotion without further evidence. Preserve version 3 as a
+separate experimental arm and the previous compact default.

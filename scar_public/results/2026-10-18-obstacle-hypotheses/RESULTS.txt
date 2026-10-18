@@ -1,0 +1,106 @@
+Bounded obstacle hypotheses: full development evaluation, 2026-10-18
+
+Conclusion
+The new repair layer can construct and execute a previously unverified remedy.
+It fixes the two selected locked-armory states by acquiring the visible key
+before retrying. It does not establish a stable whole-game score improvement.
+Against the frozen core checked policy, wins/ties/losses: 1/2/1.
+The opt-in arm is not promoted as the default.
+
+Design and frozen iterations
+h1 replaces the fixed repair menu with up to two LLM-proposed, source-grounded
+but causally unverified programs of at most three actions. Existing scope checks
+remain: public entity/action availability, inventory/capacity, declared/observed
+resource spending, task reserves, and downstream failure conditions. Pickups
+update the projected inventory before later edge checks. Every continuation
+requires an actual public observation and a fresh check. Unknown is not failure.
+h1 rejected a plausible key proposal because it falsely asserted possession.
+h2 adds one bounded correction with rejection reasons and the actual current
+state. This remains within the total 12 proposal-call budget. All four h1 games
+are retained; h2 was separately frozen and evaluated on all four same worlds.
+
+Full-game quest scores (300-action maximum)
+world | core checked | compact | Sentry | obstacle v3 | h1 | h2 | h2 steps | h2 passed
+mark_r0 | 16 | 15 | 17 | 16 | 16 | 17 | 228 | True
+mark_r1 | 5 | 17 | 5 | 5 | 5 | 5 | 300 | False
+metropolis_r1 | 10 | 9 | 8 | 8 | 10 | 8 | 300 | False
+metropolis_7537 | 13 | 10 | 10 | 10 | 13 | 13 | 300 | False
+
+These are existing development worlds, one run per frozen policy, not an
+independent validation set. Baselines were not rerun. Sentry is the previously
+frozen author-adapter comparison with the same actor, not the complete external
+paper benchmark. Cross-game raw sums are descriptive, not normalized scores.
+Improvements in a world without an override cannot be credited to this mechanism.
+
+Matched local result
+For both Mark worlds, h1 and h2 have identical private-state digests, original
+actor actions and initial LLM proposals at decision 49. The initial h1 proposal
+was reused exactly by payload/step cache, rather than sampled again. Correction
+produced pickup(key), enter(armory). At 49 the pickup succeeded; at 50 the game
+explicitly reported using the key to unlock the armory. The ordinary actor then
+acquired copper, returned to the workbench, crafted and picked up the sword.
+mark_r0: copper-sword task completed at h2 decision 54 versus checked decision 65.
+mark_r1: copper-sword task completed at h2 decision 54 versus checked decision 68.
+The key was not hard-coded. The proposer inferred a relation from public
+observations (including prior key use at another entrance); only the current
+state and proposed short program were checked. Two related Mark worlds do not
+establish generalization or a 100-trial error reduction.
+
+Costs and mechanism counts
+h2 proposal calls: 38;
+correction calls: 15;
+selected programs: 5;
+selected programs after correction: 3;
+actual overridden actions: 5;
+observed admitted continuations: 2.
+Selected genuine information programs: 0;
+observed information-driven continuations: 0.
+Successful short-program terminal tests count represented local effects only.
+Arrival in a library is not proof that a hypothesized copper source exists.
+No empirical positive value-of-information claim is warranted here.
+
+Failure diagnosis
+Mark-r1 h2 still stalls at the next material bottleneck. The ordinary actor
+already proposed disassembling the sword at decision 70 and called it reversible.
+Actual feedback says it recovered nothing useful, and the sword disappeared.
+The prior v2 success at decision 82 recovered one copper bar from disassembly.
+Post-hoc evaluator inspection confirms the environment draws a 0.5 RNG test
+for each recipe ingredient of quantity one and consumes the object regardless.
+That rule was never supplied to the policy. These are distinct trajectory
+states, not a paired causal comparison or evidence that the earlier repair
+made the disassembly outcome worse. The new gate only supervises triggered
+repairs; it does not globally supervise ordinary destructive actor actions.
+
+Metropolis-r1 also illustrates limits: at decision 71 the alternate antechamber
+entry succeeds where the original alley entry fails; at 124 both original
+courtroom and replacement lobby entry fail. Feasible navigation and plausible
+task_link text are insufficient to establish eventual task benefit. Likewise,
+a later Mark-r1 library search validates arrival, not material acquisition.
+
+Remaining gaps
+1. Couple the final verification predicate to the actual proposed blocker
+   change: an access hypothesis can test arrival, a material-source hypothesis
+   needs evidence of the material, not just arrival.
+2. Distinguish cost-bounded exploratory changes from irreversible experiments
+   that can destroy the remaining useful resource. Apply that distinction to
+   relevant ordinary actor decisions too, rather than only replacement actions.
+3. Extend represented action/resource effects beyond pickup/navigation/dialogue/
+   inspection before claiming support for general upstream material plans.
+4. Freeze a stronger candidate and conduct independent repeated evaluation;
+   these trajectories do not establish significance or stable improvement.
+
+Validation and accounting
+129 targeted policy/regression tests passed locally; one additional layered
+cache-isolation test passed on the server runtime (local collection lacked the
+environment's cloudpickle dependency). Both evaluated policy sources were frozen
+and verified byte-for-byte. The extra cache test was added after source freezing.
+2328 actual environment transitions were replayed
+exactly with zero mismatches. 1494 common-prefix
+steps also matched the frozen checked trajectory. Evaluator-only counterfactual
+rollouts were excluded from agent observations and the game's 300-action budget.
+Total new API requests across h1+h2: 959; unknown-charge attempts: 0.
+Frozen historical-rate cost estimate: USD 1.902636552; not a current invoice.
+All failed/retried requests are included in the saved usage ledgers. Unchanged
+baseline calls and matching h1 calls were reused, with source recorded in h2.
+Complete public traces/proposals/outcomes/API audit logs are archived locally
+and on the server; artifact hash and credential-scan receipt are included.

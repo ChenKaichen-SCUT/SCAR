@@ -1,0 +1,27 @@
+Hypothesis repair v2 amendment, 2026-10-18
+
+The first frozen version's Mark-r1 step-49 proposer inferred a plausible key
+mechanism, but falsely claimed current possession and omitted pickup. The
+checker rejected unsupported evidence, then silently fell back. Preserve all
+four h1 development runs and their original frozen source.
+
+Change only one proposal-loop behavior: after all supplied candidates fail
+explicit checks, allow ONE correction using the rejected candidates, rejection
+reasons, actual public state and current observation. Keep the same total cap
+of 12 proposal calls per game, two candidates per call, three actions per plan,
+and resource/action/outcome checks. No entity-specific correction rule.
+
+Freeze before paid evaluation. Run all four existing development worlds once,
+at most 300 actions. Reuse h1 and frozen baseline responses only when the full
+payload hash, step and JSON-repair index match. Different calls are logged and
+charged normally. Do not rerun baseline APIs. Record source cache per hit.
+
+Primary: final quest score, with passes, failures, steps and total API cost.
+Mechanism: admitted hypotheses, actual verification and continuation, rejected
+causes, exact prefix identity and one-action paired counterfactuals. A successful
+local repair does not establish full-game benefit or generalization. These
+worlds have been used for development; no independent-validation claim.
+
+This bounded comparison is not an isolated same-proposal ablation: policy
+continuations and proposals can differ after the first new action. Do not
+promote the opt-in agent as default based on these four trajectories alone.

@@ -21,9 +21,10 @@ from scar_public.experiments.core_trial import build_system
 
 
 class ReusingProvider(Provider):
-    def __init__(self, *args, historical, **kwargs):
+    def __init__(self, *args, historical, additional_historical=(), **kwargs):
         super().__init__(*args, **kwargs)
         self.historical = historical
+        self.additional_historical = tuple(additional_historical)
         self.cache_only = False
 
     def request(self, messages, repair=0, options=None):
@@ -32,10 +33,11 @@ class ReusingProvider(Provider):
                        response_format={'type':'json_object'})
         if options: payload.update(options)
         h = hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
-        cache = self.historical/f'{self.step:04d}-{repair}-{h[:16]}.response.json'
-        if cache.exists():
-            append_jsonl(self.directory/'historical_reuse.jsonl', dict(step=self.step, arm=getattr(self,'arm',None), hash=h))
-            return json.loads(cache.read_text())
+        for directory in (self.historical, *self.additional_historical):
+            cache = directory/f'{self.step:04d}-{repair}-{h[:16]}.response.json'
+            if cache.exists():
+                append_jsonl(self.directory/'historical_reuse.jsonl', dict(step=self.step, arm=getattr(self,'arm',None), hash=h, source=str(directory)))
+                return json.loads(cache.read_text())
         if self.cache_only:
             raise RuntimeError(f'Historical prefix/baseline request missing at step {self.step}, hash {h}; no paid fallback')
         return super().request(messages, repair, options)

@@ -1,0 +1,276 @@
+{
+  "qualification": "Post-hoc evaluator diagnosis only, never a policy input; distinct trajectory states, not a paired intervention.",
+  "h2_failure": {
+    "step": 70,
+    "observation": "\nCurrent Time: 0001-01-01 19:30:00\nCurrent Location: Old Castle, hall\n\nI entered hall.\n\narlen appears nearby.\narlen says: \"You seem stuck. Talk to me if you need a reminder of your current task.\"\narlen enters the area.\n\nI am holding no objects.\nI have equipped no objects.\nI see 5 coin, 1 small_pouch_0, 1 small_pouch_1, 2 berry, 1 workbench, 1 copper_sword near me.\nI see scrap_goblin_1, arlen nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 111.\nMy experience is at 20.\n\nNeighboring areas: armory, library.\n",
+    "action": "disassemble copper_sword",
+    "response": {
+      "reasoning": "The armory search stage already completed explicitly. Arlen now says the stalls path is locked and requires crafting a key from 1 copper_bar and 1 fiber_bundle. The copper_sword on the ground in hall may disassemble into copper_bar, so testing disassemble is an inexpensive reversible step to obtain the needed copper_bar.",
+      "action": "disassemble copper_sword",
+      "frame": {
+        "goal_quote": "First, craft a key and pick it up. You'll need ingredients: 1 copper_bar and 1 fiber_bundle.",
+        "method": "Disassemble the copper_sword in hall to recover a copper_bar, then combine with fiber_bundle to craft a key for stalls.",
+        "required_state": "Holding copper_bar and fiber_bundle with a workbench in the same area.",
+        "feasibility": "unknown: fiber_bundle is in armory/library, not hall; workbench is in hall. Copper_bar source untested.",
+        "assessment": "Entering hall succeeded; copper_sword is present on ground. Copper_bar absent here, so need to source it.",
+        "expected": "Disassembling copper_sword yields copper_bar (and possibly oak_rod) on the ground, reducing the copper_bar gap."
+      },
+      "core_gate": {
+        "reason": "NO_ADMITTED_CONTINUATION",
+        "changed": false,
+        "proposed": "disassemble copper_sword",
+        "packet_id": "3ac59d349d369abf49b429622d05fb202834f1376742f12ed9d588d629ec7e1c"
+      },
+      "decision_source": "scar_core_actor",
+      "core_packet": {
+        "guard": "38cd366150c1176086b29bfefd90854b38b4830946314fa39168edfbcdfce107",
+        "proposal": "disassemble copper_sword",
+        "focus": null,
+        "observed_check": {
+          "status": "unknown",
+          "reason": "no contradiction established; success is not guaranteed"
+        },
+        "evidence_rejection": null,
+        "candidates": [],
+        "rejected": [],
+        "recommendation": null,
+        "combat": false,
+        "semantics": "UNKNOWN remains available to the LLM; automatic substitutions require all listed checks",
+        "id": "3ac59d349d369abf49b429622d05fb202834f1376742f12ed9d588d629ec7e1c"
+      },
+      "core_compute_ms": 2.7984799999103416,
+      "core_initial_proposal": {
+        "reasoning": "The armory search stage already completed explicitly. Arlen now says the stalls path is locked and requires crafting a key from 1 copper_bar and 1 fiber_bundle. The copper_sword on the ground in hall may disassemble into copper_bar, so testing disassemble is an inexpensive reversible step to obtain the needed copper_bar.",
+        "action": "disassemble copper_sword",
+        "frame": {
+          "goal_quote": "First, craft a key and pick it up. You'll need ingredients: 1 copper_bar and 1 fiber_bundle.",
+          "method": "Disassemble the copper_sword in hall to recover a copper_bar, then combine with fiber_bundle to craft a key for stalls.",
+          "required_state": "Holding copper_bar and fiber_bundle with a workbench in the same area.",
+          "feasibility": "unknown: fiber_bundle is in armory/library, not hall; workbench is in hall. Copper_bar source untested.",
+          "assessment": "Entering hall succeeded; copper_sword is present on ground. Copper_bar absent here, so need to source it.",
+          "expected": "Disassembling copper_sword yields copper_bar (and possibly oak_rod) on the ground, reducing the copper_bar gap."
+        }
+      },
+      "continuation": {
+        "step": 69,
+        "original": "disassemble copper_sword",
+        "changed": false,
+        "trigger": null,
+        "executed": "disassemble copper_sword"
+      }
+    },
+    "next_observation": "\nCurrent Time: 0001-01-01 19:40:00\nCurrent Location: Old Castle, hall\n\nI disassembled copper_sword but recovered nothing useful.\n\nI am holding no objects.\nI have equipped no objects.\nI see 5 coin, 1 small_pouch_0, 1 small_pouch_1, 2 berry, 1 workbench near me.\nI see scrap_goblin_1, arlen nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 111.\nMy experience is at 20.\n\nNeighboring areas: armory, library.\n",
+    "scores": {
+      "unique_kill": 0,
+      "kill": 0,
+      "craft": 2,
+      "exploration": 2,
+      "death": 0,
+      "trade": 0,
+      "quest": 5,
+      "side_quest": 0
+    },
+    "done": false,
+    "before_digest": "a9ddfa1702aadcf3e1ddc6a6c3d6a7fc53ff230c80c54904a73d8a52decda21d",
+    "after_digest": "43246bc17fe73a154582329a4ee0eafa9a9ee92ca658d126401e5361c45adc62",
+    "input_tokens": 18368,
+    "output_tokens": 270
+  },
+  "prior_v2_success": {
+    "step": 82,
+    "observation": "\nCurrent Time: 0001-01-01 21:30:00\nCurrent Location: Old Castle, hall\n\nI entered hall.\n\nI am holding 1 fiber_bundle.\nI have equipped no objects.\nI see 5 coin, 1 small_pouch_0, 1 small_pouch_1, 2 berry, 1 workbench, 1 goblin_token, 1 hide_scrap, 1 cloth, 2 copper_sword near me.\nI see scrap_goblin_0 nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 88.\nMy experience is at 25.\n\nNeighboring areas: armory, library.\n",
+    "action": "disassemble copper_sword",
+    "response": {
+      "reasoning": "The armory search already completed with 'No sign of torn pages here' and arlen now directs me to craft a key from copper_bar + fiber_bundle to unlock the stalls. I hold fiber_bundle but lack copper_bar. Copper_swords are on the ground in hall; disassembling one may yield a copper_bar. This is an inexpensive test of the alternate copper_bar source.",
+      "action": "disassemble copper_sword",
+      "frame": {
+        "goal_quote": "First, search Old Castle, armory for any signs.",
+        "method": "Obtain copper_bar by disassembling a copper_sword in hall, then craft key with held fiber_bundle at hall workbench.",
+        "required_state": "Copper_bar in hand/inventory plus fiber_bundle, with workbench in current area.",
+        "feasibility": "unknown: disassembly output not yet observed; workbench and fiber_bundle are present in hall, hand has 1 free slot.",
+        "assessment": "Armory search completed; copper_bar not on armory ground, so need alternate source. Disassembly is untested.",
+        "expected": "Disassembling copper_sword yields copper_bar (likely on ground), enabling key craft."
+      },
+      "core_gate": {
+        "reason": "NO_ADMITTED_CONTINUATION",
+        "changed": false,
+        "proposed": "disassemble copper_sword",
+        "packet_id": "3fa84a2dcbf8128b6637add924b280010175b350b7016a6c8d2a38620de6d547"
+      },
+      "decision_source": "scar_core_actor",
+      "core_packet": {
+        "guard": "dbbee4f74bfc29ca3eec277d09897952a5d27a499ea73ba3191e96eae2646d4d",
+        "proposal": "disassemble copper_sword",
+        "focus": null,
+        "observed_check": {
+          "status": "unknown",
+          "reason": "no contradiction established; success is not guaranteed"
+        },
+        "evidence_rejection": null,
+        "candidates": [],
+        "rejected": [],
+        "recommendation": null,
+        "combat": false,
+        "semantics": "UNKNOWN remains available to the LLM; automatic substitutions require all listed checks",
+        "id": "3fa84a2dcbf8128b6637add924b280010175b350b7016a6c8d2a38620de6d547"
+      },
+      "core_compute_ms": 3.3504699999866716,
+      "core_initial_proposal": {
+        "reasoning": "The armory search already completed with 'No sign of torn pages here' and arlen now directs me to craft a key from copper_bar + fiber_bundle to unlock the stalls. I hold fiber_bundle but lack copper_bar. Copper_swords are on the ground in hall; disassembling one may yield a copper_bar. This is an inexpensive test of the alternate copper_bar source.",
+        "action": "disassemble copper_sword",
+        "frame": {
+          "goal_quote": "First, search Old Castle, armory for any signs.",
+          "method": "Obtain copper_bar by disassembling a copper_sword in hall, then craft key with held fiber_bundle at hall workbench.",
+          "required_state": "Copper_bar in hand/inventory plus fiber_bundle, with workbench in current area.",
+          "feasibility": "unknown: disassembly output not yet observed; workbench and fiber_bundle are present in hall, hand has 1 free slot.",
+          "assessment": "Armory search completed; copper_bar not on armory ground, so need alternate source. Disassembly is untested.",
+          "expected": "Disassembling copper_sword yields copper_bar (likely on ground), enabling key craft."
+        }
+      },
+      "continuation": {
+        "step": 81,
+        "original": "disassemble copper_sword",
+        "changed": false,
+        "trigger": null,
+        "executed": "disassemble copper_sword"
+      }
+    },
+    "next_observation": "\nCurrent Time: 0001-01-01 21:40:00\nCurrent Location: Old Castle, hall\n\nI disassembled copper_sword and recovered 1 copper_bar.\n\nI am holding 1 fiber_bundle.\nI have equipped no objects.\nI see 5 coin, 1 small_pouch_0, 1 small_pouch_1, 2 berry, 1 workbench, 1 goblin_token, 1 hide_scrap, 1 cloth, 1 copper_sword, 1 copper_bar near me.\nI see scrap_goblin_0 nearby.\n\nMy level is 2.\nMy attack is at 15.\nMy defense is at 0.\nMy health is at 88.\nMy experience is at 25.\n\nNeighboring areas: armory, library.\n",
+    "scores": {
+      "unique_kill": 1,
+      "kill": 1,
+      "craft": 2,
+      "exploration": 2,
+      "death": 0,
+      "trade": 0,
+      "quest": 5,
+      "side_quest": 0
+    },
+    "done": false,
+    "before_digest": "6fb33173b58d1bfa7b0d584859163aaf912a2c285f3e6f1026c239f5d04162cf",
+    "after_digest": "c596b2997ca4fa2d8d3f19c77d7ea762224bceb2a9a6d8dbb858b2b77f72abcf",
+    "input_tokens": 21291,
+    "output_tokens": 260
+  },
+  "evaluator_rule_source": "/root/scar_research_20261015/source/AgentOdyssey/games/generated/mark/rules/action_rules.py",
+  "rule_source_sha256": "5a6a26d189a624addb6e48afd70c1f2adac775c1706a6e615a0cadd0ecc2eeda",
+  "rule_excerpt": [
+    {
+      "line": 2182,
+      "text": "            return"
+    },
+    {
+      "line": 2183,
+      "text": ""
+    },
+    {
+      "line": 2184,
+      "text": "        # compute salvage yields"
+    },
+    {
+      "line": 2185,
+      "text": "        salvage: dict[str, int] = {}"
+    },
+    {
+      "line": 2186,
+      "text": "        for ing_id, req in ingredients.items():"
+    },
+    {
+      "line": 2187,
+      "text": "            try:"
+    },
+    {
+      "line": 2188,
+      "text": "                req_amt = float(req)"
+    },
+    {
+      "line": 2189,
+      "text": "            except Exception:"
+    },
+    {
+      "line": 2190,
+      "text": "                continue"
+    },
+    {
+      "line": 2191,
+      "text": "            out = 0"
+    },
+    {
+      "line": 2192,
+      "text": "            if req_amt >= 2:"
+    },
+    {
+      "line": 2193,
+      "text": "                out = max(1, math.floor(0.5 * req_amt))"
+    },
+    {
+      "line": 2194,
+      "text": "            elif abs(req_amt - 1.0) < 1e-9:"
+    },
+    {
+      "line": 2195,
+      "text": "                out = 1 if env.rng.random() < 0.5 else 0"
+    },
+    {
+      "line": 2196,
+      "text": "            else:"
+    },
+    {
+      "line": 2197,
+      "text": "                # fractional (<1) or zero yields nothing"
+    },
+    {
+      "line": 2198,
+      "text": "                out = 0"
+    },
+    {
+      "line": 2199,
+      "text": "            if out > 0:"
+    },
+    {
+      "line": 2200,
+      "text": "                salvage[ing_id] = int(out)"
+    },
+    {
+      "line": 2201,
+      "text": ""
+    },
+    {
+      "line": 2202,
+      "text": "        if loc_label == \"hand\":"
+    },
+    {
+      "line": 2203,
+      "text": "            agent.items_in_hands[obj_id] -= 1"
+    },
+    {
+      "line": 2204,
+      "text": "            if agent.items_in_hands[obj_id] <= 0:"
+    },
+    {
+      "line": 2205,
+      "text": "                del agent.items_in_hands[obj_id]"
+    },
+    {
+      "line": 2206,
+      "text": "        else:"
+    },
+    {
+      "line": 2207,
+      "text": "            current_area.objects[obj_id] -= 1"
+    },
+    {
+      "line": 2208,
+      "text": "            if current_area.objects[obj_id] <= 0:"
+    },
+    {
+      "line": 2209,
+      "text": "                del current_area.objects[obj_id]"
+    },
+    {
+      "line": 2210,
+      "text": "        res.track_consume(agent.id, obj_id, 1, src=src_loc)"
+    }
+  ],
+  "interpretation": "Base actor already proposed disassembly. It called the action reversible, but the object was consumed and no ingredient returned. The environment uses a 0.5 RNG test for each recipe ingredient with quantity 1. The old successful trajectory received copper; that is not evidence of a guaranteed recovery rule."
+}

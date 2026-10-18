@@ -41,6 +41,9 @@ def build_system(env, model):
 
 
 def build_trial_agent(arm, provider, system, repair_quota=None, max_steps=300):
+    if arm == 'hypothesis':
+        from scar_public.hypothesis_repair import HypothesisRepairAgent
+        return HypothesisRepairAgent(provider, system)
     if arm == 'obstacle':
         from scar_public.obstacle_repair import ObstacleRepairAgent
         return ObstacleRepairAgent(provider, system)
