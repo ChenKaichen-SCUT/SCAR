@@ -1,0 +1,78 @@
+Obstacle revision 3: development result, not an independent validation
+
+Outcome
+The two requested checks are implemented, but the full-game experiment does not
+establish a task-performance improvement. Keep the arm experimental and opt-in.
+
+All four worlds ran to a 300-action budget. Baselines are existing frozen results;
+they were not rerun. The new actor sees only public observations, never evaluator
+scores, private snapshots or route-counterfactual outcomes.
+
+world | checked | compact | Sentry | obstacle v2 | obstacle v3 | v3 failures | v3 actions
+mark_r0 | 16 | 15 | 17 | 16 | 16 | 8 | 300
+mark_r1 | 5 | 17 | 5 | 17 | 5 | 17 | 300
+metropolis_r1 | 10 | 9 | 8 | 8 | 8 | 51 | 300
+metropolis_7537 | 13 | 10 | 10 | 10 | 10 | 54 | 300
+
+Same-state mechanism audit
+Reconstructed 1194 old actions using
+1271 exact cached requests,
+without API fallback. Across 41
+candidate-generation states, old candidates fell from
+14 to
+2.
+Of 7 previously selected replacements, 5 lose eligibility:
+3 carry scoped downstream failure witnesses; the other two are issuer
+questions with no concrete outcome-dependent continuation. Two old alternatives
+remain eligible. These counts concern eligibility, not automatically avoided
+failures or improved scores under a new policy.
+
+The three rejected old navigation plans were rolled out by an evaluator from
+their exact saved states (metropolis_7537, decisions 234, 281, 284). All three
+reached the lobby on action one and failed at the evidence-room door on action
+two. All 300 prefix environment transitions reproduced exactly. This confirms
+the selected route objections locally; it does not certify a better replacement.
+
+Information and continuation
+Admitted real information programs in the new full games: 0.
+Observed information-driven continuations: 0.
+Do not label intermediate room arrival as information gain. The implementation
+supports presence/absence branches, but these games do not demonstrate useful
+active information gathering, let alone information value exceeding its cost.
+Repair queries: 2;
+actual overrides: 3;
+continuation overrides: 1.
+Full per-event checks/cancellation reasons and same-state one-step outcomes are
+retained in the public evidence archive and analysis.json.
+
+Important negative case
+mark_r1 drops from 17/passed under v2 to 5/not passed, exactly the checked
+trajectory. The removed question repeated the existing copper-sword instruction;
+it did not identify a new source. The old trajectory later picked up a key at
+decision 59 and entered the armory at 60. A single divergent continuation cannot
+show that the redundant dialogue caused the eventual success through information.
+Nevertheless the regression is real and cannot be discarded as irrelevant.
+
+Scope and limits
+The downstream check covers the represented navigation prefix and alternate
+source route, not a full natural-language quest or complete upstream crafting
+plan. Failure reuse is conditional on task, information revision and carried
+resources and expires after six actions (including projected travel). It is
+a conservative heuristic deferral with omitted conditions, not a safety theorem.
+The actor can retain its own original action. We do not permanently ban edges.
+Information branches currently need two publicly observed sources and concrete
+subsequent actions. That strict coverage requirement can remove useful exploration.
+The remaining bottleneck is constructing a justified route that changes the
+blocking condition; filtering an unhelpful route does not construct such a route.
+No new independent worlds or repetitions were used; do not claim significance.
+The candidate schema/prompt and continuation handling changed together. Full-game
+scores compare versions, not an isolated identical-proposal authority ablation.
+
+Validation and cost
+108 targeted tests passed. Policy was frozen throughout all four games.
+1200 new-game exact transition replays plus 300 old-prefix route-check replays:
+1500 checked transitions, zero mismatches. The 1194-action public-history audit
+is a separate check, not included in that environment-transition count.
+New API requests: 309; unknown-charge attempts: 0.
+Frozen historical-rate estimate: USD 0.740177952; not a current provider invoice.
+Mark worlds used zero new API requests. No unchanged baseline API runs.

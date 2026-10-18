@@ -1,0 +1,29 @@
+Revision 3: downstream deferral and decision-distinguishing observation branches.
+
+Development only, not an independent validation set. Do not change policy during
+evaluation. First replay the previous four histories with exact cached prompts
+and no API fallback; compare candidate eligibility at the same public states.
+Then run only the new arm for at most 300 environment actions on these four
+development worlds if candidate behavior changes. Reuse all unchanged requests;
+do not rerun baselines. Record all outcomes, including regressions and no-ops.
+
+Check every known navigation edge, including conditional fallback routes, against
+recent actual failures at that edge's SOURCE. Scope to task, information revision
+and carried resources; expire after six actions including projected travel time.
+This is a heuristic short deferral, not an invariant or a goal feasibility proof.
+An unknown edge is not a failed edge. Recheck after every executed program action.
+
+An information program must link a public test to two distinct concrete actions:
+resource present -> pickup (fresh capacity check); absent -> route to another
+observed source. Both sources and route edges must have public observations.
+Missing observations select neither branch. A task issuer mention followed by
+reconsideration in both cases, or an untraversed exit without a grounded alternate
+continuation, is not admitted as information. Intermediate arrival is navigation,
+not an informative test. All these checks are necessary heuristics, not a positive
+value-of-information guarantee. Lower coverage is an explicit tradeoff to audit.
+
+Track: rejected old choices, future-edge witnesses, admitted concrete observation
+branches and actual action changes due to their outcomes; scores, completion,
+failures, deaths, actions and API use. Do not infer game improvement from fewer
+invalid actions, fewer repair queries, or successful movement. No world names,
+private engine state or scores enter policy. The experimental arm stays opt-in.

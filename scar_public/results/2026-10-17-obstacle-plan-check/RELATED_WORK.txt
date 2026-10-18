@@ -1,0 +1,50 @@
+Primary-source check, 2026-10-17
+
+The problem is not an untouched research gap. The following mechanisms can
+address parts of it; none of the cited results establishes success on our exact
+saved game states without running that method there.
+
+ReflAct: World-Grounded Decision Making in LLM Agents via Goal-State Reflection
+https://arxiv.org/abs/2505.15182
+EMNLP 2025. Continuously relates the current state to the task goal to improve
+grounding and action selection. This is a relevant goal-directed reflection
+baseline; our claim cannot be simply that other agents never consider goals.
+
+AdaPlanner: Adaptive Planning from Feedback with Language Models
+https://arxiv.org/abs/2305.16653
+Uses in-plan and out-of-plan refinement driven by environment feedback, a code
+style planning prompt and successful plans as reusable exemplars. Feedback-led
+plan revision is established prior work, not an independent SCAR contribution.
+
+Sentry: Learning to Recover from LLM Agent Failures at Test Time
+https://arxiv.org/html/2610.02994v1
+Section 3 detects failure, retrieves matching recovery lessons, supplies soft
+repair guidance and verifies subsequent recovery before storing a lesson.
+Its 200 paired intervention forks report 74 higher final scores, 101 ties and
+25 lower scores. These are that paper's benchmarks and verifier, not our games.
+This is evidence that conditional failure guidance can improve final outcomes;
+an explicit executable gate still has to earn its added cost in our experiments.
+
+Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models
+https://arxiv.org/html/2310.04406v3
+Uses tree selection, expansion, evaluation, simulation, outcome backpropagation
+and reflection. Downstream outcomes therefore affect earlier choices. The paper
+explicitly discusses needing an environment model or undo/reset capability.
+Our online actor has no private environment replay; evaluator replay must not
+be silently granted to a planning baseline without accounting for that change.
+
+CPR: Regression-based Planning with Sensing Actions and Incomplete Information
+https://www.cs.nmsu.edu/~tson/CPR/
+Author's planner page. Uses state-based regression under a stated approximate
+semantics to generate conditional/conformant plans from a formal problem with
+fluents, operators, initial knowledge and goals. Outcome-conditioned plans and
+reasoning backward from required conditions are established planning ideas.
+Applying them to incomplete public language evidence adds a modeling problem;
+calling the two ideas themselves new would overstate our contribution.
+
+Research implication (our assessment)
+The potentially useful distinction is a cheap, revocable check on candidate
+plans and concrete outcome-dependent continuations built from public evidence.
+That distinction is an implementation hypothesis, not demonstrated scientific
+superiority. The current development evidence must be reported together with
+lost coverage, regressions, and the absence of qualified real information trials.

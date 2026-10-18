@@ -30,6 +30,7 @@ def options(memory, text, original):
 
 def test_value(test, text):
     s = state_from_text(text); kind, name = test['kind'], test['target']
+    if test.get('location') and s['location'] != test['location']: return None
     if kind == 'held':
         return None if s['holding'] is None else s['holding'].get(name, 0) >= test.get('count', 1)
     if kind == 'at':
@@ -45,18 +46,77 @@ def test_value(test, text):
     return None
 
 
-def known_route(model, destination, evidence, task):
-    start = model.current.get('location'); queue = deque([(start, [])]); seen = {start}
+def edge_blocker(evidence, task, location, command, offset=0):
+    """Short, revocable deferral at the edge's source, including future edges.
+
+    This is observed-context reuse, not a claim that navigation preserves all
+    hidden state. New information/resources, a task change or expiry revokes it.
+    """
+    current = evidence.current
+    if any(current.get(k) is None for k in ('holding', 'equipped')): return None
+    for record in reversed(evidence.records):
+        if record['action'] != command or record['before'].get('location') != location: continue
+        if record['after'].get('location') != location: return None  # newer successful traversal
+        if (record['feedback'] and not record['protected'] and record['task'] == task
+            and record['epoch_after'] == evidence.epoch
+            and 0 <= evidence.step + offset - record['step'] <= 6
+            and all(record['before'].get(k) == current.get(k) == record['after'].get(k)
+                    for k in ('holding', 'equipped'))):
+            return dict(reason='DOWNSTREAM_OBSERVED_FAILURE', location=location, action=command,
+                witness_step=record['step'], feedback=record['feedback'], expiry=record['step']+6,
+                projected_offset=offset, scope='Same task, information revision and carried resources; temporary heuristic')
+    return None
+
+
+def route_rejections(model, route, evidence, task, start=None, offset=0):
+    node = start or model.current.get('location'); rejected = []
+    for index, command in enumerate(route):
+        if not command.startswith('enter '): break  # do not invent resource effects
+        blocker = edge_blocker(evidence, task, node, command, offset+index)
+        if blocker: rejected.append(dict(**blocker, plan_index=index, plan=route))
+        node = model.edges.get(node, {}).get(command[6:])
+        if node is None: break
+    return rejected
+
+
+def known_route(model, destination, evidence, task, start=None, audit=None, offset=0):
+    start = start or model.current.get('location'); queue = deque([(start, [])]); seen = {start}
     while queue and len(seen) <= 64:
         node, path = queue.popleft()
         if node and destination in (node, node.split(', ')[-1]): return path
         for exit_name, dest in sorted(model.edges.get(node, {}).items()):
             command = 'enter '+exit_name
-            risk = evidence.assess(command, task) if not path else None
-            if risk and risk['kind'] == 'REPEATED_OBSERVED_FAILURE': continue
+            if node == model.current.get('location') and exit_name not in model.current.get('neighbors', []): continue
+            blocker = edge_blocker(evidence,task,node,command,offset+len(path))
+            if blocker:
+                if audit is not None: audit.append(dict(**blocker, candidate_prefix=path+[command], destination=destination))
+                continue
             if dest not in seen:
                 seen.add(dest); queue.append((dest, path+[command]))
     return None
+
+
+def information_branches(model, target, place, evidence, task, offset, audit):
+    """Presence selects pickup; absence selects a route to a DIFFERENT source.
+
+    Both sources/edges must have been observed. Unknown effects are checked
+    again after acting. A request for another free-form reflection is no branch.
+    """
+    held = model.current.get('holding')
+    if held is None or (model.capacity_upper is not None and sum(held.values()) >= model.capacity_upper):
+        return None
+    alternatives = []
+    for other, listing in sorted(model.locations.items()):
+        if other == place or not listing['objects'].get(target): continue
+        route = known_route(model,other,evidence,task,start=place,offset=offset,audit=audit)
+        if route: alternatives.append((len(route),other,route))
+    if not alternatives: return None
+    _, other, route = min(alternatives)
+    return dict(present=dict(action='pick up '+target,plan=['pick up '+target],
+                             condition='Observed ground count is positive; recheck carrying capacity'),
+                absent=dict(action=route[0],plan=route,source=other,
+                            condition='Observed ground count is zero; try the other observed source'),
+                probe_location=place, qualification='Decision distinction, not positive expected value or guaranteed completion')
 
 
 def missing_requirements(memory, original, goals):
@@ -80,7 +140,8 @@ def missing_requirements(memory, original, goals):
     return missing
 
 
-def repair_programs(memory, original, goals, evidence, task, attempts, access_methods):
+def repair_programs(memory, original, goals, evidence, task, attempts, access_methods, audit=None):
+    if audit is None: audit = []
     m = memory.model; s = m.current; result = []; available = options(memory,evidence.observation,original)
     needed = missing_requirements(memory,original,goals)
     locked = re.match(r'^enter (.+)$',original['action'])
@@ -89,11 +150,11 @@ def repair_programs(memory, original, goals, evidence, task, attempts, access_me
         for method in access_methods:
             if method['exit']==locked[1] and not (s.get('holding') or {}).get(method['item']):
                 needed.setdefault(method['item'],dict(count=1,depth=0,support=method['support']))
-        route = known_route(m,locked[1],evidence,task)
+        route = known_route(m,locked[1],evidence,task,audit=audit)
         if route and route[0]!=original['action']:
             result.append(dict(action=route[0],condition='Reach '+locked[1]+' by an observed alternate route',
                 test=dict(kind='at',target=route[0][6:]),on_pass=route[1] if len(route)>1 else 'reconsider',
-                support=dict(observed_route=route),purpose='change',target=locked[1]))
+                support=dict(observed_route=route),plan=route,purpose='change',target=locked[1]))
     for name, need in needed.items():
         take = 'pick up '+name
         if (s.get('ground') or {}).get(name,0)>0 and take in available:
@@ -103,32 +164,39 @@ def repair_programs(memory, original, goals, evidence, task, attempts, access_me
                 test=dict(kind='held',target=name,count=after),on_pass=follow,support=need['support'],purpose='change'))
         for place, listing in sorted(m.locations.items()):
             if place==s.get('location') or not listing['objects'].get(name): continue
-            route = known_route(m,place,evidence,task)
+            route = known_route(m,place,evidence,task,audit=audit)
             if not route: continue
-            test = dict(kind='visible',target=name) if len(route)==1 else dict(kind='at',target=route[0][6:])
+            branches = information_branches(m,name,place,evidence,task,len(route),audit)
+            if not branches:
+                audit.append(dict(reason='NO_ACTION_DISTINGUISHING_OUTCOMES',target=name,source=place,plan=route))
+                continue
+            terminal_test = dict(kind='visible',target=name,location=place)
+            test = terminal_test if len(route)==1 else dict(kind='at',target=route[0][6:])
             follow = take if len(route)==1 else route[1]
             result.append(dict(action=route[0],condition='Find missing '+name+' at its last observed location',
                 target=name,test=test,on_pass=follow,support=dict(dependency=need['support'],
-                observed_location=place,observed_count=listing['objects'][name],route=route),purpose='learn'))
-        # Untraversed exits test the presence of a specifically missing object.
-        # Availability of an exit does not establish that it contains the object.
+                observed_location=place,observed_count=listing['objects'][name],route=route),
+                plan=route,branches=branches,terminal_test=terminal_test,
+                on_fail=branches['absent']['action'] if len(route)==1 else 'reconsider',
+                purpose='learn' if len(route)==1 else 'change'))
+        # These old proposals have no supported outcome-dependent continuation.
+        # Keep explicit rejection diagnostics instead of calling them information.
         for exit_name in s.get('neighbors',[]):
             if exit_name in m.edges.get(s.get('location'),{}): continue
-            result.append(dict(action='enter '+exit_name,condition='Test whether '+name+' is beyond this untraversed exit',
-                target=name,test=dict(kind='visible',target=name),on_pass=take,
-                support=dict(dependency=need['support'],observed_exit=exit_name,resource_location='UNKNOWN'),purpose='learn'))
+            audit.append(dict(action='enter '+exit_name,target=name,reason='NO_ACTION_DISTINGUISHING_OUTCOMES'))
         for speaker, record in memory.progress_tasks.items():
             speaker = speaker.removesuffix(':main')
             if speaker in nearby(evidence.observation) and record['quote'] in goals:
-                result.append(dict(action='talk to '+speaker,condition='Ask the task issuer about missing '+name,
-                    target=name,test=dict(kind='content',target=speaker,contains=name),on_pass='reconsider',
-                    support=dict(dependency=need['support'],instruction=record['source']),purpose='learn'))
+                audit.append(dict(action='talk to '+speaker,target=name,reason='NO_ACTION_DISTINGUISHING_OUTCOMES'))
     admitted=[]
     for program in result:
         action=program['action'];risk=evidence.assess(action,task)
         if action==original['action'] or action not in available or (risk and risk['kind']=='REPEATED_OBSERVED_FAILURE'): continue
         if test_value(program['test'],evidence.observation) is True: continue
-        program.update(on_fail='reconsider',goal=goals[0],task=task,step=evidence.step)
+        program.setdefault('on_fail','reconsider')
+        if program.get('plan'):
+            program['carried_guard']={k:s.get(k) for k in ('holding','equipped')}
+        program.update(goal=goals[0],task=task,step=evidence.step)
         scope=digest([task,program['target'],action,s.get('location'),s.get('holding'),s.get('equipped'),program['support']])
         if any(a['scope']==scope and evidence.step-a['step']<=24 for a in attempts): continue
         program['scope']=scope;program['id']=digest(program)[:12]
@@ -140,9 +208,12 @@ INSTRUCTION = """
 The original method is blocked or cycling. Which CURRENT missing condition prevents the
 task, and can one listed program change it or find out how to change it? Choose a program
 only if that condition matters to the current task. Recipe inputs are not terminal goals.
-Each program is a fallible hypothesis: old locations can be stale, unexplored exits need
-not contain the resource, and task issuers may give no hint. A successful first action
-alone is NOT progress. Its public test determines whether a second action is attempted.
+Each program is a fallible hypothesis: old locations can be stale and navigation can
+change resources or expose danger. Known recent downstream failures have been checked
+along the listed route. Arrival at an intermediate room is navigation, NOT information.
+Information programs specify distinct concrete continuations for presence and absence;
+unknown observations select neither. This is NOT a guarantee that their benefit exceeds
+their action cost. A successful first action alone is NOT task progress.
 Keep the original action if it is necessary transit, waiting/retrying is better, or none
 of the programs solves a relevant obstacle. Do not choose novelty just to avoid failure.
 Return ONLY {reasoning: brief reason, action: one command, repair_id: chosen id or null}.
@@ -173,13 +244,37 @@ class ObstacleRepairAgent(ContinuationAgent):
                         failures=feedback_lines(obs['text']),task_unchanged=pending['task']==task)
             self.obstacle_outcomes.append(result);event['previous_repair']=result
             risk=evidence.assess(follow,task)
-            if (outcome is not None and follow!='reconsider' and pending['task']==task
-                and not threatened(obs['text']) and not executed['action'].startswith(PROTECTED)
-                and follow in options(self.notebook,obs['text'],executed)
-                and not (risk and risk['kind']=='REPEATED_OBSERVED_FAILURE')):
+            reasons=[]
+            if outcome is None: reasons.append('UNOBSERVED_OUTCOME')
+            if follow=='reconsider': reasons.append('NO_CONCRETE_CONTINUATION')
+            if pending['task']!=task: reasons.append('TASK_CHANGED')
+            if threatened(obs['text']) or executed['action'].startswith(PROTECTED): reasons.append('URGENT_ACTION_YIELD')
+            if follow not in options(self.notebook,obs['text'],executed): reasons.append('CONTINUATION_NOT_CURRENTLY_AVAILABLE')
+            if risk and risk['kind']=='REPEATED_OBSERVED_FAILURE': reasons.append('CONTINUATION_RECENTLY_FAILED')
+            if pending.get('carried_guard') and any(evidence.current.get(k)!=v for k,v in pending['carried_guard'].items()):
+                reasons.append('CARRIED_STATE_CHANGED')
+            rest=pending.get('plan',[])[1:]
+            blockers=route_rejections(self.notebook.model,rest,evidence,task)
+            branches=pending.get('branches')
+            if branches:
+                # Revalidate the advertised absence branch as well as the prefix.
+                blockers+=route_rejections(self.notebook.model,branches['absent']['plan'],evidence,task,
+                    start=branches['probe_location'],offset=len(rest))
+            if blockers: reasons.append('DOWNSTREAM_OBSERVED_FAILURE')
+            result.update(cancellation_reasons=reasons,downstream_blockers=blockers,admitted=not reasons,
+                          decision_distinguishing=pending['test']['kind']=='visible' and bool(branches))
+            if not reasons:
                 event.update(reason='OBSERVED_TEST_SELECTS_CONTINUATION',changed=follow!=executed['action'])
                 if event['changed']:executed=self.replace(executed,follow,pending['goal'],
                     pending['condition']+'; the public intermediate test returned '+str(outcome))
+                if outcome and rest:
+                    continued=copy.deepcopy(pending);continued['plan']=rest;continued['action']=rest[0]
+                    continued['test']=(continued['terminal_test'] if len(rest)==1 and branches
+                                       else dict(kind='at',target=rest[0][6:]))
+                    continued['on_pass']=rest[1] if len(rest)>1 else (branches['present']['action'] if branches else 'reconsider')
+                    continued['on_fail']=branches['absent']['action'] if len(rest)==1 and branches else 'reconsider'
+                    continued['purpose']='learn' if len(rest)==1 and branches else 'change'
+                    self.obstacle_pending=continued
                 return self.finish(executed,event,task)
         trigger=self.repair_trigger(executed['action'],task);event['trigger']=trigger
         if trigger and self.repair_mode!='off' and not evidence.offered(trigger):
@@ -187,8 +282,10 @@ class ObstacleRepairAgent(ContinuationAgent):
             quote=executed.get('frame',{}).get('goal_quote','')
             if len(quote)>=12 and any(quote in t for t in self.notebook.observations):goals=list(dict.fromkeys([quote]+goals))
             if goals:
-                programs=repair_programs(self.notebook,executed,goals,evidence,task,self.obstacle_attempts,self.access_methods)
+                audit=[]
+                programs=repair_programs(self.notebook,executed,goals,evidence,task,self.obstacle_attempts,self.access_methods,audit)
                 event['programs']=programs
+                event['program_rejections']=audit
                 if programs:
                     packet=dict(original=executed['action'],trigger=trigger,goals=goals,programs=programs,
                                 previous_repairs=self.obstacle_outcomes[-4:])
