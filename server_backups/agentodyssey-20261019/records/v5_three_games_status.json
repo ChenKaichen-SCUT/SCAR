@@ -1,0 +1,171 @@
+{
+  "phase": "stopped",
+  "all_processes_stopped": true,
+  "runs": {
+    "remnant__v5_batch_20261018": {
+      "id": "remnant__v5_batch_20261018",
+      "game": "remnant",
+      "max_steps": 120,
+      "status": "finished",
+      "pid": 31862,
+      "returncode": 1,
+      "stop_reason": "run_calls_budget_exceeded",
+      "steps": 26,
+      "main_quest": 0,
+      "supplementary": 0,
+      "budget": {
+        "calls": 26,
+        "input_tokens": 95447,
+        "uncached_input_tokens": 31447,
+        "output_tokens": 3292
+      },
+      "error_tail": "20261018/.venv/lib/python3.10/site-packages/openai/_utils/_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py\", line 1318, in create\n    return self._post(\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/_base_client.py\", line 1440, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/_base_client.py\", line 1213, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.RateLimitError: Error code: 429 - {'error': {'message': 'run_calls_budget_exceeded', 'type': 'budget_stop'}}\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/root/agentodyssey-benchmark-20261018/eval_feedback_v5.py\", line 11, in <module>\n    exec(compile(source,str(R/'agentodyssey/eval.py'),'exec'),{'__name__':'__main__','__file__':str(R/'agentodyssey/eval.py')})\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/eval.py\", line 310, in <module>\n    action_strs[agent.id], num_input_tokens, num_output_tokens, response = agent.act(obs[agent.id])\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/games/generated/remnant/agent.py\", line 164, in act\n    action = self._act(obs)\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 72, in _act\n    result,raw=self.propose(prompt);tin+=result['num_input_tokens'];tout+=result['num_output_tokens'];response=result['response']\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 43, in propose\n    result=self.llm.generate(user_prompt=prompt,system_prompt=self.system);self.model_calls+=1\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 19, in generate\n    if e.status_code==429:raise BudgetStopped('pre_request_budget_or_batch_halt') from e\nagents.feedback_v5_agent.BudgetStopped: pre_request_budget_or_batch_halt\n",
+      "official_score": {
+        "games": {
+          "remnant": {
+            "game": "remnant",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__v5_batch_20261018",
+                "agent_id": "agent_adam_davis",
+                "steps": 26,
+                "main_quest": 0.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 0.0,
+                  "craft": 0.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 0.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 0.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 0.0,
+              "craft": 0.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 0.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "mark__v5_batch_20261018": {
+      "id": "mark__v5_batch_20261018",
+      "game": "mark",
+      "max_steps": 120,
+      "status": "finished",
+      "pid": 31863,
+      "returncode": 1,
+      "stop_reason": "run_calls_budget_exceeded",
+      "steps": 26,
+      "main_quest": 0,
+      "supplementary": 0,
+      "budget": {
+        "calls": 26,
+        "input_tokens": 94439,
+        "uncached_input_tokens": 31591,
+        "output_tokens": 3262
+      },
+      "error_tail": "rk-20261018/.venv/lib/python3.10/site-packages/openai/_utils/_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py\", line 1318, in create\n    return self._post(\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/_base_client.py\", line 1440, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/_base_client.py\", line 1213, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.RateLimitError: Error code: 429 - {'error': {'message': 'run_calls_budget_exceeded', 'type': 'budget_stop'}}\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/root/agentodyssey-benchmark-20261018/eval_feedback_v5.py\", line 11, in <module>\n    exec(compile(source,str(R/'agentodyssey/eval.py'),'exec'),{'__name__':'__main__','__file__':str(R/'agentodyssey/eval.py')})\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/eval.py\", line 310, in <module>\n    action_strs[agent.id], num_input_tokens, num_output_tokens, response = agent.act(obs[agent.id])\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/games/generated/mark/agent.py\", line 164, in act\n    action = self._act(obs)\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 72, in _act\n    result,raw=self.propose(prompt);tin+=result['num_input_tokens'];tout+=result['num_output_tokens'];response=result['response']\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 43, in propose\n    result=self.llm.generate(user_prompt=prompt,system_prompt=self.system);self.model_calls+=1\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 19, in generate\n    if e.status_code==429:raise BudgetStopped('pre_request_budget_or_batch_halt') from e\nagents.feedback_v5_agent.BudgetStopped: pre_request_budget_or_batch_halt\n",
+      "official_score": {
+        "games": {
+          "mark": {
+            "game": "mark",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/mark__v5_batch_20261018",
+                "agent_id": "agent_adam_davis",
+                "steps": 26,
+                "main_quest": 0.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 0.0,
+                  "craft": 0.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 0.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 0.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 0.0,
+              "craft": 0.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 0.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "metropolis__v5_batch_20261018": {
+      "id": "metropolis__v5_batch_20261018",
+      "game": "metropolis",
+      "max_steps": 120,
+      "status": "finished",
+      "pid": 31864,
+      "returncode": 1,
+      "stop_reason": "run_calls_budget_exceeded",
+      "steps": 30,
+      "main_quest": 4,
+      "supplementary": 3,
+      "budget": {
+        "calls": 26,
+        "input_tokens": 132196,
+        "uncached_input_tokens": 36708,
+        "output_tokens": 5072
+      },
+      "error_tail": "61018/.venv/lib/python3.10/site-packages/openai/_utils/_utils.py\", line 298, in wrapper\n    return func(*args, **kwargs)\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py\", line 1318, in create\n    return self._post(\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/_base_client.py\", line 1440, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n  File \"/root/agentodyssey-benchmark-20261018/.venv/lib/python3.10/site-packages/openai/_base_client.py\", line 1213, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.RateLimitError: Error code: 429 - {'error': {'message': 'run_calls_budget_exceeded', 'type': 'budget_stop'}}\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/root/agentodyssey-benchmark-20261018/eval_feedback_v5.py\", line 11, in <module>\n    exec(compile(source,str(R/'agentodyssey/eval.py'),'exec'),{'__name__':'__main__','__file__':str(R/'agentodyssey/eval.py')})\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/eval.py\", line 310, in <module>\n    action_strs[agent.id], num_input_tokens, num_output_tokens, response = agent.act(obs[agent.id])\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/games/generated/metropolis/agent.py\", line 164, in act\n    action = self._act(obs)\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 72, in _act\n    result,raw=self.propose(prompt);tin+=result['num_input_tokens'];tout+=result['num_output_tokens'];response=result['response']\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 43, in propose\n    result=self.llm.generate(user_prompt=prompt,system_prompt=self.system);self.model_calls+=1\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v5_agent.py\", line 19, in generate\n    if e.status_code==429:raise BudgetStopped('pre_request_budget_or_batch_halt') from e\nagents.feedback_v5_agent.BudgetStopped: pre_request_budget_or_batch_halt\n",
+      "official_score": {
+        "games": {
+          "metropolis": {
+            "game": "metropolis",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/metropolis__v5_batch_20261018",
+                "agent_id": "agent_adam_davis",
+                "steps": 30,
+                "main_quest": 4.0,
+                "supplementary": {
+                  "side quest": 1.0,
+                  "exploration": 2.0,
+                  "craft": 0.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 3.0,
+                "warnings": [
+                  "accumulated 'side quest' reward (1) does not match the recorded agent state (0); using the accumulated reward"
+                ]
+              }
+            ],
+            "main_quest": 4.0,
+            "supplementary": {
+              "side quest": 1.0,
+              "exploration": 2.0,
+              "craft": 0.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 3.0
+          }
+        },
+        "aggregate": null
+      }
+    }
+  },
+  "proxy_pid": 31857,
+  "batch_budget": {
+    "calls": 78,
+    "input_tokens": 322082,
+    "uncached_input_tokens": 99746,
+    "output_tokens": 11626
+  }
+}

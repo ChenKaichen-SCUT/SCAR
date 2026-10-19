@@ -1,0 +1,88 @@
+{
+  "algorithm": "feedback_v3",
+  "games": [
+    "remnant",
+    "mark",
+    "metropolis"
+  ],
+  "runs_per_game": 1,
+  "max_steps": 500,
+  "environment_seed": 42,
+  "api_model": "deepseek-flash",
+  "thinking": "disabled",
+  "actor_temperature": 0.7,
+  "actor_presence_penalty": 1.5,
+  "actor_max_tokens": 4096,
+  "controller_temperature": 0.0,
+  "controller_max_tokens": 4096,
+  "controller_presence_penalty": 0.0,
+  "max_controller_calls_per_game": 60,
+  "max_repair_calls_per_game": 32,
+  "max_successful_llm_calls_per_game": 592,
+  "transport_retries_max": 2,
+  "parallel_trajectories": 3,
+  "api_concurrency_ceiling": 128,
+  "cpu_threads_per_process": 2,
+  "base_method": "full-history ReAct; raw observations retained, dispatcher interventions also retained",
+  "source_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "baseline_reruns": false,
+  "changes": [
+    "persistent terminal action and observation-derived recipe/access preparation",
+    "receding short action paths rechecked after each observation",
+    "transitive demand rejects surplus ingredient crafting",
+    "explicit test id, required preconditions and predicted postconditions; no action-string matching or acceptance-as-proof",
+    "same-state action and unchanged-inspection veto applies to every dispatch source",
+    "veto causes and proposed/executed distinction retained in full history",
+    "ingredient listing correctly typed; object location freshness and visibility tracked",
+    "no arbitrary inspection fallback; explicit algorithm-stalled early stop if a correction yields no admissible candidate"
+  ],
+  "data_access": [
+    "public text observations",
+    "declared action schema",
+    "own proposals and executed actions"
+  ],
+  "no_access_during_decisions": [
+    "reward",
+    "hidden environment state",
+    "valid-action oracle",
+    "historical baseline or v2 trajectories",
+    "game-specific preloaded recipes, named objects, maps or answers"
+  ],
+  "validation": {
+    "offline_behavior_tests": 23,
+    "server_fake_model_integration_cases": 2,
+    "real_api_calls_in_tests": 0,
+    "frozen_trace_cases": "two prior v2 public-observation prefixes used only by test_feedback_v3.py",
+    "synthetic_name_recipe_variants": 3
+  },
+  "evaluation": [
+    "official main and supplementary score",
+    "dependency preparations and actual product/equipment/write effects",
+    "test preconditions and predicted versus observed effects",
+    "repeated-state and inspection vetoes including dispatcher-caused loops",
+    "API tokens, repair/controller call counts, transport failures",
+    "all early exits recorded as incomplete trajectories, never reclassified as success"
+  ],
+  "limits": [
+    "same games used for development and evaluation; not held-out generalization evidence",
+    "one trajectory per method/game; no statistical significance or guarantee of higher score",
+    "observed quantities/access models remain partial and can be invalidated by changing world rules",
+    "zero admissible candidate after one correction is an explicit method failure; no automatic outcome-selected rerun",
+    "controller cap reduced from v2 80 to 60; prompt/schema and planning differ, compute is not matched"
+  ],
+  "implementation_sha256": {
+    "feedback_v3_core.py": "c9b18afd96123935d8f7708a655d5ffcb476605505e6b0f1d7878de32e112d0b",
+    "feedback_v3_agent.py": "31f03d47ed2c107f8306377fd9ae8db637a6e6ac47f7b8d39675a90ea75d6b01",
+    "eval_feedback_v3.py": "f548eb84c9d374529d448934f6058ab99f598339949aa4260a85b6b3599e78cc",
+    "run_feedback_v3.py": "233da7c02ea8529e4f9b6789688582b5b953efbc22a376926f234652fee10edf",
+    "api_proxy_feedback_v3.py": "75683cca092cefda2d7de7d4bd9a974bb304a52759debb2e42444a71837ae0b7",
+    "test_feedback_v3.py": "6410b7caff34ec3ab5e495f5f88ece134b18941b6230e2b60b58e7531ebca3f5",
+    "analyze_feedback_v3.py": "10937d30357e298d4d5b1c53e28b848b47f702b0a9de6a1c4edc2513a106a725",
+    "feedback_v2_core.py": "fb5abe0202711fce06146e8ee6afdf8945e9aec78245392ba27798c63950f4f2",
+    "api_proxy.py": "5e1e32cc80ae267dd0de8533a847b013a858da3c2d0917c19863f82e9b47b346",
+    "deepseek_adapter.py": "6f1d0209a0a9652f7e21295eb34da60aab5a267334b582092d8666b6c6f9b53a",
+    "v3_validation_cases.json": "cc7374ba4bc0c16e12017d3cf2bde1bae3d80c5a6b99eefa69fe8dab48b12421",
+    "preflight_feedback_v3_remote.py": "670b53c89c4b97da39f121d14b4baaf6522c3f7ced8515a8a468b776312fa34b",
+    "start_feedback_v3_remote.py": "304b2aa366bde1aedf8f93d842b1512c93459e0397d0b95c806626d60e0d8145"
+  }
+}

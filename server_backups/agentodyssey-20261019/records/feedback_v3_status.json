@@ -1,0 +1,186 @@
+{
+  "method": "feedback_v3",
+  "completed": false,
+  "runs": {
+    "remnant__feedback_v3": {
+      "status": "failed",
+      "game": "remnant",
+      "pid": 107192,
+      "steps": 157,
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_feedback_v3.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/remnant__feedback_v3_agents.json",
+        "--game_name",
+        "remnant",
+        "--max_steps",
+        "500",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/remnant__feedback_v3",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 1,
+      "last_action": "enter armory",
+      "returncode": 1,
+      "completion_reason": "algorithm_stalled_no_admissible_candidate",
+      "error_tail": "g memory for agent_adam_davis at step 154 (eval.py:<module>:330)\n[02:34:42] [INFO] \u2705 [Step 154] adam_davis performs action enter with params ['library'] (env.py:step:677)\n[02:34:44] [INFO] Saving memory for agent_adam_davis at step 155 (eval.py:<module>:330)\n[02:34:44] [INFO] \u2705 [Step 155] adam_davis performs action enter with params ['hall'] (env.py:step:677)\n[02:34:46] [INFO] Saving memory for agent_adam_davis at step 156 (eval.py:<module>:330)\n[02:34:46] [INFO] \u2705 [Step 156] adam_davis performs action enter with params ['armory'] (env.py:step:677)\nTraceback (most recent call last):\n  File \"/root/agentodyssey-benchmark-20261018/eval_feedback_v3.py\", line 16, in <module>\n    exec(compile(source,str(R/'agentodyssey/eval.py'),'exec'),{'__name__':'__main__','__file__':str(R/'agentodyssey/eval.py')})\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/eval.py\", line 310, in <module>\n    action_strs[agent.id], num_input_tokens, num_output_tokens, response = agent.act(obs[agent.id])\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/games/generated/remnant/agent.py\", line 164, in act\n    action = self._act(obs)\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v3_agent.py\", line 88, in _act\n    raise NoAdmissibleAction('v3 could not produce an admissible new action after one correction; inspect control_audit')\nagents.feedback_v3_agent.NoAdmissibleAction: v3 could not produce an admissible new action after one correction; inspect control_audit\n",
+      "official_score": {
+        "games": {
+          "remnant": {
+            "game": "remnant",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__feedback_v3",
+                "agent_id": "agent_adam_davis",
+                "steps": 157,
+                "main_quest": 1.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 2.0,
+                  "craft": 2.0,
+                  "defeat": 2.0
+                },
+                "supplementary_total": 6.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 1.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 2.0,
+              "craft": 2.0,
+              "defeat": 2.0
+            },
+            "supplementary_total": 6.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "mark__feedback_v3": {
+      "status": "finished",
+      "game": "mark",
+      "pid": 107193,
+      "steps": 496,
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_feedback_v3.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/mark__feedback_v3_agents.json",
+        "--game_name",
+        "mark",
+        "--max_steps",
+        "500",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/mark__feedback_v3",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 17,
+      "last_action": "attack root_warden",
+      "returncode": 0,
+      "completion_reason": "environment_done",
+      "official_score": {
+        "games": {
+          "mark": {
+            "game": "mark",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/mark__feedback_v3",
+                "agent_id": "agent_adam_davis",
+                "steps": 496,
+                "main_quest": 17.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 11.0,
+                  "craft": 9.0,
+                  "defeat": 2.0
+                },
+                "supplementary_total": 22.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 17.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 11.0,
+              "craft": 9.0,
+              "defeat": 2.0
+            },
+            "supplementary_total": 22.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "metropolis__feedback_v3": {
+      "status": "finished",
+      "game": "metropolis",
+      "pid": 107194,
+      "steps": 500,
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_feedback_v3.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/metropolis__feedback_v3_agents.json",
+        "--game_name",
+        "metropolis",
+        "--max_steps",
+        "500",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/metropolis__feedback_v3",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 20,
+      "last_action": "enter evidence_room",
+      "returncode": 0,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "metropolis": {
+            "game": "metropolis",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/metropolis__feedback_v3",
+                "agent_id": "agent_adam_davis",
+                "steps": 500,
+                "main_quest": 20.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 8.0,
+                  "craft": 3.0,
+                  "defeat": 2.0
+                },
+                "supplementary_total": 13.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 20.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 8.0,
+              "craft": 3.0,
+              "defeat": 2.0
+            },
+            "supplementary_total": 13.0
+          }
+        },
+        "aggregate": null
+      }
+    }
+  },
+  "all_processes_stopped": true,
+  "analysis_returncode": 0
+}

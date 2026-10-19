@@ -1,0 +1,181 @@
+{
+  "purpose": "Controlled component screening and separate reliability revision validation; no baseline reruns",
+  "runs": [
+    {
+      "id": "remnant__ab_no_checks",
+      "game": "remnant",
+      "variant": "no_checks",
+      "phase": "ablation",
+      "max_steps": 300
+    },
+    {
+      "id": "metropolis__ab_no_checks",
+      "game": "metropolis",
+      "variant": "no_checks",
+      "phase": "ablation",
+      "max_steps": 300
+    },
+    {
+      "id": "remnant__ab_no_execution",
+      "game": "remnant",
+      "variant": "no_execution",
+      "phase": "ablation",
+      "max_steps": 300
+    },
+    {
+      "id": "metropolis__ab_no_execution",
+      "game": "metropolis",
+      "variant": "no_execution",
+      "phase": "ablation",
+      "max_steps": 300
+    },
+    {
+      "id": "remnant__ab_no_repeat",
+      "game": "remnant",
+      "variant": "no_repeat",
+      "phase": "ablation",
+      "max_steps": 300
+    },
+    {
+      "id": "metropolis__ab_no_repeat",
+      "game": "metropolis",
+      "variant": "no_repeat",
+      "phase": "ablation",
+      "max_steps": 300
+    },
+    {
+      "id": "remnant__ab_no_hypothesis",
+      "game": "remnant",
+      "variant": "no_hypothesis",
+      "phase": "ablation",
+      "max_steps": 300
+    },
+    {
+      "id": "metropolis__ab_no_hypothesis",
+      "game": "metropolis",
+      "variant": "no_hypothesis",
+      "phase": "ablation",
+      "max_steps": 300
+    },
+    {
+      "id": "remnant__study_v4",
+      "game": "remnant",
+      "variant": "v4_selected",
+      "phase": "v4_validation",
+      "max_steps": 500
+    },
+    {
+      "id": "mark__study_v4",
+      "game": "mark",
+      "variant": "v4_selected",
+      "phase": "v4_validation",
+      "max_steps": 500
+    },
+    {
+      "id": "metropolis__study_v4",
+      "game": "metropolis",
+      "variant": "v4_selected",
+      "phase": "v4_validation",
+      "max_steps": 500
+    }
+  ],
+  "runs_per_condition": 1,
+  "api_model": "deepseek-flash",
+  "thinking": "disabled",
+  "actor_temperature": 0.7,
+  "actor_presence_penalty": 1.5,
+  "max_output_tokens": 4096,
+  "controller_temperature": 0.0,
+  "controller_presence_penalty": 0.0,
+  "controller_release": "min(60, 1 + step*60//500), same as frozen v3; at most 37 in 300 steps and 60 in 500 steps",
+  "max_repair_calls_per_run": 32,
+  "max_successful_llm_calls_total": 4728,
+  "transport_retries_max": 2,
+  "environment_seed": 42,
+  "source_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "cpu_threads_per_process": 2,
+  "parallel_trajectories_ablation": 4,
+  "parallel_trajectories_v4": 3,
+  "api_concurrency_ceiling": 128,
+  "dependent_actions": "sequential within each game; no speculative paid branches",
+  "reference_at_300": {
+    "remnant": {
+      "main": 1,
+      "steps_observed": 157,
+      "budget": 300,
+      "remaining_steps_after_method_failure": "no further reward credited; early algorithm failure retained",
+      "original_completion_reason": "algorithm_stalled_no_admissible_candidate"
+    },
+    "metropolis": {
+      "main": 18,
+      "steps_observed": 300,
+      "budget": 300,
+      "remaining_steps_after_method_failure": null,
+      "original_completion_reason": "step_limit"
+    }
+  },
+  "historical_reference_sha256": {
+    "runs/remnant__feedback_v3/agent_adam_davis/agent_log.jsonl": "b9643e9342a370e4285f9b5d4291a1c8d3a4e7a8f0e7119189e3639fcc8a53d5",
+    "runs/metropolis__feedback_v3/agent_adam_davis/agent_log.jsonl": "1edbea91b2adb8a3dd4c7e9618afc3dc9f34a436b9c351556eab87042c1a2d20"
+  },
+  "ablations": {
+    "no_checks": "v3 joint quantity, task parameter, station, capacity and surplus vetoes become advisory; factual ledger retained",
+    "no_execution": "v3 automatic dependency preparation and committed short-plan execution disabled; fresh actor proposals still checked",
+    "no_repeat": "v3 repeated-context action and unchanged-inspection hard vetoes become advisory",
+    "no_hypothesis": "v3 separate typed hypothesis proposal, trial marking and prompt feedback removed; review and actor budgets unchanged"
+  },
+  "v4_frozen_reliability_changes": [
+    "unreported inventory remains uncertain; capacity failure only constrains same observed load, attempted action, location, epoch and life",
+    "death invalidates operational constraints; law rewrite also invalidates object-capability and inspection caches",
+    "explicit not-equippable feedback persists as object capability until rule rewrite",
+    "unsupported or contradicted objectives cannot remain locked; old objective may be revalidated after death",
+    "successful navigation recurrence becomes advisory; unchanged failed actions and repeated inspections remain checked unless their group is removed",
+    "fresh actor proposal precedes old plan/preparation after hazard, task, visibility or reset changes"
+  ],
+  "selection": "At most one component group removed. Both 300-step screening runs must finish with valid scores, Remnant must strictly beat its frozen v3 reference and Metropolis must not regress. Rank qualifying groups by normalized total main gain (24/31 denominators), ties: no_hypothesis, no_execution, no_repeat, no_checks. If none qualify, retain all groups and apply only reliability revisions. No post-hoc threshold tuning.",
+  "phase_transition": "after all 8 ablations stop, save selection, check provider balance once, then run selected v4 on all 3 games; no top-up, no automatic reruns",
+  "measurements": [
+    "main/supplementary score, main score at step 300, early method versus API failures",
+    "zero-capacity vetoes, deaths, unchanged inspections, rejection types, main gain steps",
+    "observable objective effects, net dependency changes, typed tests",
+    "API call counts and prompt/completion tokens; no aggregate wall-time metric"
+  ],
+  "data_access": [
+    "current public observations",
+    "own full history",
+    "declared action schema"
+  ],
+  "prohibited_actor_inputs": [
+    "reward or hidden state",
+    "game-specific hardcoded objects, recipes, maps or answers",
+    "frozen historical traces, baseline scores or offline validation fixtures"
+  ],
+  "limitations": [
+    "one stochastic trajectory per condition: screen, not significance or universal utility proof",
+    "same games used for development: no held-out generalization claim",
+    "v4 has several frozen reliability changes; its outcome cannot identify an individual repair effect",
+    "no factorial interaction estimates; at most one group removed to avoid combining untested deletions",
+    "method early exits remain failures with achieved score; infrastructure failures disqualify selection"
+  ],
+  "implementation_sha256": {
+    "mechanism_study_core.py": "244329fb8efa4e749fb28f7083d7406b6cfe31a9eb9125c6802b36f70e6d1146",
+    "mechanism_study_agent.py": "d6e3890ca1c4d676ba78653c88e2c064478ba48915c526d75c2bfa90b7de1725",
+    "feedback_v4_core.py": "2a047056518ca9b54a3513a4a7c91e8f2b5f39bbe3c03bc538a442a14c71f7ec",
+    "study_selection.py": "4a48f74ff475ddfd059f197fccc661fc5c682741abc1fa6128f7ce27f55fdf66",
+    "eval_mechanism_study.py": "f82a885d4cc05f6ba8bd97a273f81570410cbaad344970aab73f5ced4464a4ca",
+    "api_proxy_mechanism_study.py": "acd952d8f4b563a5897ca77105ead100ea9d981cff36c75d444d36a1aa4fe0ff",
+    "run_mechanism_study.py": "7579ec3223eaa0732d87a755831c04489e261efe84a6170f70bb3a299fd4b24b",
+    "analyze_mechanism_study.py": "b9853f00a312f2d8cc069b717ba200ce419e4c2829cbf2d0ba65e78fc356762b",
+    "study_adapter_smoke.py": "e89bcb91f0ee40cdb88ae65763b3afcbf08882eef14c589af752c7fa1824ecc8",
+    "test_mechanism_study.py": "579fcdc31a32a2025fe8427ba4d933da642a1681918d8f26190d245e33cbeefa",
+    "test_study_selection.py": "c497e162488039dd2d37c973c1251c4b44e2874478395f835db384ea4273054c",
+    "preflight_mechanism_study_remote.py": "c0a9e23dc5d8f601780a352a835ebb849c5b786c6267261b06316b08a3e2c4d5",
+    "start_mechanism_study_remote.py": "85df87188f90b94c35b9b666b5ef58d7508267fa91a9b8ad0c38a0929d58bf74",
+    "study_validation_cases.json": "b0e4cd2ee87532c14b81f126272dac3000977ff337f928320e5f56f0a2f3788d",
+    "feedback_v3_core.py": "c9b18afd96123935d8f7708a655d5ffcb476605505e6b0f1d7878de32e112d0b",
+    "feedback_v3_agent.py": "31f03d47ed2c107f8306377fd9ae8db637a6e6ac47f7b8d39675a90ea75d6b01",
+    "feedback_v2_core.py": "fb5abe0202711fce06146e8ee6afdf8945e9aec78245392ba27798c63950f4f2",
+    "api_proxy.py": "5e1e32cc80ae267dd0de8533a847b013a858da3c2d0917c19863f82e9b47b346",
+    "deepseek_adapter.py": "6f1d0209a0a9652f7e21295eb34da60aab5a267334b582092d8666b6c6f9b53a"
+  }
+}

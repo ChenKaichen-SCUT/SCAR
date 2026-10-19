@@ -1,0 +1,78 @@
+{
+  "method": "v3r",
+  "parent": "v3 (1/24, 17/17, 20/31)",
+  "authorization": "User requested abandoning v4/v5, improving v3 on Remnant, and complete normal 500-step experiments without changing quota ceilings.",
+  "paid_execution_explicitly_enabled": true,
+  "runs": [
+    {
+      "id": "remnant__v3r_20261018",
+      "game": "remnant",
+      "budget_scope": "remnant__v3r_20261018",
+      "cache_sources": [],
+      "cached_calls": 0,
+      "max_steps": 500
+    },
+    {
+      "id": "mark__v3r_20261018",
+      "game": "mark",
+      "budget_scope": "mark__v3r_20261018",
+      "cache_sources": [],
+      "cached_calls": 0,
+      "max_steps": 500
+    },
+    {
+      "id": "metropolis__v3r_20261018",
+      "game": "metropolis",
+      "budget_scope": "metropolis__v3r_20261018",
+      "cache_sources": [],
+      "cached_calls": 0,
+      "max_steps": 500
+    }
+  ],
+  "seed": 42,
+  "model": "deepseek-flash",
+  "max_steps_each": 500,
+  "workers": 3,
+  "thinking_disabled": true,
+  "budget_db": "feedback_v3r_budget.sqlite",
+  "limits": {
+    "calls": 1506,
+    "input_tokens": 150000000,
+    "uncached_input_tokens": 12000000,
+    "output_tokens": 1156608
+  },
+  "per_run_limits": {
+    "calls": 502,
+    "input_tokens": 50000000,
+    "uncached_input_tokens": 4000000,
+    "output_tokens": 385536
+  },
+  "max_single_input_reservation": 1000000,
+  "output_tokens_per_call": 768,
+  "quota_values_unchanged_from": "v5_full500_repair_protocol.json",
+  "new_authorized_experiment_separate_ledger": true,
+  "previous_paid_usage_not_deleted_or_reset": true,
+  "no_baseline_reruns": true,
+  "no_v4_or_v5_agent_imports": true,
+  "max_paid_correction_calls": 0,
+  "no_stagnation_or_no_admissible_termination": true,
+  "local_first_preserves_v3_queued_and_dependency_choices": true,
+  "full_raw_observation_history": true,
+  "audit_not_in_prompt": true,
+  "source_sha256": {
+    "feedback_v3r_core.py": "a973d11e6d9d712b7a7007a060bfddbe78e8963522972fea2b31317d8777863a",
+    "feedback_v3r_agent.py": "f668c81934d0561780196ce210e6996b1986bbe0616f373ca69126705cd6cbd7",
+    "eval_feedback_v3r.py": "b94d7e5939d6e287069e1fa00a7ed1a09f95216ff0d7b7598a3781b7ef1ca28a",
+    "api_proxy_v3r.py": "ab562ec87d74fe49870b4eb12a8d11f803b28f1b43146556adebb1d5579ad18a",
+    "run_feedback_v3r.py": "4ae3bc90f54b9ed532afbb3318388ab8766409644c9d1d454545b12152d4fc4c",
+    "agentodyssey/agents/feedback_v3r_core.py": "a973d11e6d9d712b7a7007a060bfddbe78e8963522972fea2b31317d8777863a",
+    "agentodyssey/agents/feedback_v3r_agent.py": "f668c81934d0561780196ce210e6996b1986bbe0616f373ca69126705cd6cbd7",
+    "agentodyssey/agents/feedback_v3_core.py": "c9b18afd96123935d8f7708a655d5ffcb476605505e6b0f1d7878de32e112d0b",
+    "agentodyssey/agents/feedback_v3_agent.py": "31f03d47ed2c107f8306377fd9ae8db637a6e6ac47f7b8d39675a90ea75d6b01",
+    "agentodyssey/agents/feedback_v2_core.py": "fb5abe0202711fce06146e8ee6afdf8945e9aec78245392ba27798c63950f4f2",
+    "api_budget_guard.py": "f57c035b660685a0f0f3ceda92965e5bd9a848493f94e616fba1186c4fb7ce7c",
+    "budget_guard_v5_full.py": "69e3d703e64df0acbd245fb6a0b7a343a59d83500d8aa9fcdb711e211e7e58b2"
+  },
+  "preflight_sha256": "4a13b43242675b12743eb1956becc09b27c52583487e18e734283c265e654533",
+  "interpretation_limit": "Single development trajectory per game. Core changes and cost controls are a combined candidate, not isolated causal evidence for individual components."
+}

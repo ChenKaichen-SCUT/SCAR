@@ -1,0 +1,4536 @@
+{
+  "new": {
+    "steps": 300,
+    "main_quest": 2,
+    "main_quest_max": 24,
+    "last_quest_gain_step": 80,
+    "steps_since_last_quest_gain": 220,
+    "quest_gain_steps": [
+      46,
+      80
+    ],
+    "death_steps": [
+      44
+    ],
+    "denial_steps": [
+      28,
+      30,
+      32,
+      37,
+      38,
+      60,
+      69,
+      83,
+      84,
+      88,
+      114,
+      131,
+      141,
+      143,
+      192,
+      208,
+      210,
+      269,
+      285,
+      294
+    ],
+    "calls_through_last_decision": 176,
+    "local_steps": 145,
+    "action_verbs": {
+      "pick up": 41,
+      "equip": 3,
+      "inspect": 28,
+      "unequip": 1,
+      "store": 34,
+      "take out": 20,
+      "drop": 2,
+      "discard": 1,
+      "write": 1,
+      "talk to": 5,
+      "buy": 1,
+      "sell": 1,
+      "attack": 8,
+      "craft": 11,
+      "enter": 117,
+      "lockpick": 3,
+      "eat": 23
+    },
+    "dispatch_sources": {
+      "explicit_public_tutorial_instruction": 26,
+      "model_priority_preserved": 115,
+      "local_committed_continuation": 117,
+      "local_public_next_instruction": 2,
+      "model_plan_locally_repaired": 19,
+      "local_repair_information_probe": 5,
+      "local_checked_recovery": 16
+    },
+    "rejected_reasons": {
+      "unrepaired_plan_suffix": 97,
+      "future_plan_conflict": 15,
+      "quantity_deficit": 1,
+      "already_satisfied_dependency": 1
+    },
+    "net_cycle_observations": 69,
+    "adjacent_inverse_pairs": [
+      {
+        "step": 105,
+        "actions": [
+          "take out wooden_dagger small_bag_0",
+          "store 1 wooden_dagger small_bag_0"
+        ]
+      },
+      {
+        "step": 279,
+        "actions": [
+          "take out shadow_ink small_bag_0",
+          "store 1 shadow_ink small_bag_0"
+        ]
+      }
+    ],
+    "new_mechanism_state": {
+      "contract": {
+        "action": "craft 1 travel_map",
+        "goal_id": "ebac9c7ee8ca",
+        "completion": {
+          "kind": "crafted",
+          "object": "travel_map",
+          "amount": 1
+        },
+        "created": 277,
+        "status": "active",
+        "best_deficit": 1.0,
+        "phase": "executing_checked_plan"
+      },
+      "committed_remaining": [
+        "enter hall",
+        "eat apple",
+        "enter armory",
+        "inspect paper_1"
+      ],
+      "operation_receipt": null,
+      "current_work_action": "craft 1 travel_map",
+      "local_capacity_estimate": {
+        "count": 2.0,
+        "step": 61,
+        "scope": "local occupancy estimate; revised by successful transfers"
+      },
+      "locked_edges": {
+        "[0,\"Old Castle, armory\",\"plain\"]": {
+          "locked": true,
+          "step": 270,
+          "tools_at_failure": {
+            "shadow_ink": 1.0,
+            "thread": 1.0
+          }
+        }
+      },
+      "operation_evidence": [
+        {
+          "kind": "dark_pickup",
+          "object": "bread",
+          "location": "Old Castle, library",
+          "step": 292,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "cloth",
+          "location": "Old Castle, library",
+          "step": 262,
+          "support": "confirmed in this context"
+        }
+      ],
+      "last_probe_results": [],
+      "recent_failed_plans": [
+        {
+          "step": 270,
+          "reason": [
+            "Cannot enter plain, the door is locked."
+          ]
+        },
+        {
+          "step": 286,
+          "reason": [
+            "Cannot eat bread, not found in hand, inventory, held containers, or on the ground."
+          ]
+        },
+        {
+          "step": 295,
+          "reason": [
+            "Cannot eat bread, not found in hand, inventory, held containers, or on the ground."
+          ]
+        }
+      ],
+      "last_joint_plan_check": [
+        {
+          "step": 300,
+          "actions": [
+            "enter hall",
+            "eat apple",
+            "enter armory",
+            "inspect paper_1"
+          ],
+          "validation": {
+            "validated_prefix": 1,
+            "stop": {
+              "index": 1,
+              "action": "eat apple",
+              "reason": "requires_feedback",
+              "status": "requires_observation",
+              "conditional_on_prior_success": false
+            },
+            "length": 4,
+            "uncertainties": [],
+            "independent_checks": [
+              {
+                "index": 0,
+                "action": "enter hall",
+                "known_conflicts": [],
+                "unknown_conditions": []
+              },
+              {
+                "index": 1,
+                "action": "eat apple",
+                "known_conflicts": [],
+                "unknown_conditions": []
+              }
+            ],
+            "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+          }
+        }
+      ],
+      "risk": {
+        "health": 29.0,
+        "recent_damage_here": [
+          2.0,
+          4.0,
+          4.0
+        ],
+        "observed_damage_per_step": 4.0,
+        "immediate_risk": false,
+        "semantics": "Recent local damage bounds automatic continuation; not a ranking of task value."
+      },
+      "completion_count": 31,
+      "probe_count": 0,
+      "repair_count": 22,
+      "search_nodes": 284,
+      "last_attempts": [
+        {
+          "action_step": 295,
+          "after_observation": 296,
+          "action": "store 1 thread small_bag_0",
+          "location_before": "Old Castle, hall",
+          "hands_before": {
+            "thread": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {}
+        },
+        {
+          "action_step": 296,
+          "after_observation": 297,
+          "action": "enter armory",
+          "location_before": "Old Castle, hall",
+          "hands_before": {},
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {}
+        },
+        {
+          "action_step": 297,
+          "after_observation": 298,
+          "action": "enter hall",
+          "location_before": "Old Castle, armory",
+          "hands_before": {},
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {}
+        },
+        {
+          "action_step": 298,
+          "after_observation": 299,
+          "action": "take out torch small_bag_0",
+          "location_before": "Old Castle, hall",
+          "hands_before": {},
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "torch": 1.0
+          }
+        },
+        {
+          "action_step": 299,
+          "after_observation": 300,
+          "action": "enter armory",
+          "location_before": "Old Castle, hall",
+          "hands_before": {
+            "torch": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "torch": 1.0
+          }
+        }
+      ],
+      "known_held_tool_conditions": {
+        "lockpick": {
+          "object": "lockpick",
+          "step": 31
+        }
+      },
+      "next_public_contact": null,
+      "last_task_corrections": [
+        {
+          "step": 27,
+          "kind": "tutorial_finished",
+          "task": "d0d6f9011529"
+        }
+      ],
+      "control_policy": "Model priority retained unless a common gate rejects it; automatic continuation never recursively reacquires released resources.",
+      "emergency_progress_scope": {
+        "contract": null,
+        "recent_outcomes": [
+          {
+            "step": 289,
+            "action_step": 288,
+            "action": "eat bread",
+            "scope": "health_recovery",
+            "effect_amount": 18.0,
+            "net_health_change": 18.0,
+            "status": "effect_observed",
+            "scope_completed": false,
+            "effect_evidence": "I ate bread from hand and restored 18 HP (HP: 23/100)",
+            "parent_progress_suspended": true,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          },
+          {
+            "step": 293,
+            "action_step": 292,
+            "action": "eat bread",
+            "scope": "health_recovery",
+            "effect_amount": 18.0,
+            "net_health_change": 18.0,
+            "status": "effect_observed",
+            "scope_completed": false,
+            "effect_evidence": "I ate bread from hand and restored 18 HP (HP: 39/100)",
+            "parent_progress_suspended": true,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          },
+          {
+            "step": 295,
+            "action_step": 294,
+            "action": "eat bread",
+            "scope": "health_recovery",
+            "effect_amount": null,
+            "net_health_change": 0.0,
+            "status": "environment_denied",
+            "scope_completed": false,
+            "effect_evidence": null,
+            "parent_progress_suspended": true,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          }
+        ],
+        "semantics": "Attack/heal effects and net health are separate from resource progress; explicit precondition failures remain binding."
+      }
+    },
+    "runtime_policy_load": [
+      {
+        "event": "policy_loaded",
+        "agent_module": "agents.feedback_v3r7_agent",
+        "ledger_module": "agents.feedback_v3r7_core",
+        "dispatch_module": "agents.feedback_v3r7_core",
+        "max_steps": 300,
+        "source_sha256": {
+          "agents.feedback_v3r7_agent": "a2b52461938b646fcae646125f6b2628b6c1963cf280e4ffb711667b967ac151",
+          "agents.feedback_v3r7_core": "28ad1cf37733c212abbfca0fff15ba80d8fa5a527879701b525faf6ec3d45b07"
+        }
+      }
+    ]
+  },
+  "frozen_v3r6": {
+    "steps": 300,
+    "main_quest": 2,
+    "main_quest_max": 24,
+    "last_quest_gain_step": 163,
+    "steps_since_last_quest_gain": 137,
+    "quest_gain_steps": [
+      30,
+      163
+    ],
+    "death_steps": [
+      51,
+      116,
+      220,
+      285
+    ],
+    "denial_steps": [
+      28,
+      35,
+      38,
+      44,
+      46,
+      48,
+      56,
+      59,
+      79,
+      81,
+      88,
+      138,
+      145,
+      150,
+      166,
+      196,
+      198,
+      230,
+      235,
+      244,
+      247,
+      256,
+      276,
+      288,
+      292
+    ],
+    "calls_through_last_decision": 173,
+    "local_steps": 147,
+    "action_verbs": {
+      "pick up": 84,
+      "equip": 4,
+      "inspect": 12,
+      "unequip": 1,
+      "store": 14,
+      "take out": 4,
+      "drop": 28,
+      "discard": 1,
+      "write": 1,
+      "talk to": 10,
+      "buy": 1,
+      "sell": 1,
+      "attack": 6,
+      "craft": 10,
+      "enter": 118,
+      "eat": 4,
+      "lockpick": 1
+    },
+    "dispatch_sources": {
+      "explicit_public_tutorial_instruction": 26,
+      "model_priority_preserved": 145,
+      "local_committed_continuation": 119,
+      "local_public_next_instruction": 2,
+      "local_checked_recovery": 8
+    },
+    "rejected_reasons": {
+      "future_plan_conflict": 59,
+      "inspection_has_no_new_question": 2,
+      "not_current_neighbor": 4,
+      "repeated_context_action": 7
+    },
+    "net_cycle_observations": 64,
+    "adjacent_inverse_pairs": [
+      {
+        "step": 188,
+        "actions": [
+          "drop torch",
+          "pick up torch"
+        ]
+      },
+      {
+        "step": 209,
+        "actions": [
+          "drop cloth",
+          "pick up cloth"
+        ]
+      },
+      {
+        "step": 252,
+        "actions": [
+          "pick up thread",
+          "drop thread"
+        ]
+      },
+      {
+        "step": 254,
+        "actions": [
+          "pick up iron_bar",
+          "drop iron_bar"
+        ]
+      },
+      {
+        "step": 259,
+        "actions": [
+          "pick up iron_bar",
+          "drop iron_bar"
+        ]
+      }
+    ],
+    "new_mechanism_state": {
+      "contract": {
+        "action": "enter plain",
+        "goal_id": "ebac9c7ee8ca",
+        "completion": {
+          "kind": "at_location",
+          "location": "plain"
+        },
+        "created": 289,
+        "status": "active",
+        "best_deficit": null,
+        "phase": "executing_checked_plan"
+      },
+      "committed_remaining": [
+        "enter library",
+        "pick up rust_scrap"
+      ],
+      "operation_receipt": null,
+      "current_work_action": "enter plain",
+      "local_capacity_estimate": null,
+      "locked_edges": {
+        "[0,\"Old Castle, armory\",\"plain\"]": {
+          "locked": true,
+          "step": 39,
+          "tools_at_failure": {
+            "torch": 1.0
+          }
+        }
+      },
+      "operation_evidence": [
+        {
+          "kind": "dark_pickup",
+          "object": "wood_log",
+          "location": "Old Castle, library",
+          "step": 159,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "torch",
+          "location": "Old Castle, library",
+          "step": 186,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "apple",
+          "location": "Old Castle, armory",
+          "step": 219,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "cloth",
+          "location": "Old Castle, library",
+          "step": 281,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "iron_bar",
+          "location": "Old Castle, library",
+          "step": 259,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "rust_scrap",
+          "location": "Old Castle, library",
+          "step": 250,
+          "support": "confirmed in this context"
+        }
+      ],
+      "last_probe_results": [],
+      "recent_failed_plans": [
+        {
+          "step": 293,
+          "reason": [
+            "Cannot pick up wooden_dagger, not enough space in hand."
+          ]
+        },
+        {
+          "step": 295,
+          "reason": [
+            "no net contract progress on return to relevant state"
+          ]
+        },
+        {
+          "step": 296,
+          "reason": [
+            "no net contract progress on return to relevant state"
+          ]
+        }
+      ],
+      "last_joint_plan_check": [
+        {
+          "step": 299,
+          "actions": [
+            "enter hall",
+            "enter library",
+            "pick up rust_scrap"
+          ],
+          "validation": {
+            "validated_prefix": 3,
+            "stop": null,
+            "length": 3
+          }
+        }
+      ],
+      "risk": {
+        "health": 54.0,
+        "recent_damage_here": [
+          0,
+          1.0,
+          0
+        ],
+        "observed_damage_per_step": 1.0,
+        "immediate_risk": false,
+        "semantics": "Recent local damage bounds automatic continuation; not a ranking of task value."
+      },
+      "completion_count": 66,
+      "probe_count": 0,
+      "repair_count": 26,
+      "search_nodes": 91,
+      "last_attempts": [
+        {
+          "action_step": 295,
+          "after_observation": 296,
+          "action": "talk to chronicler_lyra",
+          "location_before": "Old Castle, library",
+          "hands_before": {
+            "torch": 1.0,
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "torch": 1.0,
+            "wooden_dagger": 1.0
+          }
+        },
+        {
+          "action_step": 296,
+          "after_observation": 297,
+          "action": "drop torch",
+          "location_before": "Old Castle, library",
+          "hands_before": {
+            "torch": 1.0,
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "wooden_dagger": 1.0
+          }
+        },
+        {
+          "action_step": 297,
+          "after_observation": 298,
+          "action": "enter hall",
+          "location_before": "Old Castle, library",
+          "hands_before": {
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "wooden_dagger": 1.0
+          }
+        },
+        {
+          "action_step": 298,
+          "after_observation": 299,
+          "action": "enter armory",
+          "location_before": "Old Castle, hall",
+          "hands_before": {
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "wooden_dagger": 1.0
+          }
+        },
+        {
+          "action_step": 299,
+          "after_observation": 300,
+          "action": "enter hall",
+          "location_before": "Old Castle, armory",
+          "hands_before": {
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "wooden_dagger": 1.0
+          }
+        }
+      ],
+      "known_held_tool_conditions": {},
+      "next_public_contact": null,
+      "last_task_corrections": [
+        {
+          "step": 27,
+          "kind": "tutorial_finished",
+          "task": "d0d6f9011529"
+        }
+      ],
+      "control_policy": "Model priority retained unless a common gate rejects it; automatic continuation never recursively reacquires released resources.",
+      "emergency_progress_scope": {
+        "contract": null,
+        "recent_outcomes": [
+          {
+            "step": 104,
+            "action_step": 103,
+            "action": "eat apple",
+            "scope": "health_recovery",
+            "effect_amount": 10.0,
+            "net_health_change": 10.0,
+            "status": "effect_observed",
+            "scope_completed": false,
+            "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 20/100)",
+            "parent_progress_suspended": true,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          },
+          {
+            "step": 175,
+            "action_step": 174,
+            "action": "eat apple",
+            "scope": "health_recovery",
+            "effect_amount": 10.0,
+            "net_health_change": 9.0,
+            "status": "effect_observed",
+            "scope_completed": false,
+            "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 62/100)",
+            "parent_progress_suspended": true,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          },
+          {
+            "step": 220,
+            "action_step": 219,
+            "action": "eat apple",
+            "scope": "health_recovery",
+            "effect_amount": 10.0,
+            "net_health_change": 10.0,
+            "status": "effect_observed",
+            "scope_completed": false,
+            "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 11/100)",
+            "parent_progress_suspended": false,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          }
+        ],
+        "semantics": "Attack/heal effects and net health are separate from resource progress; explicit precondition failures remain binding."
+      }
+    },
+    "runtime_policy_load": [
+      {
+        "event": "policy_loaded",
+        "agent_module": "agents.feedback_v3r6_agent",
+        "ledger_module": "agents.feedback_v3r6_core",
+        "dispatch_module": "agents.feedback_v3r6_core",
+        "max_steps": 300,
+        "source_sha256": {
+          "agents.feedback_v3r6_agent": "807650b581b71199a52a9695a9cc3ebf7757652a83cad9c0cffbb2a3f7d6b6c7",
+          "agents.feedback_v3r6_core": "b8528068803f3d073265d663ed77586119c80a3e663c973b199d8dc0e95b3c61"
+        }
+      }
+    ]
+  },
+  "quest_difference": 0,
+  "status": {
+    "method": "v3r7",
+    "phase": "stopped",
+    "all_processes_stopped": true,
+    "runs": {
+      "remnant__v3r7_300_20261019": {
+        "id": "remnant__v3r7_300_20261019",
+        "game": "remnant",
+        "budget_scope": "remnant__v3r7_300_20261019",
+        "cache_sources": [],
+        "cached_calls": 0,
+        "max_steps": 300,
+        "status": "finished",
+        "pid": 104496,
+        "returncode": 0,
+        "stop_reason": "300_step_limit",
+        "steps": 300,
+        "main_quest": 2,
+        "budget": {
+          "calls": 176,
+          "input_tokens": 6718431,
+          "uncached_input_tokens": 892255,
+          "output_tokens": 50293
+        },
+        "official_score": {
+          "games": {
+            "remnant": {
+              "game": "remnant",
+              "num_runs": 1,
+              "runs": [
+                {
+                  "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__v3r7_300_20261019",
+                  "agent_id": "agent_adam_davis",
+                  "steps": 300,
+                  "main_quest": 2.0,
+                  "supplementary": {
+                    "side quest": 0.0,
+                    "exploration": 2.0,
+                    "craft": 4.0,
+                    "defeat": 0.0
+                  },
+                  "supplementary_total": 6.0,
+                  "warnings": []
+                }
+              ],
+              "main_quest": 2.0,
+              "supplementary": {
+                "side quest": 0.0,
+                "exploration": 2.0,
+                "craft": 4.0,
+                "defeat": 0.0
+              },
+              "supplementary_total": 6.0
+            }
+          },
+          "aggregate": null
+        }
+      }
+    },
+    "proxy_pid": 104493,
+    "batch_budget": {
+      "calls": 176,
+      "input_tokens": 6718431,
+      "uncached_input_tokens": 892255,
+      "output_tokens": 50293
+    }
+  },
+  "api": {
+    "completed_calls": 176,
+    "input_tokens": 6718431,
+    "uncached_input_tokens": 892255,
+    "output_tokens": 50293,
+    "truncated_calls": 0,
+    "errors_or_stops": []
+  },
+  "authority": {
+    "events": {
+      "heuristic_veto_demoted": 22,
+      "automatic_continuation_paused": 15
+    },
+    "unique_demoted_step_actions": 18,
+    "executed_advisory_overrides": [
+      {
+        "step": 181,
+        "action": "enter hall",
+        "source": "model_plan_locally_repaired",
+        "next_feedback": "\nCurrent Time: 0001-01-02 14:10:00\nCurrent Location: Old Castle, hall\n\nI entered hall.\n\nI am holding 1 torch.\nI have equipped 1 small_bag_0.\nI see 11 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 workbench, 1 thread near me.\nI see goblin_warrior_2, bob_johnson, goblin_warrior_17, goblin_warrior_18 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 79.\nMy experience is at 70.\n\nNeighboring areas: armory, library.\n",
+        "reward": {
+          "unique_kill": 0,
+          "kill": 0,
+          "craft": 0,
+          "exploration": 0,
+          "death": 0,
+          "trade": 0,
+          "quest": 0,
+          "side_quest": 0
+        }
+      },
+      {
+        "step": 183,
+        "action": "enter hall",
+        "source": "model_plan_locally_repaired",
+        "next_feedback": "\nCurrent Time: 0001-01-02 14:30:00\nCurrent Location: Old Castle, hall\n\nI entered hall.\nI was attacked by goblin_warrior_17 and lost 0 HP.\n\nI am holding 1 torch.\nI have equipped 1 small_bag_0.\nI see 11 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 workbench, 1 thread near me.\nI see goblin_warrior_2, bob_johnson, goblin_warrior_17, goblin_warrior_18 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 78.\nMy experience is at 70.\n\nNeighboring areas: armory, library.\n",
+        "reward": {
+          "unique_kill": 0,
+          "kill": 0,
+          "craft": 0,
+          "exploration": 0,
+          "death": 0,
+          "trade": 0,
+          "quest": 0,
+          "side_quest": 0
+        }
+      }
+    ],
+    "emergency_parent_progress_vetoes": []
+  },
+  "repair_audit": {
+    "events": [
+      {
+        "step": 56,
+        "original": [
+          "pick up small_bag_0",
+          "equip small_bag_0",
+          "enter armory",
+          "pick up iron_bar",
+          "store 1 iron_bar inventory",
+          "inspect rust_scrap"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "store 1 iron_bar inventory",
+        "target_location": "Old Castle, armory",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "store 1 iron_bar inventory",
+          "reason": "container_inaccessible",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 56,
+        "original": [
+          "pick up small_bag_0",
+          "equip small_bag_0",
+          "enter armory",
+          "pick up rust_scrap",
+          "store 1 rust_scrap inventory",
+          "pick up thread"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "store 1 rust_scrap inventory",
+        "target_location": "Old Castle, armory",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "store 1 rust_scrap inventory",
+          "reason": "container_inaccessible",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 61,
+        "original": [
+          "store 1 iron_bar small_bag_0",
+          "pick up rust_scrap",
+          "pick up thread",
+          "enter hall",
+          "craft 1 lockpick"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "craft 1 lockpick",
+        "target_location": "Old Castle, hall",
+        "nodes": 299,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up thread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 iron_bar small_bag_0",
+          "pick up rust_scrap",
+          "store 1 rust_scrap small_bag_0",
+          "pick up thread",
+          "enter hall",
+          "craft 1 lockpick"
+        ],
+        "required_inputs": {
+          "rust_scrap": 1.0,
+          "iron_bar": 1.0,
+          "thread": 1.0
+        },
+        "retained_inputs": {},
+        "repaired": [
+          "store 1 iron_bar small_bag_0",
+          "pick up rust_scrap",
+          "store 1 rust_scrap small_bag_0",
+          "pick up thread",
+          "enter hall",
+          "craft 1 lockpick"
+        ]
+      },
+      {
+        "step": 85,
+        "original": [
+          "take out lockpick small_bag_0",
+          "lockpick plain",
+          "enter plain"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "take out lockpick small_bag_0",
+        "target_location": "Old Castle, armory",
+        "nodes": 2,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out lockpick small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 torch small_bag_0",
+          "take out lockpick small_bag_0",
+          "lockpick plain",
+          "enter plain"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {},
+        "repaired": [
+          "store 1 torch small_bag_0",
+          "take out lockpick small_bag_0",
+          "lockpick plain",
+          "enter plain"
+        ]
+      },
+      {
+        "step": 88,
+        "original": [
+          "take out torch small_bag_0",
+          "enter hall",
+          "inspect small_bag_0"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "take out torch small_bag_0",
+        "target_location": "Old Castle, armory",
+        "nodes": 2,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out torch small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 lockpick small_bag_0",
+          "take out torch small_bag_0",
+          "enter hall",
+          "inspect small_bag_0"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {},
+        "repaired": [
+          "store 1 lockpick small_bag_0",
+          "take out torch small_bag_0",
+          "enter hall",
+          "inspect small_bag_0"
+        ]
+      },
+      {
+        "step": 95,
+        "original": [
+          "enter hall",
+          "take out torch small_bag_0",
+          "enter library",
+          "pick up thread",
+          "enter hall",
+          "craft 1 lockpick"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 lockpick",
+        "target_location": "Old Castle, hall",
+        "nodes": 191,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up thread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 95,
+        "original": [
+          "enter hall",
+          "take out torch small_bag_0",
+          "enter armory",
+          "pick up iron_bar",
+          "pick up rust_scrap",
+          "enter hall"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up iron_bar",
+        "target_location": "Old Castle, armory",
+        "nodes": 13,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up iron_bar",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 wooden_dagger small_bag_0",
+          "enter hall",
+          "enter armory",
+          "pick up iron_bar",
+          "pick up rust_scrap",
+          "enter hall"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {},
+        "repaired": [
+          "store 1 wooden_dagger small_bag_0",
+          "enter hall",
+          "enter armory",
+          "pick up iron_bar",
+          "pick up rust_scrap",
+          "enter hall"
+        ]
+      },
+      {
+        "step": 117,
+        "original": [
+          "pick up iron_bar",
+          "pick up rust_scrap",
+          "enter hall",
+          "enter library"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up rust_scrap",
+        "target_location": "Old Castle, armory",
+        "nodes": 1,
+        "original_conflict": {
+          "index": 1,
+          "action": "pick up rust_scrap",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "pick up rust_scrap",
+          "enter hall",
+          "enter library"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {
+          "iron_bar": 0
+        },
+        "repaired": [
+          "pick up rust_scrap",
+          "enter hall",
+          "enter library"
+        ]
+      },
+      {
+        "step": 124,
+        "original": [
+          "pick up iron_bar",
+          "enter hall",
+          "enter library",
+          "pick up thread",
+          "enter hall",
+          "craft 1 lockpick"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 lockpick",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "pick up iron_bar",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 124,
+        "original": [
+          "pick up iron_bar",
+          "inspect paper_1",
+          "enter hall",
+          "talk to bob_johnson"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up iron_bar",
+        "target_location": "Old Castle, armory",
+        "nodes": 2,
+        "original_conflict": {
+          "index": 0,
+          "action": "pick up iron_bar",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 rust_scrap small_bag_0",
+          "pick up iron_bar",
+          "inspect paper_1",
+          "enter hall",
+          "talk to bob_johnson"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {
+          "iron_bar": 0
+        },
+        "repaired": [
+          "store 1 rust_scrap small_bag_0",
+          "pick up iron_bar",
+          "inspect paper_1",
+          "enter hall",
+          "talk to bob_johnson"
+        ]
+      },
+      {
+        "step": 168,
+        "original": [
+          "pick up shadow_ink",
+          "pick up paper_7",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "pick up paper_7",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 168,
+        "original": [
+          "pick up shadow_ink",
+          "pick up cloth",
+          "enter hall",
+          "craft 1 thread",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 thread",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "pick up cloth",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 169,
+        "original": [
+          "pick up paper_7",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 thread",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 169,
+        "original": [
+          "pick up paper_7",
+          "enter library",
+          "pick up cloth",
+          "enter hall",
+          "craft 1 thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 thread",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up cloth",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 169,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "pick up cloth",
+          "enter hall",
+          "craft 1 thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 thread",
+        "target_location": "Old Castle, hall",
+        "nodes": 522,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up cloth",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 170,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "pick up cloth",
+          "enter hall",
+          "craft 1 thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 thread",
+        "target_location": "Old Castle, hall",
+        "nodes": 522,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up cloth",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 170,
+        "original": [
+          "pick up paper_7",
+          "store 1 paper_7 small_bag_0",
+          "enter library",
+          "pick up shadow_ink",
+          "pick up cloth",
+          "enter hall"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up cloth",
+        "target_location": "Old Castle, library",
+        "nodes": 8,
+        "original_conflict": {
+          "index": 4,
+          "action": "pick up cloth",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "enter library",
+          "pick up cloth",
+          "enter hall"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 0,
+          "thread": 0
+        },
+        "repaired": [
+          "enter library",
+          "pick up cloth",
+          "enter hall"
+        ]
+      },
+      {
+        "step": 174,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 174,
+        "original": [
+          "pick up thread",
+          "pick up paper_7",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 175,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 175,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "pick up paper_7",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 175,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 176,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 176,
+        "original": [
+          "pick up paper_7",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 177,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 177,
+        "original": [
+          "pick up paper_7",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 177,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 178,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 178,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 179,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 410,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 179,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up shadow_ink",
+        "target_location": "Old Castle, library",
+        "nodes": 12,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "enter hall",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 0,
+          "thread": 0
+        },
+        "repaired": [
+          "enter hall",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ]
+      },
+      {
+        "step": 180,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 180,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 181,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 410,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 181,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up shadow_ink",
+        "target_location": "Old Castle, library",
+        "nodes": 12,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "enter hall",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 0,
+          "thread": 0
+        },
+        "repaired": [
+          "enter hall",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ]
+      },
+      {
+        "step": 182,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 182,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 183,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 410,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 183,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up shadow_ink",
+        "target_location": "Old Castle, library",
+        "nodes": 12,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "enter hall",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 0,
+          "thread": 0
+        },
+        "repaired": [
+          "enter hall",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7"
+        ]
+      },
+      {
+        "step": 184,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 184,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 184,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 185,
+        "original": [
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 185,
+        "original": [
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7",
+          "enter library",
+          "pick up thread",
+          "enter hall"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up thread",
+        "target_location": "Old Castle, library",
+        "nodes": 204,
+        "original_conflict": {
+          "index": 4,
+          "action": "pick up thread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "drop thread",
+          "pick up thread",
+          "enter hall"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 0,
+          "thread": 0
+        },
+        "repaired": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "drop thread",
+          "pick up thread",
+          "enter hall"
+        ]
+      },
+      {
+        "step": 186,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 186,
+        "original": [
+          "pick up thread",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 186,
+        "original": [
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 187,
+        "original": [
+          "pick up shadow_ink",
+          "enter hall",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 187,
+        "original": [
+          "pick up shadow_ink",
+          "pick up cloth",
+          "enter hall",
+          "craft 1 thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 thread",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "pick up cloth",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 187,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "pick up paper_7",
+          "enter library",
+          "pick up shadow_ink",
+          "enter hall"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up shadow_ink",
+        "target_location": "Old Castle, library",
+        "nodes": 1,
+        "original_conflict": {
+          "index": 4,
+          "action": "pick up shadow_ink",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "pick up shadow_ink",
+          "enter hall"
+        ],
+        "required_inputs": {},
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 0,
+          "thread": 0
+        },
+        "repaired": [
+          "pick up shadow_ink",
+          "enter hall"
+        ]
+      },
+      {
+        "step": 189,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 189,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "pick up paper_7",
+          "store 1 paper_7 small_bag_0",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 190,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "enter hall",
+          "pick up thread",
+          "store 1 thread small_bag_0",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 190,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "enter hall",
+          "pick up paper_7",
+          "store 1 paper_7 small_bag_0",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 191,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "enter hall",
+          "pick up paper_7",
+          "store 1 paper_7 small_bag_0",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 191,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "enter library",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, library",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "pick up paper_7",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 192,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 192,
+        "original": [
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 193,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "pick up thread",
+          "store 1 thread small_bag_0",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 193,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "pick up paper_7",
+          "store 1 paper_7 small_bag_0",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 194,
+        "original": [
+          "enter hall",
+          "store 1 shadow_ink small_bag_0",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 194,
+        "original": [
+          "enter hall",
+          "store 1 shadow_ink small_bag_0",
+          "pick up paper_7",
+          "store 1 paper_7 small_bag_0",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 194,
+        "original": [
+          "enter hall",
+          "store 1 shadow_ink small_bag_0",
+          "pick up thread",
+          "enter library",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, library",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "pick up paper_7",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 195,
+        "original": [
+          "enter hall",
+          "store 1 shadow_ink small_bag_0",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 195,
+        "original": [
+          "enter hall",
+          "store 1 shadow_ink small_bag_0",
+          "pick up paper_7",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 196,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "pick up paper_7",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 196,
+        "original": [
+          "store 1 torch small_bag_0",
+          "pick up paper_7",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 197,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "enter hall",
+          "pick up paper_7",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 197,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "enter hall",
+          "pick up thread",
+          "pick up paper_7",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 197,
+        "original": [
+          "enter hall",
+          "pick up thread",
+          "store 1 thread small_bag_0",
+          "pick up paper_7",
+          "store 1 paper_7 small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 5,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 215,
+        "original": [
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out paper_7 small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 215,
+        "original": [
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map",
+          "pick up travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out paper_7 small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 216,
+        "original": [
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map",
+          "pick up travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 465,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out paper_7 small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 216,
+        "original": [
+          "store 1 thread small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 465,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 216,
+        "original": [
+          "enter library",
+          "pick up bread",
+          "eat bread"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up bread",
+        "target_location": "Old Castle, library",
+        "nodes": 16,
+        "original_conflict": {
+          "index": 1,
+          "action": "pick up bread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 shadow_ink small_bag_0",
+          "enter library",
+          "pick up bread",
+          "eat bread"
+        ],
+        "required_inputs": {
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "repaired": [
+          "store 1 shadow_ink small_bag_0",
+          "enter library",
+          "pick up bread",
+          "eat bread"
+        ]
+      },
+      {
+        "step": 224,
+        "original": [
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 224,
+        "original": [
+          "take out thread small_bag_0",
+          "craft 1 travel_map",
+          "inspect travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 225,
+        "original": [
+          "take out thread small_bag_0",
+          "craft 1 travel_map",
+          "inspect travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 225,
+        "original": [
+          "take out thread small_bag_0",
+          "craft 1 travel_map",
+          "pick up travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 226,
+        "original": [
+          "enter hall",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 226,
+        "original": [
+          "enter hall",
+          "store 1 paper_7 small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 227,
+        "original": [
+          "store 1 paper_7 small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 227,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out paper_7 small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 228,
+        "original": [
+          "enter hall",
+          "store 1 paper_7 small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 229,
+        "original": [
+          "store 1 paper_7 small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 232,
+        "original": [
+          "store 1 paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 232,
+        "original": [
+          "take out torch small_bag_0",
+          "enter armory",
+          "lockpick plain"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "take out torch small_bag_0",
+        "target_location": "Old Castle, hall",
+        "nodes": 2,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out torch small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 paper_7 small_bag_0",
+          "take out torch small_bag_0",
+          "enter armory",
+          "lockpick plain"
+        ],
+        "required_inputs": {
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "repaired": [
+          "store 1 paper_7 small_bag_0",
+          "take out torch small_bag_0",
+          "enter armory",
+          "lockpick plain"
+        ]
+      },
+      {
+        "step": 235,
+        "original": [
+          "enter hall",
+          "store 1 torch small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map",
+          "inspect travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 235,
+        "original": [
+          "enter hall",
+          "store 1 thread small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 236,
+        "original": [
+          "store 1 torch small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 236,
+        "original": [
+          "store 1 torch small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map",
+          "inspect travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 236,
+        "original": [
+          "enter library",
+          "pick up bread",
+          "enter hall",
+          "eat bread"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up bread",
+        "target_location": "Old Castle, library",
+        "nodes": 17,
+        "original_conflict": {
+          "index": 1,
+          "action": "pick up bread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 thread small_bag_0",
+          "enter library",
+          "pick up bread",
+          "enter hall",
+          "eat bread"
+        ],
+        "required_inputs": {
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "repaired": [
+          "store 1 thread small_bag_0",
+          "enter library",
+          "pick up bread",
+          "enter hall",
+          "eat bread"
+        ]
+      },
+      {
+        "step": 244,
+        "original": [
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 515,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 250,
+        "original": [
+          "pick up thread",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 426,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 250,
+        "original": [
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 426,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up thread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 251,
+        "original": [
+          "pick up thread",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 376,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 251,
+        "original": [
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "pick up thread",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 376,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up thread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 252,
+        "original": [
+          "enter hall",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 251,
+        "original_conflict": {
+          "index": 3,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 252,
+        "original": [
+          "enter hall",
+          "store 1 torch small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 251,
+        "original_conflict": {
+          "index": 1,
+          "action": "store 1 torch small_bag_0",
+          "reason": "not_held",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 253,
+        "original": [
+          "pick up thread",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 376,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 253,
+        "original": [
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 376,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 254,
+        "original": [
+          "enter hall",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 251,
+        "original_conflict": {
+          "index": 3,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 254,
+        "original": [
+          "enter hall",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "inspect travel_map"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "take out thread small_bag_0",
+        "target_location": "Old Castle, hall",
+        "nodes": 4,
+        "original_conflict": {
+          "index": 3,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "enter hall",
+          "take out thread small_bag_0",
+          "inspect travel_map"
+        ],
+        "required_inputs": {
+          "thread": 1.0,
+          "shadow_ink": 1.0
+        },
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "repaired": [
+          "enter hall",
+          "take out thread small_bag_0",
+          "inspect travel_map"
+        ]
+      },
+      {
+        "step": 255,
+        "original": [
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map",
+          "inspect travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 376,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 255,
+        "original": [
+          "pick up thread",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 376,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 258,
+        "original": [
+          "store 1 cloth small_bag_0",
+          "take out thread small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 259,
+        "original": [
+          "enter hall",
+          "store 1 cloth small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 259,
+        "original": [
+          "enter hall",
+          "store 1 cloth small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 4,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 260,
+        "original": [
+          "store 1 cloth small_bag_0",
+          "pick up thread",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 263,
+        "original": [
+          "store 1 cloth small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 263,
+        "original": [
+          "store 1 cloth small_bag_0",
+          "take out paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "inspect small_bag_0"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "take out shadow_ink small_bag_0",
+        "target_location": "Old Castle, hall",
+        "nodes": 10,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 cloth small_bag_0",
+          "store 1 cloth small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "inspect small_bag_0"
+        ],
+        "required_inputs": {
+          "thread": 1.0,
+          "shadow_ink": 1.0,
+          "cloth": 0.25
+        },
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0.25,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "repaired": [
+          "store 1 cloth small_bag_0",
+          "store 1 cloth small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "inspect small_bag_0"
+        ]
+      },
+      {
+        "step": 268,
+        "original": [
+          "store 1 shadow_ink small_bag_0",
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 268,
+        "original": [
+          "store 1 thread small_bag_0",
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 270,
+        "original": [
+          "enter hall",
+          "store 1 shadow_ink small_bag_0",
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 270,
+        "original": [
+          "enter hall",
+          "store 1 thread small_bag_0",
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 3,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 271,
+        "original": [
+          "store 1 thread small_bag_0",
+          "take out paper_7 small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "craft 1 travel_map",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 271,
+        "original": [
+          "enter library",
+          "pick up bread",
+          "enter hall",
+          "eat bread"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up bread",
+        "target_location": "Old Castle, library",
+        "nodes": 17,
+        "original_conflict": {
+          "index": 1,
+          "action": "pick up bread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "store 1 shadow_ink small_bag_0",
+          "enter library",
+          "pick up bread",
+          "enter hall",
+          "eat bread"
+        ],
+        "required_inputs": {
+          "cloth": 0.25,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0.25,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "repaired": [
+          "store 1 shadow_ink small_bag_0",
+          "enter library",
+          "pick up bread",
+          "enter hall",
+          "eat bread"
+        ]
+      },
+      {
+        "step": 279,
+        "original": [
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 281,
+        "original": [
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 281,
+        "original": [
+          "store 1 thread small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out thread small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 281,
+        "original": [
+          "enter library",
+          "pick up bread",
+          "eat bread",
+          "enter hall",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "pick up bread",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 282,
+        "original": [
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 282,
+        "original": [
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map",
+          "inspect travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 283,
+        "original": [
+          "enter hall",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 284,
+        "original": [
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 0,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 284,
+        "original": [
+          "store 1 paper_7 small_bag_0",
+          "take out shadow_ink small_bag_0",
+          "pick up paper_7"
+        ],
+        "reason": "supported_plan_repair",
+        "target": "pick up paper_7",
+        "target_location": "Old Castle, hall",
+        "nodes": 6,
+        "original_conflict": {
+          "index": 2,
+          "action": "pick up paper_7",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "plan": [
+          "drop paper_7",
+          "pick up paper_7"
+        ],
+        "required_inputs": {
+          "cloth": 0.25,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "retained_inputs": {
+          "paper": 0,
+          "cloth": 0.25,
+          "shadow_ink": 1.0,
+          "thread": 1.0
+        },
+        "repaired": [
+          "drop paper_7",
+          "pick up paper_7"
+        ]
+      },
+      {
+        "step": 290,
+        "original": [
+          "pick up paper_7",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 67,
+        "original_conflict": {
+          "index": 1,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 294,
+        "original": [
+          "pick up paper_7",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 295,
+        "original": [
+          "pick up paper_7",
+          "take out shadow_ink small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 1,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      },
+      {
+        "step": 300,
+        "original": [
+          "enter hall",
+          "pick up paper_7",
+          "take out shadow_ink small_bag_0",
+          "take out thread small_bag_0",
+          "craft 1 travel_map"
+        ],
+        "reason": "no_supported_bounded_repair",
+        "target": "craft 1 travel_map",
+        "target_location": "Old Castle, hall",
+        "nodes": 600,
+        "original_conflict": {
+          "index": 2,
+          "action": "take out shadow_ink small_bag_0",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "repaired": null
+      }
+    ],
+    "nodes": 61878
+  },
+  "emergency_outcomes": [
+    {
+      "step": 40,
+      "action_step": 39,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 1.0,
+      "net_health_change": 0.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 1 damage",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 41,
+      "action_step": 40,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 8.0,
+      "net_health_change": -22.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 8 damage",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 42,
+      "action_step": 41,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 6.0,
+      "net_health_change": -22.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 6 damage",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 43,
+      "action_step": 42,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 4.0,
+      "net_health_change": 0.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 4 damage",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 44,
+      "action_step": 43,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 0.0,
+      "net_health_change": 0.0,
+      "status": "no_effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 0 damage",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 1,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 45,
+      "action_step": 44,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": null,
+      "net_health_change": null,
+      "status": "context_reset",
+      "scope_completed": false,
+      "effect_evidence": null,
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 100,
+      "action_step": 99,
+      "action": "eat apple",
+      "scope": "health_recovery",
+      "effect_amount": 10.0,
+      "net_health_change": 10.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate apple from ground and restored 10 HP (HP: 30/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 101,
+      "action_step": 100,
+      "action": "eat apple",
+      "scope": "health_recovery",
+      "effect_amount": 10.0,
+      "net_health_change": 10.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate apple from ground and restored 10 HP (HP: 40/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 110,
+      "action_step": 109,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 8.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 48/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 111,
+      "action_step": 110,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 56/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 112,
+      "action_step": 111,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 74/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 121,
+      "action_step": 120,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 77/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 122,
+      "action_step": 121,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 95/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 132,
+      "action_step": 131,
+      "action": "eat apple",
+      "scope": "health_recovery",
+      "effect_amount": null,
+      "net_health_change": 0.0,
+      "status": "environment_denied",
+      "scope_completed": false,
+      "effect_evidence": null,
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 134,
+      "action_step": 133,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 51/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 135,
+      "action_step": 134,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 69/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 136,
+      "action_step": 135,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 87/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 162,
+      "action_step": 161,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 9.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 66/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 163,
+      "action_step": 162,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 75/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 164,
+      "action_step": 163,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from ground and restored 18 HP (HP: 93/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 193,
+      "action_step": 192,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": null,
+      "net_health_change": 0.0,
+      "status": "environment_denied",
+      "scope_completed": false,
+      "effect_evidence": null,
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 207,
+      "action_step": 206,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from hand and restored 18 HP (HP: 75/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 220,
+      "action_step": 219,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from hand and restored 18 HP (HP: 83/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 241,
+      "action_step": 240,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 16.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from hand and restored 18 HP (HP: 80/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 276,
+      "action_step": 275,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 9.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from hand and restored 18 HP (HP: 42/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 286,
+      "action_step": 285,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": null,
+      "net_health_change": -1.0,
+      "status": "environment_denied",
+      "scope_completed": false,
+      "effect_evidence": null,
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 289,
+      "action_step": 288,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from hand and restored 18 HP (HP: 23/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 293,
+      "action_step": 292,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": 18.0,
+      "net_health_change": 18.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate bread from hand and restored 18 HP (HP: 39/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 295,
+      "action_step": 294,
+      "action": "eat bread",
+      "scope": "health_recovery",
+      "effect_amount": null,
+      "net_health_change": 0.0,
+      "status": "environment_denied",
+      "scope_completed": false,
+      "effect_evidence": null,
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    }
+  ],
+  "protected_artifacts_unchanged": {
+    "feedback_v3r3_300_budget.sqlite": true,
+    "feedback_v3r3_300_protocol.json": true,
+    "feedback_v3r3_300_status.json": true,
+    "feedback_v3r2_verified_budget.sqlite": true,
+    "feedback_v3r2_verified_protocol.json": true,
+    "feedback_v3r2_verified_status.json": true,
+    "feedback_v3r2_budget.sqlite": true,
+    "feedback_v3r2_validity.json": true,
+    "feedback_v3r_budget.sqlite": true,
+    "feedback_v3r4_300_budget.sqlite": true,
+    "feedback_v3r4_300_protocol.json": true,
+    "feedback_v3r4_300_status.json": true,
+    "runs/remnant__v3r4_300_20261019/agent_adam_davis/agent_log.jsonl": true,
+    "control_audit/remnant__v3r4_300_20261019.jsonl": true,
+    "feedback_v3r6_300_budget.sqlite": true,
+    "feedback_v3r6_300_protocol.json": true,
+    "feedback_v3r6_300_status.json": true,
+    "runs/remnant__v3r6_300_20261019/agent_adam_davis/agent_log.jsonl": true,
+    "control_audit/remnant__v3r6_300_20261019.jsonl": true
+  },
+  "frozen_sources_match": {
+    "feedback_v3r_core.py": true,
+    "feedback_v3r_agent.py": true,
+    "eval_feedback_v3r.py": true,
+    "api_proxy_v3r.py": true,
+    "run_feedback_v3r.py": true,
+    "agentodyssey/agents/feedback_v3r_core.py": true,
+    "agentodyssey/agents/feedback_v3r_agent.py": true,
+    "agentodyssey/agents/feedback_v3_core.py": true,
+    "agentodyssey/agents/feedback_v3_agent.py": true,
+    "agentodyssey/agents/feedback_v2_core.py": true,
+    "api_budget_guard.py": true,
+    "budget_guard_v5_full.py": true,
+    "feedback_v3r2_core.py": true,
+    "feedback_v3r2_agent.py": true,
+    "eval_feedback_v3r2.py": true,
+    "run_feedback_v3r2.py": true,
+    "diagnose_remnant_v3r.py": true,
+    "test_feedback_v3r2.py": true,
+    "test_feedback_v3r2_agent.py": true,
+    "eval_v3r2_offline_smoke.py": true,
+    "agentodyssey/agents/feedback_v3r2_core.py": true,
+    "agentodyssey/agents/feedback_v3r2_agent.py": true,
+    "run_feedback_v3r2_verified.py": true,
+    "run_feedback_v3r3.py": true,
+    "eval_feedback_v3r3.py": true,
+    "agentodyssey/agents/feedback_v3r3_agent.py": true,
+    "agentodyssey/agents/feedback_v3r3_core.py": true,
+    "feedback_v3r3_agent.py": true,
+    "feedback_v3r3_core.py": true,
+    "test_feedback_v3r3.py": true,
+    "test_feedback_v3r3_agent.py": true,
+    "run_feedback_v3r4.py": true,
+    "eval_feedback_v3r4.py": true,
+    "agentodyssey/agents/feedback_v3r4_agent.py": true,
+    "agentodyssey/agents/feedback_v3r4_core.py": true,
+    "feedback_v3r4_agent.py": true,
+    "feedback_v3r4_core.py": true,
+    "test_feedback_v3r4.py": true,
+    "test_feedback_v3r4_agent.py": true,
+    "test_v3r4_public_path_remote.py": true,
+    "analyze_v3r4_remote.py": true,
+    "run_feedback_v3r6.py": true,
+    "eval_feedback_v3r6.py": true,
+    "agentodyssey/agents/feedback_v3r6_agent.py": true,
+    "agentodyssey/agents/feedback_v3r6_core.py": true,
+    "feedback_v3r6_agent.py": true,
+    "feedback_v3r6_core.py": true,
+    "feedback_v3r5_core.py": true,
+    "test_feedback_v3r6.py": true,
+    "test_feedback_v3r6_agent.py": true,
+    "test_v3r6_public_path_remote.py": true,
+    "analyze_v3r6_remote.py": true,
+    "agentodyssey/agents/feedback_v3r5_core.py": true,
+    "run_feedback_v3r7.py": true,
+    "eval_feedback_v3r7.py": true,
+    "agentodyssey/agents/feedback_v3r7_agent.py": true,
+    "agentodyssey/agents/feedback_v3r7_core.py": true,
+    "feedback_v3r7_agent.py": true,
+    "feedback_v3r7_core.py": true,
+    "test_feedback_v3r7.py": true,
+    "test_feedback_v3r7_agent.py": true,
+    "test_v3r7_public_path_remote.py": true,
+    "analyze_v3r7_remote.py": true,
+    "replay_v3r7_remote.py": true
+  },
+  "interpretation": "One stochastic rollout vs frozen prior result. Evidence-scoped validation and bounded local plan repair; no separate ablation or statistical claim.",
+  "valid_run": true
+}

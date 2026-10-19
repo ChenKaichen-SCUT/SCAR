@@ -1,0 +1,74 @@
+{
+  "algorithm": "feedback_v2",
+  "games": [
+    "remnant",
+    "mark",
+    "metropolis"
+  ],
+  "runs_per_game": 1,
+  "max_steps": 500,
+  "environment_seed": 42,
+  "api_model": "deepseek-flash",
+  "thinking": "disabled",
+  "actor_temperature": 0.7,
+  "actor_presence_penalty": 1.5,
+  "actor_max_tokens": 4096,
+  "controller_temperature": 0.0,
+  "controller_max_tokens": 4096,
+  "controller_presence_penalty": 0.0,
+  "max_controller_calls_per_game": 80,
+  "max_repair_calls_per_game": 32,
+  "max_successful_llm_calls_per_game": 612,
+  "transport_retries_max": 2,
+  "parallel_trajectories": 3,
+  "api_concurrency_ceiling": 128,
+  "cpu_threads_per_process": 2,
+  "base_method": "full-history ReAct",
+  "source_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "baseline_reruns": false,
+  "changes": [
+    "persistent public-text facts with exact recipe quantities and distinct task parameters",
+    "task-linked plans and executable local predicates",
+    "conservative hypotheses: confounded failure is indeterminate, no model-certified universal rule",
+    "joint action check, at most one model repair, then observational inspection fallback for explicit known contradictions",
+    "net possession/task-state recurrence detection",
+    "80 reviews released gradually over 500 steps; ledger injected on every action"
+  ],
+  "data_access": [
+    "text observations",
+    "declared action schema",
+    "own executed actions"
+  ],
+  "no_access": [
+    "reward during decision",
+    "hidden environment state",
+    "valid-action oracle",
+    "old trajectories during runs",
+    "preloaded recipes, entities, maps or solutions"
+  ],
+  "evaluation": [
+    "official main/supplementary scores",
+    "task parameter preservation and actual task completion",
+    "known quantity deficits before attempted tests",
+    "indeterminate versus unjustified hypothesis promotion",
+    "net-state cycle recurrence after warnings",
+    "blocked actions still executed",
+    "API tokens and auxiliary call counts"
+  ],
+  "limits": [
+    "single trajectory per game cannot estimate significance",
+    "controller output cap increased from v1 2048 to 4096, so compute is not exactly matched",
+    "text parsing and relation matching are interface-specific and incomplete",
+    "formal local checks do not prove global correctness or causal improvement",
+    "observational fallback may spend steps without progressing the task"
+  ],
+  "implementation_sha256": {
+    "feedback_v2_core.py": "fb5abe0202711fce06146e8ee6afdf8945e9aec78245392ba27798c63950f4f2",
+    "feedback_v2_agent.py": "106a7ba0475b94e900508b3383130f294916406455ba325da0c074de77bde26a",
+    "eval_feedback_v2.py": "c78eaff4d36e117b4e9b0b640f56416bd7cf12b6769922ced61493eb4f64e3c2",
+    "run_feedback_v2.py": "5dd40b3c46ec2365220ab960f09f84e975974b98d064a4b85af7043097064c26",
+    "api_proxy_feedback_v2.py": "49684a5c91ba5a04cb3a0744bec3747c7963019a0d00c08b2c43313aa4046134",
+    "test_feedback_v2.py": "2260b5708cf1fee6b8b8934e656cdcc23ef15c7b3c8fee05b48d5bed842a9eab",
+    "analyze_feedback_v2.py": "398049fd8eb71846931e6435f347e5a3dd1f7b749e15736ac8b3c95ce3fe99f0"
+  }
+}

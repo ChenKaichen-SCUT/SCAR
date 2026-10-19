@@ -1,0 +1,10 @@
+{
+  "observed_at": 1792333196.699005,
+  "mem0_search_requested_old_keyword_limit": 5,
+  "mem0_search_effective_top_k": 20,
+  "reason": "mem0ai 2.2.1 search accepts top_k; deprecated limit is swallowed by **kwargs and ignored. Verified against installed source and the step-35 API request containing 20 retrieved memories.",
+  "handling": "Keep actual top_k=20 constant for the existing single trajectory. Do not retune mid-run and do not rerun. Label all Mem0 results with effective top_k=20.",
+  "snapshot_limitation": "Upstream-style get_all(limit=10000) similarly returns only the first 20 records under v2.2.1. Per-step Mem0 snapshots are partial, not the entire store. Full persisted FAISS JSON store and API requests/responses are retained separately.",
+  "retrieval_capabilities": "FAISS semantic similarity; no BM25 support. Optional spaCy NLP models were not installed; warnings preserved.",
+  "source": "mem0ai==2.2.1, mem0/memory/main.py, search and get_all signatures"
+}

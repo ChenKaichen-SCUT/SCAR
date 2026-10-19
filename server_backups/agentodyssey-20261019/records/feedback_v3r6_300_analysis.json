@@ -1,0 +1,1113 @@
+{
+  "new": {
+    "steps": 300,
+    "main_quest": 2,
+    "main_quest_max": 24,
+    "last_quest_gain_step": 163,
+    "steps_since_last_quest_gain": 137,
+    "quest_gain_steps": [
+      30,
+      163
+    ],
+    "death_steps": [
+      51,
+      116,
+      220,
+      285
+    ],
+    "denial_steps": [
+      28,
+      35,
+      38,
+      44,
+      46,
+      48,
+      56,
+      59,
+      79,
+      81,
+      88,
+      138,
+      145,
+      150,
+      166,
+      196,
+      198,
+      230,
+      235,
+      244,
+      247,
+      256,
+      276,
+      288,
+      292
+    ],
+    "calls_through_last_decision": 173,
+    "local_steps": 147,
+    "action_verbs": {
+      "pick up": 84,
+      "equip": 4,
+      "inspect": 12,
+      "unequip": 1,
+      "store": 14,
+      "take out": 4,
+      "drop": 28,
+      "discard": 1,
+      "write": 1,
+      "talk to": 10,
+      "buy": 1,
+      "sell": 1,
+      "attack": 6,
+      "craft": 10,
+      "enter": 118,
+      "eat": 4,
+      "lockpick": 1
+    },
+    "dispatch_sources": {
+      "explicit_public_tutorial_instruction": 26,
+      "model_priority_preserved": 145,
+      "local_committed_continuation": 119,
+      "local_public_next_instruction": 2,
+      "local_checked_recovery": 8
+    },
+    "rejected_reasons": {
+      "future_plan_conflict": 59,
+      "inspection_has_no_new_question": 2,
+      "not_current_neighbor": 4,
+      "repeated_context_action": 7
+    },
+    "net_cycle_observations": 64,
+    "adjacent_inverse_pairs": [
+      {
+        "step": 188,
+        "actions": [
+          "drop torch",
+          "pick up torch"
+        ]
+      },
+      {
+        "step": 209,
+        "actions": [
+          "drop cloth",
+          "pick up cloth"
+        ]
+      },
+      {
+        "step": 252,
+        "actions": [
+          "pick up thread",
+          "drop thread"
+        ]
+      },
+      {
+        "step": 254,
+        "actions": [
+          "pick up iron_bar",
+          "drop iron_bar"
+        ]
+      },
+      {
+        "step": 259,
+        "actions": [
+          "pick up iron_bar",
+          "drop iron_bar"
+        ]
+      }
+    ],
+    "new_mechanism_state": {
+      "contract": {
+        "action": "enter plain",
+        "goal_id": "ebac9c7ee8ca",
+        "completion": {
+          "kind": "at_location",
+          "location": "plain"
+        },
+        "created": 289,
+        "status": "active",
+        "best_deficit": null,
+        "phase": "executing_checked_plan"
+      },
+      "committed_remaining": [
+        "enter library",
+        "pick up rust_scrap"
+      ],
+      "operation_receipt": null,
+      "current_work_action": "enter plain",
+      "local_capacity_estimate": null,
+      "locked_edges": {
+        "[0,\"Old Castle, armory\",\"plain\"]": {
+          "locked": true,
+          "step": 39,
+          "tools_at_failure": {
+            "torch": 1.0
+          }
+        }
+      },
+      "operation_evidence": [
+        {
+          "kind": "dark_pickup",
+          "object": "wood_log",
+          "location": "Old Castle, library",
+          "step": 159,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "torch",
+          "location": "Old Castle, library",
+          "step": 186,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "apple",
+          "location": "Old Castle, armory",
+          "step": 219,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "cloth",
+          "location": "Old Castle, library",
+          "step": 281,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "iron_bar",
+          "location": "Old Castle, library",
+          "step": 259,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "rust_scrap",
+          "location": "Old Castle, library",
+          "step": 250,
+          "support": "confirmed in this context"
+        }
+      ],
+      "last_probe_results": [],
+      "recent_failed_plans": [
+        {
+          "step": 293,
+          "reason": [
+            "Cannot pick up wooden_dagger, not enough space in hand."
+          ]
+        },
+        {
+          "step": 295,
+          "reason": [
+            "no net contract progress on return to relevant state"
+          ]
+        },
+        {
+          "step": 296,
+          "reason": [
+            "no net contract progress on return to relevant state"
+          ]
+        }
+      ],
+      "last_joint_plan_check": [
+        {
+          "step": 299,
+          "actions": [
+            "enter hall",
+            "enter library",
+            "pick up rust_scrap"
+          ],
+          "validation": {
+            "validated_prefix": 3,
+            "stop": null,
+            "length": 3
+          }
+        }
+      ],
+      "risk": {
+        "health": 54.0,
+        "recent_damage_here": [
+          0,
+          1.0,
+          0
+        ],
+        "observed_damage_per_step": 1.0,
+        "immediate_risk": false,
+        "semantics": "Recent local damage bounds automatic continuation; not a ranking of task value."
+      },
+      "completion_count": 66,
+      "probe_count": 0,
+      "repair_count": 26,
+      "search_nodes": 91,
+      "last_attempts": [
+        {
+          "action_step": 295,
+          "after_observation": 296,
+          "action": "talk to chronicler_lyra",
+          "location_before": "Old Castle, library",
+          "hands_before": {
+            "torch": 1.0,
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "torch": 1.0,
+            "wooden_dagger": 1.0
+          }
+        },
+        {
+          "action_step": 296,
+          "after_observation": 297,
+          "action": "drop torch",
+          "location_before": "Old Castle, library",
+          "hands_before": {
+            "torch": 1.0,
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "wooden_dagger": 1.0
+          }
+        },
+        {
+          "action_step": 297,
+          "after_observation": 298,
+          "action": "enter hall",
+          "location_before": "Old Castle, library",
+          "hands_before": {
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "wooden_dagger": 1.0
+          }
+        },
+        {
+          "action_step": 298,
+          "after_observation": 299,
+          "action": "enter armory",
+          "location_before": "Old Castle, hall",
+          "hands_before": {
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "wooden_dagger": 1.0
+          }
+        },
+        {
+          "action_step": 299,
+          "after_observation": 300,
+          "action": "enter hall",
+          "location_before": "Old Castle, armory",
+          "hands_before": {
+            "wooden_dagger": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "wooden_dagger": 1.0
+          }
+        }
+      ],
+      "known_held_tool_conditions": {},
+      "next_public_contact": null,
+      "last_task_corrections": [
+        {
+          "step": 27,
+          "kind": "tutorial_finished",
+          "task": "d0d6f9011529"
+        }
+      ],
+      "control_policy": "Model priority retained unless a common gate rejects it; automatic continuation never recursively reacquires released resources.",
+      "emergency_progress_scope": {
+        "contract": null,
+        "recent_outcomes": [
+          {
+            "step": 104,
+            "action_step": 103,
+            "action": "eat apple",
+            "scope": "health_recovery",
+            "effect_amount": 10.0,
+            "net_health_change": 10.0,
+            "status": "effect_observed",
+            "scope_completed": false,
+            "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 20/100)",
+            "parent_progress_suspended": true,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          },
+          {
+            "step": 175,
+            "action_step": 174,
+            "action": "eat apple",
+            "scope": "health_recovery",
+            "effect_amount": 10.0,
+            "net_health_change": 9.0,
+            "status": "effect_observed",
+            "scope_completed": false,
+            "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 62/100)",
+            "parent_progress_suspended": true,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          },
+          {
+            "step": 220,
+            "action_step": 219,
+            "action": "eat apple",
+            "scope": "health_recovery",
+            "effect_amount": 10.0,
+            "net_health_change": 10.0,
+            "status": "effect_observed",
+            "scope_completed": false,
+            "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 11/100)",
+            "parent_progress_suspended": false,
+            "same_condition_no_effect_count": 0,
+            "losing_health_despite_healing": false
+          }
+        ],
+        "semantics": "Attack/heal effects and net health are separate from resource progress; explicit precondition failures remain binding."
+      }
+    },
+    "runtime_policy_load": [
+      {
+        "event": "policy_loaded",
+        "agent_module": "agents.feedback_v3r6_agent",
+        "ledger_module": "agents.feedback_v3r6_core",
+        "dispatch_module": "agents.feedback_v3r6_core",
+        "max_steps": 300,
+        "source_sha256": {
+          "agents.feedback_v3r6_agent": "807650b581b71199a52a9695a9cc3ebf7757652a83cad9c0cffbb2a3f7d6b6c7",
+          "agents.feedback_v3r6_core": "b8528068803f3d073265d663ed77586119c80a3e663c973b199d8dc0e95b3c61"
+        }
+      }
+    ]
+  },
+  "frozen_v3r4": {
+    "steps": 300,
+    "main_quest": 2,
+    "main_quest_max": 24,
+    "last_quest_gain_step": 77,
+    "steps_since_last_quest_gain": 223,
+    "quest_gain_steps": [
+      33,
+      77
+    ],
+    "death_steps": [
+      103,
+      241
+    ],
+    "denial_steps": [
+      28,
+      29,
+      30,
+      31,
+      42,
+      47,
+      49,
+      52,
+      55,
+      67,
+      96,
+      97,
+      99,
+      107,
+      108,
+      119,
+      122,
+      130,
+      139,
+      147,
+      170,
+      178,
+      230,
+      231,
+      256,
+      257,
+      262,
+      265,
+      267,
+      268,
+      270,
+      272,
+      274,
+      292,
+      299
+    ],
+    "calls_through_last_decision": 220,
+    "local_steps": 104,
+    "action_verbs": {
+      "pick up": 45,
+      "equip": 5,
+      "inspect": 18,
+      "unequip": 1,
+      "store": 26,
+      "take out": 16,
+      "drop": 6,
+      "discard": 1,
+      "write": 2,
+      "talk to": 12,
+      "buy": 1,
+      "sell": 1,
+      "attack": 4,
+      "craft": 8,
+      "enter": 128,
+      "lockpick": 2,
+      "eat": 23,
+      "defend": 1
+    },
+    "dispatch_sources": {
+      "explicit_public_tutorial_instruction": 26,
+      "model_priority_preserved": 144,
+      "local_committed_continuation": 75,
+      "local_public_next_instruction": 2,
+      "local_checked_recovery": 52,
+      "local_resource_plan": 1
+    },
+    "rejected_reasons": {
+      "repeated_context_action": 1,
+      "observed_locked_edge": 1,
+      "same_failed_action_context": 49,
+      "future_plan_conflict": 203,
+      "inspection_has_no_new_question": 5,
+      "not_current_neighbor": 2,
+      "observed_held_tool_missing": 1
+    },
+    "net_cycle_observations": 52,
+    "adjacent_inverse_pairs": [
+      {
+        "step": 58,
+        "actions": [
+          "pick up torch",
+          "drop torch"
+        ]
+      },
+      {
+        "step": 162,
+        "actions": [
+          "store 1 wooden_dagger small_bag_0",
+          "take out wooden_dagger small_bag_0"
+        ]
+      },
+      {
+        "step": 171,
+        "actions": [
+          "take out torch small_bag_0",
+          "store 1 torch small_bag_0"
+        ]
+      },
+      {
+        "step": 175,
+        "actions": [
+          "take out torch small_bag_0",
+          "store 1 torch small_bag_0"
+        ]
+      },
+      {
+        "step": 240,
+        "actions": [
+          "take out torch small_bag_0",
+          "store 1 torch small_bag_0"
+        ]
+      }
+    ],
+    "new_mechanism_state": {
+      "contract": {
+        "action": "lockpick plain",
+        "goal_id": "ebac9c7ee8ca",
+        "completion": {
+          "kind": "operation_observed",
+          "action": "lockpick plain"
+        },
+        "created": 286,
+        "status": "active",
+        "best_deficit": null,
+        "phase": "executing_checked_plan"
+      },
+      "committed_remaining": [
+        "enter armory",
+        "pick up torch",
+        "enter hall",
+        "lockpick plain"
+      ],
+      "operation_receipt": null,
+      "current_work_action": "lockpick plain",
+      "local_capacity_estimate": {
+        "count": 2.0,
+        "step": 300,
+        "scope": "local occupancy estimate; revised by successful transfers"
+      },
+      "locked_edges": {
+        "[0,\"Old Castle, armory\",\"plain\"]": {
+          "locked": true,
+          "step": 257,
+          "tools_at_failure": {
+            "pen": 1.0,
+            "torch": 1.0
+          }
+        }
+      },
+      "operation_evidence": [
+        {
+          "kind": "dark_pickup",
+          "object": "torch",
+          "location": "Old Castle, armory",
+          "step": 252,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "wood_log",
+          "location": "Old Castle, library",
+          "step": 73,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "iron_ore",
+          "location": "Old Castle, armory",
+          "step": 111,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "rust_scrap",
+          "location": "Old Castle, armory",
+          "step": 238,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "iron_bar",
+          "location": "Old Castle, armory",
+          "step": 288,
+          "support": "confirmed in this context"
+        },
+        {
+          "kind": "dark_pickup",
+          "object": "cloth",
+          "location": "Old Castle, library",
+          "step": 296,
+          "support": "confirmed in this context"
+        }
+      ],
+      "last_probe_results": [],
+      "recent_failed_plans": [
+        {
+          "step": 292,
+          "reason": [
+            "no net contract progress on return to relevant state"
+          ]
+        },
+        {
+          "step": 293,
+          "reason": [
+            "Cannot pick up cloth, not found in current area."
+          ]
+        },
+        {
+          "step": 300,
+          "reason": [
+            "Cannot take out iron_bar, not enough space in hand."
+          ]
+        }
+      ],
+      "last_joint_plan_check": [
+        {
+          "step": 300,
+          "actions": [
+            "enter armory",
+            "pick up torch",
+            "enter hall",
+            "lockpick plain"
+          ],
+          "validation": {
+            "validated_prefix": 1,
+            "stop": {
+              "index": 1,
+              "action": "pick up torch",
+              "reason": "unobserved_ground_item",
+              "status": "requires_observation"
+            },
+            "length": 4
+          }
+        }
+      ],
+      "risk": {
+        "health": 34.0,
+        "recent_damage_here": [
+          0,
+          1.0,
+          1.0
+        ],
+        "observed_damage_per_step": 1.0,
+        "immediate_risk": false,
+        "semantics": "Recent local damage bounds automatic continuation; not a ranking of task value."
+      },
+      "completion_count": 32,
+      "probe_count": 0,
+      "repair_count": 36,
+      "search_nodes": 113,
+      "last_attempts": [
+        {
+          "action_step": 295,
+          "after_observation": 296,
+          "action": "pick up cloth",
+          "location_before": "Old Castle, library",
+          "hands_before": {
+            "rust_scrap": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "rust_scrap": 1.0,
+            "cloth": 1
+          }
+        },
+        {
+          "action_step": 296,
+          "after_observation": 297,
+          "action": "enter hall",
+          "location_before": "Old Castle, library",
+          "hands_before": {
+            "rust_scrap": 1.0,
+            "cloth": 1
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "rust_scrap": 1.0,
+            "cloth": 1.0
+          }
+        },
+        {
+          "action_step": 297,
+          "after_observation": 298,
+          "action": "craft 1 thread",
+          "location_before": "Old Castle, hall",
+          "hands_before": {
+            "rust_scrap": 1.0,
+            "cloth": 1.0
+          },
+          "feedback": [
+            "I successfully crafted 1 thread. It is now on the ground."
+          ],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "rust_scrap": 1.0
+          }
+        },
+        {
+          "action_step": 298,
+          "after_observation": 299,
+          "action": "pick up thread",
+          "location_before": "Old Castle, hall",
+          "hands_before": {
+            "rust_scrap": 1.0
+          },
+          "feedback": [],
+          "attempt_failed": false,
+          "denied": false,
+          "hands_after": {
+            "rust_scrap": 1.0,
+            "thread": 1.0
+          }
+        },
+        {
+          "action_step": 299,
+          "after_observation": 300,
+          "action": "take out iron_bar small_satchel_0",
+          "location_before": "Old Castle, hall",
+          "hands_before": {
+            "rust_scrap": 1.0,
+            "thread": 1.0
+          },
+          "feedback": [
+            "Cannot take out iron_bar, not enough space in hand."
+          ],
+          "attempt_failed": false,
+          "denied": true,
+          "hands_after": {
+            "rust_scrap": 1.0,
+            "thread": 1.0
+          }
+        }
+      ],
+      "known_held_tool_conditions": {
+        "lockpick": {
+          "object": "lockpick",
+          "step": 31
+        }
+      },
+      "next_public_contact": null,
+      "last_task_corrections": [
+        {
+          "step": 27,
+          "kind": "tutorial_finished",
+          "task": "d0d6f9011529"
+        }
+      ],
+      "control_policy": "Model priority retained unless a common gate rejects it; automatic continuation never recursively reacquires released resources."
+    },
+    "runtime_policy_load": [
+      {
+        "event": "policy_loaded",
+        "agent_module": "agents.feedback_v3r4_agent",
+        "ledger_module": "agents.feedback_v3r4_core",
+        "dispatch_module": "agents.feedback_v3r4_core",
+        "max_steps": 300,
+        "source_sha256": {
+          "agents.feedback_v3r4_agent": "dc30a5a2a157be42a9f7521ac3c1bb9b7fe6f339807bd0ee99af0b962daad25f",
+          "agents.feedback_v3r4_core": "c62127c806d1ba14ed71e76346259ac8a76430dbacfa587030147b400e77b7ae"
+        }
+      }
+    ]
+  },
+  "quest_difference": 0,
+  "status": {
+    "method": "v3r6",
+    "phase": "stopped",
+    "all_processes_stopped": true,
+    "runs": {
+      "remnant__v3r6_300_20261019": {
+        "id": "remnant__v3r6_300_20261019",
+        "game": "remnant",
+        "budget_scope": "remnant__v3r6_300_20261019",
+        "cache_sources": [],
+        "cached_calls": 0,
+        "max_steps": 300,
+        "status": "finished",
+        "pid": 96727,
+        "returncode": 0,
+        "stop_reason": "300_step_limit",
+        "steps": 300,
+        "main_quest": 2,
+        "budget": {
+          "calls": 173,
+          "input_tokens": 5871442,
+          "uncached_input_tokens": 837970,
+          "output_tokens": 51783
+        },
+        "official_score": {
+          "games": {
+            "remnant": {
+              "game": "remnant",
+              "num_runs": 1,
+              "runs": [
+                {
+                  "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__v3r6_300_20261019",
+                  "agent_id": "agent_adam_davis",
+                  "steps": 300,
+                  "main_quest": 2.0,
+                  "supplementary": {
+                    "side quest": 1.0,
+                    "exploration": 2.0,
+                    "craft": 6.0,
+                    "defeat": 0.0
+                  },
+                  "supplementary_total": 9.0,
+                  "warnings": [
+                    "accumulated 'side quest' reward (1) does not match the recorded agent state (0); using the accumulated reward"
+                  ]
+                }
+              ],
+              "main_quest": 2.0,
+              "supplementary": {
+                "side quest": 1.0,
+                "exploration": 2.0,
+                "craft": 6.0,
+                "defeat": 0.0
+              },
+              "supplementary_total": 9.0
+            }
+          },
+          "aggregate": null
+        }
+      }
+    },
+    "proxy_pid": 96724,
+    "batch_budget": {
+      "calls": 173,
+      "input_tokens": 5871442,
+      "uncached_input_tokens": 837970,
+      "output_tokens": 51783
+    }
+  },
+  "api": {
+    "completed_calls": 173,
+    "input_tokens": 5871442,
+    "uncached_input_tokens": 837970,
+    "output_tokens": 51783,
+    "truncated_calls": 1,
+    "errors_or_stops": []
+  },
+  "authority": {
+    "events": {
+      "heuristic_veto_demoted": 6
+    },
+    "unique_demoted_step_actions": 3,
+    "executed_advisory_overrides": [
+      {
+        "step": 113,
+        "action": "enter hall",
+        "source": "model_priority_preserved",
+        "next_feedback": "\nCurrent Time: 0001-01-02 02:50:00\nCurrent Location: Old Castle, hall\n\nI entered hall.\n\nI am holding no objects.\nI have equipped 1 small_bag_0.\nI see 10 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 workbench near me.\nI see goblin_warrior_1 nearby.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 6.\nMy experience is at 35.\n\nNeighboring areas: armory, library.\n",
+        "reward": {
+          "unique_kill": 0,
+          "kill": 0,
+          "craft": 0,
+          "exploration": 0,
+          "death": 0,
+          "trade": 0,
+          "quest": 0,
+          "side_quest": 0
+        }
+      },
+      {
+        "step": 183,
+        "action": "enter hall",
+        "source": "model_priority_preserved",
+        "next_feedback": "\nCurrent Time: 0001-01-02 14:30:00\nCurrent Location: Old Castle, hall\n\nI entered hall.\n\nI am holding 1 wooden_dagger.\nI have equipped no objects.\nI see 13 coin, 1 small_satchel_0, 1 paper_7, 1 pen, 1 workbench, 1 small_bag_0, 1 tension_wrench, 1 key_blank near me.\nI see goblin_warrior_1, bob_johnson nearby.\n\nMy level is 1.\nMy attack is at 14.\nMy defense is at 0.\nMy health is at 44.\nMy experience is at 80.\n\nNeighboring areas: armory, library.\n",
+        "reward": {
+          "unique_kill": 0,
+          "kill": 0,
+          "craft": 0,
+          "exploration": 0,
+          "death": 0,
+          "trade": 0,
+          "quest": 0,
+          "side_quest": 0
+        }
+      },
+      {
+        "step": 259,
+        "action": "drop iron_bar",
+        "source": "model_priority_preserved",
+        "next_feedback": "\nCurrent Time: 0001-01-03 03:10:00\nCurrent Location: Old Castle, library\n\nI dropped iron_bar.\nIt is too dark to see anything here.\n\nMy level is 1.\nMy attack is at 10.\nMy defense is at 0.\nMy health is at 15.\nMy experience is at 85.\n\nNeighboring areas: hall.\n",
+        "reward": {
+          "unique_kill": 0,
+          "kill": 0,
+          "craft": 0,
+          "exploration": 0,
+          "death": 0,
+          "trade": 0,
+          "quest": 0,
+          "side_quest": 0
+        }
+      }
+    ],
+    "emergency_parent_progress_vetoes": []
+  },
+  "emergency_outcomes": [
+    {
+      "step": 44,
+      "action_step": 43,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 10.0,
+      "net_health_change": -22.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 10 damage",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 48,
+      "action_step": 47,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 10.0,
+      "net_health_change": -22.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 10 damage",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 50,
+      "action_step": 49,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 8.0,
+      "net_health_change": 0.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 8 damage",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 51,
+      "action_step": 50,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": 0.0,
+      "net_health_change": 0.0,
+      "status": "no_effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I attacked goblin_warrior_1 for 0 damage",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 1,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 52,
+      "action_step": 51,
+      "action": "attack goblin_warrior_1",
+      "scope": "combat",
+      "effect_amount": null,
+      "net_health_change": null,
+      "status": "context_reset",
+      "scope_completed": false,
+      "effect_evidence": null,
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 92,
+      "action_step": 91,
+      "action": "eat apple",
+      "scope": "health_recovery",
+      "effect_amount": 10.0,
+      "net_health_change": 10.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 44/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 104,
+      "action_step": 103,
+      "action": "eat apple",
+      "scope": "health_recovery",
+      "effect_amount": 10.0,
+      "net_health_change": 10.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 20/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 175,
+      "action_step": 174,
+      "action": "eat apple",
+      "scope": "health_recovery",
+      "effect_amount": 10.0,
+      "net_health_change": 9.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 62/100)",
+      "parent_progress_suspended": true,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    },
+    {
+      "step": 220,
+      "action_step": 219,
+      "action": "eat apple",
+      "scope": "health_recovery",
+      "effect_amount": 10.0,
+      "net_health_change": 10.0,
+      "status": "effect_observed",
+      "scope_completed": false,
+      "effect_evidence": "I ate apple from hand and restored 10 HP (HP: 11/100)",
+      "parent_progress_suspended": false,
+      "same_condition_no_effect_count": 0,
+      "losing_health_despite_healing": false
+    }
+  ],
+  "protected_artifacts_unchanged": {
+    "feedback_v3r3_300_budget.sqlite": true,
+    "feedback_v3r3_300_protocol.json": true,
+    "feedback_v3r3_300_status.json": true,
+    "feedback_v3r2_verified_budget.sqlite": true,
+    "feedback_v3r2_verified_protocol.json": true,
+    "feedback_v3r2_verified_status.json": true,
+    "feedback_v3r2_budget.sqlite": true,
+    "feedback_v3r2_validity.json": true,
+    "feedback_v3r_budget.sqlite": true,
+    "feedback_v3r4_300_budget.sqlite": true,
+    "feedback_v3r4_300_protocol.json": true,
+    "feedback_v3r4_300_status.json": true,
+    "runs/remnant__v3r4_300_20261019/agent_adam_davis/agent_log.jsonl": true,
+    "control_audit/remnant__v3r4_300_20261019.jsonl": true
+  },
+  "frozen_sources_match": {
+    "feedback_v3r_core.py": true,
+    "feedback_v3r_agent.py": true,
+    "eval_feedback_v3r.py": true,
+    "api_proxy_v3r.py": true,
+    "run_feedback_v3r.py": true,
+    "agentodyssey/agents/feedback_v3r_core.py": true,
+    "agentodyssey/agents/feedback_v3r_agent.py": true,
+    "agentodyssey/agents/feedback_v3_core.py": true,
+    "agentodyssey/agents/feedback_v3_agent.py": true,
+    "agentodyssey/agents/feedback_v2_core.py": true,
+    "api_budget_guard.py": true,
+    "budget_guard_v5_full.py": true,
+    "feedback_v3r2_core.py": true,
+    "feedback_v3r2_agent.py": true,
+    "eval_feedback_v3r2.py": true,
+    "run_feedback_v3r2.py": true,
+    "diagnose_remnant_v3r.py": true,
+    "test_feedback_v3r2.py": true,
+    "test_feedback_v3r2_agent.py": true,
+    "eval_v3r2_offline_smoke.py": true,
+    "agentodyssey/agents/feedback_v3r2_core.py": true,
+    "agentodyssey/agents/feedback_v3r2_agent.py": true,
+    "run_feedback_v3r2_verified.py": true,
+    "run_feedback_v3r3.py": true,
+    "eval_feedback_v3r3.py": true,
+    "agentodyssey/agents/feedback_v3r3_agent.py": true,
+    "agentodyssey/agents/feedback_v3r3_core.py": true,
+    "feedback_v3r3_agent.py": true,
+    "feedback_v3r3_core.py": true,
+    "test_feedback_v3r3.py": true,
+    "test_feedback_v3r3_agent.py": true,
+    "run_feedback_v3r4.py": true,
+    "eval_feedback_v3r4.py": true,
+    "agentodyssey/agents/feedback_v3r4_agent.py": true,
+    "agentodyssey/agents/feedback_v3r4_core.py": true,
+    "feedback_v3r4_agent.py": true,
+    "feedback_v3r4_core.py": true,
+    "test_feedback_v3r4.py": true,
+    "test_feedback_v3r4_agent.py": true,
+    "test_v3r4_public_path_remote.py": true,
+    "analyze_v3r4_remote.py": true,
+    "run_feedback_v3r6.py": true,
+    "eval_feedback_v3r6.py": true,
+    "agentodyssey/agents/feedback_v3r6_agent.py": true,
+    "agentodyssey/agents/feedback_v3r6_core.py": true,
+    "feedback_v3r6_agent.py": true,
+    "feedback_v3r6_core.py": true,
+    "feedback_v3r5_core.py": true,
+    "test_feedback_v3r6.py": true,
+    "test_feedback_v3r6_agent.py": true,
+    "test_v3r6_public_path_remote.py": true,
+    "analyze_v3r6_remote.py": true,
+    "agentodyssey/agents/feedback_v3r5_core.py": true
+  },
+  "interpretation": "One stochastic rollout vs frozen prior result. Combined authority and emergency correction; no separate ablation or statistical claim.",
+  "valid_run": true
+}

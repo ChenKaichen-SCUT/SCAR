@@ -1,0 +1,149 @@
+{
+  "paid_execution_explicitly_enabled": true,
+  "authorization": "User: \u6267\u884c30\u6b65\u600e\u4e48\u591f\uff1f\u6267\u884c500\u6b65",
+  "runs": [
+    {
+      "id": "remnant__v5_full500_repaired_20261018",
+      "game": "remnant",
+      "source_run": "remnant__v5_full500_20261018",
+      "cache_sources": [
+        "remnant__v5_batch_20261018",
+        "remnant__v5_full500_20261018"
+      ],
+      "budget_scope": "remnant__v5_batch_20261018",
+      "prefix_steps": 121,
+      "cached_calls": 107,
+      "max_steps": 500
+    },
+    {
+      "id": "mark__v5_full500_repaired_20261018",
+      "game": "mark",
+      "source_run": "mark__v5_full500_20261018",
+      "cache_sources": [
+        "mark__v5_batch_20261018",
+        "mark__v5_full500_20261018"
+      ],
+      "budget_scope": "mark__v5_batch_20261018",
+      "prefix_steps": 138,
+      "cached_calls": 114,
+      "max_steps": 500
+    },
+    {
+      "id": "metropolis__v5_full500_repaired_20261018",
+      "game": "metropolis",
+      "source_run": "metropolis__v5_full500_20261018",
+      "cache_sources": [
+        "metropolis__v5_batch_20261018",
+        "metropolis__v5_full500_20261018"
+      ],
+      "budget_scope": "metropolis__v5_batch_20261018",
+      "prefix_steps": 48,
+      "cached_calls": 44,
+      "max_steps": 500
+    }
+  ],
+  "seed": 42,
+  "model": "deepseek-flash",
+  "max_steps_each": 500,
+  "workers": 3,
+  "limits": {
+    "calls": 1506,
+    "input_tokens": 150000000,
+    "uncached_input_tokens": 12000000,
+    "output_tokens": 1156608
+  },
+  "per_run_limits": {
+    "calls": 502,
+    "input_tokens": 50000000,
+    "uncached_input_tokens": 4000000,
+    "output_tokens": 385536
+  },
+  "budget_db": "v5_full500_budget.sqlite",
+  "prior_paid_usage_carried_forward": {
+    "calls": 265,
+    "input_tokens": 3662328,
+    "uncached_input_tokens": 364024,
+    "output_tokens": 45967
+  },
+  "max_single_input_reservation": 1000000,
+  "output_tokens_per_call": 768,
+  "full_history_retained": true,
+  "policy_stagnation_and_no_admissible_stop_unchanged": false,
+  "no_baseline_reruns": true,
+  "prefix_reconstruction_checks": [
+    {
+      "game": "remnant",
+      "prefix_steps_verified": 121,
+      "all_actions_observations_rewards_identical": true,
+      "new_provider_calls_for_prefix": 0,
+      "paid_responses_reused": 107,
+      "pending_response_executed_offline": false
+    },
+    {
+      "game": "mark",
+      "prefix_steps_verified": 138,
+      "all_actions_observations_rewards_identical": true,
+      "new_provider_calls_for_prefix": 0,
+      "paid_responses_reused": 114,
+      "pending_response_executed_offline": true
+    },
+    {
+      "game": "metropolis",
+      "prefix_steps_verified": 48,
+      "all_actions_observations_rewards_identical": true,
+      "new_provider_calls_for_prefix": 0,
+      "paid_responses_reused": 44,
+      "pending_response_executed_offline": true
+    }
+  ],
+  "frozen_policy_sha256": {
+    "feedback_v5_core.py": "e0dc00540fe6e9a2cf8259c19c178f3b90a503b58f9889a4ce4833fadf0052cc",
+    "feedback_v5_agent.py": "a33ac0ed399a987ff9ea0568c983dc13745477c819ee9e63db4d6c6eafb11a7c",
+    "compact_decision_packet.py": "3144e1ae6d5b0cecf2caafd32dec292d0ecfc9f61dbcd44aff157671e908841a",
+    "api_budget_guard.py": "f57c035b660685a0f0f3ceda92965e5bd9a848493f94e616fba1186c4fb7ce7c",
+    "api_proxy_budgeted.py": "f421ff9f1e5870f50c0c875e435073f834778a97feb78943d60526f1cf2be9f3",
+    "eval_feedback_v5.py": "b780cf643cdf6585026ce4d72ab8c1a6cf7d75c76684c5e1a23878051b260521",
+    "run_efficient_screen.py": "46a9690a52b59ef955afb2958347422daa5889873e2dece333df0595ed69baff",
+    "test_feedback_v5.py": "5774e503fc2ea795c4d47424f3891a5e0d1706fecf09efb2c92a35d366e4b123",
+    "test_feedback_v5_agent_smoke.py": "ca814a9596b35977ba0f68c805adfa5a7af7299c7cc32fe5bf1758ae187eaadd",
+    "preflight_feedback_v5_remote.py": "cfc99fe12c15fc01f4b22a0f56ef5740e59b533b0fb6b492dec58e2cb8f64f6c",
+    "agentodyssey/eval.py": "d1a2655ffbed9b0de313db71add668af25e61cfd3bac7e59891e4eed17ac3c2d",
+    "agentodyssey/agents/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "agentodyssey/agents/fake_llm_agent.py": "a9bb72e86be91e6f47dc7d034374c7a825b964d11a4ada8d4d72c74fdadfa825",
+    "agentodyssey/agents/feedback_v3_agent.py": "31f03d47ed2c107f8306377fd9ae8db637a6e6ac47f7b8d39675a90ea75d6b01",
+    "agentodyssey/agents/long_context_agent.py": "102f26b79aa0d7cdb4e364add344fed3820404333bff66bfa7015072fcee246c",
+    "agentodyssey/agents/mechanism_study_core.py": "244329fb8efa4e749fb28f7083d7406b6cfe31a9eb9125c6802b36f70e6d1146",
+    "agentodyssey/agents/feedback_v3_core.py": "c9b18afd96123935d8f7708a655d5ffcb476605505e6b0f1d7878de32e112d0b",
+    "agentodyssey/agents/feedback_control_agent.py": "5cb520166a3715d26044dd876fc9f6f5f6f6a20baa5385a983342499ce755d4b",
+    "agentodyssey/agents/no_memory_agent.py": "5377e5bb88268b22dbfb18f63543f9f72dcaa05749715343aaca9f1f84a3de3b",
+    "agentodyssey/agents/sentry_agent.py": "e36064ec83d3efc899c3216dcd7f8c35d57e92849f1dc586f9fd1d5304052dd4",
+    "agentodyssey/agents/wait_agent.py": "097f339b348fc2877b722654762786018515585a43535634bb8f140ddf2da610",
+    "agentodyssey/agents/mechanism_study_agent.py": "d6e3890ca1c4d676ba78653c88e2c064478ba48915c526d75c2bfa90b7de1725",
+    "agentodyssey/agents/random_agent.py": "3b9f05deecb997fcc804c04d5d593c53d0e0a173cbfd4691bcc514a414d68de2",
+    "agentodyssey/agents/llm_agent_config.py": "dd23cc14cbf7eb5c3019f3e65fb21f6ef19b85e863482675926c29bf0f3c25d0",
+    "agentodyssey/agents/feedback_v2_core.py": "fb5abe0202711fce06146e8ee6afdf8945e9aec78245392ba27798c63950f4f2",
+    "agentodyssey/agents/feedback_v4_core.py": "2a047056518ca9b54a3513a4a7c91e8f2b5f39bbe3c03bc538a442a14c71f7ec",
+    "agentodyssey/agents/replay_agent.py": "69b4ecb5572e1a6bbc5f1b77e619c39b679e26f1399598b3d5db4339bdf282f9",
+    "agentodyssey/agents/feedback_v2_agent.py": "106a7ba0475b94e900508b3383130f294916406455ba325da0c074de77bde26a",
+    "agentodyssey/agents/feedback_control_core.py": "8597c80ca1fe9907940d46a5d694c4926e6150c6b7a3c9e89f582ffc31ac69ad",
+    "agentodyssey/agents/human_agent.py": "c2f27d929d7943ae4ce3851170e7ec84330cd1eeb647f74f75401f6edf41cede",
+    "agentodyssey/agents/feedback_v5_agent.py": "a33ac0ed399a987ff9ea0568c983dc13745477c819ee9e63db4d6c6eafb11a7c",
+    "agentodyssey/agents/feedback_v5_core.py": "e0dc00540fe6e9a2cf8259c19c178f3b90a503b58f9889a4ce4833fadf0052cc",
+    "agentodyssey/agents/compact_decision_packet.py": "3144e1ae6d5b0cecf2caafd32dec292d0ecfc9f61dbcd44aff157671e908841a"
+  },
+  "continuation_source_sha256": {
+    "api_proxy_v5_full_repair.py": "70f3c0578d311f06c690d90f16854dc7348aa21c2a22ce1732a17bd34a6302ec",
+    "run_v5_full500_repair.py": "dd59739ac38d8e235054c441ced8facfb9a8f5f2ec747313c5724dcac5e6c5ac",
+    "eval_v5_repair_continue.py": "20ff39c6927b0cbba017f0412c4b9684abbad54b68f973ce4e667f088e2a2826",
+    "eval_v5_repair_offline.py": "d74f993bf41ea7d5c567c3ff84b861a9b2a6fe43de4c574e4d82d6c595b7cb1b",
+    "v5_full500_runtime.py": "d982a25340c6f0c3f4282c11b52f7b20f6d4fb9e27b6aa56b4cd7974c4122ff8",
+    "test_v5_full500_runtime.py": "6f10bb32af32f20d4e53010f14ab0effff544d79717cb4d9649d78e9aadc8937",
+    "launch_v5_full500_repair_remote.py": "68456e2eae5a5ca97bb63a158647fdb92bfd824ad8af841492fb3fc27daa4b9f"
+  },
+  "runtime_repairs": {
+    "malformed_hypothesis_arrays": "reject without semantic coercion; retain actual action",
+    "screen_stagnation_stop": "record only for requested 500-step evaluation; recovery and action checks unchanged",
+    "no_admissible_action_stop": "unchanged"
+  },
+  "budget_database_reused_without_reset": true
+}

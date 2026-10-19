@@ -1,0 +1,99 @@
+{
+  "algorithm": "feedback_v1",
+  "description": "Full-history ReAct plus observation-grounded, event-triggered feedback control; inspired adaptation, not Sentry reproduction.",
+  "games": [
+    "remnant",
+    "mark",
+    "metropolis"
+  ],
+  "runs_per_game": 1,
+  "max_steps": 500,
+  "environment_seed": 42,
+  "api_model": "deepseek-flash",
+  "thinking": "disabled",
+  "actor_temperature": 0.7,
+  "actor_presence_penalty": 1.5,
+  "actor_max_tokens": 4096,
+  "controller_temperature": 0.0,
+  "controller_presence_penalty": 0.0,
+  "controller_max_tokens": 2048,
+  "max_controller_calls_per_game": 80,
+  "max_repair_calls_per_game": 32,
+  "max_successful_llm_calls_per_game": 612,
+  "transport_retries_max": 2,
+  "source_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "base_method": "long_context",
+  "baseline_reruns": false,
+  "game_specific_rules": false,
+  "controller_access": [
+    "declared action schema",
+    "current and past text observations",
+    "past executed actions and reasoning"
+  ],
+  "no_access": [
+    "environment reward",
+    "hidden world state",
+    "valid-action oracle",
+    "baseline trajectories",
+    "future observations"
+  ],
+  "review_trigger": {
+    "denial_prefixes": [
+      "Cannot",
+      "Can't",
+      "Invalid",
+      "Failed",
+      "Not enough"
+    ],
+    "identical_action_feedback_threshold": 3,
+    "window_transitions": 8,
+    "minimum_review_interval": 3,
+    "periodic_check_interval": 12,
+    "effect_check_horizon_min": 2,
+    "effect_check_horizon_max": 12
+  },
+  "retrieval": {
+    "method": "lexical word overlap, recent tie break",
+    "max_rules_to_controller": 12,
+    "max_rules_to_actor": 5
+  },
+  "repair": {
+    "max_per_step": 1,
+    "triggers": [
+      "declared schema mismatch",
+      "two recent identical denied actions under identical visible state projection"
+    ],
+    "same_state_window": 4,
+    "time_and_hidden_state_change": "retry remains allowed; warning does not permanently ban an action"
+  },
+  "evidence_validation": "Exact observation quotes and source step IDs; does not verify semantic entailment.",
+  "state_reset": "All learned control state and history start empty in each game.",
+  "execution": {
+    "parallel_trajectories": 3,
+    "api_concurrency_ceiling": 128,
+    "cpu_threads_per_process": 2
+  },
+  "comparison": {
+    "frozen_full_history_main": [
+      2,
+      17,
+      10
+    ],
+    "frozen_main_mean": 9.666666666666666,
+    "paired_seed_only_not_paired_randomness": true,
+    "extra_compute_is_reported_not_matched": true
+  },
+  "references": [
+    "https://arxiv.org/abs/2610.02994",
+    "https://arxiv.org/abs/2402.12275",
+    "https://arxiv.org/abs/2402.15809"
+  ],
+  "implementation_sha256": {
+    "feedback_control_core.py": "8597c80ca1fe9907940d46a5d694c4926e6150c6b7a3c9e89f582ffc31ac69ad",
+    "feedback_control_agent.py": "5cb520166a3715d26044dd876fc9f6f5f6f6a20baa5385a983342499ce755d4b",
+    "eval_feedback.py": "5c6e568946a69cc5896980380dee98af71dd2a7c4103e1bb41679728fa941db6",
+    "run_feedback.py": "4e10483926f7d21998f4c9de3ab541af476dda976d341fb6c1b6bc7427f75e78",
+    "api_proxy_feedback.py": "5b4598cb408b06721888e161952f1a9502d7cc016651ffeff0466db034420b3f",
+    "test_feedback_control.py": "1ad2aad1004998d5ac78c1517401814ceb003d6fbd4a7ef29517e4ed60b6d5e9"
+  }
+}

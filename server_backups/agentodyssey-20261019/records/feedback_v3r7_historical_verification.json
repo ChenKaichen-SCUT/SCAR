@@ -1,0 +1,1460 @@
+{
+  "passed": true,
+  "provider_calls": 0,
+  "reconstructed_steps": 300,
+  "identical_old_actions": true,
+  "recorded_responses_reused": 173,
+  "capacity_case_256_rejected": true,
+  "successful_path_157_163_preserved": true,
+  "cases": [
+    {
+      "step": 153,
+      "historical_action": "talk to villager_1",
+      "original_sequence": [
+        "pick up thread",
+        "pick up wood_log",
+        "enter hall",
+        "craft 1 wood_plank",
+        "pick up wood_plank",
+        "craft 1 wooden_dagger"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 1,
+          "action": "pick up wood_log",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "length": 6,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "pick up thread",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 1,
+            "action": "pick up wood_log",
+            "known_conflicts": [
+              "capacity_conflict"
+            ],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "pick up thread",
+      "new_dispatch": {
+        "step": 153,
+        "selected": "pick up thread",
+        "source": "model_plan_locally_repaired",
+        "rejected": [],
+        "plan_key": "445b8a17f8bc",
+        "validation": {
+          "validated_prefix": 5,
+          "stop": {
+            "index": 4,
+            "action": "craft 1 wood_plank",
+            "reason": "terminal_probe_or_execution",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 7,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "pick up thread",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 1,
+              "action": "drop torch",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 2,
+              "action": "pick up wood_log",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 3,
+              "action": "enter hall",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 4,
+              "action": "craft 1 wood_plank",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        },
+        "repair": {
+          "reason": "supported_plan_repair",
+          "target": "craft 1 wood_plank",
+          "target_location": "Old Castle, hall",
+          "nodes": 61,
+          "original_conflict": {
+            "index": 1,
+            "action": "pick up wood_log",
+            "reason": "capacity_conflict",
+            "status": "contradicted",
+            "conditional_on_prior_success": false
+          },
+          "plan": [
+            "pick up thread",
+            "drop torch",
+            "pick up wood_log",
+            "enter hall",
+            "craft 1 wood_plank",
+            "pick up wood_plank",
+            "craft 1 wooden_dagger"
+          ],
+          "required_inputs": {
+            "thread": 1.0,
+            "wood_log": 1.0
+          },
+          "retained_inputs": {
+            "thread": 0
+          }
+        }
+      },
+      "repair": [
+        [
+          "pick up thread",
+          "drop torch",
+          "pick up wood_log",
+          "enter hall",
+          "craft 1 wood_plank",
+          "pick up wood_plank",
+          "craft 1 wooden_dagger"
+        ],
+        {
+          "reason": "supported_plan_repair",
+          "target": "craft 1 wood_plank",
+          "target_location": "Old Castle, hall",
+          "nodes": 61,
+          "original_conflict": {
+            "index": 1,
+            "action": "pick up wood_log",
+            "reason": "capacity_conflict",
+            "status": "contradicted",
+            "conditional_on_prior_success": false
+          },
+          "plan": [
+            "pick up thread",
+            "drop torch",
+            "pick up wood_log",
+            "enter hall",
+            "craft 1 wood_plank",
+            "pick up wood_plank",
+            "craft 1 wooden_dagger"
+          ],
+          "required_inputs": {
+            "thread": 1.0,
+            "wood_log": 1.0
+          },
+          "retained_inputs": {
+            "thread": 0
+          }
+        }
+      ]
+    },
+    {
+      "step": 157,
+      "historical_action": "drop torch",
+      "original_sequence": [
+        "drop torch",
+        "pick up wood_log",
+        "enter hall",
+        "craft 1 wood_plank",
+        "pick up wood_plank",
+        "craft 1 wooden_dagger"
+      ],
+      "new_validation": {
+        "validated_prefix": 4,
+        "stop": {
+          "index": 3,
+          "action": "craft 1 wood_plank",
+          "reason": "terminal_probe_or_execution",
+          "status": "requires_observation",
+          "conditional_on_prior_success": false
+        },
+        "length": 6,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "drop torch",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 1,
+            "action": "pick up wood_log",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 2,
+            "action": "enter hall",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 3,
+            "action": "craft 1 wood_plank",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "drop torch",
+      "new_dispatch": {
+        "step": 157,
+        "selected": "drop torch",
+        "source": "model_priority_preserved",
+        "rejected": [],
+        "plan_key": "0e6d3ae61fc4",
+        "validation": {
+          "validated_prefix": 4,
+          "stop": {
+            "index": 3,
+            "action": "craft 1 wood_plank",
+            "reason": "terminal_probe_or_execution",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 6,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "drop torch",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 1,
+              "action": "pick up wood_log",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 2,
+              "action": "enter hall",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 3,
+              "action": "craft 1 wood_plank",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": null
+    },
+    {
+      "step": 158,
+      "historical_action": "pick up wood_log",
+      "original_sequence": [
+        "pick up wood_log"
+      ],
+      "new_validation": {
+        "validated_prefix": 0,
+        "stop": {
+          "index": 0,
+          "action": "pick up wood_log",
+          "reason": "unobserved_ground_item",
+          "status": "requires_observation",
+          "conditional_on_prior_success": false
+        },
+        "length": 1,
+        "uncertainties": [
+          {
+            "index": 0,
+            "action": "pick up wood_log",
+            "reason": "unobserved_ground_item"
+          }
+        ],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "pick up wood_log",
+            "known_conflicts": [],
+            "unknown_conditions": [
+              "unobserved_ground_item"
+            ]
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "pick up wood_log",
+      "new_dispatch": {
+        "step": 158,
+        "selected": "pick up wood_log",
+        "source": "local_committed_continuation",
+        "rejected": [],
+        "plan_key": "626b6c887b65",
+        "validation": {
+          "validated_prefix": 0,
+          "stop": {
+            "index": 0,
+            "action": "pick up wood_log",
+            "reason": "unobserved_ground_item",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 1,
+          "uncertainties": [
+            {
+              "index": 0,
+              "action": "pick up wood_log",
+              "reason": "unobserved_ground_item"
+            }
+          ],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "pick up wood_log",
+              "known_conflicts": [],
+              "unknown_conditions": [
+                "unobserved_ground_item"
+              ]
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": null
+    },
+    {
+      "step": 159,
+      "historical_action": "enter hall",
+      "original_sequence": [
+        "enter hall"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": null,
+        "length": 1,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "enter hall",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "enter hall",
+      "new_dispatch": {
+        "step": 159,
+        "selected": "enter hall",
+        "source": "local_committed_continuation",
+        "rejected": [],
+        "plan_key": "403f22812dd4",
+        "validation": {
+          "validated_prefix": 1,
+          "stop": null,
+          "length": 1,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "enter hall",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": null
+    },
+    {
+      "step": 160,
+      "historical_action": "craft 1 wood_plank",
+      "original_sequence": [
+        "craft 1 wood_plank"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 0,
+          "action": "craft 1 wood_plank",
+          "reason": "terminal_probe_or_execution",
+          "status": "requires_observation",
+          "conditional_on_prior_success": false
+        },
+        "length": 1,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "craft 1 wood_plank",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "craft 1 wood_plank",
+      "new_dispatch": {
+        "step": 160,
+        "selected": "craft 1 wood_plank",
+        "source": "local_committed_continuation",
+        "rejected": [],
+        "plan_key": "39d4c3bc6039",
+        "validation": {
+          "validated_prefix": 1,
+          "stop": {
+            "index": 0,
+            "action": "craft 1 wood_plank",
+            "reason": "terminal_probe_or_execution",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 1,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "craft 1 wood_plank",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": null
+    },
+    {
+      "step": 161,
+      "historical_action": "pick up wood_plank",
+      "original_sequence": [
+        "pick up wood_plank"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": null,
+        "length": 1,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "pick up wood_plank",
+            "known_conflicts": [],
+            "unknown_conditions": [
+              "hand_capacity_unverified"
+            ]
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "pick up wood_plank",
+      "new_dispatch": {
+        "step": 161,
+        "selected": "pick up wood_plank",
+        "source": "local_committed_continuation",
+        "rejected": [],
+        "plan_key": "c9c57a079016",
+        "validation": {
+          "validated_prefix": 1,
+          "stop": null,
+          "length": 1,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "pick up wood_plank",
+              "known_conflicts": [],
+              "unknown_conditions": [
+                "hand_capacity_unverified"
+              ]
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": null
+    },
+    {
+      "step": 162,
+      "historical_action": "craft 1 wooden_dagger",
+      "original_sequence": [
+        "craft 1 wooden_dagger"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 0,
+          "action": "craft 1 wooden_dagger",
+          "reason": "terminal_probe_or_execution",
+          "status": "requires_observation",
+          "conditional_on_prior_success": false
+        },
+        "length": 1,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "craft 1 wooden_dagger",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "craft 1 wooden_dagger",
+      "new_dispatch": {
+        "step": 162,
+        "selected": "craft 1 wooden_dagger",
+        "source": "local_committed_continuation",
+        "rejected": [],
+        "plan_key": "2f9c33d88cda",
+        "validation": {
+          "validated_prefix": 1,
+          "stop": {
+            "index": 0,
+            "action": "craft 1 wooden_dagger",
+            "reason": "terminal_probe_or_execution",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 1,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "craft 1 wooden_dagger",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": null
+    },
+    {
+      "step": 163,
+      "historical_action": "pick up wooden_dagger",
+      "original_sequence": [
+        "pick up wooden_dagger",
+        "equip wooden_dagger"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 1,
+          "action": "equip wooden_dagger",
+          "reason": "equip_unverified_or_refuted",
+          "status": "requires_observation",
+          "conditional_on_prior_success": false
+        },
+        "length": 2,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "pick up wooden_dagger",
+            "known_conflicts": [],
+            "unknown_conditions": [
+              "hand_capacity_unverified"
+            ]
+          },
+          {
+            "index": 1,
+            "action": "equip wooden_dagger",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "pick up wooden_dagger",
+      "new_dispatch": {
+        "step": 163,
+        "selected": "pick up wooden_dagger",
+        "source": "model_priority_preserved",
+        "rejected": [],
+        "plan_key": "0855054a24f0",
+        "validation": {
+          "validated_prefix": 1,
+          "stop": {
+            "index": 1,
+            "action": "equip wooden_dagger",
+            "reason": "equip_unverified_or_refuted",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 2,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "pick up wooden_dagger",
+              "known_conflicts": [],
+              "unknown_conditions": [
+                "hand_capacity_unverified"
+              ]
+            },
+            {
+              "index": 1,
+              "action": "equip wooden_dagger",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": null
+    },
+    {
+      "step": 248,
+      "historical_action": "drop thread",
+      "original_sequence": [
+        "drop thread",
+        "pick up rust_scrap",
+        "enter hall",
+        "craft 1 lockpick"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 3,
+          "action": "craft 1 lockpick",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": true
+        },
+        "length": 4,
+        "uncertainties": [
+          {
+            "index": 1,
+            "action": "pick up rust_scrap",
+            "reason": "unobserved_ground_item"
+          }
+        ],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "drop thread",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 1,
+            "action": "pick up rust_scrap",
+            "known_conflicts": [],
+            "unknown_conditions": [
+              "unobserved_ground_item"
+            ]
+          },
+          {
+            "index": 2,
+            "action": "enter hall",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 3,
+            "action": "craft 1 lockpick",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "enter hall",
+      "new_dispatch": {
+        "step": 248,
+        "selected": "enter hall",
+        "source": "model_priority_preserved",
+        "rejected": [
+          {
+            "action": "drop thread",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 3,
+                  "action": "craft 1 lockpick",
+                  "reason": "joint_material_deficit",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": true
+                }
+              }
+            ]
+          }
+        ],
+        "plan_key": "cd887f277eac",
+        "validation": {
+          "validated_prefix": 4,
+          "stop": {
+            "index": 4,
+            "action": "take out rust_scrap small_bag_0",
+            "reason": "contents_unverified",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 5,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "enter hall",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 1,
+              "action": "pick up small_bag_0",
+              "known_conflicts": [],
+              "unknown_conditions": [
+                "hand_capacity_unverified"
+              ]
+            },
+            {
+              "index": 2,
+              "action": "equip small_bag_0",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 3,
+              "action": "enter library",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 4,
+              "action": "take out rust_scrap small_bag_0",
+              "known_conflicts": [],
+              "unknown_conditions": [
+                "hand_capacity_unverified",
+                "contents_unverified"
+              ]
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": [
+        null,
+        {
+          "reason": "no_supported_bounded_repair",
+          "target": "craft 1 lockpick",
+          "target_location": "Old Castle, hall",
+          "nodes": 235,
+          "original_conflict": {
+            "index": 3,
+            "action": "craft 1 lockpick",
+            "reason": "joint_material_deficit",
+            "status": "contradicted",
+            "conditional_on_prior_success": true
+          }
+        }
+      ]
+    },
+    {
+      "step": 250,
+      "historical_action": "drop iron_bar",
+      "original_sequence": [
+        "drop iron_bar",
+        "pick up thread",
+        "enter hall",
+        "craft 1 lockpick",
+        "enter armory",
+        "lockpick plain"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 3,
+          "action": "craft 1 lockpick",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": true
+        },
+        "length": 6,
+        "uncertainties": [
+          {
+            "index": 1,
+            "action": "pick up thread",
+            "reason": "unobserved_ground_item"
+          }
+        ],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "drop iron_bar",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 1,
+            "action": "pick up thread",
+            "known_conflicts": [],
+            "unknown_conditions": [
+              "unobserved_ground_item"
+            ]
+          },
+          {
+            "index": 2,
+            "action": "enter hall",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 3,
+            "action": "craft 1 lockpick",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "enter hall",
+      "new_dispatch": {
+        "step": 250,
+        "selected": "enter hall",
+        "source": "model_priority_preserved",
+        "rejected": [
+          {
+            "action": "drop iron_bar",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 3,
+                  "action": "craft 1 lockpick",
+                  "reason": "joint_material_deficit",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": true
+                }
+              }
+            ]
+          },
+          {
+            "action": "enter hall",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 1,
+                  "action": "craft 1 thread",
+                  "reason": "joint_material_deficit",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": false
+                }
+              }
+            ]
+          }
+        ],
+        "plan_key": "13be1201490b",
+        "validation": {
+          "validated_prefix": 1,
+          "stop": {
+            "index": 1,
+            "action": "talk to bob_johnson",
+            "reason": "requires_feedback",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 2,
+          "uncertainties": [],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "enter hall",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            },
+            {
+              "index": 1,
+              "action": "talk to bob_johnson",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": [
+        null,
+        {
+          "reason": "no_supported_bounded_repair",
+          "target": "craft 1 lockpick",
+          "target_location": "Old Castle, hall",
+          "nodes": 76,
+          "original_conflict": {
+            "index": 3,
+            "action": "craft 1 lockpick",
+            "reason": "joint_material_deficit",
+            "status": "contradicted",
+            "conditional_on_prior_success": true
+          }
+        }
+      ]
+    },
+    {
+      "step": 252,
+      "historical_action": "drop thread",
+      "original_sequence": [
+        "drop thread",
+        "pick up iron_bar",
+        "enter hall",
+        "craft 1 lockpick",
+        "enter armory",
+        "lockpick plain"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 3,
+          "action": "craft 1 lockpick",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": true
+        },
+        "length": 6,
+        "uncertainties": [
+          {
+            "index": 1,
+            "action": "pick up iron_bar",
+            "reason": "unobserved_ground_item"
+          }
+        ],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "drop thread",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 1,
+            "action": "pick up iron_bar",
+            "known_conflicts": [],
+            "unknown_conditions": [
+              "unobserved_ground_item"
+            ]
+          },
+          {
+            "index": 2,
+            "action": "enter hall",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 3,
+            "action": "craft 1 lockpick",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": null,
+      "new_dispatch": {
+        "step": 252,
+        "selected": null,
+        "source": "no_admissible_model_plan",
+        "rejected": [
+          {
+            "action": "drop thread",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 3,
+                  "action": "craft 1 lockpick",
+                  "reason": "joint_material_deficit",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": true
+                }
+              }
+            ]
+          },
+          {
+            "action": "pick up iron_bar",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "future_plan_conflict",
+                "detail": {
+                  "index": 0,
+                  "action": "pick up iron_bar",
+                  "reason": "capacity_conflict",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": false
+                }
+              }
+            ]
+          },
+          {
+            "action": "enter hall",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 1,
+                  "action": "craft 1 lockpick",
+                  "reason": "joint_material_deficit",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "repair": [
+        null,
+        {
+          "reason": "no_supported_bounded_repair",
+          "target": "craft 1 lockpick",
+          "target_location": "Old Castle, hall",
+          "nodes": 67,
+          "original_conflict": {
+            "index": 3,
+            "action": "craft 1 lockpick",
+            "reason": "joint_material_deficit",
+            "status": "contradicted",
+            "conditional_on_prior_success": true
+          }
+        }
+      ]
+    },
+    {
+      "step": 255,
+      "historical_action": "pick up thread",
+      "original_sequence": [
+        "pick up thread",
+        "pick up iron_bar",
+        "enter hall",
+        "craft 1 lockpick",
+        "enter armory",
+        "lockpick plain"
+      ],
+      "new_validation": {
+        "validated_prefix": 0,
+        "stop": {
+          "index": 1,
+          "action": "pick up iron_bar",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": true
+        },
+        "length": 6,
+        "uncertainties": [
+          {
+            "index": 0,
+            "action": "pick up thread",
+            "reason": "unobserved_ground_item"
+          }
+        ],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "pick up thread",
+            "known_conflicts": [],
+            "unknown_conditions": [
+              "unobserved_ground_item"
+            ]
+          },
+          {
+            "index": 1,
+            "action": "pick up iron_bar",
+            "known_conflicts": [
+              "capacity_conflict"
+            ],
+            "unknown_conditions": [
+              "unobserved_ground_item"
+            ]
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": null,
+      "new_dispatch": {
+        "step": 255,
+        "selected": null,
+        "source": "no_admissible_model_plan",
+        "rejected": [
+          {
+            "action": "pick up thread",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 1,
+                  "action": "pick up iron_bar",
+                  "reason": "capacity_conflict",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": true
+                }
+              }
+            ]
+          },
+          {
+            "action": "pick up thread",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 1,
+                  "action": "pick up iron_bar",
+                  "reason": "capacity_conflict",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "repair": [
+        null,
+        {
+          "reason": "no_supported_bounded_repair",
+          "target": "craft 1 lockpick",
+          "target_location": "Old Castle, hall",
+          "nodes": 71,
+          "original_conflict": {
+            "index": 1,
+            "action": "pick up iron_bar",
+            "reason": "capacity_conflict",
+            "status": "contradicted",
+            "conditional_on_prior_success": true
+          }
+        }
+      ]
+    },
+    {
+      "step": 256,
+      "historical_action": "pick up iron_bar",
+      "original_sequence": [
+        "pick up iron_bar"
+      ],
+      "new_validation": {
+        "validated_prefix": 0,
+        "stop": {
+          "index": 0,
+          "action": "pick up iron_bar",
+          "reason": "capacity_conflict",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "length": 1,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "pick up iron_bar",
+            "known_conflicts": [
+              "capacity_conflict"
+            ],
+            "unknown_conditions": [
+              "unobserved_ground_item"
+            ]
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [
+        {
+          "kind": "future_plan_conflict",
+          "detail": {
+            "index": 0,
+            "action": "pick up iron_bar",
+            "reason": "capacity_conflict",
+            "status": "contradicted",
+            "conditional_on_prior_success": false
+          }
+        }
+      ],
+      "new_action": null,
+      "new_dispatch": null,
+      "repair": [
+        null,
+        {
+          "reason": "no_supported_bounded_repair",
+          "target": "pick up iron_bar",
+          "target_location": "Old Castle, library",
+          "nodes": 61,
+          "original_conflict": {
+            "index": 0,
+            "action": "pick up iron_bar",
+            "reason": "capacity_conflict",
+            "status": "contradicted",
+            "conditional_on_prior_success": false
+          }
+        }
+      ]
+    },
+    {
+      "step": 258,
+      "historical_action": "pick up iron_bar",
+      "original_sequence": [
+        "enter hall",
+        "craft 1 lockpick"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 1,
+          "action": "craft 1 lockpick",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "length": 2,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "enter hall",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 1,
+            "action": "craft 1 lockpick",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": "pick up iron_bar",
+      "new_dispatch": {
+        "step": 258,
+        "selected": "pick up iron_bar",
+        "source": "model_priority_preserved",
+        "rejected": [
+          {
+            "action": "enter hall",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 1,
+                  "action": "craft 1 lockpick",
+                  "reason": "joint_material_deficit",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": false
+                }
+              }
+            ]
+          }
+        ],
+        "plan_key": "a6adb7db1de9",
+        "validation": {
+          "validated_prefix": 0,
+          "stop": {
+            "index": 0,
+            "action": "pick up iron_bar",
+            "reason": "unobserved_ground_item",
+            "status": "requires_observation",
+            "conditional_on_prior_success": false
+          },
+          "length": 2,
+          "uncertainties": [
+            {
+              "index": 0,
+              "action": "pick up iron_bar",
+              "reason": "unobserved_ground_item"
+            }
+          ],
+          "independent_checks": [
+            {
+              "index": 0,
+              "action": "pick up iron_bar",
+              "known_conflicts": [],
+              "unknown_conditions": [
+                "unobserved_ground_item"
+              ]
+            },
+            {
+              "index": 1,
+              "action": "enter hall",
+              "known_conflicts": [],
+              "unknown_conditions": []
+            }
+          ],
+          "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+        }
+      },
+      "repair": [
+        null,
+        {
+          "reason": "no_supported_bounded_repair",
+          "target": "craft 1 lockpick",
+          "target_location": "Old Castle, hall",
+          "nodes": 4,
+          "original_conflict": {
+            "index": 1,
+            "action": "craft 1 lockpick",
+            "reason": "joint_material_deficit",
+            "status": "contradicted",
+            "conditional_on_prior_success": false
+          }
+        }
+      ]
+    },
+    {
+      "step": 259,
+      "historical_action": "drop iron_bar",
+      "original_sequence": [
+        "enter hall",
+        "craft 1 lockpick"
+      ],
+      "new_validation": {
+        "validated_prefix": 1,
+        "stop": {
+          "index": 1,
+          "action": "craft 1 lockpick",
+          "reason": "joint_material_deficit",
+          "status": "contradicted",
+          "conditional_on_prior_success": false
+        },
+        "length": 2,
+        "uncertainties": [],
+        "independent_checks": [
+          {
+            "index": 0,
+            "action": "enter hall",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          },
+          {
+            "index": 1,
+            "action": "craft 1 lockpick",
+            "known_conflicts": [],
+            "unknown_conditions": []
+          }
+        ],
+        "semantics": "Later contradictions may be conditional on all earlier actions succeeding; unknown does not erase independent known constraints."
+      },
+      "new_first_action_blockers": [],
+      "new_action": null,
+      "new_dispatch": {
+        "step": 259,
+        "selected": null,
+        "source": "no_admissible_model_plan",
+        "rejected": [
+          {
+            "action": "enter hall",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 1,
+                  "action": "craft 1 lockpick",
+                  "reason": "joint_material_deficit",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": false
+                }
+              }
+            ]
+          },
+          {
+            "action": "enter hall",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 2,
+                  "action": "pick up torch",
+                  "reason": "capacity_conflict",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": false
+                }
+              }
+            ]
+          },
+          {
+            "action": "drop iron_bar",
+            "source": "plan_repair_required",
+            "blockers": [
+              {
+                "kind": "unrepaired_plan_suffix",
+                "detail": {
+                  "index": 3,
+                  "action": "craft 1 lockpick",
+                  "reason": "joint_material_deficit",
+                  "status": "contradicted",
+                  "conditional_on_prior_success": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "repair": [
+        null,
+        {
+          "reason": "no_supported_bounded_repair",
+          "target": "craft 1 lockpick",
+          "target_location": "Old Castle, hall",
+          "nodes": 3,
+          "original_conflict": {
+            "index": 1,
+            "action": "craft 1 lockpick",
+            "reason": "joint_material_deficit",
+            "status": "contradicted",
+            "conditional_on_prior_success": false
+          }
+        }
+      ]
+    }
+  ],
+  "meaning": "Independent one-step interventions at reconstructed old states; no changed action receives historical future feedback; not a rollout score.",
+  "protected_unchanged": true,
+  "candidate_sha256": "28ad1cf37733c212abbfca0fff15ba80d8fa5a527879701b525faf6ec3d45b07"
+}

@@ -1,0 +1,795 @@
+{
+  "phase": "stopped",
+  "all_processes_stopped": true,
+  "runs": {
+    "remnant__ab_no_checks": {
+      "id": "remnant__ab_no_checks",
+      "game": "remnant",
+      "variant": "no_checks",
+      "phase": "ablation",
+      "max_steps": 300,
+      "status": "finished",
+      "pid": 5157,
+      "steps": 300,
+      "selected_disabled_components": [
+        "joint_checks"
+      ],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/remnant__ab_no_checks_agents.json",
+        "--game_name",
+        "remnant",
+        "--max_steps",
+        "300",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/remnant__ab_no_checks",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 2,
+      "last_action": "enter armory",
+      "returncode": 0,
+      "supplementary": 8,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "remnant": {
+            "game": "remnant",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__ab_no_checks",
+                "agent_id": "agent_adam_davis",
+                "steps": 300,
+                "main_quest": 2.0,
+                "supplementary": {
+                  "side quest": 2.0,
+                  "exploration": 2.0,
+                  "craft": 4.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 8.0,
+                "warnings": [
+                  "accumulated 'side quest' reward (2) does not match the recorded agent state (0); using the accumulated reward"
+                ]
+              }
+            ],
+            "main_quest": 2.0,
+            "supplementary": {
+              "side quest": 2.0,
+              "exploration": 2.0,
+              "craft": 4.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 8.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "metropolis__ab_no_checks": {
+      "id": "metropolis__ab_no_checks",
+      "game": "metropolis",
+      "variant": "no_checks",
+      "phase": "ablation",
+      "max_steps": 300,
+      "status": "failed",
+      "pid": 5158,
+      "steps": 162,
+      "selected_disabled_components": [
+        "joint_checks"
+      ],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/metropolis__ab_no_checks_agents.json",
+        "--game_name",
+        "metropolis",
+        "--max_steps",
+        "300",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/metropolis__ab_no_checks",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 4,
+      "last_action": "craft 1 legal_brief",
+      "returncode": 1,
+      "supplementary": 7,
+      "completion_reason": "algorithm_stalled_no_admissible_candidate",
+      "error_tail": "<module>:330)\n[10:04:54] [INFO] \u2705 [Step 159] adam_davis performs action write with params ['AURUM-NOCTIS', 'original_charter'] (env.py:step:763)\n[10:05:01] [INFO] Saving memory for agent_adam_davis at step 160 (eval.py:<module>:330)\n[10:05:01] [INFO] \u2705 [Step 160] adam_davis performs action enter with params ['evidence_room'] (env.py:step:763)\n[10:05:03] [INFO] Saving memory for agent_adam_davis at step 161 (eval.py:<module>:330)\n[10:05:03] [INFO] \u2705 [Step 161] adam_davis performs action craft with params ['1', 'legal_brief'] (env.py:step:763)\nTraceback (most recent call last):\n  File \"/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py\", line 15, in <module>\n    exec(compile(source,str(R/'agentodyssey/eval.py'),'exec'),{'__name__':'__main__','__file__':str(R/'agentodyssey/eval.py')})\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/eval.py\", line 310, in <module>\n    action_strs[agent.id], num_input_tokens, num_output_tokens, response = agent.act(obs[agent.id])\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/games/generated/metropolis/agent.py\", line 164, in act\n    action = self._act(obs)\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v3_agent.py\", line 88, in _act\n    raise NoAdmissibleAction('v3 could not produce an admissible new action after one correction; inspect control_audit')\nagents.feedback_v3_agent.NoAdmissibleAction: v3 could not produce an admissible new action after one correction; inspect control_audit\n",
+      "official_score": {
+        "games": {
+          "metropolis": {
+            "game": "metropolis",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/metropolis__ab_no_checks",
+                "agent_id": "agent_adam_davis",
+                "steps": 162,
+                "main_quest": 4.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 7.0,
+                  "craft": 0.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 7.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 4.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 7.0,
+              "craft": 0.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 7.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "remnant__ab_no_execution": {
+      "id": "remnant__ab_no_execution",
+      "game": "remnant",
+      "variant": "no_execution",
+      "phase": "ablation",
+      "max_steps": 300,
+      "status": "failed",
+      "pid": 5160,
+      "steps": 165,
+      "selected_disabled_components": [
+        "dependency_execution"
+      ],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/remnant__ab_no_execution_agents.json",
+        "--game_name",
+        "remnant",
+        "--max_steps",
+        "300",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/remnant__ab_no_execution",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 3,
+      "last_action": "drop thread",
+      "returncode": 1,
+      "supplementary": 8,
+      "completion_reason": "algorithm_stalled_no_admissible_candidate",
+      "error_tail": "y for agent_adam_davis at step 162 (eval.py:<module>:330)\n[10:04:55] [INFO] \u2705 [Step 162] adam_davis performs action pick up with params ['thread'] (env.py:step:677)\n[10:04:59] [INFO] Saving memory for agent_adam_davis at step 163 (eval.py:<module>:330)\n[10:04:59] [INFO] \u2705 [Step 163] adam_davis performs action pick up with params ['bread'] (env.py:step:677)\n[10:05:04] [INFO] Saving memory for agent_adam_davis at step 164 (eval.py:<module>:330)\n[10:05:04] [INFO] \u2705 [Step 164] adam_davis performs action drop with params ['thread'] (env.py:step:677)\nTraceback (most recent call last):\n  File \"/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py\", line 15, in <module>\n    exec(compile(source,str(R/'agentodyssey/eval.py'),'exec'),{'__name__':'__main__','__file__':str(R/'agentodyssey/eval.py')})\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/eval.py\", line 310, in <module>\n    action_strs[agent.id], num_input_tokens, num_output_tokens, response = agent.act(obs[agent.id])\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/games/generated/remnant/agent.py\", line 164, in act\n    action = self._act(obs)\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v3_agent.py\", line 88, in _act\n    raise NoAdmissibleAction('v3 could not produce an admissible new action after one correction; inspect control_audit')\nagents.feedback_v3_agent.NoAdmissibleAction: v3 could not produce an admissible new action after one correction; inspect control_audit\n",
+      "official_score": {
+        "games": {
+          "remnant": {
+            "game": "remnant",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__ab_no_execution",
+                "agent_id": "agent_adam_davis",
+                "steps": 165,
+                "main_quest": 3.0,
+                "supplementary": {
+                  "side quest": 1.0,
+                  "exploration": 4.0,
+                  "craft": 3.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 8.0,
+                "warnings": [
+                  "accumulated 'side quest' reward (1) does not match the recorded agent state (0); using the accumulated reward"
+                ]
+              }
+            ],
+            "main_quest": 3.0,
+            "supplementary": {
+              "side quest": 1.0,
+              "exploration": 4.0,
+              "craft": 3.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 8.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "metropolis__ab_no_execution": {
+      "id": "metropolis__ab_no_execution",
+      "game": "metropolis",
+      "variant": "no_execution",
+      "phase": "ablation",
+      "max_steps": 300,
+      "status": "failed",
+      "pid": 5159,
+      "steps": 280,
+      "selected_disabled_components": [
+        "dependency_execution"
+      ],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/metropolis__ab_no_execution_agents.json",
+        "--game_name",
+        "metropolis",
+        "--max_steps",
+        "300",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/metropolis__ab_no_execution",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 8,
+      "last_action": "enter clerks_office",
+      "returncode": 1,
+      "supplementary": 12,
+      "completion_reason": "algorithm_stalled_no_admissible_candidate",
+      "error_tail": "am_davis at step 277 (eval.py:<module>:330)\n[10:10:57] [INFO] \u2705 [Step 277] adam_davis performs action enter with params ['lobby'] (env.py:step:763)\n[10:11:03] [INFO] Saving memory for agent_adam_davis at step 278 (eval.py:<module>:330)\n[10:11:03] [INFO] \u2705 [Step 278] adam_davis performs action enter with params ['market_square'] (env.py:step:763)\n[10:11:06] [INFO] Saving memory for agent_adam_davis at step 279 (eval.py:<module>:330)\n[10:11:06] [INFO] \u2705 [Step 279] adam_davis performs action enter with params ['clerks_office'] (env.py:step:763)\nTraceback (most recent call last):\n  File \"/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py\", line 15, in <module>\n    exec(compile(source,str(R/'agentodyssey/eval.py'),'exec'),{'__name__':'__main__','__file__':str(R/'agentodyssey/eval.py')})\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/eval.py\", line 310, in <module>\n    action_strs[agent.id], num_input_tokens, num_output_tokens, response = agent.act(obs[agent.id])\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/games/generated/metropolis/agent.py\", line 164, in act\n    action = self._act(obs)\n  File \"/root/agentodyssey-benchmark-20261018/agentodyssey/agents/feedback_v3_agent.py\", line 88, in _act\n    raise NoAdmissibleAction('v3 could not produce an admissible new action after one correction; inspect control_audit')\nagents.feedback_v3_agent.NoAdmissibleAction: v3 could not produce an admissible new action after one correction; inspect control_audit\n",
+      "official_score": {
+        "games": {
+          "metropolis": {
+            "game": "metropolis",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/metropolis__ab_no_execution",
+                "agent_id": "agent_adam_davis",
+                "steps": 280,
+                "main_quest": 8.0,
+                "supplementary": {
+                  "side quest": 2.0,
+                  "exploration": 9.0,
+                  "craft": 1.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 12.0,
+                "warnings": [
+                  "accumulated 'side quest' reward (2) does not match the recorded agent state (0); using the accumulated reward"
+                ]
+              }
+            ],
+            "main_quest": 8.0,
+            "supplementary": {
+              "side quest": 2.0,
+              "exploration": 9.0,
+              "craft": 1.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 12.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "remnant__ab_no_repeat": {
+      "id": "remnant__ab_no_repeat",
+      "game": "remnant",
+      "variant": "no_repeat",
+      "phase": "ablation",
+      "max_steps": 300,
+      "status": "finished",
+      "pid": 7515,
+      "steps": 300,
+      "selected_disabled_components": [
+        "hard_repeat"
+      ],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/remnant__ab_no_repeat_agents.json",
+        "--game_name",
+        "remnant",
+        "--max_steps",
+        "300",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/remnant__ab_no_repeat",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 3,
+      "last_action": "attack cinder_reaver",
+      "returncode": 0,
+      "supplementary": 9,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "remnant": {
+            "game": "remnant",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__ab_no_repeat",
+                "agent_id": "agent_adam_davis",
+                "steps": 300,
+                "main_quest": 3.0,
+                "supplementary": {
+                  "side quest": 1.0,
+                  "exploration": 4.0,
+                  "craft": 4.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 9.0,
+                "warnings": [
+                  "accumulated 'side quest' reward (1) does not match the recorded agent state (0); using the accumulated reward"
+                ]
+              }
+            ],
+            "main_quest": 3.0,
+            "supplementary": {
+              "side quest": 1.0,
+              "exploration": 4.0,
+              "craft": 4.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 9.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "metropolis__ab_no_repeat": {
+      "id": "metropolis__ab_no_repeat",
+      "game": "metropolis",
+      "variant": "no_repeat",
+      "phase": "ablation",
+      "max_steps": 300,
+      "status": "finished",
+      "pid": 7519,
+      "steps": 300,
+      "selected_disabled_components": [
+        "hard_repeat"
+      ],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/metropolis__ab_no_repeat_agents.json",
+        "--game_name",
+        "metropolis",
+        "--max_steps",
+        "300",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/metropolis__ab_no_repeat",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 8,
+      "last_action": "enter market_square",
+      "returncode": 0,
+      "supplementary": 10,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "metropolis": {
+            "game": "metropolis",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/metropolis__ab_no_repeat",
+                "agent_id": "agent_adam_davis",
+                "steps": 300,
+                "main_quest": 8.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 9.0,
+                  "craft": 1.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 10.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 8.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 9.0,
+              "craft": 1.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 10.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "remnant__ab_no_hypothesis": {
+      "id": "remnant__ab_no_hypothesis",
+      "game": "remnant",
+      "variant": "no_hypothesis",
+      "phase": "ablation",
+      "max_steps": 300,
+      "status": "finished",
+      "pid": 9181,
+      "steps": 300,
+      "selected_disabled_components": [
+        "hypothesis"
+      ],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/remnant__ab_no_hypothesis_agents.json",
+        "--game_name",
+        "remnant",
+        "--max_steps",
+        "300",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/remnant__ab_no_hypothesis",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 1,
+      "last_action": "enter hall",
+      "returncode": 0,
+      "supplementary": 2,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "remnant": {
+            "game": "remnant",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__ab_no_hypothesis",
+                "agent_id": "agent_adam_davis",
+                "steps": 300,
+                "main_quest": 1.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 2.0,
+                  "craft": 0.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 2.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 1.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 2.0,
+              "craft": 0.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 2.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "metropolis__ab_no_hypothesis": {
+      "id": "metropolis__ab_no_hypothesis",
+      "game": "metropolis",
+      "variant": "no_hypothesis",
+      "phase": "ablation",
+      "max_steps": 300,
+      "status": "finished",
+      "pid": 9242,
+      "steps": 300,
+      "selected_disabled_components": [
+        "hypothesis"
+      ],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/metropolis__ab_no_hypothesis_agents.json",
+        "--game_name",
+        "metropolis",
+        "--max_steps",
+        "300",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/metropolis__ab_no_hypothesis",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 10,
+      "last_action": "drop parchment_scrap",
+      "returncode": 0,
+      "supplementary": 13,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "metropolis": {
+            "game": "metropolis",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/metropolis__ab_no_hypothesis",
+                "agent_id": "agent_adam_davis",
+                "steps": 300,
+                "main_quest": 10.0,
+                "supplementary": {
+                  "side quest": 1.0,
+                  "exploration": 5.0,
+                  "craft": 3.0,
+                  "defeat": 4.0
+                },
+                "supplementary_total": 13.0,
+                "warnings": [
+                  "accumulated 'side quest' reward (1) does not match the recorded agent state (0); using the accumulated reward"
+                ]
+              }
+            ],
+            "main_quest": 10.0,
+            "supplementary": {
+              "side quest": 1.0,
+              "exploration": 5.0,
+              "craft": 3.0,
+              "defeat": 4.0
+            },
+            "supplementary_total": 13.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "remnant__study_v4": {
+      "id": "remnant__study_v4",
+      "game": "remnant",
+      "variant": "v4_selected",
+      "phase": "v4_validation",
+      "max_steps": 500,
+      "status": "finished",
+      "pid": 13056,
+      "steps": 500,
+      "selected_disabled_components": [],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/remnant__study_v4_agents.json",
+        "--game_name",
+        "remnant",
+        "--max_steps",
+        "500",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/remnant__study_v4",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 2,
+      "last_action": "attack goblin_warrior_1",
+      "returncode": 0,
+      "supplementary": 9,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "remnant": {
+            "game": "remnant",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__study_v4",
+                "agent_id": "agent_adam_davis",
+                "steps": 500,
+                "main_quest": 2.0,
+                "supplementary": {
+                  "side quest": 2.0,
+                  "exploration": 2.0,
+                  "craft": 2.0,
+                  "defeat": 3.0
+                },
+                "supplementary_total": 9.0,
+                "warnings": [
+                  "accumulated 'side quest' reward (2) does not match the recorded agent state (0); using the accumulated reward"
+                ]
+              }
+            ],
+            "main_quest": 2.0,
+            "supplementary": {
+              "side quest": 2.0,
+              "exploration": 2.0,
+              "craft": 2.0,
+              "defeat": 3.0
+            },
+            "supplementary_total": 9.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "mark__study_v4": {
+      "id": "mark__study_v4",
+      "game": "mark",
+      "variant": "v4_selected",
+      "phase": "v4_validation",
+      "max_steps": 500,
+      "status": "finished",
+      "pid": 13055,
+      "steps": 500,
+      "selected_disabled_components": [],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/mark__study_v4_agents.json",
+        "--game_name",
+        "mark",
+        "--max_steps",
+        "500",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/mark__study_v4",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 11,
+      "last_action": "store 1 coin small_pouch_0",
+      "returncode": 0,
+      "supplementary": 10,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "mark": {
+            "game": "mark",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/mark__study_v4",
+                "agent_id": "agent_adam_davis",
+                "steps": 500,
+                "main_quest": 11.0,
+                "supplementary": {
+                  "side quest": 0.0,
+                  "exploration": 5.0,
+                  "craft": 4.0,
+                  "defeat": 1.0
+                },
+                "supplementary_total": 10.0,
+                "warnings": []
+              }
+            ],
+            "main_quest": 11.0,
+            "supplementary": {
+              "side quest": 0.0,
+              "exploration": 5.0,
+              "craft": 4.0,
+              "defeat": 1.0
+            },
+            "supplementary_total": 10.0
+          }
+        },
+        "aggregate": null
+      }
+    },
+    "metropolis__study_v4": {
+      "id": "metropolis__study_v4",
+      "game": "metropolis",
+      "variant": "v4_selected",
+      "phase": "v4_validation",
+      "max_steps": 500,
+      "status": "finished",
+      "pid": 13057,
+      "steps": 500,
+      "selected_disabled_components": [],
+      "command": [
+        "/root/agentodyssey-benchmark-20261018/.venv/bin/python",
+        "-u",
+        "/root/agentodyssey-benchmark-20261018/eval_mechanism_study.py",
+        "--agents_config",
+        "/root/agentodyssey-benchmark-20261018/metropolis__study_v4_agents.json",
+        "--game_name",
+        "metropolis",
+        "--max_steps",
+        "500",
+        "--seed",
+        "42",
+        "--run_dir",
+        "/root/agentodyssey-benchmark-20261018/runs/metropolis__study_v4",
+        "--cumulative_config_save"
+      ],
+      "main_quest": 11,
+      "last_action": "pick up gavel_timber",
+      "returncode": 0,
+      "supplementary": 11,
+      "completion_reason": "step_limit",
+      "official_score": {
+        "games": {
+          "metropolis": {
+            "game": "metropolis",
+            "num_runs": 1,
+            "runs": [
+              {
+                "run_dir": "/root/agentodyssey-benchmark-20261018/runs/metropolis__study_v4",
+                "agent_id": "agent_adam_davis",
+                "steps": 500,
+                "main_quest": 11.0,
+                "supplementary": {
+                  "side quest": 2.0,
+                  "exploration": 5.0,
+                  "craft": 4.0,
+                  "defeat": 0.0
+                },
+                "supplementary_total": 11.0,
+                "warnings": [
+                  "accumulated 'side quest' reward (2) does not match the recorded agent state (0); using the accumulated reward"
+                ]
+              }
+            ],
+            "main_quest": 11.0,
+            "supplementary": {
+              "side quest": 2.0,
+              "exploration": 5.0,
+              "craft": 4.0,
+              "defeat": 0.0
+            },
+            "supplementary_total": 11.0
+          }
+        },
+        "aggregate": null
+      }
+    }
+  },
+  "selection": {
+    "selected_ablation": null,
+    "disabled_components": [],
+    "evidence": {
+      "no_hypothesis": {
+        "valid_pair": true,
+        "main_gains": {
+          "remnant": 0,
+          "metropolis": -8
+        },
+        "eligible_for_exploratory_removal": false
+      },
+      "no_execution": {
+        "valid_pair": false,
+        "main_gains": {
+          "remnant": 2,
+          "metropolis": -10
+        },
+        "eligible_for_exploratory_removal": false
+      },
+      "no_repeat": {
+        "valid_pair": true,
+        "main_gains": {
+          "remnant": 2,
+          "metropolis": -10
+        },
+        "eligible_for_exploratory_removal": false
+      },
+      "no_checks": {
+        "valid_pair": false,
+        "main_gains": {
+          "remnant": 1,
+          "metropolis": -14
+        },
+        "eligible_for_exploratory_removal": false
+      }
+    },
+    "interpretation": "exploratory single-trajectory selection; nonselection is inconclusive, not proof a component works; removal is not proof universal uselessness",
+    "rule": "at most one removal; both runs completed with valid scores; Remnant strictly improves, Metropolis does not regress at the 300-step budget; maximize normalized total gain; fixed tie order"
+  },
+  "analysis_returncode": 0
+}

@@ -1,0 +1,272 @@
+{
+  "phase": "stopped",
+  "run_status": {
+    "id": "remnant__v3r3_300_20261019",
+    "game": "remnant",
+    "budget_scope": "remnant__v3r3_300_20261019",
+    "cache_sources": [],
+    "cached_calls": 0,
+    "max_steps": 300,
+    "status": "finished",
+    "pid": 77512,
+    "returncode": 0,
+    "stop_reason": "300_step_limit",
+    "steps": 300,
+    "main_quest": 0,
+    "budget": {
+      "calls": 215,
+      "input_tokens": 7600338,
+      "uncached_input_tokens": 883282,
+      "output_tokens": 60949
+    },
+    "official_score": {
+      "games": {
+        "remnant": {
+          "game": "remnant",
+          "num_runs": 1,
+          "runs": [
+            {
+              "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__v3r3_300_20261019",
+              "agent_id": "agent_adam_davis",
+              "steps": 300,
+              "main_quest": 0.0,
+              "supplementary": {
+                "side quest": 0.0,
+                "exploration": 1.0,
+                "craft": 1.0,
+                "defeat": 0.0
+              },
+              "supplementary_total": 2.0,
+              "warnings": []
+            }
+          ],
+          "main_quest": 0.0,
+          "supplementary": {
+            "side quest": 0.0,
+            "exploration": 1.0,
+            "craft": 1.0,
+            "defeat": 0.0
+          },
+          "supplementary_total": 2.0
+        }
+      },
+      "aggregate": null
+    }
+  },
+  "steps": 300,
+  "main_quest": 0,
+  "last_gain_step": 0,
+  "completed_api_calls": 215,
+  "api_errors_or_stops": [],
+  "policy_loaded": [
+    {
+      "event": "policy_loaded",
+      "agent_module": "agents.feedback_v3r3_agent",
+      "ledger_module": "agents.feedback_v3r3_core",
+      "dispatch_module": "agents.feedback_v3r3_core",
+      "max_steps": 300,
+      "source_sha256": {
+        "agents.feedback_v3r3_agent": "fe4a19b99d00bcb811894db85b644568bb045efccac4627a6911aae92126795a",
+        "agents.feedback_v3r3_core": "d2e6068bae4b5f3646d57e9acf712d6cc07cc1849029ecfd5b4224b562935a25"
+      }
+    }
+  ],
+  "process_command": null,
+  "source_hashes_match": true,
+  "old_artifacts_unchanged": true,
+  "dispatch_sources": {
+    "explicit_public_tutorial_instruction": 26,
+    "checked_model_plan": 184,
+    "local_contract_continuation": 41,
+    "local_recovery_after_rejected_batch": 6,
+    "local_resource_plan": 2,
+    "local_committed_probe": 6,
+    "local_discriminating_probe": 2,
+    "local_contract_dependency": 33
+  },
+  "latest_mechanisms": {
+    "contract": {
+      "action": "enter library",
+      "goal_id": "4117554373c5",
+      "completion": {
+        "kind": "at_location",
+        "location": "library"
+      },
+      "created": 300,
+      "status": "active",
+      "best_deficit": null,
+      "phase": "preparing"
+    },
+    "committed_remaining": [
+      "enter armory",
+      "pick up apple",
+      "eat apple",
+      "enter hall",
+      "talk to bob_johnson"
+    ],
+    "operation_receipt": null,
+    "current_work_action": "enter armory",
+    "local_capacity_estimate": null,
+    "locked_edges": {
+      "[0,\"Old Castle, hall\",\"library\"]": {
+        "locked": true,
+        "step": 29,
+        "tools_at_failure": {}
+      },
+      "[0,\"Old Castle, armory\",\"plain\"]": {
+        "locked": true,
+        "step": 41,
+        "tools_at_failure": {
+          "torch": 1.0
+        }
+      }
+    },
+    "operation_evidence": [
+      {
+        "kind": "dark_pickup",
+        "object": "iron_bar",
+        "location": "Old Castle, armory",
+        "step": 130,
+        "support": "confirmed in this context"
+      },
+      {
+        "kind": "remembered_pickup_without_visibility",
+        "action": "pick up iron_bar",
+        "step": 130,
+        "support": "supported_in_context"
+      },
+      {
+        "kind": "dark_pickup",
+        "object": "apple",
+        "location": "Old Castle, armory",
+        "step": 285,
+        "support": "confirmed in this context"
+      },
+      {
+        "kind": "remembered_pickup_without_visibility",
+        "action": "pick up apple",
+        "step": 204,
+        "support": "supported_in_context"
+      },
+      {
+        "kind": "remembered_pickup_without_visibility",
+        "action": "pick up apple",
+        "step": 225,
+        "support": "supported_in_context"
+      },
+      {
+        "kind": "remembered_pickup_without_visibility",
+        "action": "pick up apple",
+        "step": 285,
+        "support": "supported_in_context"
+      }
+    ],
+    "last_probe_results": [
+      {
+        "action": "pick up apple",
+        "kind": "remembered_pickup_without_visibility",
+        "signature": "2c1e4e69c28d",
+        "before_step": 203,
+        "claim": "Test this unresolved operation condition with current public prerequisites; other failures are indeterminate.",
+        "after_step": 204,
+        "outcome": "supported_in_context",
+        "feedback": []
+      },
+      {
+        "action": "pick up apple",
+        "kind": "remembered_pickup_without_visibility",
+        "signature": "ff0d186d76c9",
+        "before_step": 224,
+        "claim": "Test this unresolved operation condition with current public prerequisites; other failures are indeterminate.",
+        "after_step": 225,
+        "outcome": "supported_in_context",
+        "feedback": []
+      },
+      {
+        "action": "pick up apple",
+        "kind": "remembered_pickup_without_visibility",
+        "signature": "370289792c60",
+        "before_step": 284,
+        "claim": "Test this unresolved operation condition with current public prerequisites; other failures are indeterminate.",
+        "after_step": 285,
+        "outcome": "supported_in_context",
+        "feedback": []
+      }
+    ],
+    "recent_failed_plans": [
+      {
+        "step": 291,
+        "reason": [
+          "Cannot pick up paper_7, not found in current area."
+        ]
+      },
+      {
+        "step": 297,
+        "reason": [
+          "no net contract progress on return to relevant state"
+        ]
+      },
+      {
+        "step": 299,
+        "reason": [
+          "no net contract progress on return to relevant state"
+        ]
+      }
+    ],
+    "last_joint_plan_check": [
+      {
+        "step": 300,
+        "actions": [
+          "enter armory",
+          "pick up apple",
+          "eat apple",
+          "enter hall",
+          "talk to bob_johnson"
+        ],
+        "validation": {
+          "validated_prefix": 2,
+          "stop": {
+            "index": 2,
+            "action": "eat apple",
+            "reason": "requires_feedback",
+            "status": "requires_observation"
+          },
+          "length": 5
+        }
+      }
+    ],
+    "risk": {
+      "health": 81.0,
+      "observed_damage_per_step": 0.61,
+      "noise_events": 0,
+      "immediate_risk": false
+    },
+    "completion_count": 7,
+    "probe_count": 8,
+    "repair_count": 26,
+    "search_nodes": 29
+  },
+  "recent_actions": [
+    {
+      "step": 296,
+      "action": "enter armory"
+    },
+    {
+      "step": 297,
+      "action": "enter hall"
+    },
+    {
+      "step": 298,
+      "action": "enter armory"
+    },
+    {
+      "step": 299,
+      "action": "enter hall"
+    },
+    {
+      "step": 300,
+      "action": "enter armory"
+    }
+  ],
+  "report_ready": true
+}

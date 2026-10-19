@@ -83,3 +83,10 @@ AO-FR 优先挖掘官方 STM 自然轨迹；可补充明确标记的真实引擎
 每个 `runtime/runs/<task_id>/` 包括请求 JSONL、执行尝试、引擎日志、不可覆盖的完整步骤 checkpoint、记忆、状态与结果摘要。`runtime/ao_fr_frozen` 存放冻结数据集及验证信息。GitHub 不上传第三方代码、模型权重、凭据和大型原始快照；发布的是我们的代码、元数据、结果表与分析报告。任务标识包含算法、游戏、种子及配置/实现 hash；已完成任务不会重跑。
 
 最终审计抽查 1,152 个步骤，全部精确重放；384 个初始状态与冻结源一致。初期 12 个 smoke 故障及 hash 随机化修正前的 73 个诊断运行均保留，后者标记为 `diagnostic_provisional` 并从正式比较中整体排除。
+
+
+## 2026-10-19 独立服务器备份
+
+已保存另一批 DeepSeek + 全历史 ReAct 实验的[完整服务器快照](server_backups/agentodyssey-20261019/README.md)，包含代码、完整轨迹、引擎快照和 API 审计。其版本命名与上面的 SCAR V1/V2/V3 独立；原有实验文件保持不变。
+
+[最佳版本备注](server_backups/agentodyssey-20261019/BEST_VERSIONS.md)：三游戏历史主版本 `feedback_v3`（1/24、17/17、20/31，Remnant 中途失败）；Remnant 最高完整运行记录为 `no_repeat`（3/24，300 步）；最新 v3r7 未提分。完整备份分为 43 块，附逐文件 SHA-256 和还原脚本。

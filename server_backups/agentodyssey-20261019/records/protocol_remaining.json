@@ -1,0 +1,72 @@
+{
+  "purpose": "Single-trajectory failure diagnosis on a public interactive task; not a contest submission or method ranking claim",
+  "source_commit": "248430692a9d4a61d38c6c03ab2126287faaf450",
+  "max_steps": 500,
+  "runs_per_method": 1,
+  "environment_seed": 42,
+  "api_model": "deepseek-flash",
+  "advertised_model_version": "DeepSeek-V4.1-Flash-1017",
+  "thinking": "disabled",
+  "action_temperature": 0.7,
+  "action_presence_penalty": 1.5,
+  "top_p_effective": 1.0,
+  "max_output_tokens_per_call": 4096,
+  "methods": [
+    {
+      "id": "long_context",
+      "agent": "LongContextAgent",
+      "notes": "Upstream full observed history, default action prompt, no reflection or summarization"
+    },
+    {
+      "id": "mem1_state",
+      "agent": "Mem1Agent",
+      "notes": "AgentOdyssey prompted state-compression adaptation, approximate 512-token memory, repaired JSON memory/action contract; not the original RL-trained MEM1 model"
+    },
+    {
+      "id": "mem0",
+      "agent": "Mem0RAGAgent",
+      "notes": "Same actual configuration as Remnant: mem0ai 2.2.1, FAISS semantic search, effective top_k=20; pre-execution memory update preserved and explicitly audited."
+    }
+  ],
+  "policy": {
+    "repeat_or_seed_search": false,
+    "invalid_response_retry": false,
+    "transport_retries_max": 2,
+    "per_game_memory_reset": true,
+    "extra_valid_action_oracle": false,
+    "world_solution_in_prompt": false,
+    "training": false,
+    "external_web_tools": false,
+    "outcome_selected_restart": false
+  },
+  "measurement": [
+    "raw main quest and supplementary score",
+    "per-step observation/action/feedback",
+    "score over steps",
+    "invalid actions and repeated denials",
+    "memory snapshots and full persistent memory",
+    "all API calls including memory overhead",
+    "input output cached tokens",
+    "actual API model identifiers and request/response archive",
+    "client peak RSS"
+  ],
+  "interpretation": "One trajectory per method per game. Remaining games extend the same deployed policies without retuning on Remnant outcomes. Three-task observations are not a statistical ranking or proof of novelty.",
+  "games": [
+    "mark",
+    "metropolis"
+  ],
+  "runs_per_method_per_game": 1,
+  "execution": {
+    "api_concurrency_ceiling": 128,
+    "independent_trajectory_concurrency": 6,
+    "mem0_cpu_threads_each": 4,
+    "other_process_compute_threads": 1,
+    "available_logical_cpus": 8,
+    "total_wall_time_not_a_reported_metric": true
+  },
+  "preserved_known_limitations": [
+    "Mem1 is a prompted adaptation, not the original trained MEM1 model.",
+    "Mem0 legacy limit parameters resolve to top-20, including partial per-step snapshots.",
+    "Mem0 task adapter writes observation and intended action before environment execution; retain for identical policy and classify resulting defects as integration failures."
+  ]
+}

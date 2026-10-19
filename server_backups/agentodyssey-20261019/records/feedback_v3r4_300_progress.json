@@ -1,0 +1,351 @@
+{
+  "phase": "stopped",
+  "run_status": {
+    "id": "remnant__v3r4_300_20261019",
+    "game": "remnant",
+    "budget_scope": "remnant__v3r4_300_20261019",
+    "cache_sources": [],
+    "cached_calls": 0,
+    "max_steps": 300,
+    "status": "finished",
+    "pid": 84723,
+    "returncode": 0,
+    "stop_reason": "300_step_limit",
+    "steps": 300,
+    "main_quest": 2,
+    "budget": {
+      "calls": 220,
+      "input_tokens": 8158495,
+      "uncached_input_tokens": 1059231,
+      "output_tokens": 64225
+    },
+    "official_score": {
+      "games": {
+        "remnant": {
+          "game": "remnant",
+          "num_runs": 1,
+          "runs": [
+            {
+              "run_dir": "/root/agentodyssey-benchmark-20261018/runs/remnant__v3r4_300_20261019",
+              "agent_id": "agent_adam_davis",
+              "steps": 300,
+              "main_quest": 2.0,
+              "supplementary": {
+                "side quest": 3.0,
+                "exploration": 2.0,
+                "craft": 4.0,
+                "defeat": 1.0
+              },
+              "supplementary_total": 10.0,
+              "warnings": [
+                "accumulated 'side quest' reward (3) does not match the recorded agent state (0); using the accumulated reward"
+              ]
+            }
+          ],
+          "main_quest": 2.0,
+          "supplementary": {
+            "side quest": 3.0,
+            "exploration": 2.0,
+            "craft": 4.0,
+            "defeat": 1.0
+          },
+          "supplementary_total": 10.0
+        }
+      },
+      "aggregate": null
+    }
+  },
+  "steps": 300,
+  "main_quest": 2,
+  "last_gain_step": 77,
+  "completed_api_calls": 220,
+  "api_errors_or_stops": [],
+  "policy_loaded": [
+    {
+      "event": "policy_loaded",
+      "agent_module": "agents.feedback_v3r4_agent",
+      "ledger_module": "agents.feedback_v3r4_core",
+      "dispatch_module": "agents.feedback_v3r4_core",
+      "max_steps": 300,
+      "source_sha256": {
+        "agents.feedback_v3r4_agent": "dc30a5a2a157be42a9f7521ac3c1bb9b7fe6f339807bd0ee99af0b962daad25f",
+        "agents.feedback_v3r4_core": "c62127c806d1ba14ed71e76346259ac8a76430dbacfa587030147b400e77b7ae"
+      }
+    }
+  ],
+  "process_command": null,
+  "source_hashes_match": true,
+  "old_artifacts_unchanged": true,
+  "dispatch_sources": {
+    "explicit_public_tutorial_instruction": 26,
+    "model_priority_preserved": 144,
+    "local_committed_continuation": 75,
+    "local_public_next_instruction": 2,
+    "local_checked_recovery": 52,
+    "local_resource_plan": 1
+  },
+  "latest_mechanisms": {
+    "contract": {
+      "action": "lockpick plain",
+      "goal_id": "ebac9c7ee8ca",
+      "completion": {
+        "kind": "operation_observed",
+        "action": "lockpick plain"
+      },
+      "created": 286,
+      "status": "active",
+      "best_deficit": null,
+      "phase": "executing_checked_plan"
+    },
+    "committed_remaining": [
+      "enter armory",
+      "pick up torch",
+      "enter hall",
+      "lockpick plain"
+    ],
+    "operation_receipt": null,
+    "current_work_action": "lockpick plain",
+    "local_capacity_estimate": {
+      "count": 2.0,
+      "step": 300,
+      "scope": "local occupancy estimate; revised by successful transfers"
+    },
+    "locked_edges": {
+      "[0,\"Old Castle, armory\",\"plain\"]": {
+        "locked": true,
+        "step": 257,
+        "tools_at_failure": {
+          "pen": 1.0,
+          "torch": 1.0
+        }
+      }
+    },
+    "operation_evidence": [
+      {
+        "kind": "dark_pickup",
+        "object": "torch",
+        "location": "Old Castle, armory",
+        "step": 252,
+        "support": "confirmed in this context"
+      },
+      {
+        "kind": "dark_pickup",
+        "object": "wood_log",
+        "location": "Old Castle, library",
+        "step": 73,
+        "support": "confirmed in this context"
+      },
+      {
+        "kind": "dark_pickup",
+        "object": "iron_ore",
+        "location": "Old Castle, armory",
+        "step": 111,
+        "support": "confirmed in this context"
+      },
+      {
+        "kind": "dark_pickup",
+        "object": "rust_scrap",
+        "location": "Old Castle, armory",
+        "step": 238,
+        "support": "confirmed in this context"
+      },
+      {
+        "kind": "dark_pickup",
+        "object": "iron_bar",
+        "location": "Old Castle, armory",
+        "step": 288,
+        "support": "confirmed in this context"
+      },
+      {
+        "kind": "dark_pickup",
+        "object": "cloth",
+        "location": "Old Castle, library",
+        "step": 296,
+        "support": "confirmed in this context"
+      }
+    ],
+    "last_probe_results": [],
+    "recent_failed_plans": [
+      {
+        "step": 292,
+        "reason": [
+          "no net contract progress on return to relevant state"
+        ]
+      },
+      {
+        "step": 293,
+        "reason": [
+          "Cannot pick up cloth, not found in current area."
+        ]
+      },
+      {
+        "step": 300,
+        "reason": [
+          "Cannot take out iron_bar, not enough space in hand."
+        ]
+      }
+    ],
+    "last_joint_plan_check": [
+      {
+        "step": 300,
+        "actions": [
+          "enter armory",
+          "pick up torch",
+          "enter hall",
+          "lockpick plain"
+        ],
+        "validation": {
+          "validated_prefix": 1,
+          "stop": {
+            "index": 1,
+            "action": "pick up torch",
+            "reason": "unobserved_ground_item",
+            "status": "requires_observation"
+          },
+          "length": 4
+        }
+      }
+    ],
+    "risk": {
+      "health": 34.0,
+      "recent_damage_here": [
+        0,
+        1.0,
+        1.0
+      ],
+      "observed_damage_per_step": 1.0,
+      "immediate_risk": false,
+      "semantics": "Recent local damage bounds automatic continuation; not a ranking of task value."
+    },
+    "completion_count": 32,
+    "probe_count": 0,
+    "repair_count": 36,
+    "search_nodes": 113,
+    "last_attempts": [
+      {
+        "action_step": 295,
+        "after_observation": 296,
+        "action": "pick up cloth",
+        "location_before": "Old Castle, library",
+        "hands_before": {
+          "rust_scrap": 1.0
+        },
+        "feedback": [],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {
+          "rust_scrap": 1.0,
+          "cloth": 1
+        }
+      },
+      {
+        "action_step": 296,
+        "after_observation": 297,
+        "action": "enter hall",
+        "location_before": "Old Castle, library",
+        "hands_before": {
+          "rust_scrap": 1.0,
+          "cloth": 1
+        },
+        "feedback": [],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {
+          "rust_scrap": 1.0,
+          "cloth": 1.0
+        }
+      },
+      {
+        "action_step": 297,
+        "after_observation": 298,
+        "action": "craft 1 thread",
+        "location_before": "Old Castle, hall",
+        "hands_before": {
+          "rust_scrap": 1.0,
+          "cloth": 1.0
+        },
+        "feedback": [
+          "I successfully crafted 1 thread. It is now on the ground."
+        ],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {
+          "rust_scrap": 1.0
+        }
+      },
+      {
+        "action_step": 298,
+        "after_observation": 299,
+        "action": "pick up thread",
+        "location_before": "Old Castle, hall",
+        "hands_before": {
+          "rust_scrap": 1.0
+        },
+        "feedback": [],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {
+          "rust_scrap": 1.0,
+          "thread": 1.0
+        }
+      },
+      {
+        "action_step": 299,
+        "after_observation": 300,
+        "action": "take out iron_bar small_satchel_0",
+        "location_before": "Old Castle, hall",
+        "hands_before": {
+          "rust_scrap": 1.0,
+          "thread": 1.0
+        },
+        "feedback": [
+          "Cannot take out iron_bar, not enough space in hand."
+        ],
+        "attempt_failed": false,
+        "denied": true,
+        "hands_after": {
+          "rust_scrap": 1.0,
+          "thread": 1.0
+        }
+      }
+    ],
+    "known_held_tool_conditions": {
+      "lockpick": {
+        "object": "lockpick",
+        "step": 31
+      }
+    },
+    "next_public_contact": null,
+    "last_task_corrections": [
+      {
+        "step": 27,
+        "kind": "tutorial_finished",
+        "task": "d0d6f9011529"
+      }
+    ],
+    "control_policy": "Model priority retained unless a common gate rejects it; automatic continuation never recursively reacquires released resources."
+  },
+  "recent_actions": [
+    {
+      "step": 296,
+      "action": "enter hall"
+    },
+    {
+      "step": 297,
+      "action": "craft 1 thread"
+    },
+    {
+      "step": 298,
+      "action": "pick up thread"
+    },
+    {
+      "step": 299,
+      "action": "take out iron_bar small_satchel_0"
+    },
+    {
+      "step": 300,
+      "action": "enter armory"
+    }
+  ],
+  "report_ready": true
+}

@@ -1,0 +1,215 @@
+{
+  "phase": "running",
+  "run_status": {
+    "id": "remnant__v3r6_300_20261019",
+    "game": "remnant",
+    "budget_scope": "remnant__v3r6_300_20261019",
+    "cache_sources": [],
+    "cached_calls": 0,
+    "max_steps": 300,
+    "status": "running",
+    "pid": 96727
+  },
+  "steps": 35,
+  "main_quest": 1,
+  "last_gain_step": 30,
+  "completed_api_calls": 6,
+  "api_errors_or_stops": [],
+  "policy_loaded": [
+    {
+      "event": "policy_loaded",
+      "agent_module": "agents.feedback_v3r6_agent",
+      "ledger_module": "agents.feedback_v3r6_core",
+      "dispatch_module": "agents.feedback_v3r6_core",
+      "max_steps": 300,
+      "source_sha256": {
+        "agents.feedback_v3r6_agent": "807650b581b71199a52a9695a9cc3ebf7757652a83cad9c0cffbb2a3f7d6b6c7",
+        "agents.feedback_v3r6_core": "b8528068803f3d073265d663ed77586119c80a3e663c973b199d8dc0e95b3c61"
+      }
+    }
+  ],
+  "process_command": "/root/agentodyssey-benchmark-20261018/.venv/bin/python -u /root/agentodyssey-benchmark-20261018/eval_feedback_v3r6.py --agents_config /root/agentodyssey-benchmark-20261018/remnant__v3r6_300_20261019_agents.json --game_name remnant --max_steps 300 --seed 42 --run_dir /root/agentodyssey-benchmark-20261018/runs/remnant__v3r6_300_20261019 --cumulative_config_save ",
+  "source_hashes_match": true,
+  "old_artifacts_unchanged": true,
+  "dispatch_sources": {
+    "explicit_public_tutorial_instruction": 26,
+    "model_priority_preserved": 5,
+    "local_committed_continuation": 3,
+    "local_public_next_instruction": 1
+  },
+  "latest_mechanisms": {
+    "contract": {
+      "action": "enter armory",
+      "goal_id": "dfb24c4ae8b9",
+      "completion": {
+        "kind": "at_location",
+        "location": "armory"
+      },
+      "created": 35,
+      "status": "active",
+      "best_deficit": null,
+      "phase": "executing_checked_plan"
+    },
+    "committed_remaining": [
+      "enter armory",
+      "pick up weapon"
+    ],
+    "operation_receipt": {
+      "action": "inspect torch",
+      "after_step": 35,
+      "quote": "I inspected torch: A wooden torch to light up dark places."
+    },
+    "current_work_action": "enter armory",
+    "local_capacity_estimate": null,
+    "locked_edges": {},
+    "operation_evidence": [],
+    "last_probe_results": [],
+    "recent_failed_plans": [
+      {
+        "step": 29,
+        "reason": [
+          "Cannot enter library, the door is locked."
+        ]
+      }
+    ],
+    "last_joint_plan_check": [
+      {
+        "step": 35,
+        "actions": [
+          "enter armory",
+          "pick up weapon"
+        ],
+        "validation": {
+          "validated_prefix": 0,
+          "stop": {
+            "index": 0,
+            "action": "enter armory",
+            "reason": "route_outcome_unverified",
+            "status": "requires_observation"
+          },
+          "length": 2
+        }
+      }
+    ],
+    "risk": {
+      "health": 100.0,
+      "recent_damage_here": [
+        0,
+        0,
+        0
+      ],
+      "observed_damage_per_step": 0,
+      "immediate_risk": false,
+      "semantics": "Recent local damage bounds automatic continuation; not a ranking of task value."
+    },
+    "completion_count": 3,
+    "probe_count": 0,
+    "repair_count": 1,
+    "search_nodes": 0,
+    "last_attempts": [
+      {
+        "action_step": 30,
+        "after_observation": 31,
+        "action": "enter library",
+        "location_before": "Old Castle, hall",
+        "hands_before": {
+          "key": 1.0
+        },
+        "feedback": [
+          "I used a key to unlock the path to library. I entered library."
+        ],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {}
+      },
+      {
+        "action_step": 31,
+        "after_observation": 32,
+        "action": "talk to bob_johnson",
+        "location_before": "Old Castle, library",
+        "hands_before": {},
+        "feedback": [],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {}
+      },
+      {
+        "action_step": 32,
+        "after_observation": 33,
+        "action": "enter hall",
+        "location_before": "Old Castle, library",
+        "hands_before": {},
+        "feedback": [],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {}
+      },
+      {
+        "action_step": 33,
+        "after_observation": 34,
+        "action": "pick up torch",
+        "location_before": "Old Castle, hall",
+        "hands_before": {},
+        "feedback": [],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {
+          "torch": 1.0
+        }
+      },
+      {
+        "action_step": 34,
+        "after_observation": 35,
+        "action": "inspect torch",
+        "location_before": "Old Castle, hall",
+        "hands_before": {
+          "torch": 1.0
+        },
+        "feedback": [],
+        "attempt_failed": false,
+        "denied": false,
+        "hands_after": {
+          "torch": 1.0
+        }
+      }
+    ],
+    "known_held_tool_conditions": {},
+    "next_public_contact": null,
+    "last_task_corrections": [
+      {
+        "step": 27,
+        "kind": "tutorial_finished",
+        "task": "d0d6f9011529"
+      }
+    ],
+    "control_policy": "Model priority retained unless a common gate rejects it; automatic continuation never recursively reacquires released resources.",
+    "emergency_progress_scope": {
+      "contract": null,
+      "recent_outcomes": [],
+      "semantics": "Attack/heal effects and net health are separate from resource progress; explicit precondition failures remain binding."
+    }
+  },
+  "recent_actions": [
+    {
+      "step": 31,
+      "action": "talk to bob_johnson"
+    },
+    {
+      "step": 32,
+      "action": "enter hall"
+    },
+    {
+      "step": 33,
+      "action": "pick up torch"
+    },
+    {
+      "step": 34,
+      "action": "inspect torch"
+    },
+    {
+      "step": 35,
+      "action": "enter armory"
+    }
+  ],
+  "report_ready": false
+}

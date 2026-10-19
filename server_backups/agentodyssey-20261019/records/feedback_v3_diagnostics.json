@@ -1,0 +1,593 @@
+{
+  "method": "feedback_v3",
+  "single_trajectory_per_game": true,
+  "runs": [
+    {
+      "game": "remnant",
+      "status": "failed",
+      "completion_reason": "algorithm_stalled_no_admissible_candidate",
+      "steps": 157,
+      "main": 1,
+      "supplementary": 6,
+      "main_gain_steps": [
+        30
+      ],
+      "last_main_gain": 30,
+      "controller_calls": 19,
+      "repairs": 11,
+      "decision_sources": {
+        "dependency_preparation": 12,
+        "model_candidate": 92,
+        "committed_short_plan": 53
+      },
+      "rejection_kinds": {
+        "repeated_context_action": 19,
+        "observed_hand_capacity": 15,
+        "quantity_deficit": 2
+      },
+      "observed_target_effect_steps": [
+        1,
+        2,
+        12,
+        13,
+        14,
+        20,
+        23,
+        25,
+        26,
+        30,
+        31,
+        32,
+        33,
+        39,
+        63,
+        64,
+        65,
+        67,
+        68,
+        106,
+        154
+      ],
+      "dependency_deficit_reduced_steps": [
+        1,
+        12,
+        13,
+        20,
+        23,
+        25,
+        32,
+        65,
+        68
+      ],
+      "test_results": [
+        {
+          "step": 121,
+          "id": "tension_wrench_equippable",
+          "outcome": "prediction_not_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        }
+      ],
+      "test_result_counts": {
+        "prediction_not_observed_in_context": 1
+      },
+      "executed_known_blockers": [],
+      "algorithm_stalled_events": [
+        {
+          "step": 158,
+          "dispatch": {
+            "step": 158,
+            "selected": null,
+            "source": "no_admissible_candidate",
+            "rejected": [
+              {
+                "action": "enter hall",
+                "source": "dependency_preparation",
+                "blockers": [
+                  {
+                    "kind": "repeated_context_action",
+                    "action": "enter hall",
+                    "attempts": 2,
+                    "reason": "same observed preconditions; supply a new preparation, evidence, or a different task"
+                  }
+                ]
+              },
+              {
+                "action": "enter hall",
+                "source": "model_candidate",
+                "blockers": [
+                  {
+                    "kind": "repeated_context_action",
+                    "action": "enter hall",
+                    "attempts": 2,
+                    "reason": "same observed preconditions; supply a new preparation, evidence, or a different task"
+                  }
+                ]
+              },
+              {
+                "action": "enter hall",
+                "source": "model_candidate",
+                "blockers": [
+                  {
+                    "kind": "repeated_context_action",
+                    "action": "enter hall",
+                    "attempts": 2,
+                    "reason": "same observed preconditions; supply a new preparation, evidence, or a different task"
+                  }
+                ]
+              },
+              {
+                "action": "enter hall",
+                "source": "model_candidate",
+                "blockers": [
+                  {
+                    "kind": "repeated_context_action",
+                    "action": "enter hall",
+                    "attempts": 2,
+                    "reason": "same observed preconditions; supply a new preparation, evidence, or a different task"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "inspection_count": 5,
+      "api": {
+        "actor": {
+          "completed": 169,
+          "prompt_tokens": 6481226,
+          "completion_tokens": 57922
+        },
+        "__controller": {
+          "completed": 19,
+          "prompt_tokens": 143700,
+          "completion_tokens": 9771
+        }
+      },
+      "api_errors": [],
+      "official_full_budget_completed": false
+    },
+    {
+      "game": "mark",
+      "status": "finished",
+      "completion_reason": "environment_done",
+      "steps": 496,
+      "main": 17,
+      "supplementary": 22,
+      "main_gain_steps": [
+        37,
+        46,
+        48,
+        54,
+        56,
+        65,
+        68,
+        79,
+        83,
+        99,
+        110,
+        191,
+        194,
+        401,
+        408,
+        411,
+        496
+      ],
+      "last_main_gain": 496,
+      "controller_calls": 58,
+      "repairs": 3,
+      "decision_sources": {
+        "dependency_preparation": 130,
+        "model_candidate": 159,
+        "committed_short_plan": 207
+      },
+      "rejection_kinds": {
+        "observed_hand_capacity": 17,
+        "repeated_context_action": 36,
+        "station_not_currently_observed": 7,
+        "quantity_deficit": 14
+      },
+      "observed_target_effect_steps": [
+        1,
+        2,
+        12,
+        13,
+        14,
+        20,
+        23,
+        25,
+        27,
+        28,
+        29,
+        33,
+        36,
+        37,
+        41,
+        42,
+        45,
+        46,
+        48,
+        50,
+        56,
+        67,
+        68,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        78,
+        79,
+        81,
+        82,
+        83,
+        101,
+        102,
+        103,
+        194,
+        260,
+        261,
+        262,
+        374,
+        375,
+        376,
+        377,
+        400,
+        401,
+        402,
+        404,
+        405,
+        406,
+        407,
+        408,
+        410,
+        411,
+        453,
+        454,
+        473
+      ],
+      "dependency_deficit_reduced_steps": [
+        1,
+        12,
+        13,
+        20,
+        23,
+        25,
+        27,
+        33,
+        37,
+        42,
+        46,
+        71,
+        73,
+        77,
+        79,
+        103,
+        199,
+        209,
+        218,
+        234,
+        235,
+        238,
+        240,
+        261,
+        292,
+        307,
+        311,
+        313,
+        318,
+        319,
+        323,
+        325,
+        327,
+        333,
+        335,
+        343,
+        348,
+        375,
+        377,
+        397,
+        399,
+        401,
+        450,
+        452,
+        454,
+        473
+      ],
+      "test_results": [
+        {
+          "step": 80,
+          "id": "talk_remy_advance_torch",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 93,
+          "id": "equip_weapon_improves_combat",
+          "outcome": "prediction_not_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        },
+        {
+          "step": 147,
+          "id": "pickup_coin_grotto",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 192,
+          "id": "pickup_tear_completes",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 382,
+          "id": "store_cloth_then_carry_two_fiber",
+          "outcome": "prediction_not_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": true
+        }
+      ],
+      "test_result_counts": {
+        "uninformative_already_true": 2,
+        "prediction_not_observed_in_context": 2,
+        "predicted_effect_observed_in_context": 1
+      },
+      "executed_known_blockers": [],
+      "algorithm_stalled_events": [],
+      "inspection_count": 9,
+      "api": {
+        "actor": {
+          "completed": 499,
+          "prompt_tokens": 54438836,
+          "completion_tokens": 178621
+        },
+        "__controller": {
+          "completed": 58,
+          "prompt_tokens": 656739,
+          "completion_tokens": 31422
+        }
+      },
+      "api_errors": [],
+      "official_full_budget_completed": true
+    },
+    {
+      "game": "metropolis",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 500,
+      "main": 20,
+      "supplementary": 13,
+      "main_gain_steps": [
+        2,
+        5,
+        16,
+        62,
+        173,
+        182,
+        226,
+        259,
+        273,
+        276,
+        296,
+        314
+      ],
+      "last_main_gain": 314,
+      "controller_calls": 60,
+      "repairs": 2,
+      "decision_sources": {
+        "model_candidate": 192,
+        "committed_short_plan": 217,
+        "dependency_preparation": 91
+      },
+      "rejection_kinds": {
+        "inspection_has_no_new_question": 2,
+        "repeated_context_action": 53,
+        "task_parameter_mismatch": 4,
+        "observed_hand_capacity": 33,
+        "quantity_deficit": 4,
+        "station_not_currently_observed": 12
+      },
+      "observed_target_effect_steps": [
+        5,
+        13,
+        15,
+        17,
+        20,
+        21,
+        56,
+        64,
+        65,
+        67,
+        70,
+        72,
+        109,
+        128,
+        154,
+        155,
+        171,
+        216,
+        225,
+        295,
+        296,
+        397,
+        416,
+        492
+      ],
+      "dependency_deficit_reduced_steps": [
+        64,
+        67,
+        72,
+        109,
+        148,
+        150,
+        155,
+        218,
+        226,
+        244,
+        253,
+        275,
+        276,
+        279,
+        283,
+        284,
+        289,
+        295,
+        320,
+        322,
+        325,
+        327,
+        330,
+        332,
+        335,
+        338,
+        343,
+        344,
+        359,
+        364,
+        366,
+        369,
+        397,
+        492
+      ],
+      "test_results": [
+        {
+          "step": 122,
+          "id": "h_shard2_now",
+          "outcome": "indeterminate_preconditions",
+          "preconditions": [
+            "unsatisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 311,
+          "id": "h_pickup_stylus",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 314,
+          "id": "h_write_brief_stylus",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 330,
+          "id": "h_pickup_fragment_antechamber",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 344,
+          "id": "h_pickup_fragment_archive",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 499,
+          "id": "h_craft_now_held",
+          "outcome": "indeterminate_other_conditions",
+          "preconditions": [
+            "satisfied",
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        }
+      ],
+      "test_result_counts": {
+        "indeterminate_preconditions": 1,
+        "predicted_effect_observed_in_context": 4,
+        "indeterminate_other_conditions": 1
+      },
+      "executed_known_blockers": [],
+      "algorithm_stalled_events": [],
+      "inspection_count": 6,
+      "api": {
+        "actor": {
+          "completed": 502,
+          "prompt_tokens": 68049840,
+          "completion_tokens": 212889
+        },
+        "__controller": {
+          "completed": 60,
+          "prompt_tokens": 862820,
+          "completion_tokens": 40096
+        }
+      },
+      "api_errors": [],
+      "official_full_budget_completed": true
+    }
+  ],
+  "limits": "Developed using previous failures; these games are development evaluation, not independent held-out validation or significance evidence."
+}

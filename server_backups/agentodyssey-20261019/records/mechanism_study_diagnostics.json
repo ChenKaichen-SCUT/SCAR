@@ -1,0 +1,2030 @@
+{
+  "phase": "stopped",
+  "selection": {
+    "selected_ablation": null,
+    "disabled_components": [],
+    "evidence": {
+      "no_hypothesis": {
+        "valid_pair": true,
+        "main_gains": {
+          "remnant": 0,
+          "metropolis": -8
+        },
+        "eligible_for_exploratory_removal": false
+      },
+      "no_execution": {
+        "valid_pair": false,
+        "main_gains": {
+          "remnant": 2,
+          "metropolis": -10
+        },
+        "eligible_for_exploratory_removal": false
+      },
+      "no_repeat": {
+        "valid_pair": true,
+        "main_gains": {
+          "remnant": 2,
+          "metropolis": -10
+        },
+        "eligible_for_exploratory_removal": false
+      },
+      "no_checks": {
+        "valid_pair": false,
+        "main_gains": {
+          "remnant": 1,
+          "metropolis": -14
+        },
+        "eligible_for_exploratory_removal": false
+      }
+    },
+    "interpretation": "exploratory single-trajectory selection; nonselection is inconclusive, not proof a component works; removal is not proof universal uselessness",
+    "rule": "at most one removal; both runs completed with valid scores; Remnant strictly improves, Metropolis does not regress at the 300-step budget; maximize normalized total gain; fixed tie order"
+  },
+  "runs": [
+    {
+      "id": "remnant__ab_no_checks",
+      "game": "remnant",
+      "variant": "no_checks",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 300,
+      "main": 2,
+      "main_at_300": 2,
+      "supplementary": 8,
+      "main_gain_actions": [
+        {
+          "step": 30,
+          "gain": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 172,
+          "gain": 1,
+          "action": "pick up wooden_dagger"
+        }
+      ],
+      "steps_since_last_main_gain": 128,
+      "death_count": 4,
+      "inspection_count": 10,
+      "dispatch_sources": {
+        "dependency_preparation": 35,
+        "model_candidate": 136,
+        "committed_short_plan": 129
+      },
+      "rejected_kinds": {
+        "inspection_has_no_new_question": 7,
+        "repeated_context_action": 13
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [
+        {
+          "step": 39,
+          "id": "torch_enables_armory_visibility",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 72,
+          "id": "free_hand_enables_iron_bar_retrieval",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 239,
+          "id": "workbench_uses_nearby_ingredients",
+          "outcome": "indeterminate_other_conditions",
+          "preconditions": [
+            "satisfied",
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        }
+      ],
+      "objective_effect_steps": [
+        1,
+        2,
+        12,
+        13,
+        14,
+        20,
+        23,
+        25,
+        26,
+        30,
+        32,
+        35,
+        36,
+        38,
+        39,
+        116,
+        117,
+        118,
+        181,
+        182,
+        201,
+        202,
+        203,
+        246,
+        252,
+        257,
+        258,
+        259,
+        260,
+        262,
+        263,
+        264,
+        267,
+        272,
+        294,
+        295,
+        297,
+        298,
+        299
+      ],
+      "dependency_progress_steps": [
+        1,
+        12,
+        13,
+        20,
+        23,
+        25,
+        38,
+        113,
+        116,
+        118,
+        138,
+        145,
+        153,
+        159,
+        167,
+        174,
+        202,
+        246,
+        252,
+        294
+      ],
+      "repairs": 1,
+      "api": {
+        "actor": {
+          "calls": 301,
+          "prompt_tokens": 21053543,
+          "completion_tokens": 103330
+        },
+        "__controller": {
+          "calls": 31,
+          "prompt_tokens": 339706,
+          "completion_tokens": 21305
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "metropolis__ab_no_checks",
+      "game": "metropolis",
+      "variant": "no_checks",
+      "status": "failed",
+      "completion_reason": "algorithm_stalled_no_admissible_candidate",
+      "steps": 162,
+      "main": 4,
+      "main_at_300": 4,
+      "supplementary": 7,
+      "main_gain_actions": [
+        {
+          "step": 1,
+          "gain": 1,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 3,
+          "gain": 1,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 14,
+          "gain": 2,
+          "action": "talk to archivist_lune"
+        }
+      ],
+      "steps_since_last_main_gain": 148,
+      "death_count": 2,
+      "inspection_count": 9,
+      "dispatch_sources": {
+        "dependency_preparation": 11,
+        "model_candidate": 79,
+        "committed_short_plan": 72
+      },
+      "rejected_kinds": {
+        "repeated_context_action": 19,
+        "inspection_has_no_new_question": 7,
+        "schema": 1
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [
+        {
+          "step": 2,
+          "id": "h_talk_alex",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 45,
+          "id": "h_takeout_in_evidence_room",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied",
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 48,
+          "id": "h_takeout_in_evidence_room",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied",
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 57,
+          "id": "h_enter_evidence_room_handheld",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 81,
+          "id": "h_legal_brief_writable",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 108,
+          "id": "h_satchel_key",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 116,
+          "id": "h_bailiff_key",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 138,
+          "id": "h_clerks_office_craft_brief",
+          "outcome": "indeterminate_other_conditions",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        },
+        {
+          "step": 146,
+          "id": "h_bench_station_craft",
+          "outcome": "indeterminate_other_conditions",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        },
+        {
+          "step": 156,
+          "id": "h_write_charter",
+          "outcome": "prediction_not_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        },
+        {
+          "step": 162,
+          "id": "h_craft_brief_evidence_room",
+          "outcome": "indeterminate_other_conditions",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        }
+      ],
+      "objective_effect_steps": [
+        1,
+        6,
+        7,
+        17,
+        18,
+        25,
+        26,
+        27,
+        28,
+        30,
+        34,
+        35,
+        54,
+        57,
+        80,
+        136
+      ],
+      "dependency_progress_steps": [
+        1,
+        6
+      ],
+      "repairs": 2,
+      "api": {
+        "actor": {
+          "calls": 165,
+          "prompt_tokens": 6827536,
+          "completion_tokens": 62844
+        },
+        "__controller": {
+          "calls": 19,
+          "prompt_tokens": 166266,
+          "completion_tokens": 11046
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "remnant__ab_no_execution",
+      "game": "remnant",
+      "variant": "no_execution",
+      "status": "failed",
+      "completion_reason": "algorithm_stalled_no_admissible_candidate",
+      "steps": 165,
+      "main": 3,
+      "main_at_300": 3,
+      "supplementary": 8,
+      "main_gain_actions": [
+        {
+          "step": 86,
+          "gain": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 105,
+          "gain": 1,
+          "action": "pick up wooden_dagger"
+        },
+        {
+          "step": 156,
+          "gain": 1,
+          "action": "enter hills"
+        }
+      ],
+      "steps_since_last_main_gain": 9,
+      "death_count": 3,
+      "inspection_count": 7,
+      "dispatch_sources": {
+        "model_candidate": 165
+      },
+      "rejected_kinds": {
+        "observed_hand_capacity": 2,
+        "repeated_context_action": 6
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [
+        {
+          "step": 87,
+          "id": "bob_gives_next_step",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        }
+      ],
+      "objective_effect_steps": [
+        1,
+        2,
+        12,
+        13,
+        14,
+        20,
+        23,
+        25,
+        26,
+        54,
+        55,
+        58,
+        59,
+        64,
+        66,
+        67,
+        88,
+        108,
+        137,
+        139,
+        140,
+        142,
+        143,
+        144,
+        145,
+        154
+      ],
+      "dependency_progress_steps": [
+        1,
+        12,
+        13,
+        20,
+        23,
+        25,
+        54,
+        59,
+        64,
+        67,
+        88
+      ],
+      "repairs": 5,
+      "api": {
+        "actor": {
+          "calls": 171,
+          "prompt_tokens": 6928596,
+          "completion_tokens": 60599
+        },
+        "__controller": {
+          "calls": 19,
+          "prompt_tokens": 170899,
+          "completion_tokens": 8868
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "metropolis__ab_no_execution",
+      "game": "metropolis",
+      "variant": "no_execution",
+      "status": "failed",
+      "completion_reason": "algorithm_stalled_no_admissible_candidate",
+      "steps": 280,
+      "main": 8,
+      "main_at_300": 8,
+      "supplementary": 12,
+      "main_gain_actions": [
+        {
+          "step": 1,
+          "gain": 1,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 3,
+          "gain": 1,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 14,
+          "gain": 2,
+          "action": "talk to archivist_lune"
+        },
+        {
+          "step": 60,
+          "gain": 3,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 220,
+          "gain": 1,
+          "action": "talk to witness_marron"
+        }
+      ],
+      "steps_since_last_main_gain": 60,
+      "death_count": 5,
+      "inspection_count": 2,
+      "dispatch_sources": {
+        "model_candidate": 280
+      },
+      "rejected_kinds": {
+        "inspection_has_no_new_question": 3,
+        "repeated_context_action": 8,
+        "schema": 3,
+        "task_parameter_mismatch": 1,
+        "observed_hand_capacity": 2
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [
+        {
+          "step": 1,
+          "id": "dossier_is_evidence",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 15,
+          "id": "cipher_write_proves_tampering",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 37,
+          "id": "stylus_enables_write",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 50,
+          "id": "rewrite_enables_cataloguing",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 258,
+          "id": "charter_is_writable",
+          "outcome": "prediction_not_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        }
+      ],
+      "objective_effect_steps": [
+        1,
+        3,
+        15,
+        17,
+        36,
+        37,
+        38,
+        39,
+        100,
+        101,
+        123,
+        124,
+        127,
+        138,
+        139,
+        140,
+        142,
+        149,
+        150,
+        159,
+        160,
+        164,
+        165,
+        174,
+        180,
+        181,
+        188,
+        191,
+        192,
+        195,
+        210,
+        212,
+        214,
+        218,
+        219,
+        239,
+        244
+      ],
+      "dependency_progress_steps": [
+        1,
+        36,
+        124,
+        127,
+        142,
+        150,
+        160,
+        165,
+        174,
+        181,
+        188,
+        192,
+        195,
+        210,
+        214,
+        239,
+        244
+      ],
+      "repairs": 5,
+      "api": {
+        "actor": {
+          "calls": 286,
+          "prompt_tokens": 19644104,
+          "completion_tokens": 108182
+        },
+        "__controller": {
+          "calls": 27,
+          "prompt_tokens": 262595,
+          "completion_tokens": 16445
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "remnant__ab_no_repeat",
+      "game": "remnant",
+      "variant": "no_repeat",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 300,
+      "main": 3,
+      "main_at_300": 3,
+      "supplementary": 9,
+      "main_gain_actions": [
+        {
+          "step": 45,
+          "gain": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 150,
+          "gain": 1,
+          "action": "pick up wooden_dagger"
+        },
+        {
+          "step": 270,
+          "gain": 1,
+          "action": "enter hills"
+        }
+      ],
+      "steps_since_last_main_gain": 30,
+      "death_count": 5,
+      "inspection_count": 22,
+      "dispatch_sources": {
+        "dependency_preparation": 63,
+        "model_candidate": 106,
+        "committed_short_plan": 131
+      },
+      "rejected_kinds": {
+        "observed_hand_capacity": 15,
+        "quantity_deficit": 6
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [
+        {
+          "step": 165,
+          "id": "h_torch_after_free_hand",
+          "outcome": "prediction_not_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": true
+        }
+      ],
+      "objective_effect_steps": [
+        1,
+        2,
+        12,
+        13,
+        14,
+        20,
+        23,
+        25,
+        26,
+        45,
+        47,
+        49,
+        50,
+        120,
+        153,
+        208,
+        293
+      ],
+      "dependency_progress_steps": [
+        1,
+        12,
+        13,
+        20,
+        23,
+        25,
+        49,
+        147,
+        293
+      ],
+      "repairs": 0,
+      "api": {
+        "actor": {
+          "calls": 300,
+          "prompt_tokens": 20448646,
+          "completion_tokens": 103903
+        },
+        "__controller": {
+          "calls": 31,
+          "prompt_tokens": 345742,
+          "completion_tokens": 16372
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "metropolis__ab_no_repeat",
+      "game": "metropolis",
+      "variant": "no_repeat",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 300,
+      "main": 8,
+      "main_at_300": 8,
+      "supplementary": 10,
+      "main_gain_actions": [
+        {
+          "step": 1,
+          "gain": 1,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 3,
+          "gain": 1,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 12,
+          "gain": 2,
+          "action": "pick up docket_satchel_0"
+        },
+        {
+          "step": 15,
+          "gain": 3,
+          "action": "talk to archivist_lune"
+        },
+        {
+          "step": 99,
+          "gain": 1,
+          "action": "write AURUM-NOCTIS legal_brief_3"
+        }
+      ],
+      "steps_since_last_main_gain": 201,
+      "death_count": 3,
+      "inspection_count": 4,
+      "dispatch_sources": {
+        "dependency_preparation": 131,
+        "model_candidate": 88,
+        "committed_short_plan": 81
+      },
+      "rejected_kinds": {
+        "quantity_deficit": 4,
+        "observed_hand_capacity": 9,
+        "station_not_currently_observed": 6
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [
+        {
+          "step": 1,
+          "id": "h_dossier_evidence",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        }
+      ],
+      "objective_effect_steps": [
+        1,
+        3,
+        17,
+        18,
+        62,
+        139,
+        158,
+        160,
+        161,
+        180,
+        228,
+        240,
+        241,
+        242
+      ],
+      "dependency_progress_steps": [
+        1,
+        62,
+        102,
+        139,
+        161,
+        244,
+        247,
+        252,
+        261,
+        265,
+        269,
+        291
+      ],
+      "repairs": 1,
+      "api": {
+        "actor": {
+          "calls": 301,
+          "prompt_tokens": 22932556,
+          "completion_tokens": 125974
+        },
+        "__controller": {
+          "calls": 30,
+          "prompt_tokens": 337852,
+          "completion_tokens": 18991
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "remnant__ab_no_hypothesis",
+      "game": "remnant",
+      "variant": "no_hypothesis",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 300,
+      "main": 1,
+      "main_at_300": 1,
+      "supplementary": 2,
+      "main_gain_actions": [
+        {
+          "step": 46,
+          "gain": 1,
+          "action": "enter library"
+        }
+      ],
+      "steps_since_last_main_gain": 254,
+      "death_count": 3,
+      "inspection_count": 9,
+      "dispatch_sources": {
+        "dependency_preparation": 49,
+        "model_candidate": 155,
+        "committed_short_plan": 96
+      },
+      "rejected_kinds": {
+        "inspection_has_no_new_question": 2,
+        "observed_hand_capacity": 83,
+        "repeated_context_action": 23
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [],
+      "objective_effect_steps": [
+        1,
+        2,
+        14,
+        15,
+        16,
+        19,
+        27,
+        30,
+        32,
+        33,
+        46,
+        67,
+        68,
+        123,
+        164,
+        209,
+        210,
+        225,
+        229,
+        233,
+        235,
+        236,
+        255
+      ],
+      "dependency_progress_steps": [
+        1,
+        14,
+        15,
+        19,
+        27,
+        30,
+        32,
+        67,
+        123,
+        134,
+        141,
+        148,
+        163,
+        225,
+        229,
+        235,
+        255
+      ],
+      "repairs": 1,
+      "api": {
+        "actor": {
+          "calls": 301,
+          "prompt_tokens": 20047409,
+          "completion_tokens": 101642
+        },
+        "__controller": {
+          "calls": 36,
+          "prompt_tokens": 244022,
+          "completion_tokens": 13780
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "metropolis__ab_no_hypothesis",
+      "game": "metropolis",
+      "variant": "no_hypothesis",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 300,
+      "main": 10,
+      "main_at_300": 10,
+      "supplementary": 13,
+      "main_gain_actions": [
+        {
+          "step": 1,
+          "gain": 1,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 3,
+          "gain": 1,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 11,
+          "gain": 2,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 14,
+          "gain": 3,
+          "action": "talk to archivist_lune"
+        },
+        {
+          "step": 92,
+          "gain": 1,
+          "action": "pick up gavel_club"
+        },
+        {
+          "step": 122,
+          "gain": 1,
+          "action": "write AURUM-NOCTIS legal_brief_3"
+        },
+        {
+          "step": 245,
+          "gain": 1,
+          "action": "attack advocate_sentinel_0"
+        }
+      ],
+      "steps_since_last_main_gain": 55,
+      "death_count": 5,
+      "inspection_count": 4,
+      "dispatch_sources": {
+        "dependency_preparation": 89,
+        "model_candidate": 106,
+        "committed_short_plan": 105
+      },
+      "rejected_kinds": {
+        "repeated_context_action": 28,
+        "quantity_deficit": 8,
+        "observed_hand_capacity": 14
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [],
+      "objective_effect_steps": [
+        1,
+        3,
+        91,
+        92,
+        122,
+        123,
+        129,
+        151,
+        152,
+        155,
+        158,
+        161,
+        162,
+        163,
+        164,
+        168,
+        181,
+        182,
+        183,
+        189,
+        190,
+        237,
+        246,
+        247,
+        249,
+        277,
+        279,
+        280,
+        283
+      ],
+      "dependency_progress_steps": [
+        1,
+        20,
+        22,
+        31,
+        32,
+        35,
+        50,
+        52,
+        54,
+        56,
+        60,
+        64,
+        67,
+        77,
+        79,
+        86,
+        88,
+        92,
+        99,
+        152,
+        155,
+        162,
+        164,
+        181,
+        183,
+        190,
+        212,
+        213,
+        218,
+        220,
+        222,
+        227,
+        231,
+        247,
+        249,
+        269,
+        271,
+        283
+      ],
+      "repairs": 2,
+      "api": {
+        "actor": {
+          "calls": 302,
+          "prompt_tokens": 23710099,
+          "completion_tokens": 121858
+        },
+        "__controller": {
+          "calls": 30,
+          "prompt_tokens": 314502,
+          "completion_tokens": 11190
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "remnant__study_v4",
+      "game": "remnant",
+      "variant": "v4_selected",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 500,
+      "main": 2,
+      "main_at_300": 2,
+      "supplementary": 9,
+      "main_gain_actions": [
+        {
+          "step": 30,
+          "gain": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 114,
+          "gain": 1,
+          "action": "pick up wooden_dagger"
+        }
+      ],
+      "steps_since_last_main_gain": 386,
+      "death_count": 6,
+      "inspection_count": 7,
+      "dispatch_sources": {
+        "model_candidate": 380,
+        "committed_short_plan": 34,
+        "dependency_preparation": 86
+      },
+      "rejected_kinds": {
+        "repeated_context_action": 15,
+        "station_not_currently_observed": 2
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [],
+      "objective_effect_steps": [
+        1,
+        2,
+        9,
+        12,
+        13,
+        14,
+        20,
+        23,
+        25,
+        26,
+        30,
+        31,
+        32,
+        35,
+        51,
+        52,
+        53,
+        57,
+        59,
+        60,
+        63,
+        65,
+        66,
+        67,
+        72,
+        73,
+        75,
+        79,
+        83,
+        84,
+        86,
+        88,
+        113,
+        114,
+        116,
+        117,
+        119,
+        120,
+        122,
+        129,
+        134,
+        135,
+        136,
+        137,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        196,
+        200,
+        203,
+        213,
+        214,
+        236,
+        247,
+        256,
+        317,
+        318,
+        319,
+        322,
+        325,
+        330,
+        332,
+        333,
+        335,
+        337,
+        342,
+        343,
+        345,
+        346,
+        349,
+        379,
+        381,
+        383,
+        384,
+        386,
+        387,
+        388,
+        390,
+        394,
+        395,
+        410,
+        412,
+        414,
+        416,
+        417,
+        430,
+        431,
+        443,
+        444,
+        450,
+        451,
+        453,
+        454,
+        458,
+        484,
+        486,
+        488
+      ],
+      "dependency_progress_steps": [
+        1,
+        4,
+        12,
+        13,
+        20,
+        23,
+        25,
+        32,
+        52,
+        65,
+        72,
+        79,
+        99,
+        108,
+        112,
+        114,
+        167,
+        168,
+        173,
+        200,
+        203,
+        213,
+        214,
+        236,
+        241,
+        256,
+        263,
+        272,
+        274,
+        281,
+        295,
+        325,
+        337,
+        346,
+        349,
+        351,
+        359,
+        379,
+        387,
+        390,
+        392,
+        412,
+        416,
+        430,
+        434,
+        444,
+        450,
+        454,
+        462,
+        464,
+        484,
+        486,
+        488,
+        491
+      ],
+      "repairs": 0,
+      "api": {
+        "actor": {
+          "calls": 500,
+          "prompt_tokens": 57043874,
+          "completion_tokens": 184271
+        },
+        "__controller": {
+          "calls": 44,
+          "prompt_tokens": 503983,
+          "completion_tokens": 26811
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "mark__study_v4",
+      "game": "mark",
+      "variant": "v4_selected",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 500,
+      "main": 11,
+      "main_at_300": 11,
+      "supplementary": 10,
+      "main_gain_actions": [
+        {
+          "step": 50,
+          "gain": 1,
+          "action": "pick up oak_rod"
+        },
+        {
+          "step": 59,
+          "gain": 1,
+          "action": "pick up copper_sword"
+        },
+        {
+          "step": 61,
+          "gain": 1,
+          "action": "enter library"
+        },
+        {
+          "step": 68,
+          "gain": 1,
+          "action": "write \"kindness\" paper_0"
+        },
+        {
+          "step": 70,
+          "gain": 1,
+          "action": "enter armory"
+        },
+        {
+          "step": 80,
+          "gain": 1,
+          "action": "pick up key"
+        },
+        {
+          "step": 83,
+          "gain": 1,
+          "action": "enter stalls"
+        },
+        {
+          "step": 95,
+          "gain": 1,
+          "action": "pick up torch"
+        },
+        {
+          "step": 99,
+          "gain": 1,
+          "action": "enter backstreets"
+        },
+        {
+          "step": 122,
+          "gain": 1,
+          "action": "attack page_gnawer"
+        },
+        {
+          "step": 137,
+          "gain": 1,
+          "action": "enter crystal_grotto"
+        }
+      ],
+      "steps_since_last_main_gain": 363,
+      "death_count": 4,
+      "inspection_count": 5,
+      "dispatch_sources": {
+        "model_candidate": 441,
+        "dependency_preparation": 39,
+        "committed_short_plan": 20
+      },
+      "rejected_kinds": {
+        "station_not_currently_observed": 2,
+        "repeated_context_action": 47,
+        "inspection_has_no_new_question": 1
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [
+        {
+          "step": 91,
+          "id": "h_armory_coal",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 137,
+          "id": "h_grotto_sera",
+          "outcome": "indeterminate_preconditions",
+          "preconditions": [
+            "unknown"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 157,
+          "id": "h_torch_stalls_pickup",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        }
+      ],
+      "objective_effect_steps": [
+        1,
+        2,
+        10,
+        14,
+        15,
+        16,
+        19,
+        28,
+        31,
+        36,
+        42,
+        43,
+        44,
+        49,
+        50,
+        58,
+        59,
+        61,
+        63,
+        68,
+        70,
+        79,
+        80,
+        83,
+        94,
+        95,
+        99,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        124,
+        128,
+        129,
+        131,
+        134,
+        137,
+        140,
+        146,
+        148,
+        149,
+        157,
+        158,
+        160,
+        162,
+        168,
+        170,
+        177,
+        178,
+        179,
+        181,
+        195,
+        199,
+        201,
+        203,
+        205,
+        207,
+        216,
+        219,
+        221,
+        236,
+        240,
+        246,
+        247,
+        248,
+        271,
+        274,
+        277,
+        280,
+        281,
+        282,
+        284,
+        286,
+        287,
+        289,
+        290,
+        291,
+        292,
+        293,
+        296,
+        297,
+        298,
+        300,
+        302,
+        304,
+        307,
+        308,
+        314,
+        316,
+        318,
+        319,
+        321,
+        322,
+        324,
+        326,
+        327,
+        332,
+        334,
+        336,
+        338,
+        339,
+        344,
+        345,
+        348,
+        350,
+        352,
+        353,
+        354,
+        355,
+        360,
+        361,
+        362,
+        363,
+        364,
+        366,
+        367,
+        368,
+        369,
+        370,
+        375,
+        376,
+        377,
+        379,
+        380,
+        382,
+        386,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        397,
+        399,
+        402,
+        404,
+        407,
+        411,
+        413,
+        417,
+        421,
+        423,
+        425,
+        427,
+        429,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        443,
+        445,
+        448,
+        455,
+        456,
+        459,
+        461,
+        463,
+        465,
+        467,
+        469,
+        471,
+        474,
+        478,
+        481,
+        483,
+        484,
+        487,
+        489,
+        497,
+        499
+      ],
+      "dependency_progress_steps": [
+        1,
+        4,
+        14,
+        15,
+        19,
+        28,
+        31,
+        36,
+        42,
+        50,
+        55,
+        59,
+        73,
+        76,
+        80,
+        89,
+        91,
+        95,
+        108,
+        116,
+        131,
+        146,
+        149,
+        157,
+        168,
+        177,
+        181,
+        216,
+        219,
+        221,
+        236,
+        240,
+        271,
+        274,
+        277,
+        280,
+        284,
+        286,
+        289,
+        296,
+        298,
+        332,
+        345,
+        364,
+        388,
+        391,
+        437,
+        439,
+        441,
+        456
+      ],
+      "repairs": 1,
+      "api": {
+        "actor": {
+          "calls": 501,
+          "prompt_tokens": 54468497,
+          "completion_tokens": 175703
+        },
+        "__controller": {
+          "calls": 47,
+          "prompt_tokens": 525622,
+          "completion_tokens": 25903
+        }
+      },
+      "api_errors": []
+    },
+    {
+      "id": "metropolis__study_v4",
+      "game": "metropolis",
+      "variant": "v4_selected",
+      "status": "finished",
+      "completion_reason": "step_limit",
+      "steps": 500,
+      "main": 11,
+      "main_at_300": 9,
+      "supplementary": 11,
+      "main_gain_actions": [
+        {
+          "step": 1,
+          "gain": 1,
+          "action": "pick up evidence_dossier_0"
+        },
+        {
+          "step": 3,
+          "gain": 1,
+          "action": "enter evidence_room"
+        },
+        {
+          "step": 6,
+          "gain": 2,
+          "action": "talk to archivist_lune"
+        },
+        {
+          "step": 49,
+          "gain": 3,
+          "action": "talk to alex_smith"
+        },
+        {
+          "step": 112,
+          "gain": 1,
+          "action": "pick up gavel_club"
+        },
+        {
+          "step": 140,
+          "gain": 1,
+          "action": "talk to witness_marron"
+        },
+        {
+          "step": 469,
+          "gain": 2,
+          "action": "write AURUM-NOCTIS legal_brief_3"
+        }
+      ],
+      "steps_since_last_main_gain": 31,
+      "death_count": 3,
+      "inspection_count": 9,
+      "dispatch_sources": {
+        "model_candidate": 303,
+        "committed_short_plan": 114,
+        "dependency_preparation": 83
+      },
+      "rejected_kinds": {
+        "schema": 2,
+        "repeated_context_action": 28
+      },
+      "zero_capacity_blocks": 0,
+      "test_results": [
+        {
+          "step": 1,
+          "id": "dossier_is_evidence",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 42,
+          "id": "clear_sentinels_first",
+          "outcome": "uninformative_already_true",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 202,
+          "id": "pickup_stylus_enables_write",
+          "outcome": "predicted_effect_observed_in_context",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 242,
+          "id": "amended_charter_with_hand_seal",
+          "outcome": "indeterminate_preconditions",
+          "preconditions": [
+            "satisfied",
+            "unsatisfied"
+          ],
+          "expected_after": [
+            "satisfied"
+          ],
+          "action_accepted": true
+        },
+        {
+          "step": 270,
+          "id": "pickup_slab_completes",
+          "outcome": "prediction_not_observed_in_context",
+          "preconditions": [
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        },
+        {
+          "step": 289,
+          "id": "craft_brief_with_held_scrap",
+          "outcome": "indeterminate_other_conditions",
+          "preconditions": [
+            "satisfied",
+            "satisfied"
+          ],
+          "expected_after": [
+            "unsatisfied"
+          ],
+          "action_accepted": false
+        }
+      ],
+      "objective_effect_steps": [
+        1,
+        3,
+        4,
+        9,
+        16,
+        19,
+        20,
+        22,
+        27,
+        33,
+        39,
+        40,
+        50,
+        51,
+        63,
+        68,
+        83,
+        89,
+        93,
+        95,
+        97,
+        122,
+        125,
+        130,
+        137,
+        142,
+        146,
+        149,
+        150,
+        188,
+        202,
+        210,
+        222,
+        232,
+        246,
+        247,
+        251,
+        252,
+        256,
+        257,
+        260,
+        261,
+        329,
+        345,
+        348,
+        351,
+        356,
+        361,
+        362,
+        363,
+        368,
+        380,
+        382,
+        385,
+        389,
+        392,
+        396,
+        401,
+        403,
+        404,
+        408,
+        412,
+        416,
+        420,
+        424,
+        425,
+        427,
+        429,
+        432,
+        434,
+        435,
+        436,
+        437,
+        441,
+        442,
+        446,
+        448,
+        450,
+        454,
+        455,
+        469,
+        473,
+        476,
+        482,
+        483,
+        484,
+        485
+      ],
+      "dependency_progress_steps": [
+        1,
+        33,
+        51,
+        63,
+        89,
+        95,
+        125,
+        127,
+        142,
+        146,
+        188,
+        199,
+        202,
+        246,
+        257,
+        297,
+        302,
+        319,
+        323,
+        329,
+        333,
+        351,
+        363,
+        368,
+        380,
+        382,
+        396,
+        437,
+        442,
+        448,
+        473,
+        483,
+        485,
+        494,
+        497,
+        500
+      ],
+      "repairs": 0,
+      "api": {
+        "actor": {
+          "calls": 500,
+          "prompt_tokens": 61955839,
+          "completion_tokens": 196955
+        },
+        "__controller": {
+          "calls": 42,
+          "prompt_tokens": 529278,
+          "completion_tokens": 25955
+        }
+      },
+      "api_errors": []
+    }
+  ],
+  "limits": "One trajectory per condition; developmental screening, no significance claim. Ablations use frozen v3; v4 changes multiple reliability mechanisms and is a separate validation."
+}

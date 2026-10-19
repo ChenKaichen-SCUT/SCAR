@@ -1,0 +1,93 @@
+{
+  "algorithm": "sentry_v1",
+  "label": "Official Sentry core + full-history ReAct, DeepSeek/AgentOdyssey adapter",
+  "repository": "https://github.com/nuglifeleoji/Sentry",
+  "commit": "1d91bca14fa6a4e17908856cc787eb8e8354395f",
+  "official_core_modified": false,
+  "games": [
+    "remnant",
+    "mark",
+    "metropolis"
+  ],
+  "runs_per_game": 1,
+  "environment_seed": 42,
+  "max_steps": 500,
+  "backbone": "deepseek-flash",
+  "thinking": "disabled",
+  "actor": {
+    "host": "full_history_ReAct",
+    "temperature": 0.7,
+    "presence_penalty": 1.5,
+    "max_tokens": 4096
+  },
+  "sentry_auxiliary": {
+    "temperature": 0.0,
+    "presence_penalty": 0.0,
+    "max_tokens": 4096,
+    "response_format": "json_object"
+  },
+  "official_mechanism": {
+    "trace_window": 5,
+    "recovery_horizon": 10,
+    "retrieval_top_k": 5,
+    "primary_label_cap": 2,
+    "schema_first": true,
+    "only_verified_soft_recovery_enters_playbook": true,
+    "no_full_playbook_in_actor_prompt": true
+  },
+  "game_memory_reset": true,
+  "initial_playbook": "empty",
+  "transport_retries_max": 2,
+  "protocol_differences_from_paper": [
+    "DeepSeek instead of Qwen3.5-9B",
+    "AgentOdyssey instead of original paper tasks",
+    "Host actor max_tokens=4096 to match existing ReAct and improved method; paper actor limit is 384",
+    "Independent empty playbook per game; no cross-game training or memory transfer"
+  ],
+  "adapter": {
+    "task_objective": "Complete main quest revealed by observations; initial text observation included",
+    "observed_cycles": "post-environment-step callback, including final cycle",
+    "schema": "public declared verbs and arity; free text arguments may contain whitespace",
+    "semantic_rejection_is_not_schema_failure": true,
+    "environment_acceptance": "invalid-action flag and explicit denial text; not a success/reward oracle",
+    "reward_or_hidden_state_exposed": false,
+    "game_specific_rules": false
+  },
+  "execution": {
+    "parallel_trajectories": 3,
+    "api_concurrency_ceiling": 128,
+    "cpu_threads_per_process": 2
+  },
+  "comparison_policy": {
+    "new_baseline_authorized": "Sentry only",
+    "no_old_baseline_reruns": true,
+    "mem0_excluded_from_future_baseline_tables": true
+  },
+  "accounting": "All actor, detector, verifier and updater calls logged; no hidden free auxiliary compute.",
+  "adapter_sha256": {
+    "sentry_agent.py": "e36064ec83d3efc899c3216dcd7f8c35d57e92849f1dc586f9fd1d5304052dd4",
+    "eval_sentry.py": "c9fe54e7bd91a5ae91505601488bff5c846acf27ab916ac474318d00fe0eb183",
+    "run_sentry.py": "310d7a90788e4357e802d1b7e98f5c92ff6564b3198c19ee248e36b92832ca8d",
+    "api_proxy_sentry.py": "ae4fdd0b7956bd42a69e0a6814e940b86186a9d292452258d56172a0afe0e3db",
+    "test_sentry_integration.py": "6ba0f6ac8c551fe2d5652c4b385cae60d431825bfd05aef857ecf6da5075bd89"
+  },
+  "official_files": {
+    "Sentry/__init__.py": "7c1b63a58c06a8c1b6266e6b6f093a606c0f13ed2b8808122a3ab4f879ea17c4",
+    "Sentry/_structured.py": "e4879af08025bd4d9b7470e90d45524bf86e287514f477109b5e4888898f36e6",
+    "Sentry/cli.py": "116c1e569bca07e935e600ec8627544e806dda79f503a5250204eb56f5a09a70",
+    "Sentry/clients.py": "73b5c46194b7c42d29af2e78a10892737c799807e9fa267b4d979533c458319d",
+    "Sentry/config.py": "84718a1514d4c427beee8fb82eeee6f2a779615e561eedee7d65a0bba95e142c",
+    "Sentry/detector.py": "8764077c2e01e0edefb94dc9da934698c255f6f5d8c19e1f89c6a230c6d78cf6",
+    "Sentry/integration.py": "4f454c8987dda5a13faa493278593874b1a5fbebb0eba0b5b8c28611c5cd37af",
+    "Sentry/logging.py": "dce493d9e6c31dc8e730b700de5560a150d886ea4f4d91b0b618ee2296ace736",
+    "Sentry/models.py": "9fa290b16bfd965dd96b057f3abc96e16bc3fbb4278380ca62879975d3235887",
+    "Sentry/playbook.py": "669bb72fbc953637c3c85f363fffc4f4f3d97f2ffbf55a28c54cbf0d38cf209b",
+    "Sentry/router.py": "47ca7ae3cdab3ca60b606ab686b26a7a6b96bcf908163b31ae970424aa5179d8",
+    "Sentry/Sentry.py": "f14b741375936d821a7e6a0a12b087ee22b00f96cec3b84d74c7f64b75a72444",
+    "Sentry/taxonomy.py": "fc0a37b3cd6fed0bd463dd9d4502de5f234c49b239e2321d30914ae24c5463c6",
+    "Sentry/updater.py": "6a8bdd8b00454dd7c46d32798bde5c539fb4b31f1d20504e88bc46395bff4678",
+    "Sentry/verifier.py": "b381aad322cdd9fdf50a7a697d2b921412fae74f37ebcca712ea6ac63223d420",
+    "LICENSE": "160610a5dc1a7842a9b907c907ef8ee266bccb16b5a9e847e763f49e2994f4ed",
+    "configs/paper.yaml": "bdaff5917ed9caba6002bb11d2c4019b84a2bdec846bcffbcdffa83f6c616fbd"
+  }
+}

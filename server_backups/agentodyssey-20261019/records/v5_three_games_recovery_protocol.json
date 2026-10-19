@@ -1,0 +1,89 @@
+{
+  "paid_execution_explicitly_enabled": true,
+  "authorization": "User requested v5 once in all three games; keep prior shared total budget, split evenly.",
+  "runs": [
+    {
+      "id": "remnant__v5_batch_20261018",
+      "game": "remnant",
+      "max_steps": 120
+    },
+    {
+      "id": "mark__v5_batch_20261018",
+      "game": "mark",
+      "max_steps": 120
+    },
+    {
+      "id": "metropolis__v5_batch_20261018",
+      "game": "metropolis",
+      "max_steps": 120
+    }
+  ],
+  "limits": {
+    "calls": 80,
+    "input_tokens": 2000000,
+    "uncached_input_tokens": 400000,
+    "output_tokens": 60000
+  },
+  "per_run_limits": {
+    "calls": 26,
+    "input_tokens": 666666,
+    "uncached_input_tokens": 133333,
+    "output_tokens": 20000
+  },
+  "budget_db": "v5_three_games_budget.sqlite",
+  "seed": 42,
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "workers": 3,
+  "development_screen": true,
+  "automatic_repeats": false,
+  "no_automatic_budget_increase": true,
+  "v5_implementation_sha256": {
+    "feedback_v5_core.py": "e0dc00540fe6e9a2cf8259c19c178f3b90a503b58f9889a4ce4833fadf0052cc",
+    "feedback_v5_agent.py": "a33ac0ed399a987ff9ea0568c983dc13745477c819ee9e63db4d6c6eafb11a7c",
+    "compact_decision_packet.py": "3144e1ae6d5b0cecf2caafd32dec292d0ecfc9f61dbcd44aff157671e908841a",
+    "api_budget_guard.py": "f57c035b660685a0f0f3ceda92965e5bd9a848493f94e616fba1186c4fb7ce7c",
+    "api_proxy_budgeted.py": "f421ff9f1e5870f50c0c875e435073f834778a97feb78943d60526f1cf2be9f3",
+    "eval_feedback_v5.py": "b780cf643cdf6585026ce4d72ab8c1a6cf7d75c76684c5e1a23878051b260521",
+    "run_efficient_screen.py": "46a9690a52b59ef955afb2958347422daa5889873e2dece333df0595ed69baff",
+    "test_feedback_v5.py": "5774e503fc2ea795c4d47424f3891a5e0d1706fecf09efb2c92a35d366e4b123",
+    "test_feedback_v5_agent_smoke.py": "ca814a9596b35977ba0f68c805adfa5a7af7299c7cc32fe5bf1758ae187eaadd",
+    "preflight_feedback_v5_remote.py": "cfc99fe12c15fc01f4b22a0f56ef5740e59b533b0fb6b492dec58e2cb8f64f6c"
+  },
+  "batch_source_sha256": {
+    "api_proxy_v5_batch.py": "f70d0e1ac37bb185d5f3eaff05cba5b336fd4c971156c18712822c84944917a9",
+    "run_v5_three_games.py": "dab5c036be34a4ea7205f4625be7bdd6b684ed022eeeed685daf993b268bbc99",
+    "test_v5_batch_transport.py": "141347ca91339fa924e00371d7ba77bd75788f97baf05ef8b0a8e517b0085236"
+  },
+  "startup_recovery": {
+    "reason": "keyword save_memory interface mismatch before any environment step",
+    "reuse_completed_call": {
+      "remnant__v5_batch_20261018": "ca2d6b749acb43deb0a793aaf4b67b2f",
+      "mark__v5_batch_20261018": "95617acd825a434aa6c0acbc9e3796eb",
+      "metropolis__v5_batch_20261018": "a4b8aa181b36444884991b69062bfe1c"
+    },
+    "budget_reset": false,
+    "new_paid_first_responses": false,
+    "adapter_checks": [
+      {
+        "game": "remnant",
+        "real_evaluator_steps": 2,
+        "provider_calls": 0,
+        "passed": true
+      },
+      {
+        "game": "mark",
+        "real_evaluator_steps": 2,
+        "provider_calls": 0,
+        "passed": true
+      },
+      {
+        "game": "metropolis",
+        "real_evaluator_steps": 2,
+        "provider_calls": 0,
+        "passed": true
+      }
+    ],
+    "original_protocol": "v5_three_games_protocol.json"
+  }
+}
